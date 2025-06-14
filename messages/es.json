@@ -1,0 +1,71 @@
+{
+  "common": {
+    "home": "Inicio",
+    "artists": "Artistas",
+    "community": "Comunidad",
+    "about": "Acerca de",
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "signup": "Registrarse",
+    "search": "Buscar",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "artists": "Artistas",
+    "music": "Música",
+    "community": "Comunidad",
+    "blog": "Blog"
+  },
+  "hero": {
+    "title": "Descubre Artistas Indie Coreanos",
+    "subtitle": "Explora el vibrante mundo de la música independiente coreana y conecta con artistas talentosos",
+    "cta": "Explorar Artistas"
+  },
+  "artists": {
+    "title": "Artistas Destacados",
+    "viewAll": "Ver Todos los Artistas",
+    "noArtists": "No se encontraron artistas",
+    "biography": "Biografía",
+    "music": "Música",
+    "socialLinks": "Enlaces Sociales"
+  },
+  "music": {
+    "title": "Música Reciente",
+    "playOnYoutube": "Reproducir en YouTube",
+    "duration": "Duración",
+    "releaseDate": "Fecha de Lanzamiento",
+    "noMusic": "No se encontró música"
+  },
+  "community": {
+    "title": "Comunidad",
+    "discussions": "Discusiones",
+    "newPost": "Nueva Publicación",
+    "comments": "Comentarios",
+    "likes": "Me Gusta",
+    "reply": "Responder",
+    "noComments": "Aún no hay comentarios"
+  },
+  "auth": {
+    "signIn": "Iniciar Sesión",
+    "signUp": "Registrarse",
+    "signOut": "Cerrar Sesión",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar Contraseña",
+    "username": "Nombre de Usuario",
+    "name": "Nombre",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "dontHaveAccount": "¿No tienes una cuenta?"
+  }
+}
