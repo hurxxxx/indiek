@@ -1,14 +1,10 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { useTranslation } from '@/hooks/use-translation';
 
-interface LatestMusicProps {
-  locale: string;
-}
-
-export function LatestMusic({ locale }: LatestMusicProps) {
-  const t = useTranslations('music');
+export function LatestMusic() {
+  const { t } = useTranslation();
 
   // Mock data - in real app, this would come from database
   const latestSongs = [
@@ -40,7 +36,7 @@ export function LatestMusic({ locale }: LatestMusicProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {t('title')}
+            {t('home.latest_music')}
           </h2>
         </div>
 
@@ -54,7 +50,7 @@ export function LatestMusic({ locale }: LatestMusicProps) {
                 by {song.artist}
               </p>
               <p className="text-sm text-gray-500 mb-4">
-                {t('duration')}: {song.duration}
+                Duration: {song.duration}
               </p>
               <a
                 href={song.youtubeUrl}
@@ -62,7 +58,7 @@ export function LatestMusic({ locale }: LatestMusicProps) {
                 rel="noopener noreferrer"
                 className="inline-block bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
               >
-                {t('playOnYoutube')}
+                Play on YouTube
               </a>
             </div>
           ))}
@@ -70,10 +66,10 @@ export function LatestMusic({ locale }: LatestMusicProps) {
 
         <div className="text-center mt-12">
           <Link
-            href={`/${locale}/music`}
+            href="/music"
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium"
           >
-            View All Music →
+            {t('music.title')} →
           </Link>
         </div>
       </div>

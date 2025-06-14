@@ -1,18 +1,13 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { LanguageSwitcher } from './language-switcher';
 import { SearchBar } from './search-bar';
+import { useTranslation } from '@/hooks/use-translation';
 
-interface NavigationProps {
-  locale: string;
-}
-
-export function Navigation({ locale }: NavigationProps) {
-  const t = useTranslations('navigation');
-  const tAuth = useTranslations('auth');
+export function Navigation() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
 
   return (
@@ -20,46 +15,40 @@ export function Navigation({ locale }: NavigationProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href={`/${locale}`} className="text-2xl font-bold text-gray-900">
+            <Link href="/" className="text-2xl font-bold text-gray-900">
               Indiek
             </Link>
             <div className="hidden md:ml-10 md:flex md:space-x-8">
               <Link
-                href={`/${locale}`}
+                href="/"
                 className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
               >
-                {t('home')}
+                {t('nav.home')}
               </Link>
               <Link
-                href={`/${locale}/artists`}
+                href="/artists"
                 className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
               >
-                {t('artists')}
+                {t('nav.artists')}
               </Link>
               <Link
-                href={`/${locale}/music`}
+                href="/music"
                 className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
               >
-                {t('music')}
+                {t('nav.music')}
               </Link>
               <Link
-                href={`/${locale}/posts`}
+                href="/posts"
                 className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
               >
-                {t('blog')}
-              </Link>
-              <Link
-                href={`/${locale}/community`}
-                className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-              >
-                {t('community')}
+                {t('nav.community')}
               </Link>
             </div>
           </div>
 
           {/* Search Bar - Hidden on mobile */}
           <div className="hidden md:block flex-1 max-w-lg mx-8">
-            <SearchBar locale={locale} />
+            <SearchBar />
           </div>
 
           <div className="flex items-center space-x-4">
@@ -72,32 +61,32 @@ export function Navigation({ locale }: NavigationProps) {
                 </span>
                 {session.user.role === 'ADMIN' && (
                   <Link
-                    href={`/${locale}/admin`}
+                    href="/admin"
                     className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    {tAuth('admin')}
+                    {t('nav.admin')}
                   </Link>
                 )}
                 <button
                   onClick={() => signOut()}
                   className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium"
                 >
-                  {tAuth('signOut')}
+                  {t('nav.signout')}
                 </button>
               </div>
             ) : (
               <div className="flex items-center space-x-2">
                 <Link
-                  href={`/${locale}/auth/signin`}
+                  href="/auth/signin"
                   className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  {tAuth('signIn')}
+                  {t('nav.signin')}
                 </Link>
                 <Link
-                  href={`/${locale}/auth/signup`}
+                  href="/auth/signup"
                   className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"
                 >
-                  {tAuth('signUp')}
+                  {t('nav.signup')}
                 </Link>
               </div>
             )}

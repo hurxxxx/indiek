@@ -1,15 +1,11 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslation } from '@/hooks/use-translation';
 
-interface FeaturedArtistsProps {
-  locale: string;
-}
-
-export function FeaturedArtists({ locale }: FeaturedArtistsProps) {
-  const t = useTranslations('artists');
+export function FeaturedArtists() {
+  const { t } = useTranslation();
 
   // Mock data - in real app, this would come from database
   const featuredArtists = [
@@ -41,13 +37,13 @@ export function FeaturedArtists({ locale }: FeaturedArtistsProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {t('title')}
+            {t('home.featured_artists')}
           </h2>
           <Link
-            href={`/${locale}/artists`}
+            href="/artists"
             className="text-blue-600 hover:text-blue-800 font-medium"
           >
-            {t('viewAll')} →
+            {t('artists.all')} →
           </Link>
         </div>
 
@@ -65,10 +61,10 @@ export function FeaturedArtists({ locale }: FeaturedArtistsProps) {
                   {artist.bio}
                 </p>
                 <Link
-                  href={`/${locale}/artists/${artist.slug}`}
+                  href={`/artists/${artist.slug}`}
                   className="text-blue-600 hover:text-blue-800 font-medium"
                 >
-                  Learn More →
+                  {t('common.view')} →
                 </Link>
               </div>
             </div>

@@ -1,17 +1,15 @@
 'use client';
 
-import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useTranslation } from '@/hooks/use-translation';
 
 interface SearchBarProps {
-  locale: string;
   placeholder?: string;
   className?: string;
 }
 
-export function SearchBar({ locale, placeholder, className = '' }: SearchBarProps) {
-  const t = useTranslations('search');
+export function SearchBar({ placeholder, className = '' }: SearchBarProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') || '');
@@ -19,7 +17,7 @@ export function SearchBar({ locale, placeholder, className = '' }: SearchBarProp
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
-      router.push(`/${locale}/search?q=${encodeURIComponent(query.trim())}`);
+      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
     }
   };
 
@@ -30,7 +28,7 @@ export function SearchBar({ locale, placeholder, className = '' }: SearchBarProp
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder={placeholder || t('placeholder')}
+          placeholder={placeholder || 'Search artists, music, posts...'}
           className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">

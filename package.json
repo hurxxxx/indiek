@@ -8,7 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "db:seed": "tsx prisma/seed.ts",
-    "db:reset": "npx prisma db push --force-reset && npm run db:seed"
+    "db:reset": "npx prisma db push --force-reset && npm run db:seed",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:debug": "playwright test --debug"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -25,7 +29,6 @@
     "bcryptjs": "^3.0.2",
     "next": "15.3.3",
     "next-auth": "^4.24.11",
-    "next-intl": "^4.1.0",
     "prisma": "^6.9.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -34,6 +37,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.53.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
