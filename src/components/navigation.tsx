@@ -1,14 +1,18 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { LanguageSwitcher } from './language-switcher';
+import { SearchBar } from './search-bar';
 
 interface NavigationProps {
   locale: string;
 }
 
 export function Navigation({ locale }: NavigationProps) {
+  const t = useTranslations('navigation');
+  const tAuth = useTranslations('auth');
   const { data: session } = useSession();
 
   return (
@@ -24,33 +28,38 @@ export function Navigation({ locale }: NavigationProps) {
                 href={`/${locale}`}
                 className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
               >
-                Home
+                {t('home')}
               </Link>
               <Link
                 href={`/${locale}/artists`}
                 className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
               >
-                Artists
+                {t('artists')}
               </Link>
               <Link
                 href={`/${locale}/music`}
                 className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
               >
-                Music
+                {t('music')}
               </Link>
               <Link
                 href={`/${locale}/posts`}
                 className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
               >
-                Blog
+                {t('blog')}
               </Link>
               <Link
                 href={`/${locale}/community`}
                 className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
               >
-                Community
+                {t('community')}
               </Link>
             </div>
+          </div>
+
+          {/* Search Bar - Hidden on mobile */}
+          <div className="hidden md:block flex-1 max-w-lg mx-8">
+            <SearchBar locale={locale} />
           </div>
 
           <div className="flex items-center space-x-4">
@@ -66,14 +75,14 @@ export function Navigation({ locale }: NavigationProps) {
                     href={`/${locale}/admin`}
                     className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Admin
+                    {tAuth('admin')}
                   </Link>
                 )}
                 <button
                   onClick={() => signOut()}
                   className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium"
                 >
-                  Sign Out
+                  {tAuth('signOut')}
                 </button>
               </div>
             ) : (
@@ -82,13 +91,13 @@ export function Navigation({ locale }: NavigationProps) {
                   href={`/${locale}/auth/signin`}
                   className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Sign In
+                  {tAuth('signIn')}
                 </Link>
                 <Link
                   href={`/${locale}/auth/signup`}
                   className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"
                 >
-                  Sign Up
+                  {tAuth('signUp')}
                 </Link>
               </div>
             )}

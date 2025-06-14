@@ -59,6 +59,7 @@
     "signIn": "Sign In",
     "signUp": "Sign Up",
     "signOut": "Sign Out",
+    "admin": "Admin",
     "email": "Email",
     "password": "Password",
     "confirmPassword": "Confirm Password",
@@ -67,5 +68,16 @@
     "forgotPassword": "Forgot Password?",
     "alreadyHaveAccount": "Already have an account?",
     "dontHaveAccount": "Don't have an account?"
+  },
+  "search": {
+    "placeholder": "Search artists, songs, or posts...",
+    "noResults": "No results found",
+    "results": "Search Results",
+    "filters": "Filters",
+    "sortBy": "Sort by",
+    "newest": "Newest",
+    "oldest": "Oldest",
+    "popular": "Most Popular",
+    "alphabetical": "A-Z"
   }
 }

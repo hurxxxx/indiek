@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 interface LatestMusicProps {
@@ -7,6 +8,7 @@ interface LatestMusicProps {
 }
 
 export function LatestMusic({ locale }: LatestMusicProps) {
+  const t = useTranslations('music');
 
   // Mock data - in real app, this would come from database
   const latestSongs = [
@@ -38,7 +40,7 @@ export function LatestMusic({ locale }: LatestMusicProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Latest Music
+            {t('title')}
           </h2>
         </div>
 
@@ -52,7 +54,7 @@ export function LatestMusic({ locale }: LatestMusicProps) {
                 by {song.artist}
               </p>
               <p className="text-sm text-gray-500 mb-4">
-                Duration: {song.duration}
+                {t('duration')}: {song.duration}
               </p>
               <a
                 href={song.youtubeUrl}
@@ -60,7 +62,7 @@ export function LatestMusic({ locale }: LatestMusicProps) {
                 rel="noopener noreferrer"
                 className="inline-block bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
               >
-                Play on YouTube
+                {t('playOnYoutube')}
               </a>
             </div>
           ))}

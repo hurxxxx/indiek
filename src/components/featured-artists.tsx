@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -8,6 +9,7 @@ interface FeaturedArtistsProps {
 }
 
 export function FeaturedArtists({ locale }: FeaturedArtistsProps) {
+  const t = useTranslations('artists');
 
   // Mock data - in real app, this would come from database
   const featuredArtists = [
@@ -39,13 +41,13 @@ export function FeaturedArtists({ locale }: FeaturedArtistsProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Featured Artists
+            {t('title')}
           </h2>
           <Link
             href={`/${locale}/artists`}
             className="text-blue-600 hover:text-blue-800 font-medium"
           >
-            View All Artists →
+            {t('viewAll')} →
           </Link>
         </div>
 

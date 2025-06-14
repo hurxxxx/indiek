@@ -59,6 +59,7 @@
     "signIn": "로그인",
     "signUp": "회원가입",
     "signOut": "로그아웃",
+    "admin": "관리자",
     "email": "이메일",
     "password": "비밀번호",
     "confirmPassword": "비밀번호 확인",
@@ -67,5 +68,16 @@
     "forgotPassword": "비밀번호를 잊으셨나요?",
     "alreadyHaveAccount": "이미 계정이 있으신가요?",
     "dontHaveAccount": "계정이 없으신가요?"
+  },
+  "search": {
+    "placeholder": "아티스트, 음악, 포스트 검색...",
+    "noResults": "검색 결과가 없습니다",
+    "results": "검색 결과",
+    "filters": "필터",
+    "sortBy": "정렬",
+    "newest": "최신순",
+    "oldest": "오래된순",
+    "popular": "인기순",
+    "alphabetical": "가나다순"
   }
 }

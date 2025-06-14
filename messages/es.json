@@ -59,6 +59,7 @@
     "signIn": "Iniciar Sesión",
     "signUp": "Registrarse",
     "signOut": "Cerrar Sesión",
+    "admin": "Administrador",
     "email": "Correo Electrónico",
     "password": "Contraseña",
     "confirmPassword": "Confirmar Contraseña",
@@ -67,5 +68,16 @@
     "forgotPassword": "¿Olvidaste tu contraseña?",
     "alreadyHaveAccount": "¿Ya tienes una cuenta?",
     "dontHaveAccount": "¿No tienes una cuenta?"
+  },
+  "search": {
+    "placeholder": "Buscar artistas, canciones o publicaciones...",
+    "noResults": "No se encontraron resultados",
+    "results": "Resultados de Búsqueda",
+    "filters": "Filtros",
+    "sortBy": "Ordenar por",
+    "newest": "Más Reciente",
+    "oldest": "Más Antiguo",
+    "popular": "Más Popular",
+    "alphabetical": "A-Z"
   }
 }
