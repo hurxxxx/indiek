@@ -16,6 +16,7 @@ let dialogMode='';
 let activeFilter='all';
 let toastTimer;
 let returnFocus;
+let dialogTrigger;
 const findRecord=id=>records.find(r=>r.id===id);
 const cover=r=>`<img src="assets/${r.image}" alt="${r.album} album artwork" width="350" height="350" loading="lazy">`;
 const saveButton=r=>`<button class="save-button" data-save="${r.id}" aria-label="${saved.has(r.id)?'Remove':'Save'} ${r.album}${saved.has(r.id)?' from saved records':''}" aria-pressed="${saved.has(r.id)}">${saved.has(r.id)?'−':'+'}</button>`;
@@ -30,7 +31,7 @@ document.querySelector('#track-list').innerHTML=[records[1],records[0],records[2
 
 function openDialog(content,mode){
   const wasOpen=dialog.open;
-  if(!wasOpen)returnFocus=document.activeElement;
+  if(!wasOpen){returnFocus=dialogTrigger||document.activeElement;dialogTrigger=null;}
   dialogMode=mode;dialogContent.innerHTML=content;
   if(!wasOpen)dialog.showModal();
   dialog.scrollTop=0;
@@ -87,6 +88,7 @@ function openStory(id){const s=stories[id];if(!s)return;openDialog(`<article cla
 
 document.addEventListener('click',event=>{
   const button=event.target.closest('button');if(!button)return;
+  if(!dialog.open)dialogTrigger=button;
   if(button.hasAttribute('data-listen'))openRecord(button.dataset.listen);
   else if(button.hasAttribute('data-load-player'))loadPlayer(button.dataset.loadPlayer);
   else if(button.hasAttribute('data-save'))toggleSaved(button.dataset.save);
