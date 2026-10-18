@@ -16,8 +16,11 @@ class Page(HTMLParser):
     def __init__(self, path):
         super().__init__(); self.path=path; self.refs=[]; self.ids=set(); self.meta={}; self.canonical=[]; self.h1=0; self.frames=0
         self.guide_cards=[]; self.guide_tracks=[]; self.guide_id=None
+        self.room_tracks=[]; self.room_count=None
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
+        if 'data-room-count' in a: self.room_count=int(a['data-room-count'])
+        if 'data-room-track' in a: self.room_tracks.append((a['data-room-track'],a.get('href')))
         if 'data-guide' in a: self.guide_cards.append((a['data-guide'],int(a['data-track-count'])))
         if 'data-guide-track' in a: self.guide_tracks.append((a['data-guide-track'],a.get('href')))
         if 'data-guide-page' in a: self.guide_id=a['data-guide-page']
@@ -87,6 +90,11 @@ for name, image in media.items():
 
 urls={node.text for node in ET.parse(dist/'sitemap.xml').findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc')}
 if urls!={p.canonical[0] for p in pages.values()}: errors.append('Sitemap does not match generated pages')
+home=pages[(dist/'index.html').resolve()]
+expected_room=[(r['id'],f"/artists/{r['id']}/#listen") for r in catalogue['records']+[catalogue['editorPick']]]
+if home.room_tracks!=expected_room: errors.append('Listening room does not match the complete catalogue')
+if home.room_count!=len(expected_room): errors.append('Listening room count does not match its tracks')
+if 'undefined' in (dist/'index.html').read_text(): errors.append('Undefined content on the homepage')
 guide_ids=[g['id'] for g in catalogue['listeningGuides']]
 guide_counts={}
 covered=set()

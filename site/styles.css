@@ -246,3 +246,28 @@ dialog{padding:0;border:0;background:var(--paper);color:var(--ink);width:min(820
   .guide-track-action>span:last-child{font-size:11px}
   .guide-next{margin-top:36px}
 }
+
+/* The listening room always contains the full catalogue. */
+.rotation .section-kicker{flex-wrap:wrap}
+.room-list-hint{display:flex;justify-content:space-between;gap:12px;font-size:11px;line-height:1.6;color:var(--muted);margin:0 0 10px}
+.room-track-scroll{max-height:432px;overflow-y:auto;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:var(--muted) var(--paper);border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding-right:8px}
+.room-track-scroll:focus-visible{outline:2px solid var(--red);outline-offset:5px}
+.room-track-scroll .track-list{list-style:none;margin:0;padding:0;border-top:0}
+.room-track-scroll .track-number{display:block;flex:0 0 20px}
+.room-track-scroll .track{min-height:70px;padding:12px 0}
+.room-track-scroll li:last-child .track{border-bottom:0}
+.room-track-scroll .track:focus-visible{outline-offset:-2px}
+@media(max-width:1050px){.room-track-scroll{max-height:420px}.room-track-scroll .track{gap:9px}.room-track-scroll .track-number{flex-basis:16px}}
+@media(max-width:760px){
+  .rotation{display:block}
+  .rotation .section-kicker{margin-bottom:20px}
+  .rotation h2{font-size:42px;margin:0 0 12px}
+  .rotation-intro{font-size:13px;margin-bottom:18px}
+  .room-track-scroll{max-height:384px}
+  .room-track-scroll .track{min-height:64px;padding:10px 0;gap:12px}
+  .room-track-scroll .track img{width:42px;height:42px}
+  .room-track-scroll .track-info strong{font-size:13px}
+  .room-track-scroll .track-info span{font-size:11px}
+  .room-track-scroll .track-time{display:block;font-size:10px}
+  .rotation .room-button{margin-top:18px;padding:14px;font-size:12px}
+}

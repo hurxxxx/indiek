@@ -7,11 +7,11 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const read = file => readFileSync(path.join(root, file), 'utf8');
 const catalogue = JSON.parse(read('content/catalogue.json'));
 const media = JSON.parse(read('content/media.json'));
-const {site, records, editorPick: pick, listeningRoom} = catalogue;
+const {site, records, editorPick: pick} = catalogue;
 const features = getFeaturedArtists(catalogue);
 const guides = getListeningGuides(catalogue);
 const all = [...records, pick];
-const version = '20261018-listening-guides';
+const version = '20261018-full-listening-room';
 const pages = [];
 const find = id => all.find(r => r.id === id);
 const sourceLink = (url, label, language = '') => out(url, `${label}${language ? ` (${language})` : ''}`);
@@ -54,7 +54,7 @@ function hero(feature, i) {
   <div class="story-caption"><div><p class="eyebrow">MEET THE ARTIST <span lang="ko">${e(r.korean)}</span></p><h2><a href="${artistPath(r)}">${e(feature.title)}</a></h2></div><a class="round-arrow" href="${artistPath(r)}" aria-label="Read about ${e(r.artist)}">↗</a></div><p class="feature-deck">${feature.deck}</p></div>`;
 }
 function trackLink(r,i) {
-  return `<a class="track" href="${artistPath(r)}#listen" aria-label="Listen to ${e(r.track)} by ${e(r.artist)}"><span class="track-number">0${i+1}</span>${coverHTML(media,r,{sizes:'55px'})}<span class="track-info"><strong>${e(r.track)}</strong><span>${e(r.artist)}</span></span><span class="track-time">${r.duration}</span><span class="track-play" aria-hidden="true">▷</span></a>`;
+  return `<li><a class="track" data-room-track="${r.id}" href="${artistPath(r)}#listen" aria-label="Listen to ${e(r.track)} by ${e(r.artist)}"><span class="track-number" aria-hidden="true">${formatPosition(i+1)}</span>${coverHTML(media,r,{sizes:'55px'})}<span class="track-info"><strong>${e(r.track)}</strong><span>${e(r.artist)}</span></span>${r.duration?`<span class="track-time">${r.duration}</span>`:''}<span class="track-play" aria-hidden="true">▷</span></a></li>`;
 }
 function guideCards(heading = 'h3') {
   return `<div class="guide-grid">${guides.map((guide,i)=>{
@@ -94,7 +94,7 @@ function editorPick() {
   return `<section class="editor-pick wrap" id="editors-pick" aria-labelledby="editors-pick-title"><div class="pick-copy"><p class="eyebrow">EDITOR’S PICK / R&amp;B</p><h2 id="editors-pick-title"><a href="${artistPath(pick)}">${pick.artist}</a><span>${pick.track} <span lang="ko">(${pick.koreanTitle})</span></span></h2><p class="pick-date mono">SINGLE / ${pick.releaseDate.toUpperCase()}</p><p class="pick-description">${e(pick.description)}</p><p class="pick-credits">${e(pick.credits)}<br>${out(pick.source,'View release on Apple Music')}</p></div><div class="pick-video">${player(pick,true)}</div><div class="artist-profile"><article class="artist-bio" aria-labelledby="yoon-mirae-profile-title"><p class="eyebrow">BEHIND THE VOICE / <span lang="ko">윤미래</span></p><h3 id="yoon-mirae-profile-title">Meet Yoon Mirae.</h3><p>${e(pick.artistIntro)}</p><p>${e(pick.biography)}</p><p class="artist-sources">${sourceLink(pick.artistSource,'Artist biography','Korean')} · ${sourceLink(pick.extraSources[0].url,'Korean Music Awards','Korean')}</p><a class="underlink" href="${artistPath(pick)}">More about Yoon Mirae <span aria-hidden="true">↗</span></a></article>${moreTracks(pick)}</div></section>`;
 }
 let home = read('site/templates/home.html');
-for(const [token,value] of Object.entries({COUNT:records.length,FEATURE_COUNT:formatPosition(features.length),HERO:features.map(hero).join(''),TRACKS:listeningRoom.artists.map(id=>find(id)).map(trackLink).join(''),EDITOR_PICK:editorPick(),RECORDS:records.map(card).join(''),GUIDES:guideCards(),GUIDE_ARTIST_COUNT:all.length})) home=home.replaceAll(`{{${token}}}`,value);
+for(const [token,value] of Object.entries({COUNT:records.length,FEATURE_COUNT:formatPosition(features.length),HERO:features.map(hero).join(''),TRACKS:all.map(trackLink).join(''),ROOM_COUNT:all.length,ROOM_HINT:all.length>6?`<p class="room-list-hint" id="room-list-hint">Scroll to explore all ${all.length} tracks <span aria-hidden="true">↓</span></p>`:'',EDITOR_PICK:editorPick(),RECORDS:records.map(card).join(''),GUIDES:guideCards(),GUIDE_ARTIST_COUNT:all.length})) home=home.replaceAll(`{{${token}}}`,value);
 page('/','indiek — Music from Korea, worth sharing','A personal, non-commercial listening journal sharing Korean artists and songs with listeners around the world. Official videos, live performances and artist stories.',home,'home-page');
 
 for(const r of all) {

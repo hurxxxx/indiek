@@ -21,13 +21,13 @@
         <p class="sr-only" id="hero-status" role="status" aria-live="polite" aria-atomic="true"></p>
       </article>
 
-      <aside class="rotation" aria-labelledby="rotation-title">
-        <div class="section-kicker mono"><span class="red-dot"></span> THE LISTENING ROOM <span>01—04</span></div>
-        <h2 id="rotation-title">A few good<br>places to start.</h2>
-        <p class="rotation-intro">Four songs to keep coming back to.<br>Two bands. Two solo voices.</p>
-        <div class="track-list" id="track-list">{{TRACKS}}</div>
-        <a class="room-button" href="/artists/ydbb/#listen"><span class="play-triangle" aria-hidden="true"></span> Start with ONCE <span aria-hidden="true">↗</span></a>
-        <p class="room-note mono">PICK A TRACK. STAY A WHILE.</p>
+      <aside class="rotation" aria-labelledby="rotation-title" data-room-count="{{ROOM_COUNT}}">
+        <div class="section-kicker mono"><span class="red-dot"></span> THE LISTENING ROOM <span>{{ROOM_COUNT}} TRACKS</span></div>
+        <h2 id="rotation-title">Pick a song.<br>Stay a while.</h2>
+        <p class="rotation-intro">Every song in the journal. Choose one and meet the artist.</p>
+        {{ROOM_HINT}}
+        <div class="room-track-scroll" role="region" aria-label="All {{ROOM_COUNT}} tracks in the listening room" tabindex="0"><ol class="track-list" id="track-list" role="list">{{TRACKS}}</ol></div>
+        <a class="room-button" href="/#notes">Find a listening guide <span aria-hidden="true">↗</span></a>
       </aside>
     </section>
 
