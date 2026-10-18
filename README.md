@@ -10,11 +10,11 @@ An independent, non-commercial music journal introducing Korean musicians to lis
 
 - Artist introductions, listening notes and release information in English.
 - Official YouTube videos and live performances, with Apple Music release links.
-- One shared YouTube player across the site, with fullscreen viewing and uninterrupted playback during internal navigation, including Back and Forward. Loading another song replaces the video; closing the player, reloading or leaving the site ends playback.
+- One shared YouTube player in a centered listening window, with saved tracks alongside it (below on mobile). Minimize it to browse, or expand it again without restarting. Fullscreen controls and uninterrupted playback during internal navigation, including Back and Forward. Saved tracks play in the displayed order with Auto-next on, stopping at the last song and skipping YouTube-only links. Previous/Next and Auto-next controls are available; if the browser blocks playback, press play in the video. Selecting another song changes the video in the same player; closing the player, reloading or leaving the site ends playback.
 - Listening guides, artist and song search, and tracks saved in your browser.
 - Responsive pages with keyboard navigation and reduced-motion support.
 
-Built with HTML, CSS and JavaScript. Pages are generated as static files; no application server or database is required. YouTube embeds load only after the listener chooses to load them. Optional, cookieless visit statistics use self-hosted Matomo after consent; the choice can be changed from the footer.
+Built with HTML, CSS and JavaScript. Pages are generated as static files; no application server or database is required. YouTube embeds and the official IFrame API load only after the listener chooses to load them. The first video waits for Play; subsequent saved tracks can start automatically. Optional, cookieless visit statistics use self-hosted Matomo after consent; the choice can be changed from the footer.
 
 ## Getting started
 

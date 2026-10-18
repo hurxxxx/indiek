@@ -27,6 +27,7 @@ function syncSaved() {
     button.setAttribute('aria-label',`${active?'Remove':'Save'} ${r.track}${active?' from saved tracks':''}`);
     button.textContent=button.hasAttribute('data-long-label')?(active?'− Saved':'+ Save track'):(active?'−':'+');
   });
+  player.setQueue(records.filter(r=>saved.has(r.id)));
 }
 function notify(message) {
   const toast=document.querySelector('#toast');
@@ -35,6 +36,10 @@ function notify(message) {
 }
 function openDialog(content,mode) {
   if(!dialog.open) returnFocus=document.activeElement;
+  if(player.current){
+    if(playerRoot.contains(returnFocus))returnFocus=playerSizeButton;
+    setCompactPlayer(true);
+  }
   dialogMode=mode;dialogContent.innerHTML=content;
   if(!dialog.open)dialog.showModal();
   dialog.scrollTop=0;
@@ -86,11 +91,84 @@ function renderSearch() {
 const playerRoot=document.querySelector('#persistent-player');
 const player=createPlayer(playerRoot,{onChange:syncPlayer});
 const playerSizeButton=playerRoot.querySelector('[data-resize-player]');
+const playerBackdrop=document.querySelector('#player-backdrop');
+const playlist=playerRoot.querySelector('[data-player-playlist]');
+const playlistRows=playerRoot.querySelector('[data-playlist-rows]');
+const inertBackground=new Map();
+let playerReturnFocus;
 function setCompactPlayer(compact) {
+  const expanded=Boolean(player.current)&&!compact;
   playerRoot.classList.toggle('is-compact',compact);
-  playerSizeButton.textContent=compact?'Larger':'Smaller';
-  playerSizeButton.setAttribute('aria-label',compact?'Use larger player':'Use smaller player');
+  playerSizeButton.textContent=compact?'Expand':'Minimize';
+  playerSizeButton.setAttribute('aria-label',compact?'Expand listening window':'Minimize and keep listening');
+  playerRoot.setAttribute('role',expanded?'dialog':'region');
+  if(expanded)playerRoot.setAttribute('aria-modal','true');
+  else playerRoot.removeAttribute('aria-modal');
+  playerBackdrop.hidden=!expanded;
+  document.body.classList.toggle('player-expanded',expanded);
+  playerRoot.querySelectorAll('[data-player-focus]').forEach(el=>el.hidden=!expanded);
+  if(expanded&&!inertBackground.size){
+    for(const element of document.body.children){
+      if(element===playerRoot||element===playerBackdrop)continue;
+      inertBackground.set(element,element.inert);
+      element.inert=true;
+    }
+  }else if(!expanded){
+    for(const [element,inert] of inertBackground)element.inert=inert;
+    inertBackground.clear();
+  }
 }
+function syncPlaylist() {
+  const list=records.filter(r=>saved.has(r.id));
+  const focused=playlistRows.contains(document.activeElement)?document.activeElement.dataset.loadSaved:null;
+  playlist.hidden=!list.length;
+  playerRoot.classList.toggle('has-playlist',Boolean(list.length));
+  playerRoot.querySelector('[data-playlist-count]').textContent=String(list.length).padStart(2,'0');
+  playlistRows.innerHTML=list.map(r=>{
+    const selected=r.id===player.current?.id;
+    const content=`${coverHTML(media,r,{sizes:'48px'})}<span><strong>${e(r.track)}</strong><small>${e(r.artist)}</small></span><span class="playlist-status">${selected?(player.state==='playing'?'Playing':'Selected'):r.externalOnly?'YouTube ↗':'▷'}</span>`;
+    return `<li>${r.externalOnly?`<a href="${e(r.url)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${e(r.track)} by ${e(r.artist)} on YouTube">${content}</a>`:`<button data-load-saved="${r.id}" aria-label="${selected?'Return to':'Load'} ${e(r.track)} by ${e(r.artist)}" ${selected?'aria-current="true"':''}>${content}</button>`}</li>`;
+  }).join('');
+  playerRoot.querySelector('[data-queue-controls]').hidden=!list.length;
+  playerRoot.querySelector('[data-previous-track]').disabled=!player.ready||!player.previous;
+  playerRoot.querySelector('[data-next-track]').disabled=!player.ready||!player.next;
+  const autoNextButton=playerRoot.querySelector('[data-auto-next]');
+  autoNextButton.setAttribute('aria-pressed',String(player.autoNext));
+  autoNextButton.textContent=`Auto-next: ${player.autoNext?'on':'off'}`;
+  const status=playerRoot.querySelector('[data-playback-status]');
+  status.textContent=({idle:'',loading:'Loading player…',ready:'Press play to start.',paused:'Paused.',
+    playing:player.autoNext&&player.next?`Up next: ${player.next.track} · ${player.next.artist}`:'Playing · Stops after this song.',
+    ended:'Song finished. Choose a track to listen again.',blocked:'Press play in the video to continue.',
+    error:'This video is unavailable here. Choose another track or open it on YouTube.',
+    unavailable:'Automatic next is unavailable. You can still play this video or choose another track.',
+  })[player.state];
+  const watchLink=playerRoot.querySelector('[data-player-youtube]');
+  watchLink.hidden=!['error','unavailable'].includes(player.state);
+  watchLink.href=player.current?.url||'#';
+  if(focused)(playlistRows.querySelector(`[data-load-saved="${focused}"]`)||playerSizeButton).focus({preventScroll:true});
+}
+function loadPlayer(id) {
+  const record=findRecord(id);
+  if(!record||record.externalOnly)return;
+  const fromPlaylist=document.activeElement.hasAttribute('data-load-saved');
+  if(!playerRoot.contains(document.activeElement))playerReturnFocus=document.activeElement;
+  player.load(record,{autoplay:fromPlaylist});
+  setCompactPlayer(false);
+  (fromPlaylist?playlistRows.querySelector(`[data-load-saved="${id}"]`):playerSizeButton)?.focus({preventScroll:true});
+}
+playerBackdrop.addEventListener('click',()=>{setCompactPlayer(true);playerSizeButton.focus({preventScroll:true});});
+playerRoot.addEventListener('keydown',event=>{
+  if(event.key==='Escape'&&!playerRoot.classList.contains('is-compact')){
+    event.preventDefault();setCompactPlayer(true);playerSizeButton.focus({preventScroll:true});
+  }
+});
+playerRoot.querySelectorAll('[data-player-focus]').forEach(guard=>guard.addEventListener('focus',()=>{
+  const controls=[...playerRoot.querySelectorAll('a,button,iframe')].filter(el=>el.getClientRects().length);
+  (guard.dataset.playerFocus==='start'?controls.at(-1):controls[0])?.focus();
+}));
+playerRoot.addEventListener('click',event=>{
+  if(event.target.closest('a[data-current-track]'))setCompactPlayer(true);
+});
 new ResizeObserver(()=>{
   const height=playerRoot.getBoundingClientRect().height;
   document.documentElement.style.setProperty('--player-clearance',`${Math.ceil(height)+36}px`);
@@ -102,13 +180,14 @@ function syncPlayer() {
     button.setAttribute('aria-label',selected?`Return to ${player.current.track} player`:`Agree & load YouTube`);
     button.closest('.player-shell').querySelector('[data-unload-player]').hidden=!selected;
   });
+  syncPlaylist();
 }
 function closePlayer() {
   const id=player.current?.id;
   player.close();
   setCompactPlayer(false);
   const button=[...document.querySelectorAll('[data-load-player]')].find(button=>button.dataset.loadPlayer===id);
-  (button||document.querySelector('.search-button')).focus({preventScroll:true});
+  (playerReturnFocus?.isConnected?playerReturnFocus:button||document.querySelector('.search-button')).focus({preventScroll:true});
   notify('YouTube disconnected.');
 }
 document.addEventListener('click',event=>{
@@ -117,7 +196,11 @@ document.addEventListener('click',event=>{
   else if(button.hasAttribute('data-remove'))toggleSaved(button.dataset.remove);
   else if(button.hasAttribute('data-search'))renderSearch();
   else if(button.hasAttribute('data-library'))renderLibrary();
-  else if(button.hasAttribute('data-load-player'))player.load(findRecord(button.dataset.loadPlayer));
+  else if(button.hasAttribute('data-load-player'))loadPlayer(button.dataset.loadPlayer);
+  else if(button.hasAttribute('data-load-saved'))loadPlayer(button.dataset.loadSaved);
+  else if(button.hasAttribute('data-next-track'))player.nextTrack();
+  else if(button.hasAttribute('data-previous-track'))player.previousTrack();
+  else if(button.hasAttribute('data-auto-next'))player.setAutoNext(!player.autoNext);
   else if(button.hasAttribute('data-unload-player'))closePlayer();
   else if(button.hasAttribute('data-resize-player'))setCompactPlayer(!playerRoot.classList.contains('is-compact'));
   else if(button.hasAttribute('data-filter')){
@@ -134,7 +217,7 @@ window.addEventListener('storage',event=>{
     if(dialogMode==='library')renderLibrary();
   }
 });
-window.addEventListener('pagehide',()=>player.close());
+window.addEventListener('pagehide',()=>{player.close();setCompactPlayer(false);});
 syncSaved();
 const analytics=initAnalytics(catalogue.site.analytics, catalogue.site.url);
 
@@ -245,7 +328,7 @@ function initArtistCarousel() {
 }
 let cleanupCarousel=initArtistCarousel();
 initNavigation({
-  beforeSwap:()=>cleanupCarousel?.(),
+  beforeSwap:()=>{if(player.current)setCompactPlayer(true);cleanupCarousel?.();},
   afterSwap:()=>{
     document.querySelectorAll('[data-js-only]').forEach(el=>el.hidden=false);
     syncSaved();syncPlayer();analytics?.refreshControls();

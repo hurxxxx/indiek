@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {internalPageURL} from '../site/navigation.mjs';
-import {createPlayer} from '../site/player.mjs';
+import {createPlayer, loadYouTubeAPI} from '../site/player.mjs';
 
 const current='https://indiek.com/artists/ydbb/';
 const link=(href,attributes={})=>({href,...attributes,hasAttribute:key=>Object.hasOwn(attributes,key)});
@@ -17,33 +17,111 @@ test('only ordinary internal page links use continuous navigation',()=>{
   }
 });
 
+const first={id:'first',track:'First',artist:'Artist',channel:'Official',videoId:'one'};
+const second={...first,id:'second',track:'Second',videoId:'two'};
+const third={...first,id:'third',track:'Third',videoId:'three'};
 function playerFixture() {
   const stage={children:[],replaceChildren(...nodes){this.children=nodes;},querySelector(){return this.children[0];}};
   const label={};
   const root={hidden:true,querySelector:selector=>selector==='[data-player-stage]'?stage:label};
-  const created=[];
+  const created=[], instances=[], calls=[];
   const doc={createElement(tag){assert.equal(tag,'iframe');const frame={focus(){}};created.push(frame);return frame;}};
-  return {player:createPlayer(root,{doc}),stage,root,created,label};
+  let resolveAPI, rejectAPI, requests=0;
+  const api=new Promise((resolve,reject)=>{resolveAPI=resolve;rejectAPI=reject;});
+  class Player {
+    constructor(frame,{events}) { this.events=events;this.videoId=new URL(frame.src).pathname.split('/').at(-1);instances.push(this); }
+    getVideoUrl(){return `https://www.youtube.com/watch?v=${this.videoId}`;}
+    loadVideoById(id){this.videoId=id;calls.push(['play',id]);}
+    cueVideoById(id){this.videoId=id;calls.push(['cue',id]);}
+    playVideo(){calls.push(['play',this.videoId]);}
+    destroy(){calls.push(['destroy']);}
+    emit(name,data){this.events[name]({target:this,data});}
+  }
+  const player=createPlayer(root,{doc,win:{location:{origin:'http://127.0.0.1:4173'},setTimeout(){return 1;},clearTimeout(){}},loadAPI:()=>{requests++;return api;}});
+  return {player,stage,root,created,label,calls,instances,requests:()=>requests,
+    async ready(){resolveAPI({Player});await api;instances.at(-1)?.emit('onReady');},
+    async fail(){rejectAPI(new Error('offline'));await api.catch(()=>{});await Promise.resolve();},
+  };
 }
-const first={id:'kim-sawol',track:'Someone',artist:'Kim Sawol',channel:'POCLANOS',videoId:'11mxnvHowTY'};
-test('player is deferred, reuses the same loaded song and replaces only on explicit song change',()=>{
-  const b=playerFixture();
-  assert.equal(b.created.length,0);assert.equal(b.root.hidden,true);
-  b.player.load(first);
-  const frame=b.stage.children[0];
-  assert.match(frame.src,/youtube-nocookie\.com\/embed\/11mxnvHowTY\?playsinline=1$/);
-  assert.ok(!frame.src.includes('autoplay=1'));
-  assert.equal(b.root.hidden,false);
-  b.player.load({...first});
+test('no YouTube connection before load; one iframe survives song changes and same-song selection',async()=>{
+  const b=playerFixture();b.player.setQueue([first,second]);
+  assert.equal(b.requests(),0);assert.equal(b.created.length,0);
+  b.player.load(first);await b.ready();
+  const frame=b.stage.children[0],url=new URL(frame.src);
+  assert.equal(url.origin,'https://www.youtube-nocookie.com');
+  assert.equal(url.searchParams.get('enablejsapi'),'1');
+  assert.equal(url.searchParams.get('origin'),'http://127.0.0.1:4173');
+  assert.ok(frame.allow.includes('autoplay'));assert.ok(frame.allowFullscreen);
+  assert.deepEqual(b.calls,[]); // First load waits for a real play action.
+  b.player.load({...first});assert.deepEqual(b.calls,[]);
+  b.player.load(second,{autoplay:true});
+  assert.deepEqual(b.calls,[['play','two']]);
   assert.equal(b.stage.children[0],frame);assert.equal(b.created.length,1);
-  b.player.load({...first,id:'other',videoId:'different'});
-  assert.equal(b.stage.children.length,1);assert.notEqual(b.stage.children[0],frame);
-  assert.equal(b.player.current.id,'other');
-  b.player.close();
-  assert.equal(b.stage.children.length,0);assert.equal(b.player.current,null);assert.equal(b.root.hidden,true);
+  assert.equal(b.label.textContent,'Second · Artist');
 });
-test('an external-only video never interrupts the embedded song',()=>{
-  const b=playerFixture();b.player.load(first);
-  b.player.load({...first,id:'external',externalOnly:true});
-  assert.equal(b.player.current.id,first.id);assert.equal(b.created.length,1);
+test('saved order advances once per completed song, skips external-only entries and stops at the end',async()=>{
+  const b=playerFixture();b.player.setQueue([first,{...first,id:'external',externalOnly:true},second,third]);
+  b.player.load(first);await b.ready();const api=b.instances[0];
+  api.emit('onStateChange',1);api.emit('onStateChange',0);api.emit('onStateChange',0);
+  assert.equal(b.player.current.id,'second');assert.deepEqual(b.calls,[['play','two']]);
+  api.emit('onStateChange',1);api.emit('onStateChange',0);
+  assert.equal(b.player.current.id,'third');
+  api.emit('onStateChange',1);api.emit('onStateChange',0);
+  assert.equal(b.player.current.id,'third');assert.equal(b.player.state,'ended');
+  assert.equal(b.calls.length,2);assert.equal(b.player.next,null);
+  b.player.load(third,{autoplay:true});
+  assert.deepEqual(b.calls.at(-1),['play','three']); // Explicitly selecting the finished song starts it again.
+});
+test('manual selection, previous/next and the auto-next switch respect the current queue',async()=>{
+  const b=playerFixture();b.player.setQueue([first,second,third]);b.player.load(first);await b.ready();
+  const api=b.instances[0];b.player.load(third,{autoplay:true});b.player.previousTrack();
+  assert.equal(b.player.current.id,'second');
+  b.player.setAutoNext(false);api.emit('onStateChange',1);api.emit('onStateChange',0);
+  assert.equal(b.player.current.id,'second');
+  b.player.nextTrack();assert.equal(b.player.current.id,'third');
+  b.player.nextTrack();assert.equal(b.player.current.id,'third');
+  b.player.setAutoNext(true);b.player.setQueue([first]);
+  api.emit('onStateChange',1);api.emit('onStateChange',0);
+  assert.equal(b.player.current.id,'third'); // Removed/current unsaved songs finish without jumping.
+});
+test('saved changes affect the next song without interrupting the current iframe',async()=>{
+  const b=playerFixture();b.player.setQueue([first,second,third]);b.player.load(first);await b.ready();
+  const frame=b.stage.children[0];b.player.setQueue([first,third]);
+  assert.equal(b.stage.children[0],frame);assert.deepEqual(b.calls,[]);
+  b.instances[0].emit('onStateChange',1);b.instances[0].emit('onStateChange',0);
+  assert.equal(b.player.current.id,'third');
+});
+test('blocked playback and errors stop advancement; a later user play can continue',async()=>{
+  const b=playerFixture();b.player.setQueue([first,second]);b.player.load(first);await b.ready();
+  const api=b.instances[0];api.emit('onAutoplayBlocked');
+  assert.equal(b.player.state,'blocked');assert.deepEqual(b.calls,[]);
+  api.emit('onStateChange',1);api.emit('onError',150);api.emit('onStateChange',0);
+  assert.equal(b.player.state,'error');assert.equal(b.player.current.id,'first');
+  api.emit('onStateChange',1);api.emit('onStateChange',0);
+  assert.equal(b.player.current.id,'second');
+});
+test('close destroys the player and ignores later callbacks, including a delayed API load',async()=>{
+  const b=playerFixture();b.player.load(first);await b.ready();const api=b.instances[0];
+  b.player.close();api.emit('onStateChange',1);api.emit('onError',100);
+  assert.equal(b.root.hidden,true);assert.equal(b.stage.children.length,0);assert.equal(b.player.current,null);assert.equal(b.player.state,'idle');
+  assert.deepEqual(b.calls,[['destroy']]);
+  const pending=playerFixture();pending.player.load(first);pending.player.close();await pending.ready();
+  assert.equal(pending.instances.length,0);assert.equal(pending.stage.children.length,0);
+});
+test('a newer selection wins while the API is loading, and API failure preserves manual playback',async()=>{
+  const b=playerFixture();b.player.load(first);b.player.load(second);await b.ready();
+  assert.equal(b.instances.length,1);assert.equal(b.player.current.id,'second');
+  b.player.load({...third,externalOnly:true});assert.equal(b.player.current.id,'second');
+  const failed=playerFixture();failed.player.load(first);await failed.fail();
+  assert.equal(failed.player.state,'unavailable');assert.equal(failed.stage.children.length,1);
+});
+test('official API loader is shared and can retry after a blocked script',async()=>{
+  const scripts=[];
+  const win={setTimeout(){return 1;},clearTimeout(){}};
+  const doc={createElement(){return {remove(){}};},head:{append(script){scripts.push(script);}}};
+  const a=loadYouTubeAPI({win,doc});assert.equal(loadYouTubeAPI({win,doc}),a);
+  assert.equal(scripts.length,1);assert.equal(scripts[0].src,'https://www.youtube.com/iframe_api');
+  scripts[0].onerror();await assert.rejects(a);
+  const b=loadYouTubeAPI({win,doc});assert.equal(scripts.length,2);
+  win.YT={Player(){}};win.onYouTubeIframeAPIReady();assert.equal(await b,win.YT);
 });
