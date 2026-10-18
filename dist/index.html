@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>indiek — Music from Korea, worth sharing</title>
-  <meta name="description" content="A personal listening journal sharing Korean artists and songs with listeners around the world. Discover YdBB, WhiteUsedSocks, Motte, HANRORO and Yoon Mirae.">
+  <meta name="description" content="A personal listening journal sharing Korean artists and songs with listeners around the world. Discover The Black Skirts, sunwoojunga, Car, the garden, Choi Yu Ree, BOL4, ESEGYE, SE SO NEON and more.">
   <meta name="theme-color" content="#f5f3ed">
   <meta property="og:title" content="indiek — Music from Korea, worth sharing">
   <meta property="og:description" content="Good music travels. A fan-run listening journal sharing Korean artists and songs with curious listeners everywhere.">
   <meta property="og:image" content="https://indiek-listening-journal.lumejs.chatgpt.site/assets/ydbb.jpg">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="styles.css?v=20261018-live3">
+  <script src="app.js?v=20261018-live3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to music</a>
@@ -27,7 +27,17 @@
     </section>
 
     <section class="feature-grid wrap" id="discover" aria-label="Featured artist and listening selections">
-      <article class="feature-story">
+      <article class="feature-story" id="artist-carousel" aria-label="Featured artists">
+        <div class="hero-toolbar" hidden>
+          <span class="mono">IN FOCUS <span id="hero-position" aria-hidden="true">01 / 04</span></span>
+          <div class="hero-controls">
+            <button id="hero-rotation" aria-label="Pause artist rotation"><span aria-hidden="true">Ⅱ</span> Pause</button>
+            <button id="hero-previous" aria-label="Previous artist">←</button>
+            <button id="hero-next" aria-label="Next artist">→</button>
+          </div>
+        </div>
+        <div class="hero-slides" id="hero-slides">
+        <div class="hero-slide is-active">
         <button class="hero-image" data-story="ydbb" aria-label="Meet YdBB, a five-piece band from Korea">
           <img src="assets/ydbb.jpg" alt="The five members of YdBB seated in red cinema chairs" width="1919" height="1279" fetchpriority="high">
           <span class="image-label mono">IN FOCUS — 001</span><span class="location-label mono">YdBB / 유다빈밴드</span>
@@ -35,6 +45,10 @@
         </button>
         <div class="story-caption"><div><p class="eyebrow">MEET THE ARTIST <span lang="ko">유다빈밴드</span></p><h2><button data-story="ydbb">A farewell worth staying for.</button></h2></div><button class="round-arrow" data-story="ydbb" aria-label="Read about YdBB">↗</button></div>
         <p class="feature-deck">Meet YdBB through <em>ONCE</em> — a song about parting,<br class="desktop-break"> and the wish to be remembered kindly.</p>
+        </div>
+        </div>
+        <div class="hero-artists" id="hero-artists" role="group" aria-label="Choose a featured artist" hidden></div>
+        <p class="sr-only" id="hero-status" role="status" aria-live="polite" aria-atomic="true"></p>
       </article>
 
       <aside class="rotation" aria-labelledby="rotation-title">
@@ -47,43 +61,62 @@
       </aside>
     </section>
 
-    <section class="editor-pick wrap" id="editors-pick" aria-labelledby="editors-pick-title" data-search-terms="Yoon Mirae yoonmirae 윤미래 Breath 숨 R&B acoustic">
+    <section class="editor-pick wrap" id="editors-pick" aria-labelledby="editors-pick-title" data-search-terms="Yoon Mirae Yoon Mi-rae yoonmirae 윤미래 Tasha 타샤 Uptown 업타운 Tashannie 타샤니 Breath 숨 R&B hip-hop acoustic">
       <div class="pick-copy">
         <p class="eyebrow">EDITOR’S PICK / R&amp;B</p>
         <h2 id="editors-pick-title" tabindex="-1">Yoon Mirae<span>Breath <span lang="ko">(숨)</span></span></h2>
-        <p class="pick-date mono">SINGLE / DECEMBER 2025</p>
-        <p class="pick-description">A single guitar leaves room for Yoon Mirae’s voice on “Breath.” Released in December 2025, this acoustic R&amp;B song follows the small, ordinary reminders that remain after a breakup.</p>
+        <p class="pick-date mono">SINGLE / 23 DECEMBER 2025</p>
+        <p class="pick-description">Guitar-led and spare, “Breath” leaves room for Yoon Mirae’s voice. This acoustic R&amp;B song follows the small, ordinary reminders that remain after a breakup.</p>
+        <p class="pick-credits">Composed by Yoon Mirae &amp; Tiger JK.<br>Lyrics by Tiger JK.<br><a href="https://music.apple.com/us/album/breath-single/1862425862" target="_blank" rel="noopener noreferrer">Release on Apple Music ↗</a></p>
       </div>
       <div class="pick-video">
         <div class="video-stage" id="pick-video-stage">
           <div class="video-prompt">
-            <span class="video-kicker mono">YOON MIRAE / OFFICIAL MUSIC VIDEO</span>
-            <span class="video-title" aria-hidden="true">Breath<span>.</span></span>
+            <img class="video-cover" src="assets/yoon-mirae-breath.png" alt="Breath (숨) single artwork, showing Yoon Mirae’s eyes through torn white paper" width="1000" height="1000" loading="lazy">
             <button class="video-load" data-load-video aria-label="Load video: Breath by Yoon Mirae"><span class="play-triangle" aria-hidden="true"></span> Load video</button>
           </div>
         </div>
         <div class="video-caption"><span class="mono">VIA 1THEK</span><a class="underlink" href="https://www.youtube.com/watch?v=knmrNkQMybA" target="_blank" rel="noopener noreferrer">Watch on YouTube <span aria-hidden="true">↗</span></a></div>
       </div>
+      <div class="artist-profile">
+        <article class="artist-bio" aria-labelledby="yoon-mirae-profile-title">
+          <p class="eyebrow">BEHIND THE VOICE / <span lang="ko">윤미래</span></p>
+          <h3 id="yoon-mirae-profile-title">Meet Yoon Mirae.</h3>
+          <p>Also known as Tasha or T, Yoon Mirae is a rapper and singer whose work spans hip-hop, R&amp;B and drama soundtracks. She debuted with Uptown in 1997, went on to perform in the duo Tashannie, and began her solo career with <em>As Time Goes By</em> in 2001.</p>
+          <p>Her 2007 album <em>t 3 YOONMIRAE</em> won Best R&amp;B &amp; Soul Album at the 2008 Korean Music Awards. “What’s Up! Mr. Good Stuff” also won the song award in that category. Listen across her catalogue for both the rapper and the singer; “Breath” is a quiet place to begin.</p>
+          <p class="artist-sources">Read more: <a href="https://www.melon.com/artist/detail.htm?artistId=1654" target="_blank" rel="noopener noreferrer">Artist biography ↗</a> · <a href="https://koreanmusicawards.com/project/%EC%9C%A4%EB%AF%B8%EB%9E%98-yoonmirae/" target="_blank" rel="noopener noreferrer">Korean Music Awards ↗</a></p>
+        </article>
+        <aside class="artist-listens" aria-labelledby="yoon-mirae-listens-title">
+          <p class="eyebrow">THREE MORE WAYS IN</p>
+          <h3 id="yoon-mirae-listens-title">Keep listening.</h3>
+          <ol class="artist-track-links">
+            <li><a href="https://www.youtube.com/watch?v=zGgIzbahCZ0" target="_blank" rel="noopener noreferrer"><span class="mono">01 / 2001</span><span><strong>As Time Goes By</strong><small>The title song from her solo debut.</small></span><span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=1DK-MPh7vKk" target="_blank" rel="noopener noreferrer"><span class="mono">02 / 2007</span><span><strong>Black Happiness</strong><small>Her own story, told through rap.</small></span><span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=aE0eV2YR51k" target="_blank" rel="noopener noreferrer"><span class="mono">03 / 2016</span><span><strong>Always</strong><small>Her voice in <em>Descendants of the Sun.</em></small></span><span aria-hidden="true">↗</span></a></li>
+          </ol>
+          <p class="artist-listens-note mono">LISTEN ON YOUTUBE ↗</p>
+        </aside>
+      </div>
     </section>
 
     <section class="record-section wrap" id="records" aria-labelledby="records-title">
-      <div class="section-heading"><div><p class="eyebrow">THE LISTENING SHELF / FOUR HANDPICKED TRACKS</p><h2 id="records-title">Worth your time.</h2></div><p class="section-description">Songs to get lost in.<br>Picked for the curious.</p></div>
-      <div class="filter-bar"><div class="filters" role="group" aria-label="Filter by artist type"><button data-filter="all" aria-pressed="true">All artists <sup>04</sup></button><button data-filter="bands" aria-pressed="false">Bands</button><button data-filter="solo" aria-pressed="false">Solo artists</button></div><span id="record-count" class="mono" role="status">04 TRACKS</span></div>
+      <div class="section-heading"><div><p class="eyebrow">THE LISTENING SHELF / HANDPICKED SONGS</p><h2 id="records-title">Worth your time.</h2></div><p class="section-description">Songs to get lost in.<br>Picked for the curious.</p></div>
+      <div class="filter-bar"><div class="filters" role="group" aria-label="Filter by artist type"><button data-filter="all" aria-pressed="true">All artists <sup>11</sup></button><button data-filter="bands" aria-pressed="false">Bands</button><button data-filter="solo" aria-pressed="false">Solo artists</button></div><span id="record-count" class="mono" role="status">11 TRACKS</span></div>
       <div class="record-grid" id="record-grid"></div>
-      <noscript><p>Listen directly on YouTube: <a href="https://www.youtube.com/watch?v=vyTiHwIK2LU">YdBB — ONCE</a>, <a href="https://www.youtube.com/watch?v=2uIKfZZB8FA">WhiteUsedSocks — Don’t feel sad</a>, <a href="https://www.youtube.com/watch?v=Xu56OVkwdXw">Motte — Don’t run away</a>, <a href="https://www.youtube.com/watch?v=QRwfXQ7-OR4">HANRORO — Even if you leave</a>. Enable JavaScript for the listening shelf and search.</p></noscript>
+      <noscript><p>Listen directly on YouTube: <a href="https://www.youtube.com/watch?v=Aq_gsctWHtQ">The Black Skirts — EVERYTHING</a>, <a href="https://www.youtube.com/watch?v=fNrhdZwhj-c">sunwoojunga — Run with Me</a>, <a href="https://www.youtube.com/watch?v=6e_H3ngjD7A">Car, the garden — Tree</a>, <a href="https://www.youtube.com/watch?v=AOGhUcAdTKk">Choi Yu Ree — Forest</a>, <a href="https://www.youtube.com/watch?v=Gw00jZ0RA-E">BOL4 — Eternal love</a>, <a href="https://www.youtube.com/watch?v=rly_h23jX3M">ESEGYE — RomanceYouthLove</a>, <a href="https://www.youtube.com/watch?v=SPGuXMzKpvQ">SE SO NEON — The Wave</a>, <a href="https://www.youtube.com/watch?v=vyTiHwIK2LU">YdBB — ONCE</a>, <a href="https://www.youtube.com/watch?v=2uIKfZZB8FA">WhiteUsedSocks — Don’t feel sad</a>, <a href="https://www.youtube.com/watch?v=Xu56OVkwdXw">Motte — Don’t run away</a>, <a href="https://www.youtube.com/watch?v=QRwfXQ7-OR4">HANRORO — Even if you leave</a>. Enable JavaScript for the listening shelf and search.</p></noscript>
     </section>
 
     <section class="field-section wrap" id="notes" aria-labelledby="notes-title">
       <div class="section-heading"><div><p class="eyebrow">FIELD NOTES / A LITTLE CONTEXT</p><h2 id="notes-title">Follow the sound.</h2></div><span class="mono">THERE’S MORE TO THE STORY ↙</span></div>
       <div class="field-grid">
-        <article class="field-feature"><div class="field-art" aria-hidden="true"><span class="field-coordinate mono">YdBB / WHITEUSEDSOCKS / MOTTE / HANRORO</span><span class="field-city">SIDE A</span><div class="wave-lines"><i></i><i></i><i></i><i></i><i></i></div><span class="field-art-bottom mono">FOUR FIRST LISTENS / VOL. 01</span></div><div class="field-copy"><p class="eyebrow">A PLACE TO START · 2 MIN READ</p><h3>One song.<br>Four ways in.</h3><p>Two bands, two solo artists. Follow this edition’s selections into a wider world of Korean music.</p><button class="underlink" data-story="first-listens">Read the listening guide <span aria-hidden="true">↗</span></button></div></article>
+        <article class="field-feature"><div class="field-art" aria-hidden="true"><span class="field-coordinate mono">YdBB / WHITEUSEDSOCKS / MOTTE / HANRORO</span><span class="field-city">SIDE A</span><div class="wave-lines"><i></i><i></i><i></i><i></i><i></i></div><span class="field-art-bottom mono">FOUR FIRST LISTENS / VOL. 01</span></div><div class="field-copy"><p class="eyebrow">A PLACE TO START · 2 MIN READ</p><h3>One song.<br>Four ways in.</h3><p>Two bands, two solo artists. Follow four starting points into a wider world of Korean music.</p><button class="underlink" data-story="first-listens">Read the listening guide <span aria-hidden="true">↗</span></button></div></article>
         <div class="field-index"><article><span class="mono">01 / FIRST ENCOUNTERS</span><h3><button data-story="motte">A song beyond<br>the screen.</button></h3><p>Meet Motte through “Don’t run away”, from the soundtrack to <em>A-TEEN.</em></p><button class="note-arrow" data-story="motte" aria-label="Read about Motte">↗</button></article><article><span class="mono">02 / LISTENING NOTES</span><h3><button data-story="hanroro">Learning<br>to let go.</button></h3><p>On attachment and moving forward in HANRORO’s “Even if you leave”.</p><button class="note-arrow" data-story="hanroro" aria-label="Read about HANRORO">↗</button></article></div>
       </div>
     </section>
 
     <section class="closing wrap" id="about"><span class="mono">A NOTE FROM INDIEK</span><div><h2>Different language.<br>Same feeling.</h2><p>A personal listening journal, made by a fan.<br>Korean artists and songs I wish more people knew.<br>Shared for the love of music, with no commercial aim.</p><a class="underlink" href="#records">Keep digging <span aria-hidden="true">↗</span></a></div><span class="closing-mark" aria-hidden="true">ik.</span></section>
   </main>
-  <footer class="footer wrap"><a class="small-logo" href="#main" aria-label="Back to top">indiek.</a><span class="mono">KOREAN MUSIC. OPEN EARS.</span><div><a href="design-notes.html">About this edition</a><span class="mono">© 2026 INDIEK</span></div></footer>
+  <footer class="footer wrap"><a class="small-logo" href="#main" aria-label="Back to top">indiek.</a><span class="mono">KOREAN MUSIC. OPEN EARS.</span><div><a href="#about">About indiek</a><span class="mono">© 2026 INDIEK</span></div></footer>
 
   <dialog id="content-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span class="mono">INDIEK / KEEP EXPLORING</span><button class="close-button" aria-label="Close dialog">Close <span aria-hidden="true">×</span></button></div><div id="dialog-content"></div></dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>

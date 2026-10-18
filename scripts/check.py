@@ -1,6 +1,7 @@
 """Check the static deliverable's local links and template invariants."""
 from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import urlsplit
 import json
 import re
 
@@ -24,7 +25,7 @@ for path in dist.glob('*.html'):
         if ref.startswith(('http:','https:','data:','mailto:')):continue
         if ref.startswith('#'):
             if ref[1:] not in page.ids:errors.append(f'{path.name}: missing anchor {ref}')
-        elif not (path.parent/ref.split('#')[0]).exists():errors.append(f'{path.name}: missing file {ref}')
+        elif not (path.parent/urlsplit(ref).path).exists():errors.append(f'{path.name}: missing file {ref}')
 for name in re.findall(r"(?:image|src):?'?\s*'([^']+\.(?:jpg|woff2|ttf))'",(dist/'app.js').read_text()):
     if not (dist/'assets'/name).exists():errors.append('Missing JS asset: '+name)
 for ref in re.findall(r'url\(([^)]+)\)',(dist/'assets/fonts.css').read_text()):
