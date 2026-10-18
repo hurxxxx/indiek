@@ -4,40 +4,60 @@
 
 브랜드명은 **indiek**으로 유지한다. 소개 대상은 장르, 소속사, 인디 여부, 인지도로 제한하지 않는다. 윤미래와 볼빨간사춘기도 같은 선곡 기준으로 다룬다.
 
-## 실행
+## 실행과 수정
 
 ```sh
 npm run dev
 ```
 
-브라우저에서 http://127.0.0.1:4173 을 연다. 의존성 설치나 빌드가 필요 없다.
+http://127.0.0.1:4173 에서 확인한다. `dev`는 정적 페이지를 생성한 뒤 Python HTTP 서버를 실행한다. 기존 서버가 실행 중이면 `npm run build` 후 브라우저를 새로고침한다. 런타임 프레임워크나 별도 백엔드는 없다.
 
-## 파일
+- `content/catalogue.json`: 아티스트 12명, 청취 목록 11곡, 윤미래 Editor’s pick, 소개·출처·사이트 설정의 원본.
+- `content/media.json`: 반응형 이미지 파일과 크기. `content/image-rights.json`: 이미지별 출처와 권리 확인 상태.
+- `site/`: 브라우저 동작, 공통 검색·저장 함수, 스타일과 홈페이지 템플릿.
+- `scripts/build.mjs`: 홈페이지·아티스트 12페이지·가이드·About·Privacy의 정적 HTML과 공유 메타데이터 생성.
+- `dist/`: 실제 서비스 파일. 생성된 HTML·JS·CSS를 직접 수정하지 않고 원본 수정 후 빌드한다.
+- `dist/assets/`: 원본 사진·앨범 커버, `optimized/`의 WebP 변형, 공유 이미지, 서체와 라이선스.
 
-- `dist/index.html`: 홈페이지의 편집 구조와 영문 카피
-- `dist/styles.css`: 색상 토큰, 타이포그래피, 반응형 레이아웃
-- `dist/app.js`: 음반 데이터, 필터·검색·저장·소개·Bandcamp 및 YouTube 플레이어
-- `dist/assets/`: 로컬 사진·앨범 커버·서체·서체 라이선스
-- `.openai/hosting.json`: 비공개 Sites 배포 설정
+```sh
+npm run build
+npm run check
+```
 
-`npm run check`로 JavaScript 구문, 로컬 에셋, 링크, 앵커, 이미지 대체 텍스트 및 배포 구성을 확인한다.
+검사는 검색 표기 회귀 사례, 기존 저장 목록 호환성, 모든 정적 페이지의 링크·앵커·에셋·메타데이터·사이트맵과 생성 결과 일치를 확인한다. 외부 영상의 전 세계 재생 가능 여부나 이미지 사용 권한을 보장하는 검사는 아니다.
 
-## 다음 에디션 만들기
+사진을 변경할 때만 `npm run images`를 실행한다. 이 명령에는 WebP를 지원하는 Python Pillow가 필요하다. 원본은 변경하지 않으며 히어로 사진은 480/960/1600px, 커버는 320/640/1000px 범위에서 원본보다 확대하지 않고 변환한다. 생성된 이미지와 매니페스트를 저장하므로 평소 빌드에는 Pillow가 필요 없다.
 
-1. `app.js`의 `records`에 검증된 아티스트/곡 정보와 출처를 추가한다. YouTube 음원은 `provider: "youtube"`, 공식 `videoId`, 업로드 채널, 원본 URL을 사용한다. 기존 Bandcamp 플레이어 분기는 추후 Bandcamp 음반을 소개할 때 사용할 수 있다.
-2. `stories`의 소개글 및 출처와 `index.html`의 메인 피처를 교체한다.
-3. 실제 이미지 파일과 크레딧을 함께 갱신한다.
-4. 필터별 개수와 편집 번호, 메타데이터를 새 에디션에 맞춘다.
+## 공개 주소와 운영 안내
 
-저장 목록은 브라우저 localStorage만 사용한다. 공식 플레이어는 사용자가 명시적으로 로드하며 자동재생하지 않는다. 검색은 청취 목록의 11개 선정곡과 윤미래의 〈숨 / Breath〉 Editor’s pick을 대상으로 하며 영문·한국어 아티스트명과 곡명을 지원한다. 밴드/솔로 아티스트 필터를 제공한다. 청취 목록의 각 음반 아래와 곡 상세 화면에서 짧은 영문 아티스트 소개를 읽을 수 있으며, `Meet the artist`로 출처를 포함한 아티스트 노트를 연다. 뉴스레터, 결제, 회원 기능은 포함하지 않는다.
+- 공개 주소 설정: `https://indiek.com`
+- 문의·정정·이미지 삭제 요청: `gw@lumejs.com`
+- 아티스트별 주소: `/artists/<id>/`. 곡 위치는 `#listen`으로 바로 연결한다.
+- 소개·연락처·이미지 출처: `/about/`
+- 개인정보·이용 안내: `/privacy-and-terms/`
+- 입문 가이드: `/notes/first-listens/`
 
-Editor’s pick은 한 곡에 집중하는 편집 섹션이며 모든 소개 아티스트에게 열려 있다. 현재는 윤미래의 〈숨 / Breath〉을 소개한다. 영상은 1theK의 공식 YouTube 업로드(`knmrNkQMybA`)를 개인정보 보호 강화 모드로 불러온다. 원본 링크는 JavaScript나 임베드 재생이 불가능해도 사용할 수 있다. 영상·음원·가사는 별도로 복제하지 않는다. 기존 네 선정곡의 커버 이미지는 각 Topic 영상의 공식 썸네일에서 가져왔으며, 유다빈밴드 사진은 MPMG MUSIC의 아티스트 페이지가 출처다. 윤미래의 활동 이력과 한국대중음악상 수상 정보, 대표곡 세 곡의 공식 YouTube 링크를 함께 제공한다. 출처는 소개문과 아래 문서에 기록한다.
+기존 `indiek-saved-v1` 저장 키와 곡 ID를 유지한다. 저장 목록은 브라우저 localStorage만 사용하고 검색도 브라우저 안에서 처리한다. JavaScript 없이도 정적 소개·곡 정보·출처·공식 청취 링크를 사용할 수 있다. 검색·저장·필터·캐러셀 조작·삽입 재생은 JavaScript가 있을 때 활성화한다.
 
-사진·음반 아트워크는 권리자 소유이며 비공개 디자인 검토용이다. 공개 운영 전 이미지 사용 허가를 확보해야 한다. 음원 파일은 복제하지 않는다. 샘플 글은 인터뷰가 아닌 입문용 리스닝 노트이며, 2017–2025년 선정곡을 신보로 표시하지 않는다.
+YouTube 플레이어는 안내를 읽고 `Agree & load YouTube`를 선택한 후에만 생성한다. `youtube-nocookie.com`을 사용하고 자동재생하지 않으며, `Disconnect YouTube`로 제거할 수 있다. 카더가든의 KBS 영상은 기존 확인 결과에 따라 YouTube 원본으로 연결한다. 음원 파일·영상·가사는 자체 호스팅하지 않는다. Bandcamp 플레이어 분기는 제거했다.
+
+## 운영 구성과 이미지 확인 상태
+
+2026-10-18 사용자의 서버 배포 요청에 따라 `/projects/indiek`의 Git 체크아웃과 Nginx 정적 호스팅을 사용한다. 운영 주소는 `https://indiek.com`이며 `www`는 기본 주소로 이동한다. 설정과 갱신 절차는 [deploy/README.md](deploy/README.md)에 기록한다. 일반 개발과 확인은 로컬에서 진행하고, 원격 변경은 명시적인 배포 요청 범위에서 수행한다.
+
+**이미지 이용 조건은 아직 확인되지 않았다.** 사용자의 선택에 따라 현재 사진과 커버를 유지했다. `content/image-rights.json`의 16개 이미지가 모두 `unconfirmed` 상태다. 원본과 WebP 변형 모두 같은 권리 검토 대상이며, 출처 표시·파일 다운로드 가능 여부·비영리 운영을 사용 허가로 간주하지 않는다. 이미지별 허가 또는 적용 가능한 이용 근거는 계속 확인하고 기록해야 한다. 공개 요청과 배포가 이미지 재사용 권한 확인을 대신하지 않는다.
+
+서체는 SIL Open Font License에 따라 사용하며 관련 라이선스를 보관한다. 공유용 `indiek-share.png`는 아티스트 사진을 사용하지 않은 자체 타이포그래피 이미지다. 소개는 독립적인 팬의 리스닝 노트이고, 2016–2025년 곡을 신보로 표시하지 않는다.
+
+## 다음 곡 추가
+
+1. `content/catalogue.json`에 검증된 아티스트·곡·공식 YouTube 링크·Apple Music 발매 링크·출처를 기록한다. 기존 ID는 저장 목록과 URL의 식별자이므로 바꾸지 않는다.
+2. 이미지 원본과 출처·이용 근거를 함께 기록하고 `npm run images`로 표시용 변형을 생성한다.
+3. `npm run build`와 `npm run check`를 실행하고 로컬에서 페이지·검색·공식 플레이어를 확인한다.
 
 ## 발매 정보 링크
 
-해외 독자를 위한 발매 정보 링크는 영문 Apple Music 앨범 페이지로 통일한다. 곡 상세와 아티스트 노트가 `records.source`를 함께 참조한다. YouTube 청취 링크와 플레이어는 그대로 사용한다. 제작 비화·작사/작곡 크레딧의 원래 근거는 아래 출처와 아티스트 노트의 `Story source`에 남긴다.
+해외 독자를 위한 발매 정보 링크는 영문 Apple Music 앨범 페이지로 통일한다. 곡 상세와 아티스트 노트가 공통 콘텐츠의 `source`를 함께 참조한다. YouTube 청취 링크와 플레이어는 그대로 사용한다. 제작 비화·작사/작곡 크레딧의 원래 근거는 아래 출처와 아티스트 노트의 `Story source`에 남긴다.
 
 - [YdBB — ONCE](https://music.apple.com/us/album/once-single/1713690764)
 - [WhiteUsedSocks — Don’t feel sad](https://music.apple.com/us/album/dont-feel-sad-single/1732022836)
@@ -59,7 +79,7 @@ Editor’s pick은 한 곡에 집중하는 편집 섹션이며 모든 소개 아
 - WhiteUsedSocks 〈Don’t feel sad〉: [밴드 공식 발매 페이지](https://whiteusedsocks.com/don%27t-feel-sad).
 - Motte 〈Don’t run away〉: [A-TEEN Part.4 공식 발매 정보](https://music.apple.com/us/album/a-teen-original-soundtrack-pt-4-single/1436476166).
 - HANRORO 〈Even if you leave〉: [POCLANOS 공식 발매 정보](https://poclanos.com/album/52690/). 커버 사진 김태윤.
-- 기존 네 선정곡 커버: `app.js`에 연결된 공식 Topic 영상의 YouTube 썸네일.
+- 기존 네 선정곡 커버: 공통 콘텐츠에 연결된 공식 Topic 영상의 YouTube 썸네일.
 - 서체: Barlow Condensed, DM Sans, IBM Plex Mono. SIL Open Font License는 `dist/assets/`에 포함.
 
 - WhiteUsedSocks 아티스트 소개: [POCLANOS 공식 프로필](https://poclanos.com/artist/whiteusedsocks/). 2017년부터 발표한 음악, 보컬과 감성적 가사에 대한 설명을 짧게 정리했다.
@@ -77,7 +97,7 @@ Editor’s pick은 한 곡에 집중하는 편집 섹션이며 모든 소개 아
 - WhiteUsedSocks: [Apple Music 아티스트 프로필](https://music.apple.com/us/artist/whiteusedsocks/1447936817). 등록 원본 4000×4000에서 제공되는 2400×2400 JPEG를 사용한다. [이미지 파일](https://is1-ssl.mzstatic.com/image/thumb/Features211/v4/c7/b3/82/c7b38204-69da-b715-e919-231cd7117343/mzl.gsaobrts.jpg/2400x2400bb.jpg). 기존 636×636 사진을 교체했다. 원본의 필름 질감은 유지한다.
 - Motte: [스포츠경향의 ELEVATOR 발매 기사](https://sports.khan.co.kr/article/202002241810003)에 실린 루비레코드 제공 홍보 사진, 1500×1000. [리사이즈 경로를 제외한 이미지 파일](https://images.khan.co.kr/article/2020/02/24/2020022402001134200235751.jpg). 기존 840×560 사진을 교체했다.
 - HANRORO: [Apple Music 아티스트 프로필](https://music.apple.com/us/artist/hanroro/1613668993). 등록 원본 6000×6000에서 제공되는 2400×2400 JPEG를 사용한다. [이미지 파일](https://is1-ssl.mzstatic.com/image/thumb/Features211/v4/b3/3c/b3/b33cb3ec-270b-5940-c753-62e6ec21a2b8/mzl.xvsucubr.jpg/2400x2400bb.jpg). 기존 사진의 거친 질감 대신 더 선명한 스튜디오 프로필을 선택했다.
-- 사진을 인위적으로 확대하거나 AI 보정하지 않았다. 원본 파일을 로컬에 저장하고 각 사진에 맞게 CSS 크롭 위치를 조정한다. 이미지 갱신용 버전 쿼리로 이전 저해상도 파일의 브라우저 캐시를 피한다.
+- 사진을 인위적으로 확대하거나 AI 보정하지 않았다. 원본 파일을 로컬에 저장하고 각 사진에 맞게 CSS 크롭 위치를 조정한다. 현재 공개 준비본에서는 별도 WebP 변형 경로와 반응형 이미지 크기를 사용한다.
 
 ## 추가 선정곡 — 공식 라이브 중심
 

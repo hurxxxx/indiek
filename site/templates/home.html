@@ -1,0 +1,51 @@
+  <main id="main">
+    <section class="masthead wrap" aria-label="Music from Korea, worth sharing">
+      <div class="masthead-top mono"><span>MUSIC FROM KOREA, WORTH SHARING</span><span>A LISTENING JOURNAL — VOL. 01</span></div>
+      <div class="masthead-brand"><h1>indiek<span>.</span></h1><div class="brand-note"><span class="mono">LOCAL ROOTS. OPEN EARS.</span><p>Good music<br>travels.</p><a href="#records" class="underlink">Find your next favorite <span aria-hidden="true">↘</span></a></div></div>
+      <div class="masthead-bottom mono"><span>SEOUL · BUSAN · EVERYWHERE IN BETWEEN</span><span>START SOMEWHERE. KEEP LISTENING. <span aria-hidden="true">↓</span></span></div>
+    </section>
+
+    <section class="feature-grid wrap" id="discover" aria-label="Featured artist and listening selections">
+      <article class="feature-story" id="artist-carousel" aria-label="Featured artists">
+        <div class="hero-toolbar" hidden>
+          <span class="mono">IN FOCUS <span id="hero-position" aria-hidden="true">01 / 04</span></span>
+          <div class="hero-controls">
+            <button id="hero-rotation" aria-label="Pause artist rotation"><span aria-hidden="true">Ⅱ</span> Pause</button>
+            <button id="hero-previous" aria-label="Previous artist">←</button>
+            <button id="hero-next" aria-label="Next artist">→</button>
+          </div>
+        </div>
+        <div class="hero-slides" id="hero-slides">{{HERO}}</div>
+        <div class="hero-artists" id="hero-artists" role="group" aria-label="Choose a featured artist" hidden></div>
+        <p class="sr-only" id="hero-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      </article>
+
+      <aside class="rotation" aria-labelledby="rotation-title">
+        <div class="section-kicker mono"><span class="red-dot"></span> THE LISTENING ROOM <span>01—04</span></div>
+        <h2 id="rotation-title">A few good<br>places to start.</h2>
+        <p class="rotation-intro">Four songs to keep coming back to.<br>Two bands. Two solo voices.</p>
+        <div class="track-list" id="track-list">{{TRACKS}}</div>
+        <a class="room-button" href="/artists/ydbb/#listen"><span class="play-triangle" aria-hidden="true"></span> Start with ONCE <span aria-hidden="true">↗</span></a>
+        <p class="room-note mono">PICK A TRACK. STAY A WHILE.</p>
+      </aside>
+    </section>
+
+    {{EDITOR_PICK}}
+
+    <section class="record-section wrap" id="records" aria-labelledby="records-title">
+      <div class="section-heading"><div><p class="eyebrow">THE LISTENING SHELF / HANDPICKED SONGS</p><h2 id="records-title">Worth your time.</h2></div><p class="section-description">Songs to get lost in.<br>Picked for the curious.</p></div>
+      <div class="filter-bar" data-js-only hidden><div class="filters" role="group" aria-label="Filter by artist type"><button data-filter="all" aria-pressed="true">All artists <sup>{{COUNT}}</sup></button><button data-filter="bands" aria-pressed="false">Bands</button><button data-filter="solo" aria-pressed="false">Solo artists</button></div><span id="record-count" class="mono" role="status">{{COUNT}} TRACKS</span></div>
+      <div class="record-grid" id="record-grid">{{RECORDS}}</div>
+
+    </section>
+
+    <section class="field-section wrap" id="notes" aria-labelledby="notes-title">
+      <div class="section-heading"><div><p class="eyebrow">FIELD NOTES / A LITTLE CONTEXT</p><h2 id="notes-title">Follow the sound.</h2></div><span class="mono">THERE’S MORE TO THE STORY ↙</span></div>
+      <div class="field-grid">
+        <article class="field-feature"><div class="field-art" aria-hidden="true"><span class="field-coordinate mono">YdBB / WHITEUSEDSOCKS / MOTTE / HANRORO</span><span class="field-city">SIDE A</span><div class="wave-lines"><i></i><i></i><i></i><i></i><i></i></div><span class="field-art-bottom mono">FOUR FIRST LISTENS / VOL. 01</span></div><div class="field-copy"><p class="eyebrow">FOUR FIRST LISTENS</p><h3>Four songs.<br>Four ways in.</h3><p>Two bands, two solo artists. Four songs with different stories to tell.</p><a class="underlink" href="/notes/first-listens/">Read the listening guide <span aria-hidden="true">↗</span></a></div></article>
+        <div class="field-index"><article><span class="mono">01 / FIRST ENCOUNTERS</span><h3><a href="/artists/motte/">A song beyond<br>the screen.</a></h3><p>Meet Motte through “Don’t run away”, from the soundtrack to <em>A-TEEN.</em></p><a class="note-arrow" href="/artists/motte/" aria-label="Read about Motte">↗</a></article><article><span class="mono">02 / LISTENING NOTES</span><h3><a href="/artists/hanroro/">Learning<br>to let go.</a></h3><p>On attachment and moving forward in HANRORO’s “Even if you leave”.</p><a class="note-arrow" href="/artists/hanroro/" aria-label="Read about HANRORO">↗</a></article></div>
+      </div>
+    </section>
+
+    <section class="closing wrap" id="about"><span class="mono">A NOTE FROM INDIEK</span><div><h2>Different language.<br>Same feeling.</h2><p>A personal listening journal, made by a fan.<br>Korean artists and songs I wish more people knew.<br>Shared for the love of music, with no commercial aim.</p><a class="underlink" href="/about/">About this journal <span aria-hidden="true">↗</span></a></div><span class="closing-mark" aria-hidden="true">ik.</span></section>
+  </main>

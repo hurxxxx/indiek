@@ -1,0 +1,386 @@
+{
+  "black-skirts.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/black-skirts-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 12036
+      },
+      {
+        "src": "/assets/optimized/black-skirts-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 34066
+      },
+      {
+        "src": "/assets/optimized/black-skirts-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 82204
+      }
+    ]
+  },
+  "bol4.jpg": {
+    "width": 1000,
+    "height": 1000,
+    "variants": [
+      {
+        "src": "/assets/optimized/bol4-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 14180
+      },
+      {
+        "src": "/assets/optimized/bol4-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 38272
+      },
+      {
+        "src": "/assets/optimized/bol4-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 70170
+      }
+    ]
+  },
+  "car-the-garden.jpg": {
+    "width": 1000,
+    "height": 1000,
+    "variants": [
+      {
+        "src": "/assets/optimized/car-the-garden-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 21334
+      },
+      {
+        "src": "/assets/optimized/car-the-garden-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 82878
+      },
+      {
+        "src": "/assets/optimized/car-the-garden-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 202074
+      }
+    ]
+  },
+  "choi-yu-ree.jpg": {
+    "width": 1000,
+    "height": 1000,
+    "variants": [
+      {
+        "src": "/assets/optimized/choi-yu-ree-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 25840
+      },
+      {
+        "src": "/assets/optimized/choi-yu-ree-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 114514
+      },
+      {
+        "src": "/assets/optimized/choi-yu-ree-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 272800
+      }
+    ]
+  },
+  "esegye.jpg": {
+    "width": 1000,
+    "height": 1000,
+    "variants": [
+      {
+        "src": "/assets/optimized/esegye-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 20518
+      },
+      {
+        "src": "/assets/optimized/esegye-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 87012
+      },
+      {
+        "src": "/assets/optimized/esegye-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 234778
+      }
+    ]
+  },
+  "hanroro-even-if-you-leave.jpg": {
+    "width": 1280,
+    "height": 720,
+    "variants": [
+      {
+        "src": "/assets/optimized/hanroro-even-if-you-leave-320.webp",
+        "width": 320,
+        "height": 180,
+        "bytes": 7172
+      },
+      {
+        "src": "/assets/optimized/hanroro-even-if-you-leave-640.webp",
+        "width": 640,
+        "height": 360,
+        "bytes": 24438
+      },
+      {
+        "src": "/assets/optimized/hanroro-even-if-you-leave-1000.webp",
+        "width": 1000,
+        "height": 562,
+        "bytes": 57796
+      }
+    ]
+  },
+  "hanroro-portrait.jpg": {
+    "width": 2400,
+    "height": 2400,
+    "variants": [
+      {
+        "src": "/assets/optimized/hanroro-portrait-480.webp",
+        "width": 480,
+        "height": 480,
+        "bytes": 64246
+      },
+      {
+        "src": "/assets/optimized/hanroro-portrait-960.webp",
+        "width": 960,
+        "height": 960,
+        "bytes": 190138
+      },
+      {
+        "src": "/assets/optimized/hanroro-portrait-1600.webp",
+        "width": 1600,
+        "height": 1600,
+        "bytes": 382350
+      }
+    ]
+  },
+  "motte-dont-run-away.jpg": {
+    "width": 1280,
+    "height": 720,
+    "variants": [
+      {
+        "src": "/assets/optimized/motte-dont-run-away-320.webp",
+        "width": 320,
+        "height": 180,
+        "bytes": 2360
+      },
+      {
+        "src": "/assets/optimized/motte-dont-run-away-640.webp",
+        "width": 640,
+        "height": 360,
+        "bytes": 7160
+      },
+      {
+        "src": "/assets/optimized/motte-dont-run-away-1000.webp",
+        "width": 1000,
+        "height": 562,
+        "bytes": 13608
+      }
+    ]
+  },
+  "motte-portrait.jpg": {
+    "width": 1500,
+    "height": 1000,
+    "variants": [
+      {
+        "src": "/assets/optimized/motte-portrait-480.webp",
+        "width": 480,
+        "height": 320,
+        "bytes": 12514
+      },
+      {
+        "src": "/assets/optimized/motte-portrait-960.webp",
+        "width": 960,
+        "height": 640,
+        "bytes": 29976
+      },
+      {
+        "src": "/assets/optimized/motte-portrait-1500.webp",
+        "width": 1500,
+        "height": 1000,
+        "bytes": 58062
+      }
+    ]
+  },
+  "se-so-neon.jpg": {
+    "width": 1000,
+    "height": 1000,
+    "variants": [
+      {
+        "src": "/assets/optimized/se-so-neon-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 10304
+      },
+      {
+        "src": "/assets/optimized/se-so-neon-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 37828
+      },
+      {
+        "src": "/assets/optimized/se-so-neon-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 72190
+      }
+    ]
+  },
+  "sunwoojunga.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/sunwoojunga-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 7054
+      },
+      {
+        "src": "/assets/optimized/sunwoojunga-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 18036
+      },
+      {
+        "src": "/assets/optimized/sunwoojunga-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 32746
+      }
+    ]
+  },
+  "whiteusedsocks-dont-feel-sad.jpg": {
+    "width": 1280,
+    "height": 720,
+    "variants": [
+      {
+        "src": "/assets/optimized/whiteusedsocks-dont-feel-sad-320.webp",
+        "width": 320,
+        "height": 180,
+        "bytes": 11376
+      },
+      {
+        "src": "/assets/optimized/whiteusedsocks-dont-feel-sad-640.webp",
+        "width": 640,
+        "height": 360,
+        "bytes": 33584
+      },
+      {
+        "src": "/assets/optimized/whiteusedsocks-dont-feel-sad-1000.webp",
+        "width": 1000,
+        "height": 562,
+        "bytes": 60120
+      }
+    ]
+  },
+  "whiteusedsocks-portrait.jpg": {
+    "width": 2400,
+    "height": 2400,
+    "variants": [
+      {
+        "src": "/assets/optimized/whiteusedsocks-portrait-480.webp",
+        "width": 480,
+        "height": 480,
+        "bytes": 36136
+      },
+      {
+        "src": "/assets/optimized/whiteusedsocks-portrait-960.webp",
+        "width": 960,
+        "height": 960,
+        "bytes": 161164
+      },
+      {
+        "src": "/assets/optimized/whiteusedsocks-portrait-1600.webp",
+        "width": 1600,
+        "height": 1600,
+        "bytes": 373950
+      }
+    ]
+  },
+  "ydbb-once.jpg": {
+    "width": 1280,
+    "height": 720,
+    "variants": [
+      {
+        "src": "/assets/optimized/ydbb-once-320.webp",
+        "width": 320,
+        "height": 180,
+        "bytes": 12116
+      },
+      {
+        "src": "/assets/optimized/ydbb-once-640.webp",
+        "width": 640,
+        "height": 360,
+        "bytes": 43000
+      },
+      {
+        "src": "/assets/optimized/ydbb-once-1000.webp",
+        "width": 1000,
+        "height": 562,
+        "bytes": 92578
+      }
+    ]
+  },
+  "ydbb.jpg": {
+    "width": 2500,
+    "height": 1667,
+    "variants": [
+      {
+        "src": "/assets/optimized/ydbb-480.webp",
+        "width": 480,
+        "height": 320,
+        "bytes": 9322
+      },
+      {
+        "src": "/assets/optimized/ydbb-960.webp",
+        "width": 960,
+        "height": 640,
+        "bytes": 27724
+      },
+      {
+        "src": "/assets/optimized/ydbb-1600.webp",
+        "width": 1600,
+        "height": 1067,
+        "bytes": 84478
+      }
+    ]
+  },
+  "yoon-mirae-breath.png": {
+    "width": 1000,
+    "height": 1000,
+    "variants": [
+      {
+        "src": "/assets/optimized/yoon-mirae-breath-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 10152
+      },
+      {
+        "src": "/assets/optimized/yoon-mirae-breath-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 50568
+      },
+      {
+        "src": "/assets/optimized/yoon-mirae-breath-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 197062
+      }
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+import {readFileSync, writeFileSync, mkdirSync, copyFileSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+import path from 'node:path';
+import {escapeHTML as e, artistPath, imageHTML, coverHTML, videoLabel, externalLink as out, saveButton} from '../site/shared.mjs';
+
+const root = fileURLToPath(new URL('../', import.meta.url));
+const read = file => readFileSync(path.join(root, file), 'utf8');
+const catalogue = JSON.parse(read('content/catalogue.json'));
+const media = JSON.parse(read('content/media.json'));
+const {site, records, editorPick: pick, featuredArtists: features, guide} = catalogue;
+const all = [...records, pick];
+const version = '20261018-public1';
+const pages = [];
+const find = id => all.find(r => r.id === id);
+const sourceLink = (url, label, language = '') => out(url, `${label}${language ? ` (${language})` : ''}`);
+
+function header() {
+  return `<a class="skip-link" href="#main">Skip to content</a><header class="topbar wrap">
+    <a href="/" class="small-logo" aria-label="indiek home">ik<span class="logo-dot">.</span></a>
+    <nav aria-label="Main navigation"><a href="/#discover">Discover</a><a href="/#records">The listening shelf</a><a href="/#notes">Field notes</a></nav>
+    <div class="header-actions" data-js-only hidden><button class="text-button saved-link" data-library>Saved <span class="saved-count">0</span></button><button class="search-button" data-search aria-label="Find an artist or song"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button></div>
+  </header>`;
+}
+function footer() {
+  return `<footer class="footer wrap"><a class="small-logo" href="/" aria-label="indiek home">indiek.</a><span class="mono">KOREAN MUSIC. OPEN EARS.</span><div><a href="/about/">About & contact</a><a href="/privacy-and-terms/">Privacy & terms</a><a href="mailto:${site.email}">Get in touch</a><span class="mono">© 2026 INDIEK</span></div></footer>
+  <dialog id="content-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span class="mono">INDIEK / KEEP EXPLORING</span><button class="close-button" aria-label="Close dialog">Close <span aria-hidden="true">×</span></button></div><div id="dialog-content"></div></dialog><div class="toast" id="toast" role="status" aria-live="polite"></div>`;
+}
+function page(url, title, description, main, kind = '') {
+  const canonical = site.url + url;
+  const html = `<!doctype html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${e(title)}</title><meta name="description" content="${e(description)}"><meta name="theme-color" content="#f5f3ed">
+<link rel="canonical" href="${canonical}"><meta property="og:type" content="website"><meta property="og:site_name" content="indiek">
+<meta property="og:title" content="${e(title)}"><meta property="og:description" content="${e(description)}"><meta property="og:url" content="${canonical}">
+<meta property="og:image" content="${site.url}/assets/indiek-share.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="indiek — Good music travels. Music from Korea, worth sharing.">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${e(title)}"><meta name="twitter:description" content="${e(description)}"><meta name="twitter:image" content="${site.url}/assets/indiek-share.png"><meta name="twitter:image:alt" content="indiek — Good music travels.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/fonts.css"><link rel="stylesheet" href="/styles.css?v=${version}"><script type="module" src="/app.js?v=${version}"></script>
+</head><body${kind ? ` class="${kind}"` : ''}>${header()}${main}${footer()}</body></html>\n`;
+  const file = path.join(root, 'dist', url, 'index.html');
+  mkdirSync(path.dirname(file), {recursive:true});
+  writeFileSync(file, html.replace(/[\t ]+$/gm, ''));
+  pages.push(canonical);
+}
+function card(r) {
+  return `<article class="record-card" data-category="${r.category}"><div class="record-cover"><a class="cover-button" href="${artistPath(r)}#listen" aria-label="Listen to ${e(r.track)} by ${e(r.artist)}">${coverHTML(media,r)}<span class="cover-listen">OPEN TRACK <span aria-hidden="true">↗</span></span></a></div><div class="record-meta mono"><span>${e(r.genre)} · ${r.year}</span>${saveButton(r)}</div><h3><a href="${artistPath(r)}#listen">${e(r.track)}</a></h3><p class="record-artist">${e(r.artist)}</p>${r.videoType ? `<p class="record-format mono">${videoLabel(r)}</p>` : ''}<p class="record-note">${e(r.note)}</p><p class="record-intro">${e(r.artistIntro)}</p><a class="underlink record-profile-link" href="${artistPath(r)}">Meet the artist <span aria-hidden="true">↗</span></a></article>`;
+}
+function hero(feature, i) {
+  const r = find(feature.id);
+  return `<div class="hero-slide${i===0?' is-active':''}" id="hero-${r.id}"${i ? ' hidden aria-hidden="true" inert' : ''} role="group" aria-roledescription="slide" aria-label="${e(r.artist)}, ${i+1} of ${features.length}">
+  <a class="hero-image hero-image-${r.id}" href="${artistPath(r)}" aria-label="Meet ${e(r.artist)}">${imageHTML(media,feature.image,feature.alt,{priority:i===0,deferred:i!==0,sizes:'(max-width: 760px) calc(100vw - 36px), 62vw',style:`object-position:${feature.position}`})}<span class="location-label mono">${e(r.artist)} / <span lang="ko">${e(r.korean)}</span></span><span class="artist-stamp" aria-hidden="true">${e(r.artist)}</span></a>
+  <div class="story-caption"><div><p class="eyebrow">MEET THE ARTIST <span lang="ko">${e(r.korean)}</span></p><h2><a href="${artistPath(r)}">${e(feature.title)}</a></h2></div><a class="round-arrow" href="${artistPath(r)}" aria-label="Read about ${e(r.artist)}">↗</a></div><p class="feature-deck">${feature.deck}</p></div>`;
+}
+function trackLink(r,i) {
+  return `<a class="track" href="${artistPath(r)}#listen" aria-label="Listen to ${e(r.track)} by ${e(r.artist)}"><span class="track-number">0${i+1}</span>${coverHTML(media,r,{sizes:'55px'})}<span class="track-info"><strong>${e(r.track)}</strong><span>${e(r.artist)}</span></span><span class="track-time">${r.duration}</span><span class="track-play" aria-hidden="true">▷</span></a>`;
+}
+function player(r, cover = false) {
+  if(r.externalOnly) return `<div class="external-player"><p class="eyebrow">${videoLabel(r)} · ${r.duration}</p><p>${e(r.performance)}</p>${out(r.url,'Watch live on YouTube','room-button')}<p class="embed-caption">This performance opens on YouTube.</p></div>`;
+  return `<div class="player-shell${cover?' player-with-cover':''}" data-player="${r.id}">
+  <div class="player-stage"><div class="player-placeholder">${cover ? coverHTML(media,r,{sizes:'(max-width: 760px) 90vw, 560px',className:'player-cover'}) : `<p class="eyebrow">${videoLabel(r)}${r.duration ? ` · ${r.duration}` : ''}</p><p>${e(r.performance || r.channel)}</p>`}<button class="video-load" data-load-player="${r.id}" data-js-only hidden><span class="play-triangle" aria-hidden="true"></span> Agree & load YouTube</button></div></div>
+  <div class="video-caption"><span class="mono">VIA ${e(r.channel)}</span>${out(r.url,r.videoType==='live'?'Watch live on YouTube':'Open on YouTube','underlink')}</div>
+  <p class="player-consent">Loading connects to YouTube, which receives basic device and request information. By choosing “Agree & load YouTube”, you agree to <a href="/privacy-and-terms/">indiek’s privacy & terms</a> and the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms</a>. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google’s Privacy Policy</a>. Playback starts when you press play.</p>
+  <button class="underlink disconnect-player" data-unload-player hidden>Disconnect YouTube</button></div>`;
+}
+function moreTracks(r) {
+  if(!r.moreTracks) return '';
+  return `<aside class="artist-listens" aria-labelledby="more-listens-title"><p class="eyebrow">THREE MORE SONGS</p><h3 id="more-listens-title">Keep listening.</h3><ol class="artist-track-links">${r.moreTracks.map((track,i)=>`<li><a href="${track.url}" target="_blank" rel="noopener noreferrer"><span class="mono">0${i+1} / ${track.year}</span><span><strong>${e(track.title)}</strong><small>${e(track.note)}</small></span><span aria-hidden="true">↗</span></a></li>`).join('')}</ol><p class="artist-listens-note mono">LISTEN ON YOUTUBE ↗</p></aside>`;
+}
+function editorPick() {
+  return `<section class="editor-pick wrap" id="editors-pick" aria-labelledby="editors-pick-title"><div class="pick-copy"><p class="eyebrow">EDITOR’S PICK / R&amp;B</p><h2 id="editors-pick-title"><a href="${artistPath(pick)}">${pick.artist}</a><span>${pick.track} <span lang="ko">(${pick.koreanTitle})</span></span></h2><p class="pick-date mono">SINGLE / ${pick.releaseDate.toUpperCase()}</p><p class="pick-description">${e(pick.description)}</p><p class="pick-credits">${e(pick.credits)}<br>${out(pick.source,'View release on Apple Music')}</p></div><div class="pick-video">${player(pick,true)}</div><div class="artist-profile"><article class="artist-bio" aria-labelledby="yoon-mirae-profile-title"><p class="eyebrow">BEHIND THE VOICE / <span lang="ko">윤미래</span></p><h3 id="yoon-mirae-profile-title">Meet Yoon Mirae.</h3><p>${e(pick.artistIntro)}</p><p>${e(pick.biography)}</p><p class="artist-sources">${sourceLink(pick.artistSource,'Artist biography','Korean')} · ${sourceLink(pick.extraSources[0].url,'Korean Music Awards','Korean')}</p><a class="underlink" href="${artistPath(pick)}">More about Yoon Mirae <span aria-hidden="true">↗</span></a></article>${moreTracks(pick)}</div></section>`;
+}
+let home = read('site/templates/home.html');
+for(const [token,value] of Object.entries({COUNT:records.length,HERO:features.map(hero).join(''),TRACKS:guide.artists.map(id=>find(id)).map(trackLink).join(''),EDITOR_PICK:editorPick(),RECORDS:records.map(card).join('')})) home=home.replaceAll(`{{${token}}}`,value);
+page('/','indiek — Music from Korea, worth sharing','A personal, non-commercial listening journal sharing Korean artists and songs with listeners around the world. Official videos, live performances and artist stories.',home,'home-page');
+
+for(const r of all) {
+  const feature=features.find(f=>f.id===r.id);
+  const sources=[{url:r.source,label:r.sourceName,language:r.sourceLanguage},{url:r.artistSource,label:r.artistSourceName,language:r.artistSourceLanguage},...(r.extraSources||[])];
+  const main=`<main id="main" class="wrap artist-page"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><a href="/#records">The listening shelf</a></nav>
+  <header class="artist-heading"><p class="eyebrow">MEET THE ARTIST / <span lang="ko">${e(r.korean)}</span></p><h1>${e(r.artist)}</h1><p class="artist-lead">${e(r.artistIntro)}</p></header>
+  ${feature?`<figure class="artist-portrait">${imageHTML(media,feature.image,feature.alt,{priority:true,sizes:'(max-width: 760px) 92vw, 960px',style:`object-position:${feature.position}`})}<figcaption>Artist photograph. <a href="/about/#image-credits">Image credits</a></figcaption></figure>`:''}
+  ${r.biography?`<div class="artist-extra"><p>${e(r.biography)}</p></div>`:''}
+  <section class="track-page" id="listen" aria-labelledby="track-title"><div class="track-summary">${coverHTML(media,r,{sizes:'(max-width: 760px) 45vw, 300px',className:'detail-cover'})}<p class="eyebrow">${e(r.genre)} / ${r.year}</p><h2 id="track-title">${e(r.track)}${r.koreanTitle?`<span class="track-korean" lang="ko">${e(r.koreanTitle)}</span>`:''}</h2><p class="record-format mono">${videoLabel(r)}</p>${r.releaseYear?`<p class="embed-caption">Single: ${r.year} · ${e(r.release)}: ${r.releaseYear}</p>`:''}${r!==pick?saveButton(r,true):''}<p class="release-link">${out(r.source,'View release on Apple Music','underlink')}</p></div><div class="track-reading"><p class="track-description">${e(r.description)}</p>${r.listeningNote?`<section class="listening-note"><h3>Listening note</h3><p>${e(r.listeningNote)}</p></section>`:''}${r.credits?`<p class="pick-credits">${e(r.credits)}</p>`:''}${player(r)}</div></section>
+  ${r.moreTracks?`<div class="more-listening">${moreTracks(r)}</div>`:''}
+  <section class="page-sources" aria-labelledby="sources-title"><h2 id="sources-title">Sources & further reading</h2><ul>${sources.map(s=>`<li>${sourceLink(s.url,s.label,s.language)}</li>`).join('')}</ul><p>These notes are an independent fan’s introduction, not an interview or an official artist statement. For a correction, email <a href="mailto:${site.email}">${site.email}</a>.</p><p><a href="/about/#image-credits">Image credits</a></p></section><a class="underlink back-to-shelf" href="/#records">Back to the listening shelf <span aria-hidden="true">↗</span></a></main>`;
+  page(artistPath(r),`${r.artist} — ${r.track} | indiek`,`${r.artist}: ${r.track}${r.koreanTitle?` (${r.koreanTitle})`:''}. ${r.note} Listen, meet the artist and explore the release.`,main,'detail-page');
+}
+const prose=(eyebrow,title,body)=>`<main id="main" class="wrap prose-page"><p class="eyebrow">${eyebrow}</p><h1>${title}</h1>${body}<p class="prose-back"><a class="underlink" href="/#records">Back to the music <span aria-hidden="true">↗</span></a></p></main>`;
+page('/notes/first-listens/',`${guide.title} | indiek`,'Four songs from YdBB, WhiteUsedSocks, Motte and HANRORO. A short listening guide from indiek.',prose('LISTENING GUIDE / VOL. 01',guide.title,`<p class="prose-lead">${e(guide.intro)}</p>${guide.artists.map((id,i)=>{const r=find(id);return `<section><p class="eyebrow">0${i+1} / ${e(r.artist)}</p><h2><a href="${artistPath(r)}#listen">${e(r.track)}</a></h2><p>${e(r.description)}</p><a class="underlink" href="${artistPath(r)}#listen">Listen & read <span aria-hidden="true">↗</span></a></section>`;}).join('')}`));
+
+const rights=JSON.parse(read('content/image-rights.json'));
+page('/about/','About & contact | indiek','An independent, non-commercial fan journal sharing Korean music. Contact gw@lumejs.com for questions, corrections or image removal requests.',prose('A NOTE FROM INDIEK','Good music travels.',`<p class="prose-lead">An independent, non-commercial fan journal sharing Korean music with listeners around the world.</p><section><h2>A personal selection.</h2><p>I made indiek to share Korean artists and songs I wish more people knew. The name is indiek, but the selection reaches across genres, labels and levels of fame.</p><p>This is a listening journal, not a ranking or a news feed. A song can belong here long after its release. Official music videos, live performances and release links give you a way to listen and keep exploring.</p><p>indiek is not affiliated with the featured artists, their labels, YouTube or Apple Music. There are no sales, affiliate links, subscriptions or paid placements on this site.</p></section><section id="contact"><h2>Get in touch.</h2><p>For questions, factual corrections, credit updates, or requests concerning an image or other content, email <a href="mailto:${site.email}">${site.email}</a>.</p><p>Include the page address and the material you are referring to. For an image request, please describe your connection to the work. Please avoid sending sensitive personal documents in an initial message.</p></section><section id="image-credits"><h2>Image credits.</h2><p>Artist photographs and release artwork belong to their respective rights holders. The links below identify the sources used for this edition. Source credit does not itself grant permission to reuse an image.</p><ul class="credit-list">${rights.images.map(image=>`<li><strong>${e(image.label)}</strong><br>${sourceLink(image.source,image.credit,image.language)}</li>`).join('')}</ul><p>The indiek sharing graphic is original typography. Barlow Condensed, DM Sans and IBM Plex Mono are used under the SIL Open Font License.</p></section>`));
+
+page('/privacy-and-terms/','Privacy & terms | indiek','How indiek uses browser storage and embedded YouTube players, with contact details and links to the services’ policies.',prose('HOW THIS SITE WORKS','Privacy & terms.',`<p class="policy-date mono">LAST UPDATED / 18 OCTOBER 2026</p><p class="prose-lead">indiek is a personal, non-commercial music journal. Questions about these practices can be sent to <a href="mailto:${site.email}">${site.email}</a>.</p>
+<section><h2>Your saved tracks.</h2><p>When you save a track, its identifier is kept in this browser’s local storage. The list stays on this device and browser; indiek does not send it to an account or a server. It remains until you remove tracks or clear this site’s browser data.</p><p>To delete an entry, open Saved and choose Remove beside the track. Remove all entries to empty the list, or use your browser’s site-data controls to clear it entirely. If browser storage is unavailable, saving works only for the current page visit.</p><p>Search runs against this edition’s catalogue in your browser. Search terms are not sent to a search service. The site does not include an analytics script, advertising tracker, account registration or a comment form.</p></section>
+<section><h2>YouTube players.</h2><p>This site uses YouTube API Services through embedded video players. A player is not loaded until you choose “Agree & load YouTube”. That action accepts this privacy notice and these terms for the player, including the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms of Service</a>.</p><p>Loading a player connects your browser to YouTube. YouTube receives basic information such as your IP address and browser or device information to deliver and secure its player. Playing the video can involve additional information collection, cookies or similar technologies, and advertisements. Details are set out in <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google’s Privacy Policy</a>.</p><p>Players use YouTube’s privacy-enhanced domain. This reduces certain personalization uses; it does not make the connection anonymous or prevent all data collection. Playback does not start automatically.</p><p>Choose Disconnect YouTube to remove the loaded player, or leave the page. This stops the embedded connection on this page; it does not erase information already received by YouTube or clear that service’s cookies. You can also follow the direct YouTube link instead of loading an embedded player.</p><p>indiek does not request your Google account details or access private YouTube account data. Video availability can change and may differ by location.</p></section>
+<section><h2>External links and service requests.</h2><p>Following a link to YouTube, Apple Music or a source publication takes you to a separate service governed by its own terms and privacy policy. indiek does not receive your listening history from those services.</p><p>Delivering a web page requires the server to receive request information such as an IP address, browser information and the requested address. Routine access logging is disabled in this site’s Nginx configuration. Error logs may contain request information needed for troubleshooting and are rotated by the hosting configuration. The journal does not combine this information with your saved tracks or search terms.</p></section>
+<section><h2>Messages and corrections.</h2><p>If you email <a href="mailto:${site.email}">${site.email}</a>, your address and message are used to respond and handle your request. Messages may be retained as needed to resolve the request and keep a record of the correction or correspondence. You can ask about or request deletion of that correspondence using the same address; any limits on deletion will be explained in the reply.</p></section>
+<section><h2>Using this journal.</h2><p>These are independent listening notes, not official artist statements. Music, videos, artist photographs and release artwork remain the property of their respective rights holders. Links and credits do not grant a licence to copy or redistribute that material.</p><p>indiek does not host downloadable music or provide a licence to download it. Use the official players and services according to their terms. For corrections, credit changes or content removal requests, contact <a href="mailto:${site.email}">${site.email}</a>.</p><p>This notice will be updated if the site’s features or data practices change.</p></section>`));
+
+writeFileSync(path.join(root,'dist/catalogue.js'),`export default ${JSON.stringify({...catalogue,media})};\n`);
+copyFileSync(path.join(root,'site/shared.mjs'),path.join(root,'dist/shared.mjs'));
+copyFileSync(path.join(root,'site/app.js'),path.join(root,'dist/app.js'));
+copyFileSync(path.join(root,'site/styles.css'),path.join(root,'dist/styles.css'));
+writeFileSync(path.join(root,'dist/robots.txt'),`User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
+writeFileSync(path.join(root,'dist/sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.map(url=>`<url><loc>${url}</loc></url>`).join('')}</urlset>\n`);
+console.log(`Built ${pages.length} static pages for ${site.url}. No deployment performed.`);

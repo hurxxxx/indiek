@@ -2,9 +2,12 @@
   "name": "indiek-listening-journal",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "A personal, non-commercial listening journal sharing Korean artists and songs with the world.",
   "scripts": {
-    "dev": "python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",
-    "check": "node --check dist/app.js && python3 scripts/check.py"
+    "build": "node scripts/build.mjs",
+    "images": "python3 scripts/prepare-images.py",
+    "dev": "npm run build && python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",
+    "check": "node --check dist/app.js && node --test scripts/catalogue.test.mjs && python3 scripts/check.py"
   }
 }
