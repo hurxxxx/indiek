@@ -41,6 +41,7 @@ function page(url, title, description, main, kind = '') {
   const html = `<!doctype html>
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+${site.googleSiteVerification ? `<meta name="google-site-verification" content="${e(site.googleSiteVerification)}">` : ''}
 <title>${e(title)}</title><meta name="description" content="${e(description)}"><meta name="theme-color" content="#f5f3ed">
 <link rel="canonical" href="${canonical}"><meta property="og:type" content="website"><meta property="og:site_name" content="indiek">
 <meta property="og:title" content="${e(title)}"><meta property="og:description" content="${e(description)}"><meta property="og:url" content="${canonical}">

@@ -49,6 +49,7 @@ for path in dist.rglob('*.html'):
     for key in ['description','og:title','og:description','og:image','twitter:card','twitter:image']:
         if not page.meta.get(key): errors.append(f'{path}: missing {key}')
     if page.meta.get('og:image')!=site['url']+'/assets/indiek-share.png': errors.append(f'{path}: invalid sharing image')
+    if site.get('googleSiteVerification') and page.meta.get('google-site-verification')!=site['googleSiteVerification']: errors.append(f'{path}: missing or incorrect Google site verification')
     if page.h1!=1: errors.append(f'{path}: expected one h1')
     if 'analytics-notice' not in page.ids: errors.append(f'{path}: missing analytics choice')
     if 'persistent-player' not in page.ids or text.index('id="persistent-player"') < text.index('</main>'): errors.append(f'{path}: shared player must be outside replaceable page content')
