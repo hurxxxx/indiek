@@ -12,10 +12,10 @@ npm run dev
 
 http://127.0.0.1:4173 에서 확인한다. `dev`는 정적 페이지를 생성한 뒤 Python HTTP 서버를 실행한다. 기존 서버가 실행 중이면 `npm run build` 후 브라우저를 새로고침한다. 런타임 프레임워크나 별도 백엔드는 없다.
 
-- `content/catalogue.json`: 아티스트 12명, 청취 목록 11곡, 윤미래 Editor’s pick, 소개·출처·사이트 설정의 원본.
+- `content/catalogue.json`: 아티스트 12명, 청취 목록 11곡, 윤미래 Editor’s pick, 가이드 분류, 소개·출처·사이트 설정의 원본.
 - `content/media.json`: 반응형 이미지 파일과 크기. `content/image-rights.json`: 이미지별 출처와 권리 확인 상태.
 - `site/`: 브라우저 동작, 공통 검색·저장 함수, 스타일과 홈페이지 템플릿.
-- `scripts/build.mjs`: 홈페이지·아티스트 12페이지·가이드·About·Privacy의 정적 HTML과 공유 메타데이터 생성.
+- `scripts/build.mjs`: 홈페이지·아티스트 12페이지·가이드 안내와 테마 3페이지·About·Privacy의 정적 HTML과 공유 메타데이터 생성.
 - `dist/`: 실제 서비스 파일. 생성된 HTML·JS·CSS를 직접 수정하지 않고 원본 수정 후 빌드한다.
 - `dist/assets/`: 원본 사진·앨범 커버, `optimized/`의 WebP 변형, 공유 이미지, 서체와 라이선스.
 
@@ -35,11 +35,22 @@ npm run check
 - 아티스트별 주소: `/artists/<id>/`. 곡 위치는 `#listen`으로 바로 연결한다.
 - 소개·연락처·이미지 출처: `/about/`
 - 개인정보·이용 안내: `/privacy-and-terms/`
-- 입문 가이드: `/notes/first-listens/`
+- 전체 가이드 안내: `/notes/first-listens/` (기존 주소 유지)
+- 테마별 가이드: `/notes/on-stage/`, `/notes/guitars-and-bands/`, `/notes/distinct-voices/`
 
 기존 `indiek-saved-v1` 저장 키와 곡 ID를 유지한다. 저장 목록은 브라우저 localStorage만 사용하고 검색도 브라우저 안에서 처리한다. JavaScript 없이도 정적 소개·곡 정보·출처·공식 청취 링크를 사용할 수 있다. 검색·저장·필터·캐러셀 조작·삽입 재생은 JavaScript가 있을 때 활성화한다.
 
 YouTube 플레이어는 안내를 읽고 `Agree & load YouTube`를 선택한 후에만 생성한다. `youtube-nocookie.com`을 사용하고 자동재생하지 않으며, `Disconnect YouTube`로 제거할 수 있다. 카더가든의 KBS 영상은 기존 확인 결과에 따라 YouTube 원본으로 연결한다. 음원 파일·영상·가사는 자체 호스팅하지 않는다. Bandcamp 플레이어 분기는 제거했다.
+
+## Listening guides 관리
+
+- 홈의 `Follow the sound.`와 가이드 페이지는 `getListeningGuides()`의 동일한 결과로 생성한다. 곡 수와 목록은 별도로 입력하지 않는다. 윤미래의 `editorPick`도 분류 대상이다.
+- `listeningGuides`에는 `id`, `title`, `description`(홈 소개와 메타 설명), `intro`(가이드 도입문), `selection`, `featuredArtistId`를 지정한다. `selection`은 `live` 또는 `tag`다.
+- `On stage`는 `videoType: "live"`인 곡을 자동 포함한다. 태그 방식인 다른 가이드는 곡의 `guideTags`에 가이드 ID를 넣는다. 예: `["guitars-and-bands", "distinct-voices"]`. 한 곡이 여러 가이드에 포함되어도 각 가이드 안에서는 한 번만 표시한다.
+- `featuredArtistId`의 곡을 첫 번째로 배치하고 홈 대표 커버로 사용한다. 나머지는 원본 카탈로그 순서를 유지한다. 대표곡도 해당 가이드의 분류 조건을 충족해야 한다.
+- 아티스트가 어느 가이드에도 속하지 않거나 잘못된 태그·중복 ID를 사용하면 빌드를 중단한다. 새 곡을 등록할 때 실제 라이브 영상인지 확인하고, 필요한 테마 태그를 함께 지정한다.
+- 오른쪽 Listening Room의 4곡은 독립적인 `listeningRoom.artists` 설정을 사용한다. 가이드 분류를 바꿔도 이 목록은 바뀌지 않는다.
+- 가이드에서는 짧은 곡 정보와 아티스트 페이지의 `#listen` 링크를 제공한다. 플레이어를 추가로 로드하지 않으며 JavaScript 없이도 탐색할 수 있다.
 
 ## 운영 구성과 이미지 확인 상태
 

@@ -35,7 +35,11 @@
       "artistSource": "https://prtimes.jp/main/html/rd/p/000000433.000055377.html",
       "artistSourceName": "The Orchard Japan",
       "artistSourceLanguage": "Japanese",
-      "sourceLanguage": "English"
+      "sourceLanguage": "English",
+      "guideTags": [
+        "guitars-and-bands",
+        "distinct-voices"
+      ]
     },
     {
       "id": "sunwoojunga",
@@ -65,7 +69,10 @@
       "artistSource": "https://koreanmusicawards.com/project/%EC%84%A0%EC%9A%B0%EC%A0%95%EC%95%84/",
       "artistSourceName": "Korean Music Awards",
       "artistSourceLanguage": "Korean",
-      "sourceLanguage": "English"
+      "sourceLanguage": "English",
+      "guideTags": [
+        "distinct-voices"
+      ]
     },
     {
       "id": "car-the-garden",
@@ -96,7 +103,10 @@
       "artistSourceName": "CJ Cultural Foundation — Car, the garden",
       "externalOnly": true,
       "artistSourceLanguage": "Korean",
-      "sourceLanguage": "English"
+      "sourceLanguage": "English",
+      "guideTags": [
+        "distinct-voices"
+      ]
     },
     {
       "id": "choi-yu-ree",
@@ -133,6 +143,9 @@
           "label": "Bugs — Stroll release notes and credits",
           "language": "Korean"
         }
+      ],
+      "guideTags": [
+        "distinct-voices"
       ]
     },
     {
@@ -163,7 +176,10 @@
       "artistSource": "https://bol4.jp/profiles",
       "artistSourceName": "BOL4 — official profile",
       "artistSourceLanguage": "Japanese",
-      "sourceLanguage": "English"
+      "sourceLanguage": "English",
+      "guideTags": [
+        "distinct-voices"
+      ]
     },
     {
       "id": "esegye",
@@ -193,7 +209,10 @@
       "artistSource": "https://poclanos.com/featured/newbies-1/",
       "artistSourceName": "POCLANOS — introducing ESEGYE",
       "artistSourceLanguage": "Korean",
-      "sourceLanguage": "English"
+      "sourceLanguage": "English",
+      "guideTags": [
+        "guitars-and-bands"
+      ]
     },
     {
       "id": "se-so-neon",
@@ -230,6 +249,9 @@
           "label": "Korean Music Awards — The Wave",
           "language": "Korean"
         }
+      ],
+      "guideTags": [
+        "guitars-and-bands"
       ]
     },
     {
@@ -266,6 +288,9 @@
           "label": "YdBB — ONCE interview and artwork story",
           "language": "Korean"
         }
+      ],
+      "guideTags": [
+        "guitars-and-bands"
       ]
     },
     {
@@ -302,6 +327,9 @@
           "label": "WhiteUsedSocks — official release page",
           "language": ""
         }
+      ],
+      "guideTags": [
+        "guitars-and-bands"
       ]
     },
     {
@@ -331,7 +359,10 @@
       "artistSourceName": "Motte — Genie artist introduction",
       "artistSourceLanguage": "Korean",
       "sourceLanguage": "English",
-      "listeningNote": "A soundtrack can be the first place a voice becomes familiar. Here, Motte’s contribution to A-TEEN sits alongside the songs of her own singer-songwriter catalogue."
+      "listeningNote": "A soundtrack can be the first place a voice becomes familiar. Here, Motte’s contribution to A-TEEN sits alongside the songs of her own singer-songwriter catalogue.",
+      "guideTags": [
+        "distinct-voices"
+      ]
     },
     {
       "id": "hanroro",
@@ -367,6 +398,10 @@
           "label": "HANRORO — release notes and credits on POCLANOS",
           "language": "Korean"
         }
+      ],
+      "guideTags": [
+        "guitars-and-bands",
+        "distinct-voices"
       ]
     }
   ],
@@ -519,16 +554,43 @@
     ],
     "artistSourceLanguage": "Korean",
     "sourceLanguage": "English",
-    "performance": "Official music video · 1theK"
+    "performance": "Official music video · 1theK",
+    "guideTags": [
+      "distinct-voices"
+    ]
   },
-  "guide": {
-    "title": "Four songs. Four ways in.",
-    "intro": "Four songs I want more people to hear: two bands, two solo artists, and a different story with each.",
+  "listeningRoom": {
     "artists": [
       "ydbb",
       "whiteusedsocks",
       "motte",
       "hanroro"
     ]
-  }
+  },
+  "listeningGuides": [
+    {
+      "id": "on-stage",
+      "title": "On stage",
+      "selection": "live",
+      "featuredArtistId": "sunwoojunga",
+      "description": "Concert stages, television performances and intimate sessions. Start with a song played live.",
+      "intro": "A song takes on another shape in front of an audience. Start with sunwoojunga at her Serenade concert, then move through television stages, a live session and performances shared by the artists themselves."
+    },
+    {
+      "id": "guitars-and-bands",
+      "title": "Guitars & bands",
+      "selection": "tag",
+      "featuredArtistId": "black-skirts",
+      "description": "From a quiet farewell to an extended guitar finish. Follow the songs through Korean rock.",
+      "intro": "Guitars connect these songs, but each artist takes them somewhere different. Begin with The Black Skirts, then move between bands and solo artists, live performances and recordings. Listen for how much a guitar can say between the words."
+    },
+    {
+      "id": "distinct-voices",
+      "title": "Distinct voices",
+      "selection": "tag",
+      "featuredArtistId": "yoon-mirae",
+      "description": "R&B, folk, pop and rock, with a voice to remember at the centre of each song.",
+      "intro": "Begin with the space around Yoon Mirae’s voice on Breath. From there, meet singers whose work crosses folk, pop, jazz and rock. Some introductions come from a live stage; others begin with a recording."
+    }
+  ]
 }

@@ -15,8 +15,12 @@ errors = []
 class Page(HTMLParser):
     def __init__(self, path):
         super().__init__(); self.path=path; self.refs=[]; self.ids=set(); self.meta={}; self.canonical=[]; self.h1=0; self.frames=0
+        self.guide_cards=[]; self.guide_tracks=[]; self.guide_id=None
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
+        if 'data-guide' in a: self.guide_cards.append((a['data-guide'],int(a['data-track-count'])))
+        if 'data-guide-track' in a: self.guide_tracks.append((a['data-guide-track'],a.get('href')))
+        if 'data-guide-page' in a: self.guide_id=a['data-guide-page']
         if 'id' in a:
             if a['id'] in self.ids: errors.append(f'{self.path}: duplicate id {a["id"]}')
             self.ids.add(a['id'])
@@ -83,7 +87,26 @@ for name, image in media.items():
 
 urls={node.text for node in ET.parse(dist/'sitemap.xml').findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc')}
 if urls!={p.canonical[0] for p in pages.values()}: errors.append('Sitemap does not match generated pages')
-expected_count=len(catalogue['records'])+5
+guide_ids=[g['id'] for g in catalogue['listeningGuides']]
+guide_counts={}
+covered=set()
+for id in guide_ids:
+    guide_page=pages.get((dist/'notes'/id/'index.html').resolve())
+    if not guide_page:
+        errors.append('Missing listening guide: '+id); continue
+    if guide_page.guide_id!=id: errors.append('Wrong guide identity: '+id)
+    members=[r for r,href in guide_page.guide_tracks]
+    guide_counts[id]=len(members)
+    covered.update(members)
+    if not members or len(members)!=len(set(members)): errors.append('Empty or duplicate guide tracks: '+id)
+    for record_id,href in guide_page.guide_tracks:
+        if href!=f'/artists/{record_id}/#listen': errors.append('Wrong guide listening link: '+id)
+if covered!={r['id'] for r in catalogue['records']+[catalogue['editorPick']]}: errors.append('Listening guides do not cover the catalogue')
+for file in ['index.html','notes/first-listens/index.html']:
+    index=pages.get((dist/file).resolve())
+    if not index or index.guide_cards!=[(id,guide_counts.get(id)) for id in guide_ids]: errors.append('Guide cards disagree with guide pages: '+file)
+    elif any(f'/notes/{id}/' not in index.refs for id in guide_ids): errors.append('Guide card link missing: '+file)
+expected_count=len(catalogue['records'])+5+len(guide_ids)
 if len(pages)!=expected_count: errors.append(f'Expected {expected_count} pages, found {len(pages)}')
 if site['url']+'/sitemap.xml' not in (dist/'robots.txt').read_text(): errors.append('Missing robots sitemap')
 for source,target in [('site/app.js','dist/app.js'),('site/styles.css','dist/styles.css'),('site/shared.mjs','dist/shared.mjs')]:

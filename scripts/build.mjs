@@ -1,16 +1,17 @@
 import {readFileSync, writeFileSync, mkdirSync, copyFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
-import {escapeHTML as e, artistPath, imageHTML, coverHTML, videoLabel, externalLink as out, saveButton, getFeaturedArtists, formatPosition} from '../site/shared.mjs';
+import {escapeHTML as e, artistPath, imageHTML, coverHTML, videoLabel, externalLink as out, saveButton, getFeaturedArtists, getListeningGuides, guidePath, formatPosition} from '../site/shared.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = file => readFileSync(path.join(root, file), 'utf8');
 const catalogue = JSON.parse(read('content/catalogue.json'));
 const media = JSON.parse(read('content/media.json'));
-const {site, records, editorPick: pick, guide} = catalogue;
+const {site, records, editorPick: pick, listeningRoom} = catalogue;
 const features = getFeaturedArtists(catalogue);
+const guides = getListeningGuides(catalogue);
 const all = [...records, pick];
-const version = '20261018-all-artists';
+const version = '20261018-listening-guides';
 const pages = [];
 const find = id => all.find(r => r.id === id);
 const sourceLink = (url, label, language = '') => out(url, `${label}${language ? ` (${language})` : ''}`);
@@ -18,7 +19,7 @@ const sourceLink = (url, label, language = '') => out(url, `${label}${language ?
 function header() {
   return `<a class="skip-link" href="#main">Skip to content</a><header class="topbar wrap">
     <a href="/" class="small-logo" aria-label="indiek home">ik<span class="logo-dot">.</span></a>
-    <nav aria-label="Main navigation"><a href="/#discover">Discover</a><a href="/#records">The listening shelf</a><a href="/#notes">Field notes</a></nav>
+    <nav aria-label="Main navigation"><a href="/#discover">Discover</a><a href="/#records">The listening shelf</a><a href="/#notes">Listening guides</a></nav>
     <div class="header-actions" data-js-only hidden><button class="text-button saved-link" data-library>Saved <span class="saved-count">0</span></button><button class="search-button" data-search aria-label="Find an artist or song"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button></div>
   </header>`;
 }
@@ -55,6 +56,28 @@ function hero(feature, i) {
 function trackLink(r,i) {
   return `<a class="track" href="${artistPath(r)}#listen" aria-label="Listen to ${e(r.track)} by ${e(r.artist)}"><span class="track-number">0${i+1}</span>${coverHTML(media,r,{sizes:'55px'})}<span class="track-info"><strong>${e(r.track)}</strong><span>${e(r.artist)}</span></span><span class="track-time">${r.duration}</span><span class="track-play" aria-hidden="true">▷</span></a>`;
 }
+function guideCards(heading = 'h3') {
+  return `<div class="guide-grid">${guides.map((guide,i)=>{
+    const first = guide.records[0];
+    const preview = guide.records.slice(0,3).map(r=>e(r.artist)).join(' · ');
+    const more = guide.records.length - 3;
+    return `<article class="guide-card" data-guide="${guide.id}" data-track-count="${guide.records.length}"><a class="guide-card-link" href="${guidePath(guide)}" aria-label="Explore the guide: ${e(guide.title)}">
+      <div class="guide-card-top mono"><span>GUIDE ${formatPosition(i+1)}</span><span>${guide.records.length} ${guide.records.length===1?'TRACK':'TRACKS'}</span></div>
+      <div class="guide-artwork">${coverHTML(media,first,{sizes:'(max-width: 760px) 65vw, 24vw'})}</div>
+      <p class="guide-featured">START WITH ${e(first.artist)} / ${e(first.track)}</p>
+      <${heading}>${e(guide.title)}</${heading}><p class="guide-description">${e(guide.description)}</p>
+      <p class="guide-preview">${preview}${more>0?` <span>+ ${more} more</span>`:''}</p>
+      <span class="guide-cta">Explore the guide <span aria-hidden="true">↗</span></span>
+    </a></article>`;
+  }).join('')}</div>`;
+}
+function guideTrack(r,i) {
+  return `<li><a class="guide-track" href="${artistPath(r)}#listen" data-guide-track="${r.id}">
+    <span class="guide-track-number mono" aria-hidden="true">${formatPosition(i+1)}</span>${coverHTML(media,r,{sizes:'(max-width: 760px) 76px, 100px'})}
+    <div class="guide-track-copy"><p class="eyebrow">${e(r.artist)} / <span lang="ko">${e(r.korean)}</span></p><h2>${e(r.track)}</h2><p class="guide-track-note">${e(r.note)}</p></div>
+    <span class="guide-track-action"><span class="mono">${videoLabel(r)}</span><span>Listen & read <span aria-hidden="true">↗</span></span></span>
+  </a></li>`;
+}
 function player(r, cover = false) {
   if(r.externalOnly) return `<div class="external-player"><p class="eyebrow">${videoLabel(r)} · ${r.duration}</p><p>${e(r.performance)}</p>${out(r.url,'Watch live on YouTube','room-button')}<p class="embed-caption">This performance opens on YouTube.</p></div>`;
   return `<div class="player-shell${cover?' player-with-cover':''}" data-player="${r.id}">
@@ -71,7 +94,7 @@ function editorPick() {
   return `<section class="editor-pick wrap" id="editors-pick" aria-labelledby="editors-pick-title"><div class="pick-copy"><p class="eyebrow">EDITOR’S PICK / R&amp;B</p><h2 id="editors-pick-title"><a href="${artistPath(pick)}">${pick.artist}</a><span>${pick.track} <span lang="ko">(${pick.koreanTitle})</span></span></h2><p class="pick-date mono">SINGLE / ${pick.releaseDate.toUpperCase()}</p><p class="pick-description">${e(pick.description)}</p><p class="pick-credits">${e(pick.credits)}<br>${out(pick.source,'View release on Apple Music')}</p></div><div class="pick-video">${player(pick,true)}</div><div class="artist-profile"><article class="artist-bio" aria-labelledby="yoon-mirae-profile-title"><p class="eyebrow">BEHIND THE VOICE / <span lang="ko">윤미래</span></p><h3 id="yoon-mirae-profile-title">Meet Yoon Mirae.</h3><p>${e(pick.artistIntro)}</p><p>${e(pick.biography)}</p><p class="artist-sources">${sourceLink(pick.artistSource,'Artist biography','Korean')} · ${sourceLink(pick.extraSources[0].url,'Korean Music Awards','Korean')}</p><a class="underlink" href="${artistPath(pick)}">More about Yoon Mirae <span aria-hidden="true">↗</span></a></article>${moreTracks(pick)}</div></section>`;
 }
 let home = read('site/templates/home.html');
-for(const [token,value] of Object.entries({COUNT:records.length,FEATURE_COUNT:formatPosition(features.length),HERO:features.map(hero).join(''),TRACKS:guide.artists.map(id=>find(id)).map(trackLink).join(''),EDITOR_PICK:editorPick(),RECORDS:records.map(card).join('')})) home=home.replaceAll(`{{${token}}}`,value);
+for(const [token,value] of Object.entries({COUNT:records.length,FEATURE_COUNT:formatPosition(features.length),HERO:features.map(hero).join(''),TRACKS:listeningRoom.artists.map(id=>find(id)).map(trackLink).join(''),EDITOR_PICK:editorPick(),RECORDS:records.map(card).join(''),GUIDES:guideCards(),GUIDE_ARTIST_COUNT:all.length})) home=home.replaceAll(`{{${token}}}`,value);
 page('/','indiek — Music from Korea, worth sharing','A personal, non-commercial listening journal sharing Korean artists and songs with listeners around the world. Official videos, live performances and artist stories.',home,'home-page');
 
 for(const r of all) {
@@ -87,7 +110,20 @@ for(const r of all) {
   page(artistPath(r),`${r.artist} — ${r.track} | indiek`,`${r.artist}: ${r.track}${r.koreanTitle?` (${r.koreanTitle})`:''}. ${r.note} Listen, meet the artist and explore the release.`,main,'detail-page');
 }
 const prose=(eyebrow,title,body)=>`<main id="main" class="wrap prose-page"><p class="eyebrow">${eyebrow}</p><h1>${title}</h1>${body}<p class="prose-back"><a class="underlink" href="/#records">Back to the music <span aria-hidden="true">↗</span></a></p></main>`;
-page('/notes/first-listens/',`${guide.title} | indiek`,'Four songs from YdBB, WhiteUsedSocks, Motte and HANRORO. A short listening guide from indiek.',prose('LISTENING GUIDE / VOL. 01',guide.title,`<p class="prose-lead">${e(guide.intro)}</p>${guide.artists.map((id,i)=>{const r=find(id);return `<section><p class="eyebrow">0${i+1} / ${e(r.artist)}</p><h2><a href="${artistPath(r)}#listen">${e(r.track)}</a></h2><p>${e(r.description)}</p><a class="underlink" href="${artistPath(r)}#listen">Listen & read <span aria-hidden="true">↗</span></a></section>`;}).join('')}`));
+page('/notes/first-listens/','Listening guides | indiek','Find Korean artists through official live performances, guitars and distinctive voices. Choose a listening guide and follow the songs.',`<main id="main" class="wrap guide-hub">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><span>Listening guides</span></nav>
+  <header class="guide-heading"><p class="eyebrow">${all.length} ARTISTS / ${guides.length} GUIDES</p><h1>Find your way in.</h1><p class="guide-lead">Start with a live performance, a guitar, or a voice. Each guide brings together songs from across the journal, with a place to begin and room to keep exploring.</p></header>
+  ${guideCards('h2')}<a class="underlink back-to-shelf" href="/#notes">Back to the journal <span aria-hidden="true">↗</span></a></main>`);
+
+for (const guide of guides) {
+  const first = guide.records[0];
+  page(guidePath(guide),`${guide.title} — Listening guide | indiek`,guide.description,`<main id="main" class="wrap guide-page" data-guide-page="${guide.id}">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><a href="/notes/first-listens/">Listening guides</a></nav>
+    <header class="guide-heading guide-heading-with-cover"><div><p class="eyebrow">LISTENING GUIDE / ${guide.records.length} ${guide.records.length===1?'TRACK':'TRACKS'}</p><h1>${e(guide.title)}</h1><p class="guide-lead">${e(guide.intro)}</p></div><figure>${coverHTML(media,first,{priority:true,sizes:'(max-width: 760px) 120px, 240px'})}<figcaption>Start with ${e(first.artist)}<br><span>${e(first.track)}</span></figcaption></figure></header>
+    <ol class="guide-tracks" aria-label="Tracks in this guide">${guide.records.map(guideTrack).join('')}</ol>
+    <nav class="guide-next" aria-label="Other listening guides"><h2>Keep exploring.</h2><div>${guides.filter(other=>other.id!==guide.id).map(other=>`<a class="underlink" href="${guidePath(other)}">${e(other.title)} <span aria-hidden="true">↗</span></a>`).join('')}</div></nav>
+    <a class="underlink back-to-shelf" href="/notes/first-listens/">All listening guides <span aria-hidden="true">↗</span></a></main>`);
+}
 
 const rights=JSON.parse(read('content/image-rights.json'));
 page('/about/','About & contact | indiek','An independent, non-commercial fan journal sharing Korean music. Contact gw@lumejs.com for questions, corrections or image removal requests.',prose('A NOTE FROM INDIEK','Good music travels.',`<p class="prose-lead">An independent, non-commercial fan journal sharing Korean music with listeners around the world.</p><section><h2>A personal selection.</h2><p>I made indiek to share Korean artists and songs I wish more people knew. The name is indiek, but the selection reaches across genres, labels and levels of fame.</p><p>This is a listening journal, not a ranking or a news feed. A song can belong here long after its release. Official music videos, live performances and release links give you a way to listen and keep exploring.</p><p>indiek is not affiliated with the featured artists, their labels, YouTube or Apple Music. There are no sales, affiliate links, subscriptions or paid placements on this site.</p></section><section id="contact"><h2>Get in touch.</h2><p>For questions, factual corrections, credit updates, or requests concerning an image or other content, email <a href="mailto:${site.email}">${site.email}</a>.</p><p>Include the page address and the material you are referring to. For an image request, please describe your connection to the work. Please avoid sending sensitive personal documents in an initial message.</p></section><section id="image-credits"><h2>Image credits.</h2><p>Artist photographs and release artwork belong to their respective rights holders. The links below identify the sources used for this edition. Source credit does not itself grant permission to reuse an image.</p><ul class="credit-list">${rights.images.map(image=>`<li><strong>${e(image.label)}</strong><br>${sourceLink(image.source,image.credit,image.language)}</li>`).join('')}</ul><p>The indiek sharing graphic is original typography. Barlow Condensed, DM Sans and IBM Plex Mono are used under the SIL Open Font License.</p></section>`));

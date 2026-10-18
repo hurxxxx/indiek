@@ -1,6 +1,37 @@
 export const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 export const artistPath = record => `/artists/${record.id}/`;
+export const guidePath = guide => `/notes/${guide.id}/`;
 export const formatPosition = number => String(number).padStart(2, '0');
+
+export function getListeningGuides({records, editorPick, listeningGuides}) {
+  const all = [...records, editorPick];
+  const recordIds = all.map(record => record.id);
+  if (new Set(recordIds).size !== all.length) throw new Error('Duplicate catalogue artist ID');
+  if (!listeningGuides?.length) throw new Error('No listening guides configured');
+  const guideIds = listeningGuides.map(guide => guide.id);
+  if (new Set(guideIds).size !== guideIds.length) throw new Error('Duplicate listening guide ID');
+  const tags = new Set(listeningGuides.filter(guide => guide.selection === 'tag').map(guide => guide.id));
+  for (const record of all) {
+    if (record.guideTags !== undefined && !Array.isArray(record.guideTags)) throw new Error(`Invalid guideTags for ${record.id}`);
+    for (const tag of record.guideTags || []) {
+      if (!tags.has(tag)) throw new Error(`Unknown guide tag "${tag}" for ${record.id}`);
+    }
+  }
+  const covered = new Set();
+  const guides = listeningGuides.map(guide => {
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(guide.id) || guide.id === 'first-listens') throw new Error(`Invalid guide ID: ${guide.id}`);
+    if (!['live', 'tag'].includes(guide.selection)) throw new Error(`Invalid selection for ${guide.id}`);
+    const matches = all.filter(record => guide.selection === 'live' ? record.videoType === 'live' : record.guideTags?.includes(guide.id));
+    const first = matches.find(record => record.id === guide.featuredArtistId);
+    if (!first) throw new Error(`Featured artist ${guide.featuredArtistId} is not included in ${guide.id}`);
+    const ordered = [first, ...matches.filter(record => record !== first)];
+    ordered.forEach(record => covered.add(record.id));
+    return {...guide, records: ordered};
+  });
+  const missing = all.filter(record => !covered.has(record.id));
+  if (missing.length) throw new Error(`Artists missing from listening guides: ${missing.map(record => record.id).join(', ')}`);
+  return guides;
+}
 
 // Editorial overrides set the opening order; every catalogue artist still appears.
 export function getFeaturedArtists({records, editorPick, featuredArtists = []}) {
