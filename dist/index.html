@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>indiek — Independent sounds from Korea</title>
-  <meta name="description" content="A listening journal for Korean independent music. Meet Say Sue Me, Mid-Air Thief, Parannoul and Jambinai. Find your next favorite record.">
+  <meta name="description" content="A listening journal for Korean independent music. Meet YdBB, WhiteUsedSocks, Motte and HANRORO, with an editor’s pick from Yoon Mirae. Find your next favorite song.">
   <meta name="theme-color" content="#f5f3ed">
   <meta property="og:title" content="indiek — Independent sounds from Korea">
   <meta property="og:description" content="Good music travels. A listening journal for the Korean independent scene.">
-  <meta property="og:image" content="https://indiek-listening-journal.lumejs.chatgpt.site/assets/say-sue-me.jpg">
+  <meta property="og:image" content="https://indiek-listening-journal.lumejs.chatgpt.site/assets/ydbb.jpg">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
@@ -16,8 +16,8 @@
   <a class="skip-link" href="#main">Skip to music</a>
   <header class="topbar wrap">
     <a href="./" class="small-logo" aria-label="indiek home">ik<span class="logo-dot">.</span></a>
-    <nav aria-label="Main navigation"><a href="#discover">Discover</a><a href="#records">The record shelf</a><a href="#notes">Field notes</a></nav>
-    <div class="header-actions"><button class="text-button saved-link" data-library>Saved <span class="saved-count">0</span></button><button class="search-button" data-search aria-label="Search artists and records"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button></div>
+    <nav aria-label="Main navigation"><a href="#discover">Discover</a><a href="#records">The listening shelf</a><a href="#notes">Field notes</a></nav>
+    <div class="header-actions"><button class="text-button saved-link" data-library>Saved <span class="saved-count">0</span></button><button class="search-button" data-search aria-label="Search artists, records and songs"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button></div>
   </header>
   <main id="main">
     <section class="masthead wrap" aria-label="Independent sounds from Korea">
@@ -28,37 +28,56 @@
 
     <section class="feature-grid wrap" id="discover" aria-label="Featured artist and listening selections">
       <article class="feature-story">
-        <button class="hero-image" data-story="say-sue-me" aria-label="Meet Say Sue Me, an indie rock band from Busan">
-          <img src="assets/say-sue-me.jpg" alt="The four members of Say Sue Me standing together outdoors, photographed in black and white" width="2256" height="1500" fetchpriority="high">
-          <span class="image-label mono">IN FOCUS — 001</span><span class="location-label mono">BUSAN, KR ↗</span>
-          <span class="artist-stamp">SAY SUE ME</span>
+        <button class="hero-image" data-story="ydbb" aria-label="Meet YdBB, a five-piece band from Korea">
+          <img src="assets/ydbb.jpg" alt="The five members of YdBB seated in red cinema chairs" width="1919" height="1279" fetchpriority="high">
+          <span class="image-label mono">IN FOCUS — 001</span><span class="location-label mono">YdBB / 유다빈밴드</span>
+          <span class="artist-stamp">YdBB</span>
         </button>
-        <div class="story-caption"><div><p class="eyebrow">MEET THE ARTIST <span>세이수미</span></p><h2><button data-story="say-sue-me">A little closer to the coast.</button></h2></div><button class="round-arrow" data-story="say-sue-me" aria-label="Read about Say Sue Me">↗</button></div>
-        <p class="feature-deck">Bright guitars, tender edges. Start with the Busan quartet’s<br class="desktop-break"> self-recorded album, <em>The Last Thing Left.</em></p>
+        <div class="story-caption"><div><p class="eyebrow">MEET THE ARTIST <span lang="ko">유다빈밴드</span></p><h2><button data-story="ydbb">A farewell worth staying for.</button></h2></div><button class="round-arrow" data-story="ydbb" aria-label="Read about YdBB">↗</button></div>
+        <p class="feature-deck">Meet YdBB through <em>ONCE</em> — a song about parting,<br class="desktop-break"> and the wish to be remembered kindly.</p>
       </article>
 
       <aside class="rotation" aria-labelledby="rotation-title">
         <div class="section-kicker mono"><span class="red-dot"></span> THE LISTENING ROOM <span>01—04</span></div>
         <h2 id="rotation-title">A few good<br>places to start.</h2>
-        <p class="rotation-intro">Four tracks. Four different corners of<br>Korea’s independent sound.</p>
+        <p class="rotation-intro">Four songs we keep coming back to.<br>Two bands. Two solo voices.</p>
         <div class="track-list" id="track-list"></div>
-        <button class="room-button" data-listen="mid-air-thief"><span class="play-triangle" aria-hidden="true"></span> Open the listening room <span aria-hidden="true">↗</span></button>
+        <button class="room-button" data-listen="ydbb"><span class="play-triangle" aria-hidden="true"></span> Open the listening room <span aria-hidden="true">↗</span></button>
         <p class="room-note mono">PICK A TRACK. STAY A WHILE.</p>
       </aside>
     </section>
 
+    <section class="editor-pick wrap" id="editors-pick" aria-labelledby="editors-pick-title" data-search-terms="Yoon Mirae yoonmirae 윤미래 Breath 숨 R&B acoustic">
+      <div class="pick-copy">
+        <p class="eyebrow">EDITOR’S PICK / R&amp;B</p>
+        <h2 id="editors-pick-title" tabindex="-1">Yoon Mirae<span>Breath <span lang="ko">(숨)</span></span></h2>
+        <p class="pick-date mono">SINGLE / DECEMBER 2025</p>
+        <p class="pick-description">A single guitar leaves room for Yoon Mirae’s voice on “Breath.” Released in December 2025, this acoustic R&amp;B song follows the small, ordinary reminders that remain after a breakup.</p>
+      </div>
+      <div class="pick-video">
+        <div class="video-stage" id="pick-video-stage">
+          <div class="video-prompt">
+            <span class="video-kicker mono">YOON MIRAE / OFFICIAL MUSIC VIDEO</span>
+            <span class="video-title" aria-hidden="true">Breath<span>.</span></span>
+            <button class="video-load" data-load-video aria-label="Load video: Breath by Yoon Mirae"><span class="play-triangle" aria-hidden="true"></span> Load video</button>
+          </div>
+        </div>
+        <div class="video-caption"><span class="mono">VIA 1THEK</span><a class="underlink" href="https://www.youtube.com/watch?v=knmrNkQMybA" target="_blank" rel="noopener noreferrer">Watch on YouTube <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
     <section class="record-section wrap" id="records" aria-labelledby="records-title">
-      <div class="section-heading"><div><p class="eyebrow">THE RECORD SHELF / ESSENTIAL LISTENING</p><h2 id="records-title">Worth your time.</h2></div><p class="section-description">Records to get lost in.<br>Picked for the curious.</p></div>
-      <div class="filter-bar"><div class="filters" role="group" aria-label="Filter records by sound"><button data-filter="all" aria-pressed="true">All sounds <sup>04</sup></button><button data-filter="guitar" aria-pressed="false">Guitar music</button><button data-filter="electronic" aria-pressed="false">Electronic & folk</button><button data-filter="experimental" aria-pressed="false">Beyond genre</button></div><span id="record-count" class="mono" role="status">04 RECORDS</span></div>
+      <div class="section-heading"><div><p class="eyebrow">THE LISTENING SHELF / FOUR HANDPICKED TRACKS</p><h2 id="records-title">Worth your time.</h2></div><p class="section-description">Songs to get lost in.<br>Picked for the curious.</p></div>
+      <div class="filter-bar"><div class="filters" role="group" aria-label="Filter by artist type"><button data-filter="all" aria-pressed="true">All artists <sup>04</sup></button><button data-filter="bands" aria-pressed="false">Bands</button><button data-filter="solo" aria-pressed="false">Solo artists</button></div><span id="record-count" class="mono" role="status">04 TRACKS</span></div>
       <div class="record-grid" id="record-grid"></div>
-      <noscript><p>Explore the music directly on <a href="https://saysueme.bandcamp.com/album/the-last-thing-left">Say Sue Me’s Bandcamp</a>, <a href="https://midairthief.bandcamp.com/album/crumbling">Mid-Air Thief’s Bandcamp</a>, <a href="https://parannoul.bandcamp.com/album/after-the-magic">Parannoul’s Bandcamp</a> and <a href="https://jambinai.bandcamp.com/album/onda">Jambinai’s Bandcamp</a>. Enable JavaScript for filtering and the listening room.</p></noscript>
+      <noscript><p>Listen directly on YouTube: <a href="https://www.youtube.com/watch?v=vyTiHwIK2LU">YdBB — ONCE</a>, <a href="https://www.youtube.com/watch?v=2uIKfZZB8FA">WhiteUsedSocks — Don’t feel sad</a>, <a href="https://www.youtube.com/watch?v=Xu56OVkwdXw">Motte — Don’t run away</a>, <a href="https://www.youtube.com/watch?v=QRwfXQ7-OR4">HANRORO — Even if you leave</a>. Enable JavaScript for the listening shelf and search.</p></noscript>
     </section>
 
     <section class="field-section wrap" id="notes" aria-labelledby="notes-title">
       <div class="section-heading"><div><p class="eyebrow">FIELD NOTES / A LITTLE CONTEXT</p><h2 id="notes-title">Follow the sound.</h2></div><span class="mono">THERE’S MORE TO THE STORY ↙</span></div>
       <div class="field-grid">
-        <article class="field-feature"><div class="field-art" aria-hidden="true"><span class="field-coordinate mono">35°10′N 129°04′E</span><span class="field-city">BUSAN</span><div class="wave-lines"><i></i><i></i><i></i><i></i><i></i></div><span class="field-art-bottom mono">SOUND TRAVELS / VOL. 01</span></div><div class="field-copy"><p class="eyebrow">A PLACE TO START · 2 MIN READ</p><h3>Start at the coast.<br>See where it takes you.</h3><p>Follow one band into a wider world of Korean independent music. Our first stop: Say Sue Me.</p><button class="underlink" data-story="busan">Read the listening guide <span aria-hidden="true">↗</span></button></div></article>
-        <div class="field-index"><article><span class="mono">01 / LISTENING NOTES</span><h3><button data-story="crumbling">A whole world<br>between the headphones.</button></h3><p>Inside the intricate textures of Mid-Air Thief’s <em>Crumbling.</em></p><button class="note-arrow" data-story="crumbling" aria-label="Read listening notes on Crumbling">↗</button></article><article><span class="mono">02 / FIRST ENCOUNTERS</span><h3><button data-story="jambinai">Tradition, turned<br>all the way up.</button></h3><p>Meet Jambinai, where Korean instruments and post-rock share the same stage.</p><button class="note-arrow" data-story="jambinai" aria-label="Read about Jambinai">↗</button></article></div>
+        <article class="field-feature"><div class="field-art" aria-hidden="true"><span class="field-coordinate mono">YdBB / WHITEUSEDSOCKS / MOTTE / HANRORO</span><span class="field-city">SIDE A</span><div class="wave-lines"><i></i><i></i><i></i><i></i><i></i></div><span class="field-art-bottom mono">FOUR FIRST LISTENS / VOL. 01</span></div><div class="field-copy"><p class="eyebrow">A PLACE TO START · 2 MIN READ</p><h3>One song.<br>Four ways in.</h3><p>Two bands, two solo artists. Follow this edition’s selections into a wider world of Korean music.</p><button class="underlink" data-story="first-listens">Read the listening guide <span aria-hidden="true">↗</span></button></div></article>
+        <div class="field-index"><article><span class="mono">01 / FIRST ENCOUNTERS</span><h3><button data-story="motte">A song beyond<br>the screen.</button></h3><p>Meet Motte through “Don’t run away”, from the soundtrack to <em>A-TEEN.</em></p><button class="note-arrow" data-story="motte" aria-label="Read about Motte">↗</button></article><article><span class="mono">02 / LISTENING NOTES</span><h3><button data-story="hanroro">Learning<br>to let go.</button></h3><p>On attachment and moving forward in HANRORO’s “Even if you leave”.</p><button class="note-arrow" data-story="hanroro" aria-label="Read about HANRORO">↗</button></article></div>
       </div>
     </section>
 
