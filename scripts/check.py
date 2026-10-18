@@ -69,6 +69,7 @@ media=json.loads((root/'content/media.json').read_text())
 rights=json.loads((root/'content/image-rights.json').read_text())
 credits={entry['file'] for entry in rights['images']}
 for record in catalogue['records']+[catalogue['editorPick']]:
+    if 'hero-'+record['id'] not in pages[(dist/'index.html').resolve()].ids: errors.append('Missing hero artist: '+record['id'])
     if record['image'] not in media or record['image'] not in credits: errors.append('Missing image metadata: '+record['id'])
     target=(dist/'artists'/record['id']/'index.html').resolve()
     if target not in pages: errors.append('Missing artist page: '+record['id'])

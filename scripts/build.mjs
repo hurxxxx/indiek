@@ -1,15 +1,16 @@
 import {readFileSync, writeFileSync, mkdirSync, copyFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
-import {escapeHTML as e, artistPath, imageHTML, coverHTML, videoLabel, externalLink as out, saveButton} from '../site/shared.mjs';
+import {escapeHTML as e, artistPath, imageHTML, coverHTML, videoLabel, externalLink as out, saveButton, getFeaturedArtists, formatPosition} from '../site/shared.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = file => readFileSync(path.join(root, file), 'utf8');
 const catalogue = JSON.parse(read('content/catalogue.json'));
 const media = JSON.parse(read('content/media.json'));
-const {site, records, editorPick: pick, featuredArtists: features, guide} = catalogue;
+const {site, records, editorPick: pick, guide} = catalogue;
+const features = getFeaturedArtists(catalogue);
 const all = [...records, pick];
-const version = '20261018-public1';
+const version = '20261018-all-artists';
 const pages = [];
 const find = id => all.find(r => r.id === id);
 const sourceLink = (url, label, language = '') => out(url, `${label}${language ? ` (${language})` : ''}`);
@@ -48,7 +49,7 @@ function card(r) {
 function hero(feature, i) {
   const r = find(feature.id);
   return `<div class="hero-slide${i===0?' is-active':''}" id="hero-${r.id}"${i ? ' hidden aria-hidden="true" inert' : ''} role="group" aria-roledescription="slide" aria-label="${e(r.artist)}, ${i+1} of ${features.length}">
-  <a class="hero-image hero-image-${r.id}" href="${artistPath(r)}" aria-label="Meet ${e(r.artist)}">${imageHTML(media,feature.image,feature.alt,{priority:i===0,deferred:i!==0,sizes:'(max-width: 760px) calc(100vw - 36px), 62vw',style:`object-position:${feature.position}`})}<span class="location-label mono">${e(r.artist)} / <span lang="ko">${e(r.korean)}</span></span><span class="artist-stamp" aria-hidden="true">${e(r.artist)}</span></a>
+  <a class="hero-image hero-image-${r.id} hero-image-${feature.kind}" href="${artistPath(r)}" aria-label="Meet ${e(r.artist)}">${imageHTML(media,feature.image,feature.alt,{priority:i===0,deferred:i!==0,sizes:feature.kind==='artwork'?'(max-width: 760px) 48vw, 32vw':'(max-width: 760px) calc(100vw - 36px), 62vw',style:`object-position:${feature.position}`})}<span class="location-label mono">${feature.kind==='artwork'?'RELEASE ARTWORK':`${e(r.artist)} / <span lang="ko">${e(r.korean)}</span>`}</span><span class="artist-stamp" aria-hidden="true">${e(r.artist)}</span></a>
   <div class="story-caption"><div><p class="eyebrow">MEET THE ARTIST <span lang="ko">${e(r.korean)}</span></p><h2><a href="${artistPath(r)}">${e(feature.title)}</a></h2></div><a class="round-arrow" href="${artistPath(r)}" aria-label="Read about ${e(r.artist)}">↗</a></div><p class="feature-deck">${feature.deck}</p></div>`;
 }
 function trackLink(r,i) {
@@ -70,11 +71,11 @@ function editorPick() {
   return `<section class="editor-pick wrap" id="editors-pick" aria-labelledby="editors-pick-title"><div class="pick-copy"><p class="eyebrow">EDITOR’S PICK / R&amp;B</p><h2 id="editors-pick-title"><a href="${artistPath(pick)}">${pick.artist}</a><span>${pick.track} <span lang="ko">(${pick.koreanTitle})</span></span></h2><p class="pick-date mono">SINGLE / ${pick.releaseDate.toUpperCase()}</p><p class="pick-description">${e(pick.description)}</p><p class="pick-credits">${e(pick.credits)}<br>${out(pick.source,'View release on Apple Music')}</p></div><div class="pick-video">${player(pick,true)}</div><div class="artist-profile"><article class="artist-bio" aria-labelledby="yoon-mirae-profile-title"><p class="eyebrow">BEHIND THE VOICE / <span lang="ko">윤미래</span></p><h3 id="yoon-mirae-profile-title">Meet Yoon Mirae.</h3><p>${e(pick.artistIntro)}</p><p>${e(pick.biography)}</p><p class="artist-sources">${sourceLink(pick.artistSource,'Artist biography','Korean')} · ${sourceLink(pick.extraSources[0].url,'Korean Music Awards','Korean')}</p><a class="underlink" href="${artistPath(pick)}">More about Yoon Mirae <span aria-hidden="true">↗</span></a></article>${moreTracks(pick)}</div></section>`;
 }
 let home = read('site/templates/home.html');
-for(const [token,value] of Object.entries({COUNT:records.length,HERO:features.map(hero).join(''),TRACKS:guide.artists.map(id=>find(id)).map(trackLink).join(''),EDITOR_PICK:editorPick(),RECORDS:records.map(card).join('')})) home=home.replaceAll(`{{${token}}}`,value);
+for(const [token,value] of Object.entries({COUNT:records.length,FEATURE_COUNT:formatPosition(features.length),HERO:features.map(hero).join(''),TRACKS:guide.artists.map(id=>find(id)).map(trackLink).join(''),EDITOR_PICK:editorPick(),RECORDS:records.map(card).join('')})) home=home.replaceAll(`{{${token}}}`,value);
 page('/','indiek — Music from Korea, worth sharing','A personal, non-commercial listening journal sharing Korean artists and songs with listeners around the world. Official videos, live performances and artist stories.',home,'home-page');
 
 for(const r of all) {
-  const feature=features.find(f=>f.id===r.id);
+  const feature=features.find(f=>f.id===r.id && f.kind==='portrait');
   const sources=[{url:r.source,label:r.sourceName,language:r.sourceLanguage},{url:r.artistSource,label:r.artistSourceName,language:r.artistSourceLanguage},...(r.extraSources||[])];
   const main=`<main id="main" class="wrap artist-page"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><a href="/#records">The listening shelf</a></nav>
   <header class="artist-heading"><p class="eyebrow">MEET THE ARTIST / <span lang="ko">${e(r.korean)}</span></p><h1>${e(r.artist)}</h1><p class="artist-lead">${e(r.artistIntro)}</p></header>

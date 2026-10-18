@@ -1,5 +1,23 @@
 export const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 export const artistPath = record => `/artists/${record.id}/`;
+export const formatPosition = number => String(number).padStart(2, '0');
+
+// Editorial overrides set the opening order; every catalogue artist still appears.
+export function getFeaturedArtists({records, editorPick, featuredArtists = []}) {
+  const all = [...records, editorPick];
+  const ids = [...new Set([...featuredArtists.map(feature => feature.id), ...all.map(record => record.id)])];
+  return ids.map(id => {
+    const record = all.find(record => record.id === id);
+    if (!record) throw new Error(`Unknown featured artist: ${id}`);
+    const feature = featuredArtists.find(feature => feature.id === id) || {};
+    return {
+      id, image: record.image, alt: `${record.release || record.album} — release artwork`,
+      position: '50% 50%', kind: feature.image ? 'portrait' : 'artwork',
+      title: record.note, deck: `Meet ${escapeHTML(record.artist)} through <em>${escapeHTML(record.track)}</em>.`,
+      ...feature,
+    };
+  });
+}
 export const normalizeSearch = value => String(value).normalize('NFKC').toLowerCase().replace(/[\s\p{P}\p{S}]/gu, '');
 
 export function searchCatalogue(records, pick, query) {

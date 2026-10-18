@@ -8,7 +8,7 @@
     <section class="feature-grid wrap" id="discover" aria-label="Featured artist and listening selections">
       <article class="feature-story" id="artist-carousel" aria-label="Featured artists">
         <div class="hero-toolbar" hidden>
-          <span class="mono">IN FOCUS <span id="hero-position" aria-hidden="true">01 / 04</span></span>
+          <span class="mono">IN FOCUS <span id="hero-position" aria-hidden="true">01 / {{FEATURE_COUNT}}</span></span>
           <div class="hero-controls">
             <button id="hero-rotation" aria-label="Pause artist rotation"><span aria-hidden="true">Ⅱ</span> Pause</button>
             <button id="hero-previous" aria-label="Previous artist">←</button>
@@ -16,7 +16,8 @@
           </div>
         </div>
         <div class="hero-slides" id="hero-slides">{{HERO}}</div>
-        <div class="hero-artists" id="hero-artists" role="group" aria-label="Choose a featured artist" hidden></div>
+        <p class="hero-directory-label mono" data-js-only hidden>EXPLORE ALL {{FEATURE_COUNT}} ARTISTS</p>
+        <div class="hero-artists" id="hero-artists" role="group" aria-label="Choose an artist" hidden></div>
         <p class="sr-only" id="hero-status" role="status" aria-live="polite" aria-atomic="true"></p>
       </article>
 

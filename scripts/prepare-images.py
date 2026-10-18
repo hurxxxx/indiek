@@ -12,7 +12,7 @@ ASSETS = ROOT / 'dist/assets'
 OUT = ASSETS / 'optimized'
 OUT.mkdir(exist_ok=True)
 catalogue = json.loads((ROOT / 'content/catalogue.json').read_text())
-portraits = {f['image'] for f in catalogue['featuredArtists']}
+portraits = {f['image'] for f in catalogue['featuredArtists'] if f.get('image')}
 images = portraits | {r['image'] for r in catalogue['records'] + [catalogue['editorPick']]}
 manifest = {}
 for name in sorted(images):

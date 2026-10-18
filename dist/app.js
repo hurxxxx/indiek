@@ -1,7 +1,8 @@
 import catalogue from './catalogue.js';
-import {escapeHTML as e, artistPath, coverHTML, readSaved, searchCatalogue} from './shared.mjs';
+import {escapeHTML as e, artistPath, coverHTML, readSaved, searchCatalogue, getFeaturedArtists, formatPosition} from './shared.mjs';
 
-const {records, editorPick: pick, media, featuredArtists: features} = catalogue;
+const {records, editorPick: pick, media} = catalogue;
+const features = getFeaturedArtists(catalogue);
 const all = [...records,pick];
 const findRecord = id => all.find(r => r.id === id);
 const storageKey = 'indiek-saved-v1';
@@ -140,7 +141,7 @@ function initArtistCarousel() {
   const interval=9000;
   let current=0,wantsRotation=!reducedMotion.matches,hovered=window.matchMedia('(hover: hover)').matches&&carousel.matches(':hover'),inView=false,timer,touchStart,suppressClick=false,rotationPress;
   const slides=[...slidesRoot.children];
-  selectors.innerHTML=features.map((feature,index)=>`<button data-feature="${index}" aria-controls="hero-${feature.id}" aria-pressed="${index===0}" aria-label="Show ${e(findRecord(feature.id).artist)}"><span class="mono" aria-hidden="true">0${index+1}</span>${e(findRecord(feature.id).artist)}</button>`).join('');
+  selectors.innerHTML=features.map((feature,index)=>`<button data-feature="${index}" aria-controls="hero-${feature.id}" aria-pressed="${index===0}" aria-label="Show ${e(findRecord(feature.id).artist)}"><span class="mono" aria-hidden="true">${formatPosition(index+1)}</span>${e(findRecord(feature.id).artist)}</button>`).join('');
   const choices=[...selectors.children];
   carousel.setAttribute('role','region');carousel.setAttribute('aria-roledescription','carousel');
   carousel.querySelector('.hero-toolbar').hidden=false;selectors.hidden=false;
@@ -172,7 +173,7 @@ function initArtistCarousel() {
       else slide.setAttribute('aria-hidden','true');
       choices[i].setAttribute('aria-pressed',String(active));
     });
-    position.textContent=`0${current+1} / 0${slides.length}`;
+    position.textContent=`${formatPosition(current+1)} / ${formatPosition(slides.length)}`;
     if(manual)status.textContent=`${findRecord(features[current].id).artist}, ${current+1} of ${slides.length}`;
     syncRotation();
   }
@@ -222,6 +223,6 @@ function initArtistCarousel() {
   new MutationObserver(syncRotation).observe(dialog,{attributes:true,attributeFilter:['open']});
   new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;syncRotation();},{threshold:0.25}).observe(carousel);
   reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches)stop();});
-  syncRotation();
+  show(0);
 }
 initArtistCarousel();
