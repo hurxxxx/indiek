@@ -20,9 +20,10 @@ function browser({origin='https://indiek.com',choice=null,privacy=false,storageF
     location:{origin,pathname:'/artists/ydbb/'},navigator:{globalPrivacyControl:privacy},
     localStorage:{getItem(){if(storageFails)throw new Error();return stored;},setItem(key,value){if(storageFails)throw new Error();assert.equal(key,analyticsStorageKey);stored=value;}},
   });
-  const doc={querySelector:element,querySelectorAll:()=>[element('[data-analytics-settings]')],createElement:()=>({}),head:{append:script=>scripts.push(script)},title:'YdBB — ONCE | indiek',referrer:'https://example.com/private?token=hidden'};
-  initAnalytics(config,'https://indiek.com',win,doc);
-  return {win,scripts,element,stored:()=>stored};
+  const doc=new EventTarget();
+  Object.assign(doc,{querySelector:element,querySelectorAll:()=>[element('[data-analytics-settings]')],createElement:()=>({}),head:{append:script=>scripts.push(script)},title:'YdBB — ONCE | indiek',referrer:'https://example.com/private?token=hidden'});
+  const analytics=initAnalytics(config,'https://indiek.com',win,doc);
+  return {win,doc,analytics,scripts,element,stored:()=>stored};
 }
 
 test('no tracker is loaded until analytics is allowed; decline stays local',()=>{
@@ -60,4 +61,24 @@ test('query strings and referring-page paths are excluded from analytics',()=>{
   assert.deepEqual(commands.find(command=>command[0]==='setCustomUrl'),['setCustomUrl','https://indiek.com/artists/ydbb/']);
   assert.deepEqual(commands.find(command=>command[0]==='setReferrerUrl'),['setReferrerUrl','https://example.com/']);
   assert.ok(!JSON.stringify(commands).includes('hidden'));
+});
+test('internal navigation tracks the new page once, without another script or consent bypass',()=>{
+  const b=browser();
+  b.analytics.trackPageView('https://indiek.com/');
+  assert.equal(b.win._paq,undefined);
+  b.element('[data-analytics-allow]').click();
+  b.win.location.pathname='/artists/kim-sawol/';b.doc.title='Kim Sawol — Someone | indiek';
+  b.analytics.trackPageView('https://indiek.com/artists/ydbb/?secret=value');
+  assert.equal(b.scripts.length,1);
+  assert.equal(b.win._paq.filter(c=>c[0]==='trackPageView').length,2);
+  assert.deepEqual(b.win._paq.at(-4),['setCustomUrl','https://indiek.com/artists/kim-sawol/']);
+  assert.deepEqual(b.win._paq.at(-3),['setReferrerUrl','https://indiek.com/']);
+  assert.deepEqual(b.win._paq.at(-2),['setDocumentTitle',b.doc.title]);
+  b.element('[data-analytics-decline]').click();
+  const length=b.win._paq.length;
+  b.analytics.trackPageView('https://indiek.com/');
+  assert.equal(b.win._paq.length,length);
+  const local=browser({origin:'http://127.0.0.1:4173'});
+  local.element('[data-analytics-allow]').click();local.analytics.trackPageView('');
+  assert.equal(local.win._paq,undefined);
 });

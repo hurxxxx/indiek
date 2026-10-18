@@ -9,21 +9,26 @@ export function readAnalyticsChoice(value, now = Date.now()) {
 }
 
 export function analyticsCommands(config, page) {
-  let referrer = '';
-  try { referrer = new URL(page.referrer).origin + '/'; } catch { /* No referring page. */ }
   return [
     ['requireConsent'], ['disableCookies'], ['disableBrowserFeatureDetection'],
     ['disableCampaignParameters'], ['setDoNotTrack', true],
     ['setTrackerUrl', `${config.url}/matomo.php`], ['setSiteId', config.siteId],
+    ['setConsentGiven'], ...pageViewCommands(page),
+  ];
+}
+
+export function pageViewCommands(page) {
+  let referrer = '';
+  try { referrer = new URL(page.referrer).origin + '/'; } catch { /* No referring page. */ }
+  return [
     ['setCustomUrl', page.origin + page.pathname], ['setReferrerUrl', referrer],
-    ['setDocumentTitle', page.title], ['setConsentGiven'], ['trackPageView'],
+    ['setDocumentTitle', page.title], ['trackPageView'],
   ];
 }
 
 export function initAnalytics(config, siteOrigin, win = window, doc = document) {
   const notice = doc.querySelector('#analytics-notice');
   if (!config?.enabled || !notice) return;
-  const settings = [...doc.querySelectorAll('[data-analytics-settings]')];
   const allow = doc.querySelector('[data-analytics-allow]');
   const decline = doc.querySelector('[data-analytics-decline]');
   const status = doc.querySelector('#analytics-status');
@@ -65,16 +70,17 @@ export function initAnalytics(config, siteOrigin, win = window, doc = document) 
     describe();
     notice.hidden = true;
     if (returnFocus?.isConnected) returnFocus.focus({preventScroll:true});
-    else if (notice.contains(doc.activeElement)) settings[0]?.focus({preventScroll:true});
+    else if (notice.contains(doc.activeElement)) doc.querySelector('[data-analytics-settings]')?.focus({preventScroll:true});
   }
   allow.addEventListener('click', () => choose('allowed'));
   decline.addEventListener('click', () => choose('declined'));
-  settings.forEach(button => {
-    button.hidden = false;
-    button.addEventListener('click', () => {
-      returnFocus = button;
-      describe(); notice.hidden = false; decline.focus();
-    });
+  const refreshControls = () => doc.querySelectorAll('[data-analytics-settings]').forEach(button => button.hidden = false);
+  refreshControls();
+  doc.addEventListener('click', event => {
+    const button = event.target.closest('[data-analytics-settings]');
+    if (!button) return;
+    returnFocus = button;
+    describe(); notice.hidden = false; decline.focus();
   });
   win.addEventListener('storage', event => {
     if (event.key !== analyticsStorageKey && event.key !== null) return;
@@ -84,4 +90,11 @@ export function initAnalytics(config, siteOrigin, win = window, doc = document) 
   });
   describe(); notice.hidden = Boolean(choice || blocked);
   start();
+  return {
+    refreshControls,
+    trackPageView(referrer) {
+      if (!active || choice !== 'allowed' || blocked || win.location.origin !== siteOrigin) return;
+      for (const command of pageViewCommands({origin:win.location.origin, pathname:win.location.pathname, title:doc.title, referrer})) win._paq.push(command);
+    },
+  };
 }

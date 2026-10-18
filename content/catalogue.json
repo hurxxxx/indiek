@@ -408,6 +408,40 @@
         "guitars-and-bands",
         "distinct-voices"
       ]
+    },
+    {
+      "id": "kim-sawol",
+      "artist": "Kim Sawol",
+      "korean": "김사월",
+      "aliases": "Kim Sa-wol Kim Sa Wol",
+      "album": "Someone",
+      "release": "Romance",
+      "year": "2018",
+      "genre": "FOLK",
+      "category": "solo",
+      "image": "kim-sawol-romance.jpg",
+      "track": "Someone",
+      "koreanTitle": "누군가에게",
+      "duration": "04:14",
+      "provider": "youtube",
+      "videoId": "11mxnvHowTY",
+      "channel": "POCLANOS",
+      "url": "https://www.youtube.com/watch?v=11mxnvHowTY",
+      "videoType": "music-video",
+      "performance": "Official music video · POCLANOS",
+      "note": "A love song with mixed feelings.",
+      "description": "“Someone” holds on to affection and doubt at the same time. Written and composed by Kim Sawol, it appears on her second studio album Romance, released in September 2018.",
+      "source": "https://music.apple.com/us/album/romance/1436255543",
+      "sourceName": "Kim Sawol — Romance on Apple Music",
+      "sourceLanguage": "English",
+      "artistIntro": "Kim Sawol is a Korean folk singer-songwriter. She began releasing music with Kim Haewon in 2014 and made her solo debut with Suzanne in 2015. Her songs look closely at love, loneliness and the contradictions of everyday life.",
+      "artistSource": "https://poclanos.com/album/%EB%A1%9C%EB%A7%A8%EC%8A%A4/",
+      "artistSourceName": "POCLANOS — Romance release notes and artist introduction",
+      "artistSourceLanguage": "Korean",
+      "listeningNote": "The album’s notes describe love as a way of coming to know yourself, even while knowing it will end. “Someone” sits inside that larger story of closeness and solitude.",
+      "guideTags": [
+        "distinct-voices"
+      ]
     }
   ],
   "featuredArtists": [

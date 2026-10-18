@@ -10,7 +10,7 @@ const freshCatalogue = () => JSON.parse(JSON.stringify(catalogue));
 test('listening guides cover every artist with the intended opening tracks and counts',()=>{
   const guides = getListeningGuides(catalogue);
   assert.deepEqual(guides.map(g=>[g.id,g.records.length,g.records[0].id]),[
-    ['on-stage',6,'sunwoojunga'],['guitars-and-bands',6,'black-skirts'],['distinct-voices',8,'yoon-mirae'],
+    ['on-stage',6,'sunwoojunga'],['guitars-and-bands',6,'black-skirts'],['distinct-voices',9,'yoon-mirae'],
   ]);
   assert.deepEqual([...new Set(guides.flatMap(g=>g.records.map(r=>r.id)))].sort(),[...records,editorPick].map(r=>r.id).sort());
   for (const guide of guides) assert.equal(new Set(guide.records.map(r=>r.id)).size,guide.records.length);
@@ -61,8 +61,8 @@ for(const [query,expected] of [
     assert.deepEqual(searchCatalogue(records,editorPick,query).map(r=>r.id),[expected]);
   });
 }
-test('empty search includes all eleven shelf entries and the editor pick',()=>{
-  assert.equal(searchCatalogue(records,editorPick,'').length,12);
+test('empty search includes all shelf entries and the editor pick',()=>{
+  assert.equal(searchCatalogue(records,editorPick,'').length,records.length+1);
   assert.deepEqual(searchCatalogue(records,editorPick,'not-a-real-artist-983'),[]);
 });
 test('existing ONCE save survives migration and unknown IDs do not appear',()=>{
@@ -84,6 +84,6 @@ test('a newly added artist enters the hero automatically without a separate feat
   assert.equal(added.length,1);
   assert.equal(added[0].image,record.image);
   assert.equal(added[0].kind,'artwork');
-  assert.equal(formatPosition(features.length),'13');
+  assert.equal(formatPosition(features.length),String(records.length+2).padStart(2,'0'));
   assert.equal(formatPosition(1),'01');
 });

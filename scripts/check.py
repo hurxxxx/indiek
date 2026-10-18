@@ -51,6 +51,7 @@ for path in dist.rglob('*.html'):
     if page.meta.get('og:image')!=site['url']+'/assets/indiek-share.png': errors.append(f'{path}: invalid sharing image')
     if page.h1!=1: errors.append(f'{path}: expected one h1')
     if 'analytics-notice' not in page.ids: errors.append(f'{path}: missing analytics choice')
+    if 'persistent-player' not in page.ids or text.index('id="persistent-player"') < text.index('</main>'): errors.append(f'{path}: shared player must be outside replaceable page content')
     if any('matomo.lumejs.com' in ref for ref in page.refs): errors.append(f'{path}: Matomo loaded before consent')
     if page.frames: errors.append(f'{path}: player loaded without consent')
     if '{{' in text or 'lumejs.chatgpt.site' in text or 'data-story=' in text: errors.append(f'{path}: stale template content')
@@ -119,7 +120,7 @@ for file in ['index.html','notes/first-listens/index.html']:
 expected_count=len(catalogue['records'])+5+len(guide_ids)
 if len(pages)!=expected_count: errors.append(f'Expected {expected_count} pages, found {len(pages)}')
 if site['url']+'/sitemap.xml' not in (dist/'robots.txt').read_text(): errors.append('Missing robots sitemap')
-for source,target in [('site/app.js','dist/app.js'),('site/analytics.mjs','dist/analytics.mjs'),('site/styles.css','dist/styles.css'),('site/shared.mjs','dist/shared.mjs')]:
+for source,target in [(f'site/{name}',f'dist/{name}') for name in ['app.js','analytics.mjs','navigation.mjs','player.mjs','styles.css','shared.mjs']]:
     if (root/source).read_bytes()!=(root/target).read_bytes(): errors.append('Stale build: '+target)
 runtime=json.loads((dist/'catalogue.js').read_text().removeprefix('export default ').strip().removesuffix(';'))
 if runtime!={**catalogue,'media':media}: errors.append('Stale catalogue; run npm run build')

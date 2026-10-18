@@ -167,6 +167,30 @@
       }
     ]
   },
+  "kim-sawol-romance.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/kim-sawol-romance-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 24092
+      },
+      {
+        "src": "/assets/optimized/kim-sawol-romance-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 74910
+      },
+      {
+        "src": "/assets/optimized/kim-sawol-romance-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 149306
+      }
+    ]
+  },
   "motte-dont-run-away.jpg": {
     "width": 1280,
     "height": 720,

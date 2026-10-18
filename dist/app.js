@@ -1,5 +1,7 @@
 import catalogue from './catalogue.js';
 import {initAnalytics} from './analytics.mjs';
+import {initNavigation} from './navigation.mjs';
+import {createPlayer} from './player.mjs';
 import {escapeHTML as e, artistPath, coverHTML, readSaved, searchCatalogue, getFeaturedArtists, formatPosition} from './shared.mjs';
 
 const {records, editorPick: pick, media} = catalogue;
@@ -81,30 +83,22 @@ function renderSearch() {
   input.addEventListener('input',update);update();input.focus();
 }
 
-const placeholders=new WeakMap();
-function unloadPlayer(shell,focus=false) {
-  const stage=shell.querySelector('.player-stage');
-  if(!placeholders.has(shell))return;
-  stage.replaceChildren(placeholders.get(shell).cloneNode(true));
-  shell.classList.remove('is-loaded');
-  shell.querySelector('[data-unload-player]').hidden=true;
-  if(focus)stage.querySelector('button')?.focus();
+const playerRoot=document.querySelector('#persistent-player');
+const player=createPlayer(playerRoot,{onChange:syncPlayer});
+function syncPlayer() {
+  document.querySelectorAll('[data-load-player]').forEach(button=>{
+    const selected=button.dataset.loadPlayer===player.current?.id;
+    button.textContent=selected?'Return to player':'Agree & load YouTube';
+    button.setAttribute('aria-label',selected?`Return to ${player.current.track} player`:`Agree & load YouTube`);
+    button.closest('.player-shell').querySelector('[data-unload-player]').hidden=!selected;
+  });
 }
-function loadPlayer(button) {
-  const shell=button.closest('.player-shell');
-  const r=findRecord(button.dataset.loadPlayer);
-  if(!shell||!r||r.externalOnly)return;
-  document.querySelectorAll('.player-shell.is-loaded').forEach(other=>unloadPlayer(other));
-  const stage=shell.querySelector('.player-stage');
-  if(!placeholders.has(shell))placeholders.set(shell,stage.firstElementChild.cloneNode(true));
-  const frame=document.createElement('iframe');
-  frame.src=`https://www.youtube-nocookie.com/embed/${r.videoId}?playsinline=1`;
-  frame.title=`${r.track} by ${r.artist} — ${r.channel}`;
-  frame.allow='encrypted-media; picture-in-picture; fullscreen';
-  frame.allowFullscreen=true;
-  frame.referrerPolicy='strict-origin-when-cross-origin';
-  stage.replaceChildren(frame);shell.classList.add('is-loaded');
-  shell.querySelector('[data-unload-player]').hidden=false;frame.focus();
+function closePlayer() {
+  const id=player.current?.id;
+  player.close();
+  const button=[...document.querySelectorAll('[data-load-player]')].find(button=>button.dataset.loadPlayer===id);
+  (button||document.querySelector('.search-button')).focus({preventScroll:true});
+  notify('YouTube disconnected.');
 }
 document.addEventListener('click',event=>{
   const button=event.target.closest('button');if(!button)return;
@@ -112,8 +106,8 @@ document.addEventListener('click',event=>{
   else if(button.hasAttribute('data-remove'))toggleSaved(button.dataset.remove);
   else if(button.hasAttribute('data-search'))renderSearch();
   else if(button.hasAttribute('data-library'))renderLibrary();
-  else if(button.hasAttribute('data-load-player'))loadPlayer(button);
-  else if(button.hasAttribute('data-unload-player'))unloadPlayer(button.closest('.player-shell'),true);
+  else if(button.hasAttribute('data-load-player'))player.load(findRecord(button.dataset.loadPlayer));
+  else if(button.hasAttribute('data-unload-player'))closePlayer();
   else if(button.hasAttribute('data-filter')){
     const filter=button.dataset.filter;
     document.querySelectorAll('[data-filter]').forEach(el=>el.setAttribute('aria-pressed',String(el===button)));
@@ -128,9 +122,9 @@ window.addEventListener('storage',event=>{
     if(dialogMode==='library')renderLibrary();
   }
 });
-window.addEventListener('pagehide',()=>document.querySelectorAll('.player-shell.is-loaded').forEach(shell=>unloadPlayer(shell)));
+window.addEventListener('pagehide',()=>player.close());
 syncSaved();
-initAnalytics(catalogue.site.analytics, catalogue.site.url);
+const analytics=initAnalytics(catalogue.site.analytics, catalogue.site.url);
 
 function initArtistCarousel() {
   const carousel=document.querySelector('#artist-carousel');if(!carousel)return;
@@ -222,9 +216,29 @@ function initArtistCarousel() {
   },true);
   document.addEventListener('visibilitychange',syncRotation);
   dialog.addEventListener('close',syncRotation);
-  new MutationObserver(syncRotation).observe(dialog,{attributes:true,attributeFilter:['open']});
-  new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;syncRotation();},{threshold:0.25}).observe(carousel);
-  reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches)stop();});
+  const mutation=new MutationObserver(syncRotation);
+  mutation.observe(dialog,{attributes:true,attributeFilter:['open']});
+  const intersection=new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;syncRotation();},{threshold:0.25});
+  intersection.observe(carousel);
+  const motionChange=()=>{if(reducedMotion.matches)stop();};
+  reducedMotion.addEventListener('change',motionChange);
   show(0);
+  return ()=>{
+    window.clearTimeout(timer);
+    mutation.disconnect();intersection.disconnect();
+    document.removeEventListener('visibilitychange',syncRotation);
+    dialog.removeEventListener('close',syncRotation);
+    reducedMotion.removeEventListener('change',motionChange);
+  };
 }
-initArtistCarousel();
+let cleanupCarousel=initArtistCarousel();
+initNavigation({
+  beforeSwap:()=>cleanupCarousel?.(),
+  afterSwap:()=>{
+    document.querySelectorAll('[data-js-only]').forEach(el=>el.hidden=false);
+    syncSaved();syncPlayer();analytics?.refreshControls();
+    cleanupCarousel=initArtistCarousel();
+  },
+  onNavigate:referrer=>analytics?.trackPageView(referrer),
+  onError:()=>notify('This page could not be loaded. Please try the link again.'),
+});

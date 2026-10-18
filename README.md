@@ -10,6 +10,7 @@ An independent, non-commercial music journal introducing Korean musicians to lis
 
 - Artist introductions, listening notes and release information in English.
 - Official YouTube videos and live performances, with Apple Music release links.
+- One shared YouTube player across the site, with fullscreen viewing and uninterrupted playback during internal navigation, including Back and Forward. Loading another song replaces the video; closing the player, reloading or leaving the site ends playback.
 - Listening guides, artist and song search, and tracks saved in your browser.
 - Responsive pages with keyboard navigation and reduced-motion support.
 
