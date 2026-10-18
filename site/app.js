@@ -1,4 +1,5 @@
 import catalogue from './catalogue.js';
+import {initAnalytics} from './analytics.mjs';
 import {escapeHTML as e, artistPath, coverHTML, readSaved, searchCatalogue, getFeaturedArtists, formatPosition} from './shared.mjs';
 
 const {records, editorPick: pick, media} = catalogue;
@@ -129,6 +130,7 @@ window.addEventListener('storage',event=>{
 });
 window.addEventListener('pagehide',()=>document.querySelectorAll('.player-shell.is-loaded').forEach(shell=>unloadPlayer(shell)));
 syncSaved();
+initAnalytics(catalogue.site.analytics, catalogue.site.url);
 
 function initArtistCarousel() {
   const carousel=document.querySelector('#artist-carousel');if(!carousel)return;

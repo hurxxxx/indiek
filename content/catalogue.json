@@ -3,7 +3,12 @@
     "name": "indiek",
     "url": "https://indiek.com",
     "email": "gw@lumejs.com",
-    "updated": "2026-10-18"
+    "updated": "2026-10-18",
+    "analytics": {
+      "enabled": true,
+      "url": "https://matomo.lumejs.com",
+      "siteId": 4
+    }
   },
   "records": [
     {
