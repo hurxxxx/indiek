@@ -4,6 +4,7 @@
 - Checkout: `/projects/indiek`, branch `main`, remote `https://github.com/hurxxxx/indiek.git`.
 - Web root: `/projects/indiek/dist`. Nginx serves static files; no Node process, backend port, Docker container or PM2 service is required.
 - Nginx configuration: `/etc/nginx/sites-available/indiek.com`, linked from `sites-enabled`.
+- The existing server configures TLS and HTTP/2 on shared IPv4/IPv6 port 443 listeners. This site's `listen` directives inherit those socket options. On a different server, explicitly configure TLS/HTTP2 listeners before using this file.
 - Certificate: `/etc/letsencrypt/live/indiek.com/`, covering both names. Certbot uses the webroot `/var/www/letsencrypt` and the existing `certbot.timer`.
 - Certificate renewal deploy hook: validate and reload Nginx. Private keys stay in `/etc/letsencrypt`, outside the checkout and web root.
 - Routine access logging is disabled for these virtual hosts. Error logging uses `/var/log/nginx/indiek.error.log`, covered by the server's existing Nginx log rotation.
