@@ -85,6 +85,16 @@ function renderSearch() {
 
 const playerRoot=document.querySelector('#persistent-player');
 const player=createPlayer(playerRoot,{onChange:syncPlayer});
+const playerSizeButton=playerRoot.querySelector('[data-resize-player]');
+function setCompactPlayer(compact) {
+  playerRoot.classList.toggle('is-compact',compact);
+  playerSizeButton.textContent=compact?'Larger':'Smaller';
+  playerSizeButton.setAttribute('aria-label',compact?'Use larger player':'Use smaller player');
+}
+new ResizeObserver(()=>{
+  const height=playerRoot.getBoundingClientRect().height;
+  document.documentElement.style.setProperty('--player-clearance',`${Math.ceil(height)+36}px`);
+}).observe(playerRoot);
 function syncPlayer() {
   document.querySelectorAll('[data-load-player]').forEach(button=>{
     const selected=button.dataset.loadPlayer===player.current?.id;
@@ -96,6 +106,7 @@ function syncPlayer() {
 function closePlayer() {
   const id=player.current?.id;
   player.close();
+  setCompactPlayer(false);
   const button=[...document.querySelectorAll('[data-load-player]')].find(button=>button.dataset.loadPlayer===id);
   (button||document.querySelector('.search-button')).focus({preventScroll:true});
   notify('YouTube disconnected.');
@@ -108,6 +119,7 @@ document.addEventListener('click',event=>{
   else if(button.hasAttribute('data-library'))renderLibrary();
   else if(button.hasAttribute('data-load-player'))player.load(findRecord(button.dataset.loadPlayer));
   else if(button.hasAttribute('data-unload-player'))closePlayer();
+  else if(button.hasAttribute('data-resize-player'))setCompactPlayer(!playerRoot.classList.contains('is-compact'));
   else if(button.hasAttribute('data-filter')){
     const filter=button.dataset.filter;
     document.querySelectorAll('[data-filter]').forEach(el=>el.setAttribute('aria-pressed',String(el===button)));

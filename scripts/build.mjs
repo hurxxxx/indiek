@@ -11,7 +11,7 @@ const {site, records, editorPick: pick} = catalogue;
 const features = getFeaturedArtists(catalogue);
 const guides = getListeningGuides(catalogue);
 const all = [...records, pick];
-const version = '20261018-continuous-player';
+const version = '20261019-larger-player';
 const pages = [];
 const find = id => all.find(r => r.id === id);
 const sourceLink = (url, label, language = '') => out(url, `${label}${language ? ` (${language})` : ''}`);
@@ -27,7 +27,7 @@ function footer() {
   return `<footer class="footer wrap"><a class="small-logo" href="/" aria-label="indiek home">indiek.</a><span class="mono">KOREAN MUSIC. OPEN EARS.</span><div><a href="/about/">About & contact</a><a href="/privacy-and-terms/">Privacy & terms</a><a href="mailto:${site.email}">Get in touch</a><button class="analytics-settings" data-analytics-settings hidden>Analytics settings</button><span class="mono">© 2026 INDIEK</span></div></footer>
   <section class="analytics-notice" id="analytics-notice" aria-labelledby="analytics-title" hidden><div><h2 id="analytics-title">Help improve indiek?</h2><p>Allow optional visit statistics, without tracking cookies. <a href="/privacy-and-terms/#analytics">Privacy details</a></p><p id="analytics-status" class="analytics-status" role="status"></p></div><div class="analytics-actions"><button data-analytics-decline>No thanks</button><button data-analytics-allow>Allow analytics</button></div></section>
   <dialog id="content-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span class="mono">INDIEK / KEEP EXPLORING</span><button class="close-button" aria-label="Close dialog">Close <span aria-hidden="true">×</span></button></div><div id="dialog-content"></div></dialog><div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <section id="persistent-player" class="persistent-player" aria-label="YouTube player" hidden><div class="persistent-player-heading"><div><p class="mono">KEEP LISTENING</p><a data-current-track href="/#records"></a></div><button data-unload-player aria-label="Stop and close YouTube player" title="Stop and close">×</button></div><div class="persistent-player-stage" data-player-stage></div></section>`;
+  <section id="persistent-player" class="persistent-player" aria-label="YouTube player" hidden><div class="persistent-player-heading"><div><p class="mono">KEEP LISTENING</p><a data-current-track href="/#records"></a></div><button class="player-size-toggle" data-resize-player aria-label="Use smaller player">Smaller</button><button data-unload-player aria-label="Stop and close YouTube player" title="Stop and close">×</button></div><div class="persistent-player-stage" data-player-stage></div></section>`;
 }
 function page(url, title, description, main, kind = '') {
   const canonical = site.url + url;
