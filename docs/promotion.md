@@ -79,7 +79,7 @@ Would be interested to hear how it feels to browse if you don't know any of thes
 - 백예린 추천: [divine_pizzicato11](https://www.reddit.com/r/kpoppers/comments/1x94klf/comment/phillkh/)가 BOL4 소개를 반기며 백예린 추가를 추천. 영어권 곡 커버·밴드 활동을 언급하고 [라이브 영상](https://www.youtube.com/watch?v=l77yvQ5o8iM&list=RDl77yvQ5o8iM)을 공유함. 댓글 내용의 요약이며 영상은 이번에 재생·검증하지 않음. 08:09 점검 당시 미답변이었으며 아래 사용자 요청으로 답변함.
 - 추가 증빙: 로컬 `qa/reddit-kpoppers-comments-20261019.png`.
 - 백예린 답글: 2026-10-19 사용자 요청으로 게시. 현재 규칙 3의 자체 채널·블로그 제출 주 1회 제한과 중복 답글 없음을 확인함. 기존 글의 추천에 답변했으며 링크 추가·새 홍보 글 없음. [답글](https://www.reddit.com/r/kpoppers/comments/1x94klf/comment/phlccei/) 문안: `i love yerin too! i'll be adding her soon`. 상태 `제출 확인`: 로그인 상태에서 고유 주소 재접속 후 원댓글 아래 본문 유지 확인, 삭제·대기 안내 없음. 비로그인 조회 도구는 `Cache miss`로 실패해 공개 노출은 미확인. 증빙: `qa/reddit-yerin-reply-20261019.png`.
-- 후속: 백예린을 좋아하며 곧 소개하겠다고 안내함. 2026-10-19 사용자 지정 곡 “0310”과 공식 가사 영상(Yp_vF0k1arc)으로 `/artists/yerin-baek/` 소개를 로컬에 추가·검증함. 배포와 Reddit 업데이트 알림은 아직 하지 않음. 주 1회 제한은 반복 게시 권장이 아니며 동일 문안을 재게시하지 않음.
+- 후속: 백예린을 좋아하며 곧 소개하겠다고 안내함. 2026-10-19 사용자 지정 곡 “0310”과 공식 가사 영상(Yp_vF0k1arc)으로 [백예린 소개](https://indiek.com/artists/yerin-baek/)를 추가·배포하고 공개 페이지·검색을 확인했다. Reddit 업데이트 알림은 아직 하지 않음. 주 1회 제한은 반복 게시 권장이 아니며 동일 문안을 재게시하지 않음.
 
 제목: I made an English fan site for Korean music, from BOL4 to HANRORO
 
@@ -124,7 +124,7 @@ It's my own non-commercial fan project. Still a small selection but I'm planning
 
 ## 다음 작업
 
-RSS·백예린 답글 제출은 완료했다. RSS 제공은 고려 중이며 백예린 소개는 로컬 구현·검증을 마쳤다. 배포 후 실제 공개 주소를 확인해야 추천한 독자에게 업데이트를 알릴 수 있다. 신규 대상은 Korean Indie 링크 등재 문의, 한국 인디 Discord의 규칙·활동 확인을 우선 후보로 제안했다. 지속적인 음악 추천은 indiek 자체 Bluesky/Threads 계정을 검토한다. 실제 연락·게시 시 문안과 결과를 해당 시도 항목으로 기록한다.
+RSS·백예린 답글 제출은 완료했다. RSS 제공은 고려 중이며 백예린 소개는 배포·공개 확인을 마쳤다. 추천한 독자에게 업데이트를 알리는 후속 답글은 아직 보내지 않았다. 신규 대상은 Korean Indie 링크 등재 문의, 한국 인디 Discord의 규칙·활동 확인을 우선 후보로 제안했다. 지속적인 음악 추천은 indiek 자체 Bluesky/Threads 계정을 검토한다. 실제 연락·게시 시 문안과 결과를 해당 시도 항목으로 기록한다.
 
 2026-10-19 추가 홍보 방식 조사·제안. 아래는 실행 전 후보이며 계정·재생목록 생성, 연락, 게시 또는 사이트 수정은 하지 않았다.
 
