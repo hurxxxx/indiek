@@ -2,6 +2,7 @@ import catalogue from './catalogue.js';
 import {initAnalytics} from './analytics.mjs';
 import {initNavigation, createPageScroll} from './navigation.mjs';
 import {createPlayer} from './player.mjs';
+import {mobilePlayerQuery, initMobileViewport} from './mobile.mjs';
 import {escapeHTML as e, artistPath, coverHTML, readSaved, searchCatalogue, getFeaturedArtists, formatPosition, youtubeConsentHTML} from './shared.mjs';
 
 const {records, editorPick: pick, media} = catalogue;
@@ -13,11 +14,15 @@ let saved;
 try { saved = readSaved(localStorage.getItem(storageKey),records); } catch { saved = new Set(); }
 const dialog = document.querySelector('#content-dialog');
 const dialogContent = document.querySelector('#dialog-content');
+const dialogTitle = document.querySelector('#dialog-title');
+let libraryPosition = null;
+const sheetBackground = new Map();
 let returnFocus;
 let dialogMode = '';
 let toastTimer;
 let youtubeAllowed = false;
-const mobilePlayer=window.matchMedia('(max-width: 760px)');
+const mobilePlayer=window.matchMedia(mobilePlayerQuery);
+initMobileViewport(mobilePlayer);
 document.querySelectorAll('[data-js-only]').forEach(el => el.hidden = false);
 
 function syncSaved() {
@@ -36,50 +41,83 @@ function notify(message) {
   toast.textContent=message;toast.classList.add('visible');clearTimeout(toastTimer);
   toastTimer=setTimeout(()=>toast.classList.remove('visible'),2600);
 }
-function openDialog(content,mode) {
+function rememberLibraryPosition() {
+  if(!dialog.open||dialogMode!=='library')return;
+  const scroll=dialogContent.querySelector('.dialog-scroll');
+  if(!scroll)return;
+  const top=scroll.getBoundingClientRect().top;
+  const row=[...scroll.querySelectorAll('[data-saved-row]')].find(row=>row.getBoundingClientRect().bottom>top+1);
+  libraryPosition={top:scroll.scrollTop,id:row?.dataset.savedRow,offset:row?row.getBoundingClientRect().top-top:0};
+}
+function restoreLibraryPosition() {
+  const scroll=dialogContent.querySelector('.dialog-scroll');
+  const id=libraryPosition?.id||player.current?.id;
+  const row=[...scroll.querySelectorAll('[data-saved-row]')].find(row=>row.dataset.savedRow===id);
+  if(row){
+    const offset=libraryPosition?.offset??Math.max(0,(scroll.clientHeight-row.offsetHeight)/2);
+    scroll.scrollTop+=row.getBoundingClientRect().top-scroll.getBoundingClientRect().top-offset;
+  }else scroll.scrollTop=libraryPosition?.top||0;
+  scroll.addEventListener('scroll',rememberLibraryPosition,{passive:true});
+}
+function setSheetBackground(active) {
+  document.documentElement.classList.toggle('has-mobile-sheet',active);
+  if(active&&!sheetBackground.size){
+    for(const element of document.querySelectorAll('#page-content,#analytics-notice')){
+      sheetBackground.set(element,element.inert);element.inert=true;
+    }
+  }else if(!active){
+    for(const [element,inert] of sheetBackground)element.inert=inert;
+    sheetBackground.clear();
+  }
+}
+function openDialog(content,mode,title) {
+  if(dialog.open)rememberLibraryPosition();
   if(!dialog.open) returnFocus=document.activeElement;
   if(player.current){
     if(playerRoot.contains(returnFocus))returnFocus=playerFocusButton();
     setCompactPlayer(true);
   }
-  dialogMode=mode;dialogContent.innerHTML=content;
+  dialogMode=mode;dialogContent.innerHTML=content;dialogTitle.textContent=title;
+  dialog.dataset.mode=mode;
   const sheet=mobilePlayer.matches&&Boolean(player.current);
   dialog.classList.toggle('is-player-sheet',sheet);
   if(!dialog.open){
     if(sheet)dialog.show();
     else dialog.showModal();
   }
-  dialog.scrollTop=0;
+  setSheetBackground(sheet);
+}
+function closeDialog() {
+  rememberLibraryPosition();setSheetBackground(false);dialog.close();
 }
 dialog.addEventListener('close',()=>{
+  if(dialog.open)return;
+  setSheetBackground(false);
   dialogContent.replaceChildren();dialogMode='';dialog.classList.remove('is-player-sheet');
-  if(returnFocus?.isConnected&&returnFocus.getClientRects().length)returnFocus.focus({preventScroll:true});
+  if((document.activeElement===document.body||dialog.contains(document.activeElement))&&returnFocus?.isConnected&&returnFocus.getClientRects().length)returnFocus.focus({preventScroll:true});
 });
+dialog.addEventListener('cancel',rememberLibraryPosition);
 dialog.addEventListener('keydown',event=>{
   if(event.key==='Escape'&&dialog.classList.contains('is-player-sheet')){
-    event.preventDefault();dialog.close();
+    event.preventDefault();closeDialog();
   }
 });
-document.querySelector('.close-button').addEventListener('click',()=>dialog.close());
+document.querySelector('.close-button').addEventListener('click',closeDialog);
 dialog.addEventListener('click',event=>{
   if(event.target!==dialog)return;
   const box=dialog.getBoundingClientRect();
-  if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)dialog.close();
+  if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)closeDialog();
 });
 function resultRow(r) {
   return `<a class="search-result" href="${artistPath(r)}#listen">${coverHTML(media,r,{sizes:'58px'})}<span><strong>${e(r.artist)} <span lang="ko">${e(r.korean)}</span></strong><small>${e(r.track)} · ${r.year}${r===pick?' · Editor’s pick':''}</small></span><span class="result-arrow" aria-hidden="true">↗</span></a>`;
 }
 function renderLibrary() {
   const list=records.filter(r=>saved.has(r.id));
-  openDialog(`<p class="eyebrow dialog-eyebrow">YOUR LISTENING SHELF</p><h2 id="dialog-title" class="dialog-title">Your saved tracks.</h2>${list.length?`<p class="library-intro">Start anywhere. With Auto-next on, the songs continue in the order shown.</p>${youtubeAllowed?'':youtubeConsentHTML()}${list.map(r=>`<div class="library-row">${resultRow(r)}<div class="library-actions">${r.externalOnly?`<a class="library-play" href="${e(r.url)}" target="_blank" rel="noopener noreferrer">YouTube ↗</a>`:`<button class="library-play" data-load-saved="${r.id}"></button>`}<button class="save-button" data-remove="${r.id}" aria-label="Remove ${e(r.track)} from saved tracks">Remove</button></div></div>`).join('')}`:'<p class="empty-state">Save a track with the + button to find it here later.</p><a class="underlink" href="/#records">Browse the listening shelf ↗</a>'}<p class="embed-caption">Your saved tracks stay in this browser. <a href="/privacy-and-terms/">Storage & privacy</a></p>`,'library');
+  const controls=list.length?'<div class="dialog-toolbar library-queue-controls"><button data-previous-track aria-label="Previous saved track">← Previous</button><button data-next-track aria-label="Next saved track">Next →</button><button data-auto-next aria-pressed="true">Auto-next: on</button></div>':'';
+  const rows=list.map(r=>`<div class="library-row" data-saved-row="${r.id}"><a class="library-info" href="${artistPath(r)}#listen" aria-label="Read about ${e(r.artist)}: ${e(r.track)}">${coverHTML(media,r,{sizes:'44px'})}<span><strong>${e(r.track)}</strong><small>${e(r.artist)}<span class="library-state"></span></small></span></a>${r.externalOnly?`<a class="library-play library-external" href="${e(r.url)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${e(r.track)} on YouTube">YouTube ↗</a>`:`<button class="library-play" data-load-saved="${r.id}"></button>`}<button class="save-button library-remove" data-remove="${r.id}" aria-label="Remove ${e(r.track)} from saved tracks" title="Remove from saved tracks">×</button></div>`).join('');
+  openDialog(`${controls}<div class="dialog-scroll" tabindex="0" aria-label="Saved tracks">${list.length?`${youtubeAllowed?'':youtubeConsentHTML()}${rows}`:'<p class="empty-state">Save a track with the + button to find it here later.</p><a class="underlink" href="/#records">Browse the listening shelf ↗</a>'}<p class="embed-caption">Saved in this browser. <a href="/privacy-and-terms/">Storage & privacy</a></p></div>`,'library',`Saved · ${list.length}`);
   syncPlayButtons();
-  if(list.length){
-    const controls=document.createElement('div');
-    controls.className='library-queue-controls';
-    controls.innerHTML='<button data-previous-track aria-label="Previous saved track">← Previous</button><button data-next-track aria-label="Next saved track">Next →</button><button data-auto-next aria-pressed="true">Auto-next: on</button>';
-    dialogContent.querySelector('.library-intro').after(controls);
-    syncQueueControls();
-  }
+  syncQueueControls();restoreLibraryPosition();
 }
 function toggleSaved(id) {
   const r=records.find(record=>record.id===id);if(!r)return;
@@ -93,19 +131,21 @@ function toggleSaved(id) {
   if(dialogMode==='library'){
     renderLibrary();
     const buttons=dialogContent.querySelectorAll('[data-remove]');
-    (buttons[Math.min(Math.max(index,0),buttons.length-1)]||dialogContent.querySelector('a'))?.focus();
+    (buttons[Math.min(Math.max(index,0),buttons.length-1)]||dialogContent.querySelector('a'))?.focus({preventScroll:true});
   }
   notify(`${saved.has(id)?'Saved':'Removed'} ${r.track}${persisted?'':' · for this page visit'}`);
 }
 function renderSearch() {
-  openDialog('<p class="eyebrow dialog-eyebrow">SEARCH THE JOURNAL</p><h2 id="dialog-title" class="dialog-title">Find an artist or song.</h2><label class="sr-only" for="search-input">Search by English or Korean artist name, song, release or genre</label><input id="search-input" class="search-input" type="search" placeholder="Artist, song or genre…" autocomplete="off"><div id="search-results"></div><p class="embed-caption" id="search-status" role="status"></p>','search');
+  openDialog('<form class="dialog-toolbar search-toolbar" role="search"><label class="sr-only" for="search-input">Search by English or Korean artist name, song, release or genre</label><input id="search-input" class="search-input" type="search" placeholder="Artist, song or genre…" autocomplete="off" enterkeyhint="search"><button class="search-done" type="submit">Done</button></form><div class="dialog-scroll" tabindex="0" aria-label="Search results"><div id="search-results"></div><p class="embed-caption" id="search-status" role="status"></p></div>','search','Find music');
   const input=dialogContent.querySelector('#search-input');
+  dialogContent.querySelector('form').addEventListener('submit',event=>{event.preventDefault();input.blur();dialogContent.querySelector('.dialog-scroll').focus({preventScroll:true});});
   const update=()=>{
     const matches=searchCatalogue(records,pick,input.value);
     dialogContent.querySelector('#search-results').innerHTML=matches.length?matches.map(resultRow).join(''):'<p class="empty-state">No results found. Try “YdBB”, “Breath” or “한로로”.</p>';
     dialogContent.querySelector('#search-status').textContent=`${matches.length} ${matches.length===1?'result':'results'} in this edition.`;
+    dialogContent.querySelector('.dialog-scroll').scrollTop=0;
   };
-  input.addEventListener('input',update);update();input.focus();
+  input.addEventListener('input',update);update();input.focus({preventScroll:true});
 }
 
 const playerRoot=document.querySelector('#persistent-player');
@@ -185,7 +225,7 @@ function loadPlayer(id, button) {
   if(dialog.open){
     if(!playerRoot.contains(returnFocus))playerReturnFocus=returnFocus;
     returnFocus=playerFocusButton();
-    dialog.close();
+    closeDialog();
   }else if(!playerRoot.contains(button))playerReturnFocus=button;
   youtubeAllowed=true;
   player.load(record,{autoplay:true});
@@ -193,7 +233,7 @@ function loadPlayer(id, button) {
   (fromPlaylist&&!mobilePlayer.matches?playlistRows.querySelector(`[data-load-saved="${id}"]`):playerFocusButton())?.focus({preventScroll:true});
 }
 mobilePlayer.addEventListener('change',()=>{
-  if(dialog.open)dialog.close();
+  if(dialog.open)closeDialog();
   setCompactPlayer(playerRoot.classList.contains('is-compact'));
 });
 playerBackdrop.addEventListener('click',()=>{setCompactPlayer(true);playerFocusButton().focus({preventScroll:true});});
@@ -220,8 +260,16 @@ function syncPlayButtons() {
     const selected=record.id===player.current?.id;
     const returning=selected&&['playing','loading'].includes(player.state);
     const text=returning?'Return to player':youtubeAllowed?'Play':'Agree & play';
-    button.textContent=text;
+    const library=button.classList.contains('library-play');
+    button.textContent=library&&youtubeAllowed?(returning?'↗':'▷'):text;
     button.setAttribute('aria-label',`${text}: ${record.track} by ${record.artist}`);
+    button.title=text;
+    if(library){
+      button.classList.toggle('needs-consent',!youtubeAllowed);
+      if(selected)button.setAttribute('aria-current','true');else button.removeAttribute('aria-current');
+      button.closest('.library-row').classList.toggle('is-current',selected);
+      button.closest('.library-row').querySelector('.library-state').textContent=selected?` · ${player.state==='playing'?'Playing':'Selected'}`:'';
+    }
     const disconnect=button.closest('.player-shell')?.querySelector('[data-unload-player]');
     if(disconnect)disconnect.hidden=!selected;
   });
@@ -233,7 +281,7 @@ function syncPlayer() {
 }
 function closePlayer() {
   const id=player.current?.id;
-  if(dialog.open&&dialog.classList.contains('is-player-sheet'))dialog.close();
+  if(dialog.open&&dialog.classList.contains('is-player-sheet'))closeDialog();
   player.close();
   setCompactPlayer(false);
   const button=[...document.querySelectorAll('[data-load-player]')].find(button=>button.dataset.loadPlayer===id);
@@ -378,7 +426,7 @@ function initArtistCarousel() {
 }
 let cleanupCarousel=initArtistCarousel();
 initNavigation({
-  scroll:pageScroll,
+  scroll:pageScroll, closeDialog,
   beforeSwap:()=>{if(player.current)setCompactPlayer(true);cleanupCarousel?.();},
   afterSwap:()=>{
     document.querySelectorAll('[data-js-only]').forEach(el=>el.hidden=false);

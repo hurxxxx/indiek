@@ -121,7 +121,7 @@ for file in ['index.html','notes/first-listens/index.html']:
 expected_count=len(catalogue['records'])+5+len(guide_ids)
 if len(pages)!=expected_count: errors.append(f'Expected {expected_count} pages, found {len(pages)}')
 if site['url']+'/sitemap.xml' not in (dist/'robots.txt').read_text(): errors.append('Missing robots sitemap')
-for source,target in [(f'site/{name}',f'dist/{name}') for name in ['app.js','analytics.mjs','navigation.mjs','player.mjs','styles.css','shared.mjs']]:
+for source,target in [(f'site/{name}',f'dist/{name}') for name in ['app.js','analytics.mjs','navigation.mjs','mobile.mjs','player.mjs','styles.css','shared.mjs']]:
     if (root/source).read_bytes()!=(root/target).read_bytes(): errors.append('Stale build: '+target)
 runtime=json.loads((dist/'catalogue.js').read_text().removeprefix('export default ').strip().removesuffix(';'))
 if runtime!={**catalogue,'media':media}: errors.append('Stale catalogue; run npm run build')

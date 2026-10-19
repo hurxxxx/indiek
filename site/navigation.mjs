@@ -1,3 +1,5 @@
+import {mobilePlayerQuery} from './mobile.mjs';
+
 // Keep the document (and its YouTube iframe) alive while replacing static page content.
 export function internalPageURL(link, current, event) {
   if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return null;
@@ -11,7 +13,7 @@ export function internalPageURL(link, current, event) {
 // The mobile dock reserves its own space; keep reading positions when changing scroll surfaces.
 export function createPageScroll({win = window, doc = document} = {}) {
   const page = doc.querySelector('#page-content');
-  const mobile = win.matchMedia('(max-width: 760px)');
+  const mobile = win.matchMedia(mobilePlayerQuery);
   let compact = false, docked = false;
   const position = () => docked ? [page.scrollLeft, page.scrollTop] : [win.scrollX, win.scrollY];
   function to([left, top]) {
@@ -36,7 +38,7 @@ export function createPageScroll({win = window, doc = document} = {}) {
   };
 }
 
-export function initNavigation({beforeSwap, afterSwap, onNavigate, onError, scroll = createPageScroll()}) {
+export function initNavigation({beforeSwap, afterSwap, onNavigate, onError, closeDialog = () => document.querySelector('#content-dialog')?.close(), scroll = createPageScroll()}) {
   let renderedURL = new URL(location.href), pending, sequence = 0;
   const positions = new Map();
   let entry = history.state?.indiekEntry || 0;
@@ -74,7 +76,7 @@ export function initNavigation({beforeSwap, afterSwap, onNavigate, onError, scro
         if (!incoming.querySelector('main#main') || !incoming.querySelector('#persistent-player')) throw new Error('Not a journal page');
       }
       if (request !== sequence) return;
-      document.querySelector('#content-dialog')?.close();
+      closeDialog();
       if (!pop && url.href !== location.href) {
         savePosition();
         entry = ++nextEntry;
