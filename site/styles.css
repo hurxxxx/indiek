@@ -349,7 +349,7 @@ main[aria-busy="true"]{cursor:progress}
 }
 
 .player-transport{padding:12px 18px;display:flex;align-items:center;flex-wrap:wrap;gap:10px 24px;border-top:1px solid #f5f3ed30}
-.queue-controls{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.queue-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
 .queue-controls[hidden]{display:none}
 .queue-controls button{font:11px var(--body);padding:8px 10px;border:1px solid #f5f3ed50;color:var(--paper)}
 .queue-controls button:disabled{opacity:.35;cursor:default}
@@ -370,7 +370,9 @@ dialog[open]{display:flex;flex-direction:column}
 .dialog-toolbar{flex:none;padding:8px 20px;border-bottom:1px solid var(--line);background:var(--paper)}
 .dialog-scroll{min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;flex:1 1 auto;padding:0 20px 16px;scroll-padding-block:8px}
 .dialog-scroll:focus-visible{outline-offset:-3px}
-.library-queue-controls{display:flex;gap:8px}
+.library-queue-controls{display:flex;flex-wrap:wrap;gap:8px}
+.library-queue-controls [data-play-all]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+@media(max-width:420px){.library-queue-controls{display:grid;grid-template-columns:1fr 1fr}.library-queue-controls [data-play-all]{grid-column:1;grid-row:1}.library-queue-controls [data-auto-next]{grid-column:2;grid-row:1}}
 .library-queue-controls button{min-height:44px;padding:8px 10px;border:1px solid var(--line);font:11px var(--body)}
 .library-queue-controls button:disabled{opacity:.4;cursor:default}
 .library-queue-controls [aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}

@@ -49,9 +49,15 @@ export function createPlayer(root, {onChange = () => {}, doc = document, win = w
     stage.replaceChildren();
     frame = null;
   }
-  function load(record, {autoplay = false} = {}) {
+  function load(record, {autoplay = false, restart = false} = {}) {
     if (!record || record.externalOnly) return;
     if (current?.id === record.id) {
+      if (restart && ready) {
+        played = false;state = 'loading';onChange();
+        if (autoplay) embedded.loadVideoById(record.videoId, 0);
+        else embedded.cueVideoById(record.videoId, 0);
+        return;
+      }
       if (autoplay && ready && ['ended','paused','blocked','ready'].includes(state)) embedded.playVideo();
       frame?.focus();
       return;
@@ -137,6 +143,12 @@ export function createPlayer(root, {onChange = () => {}, doc = document, win = w
     get previous() { return neighbor(-1); },
     setQueue(records) { queue = records.filter(record => !record.externalOnly); onChange(); },
     setAutoNext(value) { autoNext = Boolean(value); onChange(); },
+    playAll() {
+      if (!queue.length) return;
+      autoNext = true;
+      load(queue[0], {autoplay:true, restart:true});
+      onChange();
+    },
     nextTrack() { if (ready && neighbor(1)) load(neighbor(1), {autoplay:true}); },
     previousTrack() { if (ready && neighbor(-1)) load(neighbor(-1), {autoplay:true}); },
     load,

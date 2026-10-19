@@ -113,7 +113,7 @@ function resultRow(r) {
 }
 function renderLibrary() {
   const list=records.filter(r=>saved.has(r.id));
-  const controls=list.length?'<div class="dialog-toolbar library-queue-controls"><button data-previous-track aria-label="Previous saved track">← Previous</button><button data-next-track aria-label="Next saved track">Next →</button><button data-auto-next aria-pressed="true">Auto-next: on</button></div>':'';
+  const controls=list.length?'<div class="dialog-toolbar library-queue-controls"><button data-play-all title="Play saved tracks from the beginning">Play all</button><button data-previous-track aria-label="Previous saved track">← Previous</button><button data-next-track aria-label="Next saved track">Next →</button><button data-auto-next aria-pressed="true">Auto-next: on</button></div>':'';
   const rows=list.map(r=>`<div class="library-row" data-saved-row="${r.id}"><a class="library-info" href="${artistPath(r)}#listen" aria-label="Read about ${e(r.artist)}: ${e(r.track)}">${coverHTML(media,r,{sizes:'44px'})}<span><strong>${e(r.track)}</strong><small>${e(r.artist)}<span class="library-state"></span></small></span></a>${r.externalOnly?`<a class="library-play library-external" href="${e(r.url)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${e(r.track)} on YouTube">YouTube ↗</a>`:`<button class="library-play" data-load-saved="${r.id}"></button>`}<button class="save-button library-remove" data-remove="${r.id}" aria-label="Remove ${e(r.track)} from saved tracks" title="Remove from saved tracks">×</button></div>`).join('');
   openDialog(`${controls}<div class="dialog-scroll" tabindex="0" aria-label="Saved tracks">${list.length?`${youtubeAllowed?'':youtubeConsentHTML()}${rows}`:'<p class="empty-state">Save a track with the + button to find it here later.</p><a class="underlink" href="/#records">Browse the listening shelf ↗</a>'}<p class="embed-caption">Saved in this browser. <a href="/privacy-and-terms/">Storage & privacy</a></p></div>`,'library',`Saved · ${list.length}`);
   syncPlayButtons();
@@ -208,17 +208,14 @@ function syncPlaylist() {
   status.textContent=({idle:'',loading:'Starting playback…',ready:'Starting playback…',paused:'Paused.',
     playing:player.autoNext&&player.next?`Up next: ${player.next.track} · ${player.next.artist}`:'Playing · Stops after this song.',
     ended:'Song finished. Choose a track to listen again.',blocked:'Press play in the video to continue.',
-    error:'This video is unavailable here. Choose another track or open it on YouTube.',
+    error:'This video is unavailable here. Please choose another track.',
     unavailable:'Automatic next is unavailable. You can still play this video or choose another track.',
   })[player.state];
-  const watchLink=playerRoot.querySelector('[data-player-youtube]');
-  watchLink.hidden=!['error','unavailable'].includes(player.state);
-  watchLink.href=player.current?.url||'#';
   playerRoot.classList.toggle('needs-attention',['blocked','error','unavailable'].includes(player.state));
   if(focused)(playlistRows.querySelector(`[data-load-saved="${focused}"]`)||playerFocusButton()).focus({preventScroll:true});
 }
 const playerFocusButton=()=>mobilePlayer.matches?playerRoot.querySelector('[data-mobile-queue]'):playerSizeButton;
-function loadPlayer(id, button) {
+function loadPlayer(id, button, {playAll=false}={}) {
   const record=findRecord(id);
   if(!record||record.externalOnly)return;
   const fromPlaylist=playlistRows.contains(button);
@@ -228,7 +225,8 @@ function loadPlayer(id, button) {
     closeDialog();
   }else if(!playerRoot.contains(button))playerReturnFocus=button;
   youtubeAllowed=true;
-  player.load(record,{autoplay:true});
+  if(playAll)player.playAll();
+  else player.load(record,{autoplay:true});
   setCompactPlayer(mobilePlayer.matches);
   (fromPlaylist&&!mobilePlayer.matches?playlistRows.querySelector(`[data-load-saved="${id}"]`):playerFocusButton())?.focus({preventScroll:true});
 }
@@ -255,6 +253,11 @@ new ResizeObserver(()=>{
   document.documentElement.style.setProperty('--mobile-player-height',`${Math.ceil(height)}px`);
 }).observe(playerRoot);
 function syncPlayButtons() {
+  document.querySelectorAll('[data-play-all]').forEach(button=>{
+    button.textContent=youtubeAllowed?'Play all':'Agree & play all';
+    button.setAttribute('aria-label',`${button.textContent}: saved tracks from the beginning`);
+    button.disabled=!saved.size;
+  });
   document.querySelectorAll('[data-load-player],.library-play[data-load-saved]').forEach(button=>{
     const record=findRecord(button.dataset.loadPlayer||button.dataset.loadSaved);
     const selected=record.id===player.current?.id;
@@ -296,6 +299,7 @@ document.addEventListener('click',event=>{
   else if(button.hasAttribute('data-library'))renderLibrary();
   else if(button.hasAttribute('data-load-player'))loadPlayer(button.dataset.loadPlayer,button);
   else if(button.hasAttribute('data-load-saved'))loadPlayer(button.dataset.loadSaved,button);
+  else if(button.hasAttribute('data-play-all'))loadPlayer(records.find(r=>saved.has(r.id)&&!r.externalOnly)?.id,button,{playAll:true});
   else if(button.hasAttribute('data-next-track'))player.nextTrack();
   else if(button.hasAttribute('data-previous-track'))player.previousTrack();
   else if(button.hasAttribute('data-auto-next'))player.setAutoNext(!player.autoNext);

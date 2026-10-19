@@ -42,21 +42,21 @@ function playerFixture() {
   const stage={children:[],replaceChildren(...nodes){this.children=nodes;},querySelector(){return this.children[0];}};
   const label={};
   const root={hidden:true,querySelector:selector=>selector==='[data-player-stage]'?stage:label};
-  const created=[], instances=[], calls=[];
+  const created=[], instances=[], calls=[], starts=[];
   const doc={createElement(tag){assert.equal(tag,'iframe');const frame={focus(){}};created.push(frame);return frame;}};
   let resolveAPI, rejectAPI, requests=0;
   const api=new Promise((resolve,reject)=>{resolveAPI=resolve;rejectAPI=reject;});
   class Player {
     constructor(frame,{events}) { this.events=events;this.videoId=new URL(frame.src).pathname.split('/').at(-1);instances.push(this); }
     getVideoUrl(){return `https://www.youtube.com/watch?v=${this.videoId}`;}
-    loadVideoById(id){this.videoId=id;calls.push(['play',id]);}
+    loadVideoById(id,start){this.videoId=id;calls.push(['play',id]);starts.push(start);}
     cueVideoById(id){this.videoId=id;calls.push(['cue',id]);}
     playVideo(){calls.push(['play',this.videoId]);}
     destroy(){calls.push(['destroy']);}
     emit(name,data){this.events[name]({target:this,data});}
   }
   const player=createPlayer(root,{doc,win:{location:{origin:'http://127.0.0.1:4173'},setTimeout(){return 1;},clearTimeout(){}},loadAPI:()=>{requests++;return api;}});
-  return {player,stage,root,created,label,calls,instances,requests:()=>requests,
+  return {player,stage,root,created,label,calls,starts,instances,requests:()=>requests,
     async ready(){resolveAPI({Player});await api;instances.at(-1)?.emit('onReady');},
     async fail(){rejectAPI(new Error('offline'));await api.catch(()=>{});await Promise.resolve();},
   };
@@ -100,6 +100,25 @@ test('saved order advances once per completed song, skips external-only entries 
   assert.equal(b.calls.length,2);assert.equal(b.player.next,null);
   b.player.load(third,{autoplay:true});
   assert.deepEqual(b.calls.at(-1),['play','three']); // Explicitly selecting the finished song starts it again.
+});
+test('Play all restarts the first saved song at zero, enables auto-next and keeps the iframe',async()=>{
+  const b=playerFixture();b.player.setQueue([first,second]);
+  b.player.playAll();await b.ready();
+  const frame=b.stage.children[0],api=b.instances[0];
+  assert.equal(b.player.current.id,'first');assert.equal(b.player.autoNext,true);
+  api.emit('onStateChange',1);b.player.setAutoNext(false);b.player.playAll();
+  assert.equal(b.starts.at(-1),0);assert.equal(b.player.autoNext,true);
+  assert.equal(b.stage.children[0],frame);assert.equal(b.created.length,1);
+  api.emit('onStateChange',0);assert.equal(b.player.current.id,'first'); // Ignore the old ended event while restarting.
+  api.emit('onStateChange',1);api.emit('onStateChange',0);
+  assert.equal(b.player.current.id,'second');
+  b.player.playAll();assert.equal(b.player.current.id,'first');
+});
+test('Play all with an empty queue does not connect or interrupt an existing song',async()=>{
+  const b=playerFixture();b.player.playAll();assert.equal(b.requests(),0);
+  b.player.load(first,{autoplay:true});await b.ready();
+  const calls=b.calls.length;b.player.playAll();
+  assert.equal(b.player.current.id,'first');assert.equal(b.calls.length,calls);
 });
 test('manual selection, previous/next and the auto-next switch respect the current queue',async()=>{
   const b=playerFixture();b.player.setQueue([first,second,third]);b.player.load(first);await b.ready();

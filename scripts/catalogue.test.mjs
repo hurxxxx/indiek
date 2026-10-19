@@ -14,15 +14,21 @@ test('listening guides cover every artist with the intended opening tracks and c
   ]);
   assert.deepEqual([...new Set(guides.flatMap(g=>g.records.map(r=>r.id)))].sort(),[...records,editorPick].map(r=>r.id).sort());
   for (const guide of guides) assert.equal(new Set(guide.records.map(r=>r.id)).size,guide.records.length);
-  assert.ok(guides.find(g=>g.id==='on-stage').records.find(r=>r.id==='car-the-garden').externalOnly);
+  assert.ok(guides.find(g=>g.id==='on-stage').records.some(r=>r.id==='car-the-garden'));
+});
+test('every featured selection uses the shared embedded player instead of external-only playback',()=>{
+  for(const record of [...records,editorPick]) {
+    assert.ok(!record.externalOnly,`${record.id} requires an embeddable official recording`);
+    assert.match(record.videoId,/^[\w-]{11}$/);
+  }
 });
 test('live membership follows video metadata when recordings are added or changed',()=>{
   const edited = freshCatalogue();
   edited.records.push({id:'new-live',videoType:'live',guideTags:[]});
-  edited.records.find(r=>r.id==='car-the-garden').videoType='music-video';
+  edited.records.find(r=>r.id==='choi-yu-ree').videoType='music-video';
   const ids=getListeningGuides(edited).find(g=>g.id==='on-stage').records.map(r=>r.id);
   assert.ok(ids.includes('new-live'));
-  assert.ok(!ids.includes('car-the-garden'));
+  assert.ok(!ids.includes('choi-yu-ree'));
   assert.equal(ids[0],'sunwoojunga');
 });
 test('edited tags change membership without changing the artist catalogue order',()=>{
