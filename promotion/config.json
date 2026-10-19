@@ -1,0 +1,36 @@
+{
+  "origin": "https://indiek.com",
+  "account": "indiekdotcom",
+  "timezone": "Asia/Seoul",
+  "cooldownDays": 28,
+  "maxSlotAgeMinutes": 120,
+  "platforms": [
+    "threads",
+    "instagram"
+  ],
+  "previousPosts": [
+    {
+      "id": "T001",
+      "platform": "threads",
+      "publishedAt": "2026-10-19",
+      "artistIds": [
+        "yerin-baek",
+        "black-skirts",
+        "se-so-neon"
+      ],
+      "permalink": "https://www.threads.com/@indiekdotcom/post/DeqedKnEwlg"
+    },
+    {
+      "id": "I001",
+      "platform": "instagram",
+      "publishedAt": "2026-10-19",
+      "artistIds": [
+        "yerin-baek",
+        "black-skirts",
+        "se-so-neon"
+      ],
+      "permalink": "https://www.instagram.com/p/DeqfJ3HAf-n/"
+    }
+  ],
+  "measurementChangeDate": "2026-10-19"
+}

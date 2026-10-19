@@ -473,7 +473,7 @@
       "artistSource": "https://music.apple.com/kr/playlist/yerin-baek-essentials/pl.0b75008600ed4a848bd608ed37bf5c53?l=en-GB",
       "artistSourceName": "Apple Music — Yerin Baek Essentials artist introduction",
       "artistSourceLanguage": "English",
-      "listeningNote": "In her album note, Baek describes these songs as letters carrying years of memories and questions. Listen for the acoustic guitar and the layers around her voice: the credits include strings as well as a full band. From here, “Square (2017)” offers another way into the same album.",
+      "listeningNote": "In her album note, Baek describes these songs as letters carrying years of memories and questions. Listen for the acoustic guitar and the layers around her voice: the credits include strings as well as a full band. From here, “Square (2017)” offers another way into the same album. If the letter-like writing is what brought you here, HANRORO’s Even if you leave offers another song with a personal release note to read alongside it. For a change of setting, Choi Yu Ree’s Forest is presented as a live session.",
       "credits": "Written and composed by Yerin Baek. Arranged by Yerin Baek & Cloud.",
       "extraSources": [
         {
@@ -514,7 +514,12 @@
       ],
       "guideTags": [
         "distinct-voices"
-      ]
+      ],
+      "editorial": {
+        "author": "indiek",
+        "published": "2026-10-19",
+        "updated": "2026-10-19"
+      }
     }
   ],
   "featuredArtists": [
@@ -700,6 +705,188 @@
       "featuredArtistId": "yoon-mirae",
       "description": "R&B, folk, pop and rock, with a voice to remember at the centre of each song.",
       "intro": "Begin with the space around Yoon Mirae’s voice on Breath. From there, meet singers whose work crosses folk, pop, jazz and rock. Some introductions come from a live stage; others begin with a recording."
+    },
+    {
+      "id": "korean-indie-where-to-start",
+      "title": "Korean indie: where to start",
+      "status": "ready",
+      "description": "Five songs to find your own way into Korean indie: The Black Skirts, Yerin Baek, YdBB, HANRORO and SE SO NEON.",
+      "intro": "One song is enough to get started. These five give you different directions to follow: a love song, a letter, a farewell, a fresh start and a live band stretching out. This is a route through our selection, rather than a history of the scene or a list of its biggest names.",
+      "paragraphs": [
+        "Begin with the recordings, then finish on stage. You do not need to know the artists, the labels or the language before pressing play. Each stop below has a reason for being here and a link to the artist’s story.",
+        "The name indiek is a starting point, not a boundary. Elsewhere in the journal you will also find Korean pop, folk and R&B. Keep the songs that connect with you in Saved, or follow a different listening guide when your mood changes."
+      ],
+      "trackIds": [
+        "black-skirts",
+        "yerin-baek",
+        "ydbb",
+        "hanroro",
+        "se-so-neon"
+      ],
+      "trackNotes": {
+        "black-skirts": "Start with EVERYTHING. It is one song with two places in the catalogue: a 2016 single and a track on TEAM BABY. If it catches you, the album is the next place to go. The Black Skirts is Bryan Cho’s solo project, despite the band-like name.",
+        "yerin-baek": "Next, move from a declaration to a letter. 0310 comes from Every letter I sent you., an album Baek describes through memories and questions. The English-language lyric video offers a way to follow the words as well as her voice.",
+        "ydbb": "Take a different kind of farewell with ONCE. YdBB’s release story extends beyond the recording: Yu Dabin made its cover by drawing over a photograph of her own hand. Open the artist page for the song and that small piece of its making.",
+        "hanroro": "From farewell, turn toward moving on. In the notes for Even if you leave, HANRORO writes about letting go of what holds you back, including self-blame. This is a useful next stop if you want a song’s own context before exploring the rest of an artist’s work.",
+        "se-so-neon": "Finish with The Wave, live at the 2020/NEON concert. Stay for the extended instrumental ending. After four studio recordings, this performance opens another route through the journal: Korean music heard on stage."
+      },
+      "selection": "curated",
+      "editorial": {
+        "author": "indiek",
+        "published": "2026-10-19",
+        "updated": "2026-10-19"
+      },
+      "sources": [
+        {
+          "url": "/artists/black-skirts/#sources-title",
+          "label": "The Black Skirts — release and artist sources"
+        },
+        {
+          "url": "/artists/yerin-baek/#sources-title",
+          "label": "Yerin Baek — release and artist sources"
+        },
+        {
+          "url": "/artists/ydbb/#sources-title",
+          "label": "YdBB — release and artist sources"
+        },
+        {
+          "url": "/artists/hanroro/#sources-title",
+          "label": "HANRORO — release and artist sources"
+        },
+        {
+          "url": "/artists/se-so-neon/#sources-title",
+          "label": "SE SO NEON — release and artist sources"
+        }
+      ]
+    },
+    {
+      "id": "if-you-like-yerin-baek",
+      "title": "If you like Yerin Baek, listen next",
+      "status": "draft",
+      "description": "Start with 0310, then follow its quieter side toward Choi Yu Ree, Kim Sawol and Yoon Mirae.",
+      "intro": "What brought you to 0310: the words, the guitar or the space around the voice? These are possible next stops from our selection, not claims that the artists sound alike.",
+      "paragraphs": [
+        "Return to 0310 first, then choose a direction. For each song, the artist page keeps release details and sources within reach."
+      ],
+      "trackIds": [
+        "yerin-baek",
+        "choi-yu-ree",
+        "kim-sawol",
+        "yoon-mirae"
+      ],
+      "trackNotes": {
+        "yerin-baek": "Use 0310 as your starting point. Its English lyric video lets you follow a song from the album Baek describes as a collection of letters. Square (2017), linked on her artist page, is another route into that same record.",
+        "choi-yu-ree": "For another song built around a personal image, try Forest. Choi Yu Ree uses trees growing together to describe belonging; the official Bugs-ker session presents it live.",
+        "kim-sawol": "For the thread of closeness and solitude, move to Someone. Kim Sawol’s album Romance treats love as a way to know yourself even while it may end. Read the album context alongside the official video.",
+        "yoon-mirae": "For an acoustic setting around a different voice, try Breath. This guitar-led R&B song is one entry into Yoon Mirae’s much wider catalogue, which also spans rap and drama soundtracks."
+      },
+      "selection": "curated",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-10-19"
+      },
+      "sources": [
+        {
+          "url": "/artists/yerin-baek/#sources-title",
+          "label": "Yerin Baek — release and artist sources"
+        },
+        {
+          "url": "/artists/choi-yu-ree/#sources-title",
+          "label": "Choi Yu Ree — release and artist sources"
+        },
+        {
+          "url": "/artists/kim-sawol/#sources-title",
+          "label": "Kim Sawol — release and artist sources"
+        },
+        {
+          "url": "/artists/yoon-mirae/#sources-title",
+          "label": "Yoon Mirae — release and artist sources"
+        }
+      ]
+    },
+    {
+      "id": "korean-bands-live",
+      "title": "Korean bands, live",
+      "status": "draft",
+      "description": "Two band performances and a solo artist on stage: ESEGYE, SE SO NEON and sunwoojunga.",
+      "intro": "Start with two bands, then take a turn toward a solo performer. These three recordings keep the performance setting in view, from an early band concert to a song with room to stretch.",
+      "paragraphs": [
+        "The clips are shared by the artists themselves. Performance dates can differ from the dates in video titles; each artist page gives the context recorded in our sources."
+      ],
+      "trackIds": [
+        "esegye",
+        "se-so-neon",
+        "sunwoojunga"
+      ],
+      "trackNotes": {
+        "esegye": "Begin with RomanceYouthLove at ESEGYE’s first BLIND concert. It is an early song from the band’s debut double single, heard here in front of an audience at Veloso Hongdae.",
+        "se-so-neon": "Next, The Wave at the 2020/NEON concert. The show was filmed in December 2019. Let the performance reach its extended instrumental finish before moving on.",
+        "sunwoojunga": "Leave the band format for Run with Me at sunwoojunga’s SERENADE concert. The recording on her own channel connects a song from Serenade with the stage at Sogang University’s Mary Hall."
+      },
+      "selection": "curated",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-10-19"
+      },
+      "sources": [
+        {
+          "url": "/artists/esegye/#sources-title",
+          "label": "ESEGYE — release and artist sources"
+        },
+        {
+          "url": "/artists/se-so-neon/#sources-title",
+          "label": "SE SO NEON — release and artist sources"
+        },
+        {
+          "url": "/artists/sunwoojunga/#sources-title",
+          "label": "sunwoojunga — release and artist sources"
+        }
+      ]
+    },
+    {
+      "id": "korean-songs-quiet-night",
+      "title": "Korean songs for a quiet night",
+      "status": "draft",
+      "description": "A slower route through the journal with Yerin Baek, Choi Yu Ree, Kim Sawol and Yoon Mirae.",
+      "intro": "Keep the list short tonight. Four songs, with a little context for each: letters, belonging, closeness and the reminders left after a breakup.",
+      "paragraphs": [
+        "This is a mood-led selection rather than a genre. The videos include a lyric video, a live session and music videos, so you can choose how closely to follow the screen."
+      ],
+      "trackIds": [
+        "yerin-baek",
+        "choi-yu-ree",
+        "kim-sawol",
+        "yoon-mirae"
+      ],
+      "trackNotes": {
+        "yerin-baek": "Open with 0310. Follow the English words in the lyric video, then explore Every letter I sent you. if you want to stay with the same album.",
+        "choi-yu-ree": "Try Forest next. Its image of trees growing together gives the song a way to approach the feeling of being small among others. Here it is performed in a Bugs-ker live session.",
+        "kim-sawol": "Turn to Someone for another angle on being close to a person. It belongs to Romance, whose album notes connect love with understanding yourself.",
+        "yoon-mirae": "Close with Breath. Guitar and voice carry an acoustic R&B song about ordinary reminders after a breakup. Yoon Mirae’s artist page offers other sides of her music for another day."
+      },
+      "selection": "curated",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-10-19"
+      },
+      "sources": [
+        {
+          "url": "/artists/yerin-baek/#sources-title",
+          "label": "Yerin Baek — release and artist sources"
+        },
+        {
+          "url": "/artists/choi-yu-ree/#sources-title",
+          "label": "Choi Yu Ree — release and artist sources"
+        },
+        {
+          "url": "/artists/kim-sawol/#sources-title",
+          "label": "Kim Sawol — release and artist sources"
+        },
+        {
+          "url": "/artists/yoon-mirae/#sources-title",
+          "label": "Yoon Mirae — release and artist sources"
+        }
+      ]
     }
   ]
 }

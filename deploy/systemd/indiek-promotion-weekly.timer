@@ -1,0 +1,9 @@
+[Unit]
+Description=indiek Monday editorial and promotion review, Korea time
+[Timer]
+OnCalendar=Mon *-*-* 09:00:00 Asia/Seoul
+Persistent=false
+AccuracySec=30s
+Unit=indiek-promotion-weekly.service
+[Install]
+WantedBy=timers.target

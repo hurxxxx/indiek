@@ -1,0 +1,9 @@
+[Unit]
+Description=indiek Threads Tuesday and Friday, Korea time
+[Timer]
+OnCalendar=Tue,Fri *-*-* 10:00:00 Asia/Seoul
+Persistent=false
+AccuracySec=30s
+Unit=indiek-promotion-threads.service
+[Install]
+WantedBy=timers.target

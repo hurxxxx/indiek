@@ -87,7 +87,7 @@ export function initNavigation({beforeSwap, afterSwap, onNavigate, onError, clos
         document.querySelector('#main').replaceWith(incoming.querySelector('#main'));
         document.body.className = incoming.body.className;
         document.title = incoming.title;
-        for (const selector of ['meta[name="description"]', 'link[rel="canonical"]', 'meta[property^="og:"]', 'meta[name^="twitter:"]']) {
+        for (const selector of ['meta[name="description"]', 'link[rel="canonical"]', 'meta[property^="og:"]', 'meta[name^="twitter:"]', 'script[type="application/ld+json"]']) {
           document.head.querySelectorAll(selector).forEach(node => node.remove());
           incoming.head.querySelectorAll(selector).forEach(node => document.head.append(node.cloneNode(true)));
         }

@@ -1,0 +1,245 @@
+{
+  "version": 1,
+  "origin": "https://indiek.com",
+  "items": [
+    {
+      "id": "black-skirts",
+      "kind": "artist",
+      "title": "The Black Skirts — EVERYTHING",
+      "path": "/artists/black-skirts/",
+      "description": "First released as a single in 2016, “EVERYTHING” later appeared on the 2017 album TEAM BABY. The official music video accompanies this selection; the album link follows the song into the wider record.",
+      "artistIds": [
+        "black-skirts"
+      ],
+      "image": "/assets/social/artists-black-skirts.jpg",
+      "altText": "indiek listening notes: The Black Skirts — EVERYTHING. Typographic card."
+    },
+    {
+      "id": "sunwoojunga",
+      "kind": "artist",
+      "title": "sunwoojunga — Run with Me",
+      "path": "/artists/sunwoojunga/",
+      "description": "“Run with Me” appears on sunwoojunga’s 2019 album Serenade. Her own channel shares this performance from the SERENADE concert at Sogang University’s Mary Hall, giving the song a place on stage as well as on record.",
+      "artistIds": [
+        "sunwoojunga"
+      ],
+      "image": "/assets/social/artists-sunwoojunga.jpg",
+      "altText": "indiek listening notes: sunwoojunga — Run with Me. Typographic card."
+    },
+    {
+      "id": "car-the-garden",
+      "kind": "artist",
+      "title": "Car, the garden — Tree",
+      "path": "/artists/car-the-garden/",
+      "description": "“Tree” was released as a single in April 2019. This live performance comes from the official Begin Again channel’s Open Mic series.",
+      "artistIds": [
+        "car-the-garden"
+      ],
+      "image": "/assets/social/artists-car-the-garden.jpg",
+      "altText": "indiek listening notes: Car, the garden — Tree. Typographic card."
+    },
+    {
+      "id": "choi-yu-ree",
+      "kind": "artist",
+      "title": "Choi Yu Ree — Forest",
+      "path": "/artists/choi-yu-ree/",
+      "description": "“Forest” turns the feeling of being small among others into an image of trees growing together. Choi Yu Ree wrote and composed the song for her 2022 single release Stroll. Here, it is heard in an official Bugs-ker live session.",
+      "artistIds": [
+        "choi-yu-ree"
+      ],
+      "image": "/assets/social/artists-choi-yu-ree.jpg",
+      "altText": "indiek listening notes: Choi Yu Ree — Forest. Typographic card."
+    },
+    {
+      "id": "bol4",
+      "kind": "artist",
+      "title": "BOL4 — Eternal love",
+      "path": "/artists/bol4/",
+      "description": "“Eternal love” (사랑할 수밖에) appeared on the 2023 EP Merry Go Round. BOL4’s own clip from the 2024 Bloom concert presents it through Ahn Ji-young’s live performance. The English title follows the release’s international catalogue.",
+      "artistIds": [
+        "bol4"
+      ],
+      "image": "/assets/social/artists-bol4.jpg",
+      "altText": "indiek listening notes: BOL4 — Eternal love. Typographic card."
+    },
+    {
+      "id": "esegye",
+      "kind": "artist",
+      "title": "ESEGYE — RomanceYouthLove",
+      "path": "/artists/esegye/",
+      "description": "“RomanceYouthLove” appeared on ESEGYE’s debut double single in June 2020. The band’s own recording from its first BLIND concert at Veloso Hongdae places this early song in front of an audience.",
+      "artistIds": [
+        "esegye"
+      ],
+      "image": "/assets/social/artists-esegye.jpg",
+      "altText": "indiek listening notes: ESEGYE — RomanceYouthLove. Typographic card."
+    },
+    {
+      "id": "se-so-neon",
+      "kind": "artist",
+      "title": "SE SO NEON — The Wave",
+      "path": "/artists/se-so-neon/",
+      "description": "First released as a single in September 2017 and included on Summer Plumage that October, “The Wave” won Best Rock Song at the 2018 Korean Music Awards. This official live version was filmed at the 2020/NEON concert on December 7, 2019, at YES24 Live Hall. Let it run through the extended instrumental finish.",
+      "artistIds": [
+        "se-so-neon"
+      ],
+      "image": "/assets/social/artists-se-so-neon.jpg",
+      "altText": "indiek listening notes: SE SO NEON — The Wave. Typographic card."
+    },
+    {
+      "id": "ydbb",
+      "kind": "artist",
+      "title": "YdBB — ONCE",
+      "path": "/artists/ydbb/",
+      "description": "On “ONCE”, released in October 2023, YdBB turn toward the moment of letting someone go — and the wish to be remembered kindly. Yu Dabin describes that farewell in the band’s release interview.",
+      "artistIds": [
+        "ydbb"
+      ],
+      "image": "/assets/social/artists-ydbb.jpg",
+      "altText": "indiek listening notes: YdBB — ONCE. Typographic card."
+    },
+    {
+      "id": "whiteusedsocks",
+      "kind": "artist",
+      "title": "WhiteUsedSocks — Don’t feel sad",
+      "path": "/artists/whiteusedsocks/",
+      "description": "Written and composed by Jung Jaeheon, “Don’t feel sad” was released in June 2017. It belongs to the early part of WhiteUsedSocks’ catalogue, before releases such as The Little Match Boy and Through Yearning.",
+      "artistIds": [
+        "whiteusedsocks"
+      ],
+      "image": "/assets/social/artists-whiteusedsocks.jpg",
+      "altText": "indiek listening notes: WhiteUsedSocks — Don’t feel sad. Typographic card."
+    },
+    {
+      "id": "motte",
+      "kind": "artist",
+      "title": "Motte — Don’t run away",
+      "path": "/artists/motte/",
+      "description": "Singer-songwriter Motte’s “Don’t run away” appeared on the soundtrack to the Korean web drama A-TEEN in September 2018. You can start with the song whether or not you have seen the series.",
+      "artistIds": [
+        "motte"
+      ],
+      "image": "/assets/social/artists-motte.jpg",
+      "altText": "indiek listening notes: Motte — Don’t run away. Typographic card."
+    },
+    {
+      "id": "hanroro",
+      "kind": "artist",
+      "title": "HANRORO — Even if you leave",
+      "path": "/artists/hanroro/",
+      "description": "Written and composed by HANRORO, “Even if you leave” (자처) was released in April 2023. The song reflects on attachment and self-blame, and the slow work of carrying on after something has ended.",
+      "artistIds": [
+        "hanroro"
+      ],
+      "image": "/assets/social/artists-hanroro.jpg",
+      "altText": "indiek listening notes: HANRORO — Even if you leave. Typographic card."
+    },
+    {
+      "id": "kim-sawol",
+      "kind": "artist",
+      "title": "Kim Sawol — Someone",
+      "path": "/artists/kim-sawol/",
+      "description": "“Someone” holds on to affection and doubt at the same time. Written and composed by Kim Sawol, it appears on her second studio album Romance, released in September 2018.",
+      "artistIds": [
+        "kim-sawol"
+      ],
+      "image": "/assets/social/artists-kim-sawol.jpg",
+      "altText": "indiek listening notes: Kim Sawol — Someone. Typographic card."
+    },
+    {
+      "id": "yerin-baek",
+      "kind": "artist",
+      "title": "Yerin Baek — 0310",
+      "path": "/artists/yerin-baek/",
+      "description": "“0310” is an English-language song from Yerin Baek’s December 2019 album Every letter I sent you. Her official lyric video lets you follow the words alongside the recording, offering a close introduction to her songwriting.",
+      "artistIds": [
+        "yerin-baek"
+      ],
+      "image": "/assets/social/artists-yerin-baek.jpg",
+      "altText": "indiek listening notes: Yerin Baek — 0310. Typographic card."
+    },
+    {
+      "id": "yoon-mirae",
+      "kind": "artist",
+      "title": "Yoon Mirae — Breath",
+      "path": "/artists/yoon-mirae/",
+      "description": "Guitar-led and spare, “Breath” leaves room for Yoon Mirae’s voice. This acoustic R&B song follows the small, ordinary reminders that remain after a breakup.",
+      "artistIds": [
+        "yoon-mirae"
+      ],
+      "image": "/assets/social/artists-yoon-mirae.jpg",
+      "altText": "indiek listening notes: Yoon Mirae — Breath. Typographic card."
+    },
+    {
+      "id": "korean-indie-where-to-start",
+      "kind": "guide",
+      "title": "Korean indie: where to start",
+      "path": "/notes/korean-indie-where-to-start/",
+      "description": "Five songs to find your own way into Korean indie: The Black Skirts, Yerin Baek, YdBB, HANRORO and SE SO NEON.",
+      "artistIds": [
+        "black-skirts",
+        "yerin-baek",
+        "ydbb",
+        "hanroro",
+        "se-so-neon"
+      ],
+      "image": "/assets/social/notes-korean-indie-where-to-start.jpg",
+      "altText": "indiek listening guide: Korean indie: where to start. Typographic card."
+    },
+    {
+      "id": "on-stage",
+      "kind": "guide",
+      "title": "On stage",
+      "path": "/notes/on-stage/",
+      "description": "Concert stages, television performances and intimate sessions. Start with a song played live.",
+      "artistIds": [
+        "sunwoojunga",
+        "car-the-garden",
+        "choi-yu-ree",
+        "bol4",
+        "esegye",
+        "se-so-neon"
+      ],
+      "image": "/assets/social/notes-on-stage.jpg",
+      "altText": "indiek listening guide: On stage. Typographic card."
+    },
+    {
+      "id": "guitars-and-bands",
+      "kind": "guide",
+      "title": "Guitars & bands",
+      "path": "/notes/guitars-and-bands/",
+      "description": "From a quiet farewell to an extended guitar finish. Follow the songs through Korean rock.",
+      "artistIds": [
+        "black-skirts",
+        "esegye",
+        "se-so-neon",
+        "ydbb",
+        "whiteusedsocks",
+        "hanroro"
+      ],
+      "image": "/assets/social/notes-guitars-and-bands.jpg",
+      "altText": "indiek listening guide: Guitars & bands. Typographic card."
+    },
+    {
+      "id": "distinct-voices",
+      "kind": "guide",
+      "title": "Distinct voices",
+      "path": "/notes/distinct-voices/",
+      "description": "R&B, folk, pop and rock, with a voice to remember at the centre of each song.",
+      "artistIds": [
+        "yoon-mirae",
+        "black-skirts",
+        "sunwoojunga",
+        "car-the-garden",
+        "choi-yu-ree",
+        "bol4",
+        "motte",
+        "hanroro",
+        "kim-sawol",
+        "yerin-baek"
+      ],
+      "image": "/assets/social/notes-distinct-voices.jpg",
+      "altText": "indiek listening guide: Distinct voices. Typographic card."
+    }
+  ]
+}

@@ -38,7 +38,7 @@ test('mobile docking preserves reading position across expand, close and viewpor
 const first={id:'first',track:'First',artist:'Artist',channel:'Official',videoId:'one'};
 const second={...first,id:'second',track:'Second',videoId:'two'};
 const third={...first,id:'third',track:'Third',videoId:'three'};
-function playerFixture() {
+function playerFixture(onPlay = () => {}) {
   const stage={children:[],replaceChildren(...nodes){this.children=nodes;},querySelector(){return this.children[0];}};
   const label={};
   const root={hidden:true,querySelector:selector=>selector==='[data-player-stage]'?stage:label};
@@ -55,7 +55,7 @@ function playerFixture() {
     destroy(){calls.push(['destroy']);}
     emit(name,data){this.events[name]({target:this,data});}
   }
-  const player=createPlayer(root,{doc,win:{location:{origin:'http://127.0.0.1:4173'},setTimeout(){return 1;},clearTimeout(){}},loadAPI:()=>{requests++;return api;}});
+  const player=createPlayer(root,{onPlay,doc,win:{location:{origin:'http://127.0.0.1:4173'},setTimeout(){return 1;},clearTimeout(){}},loadAPI:()=>{requests++;return api;}});
   return {player,stage,root,created,label,calls,starts,instances,requests:()=>requests,
     async ready(){resolveAPI({Player});await api;instances.at(-1)?.emit('onReady');},
     async fail(){rejectAPI(new Error('offline'));await api.catch(()=>{});await Promise.resolve();},
@@ -172,4 +172,14 @@ test('official API loader is shared and can retry after a blocked script',async(
   scripts[0].onerror();await assert.rejects(a);
   const b=loadYouTubeAPI({win,doc});assert.equal(scripts.length,2);
   win.YT={Player(){}};win.onYouTubeIframeAPIReady();assert.equal(await b,win.YT);
+});
+
+test('play events require actual playback and do not repeat on resume or same-track selection',async()=>{
+  const events=[];const b=playerFixture(id=>events.push(id));
+  b.player.setQueue([first,second]);b.player.load(first,{autoplay:true});await b.ready();
+  assert.deepEqual(events,[]);const api=b.instances[0];api.emit('onAutoplayBlocked');assert.deepEqual(events,[]);
+  api.emit('onStateChange',1);api.emit('onStateChange',2);api.emit('onStateChange',1);b.player.load(first,{autoplay:true});
+  assert.deepEqual(events,['first']);b.player.playAll();api.emit('onStateChange',1);
+  assert.deepEqual(events,['first','first']);api.emit('onStateChange',0);api.emit('onStateChange',1);
+  assert.deepEqual(events,['first','first','second']);b.player.close();api.emit('onStateChange',1);assert.equal(events.length,3);
 });

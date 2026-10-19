@@ -25,12 +25,13 @@ export function loadYouTubeAPI({win = window, doc = document} = {}) {
   return request;
 }
 
-export function createPlayer(root, {onChange = () => {}, doc = document, win = window, loadAPI = loadYouTubeAPI} = {}) {
+export function createPlayer(root, {onChange = () => {}, onPlay = () => {}, doc = document, win = window, loadAPI = loadYouTubeAPI} = {}) {
   const stage = root.querySelector('[data-player-stage]');
   const label = root.querySelector('[data-current-track]');
   let current = null, frame = null, embedded = null, ready = false, generation = 0;
   let readyTimer;
   let queue = [], autoNext = true, state = 'idle', played = false;
+  let playReported = false;
   function neighbor(offset) {
     const index = queue.findIndex(record => record.id === current?.id);
     return index < 0 ? null : queue[index + offset] || null;
@@ -53,17 +54,21 @@ export function createPlayer(root, {onChange = () => {}, doc = document, win = w
     if (!record || record.externalOnly) return;
     if (current?.id === record.id) {
       if (restart && ready) {
-        played = false;state = 'loading';onChange();
+        played = false;playReported = false;state = 'loading';onChange();
         if (autoplay) embedded.loadVideoById(record.videoId, 0);
         else embedded.cueVideoById(record.videoId, 0);
         return;
       }
-      if (autoplay && ready && ['ended','paused','blocked','ready'].includes(state)) embedded.playVideo();
+      if (autoplay && ready && ['ended','paused','blocked','ready'].includes(state)) {
+        if (state === 'ended') playReported = false;
+        embedded.playVideo();
+      }
       frame?.focus();
       return;
     }
     current = record;
     played = false;
+    playReported = false;
     state = 'loading';
     root.hidden = false;
     if (ready) {
@@ -105,7 +110,10 @@ export function createPlayer(root, {onChange = () => {}, doc = document, win = w
           let videoId;
           try { videoId = new URL(event.target.getVideoUrl()).searchParams.get('v'); } catch { return; }
           if (videoId !== current?.videoId) return;
-          if (event.data === 1) { played = true; state = 'playing'; }
+          if (event.data === 1) {
+            played = true; state = 'playing';
+            if (!playReported) { playReported = true; onPlay(current.id); }
+          }
           else if (event.data === 2) state = 'paused';
           else if (event.data === 3) state = 'loading';
           else if (event.data === 5) state = 'ready';

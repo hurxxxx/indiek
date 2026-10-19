@@ -3,7 +3,7 @@ import {initAnalytics} from './analytics.mjs';
 import {initNavigation, createPageScroll} from './navigation.mjs';
 import {createPlayer} from './player.mjs';
 import {mobilePlayerQuery, initMobileViewport} from './mobile.mjs';
-import {escapeHTML as e, artistPath, coverHTML, readSaved, searchCatalogue, getFeaturedArtists, formatPosition, youtubeConsentHTML} from './shared.mjs';
+import {escapeHTML as e, artistPath, coverHTML, readSaved, searchCatalogue, getFeaturedArtists, formatPosition, youtubeConsentHTML, getListeningGuides, guidePath} from './shared.mjs';
 
 const {records, editorPick: pick, media} = catalogue;
 const features = getFeaturedArtists(catalogue);
@@ -125,6 +125,7 @@ function toggleSaved(id) {
   const rows=[...dialogContent.querySelectorAll('[data-remove]')];
   const index=rows.indexOf(focused);
   saved.has(id)?saved.delete(id):saved.add(id);
+  if(saved.has(id))analytics?.trackEvent('save_add',id);
   let persisted=true;
   try {localStorage.setItem(storageKey,JSON.stringify([...saved]));} catch {persisted=false;}
   syncSaved();
@@ -150,7 +151,7 @@ function renderSearch() {
 
 const playerRoot=document.querySelector('#persistent-player');
 const pageScroll=createPageScroll();
-const player=createPlayer(playerRoot,{onChange:syncPlayer});
+const player=createPlayer(playerRoot,{onChange:syncPlayer,onPlay:id=>analytics?.trackEvent('play_start',id)});
 const playerSizeButton=playerRoot.querySelector('[data-resize-player]');
 const playerBackdrop=document.querySelector('#player-backdrop');
 const playlist=playerRoot.querySelector('[data-player-playlist]');
@@ -293,7 +294,8 @@ function closePlayer() {
 }
 document.addEventListener('click',event=>{
   const button=event.target.closest('button');if(!button)return;
-  if(button.hasAttribute('data-save'))toggleSaved(button.dataset.save);
+  if(button.hasAttribute('data-share-page')){ sharePage(button); }
+  else if(button.hasAttribute('data-save'))toggleSaved(button.dataset.save);
   else if(button.hasAttribute('data-remove'))toggleSaved(button.dataset.remove);
   else if(button.hasAttribute('data-search'))renderSearch();
   else if(button.hasAttribute('data-library'))renderLibrary();
@@ -321,7 +323,23 @@ window.addEventListener('storage',event=>{
 });
 window.addEventListener('pagehide',()=>{player.close();setCompactPlayer(false);});
 syncSaved();
-const analytics=initAnalytics(catalogue.site.analytics, catalogue.site.url);
+const analytics=initAnalytics({...catalogue.site.analytics,trackIds:all.map(r=>r.id),contentPaths:['/','/notes/first-listens/',...all.map(artistPath),...getListeningGuides(catalogue).map(guidePath)]}, catalogue.site.url);
+
+async function sharePage(button) {
+  const url=document.querySelector('link[rel="canonical"]').href;
+  const path=new URL(url).pathname;
+  button.disabled=true;
+  try {
+    if(navigator.share)await navigator.share({title:document.title,url});
+    else { await navigator.clipboard.writeText(url);notify('Link copied.'); }
+    analytics?.trackEvent('share',path);
+  } catch(error) {
+    if(error.name!=='AbortError') {
+      openDialog(`<div class="dialog-scroll"><p>Your browser could not share automatically. Copy this link to share the page.</p><label class="sr-only" for="share-url">Page link</label><input class="share-url" id="share-url" type="url" readonly value="${e(url)}"></div>`,'share','Share this page');
+      const input=dialogContent.querySelector('#share-url');input.focus();input.select();
+    }
+  } finally {button.disabled=false;}
+}
 
 function initArtistCarousel() {
   const carousel=document.querySelector('#artist-carousel');if(!carousel)return;

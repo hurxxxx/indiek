@@ -48,7 +48,9 @@ for path in dist.rglob('*.html'):
     if page.canonical!=[expected] or page.meta.get('og:url')!=expected: errors.append(f'{path}: incorrect canonical or og:url')
     for key in ['description','og:title','og:description','og:image','twitter:card','twitter:image']:
         if not page.meta.get(key): errors.append(f'{path}: missing {key}')
-    if page.meta.get('og:image')!=site['url']+'/assets/indiek-share.png': errors.append(f'{path}: invalid sharing image')
+    sharing=urlsplit(page.meta.get('og:image','')).path
+    if not sharing.startswith('/assets/social/') or not (dist/sharing.lstrip('/')).is_file(): errors.append(f'{path}: missing page sharing image')
+    if page.meta.get('og:image')!=page.meta.get('twitter:image'): errors.append(f'{path}: sharing images disagree')
     if site.get('googleSiteVerification') and page.meta.get('google-site-verification')!=site['googleSiteVerification']: errors.append(f'{path}: missing or incorrect Google site verification')
     if page.h1!=1: errors.append(f'{path}: expected one h1')
     if 'analytics-notice' not in page.ids: errors.append(f'{path}: missing analytics choice')
@@ -99,7 +101,7 @@ expected_room=[(r['id'],f"/artists/{r['id']}/#listen") for r in catalogue['recor
 if home.room_tracks!=expected_room: errors.append('Listening room does not match the complete catalogue')
 if home.room_count!=len(expected_room): errors.append('Listening room count does not match its tracks')
 if 'undefined' in (dist/'index.html').read_text(): errors.append('Undefined content on the homepage')
-guide_ids=[g['id'] for g in catalogue['listeningGuides']]
+guide_ids=[g['id'] for g in sorted(catalogue['listeningGuides'],key=lambda g:g.get('selection')!='curated') if g.get('status')!='draft']
 guide_counts={}
 covered=set()
 for id in guide_ids:
@@ -124,7 +126,7 @@ if site['url']+'/sitemap.xml' not in (dist/'robots.txt').read_text(): errors.app
 for source,target in [(f'site/{name}',f'dist/{name}') for name in ['app.js','analytics.mjs','navigation.mjs','mobile.mjs','player.mjs','styles.css','shared.mjs']]:
     if (root/source).read_bytes()!=(root/target).read_bytes(): errors.append('Stale build: '+target)
 runtime=json.loads((dist/'catalogue.js').read_text().removeprefix('export default ').strip().removesuffix(';'))
-if runtime!={**catalogue,'media':media}: errors.append('Stale catalogue; run npm run build')
+if runtime!={**catalogue,'listeningGuides':[g for g in catalogue['listeningGuides'] if g.get('status')!='draft'],'media':media}: errors.append('Stale catalogue; run npm run build')
 if json.loads((root/'.openai/hosting.json').read_text())['static']['directory']!='dist': errors.append('Unexpected static directory')
 if errors: raise SystemExit('\n'.join(errors))
 print(f'PASS: {len(pages)} static pages, local links and anchors, responsive assets, metadata, sitemap, deferred players and shared build data.')

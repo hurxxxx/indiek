@@ -175,7 +175,7 @@ dialog{padding:0;border:0;background:var(--paper);color:var(--ink);width:min(820
 /* Listening guides: one catalogue selection, shared by cards and reading pages. */
 .listening-guides{margin-top:76px}
 .guides-intro{font-size:14px;line-height:1.7;color:var(--muted);margin-top:16px}
-.guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin-top:30px}
+.guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px;margin-top:30px}
 .guide-card{min-width:0}
 .guide-card-link{display:flex;flex-direction:column;height:100%;border-top:1px solid var(--ink)}
 .guide-card-top{display:flex;justify-content:space-between;gap:14px;padding:13px 0;color:var(--muted);font-size:9px}
@@ -445,3 +445,36 @@ html.has-mobile-player.mobile-player-side body:has(#persistent-player.is-compact
 .mobile-player-side .topbar{gap:14px}
 .mobile-player-side .topbar nav{gap:12px}
 .mobile-player-side .header-actions{gap:9px}
+
+/* Editorial routes keep the journal's type and rules, with room for longer notes. */
+.share-tools{display:flex;gap:24px;flex-wrap:wrap;align-items:center;margin:22px 0 0;font-size:12px}
+.editorial-byline{font-size:10px;color:var(--muted);margin-top:18px;line-height:1.8}
+.editorial-byline a{text-decoration:underline;text-underline-offset:3px}
+.guide-essay{max-width:68ch;margin:0 0 36px;font-size:17px;line-height:1.85}
+.guide-essay p+p{margin-top:18px}
+.guide-track-controls{display:flex;align-items:center;gap:24px;padding:0 0 24px 152px;font-size:12px}
+.guide-track-controls .save-button{font-size:12px}
+.guide-sources{margin-top:32px;font-size:13px;line-height:1.8;color:var(--muted)}
+.guide-sources h2{font-size:18px;color:var(--ink)}
+.guide-sources ul{padding-left:20px;margin:12px 0}
+.guide-sources a{text-decoration:underline;text-underline-offset:3px}
+.related-listening{border-top:1px solid var(--ink);padding-top:25px;margin:45px 0}
+.related-listening h2{font:600 38px/1.1 var(--display);margin-top:12px}
+.related-tracks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:25px}
+.related-tracks a{border-top:1px solid var(--line);padding-top:15px;display:flex;flex-direction:column;gap:7px}
+.related-tracks strong{font-size:18px;font-weight:500}.related-tracks span{font-size:13px;color:var(--muted)}
+.related-guide-links{display:flex;flex-wrap:wrap;gap:18px 28px;margin-top:30px;font-size:12px}
+.latest-section{margin-top:48px}.latest-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:24px}
+.latest-list>a{position:relative;padding:20px 35px 20px 0;border-top:1px solid var(--line)}
+.latest-list h3{font:600 32px/1.15 var(--display);margin:10px 0}.latest-list .mono{font-size:9px;color:var(--muted)}
+.latest-list p{font-size:13px;line-height:1.7;color:var(--muted);max-width:60ch}.latest-list>a>span:last-child{position:absolute;right:4px;top:40px;font-size:26px}
+.related-tracks a:hover strong,.latest-list a:hover h3{color:var(--red)}
+.footer>div{flex-wrap:wrap;gap:16px 22px}
+@media(max-width:760px),(max-width:1024px) and (max-height:540px){
+  .guide-essay{font-size:15px}.guide-track-controls{padding-left:92px;gap:16px;flex-wrap:wrap}
+  .share-tools{gap:18px;font-size:11px}.related-tracks{grid-template-columns:1fr;gap:18px}
+  .related-listening h2{font-size:34px}.latest-list{grid-template-columns:1fr}.latest-section{margin-top:36px}
+  .footer>div{justify-content:flex-start;gap:14px 20px}
+}
+.latest-list>a:only-child{grid-column:1/-1}
+.share-url{display:block;width:100%;min-width:0;padding:12px;border:1px solid var(--ink);background:transparent;color:inherit;font:inherit;font-size:16px}

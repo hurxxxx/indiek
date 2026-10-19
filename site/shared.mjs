@@ -20,7 +20,17 @@ export function getListeningGuides({records, editorPick, listeningGuides}) {
   const covered = new Set();
   const guides = listeningGuides.map(guide => {
     if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(guide.id) || guide.id === 'first-listens') throw new Error(`Invalid guide ID: ${guide.id}`);
-    if (!['live', 'tag'].includes(guide.selection)) throw new Error(`Invalid selection for ${guide.id}`);
+    if (!['live', 'tag', 'curated'].includes(guide.selection)) throw new Error(`Invalid selection for ${guide.id}`);
+    if (guide.selection === 'curated') {
+      if (!Array.isArray(guide.trackIds) || guide.trackIds.length < 3 || guide.trackIds.length > 5 || new Set(guide.trackIds).size !== guide.trackIds.length) throw new Error(`Curated guide ${guide.id} needs 3–5 distinct tracks`);
+      const ordered = guide.trackIds.map(id => {
+        const record = all.find(record => record.id === id);
+        if (!record || !guide.trackNotes?.[id]?.trim()) throw new Error(`Missing curated track or note: ${guide.id}/${id}`);
+        return record;
+      });
+      // Curated essays do not replace automatic coverage of newly added artists.
+      return {...guide, records: ordered};
+    }
     const matches = all.filter(record => guide.selection === 'live' ? record.videoType === 'live' : record.guideTags?.includes(guide.id));
     const first = matches.find(record => record.id === guide.featuredArtistId);
     if (!first) throw new Error(`Featured artist ${guide.featuredArtistId} is not included in ${guide.id}`);
@@ -30,7 +40,7 @@ export function getListeningGuides({records, editorPick, listeningGuides}) {
   });
   const missing = all.filter(record => !covered.has(record.id));
   if (missing.length) throw new Error(`Artists missing from listening guides: ${missing.map(record => record.id).join(', ')}`);
-  return guides;
+  return guides.filter(guide => guide.status !== 'draft').sort((a,b) => Number(b.selection === 'curated') - Number(a.selection === 'curated'));
 }
 
 // Editorial overrides set the opening order; every catalogue artist still appears.
