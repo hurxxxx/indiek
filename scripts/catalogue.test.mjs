@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {searchCatalogue, readSaved, getFeaturedArtists, formatPosition, getListeningGuides} from '../site/shared.mjs';
+import {searchCatalogue, readSaved, getFeaturedArtists, formatPosition, getListeningGuides, getArtistDirectory, navigationSection} from '../site/shared.mjs';
 
 const catalogue = JSON.parse(readFileSync(new URL('../content/catalogue.json',import.meta.url)));
 const {records, editorPick} = catalogue;
@@ -71,6 +71,32 @@ test('empty search includes all shelf entries and the editor pick',()=>{
   assert.equal(searchCatalogue(records,editorPick,'').length,records.length+1);
   assert.deepEqual(searchCatalogue(records,editorPick,'not-a-real-artist-983'),[]);
 });
+test('the artist directory includes new artists and the editor pick without changing saved playback order',()=>{
+  const edited=freshCatalogue();
+  const added={...edited.records[0],id:'new-artist',artist:'A New Artist'};
+  edited.records.push(added);
+  const original=edited.records.map(r=>r.id);
+  const directory=getArtistDirectory(edited);
+  assert.equal(directory[0].id,'new-artist');
+  assert.equal(directory.at(-1).id,'yoon-mirae');
+  assert.deepEqual(directory.map(r=>r.id).sort(),[...original,editorPick.id].sort());
+  assert.deepEqual(edited.records.map(r=>r.id),original);
+});
+test('directory searches combine artist type with Korean names, song titles and aliases',()=>{
+  assert.deepEqual(getArtistDirectory(catalogue,{query:'윤미래',category:'solo'}).map(r=>r.id),['yoon-mirae']);
+  assert.deepEqual(getArtistDirectory(catalogue,{query:'윤미래',category:'bands'}),[]);
+  assert.deepEqual(getArtistDirectory(catalogue,{query:'Romance Youth Love',category:'bands'}).map(r=>r.id),['esegye']);
+  assert.deepEqual(getArtistDirectory(catalogue,{query:'Sunwoo Jung A'}).map(r=>r.id),['sunwoojunga']);
+  assert.deepEqual(getArtistDirectory(catalogue,{query:'no such musician 983'}),[]);
+  const bands=getArtistDirectory(catalogue,{category:'bands'});
+  const solo=getArtistDirectory(catalogue,{category:'solo'});
+  assert.deepEqual([...bands,...solo].map(r=>r.id).sort(),[...records,editorPick].map(r=>r.id).sort());
+});
+test('navigation identifies artist and guide detail pages as their parent sections',()=>{
+  for(const [path,section] of [['/','home'],['/artists/','artists'],['/artists/ydbb/','artists'],['/notes/first-listens/','guides'],['/notes/on-stage/','guides'],['/about/',null]]) {
+    assert.equal(navigationSection(path),section);
+  }
+});
 test('existing ONCE save survives migration and unknown IDs do not appear',()=>{
   assert.deepEqual([...readSaved('["ydbb","unknown","ydbb"]',records)],['ydbb']);
 });
@@ -81,7 +107,7 @@ test('hero includes each artist and the editor pick, preserving the editorial op
   const features = getFeaturedArtists(catalogue);
   assert.deepEqual(features.slice(0,4).map(f=>f.id),['ydbb','whiteusedsocks','motte','hanroro']);
   assert.deepEqual(features.map(f=>f.id).sort(),[...records,editorPick].map(r=>r.id).sort());
-  assert.equal(features.find(f=>f.id==='yoon-mirae').kind,'artwork');
+  assert.equal(features.find(f=>f.id==='yoon-mirae').kind,'portrait');
 });
 test('a newly added artist enters the hero automatically without a separate feature entry',()=>{
   const record = {id:'new-artist',artist:'New Artist',track:'First Song',image:'new.jpg',release:'First Release',note:'A first listen.'};

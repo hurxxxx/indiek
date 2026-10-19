@@ -8,7 +8,7 @@ A growing independent music journal introducing Korean musicians to listeners ar
 
 ## Features
 
-- Artist introductions, listening notes and release information in English.
+- A searchable A–Z artist directory, with band/solo filters, introductions, listening notes and release information in English.
 - Short listening guides, related recommendations, an RSS feed and page-specific sharing cards.
 - Official YouTube videos and live performances, with Apple Music release links.
 - One shared YouTube player: a centered listening window on desktop and a bottom dock on mobile, moving beside the page in short landscape views. Mobile playback starts without a popup; use YouTube’s fullscreen control for a larger view. Internal navigation, including Back and Forward, keeps playback running. Selecting another song uses the same player; closing it, reloading or leaving ends playback.
@@ -16,6 +16,8 @@ A growing independent music journal introducing Korean musicians to listeners ar
 - Responsive pages with keyboard navigation and reduced-motion support.
 
 Built with HTML, CSS and JavaScript. Pages are generated as static files; no application server or database is required. “Agree & play” combines YouTube consent, connection and the first playback request. Later selections use “Play” during the same page session; if the browser blocks playback, use the video’s play button. Reloading resets this choice. Optional Matomo statistics use first-party cookies after explicit consent to measure visits, returning browsers and listening interactions. The choice can be changed from the footer; local previews are excluded.
+
+Home features a rotating artist story, the full listening list, recent additions and short guide introductions. [Artists](https://indiek.com/artists/) holds the complete catalogue; [Guides](https://indiek.com/notes/first-listens/) offers themed ways to explore it. Each artist and guide has its own shareable, directly loadable URL. Small JavaScript navigation keeps the shared player alive between these static pages, with no routing framework. Directory searches and filters stay in place during internal navigation.
 
 ## Getting started
 

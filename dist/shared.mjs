@@ -2,6 +2,7 @@ export const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char 
 export const artistPath = record => `/artists/${record.id}/`;
 export const guidePath = guide => `/notes/${guide.id}/`;
 export const formatPosition = number => String(number).padStart(2, '0');
+export const navigationSection = pathname => pathname.startsWith('/artists/') ? 'artists' : pathname.startsWith('/notes/') ? 'guides' : pathname === '/' ? 'home' : null;
 
 export function getListeningGuides({records, editorPick, listeningGuides}) {
   const all = [...records, editorPick];
@@ -70,6 +71,12 @@ export function searchCatalogue(records, pick, query) {
     const text = normalizeSearch([record.artist, record.korean, record.aliases, record.track, record.koreanTitle, record.release, record.genre, record.category].filter(Boolean).join(' '));
     return text.includes(compact) || words.every(word => text.includes(word));
   });
+}
+
+export function getArtistDirectory(catalogue, {query = '', category = 'all'} = {}) {
+  return searchCatalogue(catalogue.records, catalogue.editorPick, query)
+    .filter(record => category === 'all' || record.category === category)
+    .sort((a, b) => a.artist.localeCompare(b.artist, 'en', {sensitivity:'base', ignorePunctuation:true}) || a.id.localeCompare(b.id));
 }
 
 export function readSaved(value, records) {

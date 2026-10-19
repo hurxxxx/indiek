@@ -145,6 +145,32 @@
       "credit": "Apple Music release artwork",
       "language": "English",
       "status": "unconfirmed"
+    },
+    {
+      "file": "yoon-mirae-gemini-portrait.jpg",
+      "label": "Yoon Mirae — Gemini 2 promotional portrait, 2018",
+      "caption": "Gemini 2 promotional portrait, 2018.",
+      "source": "https://www.ohmynews.com/NWS_Web/View/img_pg.aspx?CNTN_CD=IE002359842",
+      "original": "https://ojsfile.ohmynews.com/BIG_IMG_FILE/2018/0705/IE002359842_BIG.jpg",
+      "credit": "Feel Ghood Music, via OhmyNews",
+      "language": "Korean",
+      "status": "unconfirmed",
+      "showCredit": true,
+      "changes": "Resized WebP versions; cropped for display.",
+      "notes": "OhmyNews identifies this as a Gemini 2 jacket photograph and credits Feel Ghood Music. No reuse licence was stated."
+    },
+    {
+      "file": "sunwoojunga-cam-profile.jpg",
+      "label": "sunwoojunga — official CAM WITH US portrait",
+      "caption": "Official artist portrait from CAM WITH US.",
+      "source": "https://camwus.com/",
+      "original": "https://camwus.com/wp-content/uploads/2026/06/sunwoojunga6-scaled.jpg",
+      "credit": "CAM WITH US",
+      "language": "Korean",
+      "status": "unconfirmed",
+      "showCredit": true,
+      "changes": "Resized WebP versions; cropped for display.",
+      "notes": "Published on the agency’s official artist roster. No reuse licence was stated; official publication is not reuse permission."
     }
   ]
 }

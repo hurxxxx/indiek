@@ -1,7 +1,7 @@
   <main id="main">
     <section class="masthead wrap" aria-label="Music from Korea, worth sharing">
       <div class="masthead-top mono"><span>MUSIC FROM KOREA, WORTH SHARING</span><span>A LISTENING JOURNAL</span></div>
-      <div class="masthead-brand"><h1>indiek<span>.</span></h1><div class="brand-note"><span class="mono">LOCAL ROOTS. OPEN EARS.</span><p>Good music<br>travels.</p><a href="#records" class="underlink">Find your next favorite <span aria-hidden="true">↘</span></a></div></div>
+      <div class="masthead-brand"><h1>indiek<span>.</span></h1><div class="brand-note"><span class="mono">LOCAL ROOTS. OPEN EARS.</span><p>Good music<br>travels.</p><a href="/artists/" class="underlink">Find your next favorite <span aria-hidden="true">↗</span></a></div></div>
       <div class="masthead-bottom mono"><span>KOREAN MUSIC, PERSONALLY PICKED.</span><span>START SOMEWHERE. KEEP LISTENING. <span aria-hidden="true">↓</span></span></div>
     </section>
 
@@ -27,20 +27,15 @@
         <p class="rotation-intro">Songs from across the journal, all in one place.</p>
         {{ROOM_HINT}}
         <div class="room-track-scroll" role="region" aria-label="All {{ROOM_COUNT}} tracks in the listening room" tabindex="0"><ol class="track-list" id="track-list" role="list">{{TRACKS}}</ol></div>
-        <a class="room-button" href="/#notes">Find a listening guide <span aria-hidden="true">↗</span></a>
+        <a class="room-button" href="/notes/first-listens/">Find a listening guide <span aria-hidden="true">↗</span></a>
       </aside>
     </section>
+
+    <section class="directory-invite wrap" id="records" aria-label="Artist directory"><p>Meet the people behind the music.</p><a class="underlink" href="/artists/">Browse all {{ARTIST_COUNT}} artists <span aria-hidden="true">↗</span></a></section>
 
     {{LATEST}}
 
     {{EDITOR_PICK}}
-
-    <section class="record-section wrap" id="records" aria-labelledby="records-title">
-      <div class="section-heading"><div><p class="eyebrow">THE LISTENING SHELF / HANDPICKED SONGS</p><h2 id="records-title">Worth your time.</h2></div><p class="section-description">A mix of bands and solo artists.<br>Something here might be for you.</p></div>
-      <div class="filter-bar" data-js-only hidden><div class="filters" role="group" aria-label="Filter by artist type"><button data-filter="all" aria-pressed="true">All artists <sup>{{COUNT}}</sup></button><button data-filter="bands" aria-pressed="false">Bands</button><button data-filter="solo" aria-pressed="false">Solo artists</button></div><span id="record-count" class="mono" role="status">{{COUNT}} TRACKS</span></div>
-      <div class="record-grid" id="record-grid">{{RECORDS}}</div>
-
-    </section>
 
     <section class="listening-guides wrap" id="notes" aria-labelledby="notes-title">
       <div class="section-heading"><div><p class="eyebrow">LISTENING GUIDES / {{GUIDE_ARTIST_COUNT}} ARTISTS TO EXPLORE</p><h2 id="notes-title">Follow the sound.</h2></div><a class="underlink" href="/notes/first-listens/">All listening guides <span aria-hidden="true">↗</span></a></div>

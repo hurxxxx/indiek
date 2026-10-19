@@ -2,8 +2,9 @@ import catalogue from './catalogue.js';
 import {initAnalytics} from './analytics.mjs';
 import {initNavigation, createPageScroll} from './navigation.mjs';
 import {createPlayer} from './player.mjs';
+import {initArtistDirectory} from './directory.mjs';
 import {mobilePlayerQuery, initMobileViewport} from './mobile.mjs';
-import {escapeHTML as e, artistPath, coverHTML, readSaved, searchCatalogue, getFeaturedArtists, formatPosition, youtubeConsentHTML, getListeningGuides, guidePath} from './shared.mjs';
+import {escapeHTML as e, artistPath, coverHTML, readSaved, searchCatalogue, getFeaturedArtists, formatPosition, youtubeConsentHTML, getListeningGuides, guidePath, navigationSection} from './shared.mjs';
 
 const {records, editorPick: pick, media} = catalogue;
 const features = getFeaturedArtists(catalogue);
@@ -115,7 +116,7 @@ function renderLibrary() {
   const list=records.filter(r=>saved.has(r.id));
   const controls=list.length?'<div class="dialog-toolbar library-queue-controls"><button data-play-all title="Play saved tracks from the beginning">Play all</button><button data-previous-track aria-label="Previous saved track">← Previous</button><button data-next-track aria-label="Next saved track">Next →</button><button data-auto-next aria-pressed="true">Auto-next: on</button></div>':'';
   const rows=list.map(r=>`<div class="library-row" data-saved-row="${r.id}"><a class="library-info" href="${artistPath(r)}#listen" aria-label="Read about ${e(r.artist)}: ${e(r.track)}">${coverHTML(media,r,{sizes:'44px'})}<span><strong>${e(r.track)}</strong><small>${e(r.artist)}<span class="library-state"></span></small></span></a>${r.externalOnly?`<a class="library-play library-external" href="${e(r.url)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${e(r.track)} on YouTube">YouTube ↗</a>`:`<button class="library-play" data-load-saved="${r.id}"></button>`}<button class="save-button library-remove" data-remove="${r.id}" aria-label="Remove ${e(r.track)} from saved tracks" title="Remove from saved tracks">×</button></div>`).join('');
-  openDialog(`${controls}<div class="dialog-scroll" tabindex="0" aria-label="Saved tracks">${list.length?`${youtubeAllowed?'':youtubeConsentHTML()}${rows}`:'<p class="empty-state">Save a track with the + button to find it here later.</p><a class="underlink" href="/#records">Browse the listening shelf ↗</a>'}<p class="embed-caption">Saved in this browser. <a href="/privacy-and-terms/">Storage & privacy</a></p></div>`,'library',`Saved · ${list.length}`);
+  openDialog(`${controls}<div class="dialog-scroll" tabindex="0" aria-label="Saved tracks">${list.length?`${youtubeAllowed?'':youtubeConsentHTML()}${rows}`:'<p class="empty-state">Save a track with the + button to find it here later.</p><a class="underlink" href="/artists/">Browse the artists ↗</a>'}<p class="embed-caption">Saved in this browser. <a href="/privacy-and-terms/">Storage & privacy</a></p></div>`,'library',`Saved · ${list.length}`);
   syncPlayButtons();
   syncQueueControls();restoreLibraryPosition();
 }
@@ -307,13 +308,6 @@ document.addEventListener('click',event=>{
   else if(button.hasAttribute('data-auto-next'))player.setAutoNext(!player.autoNext);
   else if(button.hasAttribute('data-unload-player'))closePlayer();
   else if(button.hasAttribute('data-resize-player'))setCompactPlayer(!playerRoot.classList.contains('is-compact'));
-  else if(button.hasAttribute('data-filter')){
-    const filter=button.dataset.filter;
-    document.querySelectorAll('[data-filter]').forEach(el=>el.setAttribute('aria-pressed',String(el===button)));
-    let count=0;
-    document.querySelectorAll('.record-card').forEach(card=>{card.hidden=filter!=='all'&&card.dataset.category!==filter;if(!card.hidden)count++;});
-    document.querySelector('#record-count').textContent=`${String(count).padStart(2,'0')} ${count===1?'TRACK':'TRACKS'}`;
-  }
 });
 window.addEventListener('storage',event=>{
   if(event.key===storageKey||event.key===null){
@@ -323,7 +317,7 @@ window.addEventListener('storage',event=>{
 });
 window.addEventListener('pagehide',()=>{player.close();setCompactPlayer(false);});
 syncSaved();
-const analytics=initAnalytics({...catalogue.site.analytics,trackIds:all.map(r=>r.id),contentPaths:['/','/notes/first-listens/',...all.map(artistPath),...getListeningGuides(catalogue).map(guidePath)]}, catalogue.site.url);
+const analytics=initAnalytics({...catalogue.site.analytics,trackIds:all.map(r=>r.id),contentPaths:['/','/artists/','/notes/first-listens/',...all.map(artistPath),...getListeningGuides(catalogue).map(guidePath)]}, catalogue.site.url);
 
 async function sharePage(button) {
   const url=document.querySelector('link[rel="canonical"]').href;
@@ -446,14 +440,26 @@ function initArtistCarousel() {
     reducedMotion.removeEventListener('change',motionChange);
   };
 }
+function syncNavigation() {
+  const section = navigationSection(location.pathname);
+  document.querySelectorAll('[data-nav-section]').forEach(link => {
+    if (link.dataset.navSection === section) link.setAttribute('aria-current', link.pathname === location.pathname ? 'page' : 'true');
+    else link.removeAttribute('aria-current');
+  });
+}
+const directoryState = {query:'', category:'all'};
+let cleanupDirectory=initArtistDirectory(catalogue,directoryState);
 let cleanupCarousel=initArtistCarousel();
+syncNavigation();
 initNavigation({
   scroll:pageScroll, closeDialog,
-  beforeSwap:()=>{if(player.current)setCompactPlayer(true);cleanupCarousel?.();},
+  beforeSwap:()=>{if(player.current)setCompactPlayer(true);cleanupCarousel?.();cleanupDirectory?.();},
   afterSwap:()=>{
     document.querySelectorAll('[data-js-only]').forEach(el=>el.hidden=false);
     syncSaved();syncPlayer();analytics?.refreshControls();
     cleanupCarousel=initArtistCarousel();
+    cleanupDirectory=initArtistDirectory(catalogue,directoryState);
+    syncNavigation();
   },
   onNavigate:referrer=>analytics?.trackPageView(referrer),
   onError:()=>notify('This page could not be loaded. Please try the link again.'),

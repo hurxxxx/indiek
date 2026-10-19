@@ -16,9 +16,11 @@ class Page(HTMLParser):
     def __init__(self, path):
         super().__init__(); self.path=path; self.refs=[]; self.ids=set(); self.meta={}; self.canonical=[]; self.h1=0; self.frames=0
         self.guide_cards=[]; self.guide_tracks=[]; self.guide_more=[]; self.guide_id=None
-        self.room_tracks=[]; self.room_count=None
+        self.room_tracks=[]; self.room_count=None; self.directory_artists=[]; self.images=[]; self.nav=[]
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
+        if 'data-directory-artist' in a: self.directory_artists.append(a['data-directory-artist'])
+        if 'data-nav-section' in a: self.nav.append((a['data-nav-section'],a.get('href'),a.get('aria-current')))
         if 'data-room-count' in a: self.room_count=int(a['data-room-count'])
         if 'data-room-track' in a: self.room_tracks.append((a['data-room-track'],a.get('href')))
         if 'data-guide' in a: self.guide_cards.append((a['data-guide'],int(a['data-track-count'])))
@@ -33,6 +35,7 @@ class Page(HTMLParser):
         for key in ('srcset','data-srcset'):
             if a.get(key): self.refs.extend(item.strip().split()[0] for item in a[key].split(','))
         if tag=='img':
+            self.images.append(a.get('src',a.get('data-src','')))
             if not a.get('alt'): errors.append(f'{self.path}: image missing alt text')
             if not a.get('width') or not a.get('height'): errors.append(f'{self.path}: image dimensions missing')
             if '/optimized/' not in a.get('src',a.get('data-src','')): errors.append(f'{self.path}: unoptimized display image')
@@ -59,7 +62,10 @@ for path in dist.rglob('*.html'):
     if any('matomo.lumejs.com' in ref for ref in page.refs): errors.append(f'{path}: Matomo loaded before consent')
     if page.frames: errors.append(f'{path}: player loaded without consent')
     if '{{' in text or 'lumejs.chatgpt.site' in text or 'data-story=' in text: errors.append(f'{path}: stale template content')
-    for required in ['/about/','/privacy-and-terms/','mailto:'+site['email']]:
+    section='artists' if relative.startswith('artists/') else 'guides' if relative.startswith('notes/') else 'home' if not relative else None
+    expected_nav=[(id,href,('page' if href=='/'+relative else 'true') if id==section else None) for id,href in [('home','/'),('artists','/artists/'),('guides','/notes/first-listens/')]]
+    if page.nav!=expected_nav: errors.append(f'{path}: incorrect main navigation or current section')
+    for required in ['/artists/','/notes/first-listens/','/about/','/privacy-and-terms/','mailto:'+site['email']]:
         if required not in page.refs: errors.append(f'{path}: missing public navigation {required}')
 
 for path,page in pages.items():
@@ -92,12 +98,21 @@ for record in catalogue['records']+[catalogue['editorPick']]:
         if record['videoId'] not in text: errors.append('Missing direct video link: '+record['id'])
         if record.get('externalOnly') and 'data-load-player=' in text: errors.append('External-only performance has an embed: '+record['id'])
 for name, image in media.items():
+    if name not in credits: errors.append('Missing image credit: '+name)
     for variant in image['variants']:
         if not (dist/variant['src'].lstrip('/')).is_file(): errors.append('Missing variant: '+name)
+image_families={variant['src']:name for name,image in media.items() for variant in image['variants']}
+for page in pages.values():
+    images=[image_families.get(src,src) for src in page.images]
+    if len(images)!=len(set(images)): errors.append(f'{page.path}: repeated artist image or release cover')
 
 urls={node.text for node in ET.parse(dist/'sitemap.xml').findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc')}
 if urls!={p.canonical[0] for p in pages.values()}: errors.append('Sitemap does not match generated pages')
 home=pages[(dist/'index.html').resolve()]
+directory=pages.get((dist/'artists/index.html').resolve())
+artist_ids=[r['id'] for r in catalogue['records']+[catalogue['editorPick']]]
+if not directory or sorted(directory.directory_artists)!=sorted(artist_ids): errors.append('Artist directory must include each artist and editor pick exactly once')
+if f'Browse all {len(artist_ids)} artists' not in (dist/'index.html').read_text(): errors.append('Home directory link count does not match all artists')
 expected_room=[(r['id'],f"/artists/{r['id']}/#listen") for r in catalogue['records']+[catalogue['editorPick']]]
 if home.room_tracks!=expected_room: errors.append('Listening room does not match the complete catalogue')
 if home.room_count!=len(expected_room): errors.append('Listening room count does not match its tracks')
@@ -123,10 +138,10 @@ for file in ['index.html','notes/first-listens/index.html']:
     index=pages.get((dist/file).resolve())
     if not index or index.guide_cards!=[(id,guide_counts.get(id)) for id in guide_ids]: errors.append('Guide cards disagree with guide pages: '+file)
     elif any(f'/notes/{id}/' not in index.refs for id in guide_ids): errors.append('Guide card link missing: '+file)
-expected_count=len(catalogue['records'])+5+len(guide_ids)
+expected_count=len(catalogue['records'])+6+len(guide_ids)
 if len(pages)!=expected_count: errors.append(f'Expected {expected_count} pages, found {len(pages)}')
 if site['url']+'/sitemap.xml' not in (dist/'robots.txt').read_text(): errors.append('Missing robots sitemap')
-for source,target in [(f'site/{name}',f'dist/{name}') for name in ['app.js','analytics.mjs','navigation.mjs','mobile.mjs','player.mjs','styles.css','shared.mjs']]:
+for source,target in [(f'site/{name}',f'dist/{name}') for name in ['app.js','analytics.mjs','navigation.mjs','directory.mjs','mobile.mjs','player.mjs','styles.css','shared.mjs']]:
     if (root/source).read_bytes()!=(root/target).read_bytes(): errors.append('Stale build: '+target)
 runtime=json.loads((dist/'catalogue.js').read_text().removeprefix('export default ').strip().removesuffix(';'))
 if runtime!={**catalogue,'listeningGuides':[g for g in catalogue['listeningGuides'] if g.get('status')!='draft'],'media':media}: errors.append('Stale catalogue; run npm run build')

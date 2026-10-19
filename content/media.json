@@ -263,6 +263,30 @@
       }
     ]
   },
+  "sunwoojunga-cam-profile.jpg": {
+    "width": 1707,
+    "height": 2560,
+    "variants": [
+      {
+        "src": "/assets/optimized/sunwoojunga-cam-profile-480.webp",
+        "width": 480,
+        "height": 720,
+        "bytes": 34774
+      },
+      {
+        "src": "/assets/optimized/sunwoojunga-cam-profile-960.webp",
+        "width": 960,
+        "height": 1440,
+        "bytes": 148034
+      },
+      {
+        "src": "/assets/optimized/sunwoojunga-cam-profile-1600.webp",
+        "width": 1600,
+        "height": 2400,
+        "bytes": 392352
+      }
+    ]
+  },
   "sunwoojunga.jpg": {
     "width": 1200,
     "height": 1200,
@@ -428,6 +452,30 @@
         "width": 1000,
         "height": 1000,
         "bytes": 197062
+      }
+    ]
+  },
+  "yoon-mirae-gemini-portrait.jpg": {
+    "width": 3000,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/assets/optimized/yoon-mirae-gemini-portrait-480.webp",
+        "width": 480,
+        "height": 320,
+        "bytes": 16920
+      },
+      {
+        "src": "/assets/optimized/yoon-mirae-gemini-portrait-960.webp",
+        "width": 960,
+        "height": 640,
+        "bytes": 60970
+      },
+      {
+        "src": "/assets/optimized/yoon-mirae-gemini-portrait-1600.webp",
+        "width": 1600,
+        "height": 1067,
+        "bytes": 178944
       }
     ]
   }

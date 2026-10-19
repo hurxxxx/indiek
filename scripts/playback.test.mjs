@@ -6,7 +6,7 @@ import {createPlayer, loadYouTubeAPI} from '../site/player.mjs';
 const current='https://indiek.com/artists/ydbb/';
 const link=(href,attributes={})=>({href,...attributes,hasAttribute:key=>Object.hasOwn(attributes,key)});
 test('only ordinary internal page links use continuous navigation',()=>{
-  for(const href of ['/#records','/artists/kim-sawol/','/privacy-and-terms/#analytics']) {
+  for(const href of ['/#records','/artists/','/artists/kim-sawol/','/notes/first-listens/','/privacy-and-terms/#analytics']) {
     assert.equal(internalPageURL(link(href),current,{button:0}).href,new URL(href,current).href);
   }
   for(const anchor of [link('https://youtube.com/watch?v=123'),link('mailto:gw@lumejs.com'),link('/assets/cover.jpg'),link('/',{target:'_blank'}),link('/',{download:''})]) {

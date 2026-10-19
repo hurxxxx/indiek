@@ -579,7 +579,11 @@
     {
       "id": "sunwoojunga",
       "title": "Run with Me, on stage.",
-      "deck": "sunwoojunga sings a song from <em>Serenade</em> at the concert of the same name."
+      "deck": "sunwoojunga sings a song from <em>Serenade</em> at the concert of the same name.",
+      "image": "sunwoojunga-cam-profile.jpg",
+      "alt": "Black-and-white official portrait of sunwoojunga framing her eyes with her hands",
+      "position": "50% 40%",
+      "kind": "portrait"
     },
     {
       "id": "car-the-garden",
@@ -609,7 +613,11 @@
     {
       "id": "yoon-mirae",
       "title": "Guitar, voice and Breath.",
-      "deck": "<em>Breath</em> is an acoustic R&B song about the little reminders left after a breakup."
+      "deck": "<em>Breath</em> is an acoustic R&B song about the little reminders left after a breakup.",
+      "image": "yoon-mirae-gemini-portrait.jpg",
+      "alt": "Yoon Mirae with short auburn waves and gold earrings against a teal background, in a Gemini 2 promotional portrait",
+      "position": "36% 50%",
+      "kind": "portrait"
     },
     {
       "id": "yerin-baek",
@@ -696,7 +704,8 @@
       "selection": "live",
       "featuredArtistId": "sunwoojunga",
       "description": "Songs from concert halls, small clubs and live sessions.",
-      "intro": "A small club, a concert hall, a television studio. These recordings catch artists playing their songs live, each in a different setting."
+      "intro": "A small club, a concert hall, a television studio. These recordings catch artists playing their songs live, each in a different setting.",
+      "cardImageArtistId": "sunwoojunga"
     },
     {
       "id": "guitars-and-bands",
@@ -704,7 +713,8 @@
       "selection": "tag",
       "featuredArtistId": "black-skirts",
       "description": "Bands, solo projects and plenty of guitar.",
-      "intro": "Acoustic folk, indie pop and rock meet here. Some songs come from bands, others from solo projects, with guitars running through the selection."
+      "intro": "Acoustic folk, indie pop and rock meet here. Some songs come from bands, others from solo projects, with guitars running through the selection.",
+      "cardImageArtistId": "whiteusedsocks"
     },
     {
       "id": "distinct-voices",
@@ -712,7 +722,8 @@
       "selection": "tag",
       "featuredArtistId": "yoon-mirae",
       "description": "Singers from folk, pop, jazz, R&B and rock.",
-      "intro": "Sometimes it’s a voice that makes you want to hear another song. Here are singers from folk, pop, jazz, R&B and rock, on record and on stage."
+      "intro": "Sometimes it’s a voice that makes you want to hear another song. Here are singers from folk, pop, jazz, R&B and rock, on record and on stage.",
+      "cardImageArtistId": "hanroro"
     },
     {
       "id": "korean-indie-where-to-start",
@@ -793,7 +804,8 @@
           "nextNote": "ESEGYE at their first BLIND concert, filmed at Veloso Hongdae."
         }
       },
-      "includeCatalogue": true
+      "includeCatalogue": true,
+      "cardImageArtistId": "ydbb"
     },
     {
       "id": "if-you-like-yerin-baek",
