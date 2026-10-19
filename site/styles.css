@@ -357,3 +357,40 @@ main[aria-busy="true"]{cursor:progress}
 .playback-message a{font-size:11px;text-decoration:underline;text-underline-offset:3px}
 .is-compact .player-transport{padding:10px 12px;gap:8px}
 @media(max-width:760px){.player-transport{padding:12px 14px;gap:10px}.queue-controls button{padding:8px 9px}}
+
+/* Saved keeps artist introductions available alongside a direct playback action. */
+.library-intro{font-size:13px;line-height:1.7;color:var(--muted);margin-bottom:12px}
+.library-row{border-bottom:1px solid var(--line);padding:8px 0}
+.library-row .search-result{border:0;min-width:0}
+.library-row .search-result>span{min-width:0}
+.library-row .result-arrow{display:none}
+.library-actions{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.library-play{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 16px;border:1px solid var(--ink);font-size:12px;white-space:nowrap}
+.library-play:hover{background:var(--ink);color:var(--paper)}
+.library-actions .save-button{min-height:44px;font-size:11px}
+.library-row .search-result small{margin-top:4px}
+html.has-mobile-player,html.has-mobile-player body{height:100%;overflow:hidden}
+html.has-mobile-player #page-content{position:fixed;inset:0 0 var(--mobile-player-height,244px);overflow:auto;overscroll-behavior-y:contain;scroll-padding-block:16px}
+html.has-mobile-player body:has(#persistent-player){padding-bottom:0}
+@media(max-width:760px){
+ .library-row{display:block;padding:12px 0}
+ .library-actions{margin-left:74px;justify-content:space-between}
+ .library-row .search-result{gap:16px;padding:0 0 10px}
+ .library-row .search-result strong{font-size:14px}
+ .library-row .search-result small{font-size:12px}
+ .library-play{padding:8px 14px}
+
+ /* The video remains visible; reading and playback occupy separate regions. */
+ .persistent-player.is-compact{left:0;right:0;bottom:0;width:100%;max-height:none;padding-bottom:env(safe-area-inset-bottom);border:0;box-shadow:0 -1px 0 var(--line);overflow:visible}
+ .is-compact .persistent-player-heading{min-height:44px;height:44px;padding:0 8px 0 14px;gap:8px}
+ .is-compact .persistent-player-heading p{display:none}
+ .is-compact .persistent-player-heading a{font-size:12px}
+ .is-compact .persistent-player-heading button{height:44px}
+ .is-compact .persistent-player-heading .player-size-toggle{height:36px;padding-inline:10px}
+ .is-compact .persistent-player-stage{height:200px;aspect-ratio:auto}
+ .is-compact .player-transport{display:none}
+ .is-compact.needs-attention .player-transport{display:block;padding:6px 14px}
+ .is-compact .queue-controls{display:none}
+ html.has-mobile-player body:has(#persistent-player.is-compact:not([hidden])) .analytics-notice{bottom:calc(var(--mobile-player-height,244px) + 12px);max-height:calc(100dvh - var(--mobile-player-height,244px) - 24px);overflow:auto}
+ html.has-mobile-player body:has(#persistent-player.is-compact:not([hidden])) .toast{bottom:calc(var(--mobile-player-height,244px) + 12px)}
+}

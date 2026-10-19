@@ -78,6 +78,7 @@ export function imageHTML(media, name, alt, {sizes = '(max-width: 760px) 45vw, 2
 
 export const coverHTML = (media, r, options) => imageHTML(media, r.image, `${r.release || r.album} — release artwork`, options);
 export const videoLabel = r => r.videoType === 'live' ? 'Live performance' : r.videoType === 'music-video' ? 'Official music video' : r.videoType === 'lyric-video' ? 'Official lyric video' : 'Official audio';
+export const youtubeConsentHTML = () => `<p class="player-consent" data-youtube-consent>Choose “Agree &amp; play” to connect to YouTube and accept <a href="/privacy-and-terms/">indiek’s privacy &amp; terms</a> and the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms</a>. YouTube receives device and request information. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.</p>`;
 export const externalLink = (url, label, className = '') => `<a${className ? ` class="${className}"` : ''} href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)} <span aria-hidden="true">↗</span></a>`;
 
 export function saveButton(r, long = false) {

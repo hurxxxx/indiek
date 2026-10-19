@@ -8,15 +8,43 @@ export function internalPageURL(link, current, event) {
   return url.pathname.endsWith('/') ? url : null;
 }
 
-export function initNavigation({beforeSwap, afterSwap, onNavigate, onError}) {
+// The mobile dock reserves its own space; keep reading positions when changing scroll surfaces.
+export function createPageScroll({win = window, doc = document} = {}) {
+  const page = doc.querySelector('#page-content');
+  const mobile = win.matchMedia('(max-width: 760px)');
+  let compact = false, docked = false;
+  const position = () => docked ? [page.scrollLeft, page.scrollTop] : [win.scrollX, win.scrollY];
+  function to([left, top]) {
+    (docked ? page : win).scrollTo({left, top, behavior:'instant'});
+  }
+  function sync() {
+    const next = compact && mobile.matches;
+    if (next === docked) return;
+    const saved = position();
+    docked = next;
+    doc.documentElement.classList.toggle('has-mobile-player', docked);
+    to(saved);
+  }
+  mobile.addEventListener('change', sync);
+  return {
+    position, to,
+    setCompact(value) { compact = value; sync(); },
+    onScroll(listener) {
+      win.addEventListener('scroll', listener, {passive:true});
+      page.addEventListener('scroll', listener, {passive:true});
+    },
+  };
+}
+
+export function initNavigation({beforeSwap, afterSwap, onNavigate, onError, scroll = createPageScroll()}) {
   let renderedURL = new URL(location.href), pending, sequence = 0;
   const positions = new Map();
   let entry = history.state?.indiekEntry || 0;
   let nextEntry = entry;
   history.replaceState({...history.state, indiekEntry: entry}, '', location.href);
   history.scrollRestoration = 'manual';
-  const savePosition = () => positions.set(entry, [scrollX, scrollY]);
-  window.addEventListener('scroll', savePosition, {passive:true});
+  const savePosition = () => positions.set(entry, scroll.position());
+  scroll.onScroll(savePosition);
 
   function focusPage(url, position) {
     let target;
@@ -24,9 +52,9 @@ export function initNavigation({beforeSwap, afterSwap, onNavigate, onError}) {
     target ||= document.querySelector('#main');
     target.setAttribute('tabindex', '-1');
     target.focus({preventScroll:true});
-    if (position) window.scrollTo({left:position[0], top:position[1], behavior:'instant'});
+    if (position) scroll.to(position);
     else if (url.hash && target.id !== 'main') target.scrollIntoView({behavior:'instant'});
-    else window.scrollTo({top:0, left:0, behavior:'instant'});
+    else scroll.to([0,0]);
     savePosition();
   }
 

@@ -70,7 +70,7 @@ export function createPlayer(root, {onChange = () => {}, doc = document, win = w
     release();
     const token = generation;
     frame = doc.createElement('iframe');
-    const params = new URLSearchParams({playsinline:'1',enablejsapi:'1',origin:win.location.origin});
+    const params = new URLSearchParams({playsinline:'1',enablejsapi:'1',autoplay:autoplay?'1':'0',origin:win.location.origin});
     frame.src = `https://www.youtube-nocookie.com/embed/${record.videoId}?${params}`;
     frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     frame.allowFullscreen = true;

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {internalPageURL} from '../site/navigation.mjs';
+import {internalPageURL, createPageScroll} from '../site/navigation.mjs';
 import {createPlayer, loadYouTubeAPI} from '../site/player.mjs';
 
 const current='https://indiek.com/artists/ydbb/';
@@ -15,6 +15,24 @@ test('only ordinary internal page links use continuous navigation',()=>{
   for(const event of [{button:1},{button:0,metaKey:true},{button:0,ctrlKey:true},{button:0,defaultPrevented:true}]) {
     assert.equal(internalPageURL(link('/'),current,event),null);
   }
+});
+
+test('mobile docking preserves reading position across expand, close and viewport changes',()=>{
+  let onResize;
+  const classes=new Set();
+  const mobile={matches:true,addEventListener(type,fn){onResize=fn;}};
+  const page={scrollLeft:0,scrollTop:0,scrollTo({left,top}){this.scrollLeft=left;this.scrollTop=top;},addEventListener(){}};
+  const win={scrollX:0,scrollY:640,matchMedia:()=>mobile,scrollTo({left,top}){this.scrollX=left;this.scrollY=top;},addEventListener(){}};
+  const doc={querySelector:()=>page,documentElement:{classList:{toggle(name,on){on?classes.add(name):classes.delete(name);}}}};
+  const scroll=createPageScroll({win,doc});
+  scroll.setCompact(true);
+  assert.ok(classes.has('has-mobile-player'));assert.deepEqual(scroll.position(),[0,640]);
+  scroll.to([0,960]);scroll.setCompact(false);
+  assert.equal(win.scrollY,960);assert.equal(classes.size,0);
+  scroll.setCompact(true);scroll.to([0,1280]);mobile.matches=false;onResize();
+  assert.equal(win.scrollY,1280);assert.equal(classes.size,0);
+  mobile.matches=true;onResize();assert.deepEqual(scroll.position(),[0,1280]);
+  scroll.to([0,0]);scroll.setCompact(false);assert.equal(win.scrollY,0);
 });
 
 const first={id:'first',track:'First',artist:'Artist',channel:'Official',videoId:'one'};
@@ -52,12 +70,23 @@ test('no YouTube connection before load; one iframe survives song changes and sa
   assert.equal(url.searchParams.get('enablejsapi'),'1');
   assert.equal(url.searchParams.get('origin'),'http://127.0.0.1:4173');
   assert.ok(frame.allow.includes('autoplay'));assert.ok(frame.allowFullscreen);
-  assert.deepEqual(b.calls,[]); // First load waits for a real play action.
+  assert.deepEqual(b.calls,[]); // Explicitly cueing a video must not start it.
   b.player.load({...first});assert.deepEqual(b.calls,[]);
   b.player.load(second,{autoplay:true});
   assert.deepEqual(b.calls,[['play','two']]);
   assert.equal(b.stage.children[0],frame);assert.equal(b.created.length,1);
   assert.equal(b.label.textContent,'Second · Artist');
+});
+test('a play action starts the first video and resumes the same song without replacing its iframe',async()=>{
+  const b=playerFixture();b.player.load(first,{autoplay:true});
+  const frame=b.stage.children[0];
+  assert.equal(new URL(frame.src).searchParams.get('autoplay'),'1');
+  await b.ready();assert.deepEqual(b.calls,[['play','one']]);
+  const api=b.instances[0];api.emit('onStateChange',1);
+  b.player.load(first,{autoplay:true});assert.equal(b.calls.length,1);
+  api.emit('onStateChange',2);b.player.load(first,{autoplay:true});
+  assert.deepEqual(b.calls,[['play','one'],['play','one']]);
+  assert.equal(b.stage.children[0],frame);assert.equal(b.created.length,1);
 });
 test('saved order advances once per completed song, skips external-only entries and stops at the end',async()=>{
   const b=playerFixture();b.player.setQueue([first,{...first,id:'external',externalOnly:true},second,third]);

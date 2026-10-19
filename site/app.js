@@ -1,8 +1,8 @@
 import catalogue from './catalogue.js';
 import {initAnalytics} from './analytics.mjs';
-import {initNavigation} from './navigation.mjs';
+import {initNavigation, createPageScroll} from './navigation.mjs';
 import {createPlayer} from './player.mjs';
-import {escapeHTML as e, artistPath, coverHTML, readSaved, searchCatalogue, getFeaturedArtists, formatPosition} from './shared.mjs';
+import {escapeHTML as e, artistPath, coverHTML, readSaved, searchCatalogue, getFeaturedArtists, formatPosition, youtubeConsentHTML} from './shared.mjs';
 
 const {records, editorPick: pick, media} = catalogue;
 const features = getFeaturedArtists(catalogue);
@@ -16,6 +16,7 @@ const dialogContent = document.querySelector('#dialog-content');
 let returnFocus;
 let dialogMode = '';
 let toastTimer;
+let youtubeAllowed = false;
 document.querySelectorAll('[data-js-only]').forEach(el => el.hidden = false);
 
 function syncSaved() {
@@ -59,7 +60,8 @@ function resultRow(r) {
 }
 function renderLibrary() {
   const list=records.filter(r=>saved.has(r.id));
-  openDialog(`<p class="eyebrow dialog-eyebrow">YOUR LISTENING SHELF</p><h2 id="dialog-title" class="dialog-title">Saved for later.</h2>${list.length?list.map(r=>`<div class="library-row">${resultRow(r)}<button class="save-button" data-remove="${r.id}" aria-label="Remove ${e(r.track)} from saved tracks">Remove</button></div>`).join(''):'<p class="empty-state">Save a track with the + button to find it here later.</p><a class="underlink" href="/#records">Browse the listening shelf ↗</a>'}<p class="embed-caption">Your saved tracks stay in this browser. <a href="/privacy-and-terms/">Storage & privacy</a></p>`,'library');
+  openDialog(`<p class="eyebrow dialog-eyebrow">YOUR LISTENING SHELF</p><h2 id="dialog-title" class="dialog-title">Your saved tracks.</h2>${list.length?`<p class="library-intro">Start anywhere. With Auto-next on, the songs continue in the order shown.</p>${youtubeAllowed?'':youtubeConsentHTML()}${list.map(r=>`<div class="library-row">${resultRow(r)}<div class="library-actions">${r.externalOnly?`<a class="library-play" href="${e(r.url)}" target="_blank" rel="noopener noreferrer">YouTube ↗</a>`:`<button class="library-play" data-load-saved="${r.id}"></button>`}<button class="save-button" data-remove="${r.id}" aria-label="Remove ${e(r.track)} from saved tracks">Remove</button></div></div>`).join('')}`:'<p class="empty-state">Save a track with the + button to find it here later.</p><a class="underlink" href="/#records">Browse the listening shelf ↗</a>'}<p class="embed-caption">Your saved tracks stay in this browser. <a href="/privacy-and-terms/">Storage & privacy</a></p>`,'library');
+  syncPlayButtons();
 }
 function toggleSaved(id) {
   const r=records.find(record=>record.id===id);if(!r)return;
@@ -89,6 +91,7 @@ function renderSearch() {
 }
 
 const playerRoot=document.querySelector('#persistent-player');
+const pageScroll=createPageScroll();
 const player=createPlayer(playerRoot,{onChange:syncPlayer});
 const playerSizeButton=playerRoot.querySelector('[data-resize-player]');
 const playerBackdrop=document.querySelector('#player-backdrop');
@@ -106,6 +109,7 @@ function setCompactPlayer(compact) {
   else playerRoot.removeAttribute('aria-modal');
   playerBackdrop.hidden=!expanded;
   document.body.classList.toggle('player-expanded',expanded);
+  pageScroll.setCompact(Boolean(player.current)&&compact);
   playerRoot.querySelectorAll('[data-player-focus]').forEach(el=>el.hidden=!expanded);
   if(expanded&&!inertBackground.size){
     for(const element of document.body.children){
@@ -136,7 +140,7 @@ function syncPlaylist() {
   autoNextButton.setAttribute('aria-pressed',String(player.autoNext));
   autoNextButton.textContent=`Auto-next: ${player.autoNext?'on':'off'}`;
   const status=playerRoot.querySelector('[data-playback-status]');
-  status.textContent=({idle:'',loading:'Loading player…',ready:'Press play to start.',paused:'Paused.',
+  status.textContent=({idle:'',loading:'Starting playback…',ready:'Starting playback…',paused:'Paused.',
     playing:player.autoNext&&player.next?`Up next: ${player.next.track} · ${player.next.artist}`:'Playing · Stops after this song.',
     ended:'Song finished. Choose a track to listen again.',blocked:'Press play in the video to continue.',
     error:'This video is unavailable here. Choose another track or open it on YouTube.',
@@ -145,14 +149,20 @@ function syncPlaylist() {
   const watchLink=playerRoot.querySelector('[data-player-youtube]');
   watchLink.hidden=!['error','unavailable'].includes(player.state);
   watchLink.href=player.current?.url||'#';
+  playerRoot.classList.toggle('needs-attention',['blocked','error','unavailable'].includes(player.state));
   if(focused)(playlistRows.querySelector(`[data-load-saved="${focused}"]`)||playerSizeButton).focus({preventScroll:true});
 }
-function loadPlayer(id) {
+function loadPlayer(id, button) {
   const record=findRecord(id);
   if(!record||record.externalOnly)return;
-  const fromPlaylist=document.activeElement.hasAttribute('data-load-saved');
-  if(!playerRoot.contains(document.activeElement))playerReturnFocus=document.activeElement;
-  player.load(record,{autoplay:fromPlaylist});
+  const fromPlaylist=playlistRows.contains(button);
+  if(dialog.open){
+    if(!playerRoot.contains(returnFocus))playerReturnFocus=returnFocus;
+    returnFocus=playerSizeButton;
+    dialog.close();
+  }else if(!playerRoot.contains(button))playerReturnFocus=button;
+  youtubeAllowed=true;
+  player.load(record,{autoplay:true});
   setCompactPlayer(false);
   (fromPlaylist?playlistRows.querySelector(`[data-load-saved="${id}"]`):playerSizeButton)?.focus({preventScroll:true});
 }
@@ -172,14 +182,23 @@ playerRoot.addEventListener('click',event=>{
 new ResizeObserver(()=>{
   const height=playerRoot.getBoundingClientRect().height;
   document.documentElement.style.setProperty('--player-clearance',`${Math.ceil(height)+36}px`);
+  document.documentElement.style.setProperty('--mobile-player-height',`${Math.ceil(height)}px`);
 }).observe(playerRoot);
-function syncPlayer() {
-  document.querySelectorAll('[data-load-player]').forEach(button=>{
-    const selected=button.dataset.loadPlayer===player.current?.id;
-    button.textContent=selected?'Return to player':'Agree & load YouTube';
-    button.setAttribute('aria-label',selected?`Return to ${player.current.track} player`:`Agree & load YouTube`);
-    button.closest('.player-shell').querySelector('[data-unload-player]').hidden=!selected;
+function syncPlayButtons() {
+  document.querySelectorAll('[data-load-player],.library-play[data-load-saved]').forEach(button=>{
+    const record=findRecord(button.dataset.loadPlayer||button.dataset.loadSaved);
+    const selected=record.id===player.current?.id;
+    const returning=selected&&['playing','loading'].includes(player.state);
+    const text=returning?'Return to player':youtubeAllowed?'Play':'Agree & play';
+    button.textContent=text;
+    button.setAttribute('aria-label',`${text}: ${record.track} by ${record.artist}`);
+    const disconnect=button.closest('.player-shell')?.querySelector('[data-unload-player]');
+    if(disconnect)disconnect.hidden=!selected;
   });
+  document.querySelectorAll('[data-youtube-consent]').forEach(el=>el.hidden=youtubeAllowed);
+}
+function syncPlayer() {
+  syncPlayButtons();
   syncPlaylist();
 }
 function closePlayer() {
@@ -196,8 +215,8 @@ document.addEventListener('click',event=>{
   else if(button.hasAttribute('data-remove'))toggleSaved(button.dataset.remove);
   else if(button.hasAttribute('data-search'))renderSearch();
   else if(button.hasAttribute('data-library'))renderLibrary();
-  else if(button.hasAttribute('data-load-player'))loadPlayer(button.dataset.loadPlayer);
-  else if(button.hasAttribute('data-load-saved'))loadPlayer(button.dataset.loadSaved);
+  else if(button.hasAttribute('data-load-player'))loadPlayer(button.dataset.loadPlayer,button);
+  else if(button.hasAttribute('data-load-saved'))loadPlayer(button.dataset.loadSaved,button);
   else if(button.hasAttribute('data-next-track'))player.nextTrack();
   else if(button.hasAttribute('data-previous-track'))player.previousTrack();
   else if(button.hasAttribute('data-auto-next'))player.setAutoNext(!player.autoNext);
@@ -328,6 +347,7 @@ function initArtistCarousel() {
 }
 let cleanupCarousel=initArtistCarousel();
 initNavigation({
+  scroll:pageScroll,
   beforeSwap:()=>{if(player.current)setCompactPlayer(true);cleanupCarousel?.();},
   afterSwap:()=>{
     document.querySelectorAll('[data-js-only]').forEach(el=>el.hidden=false);

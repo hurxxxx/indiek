@@ -11,10 +11,10 @@ An independent, non-commercial music journal introducing Korean musicians to lis
 - Artist introductions, listening notes and release information in English.
 - Official YouTube videos and live performances, with Apple Music release links.
 - One shared YouTube player in a centered listening window, with saved tracks alongside it (below on mobile). Minimize it to browse, or expand it again without restarting. Fullscreen controls and uninterrupted playback during internal navigation, including Back and Forward. Saved tracks play in the displayed order with Auto-next on, stopping at the last song and skipping YouTube-only links. Previous/Next and Auto-next controls are available; if the browser blocks playback, press play in the video. Selecting another song changes the video in the same player; closing the player, reloading or leaving the site ends playback.
-- Listening guides, artist and song search, and tracks saved in your browser.
+- Listening guides, artist and song search, and tracks saved in your browser with direct playback from Saved. On mobile, minimizing docks the visible video below a separate scrolling area for reading.
 - Responsive pages with keyboard navigation and reduced-motion support.
 
-Built with HTML, CSS and JavaScript. Pages are generated as static files; no application server or database is required. YouTube embeds and the official IFrame API load only after the listener chooses to load them. The first video waits for Play; subsequent saved tracks can start automatically. Optional, cookieless visit statistics use self-hosted Matomo after consent; the choice can be changed from the footer.
+Built with HTML, CSS and JavaScript. Pages are generated as static files; no application server or database is required. “Agree & play” combines YouTube consent, connection and the first playback request. Later selections use “Play” during the same page session; if the browser blocks playback, use the video’s play button. Reloading resets this choice. Optional, cookieless visit statistics use self-hosted Matomo after consent; the choice can be changed from the footer.
 
 ## Getting started
 

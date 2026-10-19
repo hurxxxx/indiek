@@ -25,6 +25,8 @@ npm run check
 
 YouTube는 모든 페이지에서 공통 영역 `#persistent-player`를 사용한다. HTML과 `app.js`, `player.mjs`, `navigation.mjs`, `analytics.mjs`, `styles.css`는 같은 빌드로 함께 배포한다. 정적 페이지 주소는 그대로 제공하며, 별도 SPA fallback이나 애플리케이션 서버는 필요 없다. YouTube IFrame API를 위해 CSP의 `script-src`에 `https://www.youtube.com`이 필요하다(`iframe_api` 및 같은 호스트의 플레이어 API 스크립트). 순차 재생을 처음 배포할 때 `nginx.conf`도 함께 적용하고 `nginx -t` 후 reload한다. `connect-src`의 self·Matomo, YouTube `frame-src`, `.mjs` MIME 설정을 유지한다.
 
+직접 재생 UI는 아티스트 페이지와 Saved에서 동의·재생 요청을 함께 처리한다. 모바일 최소화는 `#page-content`의 스크롤과 하단 영상을 분리하므로 HTML·스타일·이동 코드를 함께 배포한다. 배포 후 Saved 재생, 동의 전 연결 차단, 새로고침 시 동의 초기화, 모바일 읽던 위치·뒤로/앞으로 가기, 재생 차단 안내를 확인한다.
+
 ## 확인과 복구
 
 - 최근 콘텐츠 배포: 2026-10-19 `088912e` — 백예린 “0310” 소개와 관련 섹션·이미지·사이트맵 반영. 서버 테스트 37개와 21페이지 검증 통과, 공개 파일과 로컬 빌드 일치 및 운영 브라우저의 한글 검색·소개 화면을 확인했다. 배포 전 커밋은 `b937739`이다.
