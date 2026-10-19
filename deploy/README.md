@@ -43,23 +43,32 @@ npm run promotion -- status
 npm run promotion -- dry-run
 ```
 
-한국 시간 월 09:00 주간 보고·문안 준비, 화·금 10:00 Threads, 금 10:15 Instagram. 서버 시간대가 UTC여도 타이머에 `Asia/Seoul`을 지정한다. 꺼진 동안 놓친 예약은 몰아서 실행하지 않으며 2시간 지난 전송은 만료한다. `prepare --local`은 최초 검토 때만 로컬 목록을 사용하고 원문이 실제 공개되어 있는지 확인한다. 정기 작업은 운영 사이트의 공개 목록을 읽는다.
+한국 시간 매일 08:00 소식 수집·문안 준비, 10:00 Threads, 10:15 조건부 Instagram, 월 09:00 주간 보고. 서버 시간대가 UTC여도 타이머에 `Asia/Seoul`을 지정한다. 놓친 예약은 몰아서 보내지 않으며 2시간 지난 전송은 만료한다. 웹과 별개로 타이머를 설치해야 동작한다.
 
+`npm run promotion -- prepare`는 게시 없이 다음 예약의 소식을 준비한다. 운영 사이트의 공개 목록에 있는 모든 아티스트를 로컬 `content/catalogue.json`과 대조하므로 **아티스트 추가 배포 때 자동 게시 서버의 카탈로그도 함께 갱신**한다. 새 아티스트가 로컬에 없으면 누락시키지 않고 중단한다. `--local`은 로컬 공개 목록을 사용하는 점검 옵션이다.
+
+공식 아티스트·레이블·공연장·주최자·티켓 판매처·원 인터뷰의 소식을 조사한다. 발표일 14일 이내의 뉴스 또는 30일 안의 공연이 명시된 현재 공식 일정만 후보로 삼는다. 공식 일정에 발표일이 없으면 새로 발표됐다고 쓰지 않는다. 출처 원문의 근거를 직접 확인하고 별도 실시간 사실·문체 검수를 통과한 주제 하나만 준비한다. 같은 소식은 URL·언어를 바꿔 재게시하지 않으며, 새 소식에는 예전 아티스트 소개용 28일 제한을 적용하지 않는다. 새 소식이 없거나 출처를 읽을 수 없으면 이유를 기록하고 쉰다.
+
+생성·검수는 [문체 지침](../promotion/voice.md)을 공통으로 읽는다. 자체 계정은 공식 API에서 계정 일치를 먼저 확인한 뒤 최근 공개 게시물의 본문·링크·게시일만 가져와 중복과 문체를 비교한다. 검수에는 출처 링크를 붙인 최종 게시 문안 전체를 전달하며, 같은 날의 Threads·Instagram 동시 게시는 플랫폼별 한 번씩 허용한다. Codex는 임시 작업 디렉터리에서 공개 자료만 전달받으며 셸·앱·플러그인·다중 에이전트·브라우저 조작 기능을 끈다. 웹 검색은 실시간으로 사용하고, 인증 파일을 프롬프트에 넣지 않는다. 수집 7분, 후보별 검수 3분·최대 3건으로 제한하고 사용량·시간 제한 시 유료 API로 대체하지 않는다. 준비 서비스의 전체 제한은 20분이다. 게시 직전에도 원문과 일정·취소 여부를 다시 검수한다.
+
+Threads는 원문 링크가 있는 텍스트로 게시할 수 있다. Instagram은 `promotion/media.json`에 같은 `topicKey`의 사용 가능한 이미지가 등록된 경우에만 게시한다. 항목에는 `url`(공개 JPEG), `provenanceURL`, `rights`(`owned`/`permission`/`licensed`), `rightsNote`, `approvedBy`, `approvedAt`(YYYY-MM-DD), `altText`, 선택적 `expiresAt`가 필요하다. 공개 포스터나 기존 앨범 이미지를 자동으로 전용하지 않는다. 등록 이미지가 없으면 Threads만 진행하고 Instagram 제외 이유를 남긴다.
 Meta 개발자 앱에서 본인 계정 `indiekdotcom`만 연결한다. Threads는 기본 정보·게시 권한, Instagram은 프로페셔널 계정의 기본 정보·콘텐츠 게시 권한을 사용한다. 앱 심사나 계정 전환이 필요한지는 실제 대시보드에서 확인한다. 최초 승인은 브라우저에서 하고 장기 토큰을 서버의 `~/.config/indiek-promotion/credentials.json`에 0600으로 저장한다. 토큰을 Git·문안·채팅·명령 인자에 넣지 않는다.
 
 인증 JSON의 플랫폼별 항목은 `threads` / `instagram`이며 `userId`, `token`, `issuedAt`, `expiresAt`(ISO 날짜)가 필요하다. Instagram API 기본 버전은 `v26.0`이다. 선택적인 Matomo 항목은 `matomo.token`으로, 사이트 4만 읽는 별도 토큰을 사용한다. 안전한 로컬 파일을 준비한 뒤 `npm run promotion -- credentials --stdin < /secure/path/credentials.json`으로 가져오면 기존 다른 플랫폼 설정은 유지한다. 연결하지 않은 통계는 미측정으로 보고하며 Search Console은 수동 확인이다.
 
-실행 결과는 `promotion/state/queue.json`, 주간 보고는 `promotion/state/reports/`에 저장한다. 이 상태 디렉터리와 자격 증명은 배포 복사·Git 대상에서 제외하고 보존한다. **자동 게시 기록의 기준은 실행 서버**다. `docs/promotion.md`의 `automatic-promotion` 구간을 로컬로 병합하며 수동 기록이나 서버 로그를 통째로 덮어쓰지 않는다. 서버는 Git push를 실행하지 않는다.
+실행 결과는 `promotion/state/queue.json`, 날짜별 수집·탈락 사유·검수는 `promotion/state/news/`, 주간 보고는 `promotion/state/reports/`에 저장한다. 이 상태 디렉터리와 자격 증명은 배포 복사·Git 대상에서 제외하고 보존한다. **자동 게시 기록의 기준은 실행 서버**다. `docs/promotion.md`의 `automatic-promotion` 구간을 로컬로 병합하며 수동 기록이나 서버 로그를 통째로 덮어쓰지 않는다. 서버는 Git push를 실행하지 않는다.
 
 ```sh
 # 점검 및 즉시 중단
 journalctl --user -u indiek-promotion-threads.service -n 50 --no-pager
-systemctl --user stop indiek-promotion-threads.timer indiek-promotion-instagram.timer
+systemctl --user stop indiek-promotion-prepare.timer indiek-promotion-threads.timer indiek-promotion-instagram.timer
 ```
 
-공개 원문·이미지·계정 일치 확인 후에만 보낸다. `publishing`·`submitted`는 게시 ID나 정확히 일치하는 최근 문안으로 조회하며 새로 전송하지 않는다. `held`·`creating` 또는 `pausePlatform`이 있으면 실제 계정과 로그를 확인한다. 원인을 해결해도 불확실한 작업을 `ready`로 바꾸지 않는다. 인증·플랫폼 제한이 해소된 경우에만 상태 백업 후 해당 `pausePlatform`을 해제하고 타이머를 시작한다. 기존 큐를 삭제해서 재시도하지 않는다. 토큰은 만료 7일 전부터 갱신하며 갱신 실패·만료 시 재연결 전까지 전송하지 않는다.
+공개 원문·계정과 필요한 경우 이미지까지 확인한 뒤 보낸다. 기존의 미전송 정적 소개 예약은 일일 소식 정책으로 전환할 때 `superseded`로 기록하며 삭제하지 않는다. 이미 생성·제출·게시된 작업은 바꾸지 않는다. `publishing`·`submitted`는 게시 ID나 정확히 일치하는 최근 문안으로 조회하며 새로 전송하지 않는다. `held`·`creating` 또는 `pausePlatform`이 있으면 실제 계정과 로그를 확인한다. 원인을 해결해도 불확실한 작업을 `ready`로 바꾸지 않는다. 인증·플랫폼 제한이 해소된 경우에만 상태 백업 후 해당 `pausePlatform`을 해제하고 타이머를 시작한다. 기존 큐를 삭제해서 재시도하지 않는다. 토큰은 만료 7일 전부터 갱신하며 갱신 실패·만료 시 재연결 전까지 전송하지 않는다.
 
-설치·배포 확인(2026-10-19): 원격 테스트 68개 통과, 타이머 3개 활성화, Codex로 공개 원문 기반 문안 3개 준비. Threads와 Instagram 모두 기본 정보·게시 권한만 연결하고 서버에서 본인 계정 일치·기존 게시물 각 1건 조회를 확인했다. Instagram은 사용자 승인으로 공개 크리에이터 계정으로 전환했다. Threads 초기 갱신 기준은 발급 후 59일로 보수적으로 기록했으며, Instagram 만료 시각은 Meta 디버거로 확인한 `2026-12-18T11:07:37Z`다. 공유 이미지·공개 목록 배포 후 최종 dry-run에서 3건 모두 원문·이미지 확인을 통과했다. 공개 목록을 사용하는 `prepare`도 기존 예약을 보존하며 통과했다. 첫 전송은 10월 20일 10:00 KST Threads 예약이며, 실제 게시·외부 노출은 아직 미검증이다. 서버의 이전 미커밋 셋업은 `indiek automation setup before deployment 2026-10-19` stash에 보관했으며 기존 큐·토큰은 그대로 유지했다.
+최초 설치 확인(2026-10-19, 일일 소식 전환 전): 원격 테스트 68개 통과, 타이머 3개 활성화, Codex로 공개 원문 기반 문안 3개 준비. Threads와 Instagram 모두 기본 정보·게시 권한만 연결하고 서버에서 본인 계정 일치·기존 게시물 각 1건 조회를 확인했다. Instagram은 사용자 승인으로 공개 크리에이터 계정으로 전환했다. Threads 초기 갱신 기준은 발급 후 59일로 보수적으로 기록했으며, Instagram 만료 시각은 Meta 디버거로 확인한 `2026-12-18T11:07:37Z`다. 공유 이미지·공개 목록 배포 후 최종 dry-run에서 3건 모두 원문·이미지 확인을 통과했다. 공개 목록을 사용하는 `prepare`도 기존 예약을 보존하며 통과했다. 첫 전송은 10월 20일 10:00 KST Threads 예약이며, 실제 게시·외부 노출은 아직 미검증이다. 서버의 이전 미커밋 셋업은 `indiek automation setup before deployment 2026-10-19` stash에 보관했으며 기존 큐·토큰은 그대로 유지했다.
+
+일일 소식 전환 확인(2026-10-19): 수집·Threads·Instagram·주간 보고 타이머 4개를 활성화하고 원격 홍보 테스트 31개를 통과했다. 두 API 계정 일치와 기존 공개 게시물 본문 조회를 확인했다. 첫 수집의 문안·이력 전달 문제를 수정한 뒤 같은 날 자료의 원문과 최종 문안을 다시 검수해 BOL4 공연 소식 1건을 10월 20일 10:00 KST에 준비했다. 승인 이미지가 없어 Instagram은 제외했다. 미전송 정적 예약 3건은 대체 상태로 보존했다. 실제 뉴스 전송은 아직 하지 않았다. 소스는 자동 게시 서버에 직접 동기화한 미커밋 상태이므로 다음 Git 업데이트 전 변경 내용과 서버 관리 로그를 대조한다. 전환 전 코드·큐·로그 백업은 `promotion/state/backups/`에 있다.
 
 ## 확인과 복구
 

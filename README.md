@@ -2,7 +2,7 @@
 
 **Music from Korea, worth sharing.**
 
-An independent music journal introducing Korean musicians to listeners around the world. The selection follows personal taste across genres, labels and levels of fame.
+A growing independent music journal introducing Korean musicians to listeners around the world. New artists and songs join a selection that follows personal taste across genres, labels and levels of fame.
 
 [Visit indiek.com](https://indiek.com)
 
@@ -45,7 +45,7 @@ Curated guides use 3–5 catalogue tracks with an editorial note for each. Guide
 
 Run `npm run build && npm run check`, then check the affected pages on desktop and mobile. Follow the [repository guidelines](AGENTS.md) when adding artists or songs so related sections stay in sync. Hosting details are in the [deployment guide](deploy/README.md).
 
-The optional publisher in `scripts/promotion/` prepares short posts from existing public pages and sends them through the official Threads and Instagram APIs. It runs separately from the website. Scheduling, authorization and recovery are covered in the [deployment guide](deploy/README.md#sns-자동-게시). Actual attempts are recorded in the [promotion log](docs/promotion.md).
+The optional publisher in `scripts/promotion/` researches current news about artists in the live catalogue and selects one verified topic per day. It uses the official Threads API, with an Instagram version when a relevant image has documented reuse rights. It runs separately from the website and follows the shared [social writing guide](promotion/voice.md). Scheduling, authorization and recovery are covered in the [deployment guide](deploy/README.md#sns-자동-게시). Actual attempts are recorded in the [promotion log](docs/promotion.md).
 
 ## Credits and contact
 

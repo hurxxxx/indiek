@@ -15,7 +15,7 @@ errors = []
 class Page(HTMLParser):
     def __init__(self, path):
         super().__init__(); self.path=path; self.refs=[]; self.ids=set(); self.meta={}; self.canonical=[]; self.h1=0; self.frames=0
-        self.guide_cards=[]; self.guide_tracks=[]; self.guide_id=None
+        self.guide_cards=[]; self.guide_tracks=[]; self.guide_more=[]; self.guide_id=None
         self.room_tracks=[]; self.room_count=None
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
@@ -23,6 +23,7 @@ class Page(HTMLParser):
         if 'data-room-track' in a: self.room_tracks.append((a['data-room-track'],a.get('href')))
         if 'data-guide' in a: self.guide_cards.append((a['data-guide'],int(a['data-track-count'])))
         if 'data-guide-track' in a: self.guide_tracks.append((a['data-guide-track'],a.get('href')))
+        if 'data-guide-more' in a: self.guide_more.append(a['data-guide-more'])
         if 'data-guide-page' in a: self.guide_id=a['data-guide-page']
         if 'id' in a:
             if a['id'] in self.ids: errors.append(f'{self.path}: duplicate id {a["id"]}')
@@ -109,12 +110,14 @@ for id in guide_ids:
     if not guide_page:
         errors.append('Missing listening guide: '+id); continue
     if guide_page.guide_id!=id: errors.append('Wrong guide identity: '+id)
-    members=[r for r,href in guide_page.guide_tracks]
+    members=[r for r,href in guide_page.guide_tracks]+guide_page.guide_more
     guide_counts[id]=len(members)
-    covered.update(members)
+    covered.update(r for r,href in guide_page.guide_tracks)
     if not members or len(members)!=len(set(members)): errors.append('Empty or duplicate guide tracks: '+id)
     for record_id,href in guide_page.guide_tracks:
         if href!=f'/artists/{record_id}/#listen': errors.append('Wrong guide listening link: '+id)
+    for record_id in guide_page.guide_more:
+        if f'/artists/{record_id}/' not in guide_page.refs: errors.append('Missing follow-on artist link: '+id)
 if covered!={r['id'] for r in catalogue['records']+[catalogue['editorPick']]}: errors.append('Listening guides do not cover the catalogue')
 for file in ['index.html','notes/first-listens/index.html']:
     index=pages.get((dist/file).resolve())

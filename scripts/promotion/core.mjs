@@ -1,8 +1,10 @@
 import {readFileSync,writeFileSync,renameSync,mkdirSync,openSync,closeSync,fsyncSync,existsSync,unlinkSync} from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
+import {publicURL,validateCandidate,validateNewsVoice,verifyCandidate,verifyNewsMedia,eventKey,selectedMedia} from './news.mjs';
 
 export const hash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
+export const payloadParts = post => post.kind==='news'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.news,post.review,post.sourceVerification,post.media]:[post.platform,post.url,post.imageUrl,post.copy,post.altText];
 export function atomicWrite(file, value) {
   mkdirSync(path.dirname(file),{recursive:true});
   const tmp=`${file}.${process.pid}.tmp`;
@@ -37,12 +39,21 @@ export class Store {
     atomicWrite(this.file,JSON.stringify(this.posts,null,2)+'\n');
     this.log();
   }
+  day(day) {
+    const file=path.join(this.root,'promotion/state/news/days.json');
+    const days=readJSON(file,[]),index=days.findIndex(item=>item.day===day.day);
+    day.updatedAt=new Date().toISOString();
+    if(index<0)days.push(day);else days[index]=day;
+    atomicWrite(file,JSON.stringify(days,null,2)+'\n');this.log();
+  }
   log() {
     const file=path.join(this.root,'docs/promotion.md');
     const start='<!-- automatic-promotion:start -->',end='<!-- automatic-promotion:end -->';
     const original=readFileSync(file,'utf8');
-    const labels={ready:'준비',creating:'컨테이너 생성 중',created:'게시 준비 중',publishing:'게시 응답 확인 중',submitted:'제출 확인 · 링크 확인 대기',published:'API 게시 확인',held:'보류 · 수동 확인 필요',expired:'보류 · 예약 시간 경과'};
-    const body=`${start}\n## 자동 게시 기록\n\n서버 실행 기록. API 조회는 로그인 권한으로 확인한 결과이며 비로그인 노출이나 유입을 증명하지 않는다.\n\n`+this.posts.map(p=>`### ${p.id} · ${p.platform} · ${labels[p.status]||p.status}\n\n- 예약: ${p.scheduledAt} · 확인: ${p.updatedAt}\n- 콘텐츠: ${p.url}\n- 이미지: ${p.imageUrl}\n- 대체 텍스트: ${p.altText}\n- 결과: ${p.permalink||'게시 링크 없음'}${p.remoteId?` · 게시물 ID ${p.remoteId}`:''}\n- 후속 조치: ${p.issue||'예약 시 공개 콘텐츠·인증 상태를 다시 확인'}\n\n문안:\n\n${p.copy.split('\n').map(line=>line?'> '+line:'>').join('\n')}\n\n이력: ${(p.history||[]).map(h=>`${h.at} ${h.event}`).join(' / ')}\n`).join('\n')+`${end}\n`;
+    const labels={ready:'준비',creating:'컨테이너 생성 중',created:'게시 준비 중',publishing:'게시 응답 확인 중',submitted:'제출 확인 · 링크 확인 대기',published:'API 게시 확인',held:'보류 · 수동 확인 필요',expired:'보류 · 예약 시간 경과',superseded:'미전송 예약 대체'};
+    const days=readJSON(path.join(this.root,'promotion/state/news/days.json'),[]);
+    const daily=days.map(day=>`### 일일 소식 선정 · ${day.day} · ${day.status}\n\n- 확인: ${day.updatedAt}\n- 결과: ${day.reason}\n- Instagram: ${day.instagram||'선정 전'}\n- 전체 아티스트 확인: ${(day.coverage||[]).map(item=>`${item.artistId}: ${item.status}`).join(', ')||'미완료'}\n- 검토 원문: ${(day.sources||[]).join(' · ')||'없음'}\n- 감사 기록: promotion/state/news/${day.day}.json\n`).join('\n');
+    const body=`${start}\n## 자동 게시 기록\n\n서버 실행 기록. API 조회는 로그인 권한으로 확인한 결과이며 비로그인 노출이나 유입을 증명하지 않는다.\n\n`+daily+'\n'+this.posts.map(p=>`### ${p.id} · ${p.platform} · ${labels[p.status]||p.status}\n\n- 예약: ${p.scheduledAt} · 확인: ${p.updatedAt}\n- 콘텐츠: ${p.url}\n- 이미지: ${p.imageUrl||'없음 · 텍스트 게시'}\n- 대체 텍스트: ${p.altText||'해당 없음'}${p.kind==='news'?`\n- 선정: ${p.news.selectionReason}\n- 원문 게시자: ${p.news.source.publisher} · ${p.news.source.relationship}\n- 사실·문체 검토: ${p.review.reason}`:''}\n- 결과: ${p.permalink||'게시 링크 없음'}${p.remoteId?` · 게시물 ID ${p.remoteId}`:''}\n- 후속 조치: ${p.issue||'예약 시 공개 콘텐츠·인증 상태를 다시 확인'}\n\n문안:\n\n${p.copy.split('\n').map(line=>line?'> '+line:'>').join('\n')}\n\n이력: ${(p.history||[]).map(h=>`${h.at} ${h.event}`).join(' / ')}\n`).join('\n')+`${end}\n`;
     if(original.includes(start)!==original.includes(end))throw new Error('Incomplete promotion log markers; repair before publishing.');
     const next=original.includes(start)?original.slice(0,original.indexOf(start))+body+original.slice(original.indexOf(end)+end.length).replace(/^\n/,''):original.trimEnd()+'\n\n'+body;
     atomicWrite(file,next);
@@ -71,8 +82,21 @@ export function validateDraft(copy, sourceQuotes, source, platform) {
   if(!['threads','instagram'].includes(platform))throw new Error('Unsupported platform.');
 }
 export function validatePost(post,config) {
-  if(!/^[TI]-\d{4}-\d{2}-\d{2}-\d{4}$/.test(post.id)||!config.platforms.includes(post.platform))throw new Error('Invalid job identity.');
+  if(!/^[TI]-\d{4}-\d{2}-\d{2}-\d{4}(?:-news)?$/.test(post.id)||!config.platforms.includes(post.platform))throw new Error('Invalid job identity.');
   if(!Number.isFinite(Date.parse(post.scheduledAt)))throw new Error('Invalid schedule.');
+  if(post.kind==='news'){
+    validateCandidate(post.news,(post.artistIds||[]).map(id=>({id})),config,new Date(post.scheduledAt));
+    if(post.artistIds.length!==1||post.artistIds[0]!==post.news.artistId||post.topicKey!==eventKey(post.news)||publicURL(post.url).href!==publicURL(post.news.source.url).href)throw new Error('News job identity differs from the selected primary source.');
+    if(!post.review||!['approved','sourceIsPrimary','datesConfirmed','factsConfirmed','noDuplicate','voicePassed'].every(key=>post.review[key]===true)||post.review.unsupportedClaims.length||post.review.styleIssues.length||!post.review.supportedClaims.length||!post.sourceVerification?.checkedAt)throw new Error('News requires a successful independent factual and style review.');
+    const suffix=`\n\n${post.url}`;
+    if(typeof post.copy!=='string'||post.copy!==`${post.news.draft.trim()}${suffix}`||Array.from(post.copy).length>500)throw new Error('Invalid final news caption.');
+    validateNewsVoice(post.copy.slice(0,-suffix.length));
+    if(post.platform==='instagram'){
+      if(!post.media||!selectedMedia(post.news,[post.media],new Date(post.scheduledAt))||post.imageUrl!==post.media.url||post.altText!==post.media.altText||post.altText.length>1000)throw new Error('Instagram news requires matching approved media.');
+    }else if(post.imageUrl||post.altText||post.media)throw new Error('Threads news uses the reviewed text format.');
+    if(post.payloadHash!==hash(payloadParts(post)))throw new Error('Prepared payload changed; create a reviewed replacement job.');
+    return;
+  }
   const url=new URL(post.url),image=new URL(post.imageUrl);
   if(url.origin!==config.origin||url.search!==`?from=${post.platform}`||url.hash||!/^\/(artists|notes)\/[a-z0-9-]+\/$/.test(url.pathname))throw new Error('Post link must point to the selected indiek page.');
   if(image.origin!==config.origin||!/^\/assets\/social\/[a-z0-9-]+\.jpg$/.test(image.pathname)||image.search||image.hash)throw new Error('Media must be a published indiek sharing card.');
@@ -81,6 +105,11 @@ export function validatePost(post,config) {
   if(post.payloadHash!==hash([post.platform,post.url,post.imageUrl,post.copy,post.altText]))throw new Error('Prepared payload changed; create a reviewed replacement job.');
 }
 export async function verifyLive(post,fetcher=fetch) {
+  if(post.kind==='news'){
+    await verifyCandidate(post.news);
+    if(post.media)await verifyNewsMedia(post.media);
+    return;
+  }
   const url=new URL(post.url);url.search='';
   const response=await fetcher(url,{redirect:'error',signal:AbortSignal.timeout(15000)});
   if(!response.ok||!response.headers.get('content-type')?.includes('text/html'))throw new Error('Source page is not public.');
@@ -90,9 +119,12 @@ export async function verifyLive(post,fetcher=fetch) {
   if(!image.ok||!image.headers.get('content-type')?.includes('image/jpeg'))throw new Error('Sharing image is not public yet.');
 }
 const normalize = value => String(value||'').replace(/\r\n/g,'\n').trim();
-export async function publishPost(post,{config,store,api,verify=verifyLive,now=new Date(),sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms))}) {
+export async function publishPost(post,{config,store,api,verify=verifyLive,now=new Date(),sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms)),clock=Date.now}) {
+  const started=clock();
+  const tooLate=()=>now.getTime()+Math.max(0,clock()-started)-Date.parse(post.scheduledAt)>config.maxSlotAgeMinutes*60000;
+  const expire=()=>{post.status='expired';post.issue='지난 예약은 몰아서 게시하지 않음. 다음 계획에서 새 문안을 준비.';store.save(post,'예약 시간 경과');return post;};
   validatePost(post,config);
-  if(post.status==='published'||post.status==='expired')return post;
+  if(['published','expired','superseded'].includes(post.status))return post;
   if(['publishing','submitted'].includes(post.status)) {
     let media=post.remoteId?await api.media(post.remoteId):null;
     if(!media){
@@ -108,8 +140,9 @@ export async function publishPost(post,{config,store,api,verify=verifyLive,now=n
   if(post.status==='held'||post.status==='creating')return post;
   const age=now.getTime()-Date.parse(post.scheduledAt);
   if(age<0)return post;
-  if(age>config.maxSlotAgeMinutes*60000){post.status='expired';post.issue='지난 예약은 몰아서 게시하지 않음. 다음 계획에서 새 문안을 준비.';store.save(post,'예약 시간 경과');return post;}
+  if(tooLate())return expire();
   await verify(post);
+  if(tooLate())return expire();
   // Account identity is checked on every run; credentials for another account must never publish.
   const identity=await api.identity();
   if(identity.username?.toLowerCase()!==config.account)throw new Error('Connected account does not match indiekdotcom.');
@@ -129,11 +162,12 @@ export async function publishPost(post,{config,store,api,verify=verifyLive,now=n
       if(attempt<3)await sleep(api.pollInterval||10000);
     }
     if(status!=='FINISHED'){post.issue='미디어 처리 대기. 동일 컨테이너만 재확인.';store.save(post,'처리 대기');return post;}
+    if(tooLate())return expire();
     post.status='publishing';post.attemptedAt=now.toISOString();store.save(post,'게시 요청 전 상태 저장');
     const result=await api.publish(post.containerId);
     if(!result.id)throw new Error('Published ID missing.');
     post.remoteId=result.id;post.status='submitted';store.save(post,'게시 ID 수신');
-    return await publishPost(post,{config,store,api,verify,now,sleep});
+    return await publishPost(post,{config,store,api,verify,now,sleep,clock});
   }catch(error){
     if(error.pausePlatform)post.pausePlatform=true;
     post.issue=error.safeMessage||'API 응답 확인 실패. 원격 확인 전 재전송하지 않음.';

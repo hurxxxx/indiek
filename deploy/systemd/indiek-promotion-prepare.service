@@ -1,0 +1,14 @@
+[Unit]
+Description=indiek daily primary-source artist news research and copy review
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/projects/indiek
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/node %h/projects/indiek/scripts/promotion/run.mjs prepare
+TimeoutStartSec=20min
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true

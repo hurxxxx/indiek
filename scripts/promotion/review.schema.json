@@ -1,0 +1,81 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "approved",
+    "reason",
+    "sourceIsPrimary",
+    "datesConfirmed",
+    "factsConfirmed",
+    "noDuplicate",
+    "voicePassed",
+    "checkedURLs",
+    "supportedClaims",
+    "unsupportedClaims",
+    "styleIssues"
+  ],
+  "properties": {
+    "approved": {
+      "type": "boolean"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "sourceIsPrimary": {
+      "type": "boolean"
+    },
+    "datesConfirmed": {
+      "type": "boolean"
+    },
+    "factsConfirmed": {
+      "type": "boolean"
+    },
+    "noDuplicate": {
+      "type": "boolean"
+    },
+    "voicePassed": {
+      "type": "boolean"
+    },
+    "checkedURLs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "supportedClaims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "claim",
+          "sourceURL",
+          "quote"
+        ],
+        "properties": {
+          "claim": {
+            "type": "string"
+          },
+          "sourceURL": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "unsupportedClaims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "styleIssues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

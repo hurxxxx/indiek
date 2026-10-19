@@ -688,7 +688,7 @@
       "selection": "live",
       "featuredArtistId": "sunwoojunga",
       "description": "Concert stages, television performances and intimate sessions. Start with a song played live.",
-      "intro": "A song takes on another shape in front of an audience. Start with sunwoojunga at her Serenade concert, then move through television stages, a live session and performances shared by the artists themselves."
+      "intro": "Concert halls, club stages, television performances and live sessions offer different ways to meet an artist. Follow a performance you enjoy, then visit the artist’s page for the song’s place in their recorded work."
     },
     {
       "id": "guitars-and-bands",
@@ -696,7 +696,7 @@
       "selection": "tag",
       "featuredArtistId": "black-skirts",
       "description": "From a quiet farewell to an extended guitar finish. Follow the songs through Korean rock.",
-      "intro": "Guitars connect these songs, but each artist takes them somewhere different. Begin with The Black Skirts, then move between bands and solo artists, live performances and recordings. Listen for how much a guitar can say between the words."
+      "intro": "Follow guitars through band songs and solo work, from acoustic parts to longer instrumental passages. Pick a recording that catches your ear, then explore the artist behind it or try another performance."
     },
     {
       "id": "distinct-voices",
@@ -704,17 +704,17 @@
       "selection": "tag",
       "featuredArtistId": "yoon-mirae",
       "description": "R&B, folk, pop and rock, with a voice to remember at the centre of each song.",
-      "intro": "Begin with the space around Yoon Mirae’s voice on Breath. From there, meet singers whose work crosses folk, pop, jazz and rock. Some introductions come from a live stage; others begin with a recording."
+      "intro": "Start with a voice you want to hear again. Follow singers across folk, pop, jazz, R&B and rock, on record and on stage. Their artist pages offer more music and the stories behind it."
     },
     {
       "id": "korean-indie-where-to-start",
       "title": "Korean indie: where to start",
       "status": "ready",
-      "description": "Five songs to find your own way into Korean indie: The Black Skirts, Yerin Baek, YdBB, HANRORO and SE SO NEON.",
-      "intro": "One song is enough to get started. These five give you different directions to follow: a love song, a letter, a farewell, a fresh start and a live band stretching out. This is a route through our selection, rather than a history of the scene or a list of its biggest names.",
+      "description": "Get into Korean indie through artist stories, official recordings and live performances, with listening notes and recommendations for where to go next.",
+      "intro": "Follow a songwriter, a farewell or a live performance. Each song here is a place to start, with context to read and another artist to try next. Pick what catches your attention and keep exploring from there.",
       "paragraphs": [
-        "Begin with the recordings, then finish on stage. You do not need to know the artists, the labels or the language before pressing play. Each stop below has a reason for being here and a link to the artist’s story.",
-        "The name indiek is a starting point, not a boundary. Elsewhere in the journal you will also find Korean pop, folk and R&B. Keep the songs that connect with you in Saved, or follow a different listening guide when your mood changes."
+        "The Black Skirts and Yerin Baek are useful first stops if you tend to stay with one songwriter. YdBB and HANRORO bring us to songs about leaving and carrying on. SE SO NEON takes the guide onto a live stage. The connections are a way to choose your next song; each artist has a much larger catalogue behind this first introduction.",
+        "You can begin without knowing Korean. The 0310 video includes English lyrics, while other entries offer context from release notes and artist interviews. Try a song before reading, then return with that context in mind. Further down, the guide branches into folk, pop and R&B. New artists and songs join these pages over time, well beyond the word indie."
       ],
       "trackIds": [
         "black-skirts",
@@ -724,11 +724,11 @@
         "se-so-neon"
       ],
       "trackNotes": {
-        "black-skirts": "Start with EVERYTHING. It is one song with two places in the catalogue: a 2016 single and a track on TEAM BABY. If it catches you, the album is the next place to go. The Black Skirts is Bryan Cho’s solo project, despite the band-like name.",
-        "yerin-baek": "Next, move from a declaration to a letter. 0310 comes from Every letter I sent you., an album Baek describes through memories and questions. The English-language lyric video offers a way to follow the words as well as her voice.",
-        "ydbb": "Take a different kind of farewell with ONCE. YdBB’s release story extends beyond the recording: Yu Dabin made its cover by drawing over a photograph of her own hand. Open the artist page for the song and that small piece of its making.",
-        "hanroro": "From farewell, turn toward moving on. In the notes for Even if you leave, HANRORO writes about letting go of what holds you back, including self-blame. This is a useful next stop if you want a song’s own context before exploring the rest of an artist’s work.",
-        "se-so-neon": "Finish with The Wave, live at the 2020/NEON concert. Stay for the extended instrumental ending. After four studio recordings, this performance opens another route through the journal: Korean music heard on stage."
+        "black-skirts": "The Black Skirts is Bryan Cho’s solo project, also known by his Korean name Jo Hyu-il. EVERYTHING works as a first stop because it gives you a clear next step: the song began as a 2016 single, then became part of TEAM BABY in 2017. Start with the official music video here, then follow the album link on his artist page to hear the songs around it.",
+        "yerin-baek": "Yerin Baek moves between R&B, pop and rock, and 0310 gives English-speaking listeners a way into her songwriting without a translation. It comes from the 2019 album Every letter I sent you., which she describes as a collection of thoughts and memories from ages nineteen to twenty-three. The title makes sense as an invitation to read closely. Her artist page also leads to Square (2017), another song from the same album.",
+        "ydbb": "YdBB are a five-piece band built around singer-songwriter Yu Dabin. ONCE introduces them through a farewell: in the release interview, she describes letting a loved presence go while wishing to be remembered one last time. Her artwork belongs to that same story. She drew patterns over a photograph of her own hands, leaving the thing held inside them unnamed so listeners could bring their own meaning to it.",
+        "hanroro": "HANRORO debuted in 2022 with Let Me Love My Youth. Even if you leave followed in 2023, with her own lyrics and composition. It sits beside ONCE here because both concern letting go, but HANRORO’s release note also turns inward. She describes a person caught between blaming someone else and blaming themselves, trying to get through each day without feeding that self-blame.",
+        "se-so-neon": "SE SO NEON closes the route with a performance rather than another studio recording. The Wave won Best Rock Song at the 2018 Korean Music Awards; the version here comes from the 2020/NEON concert, filmed in December 2019. Hwang Soyoon’s voice and guitar give you two things to follow on screen. If you have been reading while the earlier songs play, this is a good moment to watch the stage."
       },
       "selection": "curated",
       "editorial": {
@@ -757,14 +757,42 @@
           "url": "/artists/se-so-neon/#sources-title",
           "label": "SE SO NEON — release and artist sources"
         }
-      ]
+      ],
+      "trackDetails": {
+        "black-skirts": {
+          "listenFor": "Follow the voice first, then the backing on a second listen. Which part do you find yourself returning to? Keep that answer in mind when you try the rest of TEAM BABY.",
+          "nextArtistId": "kim-sawol",
+          "nextNote": "For another view of affection, try Someone. Kim Sawol places love alongside doubt on her album Romance."
+        },
+        "yerin-baek": {
+          "listenFor": "Read along with the lyric video, then listen again without it. The credits include acoustic guitar, strings and a full band; try following one part beneath the words.",
+          "nextArtistId": "choi-yu-ree",
+          "nextNote": "Forest moves to a live session and another personal image: trees growing together as a way of describing belonging."
+        },
+        "ydbb": {
+          "listenFor": "Look at the hands on the cover while listening. Yu Dabin connects that image to the act of carefully setting something precious down; it gives the farewell a physical shape.",
+          "nextArtistId": "whiteusedsocks",
+          "nextNote": "Stay with a band and go back to an early release: Don’t feel sad was written and composed by WhiteUsedSocks’ Jung Jaeheon."
+        },
+        "hanroro": {
+          "listenFor": "The person addressed in the song need not be only an ex. HANRORO’s note also allows for a decision, a neglected relationship or something that traps you in your own thinking. Try listening with one of those in mind.",
+          "nextArtistId": "motte",
+          "nextNote": "Don’t run away offers another song about a relationship, this time through Motte’s contribution to the A-TEEN soundtrack."
+        },
+        "se-so-neon": {
+          "listenFor": "Stay after the last vocal line for the extended instrumental finish. Follow the players as well as the singer, and notice where your attention goes when the words stop.",
+          "nextArtistId": "esegye",
+          "nextNote": "RomanceYouthLove takes you to ESEGYE’s first BLIND concert at Veloso Hongdae, another chance to meet a band through its own live footage."
+        }
+      },
+      "includeCatalogue": true
     },
     {
       "id": "if-you-like-yerin-baek",
       "title": "If you like Yerin Baek, listen next",
       "status": "draft",
-      "description": "Start with 0310, then follow its quieter side toward Choi Yu Ree, Kim Sawol and Yoon Mirae.",
-      "intro": "What brought you to 0310: the words, the guitar or the space around the voice? These are possible next stops from our selection, not claims that the artists sound alike.",
+      "description": "Let 0310 lead you toward more personal songwriting, acoustic settings and voices worth spending time with.",
+      "intro": "What brought you to 0310: the words, the guitar or the space around the voice? Follow whichever caught your attention toward another songwriter or a different setting.",
       "paragraphs": [
         "Return to 0310 first, then choose a direction. For each song, the artist page keeps release details and sources within reach."
       ],
@@ -808,8 +836,8 @@
       "id": "korean-bands-live",
       "title": "Korean bands, live",
       "status": "draft",
-      "description": "Two band performances and a solo artist on stage: ESEGYE, SE SO NEON and sunwoojunga.",
-      "intro": "Start with two bands, then take a turn toward a solo performer. These three recordings keep the performance setting in view, from an early band concert to a song with room to stretch.",
+      "description": "Meet Korean bands through official concert recordings, with room to follow solo performers onto the stage too.",
+      "intro": "Hear a band in a small club, follow a guitar through an extended ending, or stay with a singer for a while. Live recordings offer a way to meet musicians before exploring their studio work.",
       "paragraphs": [
         "The clips are shared by the artists themselves. Performance dates can differ from the dates in video titles; each artist page gives the context recorded in our sources."
       ],
@@ -847,8 +875,8 @@
       "id": "korean-songs-quiet-night",
       "title": "Korean songs for a quiet night",
       "status": "draft",
-      "description": "A slower route through the journal with Yerin Baek, Choi Yu Ree, Kim Sawol and Yoon Mirae.",
-      "intro": "Keep the list short tonight. Four songs, with a little context for each: letters, belonging, closeness and the reminders left after a breakup.",
+      "description": "Songs for a slower evening, with personal stories, acoustic settings and a little context to read as you listen.",
+      "intro": "Make some room for a slower listen. Letters, belonging, closeness and the reminders left after a breakup offer starting points for the evening; follow the songs wherever they take you.",
       "paragraphs": [
         "This is a mood-led selection rather than a genre. The videos include a lyric video, a live session and music videos, so you can choose how closely to follow the screen."
       ],

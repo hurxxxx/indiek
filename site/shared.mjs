@@ -26,10 +26,12 @@ export function getListeningGuides({records, editorPick, listeningGuides}) {
       const ordered = guide.trackIds.map(id => {
         const record = all.find(record => record.id === id);
         if (!record || !guide.trackNotes?.[id]?.trim()) throw new Error(`Missing curated track or note: ${guide.id}/${id}`);
+        const detail = guide.trackDetails?.[id];
+        if (guide.includeCatalogue && (!detail?.listenFor?.trim() || !detail.nextNote?.trim() || detail.nextArtistId === id || !recordIds.includes(detail.nextArtistId))) throw new Error(`Missing listening detail or next artist: ${guide.id}/${id}`);
         return record;
       });
       // Curated essays do not replace automatic coverage of newly added artists.
-      return {...guide, records: ordered};
+      return {...guide, records: ordered, moreRecords: guide.includeCatalogue ? all.filter(record => !guide.trackIds.includes(record.id)) : []};
     }
     const matches = all.filter(record => guide.selection === 'live' ? record.videoType === 'live' : record.guideTags?.includes(guide.id));
     const first = matches.find(record => record.id === guide.featuredArtistId);

@@ -1,7 +1,7 @@
 [Unit]
-Description=indiek Threads Tuesday and Friday, Korea time
+Description=indiek Threads daily verified artist news, Korea time
 [Timer]
-OnCalendar=Tue,Fri *-*-* 10:00:00 Asia/Seoul
+OnCalendar=*-*-* 10:00:00 Asia/Seoul
 Persistent=false
 AccuracySec=30s
 Unit=indiek-promotion-threads.service

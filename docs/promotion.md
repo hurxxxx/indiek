@@ -235,19 +235,40 @@ RSS·백예린 답글 제출은 완료했다. RSS 제공은 고려 중이며 백
 - 4주 편집 순서: Korean indie: where to start → If you like Yerin Baek → Korean bands, live(선정 범위 재검토) → Korean songs for a quiet night. 주당 가이드 1개와 관련 아티스트 페이지 1개를 검토한다. 실제 공개한 날짜만 RSS·발행일에 기록한다.
 - 평가: 매주 검색 클릭·동의한 방문·실제 청취·저장·공유·재방문을 별도로 확인한다. 4주마다 주제와 유입 경로를 조정하며, 90일 월간 방문 1만은 도전 목표다. 미측정 수치는 추정하지 않는다.
 
+## G002 — 일일 아티스트 소식·문체 지침 (2026-10-19)
+
+- 사용자 결정: 사이트에 등록된 아티스트의 공연·발매·공식 라이브·인터뷰 소식 중 하루 한 주제를 선정한다. Threads는 매일, Instagram은 같은 주제에 사용할 수 있는 이미지가 있을 때 게시한다. 앞선 주 2회 소개와 게시 빈도 제안은 이 운영 방식으로 대체한다.
+- 문체 조사: [Mailchimp SNS 지침](https://styleguide.mailchimp.com/writing-for-social-media/), [Voice and Tone](https://styleguide.mailchimp.com/voice-and-tone/), [ONS plain language](https://service-manual.ons.gov.uk/content/writing-for-users/plain-language)을 읽고 짧고 구체적인 정보·과장 제거·독자의 필요 중심 기준을 정리했다. 소문자·가벼운 문장부호는 사용자 선호이며 억지 오타나 허위 청취 경험은 만들지 않는다. 이 자료로 AI 작성 여부를 판별하거나 자연스러움을 보장하지 않는다.
+- 지침: [공통 문체 기준](../promotion/voice.md)을 작성하고 `indiek-promotion` 스킬에서 읽도록 연결했다. 자동 생성과 별도 검수에도 같은 파일을 사용한다. 실제 공개 원문, 날짜, 최근 게시 문안과 대조하며 요약에 필요한 사실만 옮긴다.
+- 사이트 문구·입문 가이드: 현재 선정곡만으로 범위가 닫힌 듯한 홈·가이드·검색·공통 소개 표현을 수정하고, 곡별 감상 맥락·다음 추천과 나머지 아티스트 자동 목록을 추가했다. 아티스트 추가 때의 검토 항목도 작업 지침에 반영했다. 로컬 빌드·전체 테스트 89개·22페이지 검증 및 데스크톱/모바일 확인 완료. Saved 대량 목록·실기기 키보드·전체 화면은 이번 문구/가이드 작업에서 재검증하지 않았다. 웹 배포·Git push는 이번 작업에서 하지 않았다.
+- 운영 전환: 자동 게시 서버에 일일 수집·선정·중복 방지·텍스트 게시·조건부 이미지 게시를 반영했다. KST 매일 08:00 준비, 10:00 Threads, 10:15 조건부 Instagram, 월 09:00 보고 타이머 4개를 활성화했다. 기존 미전송 소개 예약 3건은 `superseded`로 남겼고 계정 토큰·이전 이력은 보존했다. Git 커밋·push는 하지 않았다.
+- 실제 수집 시험: 등록 아티스트 14명 모두에 조사 상태·확인 URL·접근 한계를 남겼다. 로그인 필요/본문 조회 실패 등으로 확인하지 못한 계정은 미확인으로 기록했다. 모든 아티스트의 소식을 빠짐없이 확보했다는 의미는 아니다. 최종 후보는 BOL4 자카르타 공연과 최유리 부산 공연이었다.
+- 첫 검수 보류와 수정: 초안 뒤에 붙이는 출처 링크를 검수에 전달하지 않았고 이전 실제 문안이 부족해 후보 2건이 보류됐다. 최종 문안 전체와 공식 API에서 읽은 최근 공개 게시물 본문을 전달하도록 수정하고, 검증된 주최 측 보조 출처의 인용도 URL별로 확인하도록 고쳤다. 최초 결과는 서버 `promotion/state/news/2026-10-20.initial-skipped.json`에 보존했다. 같은 날 수집 자료를 사용해 원문과 문안을 다시 실시간 검수했으며, 기준을 우회하거나 수동으로 승인값을 넣지 않았다.
+- 준비 결과: BOL4 `Red Square` 자카르타 공연의 공식 주최 안내를 선정해 2026-10-20 10:00 KST Threads 1건을 준비했다. 정확한 문안·근거·상태는 아래 자동 기록에 있다. 사용할 수 있는 승인 이미지가 없어 Instagram은 제외했다. 게시 직전 원문·취소 여부·계정·중복을 다시 확인한다.
+- 확인: 원격 홍보 테스트 31개 통과. 공식 API에서 두 계정 모두 `indiekdotcom` 및 기존 게시물 각 1건을 확인했다. 문체 스킬 검증도 통과했다. 이번 작업에서 새 SNS 게시물을 보내지 않았으며, 예약된 실제 전송과 비로그인 노출은 아직 미검증이다.
+
 <!-- automatic-promotion:start -->
 ## 자동 게시 기록
 
 서버 실행 기록. API 조회는 로그인 권한으로 확인한 결과이며 비로그인 노출이나 유입을 증명하지 않는다.
 
-### T-2026-10-20-1000 · threads · 준비
+### 일일 소식 선정 · 2026-10-20 · prepared
 
-- 예약: 2026-10-20T01:00:00.000Z · 확인: 2026-10-19T09:27:25.403Z
+- 확인: 2026-10-19T11:53:47.387Z
+- 결과: A dated promoter announcement provides a specific Indonesian tour stop useful to overseas listeners. Separate promoter-domain confirmation establishes the relationship. Draft avoids any ticket-availability claim.
+- Instagram: Skipped: no rights-cleared image registered for this specific news topic.
+- 전체 아티스트 확인: black-skirts: no-fresh-news, sunwoojunga: inaccessible, car-the-garden: inaccessible, choi-yu-ree: checked, bol4: checked, esegye: inaccessible, se-so-neon: checked, ydbb: no-fresh-news, whiteusedsocks: inaccessible, motte: inaccessible, hanroro: inaccessible, kim-sawol: inaccessible, yerin-baek: inaccessible, yoon-mirae: inaccessible
+- 검토 원문: https://bol4jakarta2026.com/
+- 감사 기록: promotion/state/news/2026-10-20.json
+
+### T-2026-10-20-1000 · threads · 미전송 예약 대체
+
+- 예약: 2026-10-20T01:00:00.000Z · 확인: 2026-10-19T11:42:20.008Z
 - 콘텐츠: https://indiek.com/artists/sunwoojunga/?from=threads
 - 이미지: https://indiek.com/assets/social/artists-sunwoojunga.jpg
 - 대체 텍스트: indiek listening notes: sunwoojunga — Run with Me. Typographic card.
 - 결과: 게시 링크 없음
-- 후속 조치: 예약 시 공개 콘텐츠·인증 상태를 다시 확인
+- 후속 조치: Daily verified artist-news policy replaced this unattempted static introduction.
 
 문안:
 
@@ -255,16 +276,16 @@ RSS·백예린 답글 제출은 완료했다. RSS 제공은 고려 중이며 백
 >
 > https://indiek.com/artists/sunwoojunga/?from=threads
 
-이력: 2026-10-19T09:27:25.403Z 문안 준비 · 아직 게시하지 않음
+이력: 2026-10-19T09:27:25.403Z 문안 준비 · 아직 게시하지 않음 / 2026-10-19T11:42:20.008Z 일일 아티스트 소식 정책으로 미전송 예약 대체
 
-### T-2026-10-23-1000 · threads · 준비
+### T-2026-10-23-1000 · threads · 미전송 예약 대체
 
-- 예약: 2026-10-23T01:00:00.000Z · 확인: 2026-10-19T09:27:37.775Z
+- 예약: 2026-10-23T01:00:00.000Z · 확인: 2026-10-19T11:42:20.023Z
 - 콘텐츠: https://indiek.com/artists/car-the-garden/?from=threads
 - 이미지: https://indiek.com/assets/social/artists-car-the-garden.jpg
 - 대체 텍스트: indiek listening notes: Car, the garden — Tree. Typographic card.
 - 결과: 게시 링크 없음
-- 후속 조치: 예약 시 공개 콘텐츠·인증 상태를 다시 확인
+- 후속 조치: Daily verified artist-news policy replaced this unattempted static introduction.
 
 문안:
 
@@ -272,16 +293,16 @@ RSS·백예린 답글 제출은 완료했다. RSS 제공은 고려 중이며 백
 >
 > https://indiek.com/artists/car-the-garden/?from=threads
 
-이력: 2026-10-19T09:27:37.775Z 문안 준비 · 아직 게시하지 않음
+이력: 2026-10-19T09:27:37.775Z 문안 준비 · 아직 게시하지 않음 / 2026-10-19T11:42:20.023Z 일일 아티스트 소식 정책으로 미전송 예약 대체
 
-### I-2026-10-23-1015 · instagram · 준비
+### I-2026-10-23-1015 · instagram · 미전송 예약 대체
 
-- 예약: 2026-10-23T01:15:00.000Z · 확인: 2026-10-19T09:27:46.009Z
+- 예약: 2026-10-23T01:15:00.000Z · 확인: 2026-10-19T11:42:20.028Z
 - 콘텐츠: https://indiek.com/artists/choi-yu-ree/?from=instagram
 - 이미지: https://indiek.com/assets/social/artists-choi-yu-ree.jpg
 - 대체 텍스트: indiek listening notes: Choi Yu Ree — Forest. Typographic card.
 - 결과: 게시 링크 없음
-- 후속 조치: 예약 시 공개 콘텐츠·인증 상태를 다시 확인
+- 후속 조치: Daily verified artist-news policy replaced this unattempted static introduction.
 
 문안:
 
@@ -290,5 +311,25 @@ RSS·백예린 답글 제출은 완료했다. RSS 제공은 고려 중이며 백
 > listen at indiek.com
 > https://indiek.com/artists/choi-yu-ree/?from=instagram
 
-이력: 2026-10-19T09:27:46.009Z 문안 준비 · 아직 게시하지 않음
+이력: 2026-10-19T09:27:46.009Z 문안 준비 · 아직 게시하지 않음 / 2026-10-19T11:42:20.028Z 일일 아티스트 소식 정책으로 미전송 예약 대체
+
+### T-2026-10-20-1000-news · threads · 준비
+
+- 예약: 2026-10-20T01:00:00.000Z · 확인: 2026-10-19T11:53:47.365Z
+- 콘텐츠: https://bol4jakarta2026.com/
+- 이미지: 없음 · 텍스트 게시
+- 대체 텍스트: 해당 없음
+- 선정: A dated promoter announcement provides a specific Indonesian tour stop useful to overseas listeners. Separate promoter-domain confirmation establishes the relationship. Draft avoids any ticket-availability claim.
+- 원문 게시자: Big Ground Entertainment · promoter
+- 사실·문체 검토: Both live pages confirm the concert and promoter affiliation. The October 8 announcement is 11 days old; the November 14 Jakarta event is 26 days ahead, in Asia/Jakarta (WIB, UTC+7). No cancellation or postponement was found. Every caption clause is supported, with no ticket-availability claim. The supplied history contains neither this event nor a repetitive opening.
+- 결과: 게시 링크 없음
+- 후속 조치: 예약 시 공개 콘텐츠·인증 상태를 다시 확인
+
+문안:
+
+> BOL4 brings the Red Square tour to Balai Sarbini in Jakarta on November 14, 2026.
+>
+> https://bol4jakarta2026.com/
+
+이력: 2026-10-19T11:53:47.365Z 일일 소식 선정 · 사실·문체 검토 완료 · 아직 게시하지 않음
 <!-- automatic-promotion:end -->

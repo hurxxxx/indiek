@@ -6,6 +6,7 @@ After=network-online.target
 [Service]
 Type=oneshot
 WorkingDirectory=%h/projects/indiek
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
 ExecStart=/usr/bin/node %h/projects/indiek/scripts/promotion/run.mjs publish threads
 TimeoutStartSec=10min
 UMask=0077

@@ -32,5 +32,12 @@
       "permalink": "https://www.instagram.com/p/DeqfJ3HAf-n/"
     }
   ],
-  "measurementChangeDate": "2026-10-19"
+  "measurementChangeDate": "2026-10-19",
+  "policy": "daily-artist-news",
+  "news": {
+    "maxAgeDays": 14,
+    "upcomingDays": 30,
+    "researchTimeoutSeconds": 420,
+    "maxReviewCandidates": 3
+  }
 }

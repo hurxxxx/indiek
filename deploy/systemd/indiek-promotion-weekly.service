@@ -1,5 +1,5 @@
 [Unit]
-Description=indiek weekly report and grounded social drafts
+Description=indiek weekly promotion report
 Wants=network-online.target
 After=network-online.target
 

@@ -63,6 +63,17 @@ test('rate limiting pauses the platform; one platform failure does not re-send a
  const other=post('instagram'),g=fixture();g.remote.push({id:'posted',caption:other.copy,permalink:'https://www.instagram.com/p/test/',timestamp:now.toISOString()});
  await publishPost(other,g.options);assert.equal(other.status,'published');await publishPost(other,g.options);assert.equal(g.sends(),1);
 });
+test('verification and container processing cannot carry an unsent job past its delivery deadline',async()=>{
+ const late=new Date(now.getTime()+119*60000);
+ let elapsed=0;
+ const first=post(),f=fixture();f.api.identity=async()=>assert.fail('deadline must be checked before any API call');
+ await publishPost(first,{...f.options,now:late,clock:()=>elapsed,verify:async()=>{elapsed+=61000;}});
+ assert.equal(first.status,'expired');assert.equal(f.creates(),0);
+ elapsed=0;
+ const second=post(),g=fixture();g.api.container=async()=>{elapsed+=61000;return 'FINISHED';};
+ await publishPost(second,{...g.options,now:late,clock:()=>elapsed});
+ assert.equal(second.status,'expired');assert.equal(g.creates(),1);assert.equal(g.sends(),0);
+});
 test('journal survives restart and keeps manual entries, immutable copy and permalink',()=>{
  const root=mkdtempSync(path.join(tmpdir(),'indiek-promotion-'));mkdirSync(path.join(root,'docs'));writeFileSync(path.join(root,'docs/promotion.md'),'# Existing manual entries\n\nT001 preserved.\n');
  try{const store=new Store(root),p=post();store.save(p,'prepared');p.status='published';p.permalink='https://www.threads.com/post/test';store.save(p,'verified');

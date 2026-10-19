@@ -29,13 +29,29 @@ export function metaClient(platform,credentials,{fetcher=fetch}={}) {
     pollInterval:platform==='threads'?30000:60000,
     identity:()=>request(id,{fields:'id,username'}),
     create:post=>request(`${id}/${platform==='threads'?'threads':'media'}`,platform==='threads'
-      ?{media_type:'IMAGE',image_url:post.imageUrl,text:post.copy,alt_text:post.altText,topic_tag:'Korean music'}
+      ?(post.kind==='news'?{media_type:'TEXT',text:post.copy,link_attachment:post.url}:{media_type:'IMAGE',image_url:post.imageUrl,text:post.copy,alt_text:post.altText,topic_tag:'Korean music'})
       :{image_url:post.imageUrl,caption:post.copy,alt_text:post.altText},'POST'),
     async container(containerId){const field=platform==='threads'?'status':'status_code';return (await request(containerId,{fields:field}))[field];},
     publish:containerId=>request(`${id}/${platform==='threads'?'threads_publish':'media_publish'}`,{creation_id:containerId},'POST'),
     media:mediaId=>request(mediaId,{fields}),
     async recent(){return (await request(`${id}/${platform==='threads'?'threads':'media'}`,{fields,limit:'50'})).data||[];},
   };
+}
+export async function recentOwnPosts(config,credentials,{client=metaClient}={}) {
+  const batches=await Promise.all(config.platforms.map(async platform=>{
+    if(!credentials[platform]?.token)return [];
+    const api=client(platform,credentials[platform]);
+    const identity=await api.identity();
+    if(identity.username?.toLowerCase()!==config.account.toLowerCase())throw new Error(`${platform}: recent-post account does not match ${config.account}.`);
+    const posts=await api.recent();
+    if(!Array.isArray(posts))throw new Error(`${platform}: recent public-post history is unavailable.`);
+    // Whitelist public post fields. Credentials, response metadata and unrelated API fields never enter prompts.
+    return posts.map(post=>{
+      if(!post.id||typeof post.permalink!=='string'||!Number.isFinite(Date.parse(post.timestamp)))throw new Error(`${platform}: incomplete recent-post history.`);
+      return {platform,id:String(post.id),copy:String(post.text??post.caption??''),permalink:post.permalink,publishedAt:post.timestamp};
+    });
+  }));
+  return batches.flat();
 }
 export async function refreshToken(platform,credential,fetcher=fetch,now=new Date()) {
   if(!credential?.token)return false;

@@ -143,7 +143,7 @@ function renderSearch() {
   const update=()=>{
     const matches=searchCatalogue(records,pick,input.value);
     dialogContent.querySelector('#search-results').innerHTML=matches.length?matches.map(resultRow).join(''):'<p class="empty-state">No results found. Try “YdBB”, “Breath” or “한로로”.</p>';
-    dialogContent.querySelector('#search-status').textContent=`${matches.length} ${matches.length===1?'result':'results'} in this edition.`;
+    dialogContent.querySelector('#search-status').textContent=`${matches.length} ${matches.length===1?'result':'results'} in the journal.`;
     dialogContent.querySelector('.dialog-scroll').scrollTop=0;
   };
   input.addEventListener('input',update);update();input.focus({preventScroll:true});

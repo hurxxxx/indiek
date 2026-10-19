@@ -1,0 +1,169 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "coverage",
+    "candidates"
+  ],
+  "properties": {
+    "coverage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "artistId",
+          "status",
+          "urls",
+          "note"
+        ],
+        "properties": {
+          "artistId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "checked",
+              "inaccessible",
+              "no-fresh-news"
+            ]
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "artistId",
+          "kind",
+          "subject",
+          "headline",
+          "summary",
+          "dateBasis",
+          "publishedAt",
+          "eventDate",
+          "timezone",
+          "source",
+          "relevance",
+          "actionability",
+          "selectionReason",
+          "draft"
+        ],
+        "properties": {
+          "artistId": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "concert",
+              "release",
+              "live-video",
+              "interview"
+            ]
+          },
+          "subject": {
+            "type": "string"
+          },
+          "headline": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "dateBasis": {
+            "type": "string",
+            "enum": [
+              "publication",
+              "current-event-listing"
+            ]
+          },
+          "publishedAt": {
+            "type": "string"
+          },
+          "eventDate": {
+            "type": "string"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "url",
+              "publisher",
+              "relationship",
+              "quote",
+              "dateEvidence",
+              "affiliationUrl",
+              "affiliationQuote"
+            ],
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "publisher": {
+                "type": "string"
+              },
+              "relationship": {
+                "type": "string",
+                "enum": [
+                  "artist",
+                  "label",
+                  "promoter",
+                  "venue",
+                  "ticket-seller",
+                  "original-interviewer",
+                  "official-video-channel"
+                ]
+              },
+              "quote": {
+                "type": "string"
+              },
+              "dateEvidence": {
+                "type": "string"
+              },
+              "affiliationUrl": {
+                "type": "string"
+              },
+              "affiliationQuote": {
+                "type": "string"
+              }
+            }
+          },
+          "relevance": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "actionability": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "selectionReason": {
+            "type": "string"
+          },
+          "draft": {
+            "type": "string"
+          }
+        }
+      },
+      "maxItems": 8
+    }
+  }
+}

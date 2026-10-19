@@ -1,0 +1,9 @@
+[Unit]
+Description=indiek daily artist news preparation, Korea time
+[Timer]
+OnCalendar=*-*-* 08:00:00 Asia/Seoul
+Persistent=false
+AccuracySec=30s
+Unit=indiek-promotion-prepare.service
+[Install]
+WantedBy=timers.target
