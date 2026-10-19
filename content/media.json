@@ -383,6 +383,30 @@
       }
     ]
   },
+  "yerin-baek-every-letter.jpg": {
+    "width": 1600,
+    "height": 1600,
+    "variants": [
+      {
+        "src": "/assets/optimized/yerin-baek-every-letter-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 8478
+      },
+      {
+        "src": "/assets/optimized/yerin-baek-every-letter-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 33916
+      },
+      {
+        "src": "/assets/optimized/yerin-baek-every-letter-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 90186
+      }
+    ]
+  },
   "yoon-mirae-breath.png": {
     "width": 1000,
     "height": 1000,

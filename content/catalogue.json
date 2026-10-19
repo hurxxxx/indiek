@@ -4,7 +4,7 @@
     "url": "https://indiek.com",
     "email": "gw@lumejs.com",
     "googleSiteVerification": "qkLSg7cuoavGpwWrKgLATqgd9LepNwMJX9b-PRbbKIc",
-    "updated": "2026-10-18",
+    "updated": "2026-10-19",
     "analytics": {
       "enabled": true,
       "url": "https://matomo.lumejs.com",
@@ -443,6 +443,79 @@
       "guideTags": [
         "distinct-voices"
       ]
+    },
+    {
+      "id": "yerin-baek",
+      "artist": "Yerin Baek",
+      "korean": "백예린",
+      "aliases": "Baek Yerin Baek Ye-rin Baek Ye Rin",
+      "album": "0310",
+      "release": "Every letter I sent you.",
+      "year": "2019",
+      "genre": "R&B / POP",
+      "category": "solo",
+      "image": "yerin-baek-every-letter.jpg",
+      "track": "0310",
+      "koreanTitle": "",
+      "duration": "03:58",
+      "provider": "youtube",
+      "videoId": "Yp_vF0k1arc",
+      "channel": "Yerin Baek",
+      "url": "https://www.youtube.com/watch?v=Yp_vF0k1arc",
+      "videoType": "lyric-video",
+      "performance": "Official lyric video · Yerin Baek",
+      "note": "One letter from a larger story.",
+      "description": "“0310” is an English-language song from Yerin Baek’s December 2019 album Every letter I sent you. Her official lyric video lets you follow the words alongside the recording, offering a close introduction to her songwriting.",
+      "source": "https://music.apple.com/us/album/every-letter-i-sent-you/1490544506",
+      "sourceName": "Yerin Baek — Every letter I sent you. on Apple Music",
+      "sourceLanguage": "English",
+      "artistIntro": "Yerin Baek is a Korean singer-songwriter whose music moves between R&B, pop and rock. She debuted in the duo 15& in 2012 and released her first solo EP, FRANK, in 2015.",
+      "biography": "Alongside her solo work, Baek helped form the rock band The Volunteers. Her album Our love is great won Album of the Year at the 2020 Korean Music Awards. In December 2019, she released the eighteen-track album Every letter I sent you. It includes both “0310” and “Square (2017)”.",
+      "artistSource": "https://music.apple.com/kr/playlist/yerin-baek-essentials/pl.0b75008600ed4a848bd608ed37bf5c53?l=en-GB",
+      "artistSourceName": "Apple Music — Yerin Baek Essentials artist introduction",
+      "artistSourceLanguage": "English",
+      "listeningNote": "In her album note, Baek describes these songs as letters carrying years of memories and questions. Listen for the acoustic guitar and the layers around her voice: the credits include strings as well as a full band. From here, “Square (2017)” offers another way into the same album.",
+      "credits": "Written and composed by Yerin Baek. Arranged by Yerin Baek & Cloud.",
+      "extraSources": [
+        {
+          "url": "https://poclanos.com/album/every-letter-i-sent-you/",
+          "label": "POCLANOS — album notes and 0310 credits",
+          "language": "Korean / English"
+        },
+        {
+          "url": "https://koreanmusicawards.com/project/%EB%B0%B1%EC%98%88%EB%A6%B0-our-love-is-great/",
+          "label": "Korean Music Awards — Album of the Year, 2020",
+          "language": "Korean"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Yp_vF0k1arc",
+          "label": "Yerin Baek — official 0310 lyric video and credits",
+          "language": "Korean / English"
+        }
+      ],
+      "moreTracks": [
+        {
+          "title": "Square (2017)",
+          "year": "2019",
+          "note": "Another song from Every letter I sent you.",
+          "url": "https://www.youtube.com/watch?v=_ZkUb7iIOqQ"
+        },
+        {
+          "title": "Bye bye my blue",
+          "year": "2016",
+          "note": "An earlier chapter in her solo catalogue.",
+          "url": "https://www.youtube.com/watch?v=WbhK3wMXluE"
+        },
+        {
+          "title": "Antifreeze",
+          "year": "2021",
+          "note": "Her interpretation of a song by The Black Skirts.",
+          "url": "https://www.youtube.com/watch?v=74_yqNBhQbA"
+        }
+      ],
+      "guideTags": [
+        "distinct-voices"
+      ]
     }
   ],
   "featuredArtists": [
@@ -525,6 +598,11 @@
       "id": "yoon-mirae",
       "title": "A voice with room to breathe.",
       "deck": "Across hip-hop, R&B and drama soundtracks, Yoon Mirae has many sides. Begin with the spare, acoustic <em>Breath</em>."
+    },
+    {
+      "id": "yerin-baek",
+      "title": "One letter from a larger story.",
+      "deck": "Meet Yerin Baek through <em>0310</em>, an English-language song from <em>Every letter I sent you.</em> Follow her words in the official lyric video."
     }
   ],
   "editorPick": {

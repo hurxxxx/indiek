@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-18",
+  "reviewed": "2026-10-19",
   "publicationStatus": "Rights review outstanding. Images retained at the site owner’s explicit request; publication does not establish reuse permission.",
   "images": [
     {
@@ -134,6 +134,14 @@
       "file": "kim-sawol-romance.jpg",
       "label": "Kim Sawol — Romance artwork",
       "source": "https://music.apple.com/us/album/romance/1436255543",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed"
+    },
+    {
+      "file": "yerin-baek-every-letter.jpg",
+      "label": "Yerin Baek — Every letter I sent you. artwork",
+      "source": "https://music.apple.com/us/album/every-letter-i-sent-you/1490544506",
       "credit": "Apple Music release artwork",
       "language": "English",
       "status": "unconfirmed"

@@ -77,7 +77,7 @@ export function imageHTML(media, name, alt, {sizes = '(max-width: 760px) 45vw, 2
 }
 
 export const coverHTML = (media, r, options) => imageHTML(media, r.image, `${r.release || r.album} — release artwork`, options);
-export const videoLabel = r => r.videoType === 'live' ? 'Live performance' : r.videoType === 'music-video' ? 'Official music video' : 'Official audio';
+export const videoLabel = r => r.videoType === 'live' ? 'Live performance' : r.videoType === 'music-video' ? 'Official music video' : r.videoType === 'lyric-video' ? 'Official lyric video' : 'Official audio';
 export const externalLink = (url, label, className = '') => `<a${className ? ` class="${className}"` : ''} href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)} <span aria-hidden="true">↗</span></a>`;
 
 export function saveButton(r, long = false) {
