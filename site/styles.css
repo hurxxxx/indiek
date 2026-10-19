@@ -301,6 +301,8 @@ body.player-expanded{overflow:hidden}
 .persistent-player-heading button{flex:0 0 38px;width:38px;height:38px;font-size:26px;line-height:1;color:var(--paper)}
 .persistent-player-heading button:hover{background:#ffffff18}
 .persistent-player-heading .player-size-toggle{flex:0 0 auto;width:auto;padding:0 12px;font:11px var(--body);border:1px solid #f5f3ed50;height:32px}
+.persistent-player-heading .player-saved-toggle{flex:0 0 auto;width:auto;min-height:44px;padding:0 10px;font:11px var(--body)}
+.persistent-player-heading button[hidden]{display:none}
 .persistent-player-body{display:grid;grid-template-columns:minmax(0,1fr)}
 .has-playlist .persistent-player-body{grid-template-columns:minmax(0,1fr) 300px}
 .persistent-player-stage{width:100%;aspect-ratio:16/9;min-height:200px;background:#000}
@@ -369,10 +371,15 @@ main[aria-busy="true"]{cursor:progress}
 .library-play:hover{background:var(--ink);color:var(--paper)}
 .library-actions .save-button{min-height:44px;font-size:11px}
 .library-row .search-result small{margin-top:4px}
+.library-queue-controls{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 18px}
+.library-queue-controls button{min-height:44px;padding:8px 10px;border:1px solid var(--line);font:11px var(--body)}
+.library-queue-controls button:disabled{opacity:.4;cursor:default}
+.library-queue-controls [aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 html.has-mobile-player,html.has-mobile-player body{height:100%;overflow:hidden}
 html.has-mobile-player #page-content{position:fixed;inset:0 0 var(--mobile-player-height,244px);overflow:auto;overscroll-behavior-y:contain;scroll-padding-block:16px}
 html.has-mobile-player body:has(#persistent-player){padding-bottom:0}
 @media(max-width:760px){
+ #content-dialog.is-player-sheet{position:fixed;inset:auto 0 var(--mobile-player-height,244px);margin:0;width:100%;max-height:calc(100dvh - var(--mobile-player-height,244px));z-index:90;border-top:1px solid var(--ink);box-shadow:0 -8px 30px #0002}
  .library-row{display:block;padding:12px 0}
  .library-actions{margin-left:74px;justify-content:space-between}
  .library-row .search-result{gap:16px;padding:0 0 10px}

@@ -17,6 +17,7 @@ let returnFocus;
 let dialogMode = '';
 let toastTimer;
 let youtubeAllowed = false;
+const mobilePlayer=window.matchMedia('(max-width: 760px)');
 document.querySelectorAll('[data-js-only]').forEach(el => el.hidden = false);
 
 function syncSaved() {
@@ -38,16 +39,26 @@ function notify(message) {
 function openDialog(content,mode) {
   if(!dialog.open) returnFocus=document.activeElement;
   if(player.current){
-    if(playerRoot.contains(returnFocus))returnFocus=playerSizeButton;
+    if(playerRoot.contains(returnFocus))returnFocus=playerFocusButton();
     setCompactPlayer(true);
   }
   dialogMode=mode;dialogContent.innerHTML=content;
-  if(!dialog.open)dialog.showModal();
+  const sheet=mobilePlayer.matches&&Boolean(player.current);
+  dialog.classList.toggle('is-player-sheet',sheet);
+  if(!dialog.open){
+    if(sheet)dialog.show();
+    else dialog.showModal();
+  }
   dialog.scrollTop=0;
 }
 dialog.addEventListener('close',()=>{
-  dialogContent.replaceChildren();dialogMode='';
-  if(returnFocus?.isConnected)returnFocus.focus();
+  dialogContent.replaceChildren();dialogMode='';dialog.classList.remove('is-player-sheet');
+  if(returnFocus?.isConnected&&returnFocus.getClientRects().length)returnFocus.focus({preventScroll:true});
+});
+dialog.addEventListener('keydown',event=>{
+  if(event.key==='Escape'&&dialog.classList.contains('is-player-sheet')){
+    event.preventDefault();dialog.close();
+  }
 });
 document.querySelector('.close-button').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',event=>{
@@ -62,6 +73,13 @@ function renderLibrary() {
   const list=records.filter(r=>saved.has(r.id));
   openDialog(`<p class="eyebrow dialog-eyebrow">YOUR LISTENING SHELF</p><h2 id="dialog-title" class="dialog-title">Your saved tracks.</h2>${list.length?`<p class="library-intro">Start anywhere. With Auto-next on, the songs continue in the order shown.</p>${youtubeAllowed?'':youtubeConsentHTML()}${list.map(r=>`<div class="library-row">${resultRow(r)}<div class="library-actions">${r.externalOnly?`<a class="library-play" href="${e(r.url)}" target="_blank" rel="noopener noreferrer">YouTube ↗</a>`:`<button class="library-play" data-load-saved="${r.id}"></button>`}<button class="save-button" data-remove="${r.id}" aria-label="Remove ${e(r.track)} from saved tracks">Remove</button></div></div>`).join('')}`:'<p class="empty-state">Save a track with the + button to find it here later.</p><a class="underlink" href="/#records">Browse the listening shelf ↗</a>'}<p class="embed-caption">Your saved tracks stay in this browser. <a href="/privacy-and-terms/">Storage & privacy</a></p>`,'library');
   syncPlayButtons();
+  if(list.length){
+    const controls=document.createElement('div');
+    controls.className='library-queue-controls';
+    controls.innerHTML='<button data-previous-track aria-label="Previous saved track">← Previous</button><button data-next-track aria-label="Next saved track">Next →</button><button data-auto-next aria-pressed="true">Auto-next: on</button>';
+    dialogContent.querySelector('.library-intro').after(controls);
+    syncQueueControls();
+  }
 }
 function toggleSaved(id) {
   const r=records.find(record=>record.id===id);if(!r)return;
@@ -100,10 +118,13 @@ const playlistRows=playerRoot.querySelector('[data-playlist-rows]');
 const inertBackground=new Map();
 let playerReturnFocus;
 function setCompactPlayer(compact) {
+  compact=mobilePlayer.matches||compact;
   const expanded=Boolean(player.current)&&!compact;
   playerRoot.classList.toggle('is-compact',compact);
   playerSizeButton.textContent=compact?'Expand':'Minimize';
   playerSizeButton.setAttribute('aria-label',compact?'Expand listening window':'Minimize and keep listening');
+  playerSizeButton.hidden=mobilePlayer.matches;
+  playerRoot.querySelector('[data-mobile-queue]').hidden=!mobilePlayer.matches;
   playerRoot.setAttribute('role',expanded?'dialog':'region');
   if(expanded)playerRoot.setAttribute('aria-modal','true');
   else playerRoot.removeAttribute('aria-modal');
@@ -122,6 +143,14 @@ function setCompactPlayer(compact) {
     inertBackground.clear();
   }
 }
+function syncQueueControls() {
+  document.querySelectorAll('[data-previous-track]').forEach(button=>button.disabled=!player.ready||!player.previous);
+  document.querySelectorAll('[data-next-track]').forEach(button=>button.disabled=!player.ready||!player.next);
+  document.querySelectorAll('[data-auto-next]').forEach(button=>{
+    button.setAttribute('aria-pressed',String(player.autoNext));
+    button.textContent=`Auto-next: ${player.autoNext?'on':'off'}`;
+  });
+}
 function syncPlaylist() {
   const list=records.filter(r=>saved.has(r.id));
   const focused=playlistRows.contains(document.activeElement)?document.activeElement.dataset.loadSaved:null;
@@ -134,11 +163,7 @@ function syncPlaylist() {
     return `<li>${r.externalOnly?`<a href="${e(r.url)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${e(r.track)} by ${e(r.artist)} on YouTube">${content}</a>`:`<button data-load-saved="${r.id}" aria-label="${selected?'Return to':'Load'} ${e(r.track)} by ${e(r.artist)}" ${selected?'aria-current="true"':''}>${content}</button>`}</li>`;
   }).join('');
   playerRoot.querySelector('[data-queue-controls]').hidden=!list.length;
-  playerRoot.querySelector('[data-previous-track]').disabled=!player.ready||!player.previous;
-  playerRoot.querySelector('[data-next-track]').disabled=!player.ready||!player.next;
-  const autoNextButton=playerRoot.querySelector('[data-auto-next]');
-  autoNextButton.setAttribute('aria-pressed',String(player.autoNext));
-  autoNextButton.textContent=`Auto-next: ${player.autoNext?'on':'off'}`;
+  syncQueueControls();
   const status=playerRoot.querySelector('[data-playback-status]');
   status.textContent=({idle:'',loading:'Starting playback…',ready:'Starting playback…',paused:'Paused.',
     playing:player.autoNext&&player.next?`Up next: ${player.next.track} · ${player.next.artist}`:'Playing · Stops after this song.',
@@ -150,26 +175,31 @@ function syncPlaylist() {
   watchLink.hidden=!['error','unavailable'].includes(player.state);
   watchLink.href=player.current?.url||'#';
   playerRoot.classList.toggle('needs-attention',['blocked','error','unavailable'].includes(player.state));
-  if(focused)(playlistRows.querySelector(`[data-load-saved="${focused}"]`)||playerSizeButton).focus({preventScroll:true});
+  if(focused)(playlistRows.querySelector(`[data-load-saved="${focused}"]`)||playerFocusButton()).focus({preventScroll:true});
 }
+const playerFocusButton=()=>mobilePlayer.matches?playerRoot.querySelector('[data-mobile-queue]'):playerSizeButton;
 function loadPlayer(id, button) {
   const record=findRecord(id);
   if(!record||record.externalOnly)return;
   const fromPlaylist=playlistRows.contains(button);
   if(dialog.open){
     if(!playerRoot.contains(returnFocus))playerReturnFocus=returnFocus;
-    returnFocus=playerSizeButton;
+    returnFocus=playerFocusButton();
     dialog.close();
   }else if(!playerRoot.contains(button))playerReturnFocus=button;
   youtubeAllowed=true;
   player.load(record,{autoplay:true});
-  setCompactPlayer(false);
-  (fromPlaylist?playlistRows.querySelector(`[data-load-saved="${id}"]`):playerSizeButton)?.focus({preventScroll:true});
+  setCompactPlayer(mobilePlayer.matches);
+  (fromPlaylist&&!mobilePlayer.matches?playlistRows.querySelector(`[data-load-saved="${id}"]`):playerFocusButton())?.focus({preventScroll:true});
 }
-playerBackdrop.addEventListener('click',()=>{setCompactPlayer(true);playerSizeButton.focus({preventScroll:true});});
+mobilePlayer.addEventListener('change',()=>{
+  if(dialog.open)dialog.close();
+  setCompactPlayer(playerRoot.classList.contains('is-compact'));
+});
+playerBackdrop.addEventListener('click',()=>{setCompactPlayer(true);playerFocusButton().focus({preventScroll:true});});
 playerRoot.addEventListener('keydown',event=>{
   if(event.key==='Escape'&&!playerRoot.classList.contains('is-compact')){
-    event.preventDefault();setCompactPlayer(true);playerSizeButton.focus({preventScroll:true});
+    event.preventDefault();setCompactPlayer(true);playerFocusButton().focus({preventScroll:true});
   }
 });
 playerRoot.querySelectorAll('[data-player-focus]').forEach(guard=>guard.addEventListener('focus',()=>{
@@ -203,6 +233,7 @@ function syncPlayer() {
 }
 function closePlayer() {
   const id=player.current?.id;
+  if(dialog.open&&dialog.classList.contains('is-player-sheet'))dialog.close();
   player.close();
   setCompactPlayer(false);
   const button=[...document.querySelectorAll('[data-load-player]')].find(button=>button.dataset.loadPlayer===id);
