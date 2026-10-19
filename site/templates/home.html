@@ -24,7 +24,7 @@
       <aside class="rotation" aria-labelledby="rotation-title" data-room-count="{{ROOM_COUNT}}">
         <div class="section-kicker mono"><span class="red-dot"></span> THE LISTENING ROOM <span>{{ROOM_COUNT}} TRACKS</span></div>
         <h2 id="rotation-title">Pick a song.<br>Stay a while.</h2>
-        <p class="rotation-intro">Every song in the journal. Choose one and meet the artist.</p>
+        <p class="rotation-intro">Songs from across the journal, all in one place.</p>
         {{ROOM_HINT}}
         <div class="room-track-scroll" role="region" aria-label="All {{ROOM_COUNT}} tracks in the listening room" tabindex="0"><ol class="track-list" id="track-list" role="list">{{TRACKS}}</ol></div>
         <a class="room-button" href="/#notes">Find a listening guide <span aria-hidden="true">↗</span></a>
@@ -36,7 +36,7 @@
     {{EDITOR_PICK}}
 
     <section class="record-section wrap" id="records" aria-labelledby="records-title">
-      <div class="section-heading"><div><p class="eyebrow">THE LISTENING SHELF / HANDPICKED SONGS</p><h2 id="records-title">Worth your time.</h2></div><p class="section-description">Songs to get lost in.<br>Picked for the curious.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">THE LISTENING SHELF / HANDPICKED SONGS</p><h2 id="records-title">Worth your time.</h2></div><p class="section-description">A mix of bands and solo artists.<br>Something here might be for you.</p></div>
       <div class="filter-bar" data-js-only hidden><div class="filters" role="group" aria-label="Filter by artist type"><button data-filter="all" aria-pressed="true">All artists <sup>{{COUNT}}</sup></button><button data-filter="bands" aria-pressed="false">Bands</button><button data-filter="solo" aria-pressed="false">Solo artists</button></div><span id="record-count" class="mono" role="status">{{COUNT}} TRACKS</span></div>
       <div class="record-grid" id="record-grid">{{RECORDS}}</div>
 
@@ -44,9 +44,9 @@
 
     <section class="listening-guides wrap" id="notes" aria-labelledby="notes-title">
       <div class="section-heading"><div><p class="eyebrow">LISTENING GUIDES / {{GUIDE_ARTIST_COUNT}} ARTISTS TO EXPLORE</p><h2 id="notes-title">Follow the sound.</h2></div><a class="underlink" href="/notes/first-listens/">All listening guides <span aria-hidden="true">↗</span></a></div>
-      <p class="guides-intro">New here? <a class="underlink" href="/notes/korean-indie-where-to-start/">Find your way into Korean indie ↗</a> Or follow a live performance, a guitar, or a voice.</p>
+      <p class="guides-intro">New to Korean music? <a class="underlink" href="/notes/korean-indie-where-to-start/">A few places to start ↗</a> Or browse live performances, bands and voices.</p>
       {{GUIDES}}
     </section>
 
-    <section class="closing wrap" id="about"><span class="mono">A NOTE FROM INDIEK</span><div><h2>Different language.<br>Same feeling.</h2><p>Korean artists and songs I wish more people knew.<br>A personal selection, with room to explore.<br>Start with a song. See where it takes you.</p><a class="underlink" href="/about/">About this journal <span aria-hidden="true">↗</span></a></div><span class="closing-mark" aria-hidden="true">ik.</span></section>
+    <section class="closing wrap" id="about"><span class="mono">A NOTE FROM INDIEK</span><div><h2>Different language.<br>Same feeling.</h2><p>Korean artists and songs I wish more people knew.<br>I add to the selection as I find more music to share.<br>I hope you find something you like.</p><a class="underlink" href="/about/">About this journal <span aria-hidden="true">↗</span></a></div><span class="closing-mark" aria-hidden="true">ik.</span></section>
   </main>
