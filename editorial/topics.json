@@ -14,15 +14,21 @@
   },
   {
     "id": "yerin-0310",
-    "category": "Song stories",
-    "question": "What context helps a new listener approach 0310?",
+    "category": "Listening paths",
+    "question": "Where can a listener go after 0310, and what changed in Baek’s way of writing?",
     "artistId": "yerin-baek",
-    "angle": "Follow verified writing and release context without inventing a private story.",
-    "researchNeeded": "Original artist discussion and album credits",
-    "timingTrigger": "New interview or anniversary",
-    "status": "idea",
-    "lastChecked": null,
-    "sourceLeads": [],
+    "angle": "Connect the 0310 credits with Baek’s beat-first sketches for tellusboutyourself and her own next-song suggestions.",
+    "researchNeeded": "Published from the reviewed draft; recheck originals if the article is revised.",
+    "timingTrigger": "Evergreen listening path; the 2019–2021 sources are retrospective context.",
+    "status": "published",
+    "lastChecked": "2026-10-20",
+    "sourceLeads": [
+      "https://poclanos.com/album/every-letter-i-sent-you/",
+      "https://poclanos.com/interview/yerinbaek/",
+      "https://www.bandwagon.asia/articles/yerin-baek-shares-a-new-side-and-stories-of-growth-in-her-latest-album-tellusboutyourself-korea-blue-vinyl-kpop-comeback-interview-december-2020",
+      "https://www.elle.com/culture/music/a35755652/yerin-baek-tellusboutyourself-interview/",
+      "https://music.apple.com/us/album/tellusboutyourself/1543102982"
+    ],
     "duplicateOf": null
   },
   {

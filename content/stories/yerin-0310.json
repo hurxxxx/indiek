@@ -1,0 +1,239 @@
+{
+  "id": "yerin-0310",
+  "slug": "yerin-0310",
+  "status": "published",
+  "category": "Listening paths",
+  "title": "Where to go after Yerin Baek’s “0310”",
+  "description": "The writing process behind tellusboutyourself offers a route from “0310” to her next album.",
+  "authorId": "indiek",
+  "published": "2026-10-20",
+  "updated": "2026-10-20",
+  "artistIds": [
+    "yerin-baek"
+  ],
+  "keywords": [
+    "백예린",
+    "0310",
+    "0415",
+    "Every letter I sent you.",
+    "tellusboutyourself",
+    "Cloud",
+    "songwriting"
+  ],
+  "cover": {
+    "file": "yerin-baek-every-letter.jpg",
+    "alt": "Cover of Yerin Baek’s album Every letter I sent you.",
+    "caption": "Every letter I sent you., released in 2019. Album artwork."
+  },
+  "sources": [
+    {
+      "id": "credits",
+      "label": "Every letter I sent you.: album notes and credits",
+      "url": "https://poclanos.com/album/every-letter-i-sent-you/",
+      "publisher": "POCLANOS / Yerin Baek",
+      "language": "Korean and English",
+      "published": "2019-12-10",
+      "checked": "2026-10-20"
+    },
+    {
+      "id": "bandwagon",
+      "label": "Yerin Baek on the songs she wanted to perform",
+      "url": "https://www.bandwagon.asia/articles/yerin-baek-shares-a-new-side-and-stories-of-growth-in-her-latest-album-tellusboutyourself-korea-blue-vinyl-kpop-comeback-interview-december-2020",
+      "publisher": "Bandwagon / Franchesca Judine Basbas",
+      "language": "English",
+      "published": "2020-12-10",
+      "checked": "2026-10-20"
+    },
+    {
+      "id": "process",
+      "label": "Yerin Baek and Cloud on making tellusboutyourself",
+      "url": "https://poclanos.com/interview/yerinbaek/",
+      "publisher": "POCLANOS / Daichi Yamamoto",
+      "language": "Korean",
+      "published": "2021-02-19",
+      "checked": "2026-10-20"
+    },
+    {
+      "id": "elle",
+      "label": "Yerin Baek on trying house and 2-step",
+      "url": "https://www.elle.com/culture/music/a35755652/yerin-baek-tellusboutyourself-interview/",
+      "publisher": "ELLE / Alyssa Bailey",
+      "language": "English",
+      "published": "2021-03-09",
+      "checked": "2026-10-20"
+    },
+    {
+      "id": "next-album",
+      "label": "Next listen: tellusboutyourself",
+      "url": "https://music.apple.com/us/album/tellusboutyourself/1543102982",
+      "publisher": "Apple Music",
+      "language": "English",
+      "checked": "2026-10-20"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Yerin Baek’s name keeps coming up in the credits for “0310”. She wrote the music and lyrics, arranged it with Cloud, and played electric guitar alongside jonny and Cloud. Released on Every letter I sent you. in December 2019, the song already finds her involved well beyond the vocal.",
+      "sources": [
+        "credits"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "That is a useful starting point for her next album, tellusboutyourself, released on 10 December 2020. What changed was partly the way a song began.",
+      "sources": [
+        "next-album",
+        "process"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Speaking to Franchesca Judine Basbas for Bandwagon at the time of its release, Baek described the album as a collection of songs she wanted to perform on stage. For “0415”, she had a specific wish: to hear her voice on a deep house track. A setting for the voice could be part of the idea from the outset.",
+      "sources": [
+        "bandwagon"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "The beat came first",
+      "sources": []
+    },
+    {
+      "type": "paragraph",
+      "text": "The experiments had begun before “0310” came out. In Daichi Yamamoto’s interview with Baek and Cloud for POCLANOS, she recalled taking a few MIDI lessons from Cloud in early 2019. She began making sketches herself and sent him starting versions of 13 of the next album’s 14 songs. Some of her own beats and keyboard parts made it into the finished work.",
+      "sources": [
+        "process"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "She described reversing her usual order. For the first album, she had played piano or guitar while writing melody and lyrics together. This time she found a beat she liked, set the tempo, played keyboard, then added melody and words. The sketches helped Cloud understand the style she had in mind when arranging.",
+      "sources": [
+        "process"
+      ]
+    },
+    {
+      "type": "listen",
+      "trackId": "yerin-baek",
+      "sources": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Baek later gave two more specific entry points in an interview with Alyssa Bailey for ELLE: “HOMESWEETHOME” and “Bubbles&Mushrooms”. She named these as the songs on which she had pushed herself furthest, describing her attempts at house and 2-step. She also credited a new producer joining the team with helping her try music outside her previous habits.",
+      "sources": [
+        "elle"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Baek was already a co-arranger on “0310”. Her sketches gave that collaboration a more concrete starting point: Cloud could hear her intentions before arranging.",
+      "sources": [
+        "credits",
+        "process"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "For a next song, try “0415” with her original wish in mind: she wanted to place her voice in deep house. Then move to “HOMESWEETHOME” or “Bubbles&Mushrooms”, the experiments she singled out herself.",
+      "sources": [
+        "bandwagon",
+        "elle"
+      ]
+    }
+  ],
+  "review": {
+    "contentHash": "2ea72a484a5e84fc9fd2a2e9278fb6891fbfb0e097a4d1ce15bfff28199a3d9c",
+    "skillRevision": "2a785756f546b6ff9df0b0aca94888971ba66d73d115a5a01da36a0a7ee8823d",
+    "checkedAt": "2026-10-20T07:00:43.630Z",
+    "facts": {
+      "approved": true,
+      "reason": "Read and applied the supplied skill. Fresh review of the exact complete draft found no unresolved factual error in the title, deck, credits, chronology, translations or recommendations. Directly opened POCLANOS, Bandwagon and Apple Music originals support their claims. ELLE direct retrieval failed, but live search returned the original interview text matching the supplied screenshot; its byline and date also matched. YouTube direct retrieval failed: recording identity and the catalogue mapping rely on the supplied screenshot and parent-session receipt. I did not reproduce playback, test embedding or independently listen. The artwork image establishes identity, not reuse permission. Article dates remain provisional draft metadata. Approval covers factual accuracy of this exact supplied draft only.",
+      "issues": [],
+      "checkedURLs": [
+        "https://poclanos.com/album/every-letter-i-sent-you/",
+        "https://www.bandwagon.asia/articles/yerin-baek-shares-a-new-side-and-stories-of-growth-in-her-latest-album-tellusboutyourself-korea-blue-vinyl-kpop-comeback-interview-december-2020",
+        "https://poclanos.com/interview/yerinbaek/",
+        "https://www.elle.com/culture/music/a35755652/yerin-baek-tellusboutyourself-interview/",
+        "https://music.apple.com/us/album/tellusboutyourself/1543102982",
+        "https://www.youtube.com/watch?v=Yp_vF0k1arc"
+      ],
+      "supportedClaims": [
+        {
+          "claim": "Every letter I sent you. was released on 10 December 2019.",
+          "sourceURL": "https://poclanos.com/album/every-letter-i-sent-you/",
+          "evidence": "Release 2019.12.10"
+        },
+        {
+          "claim": "0310 credits Baek for composition and lyrics, and arrangement with Cloud.",
+          "sourceURL": "https://poclanos.com/album/every-letter-i-sent-you/",
+          "evidence": "Composed by 백예린\nLyrics by 백예린\nArranged by 백예린, 구름"
+        },
+        {
+          "claim": "0310 credits electric guitar to Baek, jonny and Cloud.",
+          "sourceURL": "https://poclanos.com/album/every-letter-i-sent-you/",
+          "evidence": "Elec guitar 백예린, jonny, 구름"
+        },
+        {
+          "claim": "Baek described songs she wanted to perform on stage.",
+          "sourceURL": "https://www.bandwagon.asia/articles/yerin-baek-shares-a-new-side-and-stories-of-growth-in-her-latest-album-tellusboutyourself-korea-blue-vinyl-kpop-comeback-interview-december-2020",
+          "evidence": "songs that I want to perform on stage"
+        },
+        {
+          "claim": "Baek said her wish behind 0415 was to place her voice on deep house.",
+          "sourceURL": "https://www.bandwagon.asia/articles/yerin-baek-shares-a-new-side-and-stories-of-growth-in-her-latest-album-tellusboutyourself-korea-blue-vinyl-kpop-comeback-interview-december-2020",
+          "evidence": "wanting to place my voice on a deep house track"
+        },
+        {
+          "claim": "Baek dates brief MIDI lessons to early 2019.",
+          "sourceURL": "https://poclanos.com/interview/yerinbaek/",
+          "evidence": "19년도 초반에 오빠한테 MIDI 레슨을 살짝 받았어요."
+        },
+        {
+          "claim": "Baek says she supplied sketches for 13 of 14 songs.",
+          "sourceURL": "https://poclanos.com/interview/yerinbaek/",
+          "evidence": "스케치를 14곡 중 13곡을 다 해서"
+        },
+        {
+          "claim": "Her described sequence began with selecting a beat and setting tempo before keyboard.",
+          "sourceURL": "https://poclanos.com/interview/yerinbaek/",
+          "evidence": "비트를 먼저 찾고, bpm을 맞추고, 그러고 나서 건반을"
+        },
+        {
+          "claim": "Baek identified HOMESWEETHOME and Bubbles&Mushrooms as her furthest experiments, and described trying house and 2-step; supported by search-returned original text and the supplied screenshot.",
+          "sourceURL": "https://www.elle.com/culture/music/a35755652/yerin-baek-tellusboutyourself-interview/",
+          "evidence": "I pushed myself the farthest for “HOMESWEETHOME” and \"Bubbles&Mushrooms\". I tried my hand at House and 2-step"
+        },
+        {
+          "claim": "tellusboutyourself was released on 10 December 2020.",
+          "sourceURL": "https://music.apple.com/us/album/tellusboutyourself/1543102982",
+          "evidence": "December 10, 2020"
+        },
+        {
+          "claim": "The supplied YouTube screenshot identifies the recording as the official 0310 lyric video; direct retrieval failed.",
+          "sourceURL": "https://www.youtube.com/watch?v=Yp_vF0k1arc",
+          "evidence": "백예린 (Yerin Baek) - '0310' (Official Lyric Video)"
+        }
+      ]
+    },
+    "editorial": {
+      "approved": true,
+      "reason": "The exact draft answers its reader question with a useful connection between Baek’s existing creative role, her changed composing process and three justified next listens. Comparison with the opened originals found no material imitation or invented experience. This is editorial approval of the supplied draft only.",
+      "issues": [],
+      "contribution": "The credits establish that Baek already composed and co-arranged “0310”; the interviews explain how sketches changed her collaboration with Cloud. Combining that distinction with her own song-specific accounts produces a practical listening route without claiming firsthand sonic analysis.",
+      "referenceIds": [
+        "nick-parannoul",
+        "yerin-bandwagon-process"
+      ],
+      "comparisons": [
+        "The draft applies the specificity of [Nick Caceres’s Parannoul interview](https://nicholasc2002271.wixsite.com/nickc/copy-of-interview-w-matt-cruz-from-lr): a working decision matters more than a generic growth narrative. It borrows no distinctive questions, personal experiences, imagery or narrative sequence.",
+        "Against [Basbas’s Bandwagon article](https://www.bandwagon.asia/articles/yerin-baek-shares-a-new-side-and-stories-of-growth-in-her-latest-album-tellusboutyourself-korea-blue-vinyl-kpop-comeback-interview-december-2020), the draft retains attributed intentions but avoids the correspondence metaphor and transformation framing. The stage-intention-to-0415 sequence follows relevant evidence; the credits and composing-process connection supply a different argument.",
+        "The two process paragraphs condense separate answers in the [POCLANOS interview](https://poclanos.com/interview/yerinbaek/). Their procedural order is necessary to explain the change, rather than an appropriated narrative device. The draft preserves the distinction between sketches and finished production.",
+        "The [ELLE interview](https://www.elle.com/culture/music/a35755652/yerin-baek-tellusboutyourself-interview/) supplies the two experimental selections. Attribution remains explicit, and the draft does not assign house and 2-step individually to the songs or present the artist’s account as our hearing.",
+        "Using the dossier’s whole-paragraph counting method, source contributions are approximately 189 words for POCLANOS process, including title, deck and heading; 91 for Bandwagon; 90 for ELLE; and 74 for the credits. These fit the stated 200/100-word limits. No lyrics or substantive direct quotations are reproduced.",
+        "Compared with the supplied sunwoojunga story, this opening establishes creative credits rather than reconstructing a personal incident. Its ending offers a listening sequence rather than a broader emotional synthesis. No repetitive opening or ending was found.",
+        "The short album-transition paragraph supplies necessary chronology. The penultimate paragraph repeats earlier evidence but earns its place by connecting the credits to the sketches. The concrete credits, dates, workflow and named selections keep the article from becoming interchangeable artist praise. No listening, interview attendance or personal reaction is invented."
+      ]
+    }
+  }
+}

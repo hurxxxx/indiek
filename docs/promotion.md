@@ -459,3 +459,4 @@ RSS·백예린 답글 제출은 완료했다. RSS 제공은 고려 중이며 백
 - 수정본은 양쪽 검수를 통과했다. 10월 21일 10:00 KST Threads·10:15 KST Instagram 예약이며, 최종 문안과 자체 제작 이미지 주소는 위 자동 기록에 있다. 공개 기사 revision·공유 이미지 dry-run 통과. 실제 게시·노출·유입은 아직 미측정이다.
 - 실행 서버의 기존 4개 타이머에 매일 03:00 조건 확인과 월간 참고자료 점검을 추가했다. 정기 기사는 화·금, 하루 1편·최근 7일 최대 2편으로 제한한다. 오늘의 수동 발행 상태와 검수 자료를 보존했고, 계정 자격 증명이 소스 업데이트 전과 동일함을 확인했다.
 - 로컬 105개 테스트·25페이지 검증 통과. 데스크톱·모바일 기사/검색, 재생 중 이동, 모바일 세로·가로 Saved 배치를 확인했다. 전체 Saved 수량 조합·실기기 키보드·전체 화면·전곡 재생은 이번 변경에서 다시 확인하지 않았다.
+- Status check 2026-10-20T06:20:18.373Z: official account APIs show 0 posts linking the new magazine article. Threads/Instagram story jobs remain ready for 2026-10-21 10:00/10:15 KST; earlier sunwoojunga live-introduction posts are separate. No post was sent during this check.

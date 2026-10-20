@@ -17,6 +17,20 @@
       "published": "2026-10-20"
     },
     {
+      "id": "yerin-0310",
+      "kind": "story",
+      "title": "Where to go after Yerin Baek’s “0310”",
+      "path": "/stories/yerin-0310/",
+      "description": "The writing process behind tellusboutyourself offers a route from “0310” to her next album.",
+      "artistIds": [
+        "yerin-baek"
+      ],
+      "image": "/assets/social/stories-yerin-0310.jpg",
+      "altText": "Where to go after Yerin Baek’s “0310” — indiek. Original typographic article card.",
+      "revision": "2ea72a484a5e84fc9fd2a2e9278fb6891fbfb0e097a4d1ce15bfff28199a3d9c",
+      "published": "2026-10-20"
+    },
+    {
       "id": "black-skirts",
       "kind": "artist",
       "title": "The Black Skirts — EVERYTHING",
