@@ -51,7 +51,7 @@ Curated guides use 3–5 catalogue tracks with an editorial note for each. Guide
 
 Run `npm run build && npm run check`, then check the affected pages on desktop and mobile. Follow the [repository guidelines](AGENTS.md) when adding artists or songs so related sections stay in sync. Magazine scheduling and hosting details are in the [deployment guide](deploy/README.md).
 
-The optional publisher in `scripts/promotion/` gives a new published story priority in the daily social slot, otherwise researching current news about artists in the live catalogue. It uses the official Threads API, with an Instagram version when a relevant image has documented reuse rights. It runs separately from the website and follows the shared [social writing guide](promotion/voice.md). Scheduling, authorization and recovery are covered in the [deployment guide](deploy/README.md#sns-자동-게시). Actual attempts are recorded in the [promotion log](docs/promotion.md).
+The optional publisher in `scripts/promotion/` gives a new published story priority in the daily social slot, otherwise researching current news about artists in the live catalogue. An explicitly requested immediate story share can use the same writing, review and publishing workflow without changing the schedule. It uses the official Threads API, with an Instagram version when a relevant image has documented reuse rights. It runs separately from the website and follows the shared [social writing guide](promotion/voice.md). Scheduling, authorization and recovery are covered in the [deployment guide](deploy/README.md#sns-자동-게시). Actual attempts are recorded in the [promotion log](docs/promotion.md).
 
 ## Credits and contact
 

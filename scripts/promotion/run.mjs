@@ -6,6 +6,7 @@ import {Store,atomicWrite,readJSON,withLock,validatePost,verifyLive,publishPost}
 import {metaClient,recentOwnPosts,refreshToken} from './meta.mjs';
 import {prepareDaily,reviewBeforePublish} from './news-runner.mjs';
 import {prepareStory} from './stories.mjs';
+import {shareStoryNow} from './on-demand.mjs';
 import {koreanDay} from './news.mjs';
 
 const root=fileURLToPath(new URL('../../',import.meta.url));
@@ -48,7 +49,7 @@ async function publish(store,platform) {
   if(await refreshToken(platform,credential))atomicWrite(credentialFile,JSON.stringify(secret,null,2)+'\n');
   const api=metaClient(platform,credential);
   let recentPosts;
-  for(const post of store.posts.filter(p=>p.platform===platform&&!['published','expired','superseded'].includes(p.status))) {
+  for(const post of store.posts.filter(p=>p.mode!=='on-demand'&&p.platform===platform&&!['published','expired','superseded'].includes(p.status))) {
     if(['ready','created'].includes(post.status)&&Date.parse(post.scheduledAt)<=now.getTime()&&now.getTime()-Date.parse(post.scheduledAt)<config.maxSlotAgeMinutes*60000){
       recentPosts??=await recentOwnPosts(config,secret);
       if([...config.previousPosts,...recentPosts,...store.posts.filter(p=>p.status==='published')].some(p=>p.id!==post.id&&p.platform===platform&&koreanDay(new Date(p.publishedAt))===koreanDay(now))){
@@ -60,6 +61,18 @@ async function publish(store,platform) {
     if(post.pausePlatform)break;
   }
   stateNote(`${platform}: scheduled queue checked. Read docs/promotion.md for actual results.`);
+}
+async function storyNow(store) {
+  if(local)throw new Error('story-now requires the live public catalogue.');
+  const secret=credentials();
+  for(const platform of config.platforms) {
+    if(!secret[platform]?.token)throw new Error(`${platform}: authorization required for this request.`);
+    if(await refreshToken(platform,secret[platform]))atomicWrite(credentialFile,JSON.stringify(secret,null,2)+'\n');
+  }
+  const result=await shareStoryNow({root,config,store,catalogue:await publicCatalogue(),storyId:argument,recent:()=>recentOwnPosts(config,secret),apiFor:platform=>metaClient(platform,secret[platform])});
+  stateNote(`On-demand story ${argument}: ${result.status}. Read docs/promotion.md for actual results.`);
+  console.log(JSON.stringify(result,null,2));
+  if(!['published','story-already-queued-or-shared'].includes(result.status))process.exitCode=1;
 }
 async function matomoReport(secret) {
   if(!secret?.matomo?.token)return {status:'Not connected. No visitor count inferred.'};
@@ -93,6 +106,7 @@ async function run() {
   }
   await withLock(state,async()=>{
     if(command==='prepare')await prepare(store);
+    else if(command==='story-now')await storyNow(store);
     else if(command==='publish')await publish(store,argument);
     else if(command==='report')await report(store);
     else if(command==='weekly')await report(store);
@@ -100,7 +114,7 @@ async function run() {
     else if(command==='dry-run'){
       for(const post of store.posts.filter(p=>!['published','expired','superseded'].includes(p.status))){validatePost(post,config);try{await verifyLive(post);console.log(`${post.id}: source and any required image accessible; independent review runs again at send time; not sent`);}catch(error){console.log(`${post.id}: blocked — ${error.message}`);}}
       if(!store.posts.length){await publicCatalogue();console.log('Public catalogue readable; no prepared jobs.');}
-    }else throw new Error('Commands: status, prepare [--local], dry-run, publish threads|instagram, report, weekly, sync-log, credentials --stdin');
+    }else throw new Error('Commands: status, prepare [--local], story-now STORY_ID (publishes), dry-run, publish threads|instagram, report, weekly, sync-log, credentials --stdin');
   });
 }
 run().catch(error=>{stateNote(error.safeMessage||error.message);process.exitCode=1;});

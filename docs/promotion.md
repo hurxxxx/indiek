@@ -446,6 +446,40 @@ RSS·백예린 답글 제출은 완료했다. RSS 제공은 고려 중이며 백
 > https://indiek.com/stories/sunwoojunga-run-with-me/?from=threads
 
 이력: 2026-10-20T05:58:51.168Z 공개 기사와 최종 문안 검수 · 자체 제작 글자 이미지로 예약
+
+### T-2026-10-20-1637-story · threads · 미전송 예약 대체
+
+- 예약: 2026-10-20T07:37:20.793Z · 확인: 2026-10-20T07:47:57.131Z
+- 콘텐츠: https://indiek.com/stories/yerin-0310/?from=threads
+- 이미지: https://indiek.com/assets/social/stories-yerin-0310.jpg
+- 대체 텍스트: Where to go after Yerin Baek’s “0310” — indiek. Original typographic article card.
+- 결과: 게시 링크 없음
+- 후속 조치: User requested the remote automatic writer and review workflow instead; manual draft not sent.
+
+문안:
+
+> Yerin Baek told POCLANOS she changed how she wrote for tellusboutyourself: find a beat first, add keys, then melody and lyrics. she sent Cloud sketches for 13 of the album's 14 songs
+>
+> https://indiek.com/stories/yerin-0310/?from=threads
+
+이력: 2026-10-20T07:40:26.197Z 사용자 명시 요청에 따른 1회 수동 기사 공유 준비 · 직접 HTTP 증빙 보완 후 양쪽 최종 문안 검수 통과 / 2026-10-20T07:47:57.131Z 사용자 요청: 수동 문안 취소 · 원격 작성 검증으로 전환
+
+### I-2026-10-20-1637-story · instagram · 미전송 예약 대체
+
+- 예약: 2026-10-20T07:37:20.793Z · 확인: 2026-10-20T07:47:57.142Z
+- 콘텐츠: https://indiek.com/stories/yerin-0310/?from=instagram
+- 이미지: https://indiek.com/assets/social/stories-yerin-0310.jpg
+- 대체 텍스트: Where to go after Yerin Baek’s “0310” — indiek. Original typographic article card.
+- 결과: 게시 링크 없음
+- 후속 조치: User requested the remote automatic writer and review workflow instead; manual draft not sent.
+
+문안:
+
+> Yerin Baek told POCLANOS she changed how she wrote for tellusboutyourself: find a beat first, add keys, then melody and lyrics. she sent Cloud sketches for 13 of the album's 14 songs
+>
+> https://indiek.com/stories/yerin-0310/?from=instagram
+
+이력: 2026-10-20T07:40:26.206Z 사용자 명시 요청에 따른 1회 수동 기사 공유 준비 · 직접 HTTP 증빙 보완 후 양쪽 최종 문안 검수 통과 / 2026-10-20T07:47:57.142Z 사용자 요청: 수동 문안 취소 · 원격 작성 검증으로 전환
 <!-- automatic-promotion:end -->
 
 ## G004 · 매거진과 편집 자동화 구현
@@ -460,3 +494,15 @@ RSS·백예린 답글 제출은 완료했다. RSS 제공은 고려 중이며 백
 - 실행 서버의 기존 4개 타이머에 매일 03:00 조건 확인과 월간 참고자료 점검을 추가했다. 정기 기사는 화·금, 하루 1편·최근 7일 최대 2편으로 제한한다. 오늘의 수동 발행 상태와 검수 자료를 보존했고, 계정 자격 증명이 소스 업데이트 전과 동일함을 확인했다.
 - 로컬 105개 테스트·25페이지 검증 통과. 데스크톱·모바일 기사/검색, 재생 중 이동, 모바일 세로·가로 Saved 배치를 확인했다. 전체 Saved 수량 조합·실기기 키보드·전체 화면·전곡 재생은 이번 변경에서 다시 확인하지 않았다.
 - Status check 2026-10-20T06:20:18.373Z: official account APIs show 0 posts linking the new magazine article. Threads/Instagram story jobs remain ready for 2026-10-21 10:00/10:15 KST; earlier sunwoojunga live-introduction posts are separate. No post was sent during this check.
+
+## G005 · 백예린 기사 비정기 SNS 공유 검증
+
+- 2026-10-20T07:37:20.793Z: 사용자 요청으로 공개 기사 `yerin-0310`를 Threads·Instagram `@indiekdotcom`에 각각 1회 공유. 상태: 수동 초안 검수 후 사용자 요청으로 미전송 취소. 원격 자동 작성·검수·게시 경로 준비 중.
+- 공식 API에서 두 계정 일치와 최근 공개 게시물 본문을 확인했다. 해당 기사 중복 없음. 오늘의 선우정아 소개와 별도인 사용자 지정 수동 게시이며 정기 일일 제한·기존 예약은 유지한다.
+- 자체 제작 기사 카드: https://indiek.com/assets/social/stories-yerin-0310.jpg. 사진·앨범 커버의 SNS 사용 권한을 전제하지 않는다.
+- 예정 문안: Yerin Baek told POCLANOS she changed how she wrote for tellusboutyourself: find a beat first, add keys, then melody and lyrics. she sent Cloud sketches for 13 of the album's 14 songs
+- Threads 링크: https://indiek.com/stories/yerin-0310/?from=threads
+- Instagram 링크: https://indiek.com/stories/yerin-0310/?from=instagram
+- 최종 문안·검수: `promotion/state/manual/yerin-2026-10-20.json`. 실제 결과는 아래 작업 ID와 자동 게시 기록에 추가한다.
+
+- 사용자 추가 요청: 예약 시간을 바꾸지 않고 원격 `story-now yerin-0310`로 새 문안을 작성·검수·게시한다. 수동 작업 `T-2026-10-20-1637-story`, `I-2026-10-20-1637-story`는 미전송 `superseded`로 보존했다. 원격 작성 결과는 별도 요청 감사 기록과 자동 작업 ID로 남긴다. 정기 타이머와 10월 21일 선우정아 예약은 유지한다.

@@ -1,7 +1,7 @@
 import {readFileSync,writeFileSync,renameSync,mkdirSync,openSync,closeSync,fsyncSync,existsSync,unlinkSync} from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
-import {publicURL,validateCandidate,validateNewsVoice,verifyCandidate,verifyNewsMedia,eventKey,selectedMedia} from './news.mjs';
+import {publicURL,validateCandidate,validateNewsVoice,verifyCandidate,verifyNewsMedia,eventKey,selectedMedia,plain} from './news.mjs';
 
 export const hash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 export const payloadParts = post => post.kind==='news'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.news,post.review,post.sourceVerification,post.media]:post.kind==='story'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.storyId,post.storyRevision,post.review]:[post.platform,post.url,post.imageUrl,post.copy,post.altText];
@@ -122,6 +122,7 @@ export async function verifyLive(post,fetcher=fetch) {
   if(!html.includes(`href="${url.href}"`)||!html.includes(post.sourceDescription.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))))throw new Error('Published source differs from the prepared selection.');
   const image=await fetcher(post.imageUrl,{method:'HEAD',redirect:'error',signal:AbortSignal.timeout(15000)});
   if(!image.ok||!image.headers.get('content-type')?.includes('image/jpeg'))throw new Error('Sharing image is not public yet.');
+  return {url:url.href,status:response.status,checkedAt:new Date().toISOString(),revision:post.storyRevision,htmlSHA256:createHash('sha256').update(html).digest('hex'),text:plain(html)};
 }
 const normalize = value => String(value||'').replace(/\r\n/g,'\n').trim();
 export async function publishPost(post,{config,store,api,verify=verifyLive,now=new Date(),sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms)),clock=Date.now}) {
