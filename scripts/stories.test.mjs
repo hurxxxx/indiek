@@ -5,12 +5,12 @@ import {navigationSection} from '../site/shared.mjs';
 import {validateStory,storyDigest,skillRevision} from './editorial/content.mjs';
 import {due,prepareIssue,approval} from './editorial/workflow.mjs';
 import {assertChanges,verifyPublished,publishIssue} from './editorial/publisher.mjs';
-import {mkdtempSync,mkdirSync,writeFileSync,rmSync} from 'node:fs';
+import {mkdtempSync,mkdirSync,writeFileSync,readFileSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {verifyClaims} from './editorial/ai.mjs';
-import {storyCandidate} from './promotion/stories.mjs';
+import {storyCandidate,prepareStory} from './promotion/stories.mjs';
 import {validatePost,payloadParts,hash,verifyLive} from './promotion/core.mjs';
 import {storyViews} from './story-pages.mjs';
 
@@ -81,6 +81,32 @@ test('story priority excludes an already queued or actually shared article',()=>
   assert.equal(storyCandidate(items,[]).id,'new');
   assert.equal(storyCandidate(items,[{storyId:'new',status:'ready'}]),undefined);
   assert.equal(storyCandidate(items,[],[{copy:'https://indiek.com/stories/new/'}]),undefined);
+});
+for(const rejectBoth of [false,true])test(`caption review ${rejectBoth?'keeps the daily budget after a restart':'withholds both platforms until the shared revision passes'}`,async()=>{
+  const root=mkdtempSync(path.join(tmpdir(),'indiek-caption-test-'));
+  const put=(file,value)=>{mkdirSync(path.dirname(path.join(root,file)),{recursive:true});writeFileSync(path.join(root,file),value);};
+  try {
+    const s={...story(),status:'published'};
+    put('content/stories/a-song.json',JSON.stringify(s));put('promotion/voice.md','Read the article.');
+    for(const f of ['SKILL.md','references/editing.md','references/benchmarks.json'])put(`skills/indiek-editorial/${f}`,'Source the account.');
+    const store={posts:[],save(p){this.posts.push(p);}},seen=[];
+    let version=0,calls=0;
+    const ask=async(stage,prompt)=>{
+      calls++;
+      if(!prompt.includes('Final copy: ')){version++;return {copy:version===1?'The songwriter left home after an argument.':'She recalled leaving home after an argument.',approved:true,issues:[],reason:'Specific account'};}
+      seen.push(store.posts.length);
+      const copy=JSON.parse(prompt.split('Final copy: ')[1]),approved=version===2&&!rejectBoth||!copy.includes('?from=threads');
+      return {copy,approved,issues:approved?[]:['Attribute her recollection.'],reason:'Checked against the attributed account'};
+    };
+    const options={root,store,ask,verify:async()=>{},now:new Date('2026-10-20T06:00:00Z'),recentPosts:[],config:{origin:'https://indiek.com',platforms:['threads','instagram'],previousPosts:[]},catalogue:{items:[{id:s.id,kind:'story',path:'/stories/a-song/',published:s.published,revision:storyDigest(s),artistIds:[],image:'/assets/social/stories-a-song.jpg',altText:'Original type card',description:'A reported account'}]}};
+    const result=await prepareStory(options);
+    assert.equal(result.status,rejectBoth?'story-held':'story-prepared');
+    assert.equal(store.posts.length,rejectBoth?0:2);assert.deepEqual(seen,[0,0,0,0]);
+    if(!rejectBoth)assert.ok(store.posts.every(p=>p.copy.startsWith('She recalled')));
+    const audit=JSON.parse(readFileSync(path.join(root,'promotion/state/stories/2026-10-21.json'),'utf8'));
+    assert.equal(audit.attempts.length,2);assert.equal(audit.attempts[0].status,'rejected');
+    const before=calls;await prepareStory(options);assert.equal(calls,before);
+  }finally{rmSync(root,{recursive:true,force:true});}
 });
 test('a lost deployment response resumes the same pushed commit without publishing a second article',async()=>{
   const dir=mkdtempSync(path.join(tmpdir(),'indiek-publisher-test-')),root=path.join(dir,'repo'),remote=path.join(dir,'remote.git');
