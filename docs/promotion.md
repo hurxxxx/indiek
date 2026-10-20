@@ -16,6 +16,8 @@
 | I001 | 2026-10-19 | Instagram · @indiekdotcom | 제출 확인 | [게시물](https://www.instagram.com/p/DeqfJ3HAf-n/). 홈·백예린·새소년 캐러셀 3장과 캡션 확인. 비로그인 노출 미확인. |
 | T002 | 2026-10-20 | Threads · @indiekdotcom | API·로그인 화면 게시 확인 | [선우정아 라이브 소개](https://www.threads.com/@indiekdotcom/post/Derif6rAR1Y). 본문·공유 이미지·사이트 링크 확인. 비로그인 노출·유입 미측정. |
 | I002 | 2026-10-20 | Instagram · @indiekdotcom | API·로그인 화면 게시 확인 | [선우정아 라이브 소개](https://www.instagram.com/p/DerinKqgQH9/). 본문·공유 이미지 확인. 비로그인 노출·유입 미측정. |
+| T003 | 2026-10-20 | Threads · @indiekdotcom | API·로그인 화면 게시 확인 | [백예린 기사](https://www.threads.com/@indiekdotcom/post/DetVp2egdKn). 원격 자동 작성·검수 후 비정기 발행, 중복 재실행 방지 확인. |
+| I003 | 2026-10-20 | Instagram · @indiekdotcom | API·로그인 화면 게시 확인 | [백예린 기사](https://www.instagram.com/p/DetVrk5gRyQ/). 동일 문안·자체 제작 기사 카드, 비로그인 노출·유입 미측정. |
 
 ## R001 · r/kindie
 
@@ -480,6 +482,40 @@ RSS·백예린 답글 제출은 완료했다. RSS 제공은 고려 중이며 백
 > https://indiek.com/stories/yerin-0310/?from=instagram
 
 이력: 2026-10-20T07:40:26.206Z 사용자 명시 요청에 따른 1회 수동 기사 공유 준비 · 직접 HTTP 증빙 보완 후 양쪽 최종 문안 검수 통과 / 2026-10-20T07:47:57.142Z 사용자 요청: 수동 문안 취소 · 원격 작성 검증으로 전환
+
+### T-2026-10-20-1650-story · threads · API 게시 확인
+
+- 예약: 2026-10-20T07:50:24.895Z · 확인: 2026-10-20T07:51:43.272Z
+- 콘텐츠: https://indiek.com/stories/yerin-0310/?from=threads
+- 이미지: https://indiek.com/assets/social/stories-yerin-0310.jpg
+- 대체 텍스트: Where to go after Yerin Baek’s “0310” — indiek. Original typographic article card.
+- 결과: https://www.threads.com/@indiekdotcom/post/DetVp2egdKn · 게시물 ID 17923115712225334
+- 후속 조치: 예약 시 공개 콘텐츠·인증 상태를 다시 확인
+
+문안:
+
+> Yerin Baek wanted to hear her voice on a deep house track when she wrote “0415”. Our listening route from “0310” into tellusboutyourself follows how she changed the way her songs began.
+>
+> https://indiek.com/stories/yerin-0310/?from=threads
+
+이력: 2026-10-20T07:51:28.056Z 사용자 요청 비정기 발행 · 원격 작성과 최종 검수 완료 / 2026-10-20T07:51:31.323Z 정확한 문안 기록 후 컨테이너 생성 요청 / 2026-10-20T07:51:37.354Z 컨테이너 생성 확인 / 2026-10-20T07:51:38.501Z 게시 요청 전 상태 저장 / 2026-10-20T07:51:42.877Z 게시 ID 수신 / 2026-10-20T07:51:43.272Z 원격 조회로 게시 확인
+
+### I-2026-10-20-1650-story · instagram · API 게시 확인
+
+- 예약: 2026-10-20T07:50:24.895Z · 확인: 2026-10-20T07:52:56.052Z
+- 콘텐츠: https://indiek.com/stories/yerin-0310/?from=instagram
+- 이미지: https://indiek.com/assets/social/stories-yerin-0310.jpg
+- 대체 텍스트: Where to go after Yerin Baek’s “0310” — indiek. Original typographic article card.
+- 결과: https://www.instagram.com/p/DetVrk5gRyQ/ · 게시물 ID 18076145918718167
+- 후속 조치: 예약 시 공개 콘텐츠·인증 상태를 다시 확인
+
+문안:
+
+> Yerin Baek wanted to hear her voice on a deep house track when she wrote “0415”. Our listening route from “0310” into tellusboutyourself follows how she changed the way her songs began.
+>
+> https://indiek.com/stories/yerin-0310/?from=instagram
+
+이력: 2026-10-20T07:51:28.197Z 사용자 요청 비정기 발행 · 원격 작성과 최종 검수 완료 / 2026-10-20T07:51:45.497Z 정확한 문안 기록 후 컨테이너 생성 요청 / 2026-10-20T07:51:51.988Z 컨테이너 생성 확인 / 2026-10-20T07:52:52.845Z 게시 요청 전 상태 저장 / 2026-10-20T07:52:55.753Z 게시 ID 수신 / 2026-10-20T07:52:56.052Z 원격 조회로 게시 확인
 <!-- automatic-promotion:end -->
 
 ## G004 · 매거진과 편집 자동화 구현
@@ -497,12 +533,17 @@ RSS·백예린 답글 제출은 완료했다. RSS 제공은 고려 중이며 백
 
 ## G005 · 백예린 기사 비정기 SNS 공유 검증
 
-- 2026-10-20T07:37:20.793Z: 사용자 요청으로 공개 기사 `yerin-0310`를 Threads·Instagram `@indiekdotcom`에 각각 1회 공유. 상태: 수동 초안 검수 후 사용자 요청으로 미전송 취소. 원격 자동 작성·검수·게시 경로 준비 중.
+- 2026-10-20T07:37:20.793Z: 사용자 요청으로 공개 기사 `yerin-0310`를 Threads·Instagram `@indiekdotcom`에 각각 1회 공유. 상태: 수동 초안은 미전송 취소, 원격 자동 작성으로 대체 후 양쪽 게시 확인.
 - 공식 API에서 두 계정 일치와 최근 공개 게시물 본문을 확인했다. 해당 기사 중복 없음. 오늘의 선우정아 소개와 별도인 사용자 지정 수동 게시이며 정기 일일 제한·기존 예약은 유지한다.
 - 자체 제작 기사 카드: https://indiek.com/assets/social/stories-yerin-0310.jpg. 사진·앨범 커버의 SNS 사용 권한을 전제하지 않는다.
-- 예정 문안: Yerin Baek told POCLANOS she changed how she wrote for tellusboutyourself: find a beat first, add keys, then melody and lyrics. she sent Cloud sketches for 13 of the album's 14 songs
+- 취소된 수동 문안(게시하지 않음): Yerin Baek told POCLANOS she changed how she wrote for tellusboutyourself: find a beat first, add keys, then melody and lyrics. she sent Cloud sketches for 13 of the album's 14 songs
 - Threads 링크: https://indiek.com/stories/yerin-0310/?from=threads
 - Instagram 링크: https://indiek.com/stories/yerin-0310/?from=instagram
-- 최종 문안·검수: `promotion/state/manual/yerin-2026-10-20.json`. 실제 결과는 아래 작업 ID와 자동 게시 기록에 추가한다.
+- 취소된 수동 초안·검수: `promotion/state/manual/yerin-2026-10-20.json`. 원격 작성 최종 문안은 아래의 새 작업 ID와 자동 게시 기록을 따른다.
 
 - 사용자 추가 요청: 예약 시간을 바꾸지 않고 원격 `story-now yerin-0310`로 새 문안을 작성·검수·게시한다. 수동 작업 `T-2026-10-20-1637-story`, `I-2026-10-20-1637-story`는 미전송 `superseded`로 보존했다. 원격 작성 결과는 별도 요청 감사 기록과 자동 작업 ID로 남긴다. 정기 타이머와 10월 21일 선우정아 예약은 유지한다.
+- 원격 실행: `indiek-story-now-yerin-20261020.service`가 `story-now yerin-0310`를 실행해 초안 1개를 새로 작성했다. Threads·Instagram 독립 검수 모두 Bandwagon·POCLANOS 원 인터뷰를 직접 확인했다. 새 기사의 공개 여부는 HTTPS 응답·revision·본문 대조로 검증하며 모델의 직접 페이지 조회와 구분했다. 기사 원고는 다시 집필하지 않았다.
+- 결과: `T-2026-10-20-1650-story`는 16:51:39 KST, `I-2026-10-20-1650-story`는 16:52:53 KST에 게시됐다. 정확한 문안·이미지·게시 ID·링크는 자동 기록에 있다. 요청·초안·검수는 `promotion/state/stories/on-demand/yerin-0310.json`에 보존했다.
+- 확인: 16:53 KST 공식 API와 로그인 브라우저에서 양쪽 본문·이미지·링크 확인. 비로그인 노출과 유입 성과는 미측정이다. 증빙: 로컬 `qa/yerin-story-now-threads.png`, `qa/yerin-story-now-instagram.png`.
+- 같은 명령을 다시 실행해 큐가 바뀌지 않았고 API에 기사 게시물이 플랫폼별 1개씩만 있음을 확인했다. 이전 작업은 전부 동일하고 10월 21일 선우정아 예약과 6개 타이머를 유지했다. 검증 기록: `promotion/state/stories/on-demand/yerin-0310-verification.json`.
+- 코드·운영 지침은 `7ae6eb9`로 push해 두 서버에 반영했다. 로컬·두 서버 모두 114개 테스트·26페이지 검사 통과. 사이트 화면·플레이어 변경은 없어 이번 작업에서는 데스크톱·모바일 재생 검증을 반복하지 않았다.
