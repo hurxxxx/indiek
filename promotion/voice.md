@@ -4,7 +4,7 @@ Use this for English posts and replies, including automated drafts and their rev
 
 ## What goes into a post
 
-- Choose one actual piece of news. Lead with the artist and what happened; add the detail a reader can use. A concert needs the place and date, a release needs the title and release status, a live clip needs the performer and recording context.
+- Choose one actual piece of news or one specific detail from a published story. Lead with the artist and what happened; add the detail a reader can use. A concert needs the place and date, a release needs the title and release status, a live clip needs the performer and recording context.
 - Prefer one or two short sentences. A third is fine when it supplies necessary context. Remove the generic introduction and closing before cutting useful details. There is no mandatory hook–explanation–question formula.
 - Use your own concise wording. Preserve official artist/song names, dates and the difference between a show, a livestream and a newly uploaded recording. Credit the original announcement or interview with its direct link.
 - For dates, distinguish the announcement from the event. Use an explicit month/day and local timezone when giving a time. Do not turn a future release into “out now”, an old upload into a new performance, or a listing into a claim that tickets remain available.
@@ -41,3 +41,7 @@ Checked 2026-10-19. These are editorial sources, not evidence that any punctuati
 - [Mailchimp: Voice and Tone](https://styleguide.mailchimp.com/voice-and-tone/) — plain language, less hype, clear meaning and unforced humour.
 - [ONS: Plain language](https://service-manual.ons.gov.uk/content/writing-for-users/plain-language) — put readers’ needs first and use specific, simple, active sentences.
 - [Billboard Live: October 2026 Tokyo listings](https://www.billboard-live.com/en/tokyo/schedules?month=202610) — the source for the dated example. Extract useful event details without copying the promoter’s promotional adjectives.
+
+## Magazine stories
+
+Read `skills/indiek-editorial/SKILL.md` when adapting a feature. Give one concrete detail that the article can support, then its direct link. Do not promise a revelation or force every feature into breaking-news language. Use the published article revision; edits require a fresh caption review. A new story takes an existing daily slot, not an extra post. Original typographic article cards are eligible for Instagram; article photographs do not acquire social reuse rights from appearing on the site.

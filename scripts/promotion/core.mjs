@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {publicURL,validateCandidate,validateNewsVoice,verifyCandidate,verifyNewsMedia,eventKey,selectedMedia} from './news.mjs';
 
 export const hash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
-export const payloadParts = post => post.kind==='news'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.news,post.review,post.sourceVerification,post.media]:[post.platform,post.url,post.imageUrl,post.copy,post.altText];
+export const payloadParts = post => post.kind==='news'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.news,post.review,post.sourceVerification,post.media]:post.kind==='story'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.storyId,post.storyRevision,post.review]:[post.platform,post.url,post.imageUrl,post.copy,post.altText];
 export function atomicWrite(file, value) {
   mkdirSync(path.dirname(file),{recursive:true});
   const tmp=`${file}.${process.pid}.tmp`;
@@ -82,7 +82,7 @@ export function validateDraft(copy, sourceQuotes, source, platform) {
   if(!['threads','instagram'].includes(platform))throw new Error('Unsupported platform.');
 }
 export function validatePost(post,config) {
-  if(!/^[TI]-\d{4}-\d{2}-\d{2}-\d{4}(?:-news)?$/.test(post.id)||!config.platforms.includes(post.platform))throw new Error('Invalid job identity.');
+  if(!/^[TI]-\d{4}-\d{2}-\d{2}-\d{4}(?:-news|-story)?$/.test(post.id)||!config.platforms.includes(post.platform))throw new Error('Invalid job identity.');
   if(!Number.isFinite(Date.parse(post.scheduledAt)))throw new Error('Invalid schedule.');
   if(post.kind==='news'){
     validateCandidate(post.news,(post.artistIds||[]).map(id=>({id})),config,new Date(post.scheduledAt));
@@ -98,11 +98,15 @@ export function validatePost(post,config) {
     return;
   }
   const url=new URL(post.url),image=new URL(post.imageUrl);
-  if(url.origin!==config.origin||url.search!==`?from=${post.platform}`||url.hash||!/^\/(artists|notes)\/[a-z0-9-]+\/$/.test(url.pathname))throw new Error('Post link must point to the selected indiek page.');
+  if(url.origin!==config.origin||url.search!==`?from=${post.platform}`||url.hash||!/^\/(artists|notes|stories)\/[a-z0-9-]+\/$/.test(url.pathname))throw new Error('Post link must point to the selected indiek page.');
   if(image.origin!==config.origin||!/^\/assets\/social\/[a-z0-9-]+\.jpg$/.test(image.pathname)||image.search||image.hash)throw new Error('Media must be a published indiek sharing card.');
   if(typeof post.copy!=='string'||Buffer.byteLength(post.copy)>500||!post.copy.includes(post.url))throw new Error('Invalid final caption.');
-  if(!post.altText||post.altText.length>1000||!post.artistIds?.length)throw new Error('Missing media description or artist identity.');
-  if(post.payloadHash!==hash([post.platform,post.url,post.imageUrl,post.copy,post.altText]))throw new Error('Prepared payload changed; create a reviewed replacement job.');
+  if(!post.altText||post.altText.length>1000||(!post.artistIds?.length&&post.kind!=='story'))throw new Error('Missing media description or artist identity.');
+  if(post.kind==='story'){
+    if(!/^[a-f0-9]{64}$/.test(post.storyRevision)||!post.review?.approved||post.review.issues?.length||post.review.copy!==post.copy||!post.review.reason?.trim()||url.pathname!==`/stories/${post.storyId}/`)throw new Error('Story caption needs an exact independent review');
+    if(post.payloadHash!==hash(payloadParts(post)))throw new Error('Reviewed story payload changed');
+  }else if(url.pathname.startsWith('/stories/'))throw new Error('Story requires article verification');
+  if(post.payloadHash!==hash(payloadParts(post)))throw new Error('Prepared payload changed; create a reviewed replacement job.');
 }
 export async function verifyLive(post,fetcher=fetch) {
   if(post.kind==='news'){
@@ -114,6 +118,7 @@ export async function verifyLive(post,fetcher=fetch) {
   const response=await fetcher(url,{redirect:'error',signal:AbortSignal.timeout(15000)});
   if(!response.ok||!response.headers.get('content-type')?.includes('text/html'))throw new Error('Source page is not public.');
   const html=await response.text();
+  if(post.kind==='story'&&!html.includes(`data-story-revision="${post.storyRevision}"`))throw new Error('Article changed after caption review; prepare a new reviewed caption');
   if(!html.includes(`href="${url.href}"`)||!html.includes(post.sourceDescription.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))))throw new Error('Published source differs from the prepared selection.');
   const image=await fetcher(post.imageUrl,{method:'HEAD',redirect:'error',signal:AbortSignal.timeout(15000)});
   if(!image.ok||!image.headers.get('content-type')?.includes('image/jpeg'))throw new Error('Sharing image is not public yet.');

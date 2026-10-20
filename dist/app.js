@@ -1,4 +1,5 @@
 import catalogue from './catalogue.js';
+import {searchStories} from './stories.mjs';
 import {initAnalytics} from './analytics.mjs';
 import {initNavigation, createPageScroll} from './navigation.mjs';
 import {createPlayer} from './player.mjs';
@@ -138,13 +139,16 @@ function toggleSaved(id) {
   notify(`${saved.has(id)?'Saved':'Removed'} ${r.track}${persisted?'':' · for this page visit'}`);
 }
 function renderSearch() {
-  openDialog('<form class="dialog-toolbar search-toolbar" role="search"><label class="sr-only" for="search-input">Search by English or Korean artist name, song, release or genre</label><input id="search-input" class="search-input" type="search" placeholder="Artist, song or genre…" autocomplete="off" enterkeyhint="search"><button class="search-done" type="submit">Done</button></form><div class="dialog-scroll" tabindex="0" aria-label="Search results"><div id="search-results"></div><p class="embed-caption" id="search-status" role="status"></p></div>','search','Find music');
+  openDialog('<form class="dialog-toolbar search-toolbar" role="search"><label class="sr-only" for="search-input">Search artists, songs and stories in English or Korean</label><input id="search-input" class="search-input" type="search" placeholder="Artist, song or story…" autocomplete="off" enterkeyhint="search"><button class="search-done" type="submit">Done</button></form><div class="dialog-scroll" tabindex="0" aria-label="Search results"><div id="search-results"></div><p class="embed-caption" id="search-status" role="status"></p></div>','search','Find music & stories');
   const input=dialogContent.querySelector('#search-input');
   dialogContent.querySelector('form').addEventListener('submit',event=>{event.preventDefault();input.blur();dialogContent.querySelector('.dialog-scroll').focus({preventScroll:true});});
   const update=()=>{
     const matches=searchCatalogue(records,pick,input.value);
-    dialogContent.querySelector('#search-results').innerHTML=matches.length?matches.map(resultRow).join(''):'<p class="empty-state">No results found. Try “YdBB”, “Breath” or “한로로”.</p>';
-    dialogContent.querySelector('#search-status').textContent=`${matches.length} ${matches.length===1?'result':'results'} in the journal.`;
+    const articles=searchStories(catalogue.stories||[],input.value);
+    const storyResults=articles.length?`<h2 class="search-group-label">Stories</h2>${articles.map(s=>`<a class="search-result search-story" href="${s.path}"><span><strong>${e(s.title)}</strong><small>${e(s.category)} · ${s.published}</small></span><span class="result-arrow" aria-hidden="true">↗</span></a>`).join('')}`:'';
+    dialogContent.querySelector('#search-results').innerHTML=(matches.length?'<h2 class="search-group-label">Artists & songs</h2>'+matches.map(resultRow).join(''):'')+storyResults||'<p class="empty-state">No results found. Try an artist, song or story title.</p>';
+    const count=matches.length+articles.length;
+    dialogContent.querySelector('#search-status').textContent=`${count} ${count===1?'result':'results'} in the journal.`;
     dialogContent.querySelector('.dialog-scroll').scrollTop=0;
   };
   input.addEventListener('input',update);update();input.focus({preventScroll:true});
@@ -317,7 +321,7 @@ window.addEventListener('storage',event=>{
 });
 window.addEventListener('pagehide',()=>{player.close();setCompactPlayer(false);});
 syncSaved();
-const analytics=initAnalytics({...catalogue.site.analytics,trackIds:all.map(r=>r.id),contentPaths:['/','/artists/','/notes/first-listens/',...all.map(artistPath),...getListeningGuides(catalogue).map(guidePath)]}, catalogue.site.url);
+const analytics=initAnalytics({...catalogue.site.analytics,trackIds:all.map(r=>r.id),contentPaths:['/','/stories/','/artists/','/notes/first-listens/',...(catalogue.stories||[]).map(s=>s.path),...all.map(artistPath),...getListeningGuides(catalogue).map(guidePath)]}, catalogue.site.url);
 
 async function sharePage(button) {
   const url=document.querySelector('link[rel="canonical"]').href;

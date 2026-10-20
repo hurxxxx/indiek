@@ -2,12 +2,13 @@
 
 **Music from Korea, worth sharing.**
 
-A growing independent music journal introducing Korean musicians to listeners around the world. New artists and songs join a selection that follows personal taste across genres, labels and levels of fame.
+An independent music magazine introducing Korean musicians to listeners around the world. New artists and songs join a selection that follows personal taste across genres, labels and levels of fame.
 
 [Visit indiek.com](https://indiek.com)
 
 ## Features
 
+- Reported song stories and listening features, with source notes and an open invitation for contributor pitches.
 - A searchable A–Z artist directory, with band/solo filters, introductions, listening notes and release information in English.
 - Short listening guides, related recommendations, an RSS feed and page-specific sharing cards.
 - Official YouTube videos and live performances, with Apple Music release links.
@@ -17,7 +18,7 @@ A growing independent music journal introducing Korean musicians to listeners ar
 
 Built with HTML, CSS and JavaScript. Pages are generated as static files; no application server or database is required. “Agree & play” combines YouTube consent, connection and the first playback request. Later selections use “Play” during the same page session; if the browser blocks playback, use the video’s play button. Reloading resets this choice. Optional Matomo statistics use first-party cookies after explicit consent to measure visits, returning browsers and listening interactions. The choice can be changed from the footer; local previews are excluded.
 
-Home features a rotating artist story, the full listening list, recent additions and short guide introductions. [Artists](https://indiek.com/artists/) holds the complete catalogue; [Guides](https://indiek.com/notes/first-listens/) offers themed ways to explore it. Each artist and guide has its own shareable, directly loadable URL. Small JavaScript navigation keeps the shared player alive between these static pages, with no routing framework. Directory searches and filters stay in place during internal navigation.
+Home opens with the latest [Story](https://indiek.com/stories/), followed by a rotating artist feature, the full listening list, recent additions and short guide introductions. [Artists](https://indiek.com/artists/) holds the complete catalogue; [Guides](https://indiek.com/notes/first-listens/) offers themed ways to explore it. Each story, artist and guide has its own shareable, directly loadable URL. Small JavaScript navigation keeps the shared player alive between these static pages, with no routing framework. Directory searches and filters stay in place during internal navigation.
 
 ## Getting started
 
@@ -38,16 +39,19 @@ Open [localhost:4173](http://127.0.0.1:4173). After editing files, rebuild and r
 | `npm run check` | Check catalogue behavior, pages, links and assets |
 | `npm run images` | Generate responsive images; requires Pillow with WebP support |
 | `npm run promotion -- status` | Inspect the optional social publisher without posting |
+| `npm run editorial -- status` | Inspect magazine scheduling and the current issue |
 
 ## Contributing
 
 Content lives in `content/`, templates and browser code in `site/`, and build tools in `scripts/`. Edit these sources and include the rebuilt `dist/` files with your changes.
 
+Magazine articles live in `content/stories/`, with bylines in `content/authors.json`. One article supplies its Stories page, home feature, search entry, RSS item, sitemap entry and sharing card. Drafts stay private. Published text must have matching factual and editorial reviews; editing the title, body, sources or metadata invalidates that approval. The [editorial skill](skills/indiek-editorial/SKILL.md) covers research and editing, while `editorial/topics.json` holds future angles. Article data records what has actually been published.
+
 Curated guides use 3–5 catalogue tracks with an editorial note for each. Guides marked `draft` are excluded from public pages and browser data. Add a real `editorial.published` date when a page is released to include it in RSS and the latest section; preparation dates are not publication dates.
 
-Run `npm run build && npm run check`, then check the affected pages on desktop and mobile. Follow the [repository guidelines](AGENTS.md) when adding artists or songs so related sections stay in sync. Hosting details are in the [deployment guide](deploy/README.md).
+Run `npm run build && npm run check`, then check the affected pages on desktop and mobile. Follow the [repository guidelines](AGENTS.md) when adding artists or songs so related sections stay in sync. Magazine scheduling and hosting details are in the [deployment guide](deploy/README.md).
 
-The optional publisher in `scripts/promotion/` researches current news about artists in the live catalogue and selects one verified topic per day. It uses the official Threads API, with an Instagram version when a relevant image has documented reuse rights. It runs separately from the website and follows the shared [social writing guide](promotion/voice.md). Scheduling, authorization and recovery are covered in the [deployment guide](deploy/README.md#sns-자동-게시). Actual attempts are recorded in the [promotion log](docs/promotion.md).
+The optional publisher in `scripts/promotion/` gives a new published story priority in the daily social slot, otherwise researching current news about artists in the live catalogue. It uses the official Threads API, with an Instagram version when a relevant image has documented reuse rights. It runs separately from the website and follows the shared [social writing guide](promotion/voice.md). Scheduling, authorization and recovery are covered in the [deployment guide](deploy/README.md#sns-자동-게시). Actual attempts are recorded in the [promotion log](docs/promotion.md).
 
 ## Credits and contact
 

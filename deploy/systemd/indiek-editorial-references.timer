@@ -1,0 +1,10 @@
+[Unit]
+Description=Monthly editorial reference check
+
+[Timer]
+OnCalendar=*-*-01 07:00:00 Asia/Seoul
+Persistent=false
+Unit=indiek-editorial-references.service
+
+[Install]
+WantedBy=timers.target

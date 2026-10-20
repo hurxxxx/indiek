@@ -9,6 +9,7 @@
     "images": "python3 scripts/prepare-images.py",
     "dev": "npm run build && python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",
     "check": "node --check dist/app.js && node --test scripts/*.test.mjs && python3 scripts/check.py",
-    "promotion": "node scripts/promotion/run.mjs"
+    "promotion": "node scripts/promotion/run.mjs",
+    "editorial": "node scripts/editorial/run.mjs"
   }
 }

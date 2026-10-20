@@ -1,6 +1,9 @@
-import {readFileSync, writeFileSync, mkdirSync, copyFileSync} from 'node:fs';
+import {readFileSync, writeFileSync, mkdirSync, copyFileSync,rmSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
+import {loadStories,validateStory} from './editorial/content.mjs';
+import {publicStories,storyIndex,storyPath} from '../site/stories.mjs';
+import {storyViews,storyPromotion} from './story-pages.mjs';
 import {spawnSync} from 'node:child_process';
 import {shareImagePath, editorialEntries, publishedEntries, feedXML, relatedRecords} from '../site/editorial.mjs';
 import {escapeHTML as e, artistPath, imageHTML, coverHTML, videoLabel, externalLink as out, saveButton, getFeaturedArtists, getListeningGuides, guidePath, formatPosition, youtubeConsentHTML, getArtistDirectory, navigationSection} from '../site/shared.mjs';
@@ -14,8 +17,18 @@ const {site, records, editorPick: pick} = catalogue;
 const features = getFeaturedArtists(catalogue);
 const guides = getListeningGuides(catalogue);
 const all = [...records, pick];
-const version = '20261019-artists';
+const version = '20261020-stories';
+const authors=JSON.parse(read('content/authors.json'));
+const stories=publicStories(loadStories(root));
+for(const s of stories) {
+  validateStory(s,{authors,tracks:all,approved:true});
+  if(s.cover&&(!media[s.cover.file]||!rights.images.some(x=>x.file===s.cover.file)))throw new Error(`Uncredited story cover: ${s.id}`);
+}
+if(new Set(stories.map(s=>s.slug)).size!==stories.length||new Set(stories.map(s=>s.id)).size!==stories.length)throw new Error('Duplicate story identity');
+const storyView=storyViews({stories,authors,media,tracks:all,pick});
+rmSync(path.join(root,'dist/stories'),{recursive:true,force:true});
 const entries = editorialEntries(catalogue, guides);
+entries.push(...stories.map(s=>({id:s.id,path:storyPath(s),title:s.title,description:s.description,type:'Story',published:s.published,updated:s.updated})));
 const socialImages = [];
 const promotionItems = [];
 const pages = [];
@@ -30,11 +43,11 @@ function photoCredit(name) {
 
 function header(url) {
   const section = navigationSection(url);
-  const links = [['home','/','Home'],['artists','/artists/','Artists'],['guides','/notes/first-listens/','Guides']];
+  const links = [['home','/','Home'],['stories','/stories/','Stories'],['artists','/artists/','Artists'],['guides','/notes/first-listens/','Guides']];
   return `<a class="skip-link" href="#main">Skip to content</a><header class="topbar wrap">
     <a href="/" class="small-logo" aria-label="indiek home">ik<span class="logo-dot">.</span></a>
     <nav aria-label="Main navigation">${links.map(([id,href,label])=>`<a href="${href}" data-nav-section="${id}"${section===id?` aria-current="${url===href?'page':'true'}"`:''}>${label}</a>`).join('')}</nav>
-    <div class="header-actions" data-js-only hidden><button class="text-button saved-link" data-library>Saved <span class="saved-count">0</span></button><button class="search-button" data-search aria-label="Find an artist or song"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button></div>
+    <div class="header-actions" data-js-only hidden><button class="text-button saved-link" data-library>Saved <span class="saved-count">0</span></button><button class="search-button" data-search aria-label="Find music or stories"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button></div>
   </header>`;
 }
 function footer() {
@@ -56,7 +69,7 @@ function page(url, title, description, main, kind = '', editorial = null) {
   const canonical = site.url + url;
   const image = shareImagePath(url);
   socialImages.push({image, title:title.replace(/ \| indiek$/, '').replace(' — Listening guide',''), subtitle:'Find your next listen at indiek.com', label:editorial ? 'Listening notes' : 'Music from Korea'});
-  const structured = editorial ? {'@context':'https://schema.org','@type':'Article',headline:title,description,url:canonical,image:site.url + image,author:{'@type':'Organization',name:editorial.author,url:site.url+'/about/'},...(editorial.published ? {datePublished:editorial.published} : {}),dateModified:editorial.updated,mainEntityOfPage:canonical} : null;
+  const structured = editorial ? {'@context':'https://schema.org','@type':'Article',headline:title,description,url:canonical,image:site.url + image,author:{'@type':editorial.authorType||'Organization',name:editorial.author,url:site.url+(editorial.authorURL||'/about/')},...(editorial.published ? {datePublished:editorial.published} : {}),dateModified:editorial.updated,mainEntityOfPage:canonical} : null;
   const html = `<!doctype html>
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -103,7 +116,7 @@ function guideCards(heading = 'h3', compact = false) {
     const more = members.length - 3;
     return `<article class="guide-card" data-guide="${guide.id}" data-track-count="${members.length}"><a class="guide-card-link" href="${guidePath(guide)}" aria-label="Explore the guide: ${e(guide.title)}">
       <div class="guide-card-top mono"><span>GUIDE ${formatPosition(i+1)}</span><span>${members.length} ${members.length===1?'TRACK':'TRACKS'}</span></div>
-      <div class="guide-artwork">${coverHTML(media,artwork,{sizes:'(max-width: 760px) 90vw, 45vw'})}</div><p class="guide-featured">${e(artwork.artist)} / ${e(artwork.release || artwork.album)}</p>
+      ${compact&&stories[0]?.cover?.file===artwork.image?'':`<div class="guide-artwork">${coverHTML(media,artwork,{sizes:'(max-width: 760px) 90vw, 45vw'})}</div><p class="guide-featured">${e(artwork.artist)} / ${e(artwork.release || artwork.album)}</p>`}
       <${heading}>${e(guide.title)}</${heading}><p class="guide-description">${e(guide.description)}</p>
       <p class="guide-preview">${preview}${more>0?` <span>+ ${more} more</span>`:''}</p>
       <span class="guide-cta">Explore the guide <span aria-hidden="true">↗</span></span>
@@ -150,13 +163,20 @@ function related(r) {
   return `<section class="related-listening" aria-labelledby="related-title"><p class="eyebrow">WHERE TO NEXT</p><h2 id="related-title">More music you might like.</h2><div class="related-tracks">${next.records.map(other=>`<a href="${artistPath(other)}"><strong>${e(other.artist)}</strong><span>${e(other.track)}</span></a>`).join('')}</div><p class="related-guide-links">${next.guides.map(g=>`<a class="underlink" href="${guidePath(g)}">${e(g.title)} ↗</a>`).join('')}</p></section>`;
 }
 function latest() {
-  const recent=publishedEntries(entries).slice(0,4);
+  const recent=publishedEntries(entries.filter(item=>item.type!=='Story')).slice(0,4);
   return `<section class="latest-section wrap" id="latest" aria-labelledby="latest-title"><div class="section-heading"><div><p class="eyebrow">RECENTLY ADDED</p><h2 id="latest-title">New to the journal.</h2></div><a class="underlink" href="/feed.xml">Follow via RSS ↗</a></div><div class="latest-list">${recent.map(item=>`<a href="${item.path}"><span class="mono"><time datetime="${item.published}">${item.published}</time> / ${item.type.toUpperCase()}</span><h3>${e(item.title)}</h3><p>${e(item.description)}</p><span aria-hidden="true">↗</span></a>`).join('')}</div></section>`;
 }
 
 let home = read('site/templates/home.html');
+home=home.replace('{{STORIES}}',storyView.home());
 for(const [token,value] of Object.entries({ARTIST_COUNT:all.length,FEATURE_COUNT:formatPosition(features.length),HERO:features.map(hero).join(''),TRACKS:all.map(trackLink).join(''),ROOM_COUNT:all.length,ROOM_HINT:all.length>6?`<p class="room-list-hint" id="room-list-hint">Scroll to explore all ${all.length} tracks <span aria-hidden="true">↓</span></p>`:'',EDITOR_PICK:editorPick(),GUIDES:guideCards('h3',true),GUIDE_ARTIST_COUNT:all.length,LATEST:latest()})) home=home.replaceAll(`{{${token}}}`,value);
 page('/','indiek — Music from Korea, worth sharing','Hear Korean bands and solo artists through recordings and live performances, with stories about the music and the people who make it.',home,'home-page');
+page('/stories/','Stories | indiek','Stories about Korean music: the choices behind a song, the people around it, and where to listen next.',storyView.index);
+for(const s of stories){
+  const author=authors.find(a=>a.id===s.authorId);
+  page(storyPath(s),`${s.title} | indiek`,s.description,storyView.article(s),'story-detail',{author:author.name,authorType:author.type,authorURL:author.url,published:s.published,updated:s.updated});
+  promotionItems.push(storyPromotion(s));
+}
 
 page('/artists/','Korean artists A–Z | indiek','Browse Korean bands and solo artists, find a song and get to know the people behind it. Artist stories and official recordings, with more to come.',`<main id="main" class="wrap artist-directory" data-artist-directory>
   <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><span>Artists</span></nav>
@@ -205,7 +225,7 @@ for (const guide of guides) {
   if(guide.status!=='draft')promotionItems.push({id:guide.id,kind:'guide',title:guide.title,path:guidePath(guide),description:guide.description,artistIds:members.map(r=>r.id),image:shareImagePath(guidePath(guide)),altText:`indiek listening guide: ${guide.title}. Typographic card.`});
 }
 
-page('/about/','About & contact | indiek','Korean artists and songs I wish more people knew. A personal music selection, with room for new discoveries. Get in touch at gw@lumejs.com.',prose('A NOTE FROM INDIEK','Good music travels.',`<p class="prose-lead">Korean artists and songs I wish more people knew.</p><section><h2>Why I made indiek.</h2><p>I wanted a place to share music I like with people who might not have heard it. There are bands and solo artists here, from indie and folk to pop, hip-hop and R&amp;B.</p><p>I add to the selection as I find more music. A song doesn’t have to be new to belong here. Alongside the recordings and live clips, there’s a little about the artists and the stories behind their songs.</p><p>indiek is not affiliated with the featured artists, their labels, YouTube or Apple Music.</p></section><section id="contact"><h2>Get in touch.</h2><p>For questions, factual corrections, credit updates, or requests concerning an image or other content, email <a href="mailto:${site.email}">${site.email}</a>.</p><p>Include the page address and the material you are referring to. For an image request, please describe your connection to the work. Please avoid sending sensitive personal documents in an initial message.</p></section><section id="image-credits"><h2>Image credits.</h2><p>Artist photographs and release artwork belong to their respective rights holders. The links below identify the sources of images used in the journal. Source credit does not itself grant permission to reuse an image.</p><ul class="credit-list">${rights.images.map(image=>`<li id="${creditId(image.file)}"><strong>${e(image.label)}</strong><br>${sourceLink(image.source,image.credit,image.language)}${image.license?` · ${image.licenseUrl?out(image.licenseUrl,image.license):e(image.license)}<br>${e(image.changes)}`:""}</li>`).join('')}</ul><p>The indiek sharing graphics are original typography. Barlow Condensed, DM Sans and IBM Plex Mono are used under the SIL Open Font License.</p></section>`));
+page('/about/','About & contact | indiek','Korean artists and songs I wish more people knew. A personal music selection, with room for new discoveries. Get in touch at gw@lumejs.com.',prose('A NOTE FROM INDIEK','Good music travels.',`<p class="prose-lead">Korean artists and songs I wish more people knew.</p><section><h2>Why I made indiek.</h2><p>I wanted a place to share music I like with people who might not have heard it. There are bands and solo artists here, from indie and folk to pop, hip-hop and R&amp;B.</p><p>I add to the selection as I find more music. A song doesn’t have to be new to belong here. Alongside the recordings and live clips, there’s a little about the artists and the stories behind their songs.</p><p>indiek is not affiliated with the featured artists, their labels, YouTube or Apple Music.</p></section><section id="editorial"><h2>How the stories are made.</h2><p>Features published under the indiek name use AI-assisted research, drafting and automated factual and editorial checks. We link the original reporting and release records used in each story. These checks can miss things; corrections are welcome.</p><p>We distinguish reported information from interpretation. We do not invent interviews, personal listening memories or visits to a show. An existing interview stays credited to its original publication. A date changes when a story is actually updated, not to make an older article look new.</p><p>Guest contributions carry the contributor’s own name and a description of their involvement. Sources and image credits are part of the editing process; a public photograph is not automatically licensed for reuse.</p></section><section id="contribute"><h2>Have a story in mind?</h2><p>We welcome ideas about music from Korea: a song with an unexpected history, a small scene worth understanding, or a question you have spent time exploring. Send a short pitch, the angle and any relevant writing samples to <a href="mailto:${site.email}?subject=Story%20pitch">${site.email}</a>.</p><p>Please tell us what you have researched or experienced yourself and disclose any involvement with the artists. We will discuss editing, credits, rights and any terms before accepting a contribution. Sending a pitch does not transfer your rights or guarantee publication.</p></section><section id="contact"><h2>Get in touch.</h2><p>For questions, factual corrections, credit updates, or requests concerning an image or other content, email <a href="mailto:${site.email}">${site.email}</a>.</p><p>Include the page address and the material you are referring to. For an image request, please describe your connection to the work. Please avoid sending sensitive personal documents in an initial message.</p></section><section id="image-credits"><h2>Image credits.</h2><p>Artist photographs and release artwork belong to their respective rights holders. The links below identify the sources of images used in the journal. Source credit does not itself grant permission to reuse an image.</p><ul class="credit-list">${rights.images.map(image=>`<li id="${creditId(image.file)}"><strong>${e(image.label)}</strong><br>${sourceLink(image.source,image.credit,image.language)}${image.license?` · ${image.licenseUrl?out(image.licenseUrl,image.license):e(image.license)}<br>${e(image.changes)}`:""}</li>`).join('')}</ul><p>The indiek sharing graphics are original typography. Barlow Condensed, DM Sans and IBM Plex Mono are used under the SIL Open Font License.</p></section>`));
 
 page('/privacy-and-terms/','Privacy & terms | indiek','How indiek uses browser storage, optional visit statistics and embedded YouTube players.',prose('HOW THIS SITE WORKS','Privacy & terms.',`<p class="policy-date mono">LAST UPDATED / 19 OCTOBER 2026</p><p class="prose-lead">indiek is an independent music journal. Questions about these practices can be sent to <a href="mailto:${site.email}">${site.email}</a>.</p>
 <section><h2>Your saved tracks.</h2><p>When you save a track, its identifier is kept in this browser’s local storage. The list stays on this device and browser; indiek does not send it to an account or a server. It remains until you remove tracks or clear this site’s browser data.</p><p>To delete an entry, open Saved and choose Remove beside the track. Remove all entries to empty the list, or use your browser’s site-data controls to clear it entirely. If browser storage is unavailable, saving works only for the current page visit.</p><p>Search runs against the journal’s music catalogue in your browser. Search terms are not sent to a search service. The site does not include advertising trackers, account registration or a comment form.</p></section>
@@ -215,7 +235,8 @@ page('/privacy-and-terms/','Privacy & terms | indiek','How indiek uses browser s
 <section><h2>Messages and corrections.</h2><p>If you email <a href="mailto:${site.email}">${site.email}</a>, your address and message are used to respond and handle your request. Messages may be retained as needed to resolve the request and keep a record of the correction or correspondence. You can ask about or request deletion of that correspondence using the same address; any limits on deletion will be explained in the reply.</p></section>
 <section><h2>Using this journal.</h2><p>These are independent listening notes, not official artist statements. Music, videos, artist photographs and release artwork remain the property of their respective rights holders. Links and credits do not grant a licence to copy or redistribute that material.</p><p>indiek does not host downloadable music or provide a licence to download it. Use the official players and services according to their terms. For corrections, credit changes or content removal requests, contact <a href="mailto:${site.email}">${site.email}</a>.</p><p>This notice will be updated if the site’s features or data practices change.</p></section>`));
 
-writeFileSync(path.join(root,'dist/catalogue.js'),`export default ${JSON.stringify({...catalogue,listeningGuides:catalogue.listeningGuides.filter(g=>g.status!=='draft'),media})};\n`);
+writeFileSync(path.join(root,'dist/catalogue.js'),`export default ${JSON.stringify({...catalogue,listeningGuides:catalogue.listeningGuides.filter(g=>g.status!=='draft'),stories:storyIndex(stories),media})};\n`);
+copyFileSync(path.join(root,'site/stories.mjs'),path.join(root,'dist/stories.mjs'));
 copyFileSync(path.join(root,'site/shared.mjs'),path.join(root,'dist/shared.mjs'));
 copyFileSync(path.join(root,'site/app.js'),path.join(root,'dist/app.js'));
 copyFileSync(path.join(root,'site/analytics.mjs'),path.join(root,'dist/analytics.mjs'));

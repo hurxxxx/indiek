@@ -5,12 +5,15 @@ from urllib.parse import urlsplit, unquote
 import json
 import re
 import xml.etree.ElementTree as ET
+from datetime import datetime, timezone, timedelta
 
 root = Path(__file__).resolve().parents[1]
 dist = root / 'dist'
 catalogue = json.loads((root / 'content/catalogue.json').read_text())
 site = catalogue['site']
 errors = []
+today = datetime.now(timezone(timedelta(hours=9))).date().isoformat()
+stories = sorted([s for file in (root/'content/stories').glob('*.json') for s in [json.loads(file.read_text())] if s['status']=='published' and s['published']<=today], key=lambda s: (-int(s['published'].replace('-','')),s['id']))
 
 class Page(HTMLParser):
     def __init__(self, path):
@@ -62,10 +65,10 @@ for path in dist.rglob('*.html'):
     if any('matomo.lumejs.com' in ref for ref in page.refs): errors.append(f'{path}: Matomo loaded before consent')
     if page.frames: errors.append(f'{path}: player loaded without consent')
     if '{{' in text or 'lumejs.chatgpt.site' in text or 'data-story=' in text: errors.append(f'{path}: stale template content')
-    section='artists' if relative.startswith('artists/') else 'guides' if relative.startswith('notes/') else 'home' if not relative else None
-    expected_nav=[(id,href,('page' if href=='/'+relative else 'true') if id==section else None) for id,href in [('home','/'),('artists','/artists/'),('guides','/notes/first-listens/')]]
+    section='stories' if relative.startswith('stories/') else 'artists' if relative.startswith('artists/') else 'guides' if relative.startswith('notes/') else 'home' if not relative else None
+    expected_nav=[(id,href,('page' if href=='/'+relative else 'true') if id==section else None) for id,href in [('home','/'),('stories','/stories/'),('artists','/artists/'),('guides','/notes/first-listens/')]]
     if page.nav!=expected_nav: errors.append(f'{path}: incorrect main navigation or current section')
-    for required in ['/artists/','/notes/first-listens/','/about/','/privacy-and-terms/','mailto:'+site['email']]:
+    for required in ['/stories/','/artists/','/notes/first-listens/','/about/','/privacy-and-terms/','mailto:'+site['email']]:
         if required not in page.refs: errors.append(f'{path}: missing public navigation {required}')
 
 for path,page in pages.items():
@@ -138,13 +141,14 @@ for file in ['index.html','notes/first-listens/index.html']:
     index=pages.get((dist/file).resolve())
     if not index or index.guide_cards!=[(id,guide_counts.get(id)) for id in guide_ids]: errors.append('Guide cards disagree with guide pages: '+file)
     elif any(f'/notes/{id}/' not in index.refs for id in guide_ids): errors.append('Guide card link missing: '+file)
-expected_count=len(catalogue['records'])+6+len(guide_ids)
+expected_count=len(catalogue['records'])+7+len(guide_ids)+len(stories)
 if len(pages)!=expected_count: errors.append(f'Expected {expected_count} pages, found {len(pages)}')
 if site['url']+'/sitemap.xml' not in (dist/'robots.txt').read_text(): errors.append('Missing robots sitemap')
-for source,target in [(f'site/{name}',f'dist/{name}') for name in ['app.js','analytics.mjs','navigation.mjs','directory.mjs','mobile.mjs','player.mjs','styles.css','shared.mjs']]:
+for source,target in [(f'site/{name}',f'dist/{name}') for name in ['app.js','analytics.mjs','navigation.mjs','directory.mjs','mobile.mjs','player.mjs','styles.css','shared.mjs','stories.mjs']]:
     if (root/source).read_bytes()!=(root/target).read_bytes(): errors.append('Stale build: '+target)
 runtime=json.loads((dist/'catalogue.js').read_text().removeprefix('export default ').strip().removesuffix(';'))
-if runtime!={**catalogue,'listeningGuides':[g for g in catalogue['listeningGuides'] if g.get('status')!='draft'],'media':media}: errors.append('Stale catalogue; run npm run build')
+story_index=[{**{k:s[k] for k in ['id','slug','title','description','category','published','artistIds','keywords']},'path':f"/stories/{s['slug']}/"} for s in stories]
+if runtime!={**catalogue,'listeningGuides':[g for g in catalogue['listeningGuides'] if g.get('status')!='draft'],'media':media,'stories':story_index}: errors.append('Stale catalogue; run npm run build')
 if json.loads((root/'.openai/hosting.json').read_text())['static']['directory']!='dist': errors.append('Unexpected static directory')
 if errors: raise SystemExit('\n'.join(errors))
 print(f'PASS: {len(pages)} static pages, local links and anchors, responsive assets, metadata, sitemap, deferred players and shared build data.')

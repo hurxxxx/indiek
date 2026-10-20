@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "copy",
+    "reason",
+    "issues",
+    "approved"
+  ],
+  "properties": {
+    "copy": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "approved": {
+      "type": "boolean"
+    }
+  }
+}

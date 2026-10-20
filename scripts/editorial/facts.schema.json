@@ -1,0 +1,55 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "approved",
+    "reason",
+    "issues",
+    "checkedURLs",
+    "supportedClaims"
+  ],
+  "properties": {
+    "approved": {
+      "type": "boolean"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "checkedURLs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "supportedClaims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "claim",
+          "sourceURL",
+          "evidence"
+        ],
+        "properties": {
+          "claim": {
+            "type": "string"
+          },
+          "sourceURL": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "string",
+            "description": "One short contiguous verbatim excerpt from the original page, with no added quote marks, ellipsis, semicolons, citation markup or commentary. Use separate claim objects for separate excerpts."
+          }
+        }
+      }
+    }
+  }
+}

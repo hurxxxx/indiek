@@ -1,0 +1,16 @@
+{
+  "timezone": "Asia/Seoul",
+  "weekdays": [
+    2,
+    5
+  ],
+  "startHour": 3,
+  "maxTopics": 3,
+  "maxVersionsPerTopic": 4,
+  "maxDailyPublications": 1,
+  "maxWeeklyPublications": 2,
+  "deadlineSeconds": 10800,
+  "callTimeoutSeconds": 420,
+  "deployHost": "indiek-publish",
+  "remote": "origin"
+}

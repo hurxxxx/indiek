@@ -1,0 +1,11 @@
+[Unit]
+Description=Review music-writing reference library
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/projects/indiek
+Environment=PATH=%h/.npm-global/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/node scripts/editorial/run.mjs references
+TimeoutStartSec=10min
+KillMode=control-group
+UMask=0077

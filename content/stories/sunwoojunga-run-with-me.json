@@ -1,0 +1,175 @@
+{
+  "id": "sunwoojunga-run-with-me",
+  "slug": "sunwoojunga-run-with-me",
+  "status": "published",
+  "category": "Song stories",
+  "title": "Inside sunwoojunga’s “Run with Me”",
+  "description": "A trip taken alone became an offer to go together. The story behind “도망가자”, and the expectations that followed it onto the stage.",
+  "authorId": "indiek",
+  "published": "2026-10-20",
+  "updated": "2026-10-20",
+  "artistIds": [
+    "sunwoojunga"
+  ],
+  "keywords": [
+    "선우정아",
+    "도망가자",
+    "Run with Me",
+    "Serenade",
+    "songwriting",
+    "ballad"
+  ],
+  "cover": {
+    "file": "sunwoojunga.jpg",
+    "alt": "Cover of sunwoojunga’s album Serenade",
+    "caption": "Serenade, released in 2019. Album artwork."
+  },
+  "sources": [
+    {
+      "id": "origin",
+      "label": "How sunwoojunga described the song’s beginnings",
+      "url": "https://news.sbs.co.kr/news/endPage.do?news_id=N1007046019",
+      "publisher": "SBS / Jeon Min-jae",
+      "language": "Korean",
+      "checked": "2026-10-20"
+    },
+    {
+      "id": "kraze",
+      "label": "An interview with sunwoojunga",
+      "url": "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi",
+      "publisher": "The Kraze / Angelica Vianello",
+      "language": "English",
+      "checked": "2026-10-20"
+    },
+    {
+      "id": "release",
+      "label": "Serenade: the full album",
+      "url": "https://music.apple.com/us/album/serenade/1491118222",
+      "publisher": "Apple Music",
+      "language": "English",
+      "checked": "2026-10-20"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Before “Run with Me” was an offer of company, sunwoojunga had tried leaving alone. In a YouTube appearance reported by SBS in January 2023, she recalled an argument early in her marriage. She left in her nightclothes, taking an acoustic guitar, and ended up in Gangwon Province. Her husband came to collect her.",
+      "sources": [
+        "origin"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "By the time she wrote the song, he was having a difficult time. Remembering her own departure, she wanted to take him away and stay beside him. In her account, the person whose husband once collected her now offers to accompany him.",
+      "sources": [
+        "origin"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "“Run with Me” appears on Serenade, released on 12 December 2019.",
+      "sources": [
+        "release"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "An invitation, and an expectation",
+      "sources": []
+    },
+    {
+      "type": "paragraph",
+      "text": "The song’s success also changed how she approached performing it. Speaking to Angelica Vianello for The Kraze in 2024, sunwoojunga said she had not expected the success of “Run with Me” and Serenade. It made her reconsider her relationship with ballads, having worked across several genres.",
+      "sources": [
+        "kraze"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "She told Vianello that audience expectations made her nervous before performing it, even as she welcomed its reception. The song had become a source of happiness and something to live up to.",
+      "sources": [
+        "kraze"
+      ]
+    },
+    {
+      "type": "listen",
+      "trackId": "sunwoojunga",
+      "sources": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Read together, the two accounts suggest a change in the scale of the offer. What began as a wish to accompany her husband now had to meet the expectations of a room. Her gratitude and her nervousness leave both sides of that exchange visible: the company she offered, and the demands that came with being heard.",
+      "sources": [
+        "origin",
+        "kraze"
+      ]
+    }
+  ],
+  "review": {
+    "contentHash": "e6ca86461a23587e1cae6997f7cfba25266fc60c77f9822fc1c063808355c830",
+    "skillRevision": "2a785756f546b6ff9df0b0aca94888971ba66d73d115a5a01da36a0a7ee8823d",
+    "checkedAt": "2026-10-20T05:39:33.604Z",
+    "facts": {
+      "approved": true,
+      "reason": "The exact article’s title, deck, factual prose, caption and source references are supported by the three opened originals. The closing synthesis is explicitly identified as interpretation and follows the attributed accounts. The attached artwork matches the Apple artwork visually; the supplied HTTP receipt supports source identity, not reuse permission. The original-channel screenshot supports recording identity and distinguishes the 2019 concert from the 2020 upload. The supplied player screenshot shows playback at 0:44/4:54, supporting playback rather than audio criticism. I did not reproduce the supplied browser or HTTP checks, independently listen to the recording, or establish image rights. Approval covers this supplied article’s facts only.",
+      "issues": [],
+      "checkedURLs": [
+        "https://news.sbs.co.kr/news/endPage.do?news_id=N1007046019",
+        "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi",
+        "https://music.apple.com/us/album/serenade/1491118222"
+      ],
+      "supportedClaims": [
+        {
+          "claim": "She left in her nightclothes carrying an acoustic guitar.",
+          "sourceURL": "https://news.sbs.co.kr/news/endPage.do?news_id=N1007046019",
+          "evidence": "잠옷 입은 상태 그대로 통기타 하나만 들고 훅 떠났다."
+        },
+        {
+          "claim": "Remembering leaving alone, she offered to remain beside her husband.",
+          "sourceURL": "https://news.sbs.co.kr/news/endPage.do?news_id=N1007046019",
+          "evidence": "혼자 도망갔던 경험을 떠올리며"
+        },
+        {
+          "claim": "Her offer included staying beside him.",
+          "sourceURL": "https://news.sbs.co.kr/news/endPage.do?news_id=N1007046019",
+          "evidence": "이번에는 내가 계속 옆에 있어 줄게"
+        },
+        {
+          "claim": "The song and album’s success prompted reflection on ballads.",
+          "sourceURL": "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi",
+          "evidence": "made me think more about the ballad genre."
+        },
+        {
+          "claim": "Audience expectations brought nervousness alongside happiness.",
+          "sourceURL": "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi",
+          "evidence": "I get very nervous, because there’s a lot of expectation, but I’m happy."
+        },
+        {
+          "claim": "Serenade was released on 12 December 2019.",
+          "sourceURL": "https://music.apple.com/us/album/serenade/1491118222",
+          "evidence": "December 12, 2019"
+        }
+      ]
+    },
+    "editorial": {
+      "approved": true,
+      "reason": "The exact supplied draft answers its reader question with a useful, explicitly signalled connection between the song’s personal origin and its later performance expectations. Attribution is clear, the length fits the evidence, and comparison with the opened originals revealed no material imitation or unsupported listening claims. This is editorial approval only.",
+      "issues": [],
+      "contribution": "Brings two separately reported accounts together: an experience of leaving alone became an offer of companionship, while the song’s reception introduced gratitude and performance pressure. The closing interpretation adds meaning without presenting itself as the artist’s own explanation.",
+      "referenceIds": [
+        "nick-parannoul",
+        "sunwoojunga-kraze",
+        "fishmans-long-season"
+      ],
+      "comparisons": [
+        "The opening follows the incident and songwriting explanation reported by [SBS](https://news.sbs.co.kr/news/endPage.do?news_id=N1007046019). This is necessary factual chronology, not appropriation of a distinctive narrative device. Attribution remains visible.",
+        "The performance paragraphs accurately condense two adjacent answers in [Vianello’s interview](https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi). They retain happiness alongside nervousness and borrow none of its distinctive metaphors. The final synthesis is marked as interpretation.",
+        "The draft adopts specificity from [Caceres’s interview](https://nicholasc2002271.wixsite.com/nickc/copy-of-interview-w-matt-cruz-from-lr), without copying its questions, slang, personal encounters or sequence.",
+        "Against [Kim’s Long Season review](https://pitchfork.com/reviews/albums/fishmans-long-season/), no borrowed imagery, sonic descriptions or biographical arc was found. Its listening-based technique is not actually demonstrated here; the draft appropriately remains reported context.",
+        "Source dependence is proportionate for a short song story: approximately 110 words summarize SBS and approximately 90 summarize The Kraze before the shared synthesis. Even including that synthesis, each remains below its 200-word contribution budget. There are no substantive direct quotations or reproduced lyrics.",
+        "The opening is specific to this song. The reception paragraphs are more transferable in isolation, but supply necessary evidence for the connection. The release sentence supplies concise context, supported by [Apple Music](https://music.apple.com/us/album/serenade/1491118222). No biography padding or invented experience was found.",
+        "dossier.history is empty, so repetition against recent indiek openings and endings could not be assessed. No claim of that comparison having passed is made."
+      ]
+    }
+  }
+}

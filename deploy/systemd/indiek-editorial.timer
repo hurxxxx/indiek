@@ -1,0 +1,10 @@
+[Unit]
+Description=Check Tuesday/Friday issue or next-day editorial retry
+
+[Timer]
+OnCalendar=*-*-* 03:00:00 Asia/Seoul
+Persistent=false
+Unit=indiek-editorial.service
+
+[Install]
+WantedBy=timers.target

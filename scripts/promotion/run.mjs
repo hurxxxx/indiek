@@ -5,6 +5,8 @@ import {homedir} from 'node:os';
 import {Store,atomicWrite,readJSON,withLock,validatePost,verifyLive,publishPost} from './core.mjs';
 import {metaClient,recentOwnPosts,refreshToken} from './meta.mjs';
 import {prepareDaily,reviewBeforePublish} from './news-runner.mjs';
+import {prepareStory} from './stories.mjs';
+import {koreanDay} from './news.mjs';
 
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const config=readJSON(path.join(root,'promotion/config.json'));
@@ -35,7 +37,7 @@ async function publicCatalogue() {
 async function prepare(store) {
   const catalogue=await publicCatalogue();
   const recentPosts=await recentOwnPosts(config,credentials());
-  const result=await prepareDaily({root,config,store,catalogue,recentPosts,now});
+  const result=await prepareStory({root,config,store,catalogue,recentPosts,now})||await prepareDaily({root,config,store,catalogue,recentPosts,now});
   stateNote(`Daily news ${result.day}: ${result.status}. ${result.reason||'Read the recorded selection.'} No posts published.`);
 }
 async function publish(store,platform) {
@@ -47,6 +49,12 @@ async function publish(store,platform) {
   const api=metaClient(platform,credential);
   let recentPosts;
   for(const post of store.posts.filter(p=>p.platform===platform&&!['published','expired','superseded'].includes(p.status))) {
+    if(['ready','created'].includes(post.status)&&Date.parse(post.scheduledAt)<=now.getTime()&&now.getTime()-Date.parse(post.scheduledAt)<config.maxSlotAgeMinutes*60000){
+      recentPosts??=await recentOwnPosts(config,secret);
+      if([...config.previousPosts,...recentPosts,...store.posts.filter(p=>p.status==='published')].some(p=>p.id!==post.id&&p.platform===platform&&koreanDay(new Date(p.publishedAt))===koreanDay(now))){
+        post.status='superseded';post.issue='A post already exists on this platform today; no extra daily post';store.save(post,'하루 한 건 제한');continue;
+      }
+    }
     try{await publishPost(post,{config,store,api,now,verify:post.kind==='news'?async p=>{recentPosts??=await recentOwnPosts(config,secret);return reviewBeforePublish(p,{root,config,posts:store.posts,recentPosts,now});}:verifyLive});}
     catch(error){post.issue=error.safeMessage||error.message;store.save(post,'전송 전 확인 실패');if(error.pausePlatform){post.pausePlatform=true;store.save(post,'플랫폼 게시 중단');}}
     if(post.pausePlatform)break;

@@ -56,7 +56,7 @@ Meta 개발자 앱에서 본인 계정 `indiekdotcom`만 연결한다. Threads�
 
 인증 JSON의 플랫폼별 항목은 `threads` / `instagram`이며 `userId`, `token`, `issuedAt`, `expiresAt`(ISO 날짜)가 필요하다. Instagram API 기본 버전은 `v26.0`이다. 선택적인 Matomo 항목은 `matomo.token`으로, 사이트 4만 읽는 별도 토큰을 사용한다. 안전한 로컬 파일을 준비한 뒤 `npm run promotion -- credentials --stdin < /secure/path/credentials.json`으로 가져오면 기존 다른 플랫폼 설정은 유지한다. 연결하지 않은 통계는 미측정으로 보고하며 Search Console은 수동 확인이다.
 
-실행 결과는 `promotion/state/queue.json`, 날짜별 수집·탈락 사유·검수는 `promotion/state/news/`, 주간 보고는 `promotion/state/reports/`에 저장한다. 이 상태 디렉터리와 자격 증명은 배포 복사·Git 대상에서 제외하고 보존한다. **자동 게시 기록의 기준은 실행 서버**다. `docs/promotion.md`의 `automatic-promotion` 구간을 로컬로 병합하며 수동 기록이나 서버 로그를 통째로 덮어쓰지 않는다. 서버는 Git push를 실행하지 않는다.
+실행 결과는 `promotion/state/queue.json`, 날짜별 수집·탈락 사유·검수는 `promotion/state/news/`, 주간 보고는 `promotion/state/reports/`에 저장한다. 이 상태 디렉터리와 자격 증명은 배포 복사·Git 대상에서 제외하고 보존한다. **자동 게시 기록의 기준은 실행 서버**다. `docs/promotion.md`의 `automatic-promotion` 구간을 로컬로 병합하며 수동 기록이나 서버 로그를 통째로 덮어쓰지 않는다. 일일 소식 게시기는 Git push를 실행하지 않는다. 아래 매거진 발행기만 승인 범위에서 기사와 생성 결과물을 push한다.
 
 ```sh
 # 점검 및 즉시 중단
@@ -69,6 +69,34 @@ systemctl --user stop indiek-promotion-prepare.timer indiek-promotion-threads.ti
 최초 설치 확인(2026-10-19, 일일 소식 전환 전): 원격 테스트 68개 통과, 타이머 3개 활성화, Codex로 공개 원문 기반 문안 3개 준비. Threads와 Instagram 모두 기본 정보·게시 권한만 연결하고 서버에서 본인 계정 일치·기존 게시물 각 1건 조회를 확인했다. Instagram은 사용자 승인으로 공개 크리에이터 계정으로 전환했다. Threads 초기 갱신 기준은 발급 후 59일로 보수적으로 기록했으며, Instagram 만료 시각은 Meta 디버거로 확인한 `2026-12-18T11:07:37Z`다. 공유 이미지·공개 목록 배포 후 최종 dry-run에서 3건 모두 원문·이미지 확인을 통과했다. 공개 목록을 사용하는 `prepare`도 기존 예약을 보존하며 통과했다. 첫 전송은 10월 20일 10:00 KST Threads 예약이며, 실제 게시·외부 노출은 아직 미검증이다. 서버의 이전 미커밋 셋업은 `indiek automation setup before deployment 2026-10-19` stash에 보관했으며 기존 큐·토큰은 그대로 유지했다.
 
 일일 소식 전환 확인(2026-10-19): 수집·Threads·Instagram·주간 보고 타이머 4개를 활성화하고 원격 홍보 테스트 31개를 통과했다. 두 API 계정 일치와 기존 공개 게시물 본문 조회를 확인했다. 첫 수집의 문안·이력 전달 문제를 수정한 뒤 같은 날 자료의 원문과 최종 문안을 다시 검수해 BOL4 공연 소식 1건을 10월 20일 10:00 KST에 준비했다. 승인 이미지가 없어 Instagram은 제외했다. 미전송 정적 예약 3건은 대체 상태로 보존했다. 실제 뉴스 전송은 아직 하지 않았다. 후속 배포 요청으로 `7112a75`를 두 서버에 반영했다. 직접 동기화했던 파일 22개와 로컬 소스의 일치를 확인하고 `daily news source before Git deployment 2026-10-19` stash로 보존한 뒤 fast-forward했다. 기존 런타임 파일 10개·자격 증명이 바뀌지 않았고 타이머 4개와 예약 1건을 유지하며 dry-run을 통과했다. 전환 전 코드·큐·로그 백업은 `promotion/state/backups/`에 있다.
+
+## 매거진 자동 발행
+
+`skills/indiek-editorial/`이 집필 기준의 원본이다. 로컬 스킬은 이 디렉터리를 연결하고 실행기는 매번 직접 읽으며 해시를 검수 기록에 남긴다. `content/stories/`는 승인 원고·출처·검수 결과, `content/authors.json`은 실제 작성자, `editorial/topics.json`은 향후 주제 후보다. 이미 발행한 주제는 기사 데이터로 제외한다. 새 기고자·이미지·아티스트 등록과 코드 변경은 자동 발행 범위 밖이다.
+
+```sh
+npm run editorial -- status
+npm run editorial -- prepare   # 조사·집필·검수만, 공개하지 않음
+npm run editorial -- run       # 승인된 예약일일 때 준비·커밋·push·배포
+node deploy/install-editorial.mjs
+systemctl --user list-timers 'indiek-editorial*' --no-pager
+```
+
+타이머는 매일 03:00 KST에 조건을 확인한다. 기본 화·금, 이전 실패가 있을 때 다음 날 재시도하며 하루 1편·최근 7일 최대 2편을 넘지 않는다. 하루 주제 3개 × 초고 포함 4개 버전, 전체 3시간을 상한으로 둔다. 각 시도를 모델 호출 전에 디스크에 저장해 재시작해도 예산이 초기화되지 않는다. 인증·네트워크·계정 한도는 품질 실패와 구분해 중단하고 유료 API로 전환하지 않는다. 놓친 시간에 여러 편을 몰아 내지 않는다.
+
+사실 검수와 문체·독창성 검수는 별도 호출로 정확한 최종 원고를 확인한다. 원문에서 짧은 근거를 다시 찾아 확인하고 원고 해시가 달라지면 승인을 재사용하지 않는다. 자동 원고는 실제 취재자나 경험을 사칭하지 않으며 About과 기사에 AI 활용을 알린다. 모델 검수는 오류가 없다는 보증이 아니므로 수정 요청을 계속 받는다. 월 1일 07:00 KST에는 원작자·원문·독자 반응을 재확인해 `editorial/state/references-YYYY-MM.json`에 남긴다. 참고 목록·지침 개정은 그 결과를 읽고 별도로 수행한다.
+
+발행은 `editorial/state/worktrees/`의 분리된 체크아웃에서 빌드·검증한 뒤 `content/stories/*.json`과 생성된 `dist/`만 커밋한다. origin/main이 바뀌면 force push하거나 자동 병합하지 않고 보류한다. SSH 별칭 `indiek-publish`는 강제 명령 `/usr/local/bin/indiek-editorial-receive`만 실행하는 전용 키다. 수신기는 origin/main·변경 경로·심볼릭 링크·깨끗한 운영 체크아웃을 확인하고 임시 worktree에서 검사한 뒤 fast-forward한다. 공개 결과물이 다르면 이전 커밋으로 복구한다. 이 키로 일반 셸·포트 포워딩을 허용하지 않는다. GitHub 쓰기 키는 이 저장소의 전용 deploy key로만 사용한다.
+
+`editorial/state/YYYY-MM-DD.json`에 시도·탈락 이유·승인 원고·커밋·배포 단계를 보존한다. push 또는 배포 응답이 불확실하면 같은 커밋을 확인하며 새 기사를 만들지 않는다. 이전 날짜의 미확인 커밋은 운영자가 GitHub·운영 페이지의 revision을 대조해 정리한다. 상태 파일이나 로그를 삭제해 재시도하지 않는다.
+
+새 공개 기사는 다음 일일 SNS 슬롯에 우선 준비한다. 문안 생성과 플랫폼별 최종 검수는 각각 3분으로 제한한다. 최종 문안은 기사와 독립 비교하고, 전송 직전 공개 기사 revision·공유 이미지·계정·당일 기존 게시물을 다시 확인한다. Threads와 Instagram은 플랫폼별 하루 최대 1건이며 기사 홍보에는 자체 제작 글자 이미지를 사용한다. 실제 전송·원격 확인은 기존 SNS 게시기가 담당한다. 예약·보류를 게시 성공으로 기록하지 않는다.
+
+```sh
+# 발행만 중단 (SNS 중단은 위 별도 타이머 참조)
+systemctl --user stop indiek-editorial.timer indiek-editorial.service
+journalctl --user -u indiek-editorial.service -n 50 --no-pager
+```
 
 ## 확인과 복구
 

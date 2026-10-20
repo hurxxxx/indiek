@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "approved",
+    "reason",
+    "issues",
+    "contribution",
+    "referenceIds",
+    "comparisons"
+  ],
+  "properties": {
+    "approved": {
+      "type": "boolean"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "contribution": {
+      "type": "string"
+    },
+    "referenceIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "comparisons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+import {copyFileSync,mkdirSync} from 'node:fs';
+import {homedir} from 'node:os';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const units=path.join(homedir(),'.config/systemd/user');
+mkdirSync(units,{recursive:true});
+for(const unit of ['indiek-editorial','indiek-editorial-references'])for(const type of ['service','timer'])copyFileSync(path.join(root,`deploy/systemd/${unit}.${type}`),path.join(units,`${unit}.${type}`));
+execFileSync('systemctl',['--user','daemon-reload'],{stdio:'inherit'});
+execFileSync('systemctl',['--user','enable','--now','indiek-editorial.timer','indiek-editorial-references.timer'],{stdio:'inherit'});

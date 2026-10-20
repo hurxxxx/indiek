@@ -1,6 +1,6 @@
 # 홍보 기록
 
-날짜 기준: Asia/Seoul. 마지막 갱신: 2026-10-19.
+날짜 기준: Asia/Seoul. 마지막 갱신: 2026-10-20.
 
 대상: [indiek.com](https://indiek.com). 한국 뮤지션을 해외에 소개하는 음악 큐레이션 사이트이며, 인디에만 한정하지 않는다. 공개 홍보에서는 팬사이트·비영리를 강조하거나 비상업 운영을 계속 약속하지 않는다. 음악·K-pop 등 직접 관련된 커뮤니티에만 공유한다. 사이드 프로젝트·창업·메이커 커뮤니티는 제외한다.
 
@@ -14,6 +14,8 @@
 | R004 | 2026-10-19 | r/indieheads · Daily Music Discussion | 제출 확인 · 공개 노출 미확인 | [댓글](https://www.reddit.com/r/indieheads/comments/1x93xfm/comment/phmsctr/). 사용자 홍보 방식 전환 요청 전 제출됨. 추가 게시 중단. |
 | T001 | 2026-10-19 | Threads · @indiekdotcom | 제출·수정 확인 | [게시물](https://www.threads.com/@indiekdotcom/post/DeqedKnEwlg). 팬사이트 강조 제거. 로그인 상태에서 최종 본문·이미지 확인. 비로그인 노출 미확인. |
 | I001 | 2026-10-19 | Instagram · @indiekdotcom | 제출 확인 | [게시물](https://www.instagram.com/p/DeqfJ3HAf-n/). 홈·백예린·새소년 캐러셀 3장과 캡션 확인. 비로그인 노출 미확인. |
+| T002 | 2026-10-20 | Threads · @indiekdotcom | API·로그인 화면 게시 확인 | [선우정아 라이브 소개](https://www.threads.com/@indiekdotcom/post/Derif6rAR1Y). 본문·공유 이미지·사이트 링크 확인. 비로그인 노출·유입 미측정. |
+| I002 | 2026-10-20 | Instagram · @indiekdotcom | API·로그인 화면 게시 확인 | [선우정아 라이브 소개](https://www.instagram.com/p/DerinKqgQH9/). 본문·공유 이미지 확인. 비로그인 노출·유입 미측정. |
 
 ## R001 · r/kindie
 
@@ -171,6 +173,36 @@ i made indiek as a little home for these and other artists i like, with short in
 swipe for a look around, or listen at indiek.com
 ```
 
+## T002 · Threads / I002 · Instagram 선우정아 라이브 소개
+
+- 준비일: 2026-10-20. 사용자의 즉시 홍보 요청으로 자체 `indiekdotcom` 계정에 각각 1건 준비. 정기 뉴스와 별개의 일회성 음악 소개이며 새 공연·신곡 소식으로 표현하지 않는다.
+- 사전 확인: 공식 API로 두 계정의 소유자와 최근 게시물을 조회했다. 각 계정에 첫 소개 1건만 있으며 선우정아 개별 소개는 없었다. 오전 10시 BOL4 공연 소식 예약과 타이머 4개는 유지한다. 서버 관리 구간을 먼저 읽어 로컬 기록에 병합했다.
+- 정책: Meta 스팸 정책의 현재 본문을 브라우저에서 확인했다. 반복·과도한 빈도, 참여 거래, 오해의 소지가 있는 링크를 금지한다. 자체 계정별 1회만 게시하며 커뮤니티 댓글·DM 배포는 하지 않는다.
+- 근거: 운영 중인 [선우정아 소개](https://indiek.com/artists/sunwoojunga/)와 [공식 영상](https://www.youtube.com/watch?v=fNrhdZwhj-c)을 확인했다. 브라우저에서 2019 SERENADE 라이브 제목과 공식 아티스트 채널 표시를 확인했다. 공연을 직접 관람했다는 경험이나 인기를 지어내지 않았다.
+- 이미지: 직접 제작한 [선우정아 타이포그래피 공유 카드](https://indiek.com/assets/social/artists-sunwoojunga.jpg). 사진·앨범 표지·음악 재업로드 없이 자체 문구와 디자인만 포함한다. 대체 텍스트: `indiek listening notes: sunwoojunga — Run with Me. Typographic card.`
+- 결과: Threads 00:06 KST, Instagram 00:07 KST에 공식 API로 게시·재조회한 뒤 각 고유 주소의 로그인 화면에서 최종 본문·이미지를 확인했다. Threads의 `Korean music` 주제와 클릭 가능한 사이트 링크도 확인했다. 플랫폼별 `from=threads`·`from=instagram` 링크를 사용한다. Threads 비로그인 조회 도구는 접근 실패로 외부 노출을 확인하지 못했으며 Instagram 비로그인 노출·두 게시물의 실제 유입도 미측정이다.
+- 기록: 실행 ID `T-2026-10-20-0005` / `I-2026-10-20-0005`. 정확한 API 전송 이력은 아래 서버 관리 구간에 보존했다. 증빙은 로컬 `qa/threads-sunwoojunga-20261020.png`, `qa/instagram-sunwoojunga-20261020.png`다. 다음 뉴스 예약은 10월 20일 10:00 KST BOL4이며 실제 전송은 아직 미검증이다. 같은 소개를 재전송하지 않는다.
+
+Threads 문안:
+
+```text
+sunwoojunga's Run with Me, live at her SERENADE concert
+
+we picked the performance from her own channel for indiek, with a short introduction if she's new to you
+
+https://indiek.com/artists/sunwoojunga/?from=threads
+```
+
+Instagram 문안:
+
+```text
+sunwoojunga's Run with Me, live at her SERENADE concert
+
+we picked the performance from her own channel for indiek, with a short introduction if she's new to you
+
+https://indiek.com/artists/sunwoojunga/?from=instagram
+```
+
 ## 검토했지만 게시하지 않은 곳
 
 기존 제외 대상은 2026-10-18 기준이며 이후 재검토일은 각 행에 표시한다. 규칙과 지정 홍보 스레드는 실제 게시 전에 다시 확인한다. 2026-10-19 후보 조사에서는 게시·가입·메시지 전송을 하지 않았다. 같은 날 후속 댓글 확인 결과는 위 R001·R003에 기록했다.
@@ -247,6 +279,16 @@ RSS·백예린 답글 제출은 완료했다. RSS 제공은 고려 중이며 백
 - 준비 결과: BOL4 `Red Square` 자카르타 공연의 공식 주최 안내를 선정해 2026-10-20 10:00 KST Threads 1건을 준비했다. 정확한 문안·근거·상태는 아래 자동 기록에 있다. 사용할 수 있는 승인 이미지가 없어 Instagram은 제외했다. 게시 직전 원문·취소 여부·계정·중복을 다시 확인한다.
 - 확인: 전환 때 원격 홍보 테스트 31개, 후속 Git 배포 때 로컬·웹 서버·자동 게시 서버의 전체 테스트 89개 및 22페이지 검증을 통과했다. 공식 API에서 두 계정 모두 `indiekdotcom` 및 기존 게시물 각 1건을 확인했다. 문체 스킬 검증도 통과했다. 이번 작업에서 새 SNS 게시물을 보내지 않았으며, 예약된 실제 전송과 비로그인 노출은 아직 미검증이다.
 
+## G003 — 한국 인디 소식·사이트 뉴스 피드 검토 (2026-10-20)
+
+- 요청: 등록 아티스트에 국한하지 않는 한국 인디 소개·최신 소식을 다루고, indiek에 뉴스 글을 발행한 뒤 SNS에서 해당 글로 연결하는 방향을 검토한다.
+- 현재 확인: 소식 조사 대상은 공개 아티스트 목록에 종속되며 SNS 뉴스 링크는 외부 원문을 사용한다. 사이트의 RSS·최근 추가·공유 카드에는 아티스트와 가이드만 포함된다.
+- 제안: 아티스트 등록과 독립적인 뉴스 콘텐츠, `/news/` 목록·개별 고유 주소, 홈 최신 소식, 출처·발표일·실제 공개일·수정 이력, RSS·검색·사이트맵·공유 카드 연동. 한국 인디 입문·장르·공연 문화 설명은 기존 Guides에 축적한다. 사이트 공개 확인 후 해당 주소로 SNS를 게시하며 미공개·중복·취소 소식은 차단한다.
+- 참고: [Korean Indie](https://www.koreanindie.com/)의 뉴스·리뷰·인터뷰·에디토리얼 구분, [Google의 유용한 콘텐츠 기준](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), [Article 구조화 데이터](https://developers.google.com/search/docs/appearance/structured-data/article)를 확인했다. 단순 번역·재요약보다 해외 독자를 위한 아티스트 맥락과 공식 청취 경로를 제공하는 방향이다.
+- 상태: 구조 검토. 초안 확인 후 공개와 자동 검수 후 하루 1건 공개 중 운영 방식에 대한 사용자 선호를 질문했다. 이 검토에서는 새 게시물·사이트 배포·기존 예약 변경을 하지 않았다.
+- 방향 수정(같은 날): 사용자가 형식적인 뉴스보다 흥미로운 주제를 요청했다. `Stories` 중심으로 취향을 이어주는 추천, 곡·제목의 맥락, 스튜디오/라이브 비교, 한국 음악 공간, 선정한 신곡을 다루는 방향을 제안한다. 뉴스 피드 구축안은 확정안이 아니며 발행 자동화 방식도 아직 결정되지 않았다. 등록 아티스트 밖의 음악도 후보에 포함하고, 구체적 곡 비교·해석은 원문과 실제 청취를 확인한 뒤 작성한다.
+- 주제 근거: [2026년 한국 인디 AMA](https://www.reddit.com/r/indieheads/comments/1qzabu9/ask_me_anything_about_korean_indie_music/)의 유사 아티스트·장르·공연장·음반점 질문, [부산에서 들은 밴드 찾기](https://www.reddit.com/r/kindie/comments/1uouyc6/help_identifying_a_korean_indie_rock_band_from/), [인디 취향에 맞는 음악 질문](https://www.reddit.com/r/kpophelp/comments/1vp9yzw/do_you_guys_know_any_kpop_groups_that_make_indie/)을 읽었다. 관찰한 사례이며 전체 수요·유입 예측으로 해석하지 않는다. 추천 주제는 아직 미작성·미게시이며 새 웹 메뉴도 구현하지 않았다.
+
 <!-- automatic-promotion:start -->
 ## 자동 게시 기록
 
@@ -315,7 +357,7 @@ RSS·백예린 답글 제출은 완료했다. RSS 제공은 고려 중이며 백
 
 ### T-2026-10-20-1000-news · threads · 준비
 
-- 예약: 2026-10-20T01:00:00.000Z · 확인: 2026-10-19T11:53:47.365Z
+- 예약: 2026-10-20T01:00:00.000Z · 확인: 2026-10-20T01:00:43.896Z
 - 콘텐츠: https://bol4jakarta2026.com/
 - 이미지: 없음 · 텍스트 게시
 - 대체 텍스트: 해당 없음
@@ -323,7 +365,7 @@ RSS·백예린 답글 제출은 완료했다. RSS 제공은 고려 중이며 백
 - 원문 게시자: Big Ground Entertainment · promoter
 - 사실·문체 검토: Both live pages confirm the concert and promoter affiliation. The October 8 announcement is 11 days old; the November 14 Jakarta event is 26 days ahead, in Asia/Jakarta (WIB, UTC+7). No cancellation or postponement was found. Every caption clause is supported, with no ticket-availability claim. The supplied history contains neither this event nor a repetitive opening.
 - 결과: 게시 링크 없음
-- 후속 조치: 예약 시 공개 콘텐츠·인증 상태를 다시 확인
+- 후속 조치: Independent review did not approve: Hold: the event page supports the caption, but repeated attempts to inspect the promoter affiliation page returned fetch errors/timeouts. Its live contents and affiliation could not be independently rechecked as required. The October 8 announcement is within 14 days; November 14 is upcoming in Jakarta (WIB, UTC+7). No cancellation surfaced in search. The supplied history contains no duplicate or repetitive opening.
 
 문안:
 
@@ -331,5 +373,52 @@ RSS·백예린 답글 제출은 완료했다. RSS 제공은 고려 중이며 백
 >
 > https://bol4jakarta2026.com/
 
-이력: 2026-10-19T11:53:47.365Z 일일 소식 선정 · 사실·문체 검토 완료 · 아직 게시하지 않음
+이력: 2026-10-19T11:53:47.365Z 일일 소식 선정 · 사실·문체 검토 완료 · 아직 게시하지 않음 / 2026-10-20T01:00:43.896Z 전송 전 확인 실패
+
+### T-2026-10-20-0005 · threads · API 게시 확인
+
+- 예약: 2026-10-19T15:05:09.198Z · 확인: 2026-10-19T15:06:00.544Z
+- 콘텐츠: https://indiek.com/artists/sunwoojunga/?from=threads
+- 이미지: https://indiek.com/assets/social/artists-sunwoojunga.jpg
+- 대체 텍스트: indiek listening notes: sunwoojunga — Run with Me. Typographic card.
+- 결과: https://www.threads.com/@indiekdotcom/post/Derif6rAR1Y · 게시물 ID 18060803288797619
+- 후속 조치: 예약 시 공개 콘텐츠·인증 상태를 다시 확인
+
+문안:
+
+> sunwoojunga's Run with Me, live at her SERENADE concert
+>
+> we picked the performance from her own channel for indiek, with a short introduction if she's new to you
+>
+> https://indiek.com/artists/sunwoojunga/?from=threads
+
+이력: 2026-10-19T15:05:09.355Z User-requested one-time introduction prepared; daily news schedule unchanged / 2026-10-19T15:05:16.612Z 정확한 문안 기록 후 컨테이너 생성 요청 / 2026-10-19T15:05:23.172Z 컨테이너 생성 확인 / 2026-10-19T15:05:53.796Z 게시 요청 전 상태 저장 / 2026-10-19T15:05:59.428Z 게시 ID 수신 / 2026-10-19T15:06:00.544Z 원격 조회로 게시 확인
+
+### I-2026-10-20-0005 · instagram · API 게시 확인
+
+- 예약: 2026-10-19T15:05:09.198Z · 확인: 2026-10-19T15:07:28.816Z
+- 콘텐츠: https://indiek.com/artists/sunwoojunga/?from=instagram
+- 이미지: https://indiek.com/assets/social/artists-sunwoojunga.jpg
+- 대체 텍스트: indiek listening notes: sunwoojunga — Run with Me. Typographic card.
+- 결과: https://www.instagram.com/p/DerinKqgQH9/ · 게시물 ID 18113007767131796
+- 후속 조치: 예약 시 공개 콘텐츠·인증 상태를 다시 확인
+
+문안:
+
+> sunwoojunga's Run with Me, live at her SERENADE concert
+>
+> we picked the performance from her own channel for indiek, with a short introduction if she's new to you
+>
+> https://indiek.com/artists/sunwoojunga/?from=instagram
+
+이력: 2026-10-19T15:05:10.259Z User-requested one-time introduction prepared; daily news schedule unchanged / 2026-10-19T15:06:16.579Z 정확한 문안 기록 후 컨테이너 생성 요청 / 2026-10-19T15:06:23.497Z 컨테이너 생성 확인 / 2026-10-19T15:07:24.568Z 게시 요청 전 상태 저장 / 2026-10-19T15:07:28.370Z 게시 ID 수신 / 2026-10-19T15:07:28.816Z 원격 조회로 게시 확인
 <!-- automatic-promotion:end -->
+
+## G004 · 매거진과 편집 자동화 구현
+
+- 2026-10-20: 사용자 승인으로 Stories, indiek-editorial 스킬, 첫 선우정아 기획과 주 2편 자동 발행 구현 시작. 상태: 준비.
+- 자료는 필자·취재 근거와 독자 반응을 구분해 기록한다. 원고·웹 배포·SNS는 각각 확인 후 결과를 갱신한다.
+- 기존 자동 로그를 서버 기준으로 병합했다. 10월 20일 BOL4 예약은 출처 재검증 실패로 미게시이며 게시 성공으로 집계하지 않는다. 기존 선우정아 소개와 신규 기사는 별도 콘텐츠로 기록하고 하루 슬롯 중복을 피한다.
+
+- 첫 기사: `/stories/sunwoojunga-run-with-me/`. SBS의 곡 배경과 Angelica Vianello의 The Kraze 인터뷰를 연결한 짧은 Song story. 분량을 위한 설명은 삭제했다. 최종 사실·문체 검수 통과, 공식 영상 제목·채널·공연 장소·업로드일과 Apple Music 원본 이미지를 대조했다. 로컬 임베드 실제 재생·Stories 이동 유지 확인. 상세 원고 검수·HTTP 증빙은 실행 서버 `editorial/state/launch-2026-10-20/`에 보존 예정.
+- 로컬 103개 테스트·25페이지 검증 통과. 데스크톱·모바일 기사/검색, 재생 중 이동, 모바일 세로·가로 Saved 배치를 확인했다. 전체 Saved 수량 조합·실기기 키보드·전체 화면·전곡 재생은 이번 변경에서 다시 확인하지 않았다.
