@@ -413,30 +413,49 @@ RSS·백예린 답글 제출은 완료했다. RSS 제공은 고려 중이며 백
 
 이력: 2026-10-19T15:05:10.259Z User-requested one-time introduction prepared; daily news schedule unchanged / 2026-10-19T15:06:16.579Z 정확한 문안 기록 후 컨테이너 생성 요청 / 2026-10-19T15:06:23.497Z 컨테이너 생성 확인 / 2026-10-19T15:07:24.568Z 게시 요청 전 상태 저장 / 2026-10-19T15:07:28.370Z 게시 ID 수신 / 2026-10-19T15:07:28.816Z 원격 조회로 게시 확인
 
-### I-2026-10-21-1015-story · instagram · 미전송 예약 대체
+### I-2026-10-21-1015-story · instagram · 준비
 
-- 예약: 2026-10-21T01:15:00.000Z · 확인: 2026-10-20T05:57:13.010Z
+- 예약: 2026-10-21T01:15:00.000Z · 확인: 2026-10-20T05:58:51.372Z
 - 콘텐츠: https://indiek.com/stories/sunwoojunga-run-with-me/?from=instagram
 - 이미지: https://indiek.com/assets/social/stories-sunwoojunga-run-with-me.jpg
 - 대체 텍스트: Inside sunwoojunga’s “Run with Me” — indiek. Original typographic article card.
 - 결과: 게시 링크 없음
-- 후속 조치: Shared caption needs attribution of the artist recollection; revise both platforms before scheduling
+- 후속 조치: 예약 시 공개 콘텐츠·인증 상태를 다시 확인
 
 문안:
 
-> sunwoojunga once left home alone after an argument, and her husband came to collect her. She later drew on that trip for “Run with Me”, offering to accompany him when he was having a difficult time.
+> sunwoojunga recalled leaving alone after an argument, and her husband coming to collect her. She said that memory shaped “Run with Me”: when he was having a difficult time, she wanted to take him away and stay beside him.
 >
 > https://indiek.com/stories/sunwoojunga-run-with-me/?from=instagram
 
-이력: 2026-10-20T05:53:59.874Z 공개 기사와 최종 문안 검수 · 자체 제작 글자 이미지로 예약 / 2026-10-20T05:57:13.010Z Caption held for shared revision; nothing was sent
+이력: 2026-10-20T05:53:59.874Z 공개 기사와 최종 문안 검수 · 자체 제작 글자 이미지로 예약 / 2026-10-20T05:57:13.010Z Caption held for shared revision; nothing was sent / 2026-10-20T05:58:51.372Z 공개 기사와 최종 문안 검수 · 자체 제작 글자 이미지로 예약
+
+### T-2026-10-21-1000-story · threads · 준비
+
+- 예약: 2026-10-21T01:00:00.000Z · 확인: 2026-10-20T05:58:51.168Z
+- 콘텐츠: https://indiek.com/stories/sunwoojunga-run-with-me/?from=threads
+- 이미지: https://indiek.com/assets/social/stories-sunwoojunga-run-with-me.jpg
+- 대체 텍스트: Inside sunwoojunga’s “Run with Me” — indiek. Original typographic article card.
+- 결과: 게시 링크 없음
+- 후속 조치: 예약 시 공개 콘텐츠·인증 상태를 다시 확인
+
+문안:
+
+> sunwoojunga recalled leaving alone after an argument, and her husband coming to collect her. She said that memory shaped “Run with Me”: when he was having a difficult time, she wanted to take him away and stay beside him.
+>
+> https://indiek.com/stories/sunwoojunga-run-with-me/?from=threads
+
+이력: 2026-10-20T05:58:51.168Z 공개 기사와 최종 문안 검수 · 자체 제작 글자 이미지로 예약
 <!-- automatic-promotion:end -->
 
 ## G004 · 매거진과 편집 자동화 구현
 
-- 2026-10-20: 사용자 승인으로 Stories, indiek-editorial 스킬, 첫 선우정아 기획과 주 2편 자동 발행 구현. 상태: 사이트 공개 확인, SNS 문안 수정 중.
+- 2026-10-20: 사용자 승인으로 Stories, indiek-editorial 스킬, 첫 선우정아 기획과 주 2편 자동 발행 구현. 상태: 사이트 공개 확인, 첫 기사 SNS 예약 완료·미게시.
 - 자료는 필자·취재 근거와 독자 반응을 구분해 기록한다. 원고·웹 배포·SNS는 각각 확인 후 결과를 갱신한다.
 - 기존 자동 로그를 서버 기준으로 병합했다. 10월 20일 BOL4 예약은 출처 재검증 실패로 미게시이며 게시 성공으로 집계하지 않는다. 기존 선우정아 소개와 신규 기사는 별도 콘텐츠로 기록하고 하루 슬롯 중복을 피한다.
 
 - 첫 기사: [Inside sunwoojunga’s “Run with Me”](https://indiek.com/stories/sunwoojunga-run-with-me/). SBS의 곡 배경과 Angelica Vianello의 The Kraze 인터뷰를 연결한 짧은 Song story. 분량을 위한 설명은 삭제했다. 최종 사실·문체 검수 통과, 공식 영상 제목·채널·공연 장소·업로드일과 Apple Music 원본 이미지를 대조했다. 로컬 임베드 실제 재생·Stories 이동 유지 확인. 상세 원고 검수·HTTP 증빙은 실행 서버 `editorial/state/launch-2026-10-20/`에 보존했다. `fe70440` 배포 후 공개 파일 35개와 승인 원고 revision의 일치를 확인했다.
 - 첫 SNS 초안은 회상을 단정적으로 적었다는 Threads 검수 의견이 나와 Instagram의 미전송 예약도 보류했다. 원래 문안·양쪽 검수는 `promotion/state/stories/2026-10-21.json`과 백업에 보존하고, 동일 날짜 내 수정본 1회만 추가 검수하도록 보완했다. 실제 전송은 없다.
+- 수정본은 양쪽 검수를 통과했다. 10월 21일 10:00 KST Threads·10:15 KST Instagram 예약이며, 최종 문안과 자체 제작 이미지 주소는 위 자동 기록에 있다. 공개 기사 revision·공유 이미지 dry-run 통과. 실제 게시·노출·유입은 아직 미측정이다.
+- 실행 서버의 기존 4개 타이머에 매일 03:00 조건 확인과 월간 참고자료 점검을 추가했다. 정기 기사는 화·금, 하루 1편·최근 7일 최대 2편으로 제한한다. 오늘의 수동 발행 상태와 검수 자료를 보존했고, 계정 자격 증명이 소스 업데이트 전과 동일함을 확인했다.
 - 로컬 105개 테스트·25페이지 검증 통과. 데스크톱·모바일 기사/검색, 재생 중 이동, 모바일 세로·가로 Saved 배치를 확인했다. 전체 Saved 수량 조합·실기기 키보드·전체 화면·전곡 재생은 이번 변경에서 다시 확인하지 않았다.
