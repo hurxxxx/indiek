@@ -23,7 +23,7 @@ const guides = getListeningGuides(catalogue);
 const all = [...records, pick];
 const artists = getArtistRecords(catalogue);
 const playbackRecords = getPlaybackRecords(catalogue);
-const version = '20261021-gongwon-flower';
+const version = '20261021-catalogue-lyrics';
 const authors=JSON.parse(read('content/authors.json'));
 const stories=publicStories(loadStories(root));
 for(const s of stories) {
@@ -157,7 +157,6 @@ function lyricNotes(r) {
     ${notes.paragraphs.map(text=>`<p>${e(text)}</p>`).join('')}
     ${notes.excerpt?`<figure class="lyric-excerpt"><blockquote lang="ko">${e(notes.excerpt.korean)}</blockquote><figcaption><span lang="en">${e(notes.excerpt.english)}</span><small>Brief excerpt · English translation by indiek</small></figcaption></figure><p>${e(notes.excerpt.note)}</p>`:''}
     ${[notes.source,...(notes.backgroundSources||[])].map(source=>`<p class="lyric-source">${sourceLink(source.url,source.label,source.language)}</p>`).join('')}
-    <p class="lyric-editorial-note">An editorial reading by indiek, prepared with AI assistance. <a href="/about/#editorial">How we make these notes</a>.</p>
   </section>`;
 }
 function performances(r) {

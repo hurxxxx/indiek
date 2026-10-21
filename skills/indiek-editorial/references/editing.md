@@ -18,6 +18,8 @@ Respect source-specific quotation and summarization limits. Keep a source contri
 
 indiek's default is a calm, accessible English explanation of what the lyrics convey. Help readers understand the song through its own images, gestures and changes of perspective. Plain explanation is valuable when it clarifies something specific; literary flourish and a strong critical opinion are not required.
 
+Keep lyric sources and attributed context with each note. Do not append a repeated AI-production notice or process link beneath lyric commentary; the site's general editorial-process information belongs on About.
+
 - Start from a meaningful detail in the verified lyrics, then explain how it supports the song's mood or theme. Summarise selectively in original prose; do not reconstruct every line or verse as a disguised translation.
 - Preserve the scale of the feeling. A small wish can stay small, uncertainty can remain unresolved, and affection need not become devotion or salvation. Avoid adding drama, consolation or a universal lesson.
 - Keep each inference close to its evidence. Do not invent relationship history, motives or biographical experiences. Treat the lyrical speaker separately from the performer, and attribute confirmed explanations by the songwriter. Present a plausible reading as a reading, not proof of what the writer intended.
