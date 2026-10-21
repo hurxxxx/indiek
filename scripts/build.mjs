@@ -5,12 +5,14 @@ import {loadStories,validateStory} from './editorial/content.mjs';
 import {publicStories,storyIndex,storyPath} from '../site/stories.mjs';
 import {storyViews,storyPromotion} from './story-pages.mjs';
 import {spawnSync} from 'node:child_process';
-import {shareImagePath, editorialEntries, homeUpdates, feedXML, relatedRecords} from '../site/editorial.mjs';
-import {escapeHTML as e, artistPath, imageHTML, coverHTML, videoLabel, externalLink as out, saveButton, getFeaturedArtists, getListeningGuides, guidePath, formatPosition, youtubeConsentHTML, getArtistDirectory, navigationSection, getPlaybackRecords} from '../site/shared.mjs';
+import {loadCatalogue} from './catalogue.mjs';
+import {resolveHome,renderHome} from './home.mjs';
+import {shareImagePath, editorialEntries, feedXML, relatedRecords} from '../site/editorial.mjs';
+import {escapeHTML as e, artistId, artistPath, trackPath, trackAnchor, getArtistRecords, imageHTML, coverHTML, videoLabel, externalLink as out, saveButton, getFeaturedArtists, getListeningGuides, guidePath, formatPosition, youtubeConsentHTML, getArtistDirectory, navigationSection, getPlaybackRecords} from '../site/shared.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = file => readFileSync(path.join(root, file), 'utf8');
-const catalogue = JSON.parse(read('content/catalogue.json'));
+const catalogue = loadCatalogue(root);
 const media = JSON.parse(read('content/media.json'));
 const rights = JSON.parse(read('content/image-rights.json'));
 const updates = JSON.parse(read('content/updates.json'));
@@ -19,6 +21,7 @@ const {site, records, editorPick: pick} = catalogue;
 const features = getFeaturedArtists(catalogue);
 const guides = getListeningGuides(catalogue);
 const all = [...records, pick];
+const artists = getArtistRecords(catalogue);
 const playbackRecords = getPlaybackRecords(catalogue);
 const version = '20261021-gongwon-flower';
 const authors=JSON.parse(read('content/authors.json'));
@@ -29,13 +32,14 @@ for(const s of stories) {
 }
 if(new Set(stories.map(s=>s.slug)).size!==stories.length||new Set(stories.map(s=>s.id)).size!==stories.length)throw new Error('Duplicate story identity');
 const storyView=storyViews({stories,authors,media,tracks:all,pick});
+const homeConfig=resolveHome(JSON.parse(read('content/home.json')),{catalogue,stories,media,rights});
 rmSync(path.join(root,'dist/stories'),{recursive:true,force:true});
 const entries = editorialEntries(catalogue, guides);
 entries.push(...stories.map(s=>({id:s.id,path:storyPath(s),title:s.title,description:s.description,type:'Story',published:s.published,updated:s.updated})));
 const socialImages = [];
 const promotionItems = [];
 const pages = [];
-const find = id => all.find(r => r.id === id);
+const findArtist = id => artists.find(r => artistId(r) === id);
 const guideMembers = guide => [...guide.records, ...(guide.moreRecords || [])];
 const sourceLink = (url, label, language = '') => out(url, `${label}${language ? ` (${language})` : ''}`);
 const creditId = name => `image-${name.replace(/\.[^.]+$/,'')}`;
@@ -92,34 +96,25 @@ ${structured?`<script type="application/ld+json">${JSON.stringify(structured).re
   pages.push(canonical);
 }
 function artistCard(r) {
-  const feature = features.find(feature => feature.id === r.id);
-  return `<article class="artist-card" data-directory-artist="${r.id}">
+  const feature = features.find(feature => feature.id === artistId(r));
+  return `<article class="artist-card" data-directory-artist="${artistId(r)}">
     <a class="artist-card-image artist-card-image-${feature.kind}" href="${artistPath(r)}" aria-label="Meet ${e(r.artist)}">${imageHTML(media,feature.image,feature.alt,{sizes:'(max-width: 760px) 88px, (max-width: 1050px) 45vw, 30vw',style:`object-position:${feature.position}`})}</a>
     <div class="artist-card-heading"><p class="eyebrow">${e(r.genre)}</p><h2><a href="${artistPath(r)}">${e(r.artist)} <span aria-hidden="true">↗</span></a></h2><p lang="ko">${e(r.korean)}</p>${photoCredit(feature.image)}</div>
     <p class="artist-card-intro">${e(r.artistIntro)}</p>
-    <div class="artist-card-track"><a href="${artistPath(r)}#listen"><span class="mono">A SONG TO START WITH</span><strong>${e(r.track)}</strong><span class="artist-card-format">${videoLabel(r)}</span></a><div class="artist-card-actions"><button class="underlink" data-load-player="${r.id}" aria-label="Agree &amp; play: ${e(r.track)} by ${e(r.artist)}" data-js-only hidden>Agree &amp; play</button>${r!==pick?saveButton(r):''}</div></div>
+    <div class="artist-card-track"><a href="${trackPath(r)}"><span class="mono">A SONG TO START WITH</span><strong>${e(r.track)}</strong><span class="artist-card-format">${videoLabel(r)}</span></a><div class="artist-card-actions"><button class="underlink" data-load-player="${r.id}" aria-label="Agree &amp; play: ${e(r.track)} by ${e(r.artist)}" data-js-only hidden>Agree &amp; play</button>${r!==pick?saveButton(r):''}</div></div>
   </article>`;
 }
-function hero(feature, i) {
-  const r = find(feature.id);
-  return `<div class="hero-slide${i===0?' is-active':''}" id="hero-${r.id}"${i ? ' hidden aria-hidden="true" inert' : ''} role="group" aria-roledescription="slide" aria-label="${e(r.artist)}, ${i+1} of ${features.length}">
-  <a class="hero-image hero-image-${r.id} hero-image-${feature.kind}" href="${artistPath(r)}" aria-label="Meet ${e(r.artist)}">${imageHTML(media,feature.image,feature.alt,{priority:i===0,deferred:i!==0,sizes:feature.kind==='artwork'?'(max-width: 760px) 48vw, 32vw':'(max-width: 760px) calc(100vw - 36px), 62vw',style:`object-position:${feature.position}`})}<span class="location-label mono">${feature.kind==='artwork'?'RELEASE ARTWORK':`${e(r.artist)} / <span lang="ko">${e(r.korean)}</span>`}</span><span class="artist-stamp" aria-hidden="true">${e(r.artist)}</span></a>
-  <div class="story-caption"><div><p class="eyebrow">MEET THE ARTIST <span lang="ko">${e(r.korean)}</span></p><h2><a href="${artistPath(r)}">${e(feature.title)}</a></h2></div><a class="round-arrow" href="${artistPath(r)}" aria-label="Read about ${e(r.artist)}">↗</a></div><p class="feature-deck">${feature.deck}</p>${photoCredit(feature.image)}</div>`;
-}
-function trackLink(r,i) {
-  return `<li><a class="track" data-room-track="${r.id}" href="${artistPath(r)}#listen" aria-label="Listen to ${e(r.track)} by ${e(r.artist)}"><span class="track-number" aria-hidden="true">${formatPosition(i+1)}</span><span class="track-info"><strong>${e(r.track)}</strong><span>${e(r.artist)}</span></span>${r.duration?`<span class="track-time">${r.duration}</span>`:''}<span class="track-play" aria-hidden="true">▷</span></a></li>`;
-}
-function guideCards(heading = 'h3', compact = false) {
-  return `<div class="guide-grid${compact?' guide-grid-home':''}">${guides.map((guide,i)=>{
+function guideCards(heading = 'h3', compact = false, selection = guides, imageGuideIds = null) {
+  return `<div class="guide-grid${compact?' guide-grid-home':''}">${selection.map((guide,i)=>{
     const members = guideMembers(guide);
     const first = members[0];
-    const artwork = guide.cardImageArtistId ? members.find(r=>r.id===guide.cardImageArtistId) : first;
+    const artwork = guide.cardArtwork || (guide.cardImageArtistId ? members.find(r=>artistId(r)===guide.cardImageArtistId) : first);
     if (!artwork) throw new Error(`Card image artist is not in guide: ${guide.id}`);
     const preview = members.slice(0,3).map(r=>e(r.artist)).join(' · ');
     const more = members.length - 3;
     return `<article class="guide-card" data-guide="${guide.id}" data-track-count="${members.length}"><a class="guide-card-link" href="${guidePath(guide)}" aria-label="Explore the guide: ${e(guide.title)}">
       <div class="guide-card-top mono"><span>GUIDE ${formatPosition(i+1)}</span><span>${members.length} ${members.length===1?'TRACK':'TRACKS'}</span></div>
-      ${compact&&stories[0]?.cover?.file===artwork.image?'':`<div class="guide-artwork">${coverHTML(media,artwork,{sizes:'(max-width: 760px) 90vw, 45vw'})}</div><p class="guide-featured">${e(artwork.artist)} / ${e(artwork.release || artwork.album)}</p>`}
+      ${imageGuideIds&&!imageGuideIds.includes(guide.id)?'':`<div class="guide-artwork">${coverHTML(media,artwork,{sizes:'(max-width: 760px) 90vw, 45vw'})}</div><p class="guide-featured">${e(artwork.artist)} / ${e(artwork.release || artwork.album)}</p>`}
       <${heading}>${e(guide.title)}</${heading}><p class="guide-description">${e(guide.description)}</p>
       <p class="guide-preview">${preview}${more>0?` <span>+ ${more} more</span>`:''}</p>
       <span class="guide-cta">Explore the guide <span aria-hidden="true">↗</span></span>
@@ -128,17 +123,21 @@ function guideCards(heading = 'h3', compact = false) {
 }
 function guideTrack(r,i,guide) {
   const detail = guide?.trackDetails?.[r.id];
-  const next = detail && find(detail.nextArtistId);
-  return `<li${detail?' class="guide-track-expanded"':''}><a class="guide-track" href="${artistPath(r)}#listen" data-guide-track="${r.id}">
-    <span class="guide-track-number mono" aria-hidden="true">${formatPosition(i+1)}</span>${coverHTML(media,r,{sizes:'(max-width: 760px) 76px, 100px'})}
+  const next = detail && findArtist(detail.nextArtistId);
+  return `<li${detail?' class="guide-track-expanded"':''}><a class="guide-track" href="${trackPath(r)}" data-guide-track="${r.id}">
+    <span class="guide-track-number mono" aria-hidden="true">${formatPosition(i+1)}</span>${!guide || guide.records.findIndex(track=>track.image===r.image)===i ? coverHTML(media,r,{sizes:'(max-width: 760px) 76px, 100px'}) : '<span aria-hidden="true"></span>'}
     <div class="guide-track-copy"><p class="eyebrow">${e(r.artist)} / <span lang="ko">${e(r.korean)}</span></p><h2>${e(r.track)}</h2><p class="guide-track-note">${e(guide?.trackNotes?.[r.id] || r.note)}</p></div>
     <span class="guide-track-action"><span class="mono">${videoLabel(r)}</span><span>Listen & read <span aria-hidden="true">↗</span></span></span>
-  </a>${detail?`<div class="guide-track-details"><p><strong>Behind the song.</strong> ${e(detail.listenFor)}</p><p><strong>You might also like:</strong> <a href="${artistPath(next)}">${e(next.artist)} / ${e(next.track)}</a>. ${e(detail.nextNote)}</p></div>`:''}<div class="guide-track-controls"><button class="underlink" data-load-player="${r.id}" data-js-only hidden>Agree &amp; play</button>${r!==pick?saveButton(r,true):''}</div></li>`;
+  </a>${detail?`<div class="guide-track-details"><p><strong>Behind the song.</strong> ${e(detail.listenFor)}</p><p><strong>You might also like:</strong> <a href="${artistPath(next)}">${e(next.artist)} / ${e(next.track)}</a>. ${e(detail.nextNote)}</p></div>`:''}<div class="guide-track-controls"><button class="underlink" data-load-player="${r.id}" data-js-only hidden>Agree &amp; play</button>${r!==pick?saveButton(r,true):''}${lyricNotesLink(r)}</div></li>`;
+}
+
+function lyricNotesLink(r) {
+  return r.lyricNotes ? `<a class="underlink" href="${artistPath(r)}#${trackAnchor(r)==='listen'?'lyrics':`lyrics-${r.id}`}" aria-label="Inside the lyrics: ${e(r.track)} by ${e(r.artist)}">Inside the lyrics ↗</a>` : '';
 }
 
 function guideCatalogue(guide) {
   if (!guide.moreRecords?.length) return '';
-  return `<section class="related-listening guide-catalogue" aria-labelledby="guide-catalogue-title"><p class="eyebrow">MORE TO HEAR / ${guide.moreRecords.length} ARTISTS</p><h2 id="guide-catalogue-title">More artists to spend time with.</h2><p class="guide-catalogue-intro">Folk, pop, R&B and more, from artists elsewhere in the journal. Each has a song here and a little of their story.</p><div class="related-tracks">${guide.moreRecords.map(r=>`<article data-guide-more="${r.id}"><a href="${artistPath(r)}"><h3>${e(r.artist)}</h3><span>${e(r.track)} / ${videoLabel(r)}</span><p>${e(r.artistIntro)}</p><span class="guide-catalogue-link">Meet the artist ↗</span></a><div class="guide-track-controls"><button class="underlink" data-load-player="${r.id}" data-js-only hidden>Agree &amp; play</button>${r!==pick?saveButton(r,true):''}</div></article>`).join('')}</div></section>`;
+  return `<section class="related-listening guide-catalogue" aria-labelledby="guide-catalogue-title"><p class="eyebrow">MORE TO HEAR / ${guide.moreRecords.length} ARTISTS</p><h2 id="guide-catalogue-title">More artists to spend time with.</h2><p class="guide-catalogue-intro">Folk, pop, R&B and more, from artists elsewhere in the journal. Each has a song here and a little of their story.</p><div class="related-tracks">${guide.moreRecords.map(r=>`<article data-guide-more="${r.id}"><a href="${artistPath(r)}"><h3>${e(r.artist)}</h3><span>${e(r.track)} / ${videoLabel(r)}</span><p>${e(r.artistIntro)}</p><span class="guide-catalogue-link">Meet the artist ↗</span></a><div class="guide-track-controls"><button class="underlink" data-load-player="${r.id}" data-js-only hidden>Agree &amp; play</button>${r!==pick?saveButton(r,true):''}${lyricNotesLink(r)}</div></article>`).join('')}</div></section>`;
 }
 function player(r, cover = false) {
   if(r.externalOnly) return `<div class="external-player"><p class="eyebrow">${videoLabel(r)} · ${r.duration}</p><p>${e(r.performance)}</p>${out(r.url,'Watch live on YouTube','room-button')}<p class="embed-caption">This performance opens on YouTube.</p></div>`;
@@ -151,13 +150,14 @@ function player(r, cover = false) {
 function lyricNotes(r) {
   const notes = r.lyricNotes;
   if (!notes) return '';
-  return `<section class="lyric-notes" id="lyrics" aria-labelledby="lyrics-title">
-    <p class="eyebrow">INSIDE THE LYRICS</p><h3 id="lyrics-title">${e(notes.heading)}</h3>
+  const id = trackAnchor(r) === 'listen' ? 'lyrics' : `lyrics-${r.id}`;
+  return `<section class="lyric-notes" id="${id}" aria-labelledby="${id}-title">
+    <p class="eyebrow">INSIDE THE LYRICS</p><h3 id="${id}-title">${e(notes.heading)}</h3>
     <ul class="lyric-themes" aria-label="Lyrical themes">${notes.themes.map(theme=>`<li>${e(theme)}</li>`).join('')}</ul>
     ${notes.paragraphs.map(text=>`<p>${e(text)}</p>`).join('')}
-    <figure class="lyric-excerpt"><blockquote lang="ko">${e(notes.excerpt.korean)}</blockquote><figcaption><span lang="en">${e(notes.excerpt.english)}</span><small>Brief excerpt · English translation by indiek</small></figcaption></figure>
-    <p>${e(notes.excerpt.note)}</p><p class="lyric-source">${sourceLink(notes.source.url,notes.source.label,notes.source.language)}</p>
-    <p class="lyric-editorial-note">Reading and brief translation by indiek, prepared with AI assistance. <a href="/about/#editorial">How we make these notes</a>.</p>
+    ${notes.excerpt?`<figure class="lyric-excerpt"><blockquote lang="ko">${e(notes.excerpt.korean)}</blockquote><figcaption><span lang="en">${e(notes.excerpt.english)}</span><small>Brief excerpt · English translation by indiek</small></figcaption></figure><p>${e(notes.excerpt.note)}</p>`:''}
+    ${[notes.source,...(notes.backgroundSources||[])].map(source=>`<p class="lyric-source">${sourceLink(source.url,source.label,source.language)}</p>`).join('')}
+    <p class="lyric-editorial-note">An editorial reading by indiek, prepared with AI assistance. <a href="/about/#editorial">How we make these notes</a>.</p>
   </section>`;
 }
 function performances(r) {
@@ -169,14 +169,14 @@ function performances(r) {
     </section>`;
   }).join('');
 }
+function trackSection(r, showCover = true) {
+  const titleId = trackAnchor(r) === 'listen' ? 'track-title' : `track-title-${r.id}`;
+  return `<section class="track-page" id="${trackAnchor(r)}" aria-labelledby="${titleId}"><div class="track-summary">${showCover ? coverHTML(media,r,{sizes:'(max-width: 760px) 45vw, 300px',className:'detail-cover'}) : ''}<p class="eyebrow">${e(r.genre)} / ${r.year}</p><h2 id="${titleId}">${e(r.track)}${r.koreanTitle?`<span class="track-korean" lang="ko">${e(r.koreanTitle)}</span>`:''}</h2><p class="record-format mono">${videoLabel(r)}</p>${r.releaseYear?`<p class="embed-caption">Single: ${r.year} · ${e(r.release)}: ${r.releaseYear}</p>`:''}${r!==pick?saveButton(r,true):''}<p class="release-link">${out(r.source,'View release on Apple Music','underlink')}</p></div><div class="track-reading"><p class="track-description">${e(r.description)}</p>${r.listeningNote?`<section class="listening-note"><h3>A little background</h3><p>${e(r.listeningNote)}</p></section>`:''}${r.credits?`<p class="pick-credits">${e(r.credits)}</p>`:''}${player(r)}${lyricNotes(r)}</div></section>`;
+}
 function moreTracks(r) {
   if(!r.moreTracks) return '';
   return `<aside class="artist-listens" aria-labelledby="more-listens-title"><p class="eyebrow">MORE SONGS TO EXPLORE</p><h3 id="more-listens-title">Keep listening.</h3><ol class="artist-track-links">${r.moreTracks.map((track,i)=>`<li><a href="${track.url}" target="_blank" rel="noopener noreferrer"><span class="mono">0${i+1} / ${track.year}</span><span><strong>${e(track.title)}</strong><small>${e(track.note)}</small></span><span aria-hidden="true">↗</span></a></li>`).join('')}</ol><p class="artist-listens-note mono">LISTEN ON YOUTUBE ↗</p></aside>`;
 }
-function editorPick() {
-  return `<section class="editor-pick pick-preview wrap" id="editors-pick" aria-labelledby="editors-pick-title"><figure class="pick-artwork"><a href="${artistPath(pick)}#listen" aria-label="Listen to ${e(pick.track)} by ${e(pick.artist)}">${coverHTML(media,pick,{sizes:'(max-width: 760px) 90vw, 40vw'})}</a><figcaption>${e(pick.release || pick.album)} · Release artwork</figcaption></figure><div class="pick-copy"><p class="eyebrow">EDITOR’S PICK / R&amp;B</p><h2 id="editors-pick-title"><a href="${artistPath(pick)}">${e(pick.artist)}</a><span>${e(pick.track)} <span lang="ko">(${e(pick.koreanTitle)})</span></span></h2><p class="pick-date mono">SINGLE / ${e(pick.releaseDate.toUpperCase())}</p><div class="pick-reading"><p>${e(pick.description)}</p><div class="pick-actions"><button class="underlink" data-load-player="${pick.id}" data-js-only hidden>Agree &amp; play</button><a class="underlink" href="${artistPath(pick)}">The story behind the voice <span aria-hidden="true">↗</span></a></div>${youtubeConsentHTML()}</div></div></section>`;
-}
-
 function shareControl() { return '<div class="share-tools"><button class="underlink" data-share-page data-js-only hidden>Share this page ↗</button><a class="underlink" href="/feed.xml">Follow via RSS ↗</a></div>'; }
 function byline(editorial) {
   if (!editorial) return '';
@@ -186,16 +186,8 @@ function related(r) {
   const next = relatedRecords(r,guides);
   return `<section class="related-listening" aria-labelledby="related-title"><p class="eyebrow">WHERE TO NEXT</p><h2 id="related-title">More music you might like.</h2><div class="related-tracks">${next.records.map(other=>`<a href="${artistPath(other)}"><strong>${e(other.artist)}</strong><span>${e(other.track)}</span></a>`).join('')}</div><p class="related-guide-links">${next.guides.map(g=>`<a class="underlink" href="${guidePath(g)}">${e(g.title)} ↗</a>`).join('')}</p></section>`;
 }
-function latest() {
-  const recent=homeUpdates(entries,updates,{preview,excludePaths:stories[0]?[storyPath(stories[0])]:[]});
-  if(!recent.length)return '';
-  return `<section class="latest-section wrap" id="latest" aria-labelledby="latest-title"><div class="section-heading"><div><p class="eyebrow">ADDED &amp; UPDATED</p><h2 id="latest-title">New on indiek.</h2></div><p class="latest-intro">Artists, songs &amp; stories.</p></div><div class="latest-list">${recent.map(item=>`<a href="${e(item.path)}" data-home-update="${e(item.id)}"><span class="latest-meta mono"><span>${e(item.label.toUpperCase())}</span>${item.date?`<time datetime="${item.date}">${item.date}</time>`:''}</span><h3>${e(item.title)}</h3><p>${e(item.description)}</p><span class="latest-arrow" aria-hidden="true">↗</span></a>`).join('')}</div></section>`;
-}
-
-let home = read('site/templates/home.html');
-home=home.replace('{{STORIES}}',storyView.home());
-for(const [token,value] of Object.entries({ARTIST_COUNT:all.length,FEATURE_COUNT:formatPosition(features.length),HERO:features.map(hero).join(''),TRACKS:all.map(trackLink).join(''),ROOM_COUNT:all.length,ROOM_HINT:all.length>6?`<p class="room-list-hint" id="room-list-hint">Scroll to explore all ${all.length} tracks <span aria-hidden="true">↓</span></p>`:'',EDITOR_PICK:editorPick(),GUIDES:guideCards('h3',true),GUIDE_ARTIST_COUNT:all.length,LATEST:latest()})) home=home.replaceAll(`{{${token}}}`,value);
-page('/','indiek — Music from Korea, worth sharing','Hear Korean bands and solo artists through recordings and live performances, with stories about the music and the people who make it.',home,'home-page');
+const home = renderHome(homeConfig,{catalogue,media,entries,updates,preview,photoCredit,guideCards,storyHome:storyView.home,template:name=>read(`site/templates/${name}`)});
+page('/',homeConfig.title,homeConfig.description,home,'home-page');
 page('/stories/','Stories | indiek','Stories about Korean music: the choices behind a song, the people around it, and where to listen next.',storyView.index);
 for(const s of stories){
   const author=authors.find(a=>a.id===s.authorId);
@@ -205,42 +197,44 @@ for(const s of stories){
 
 page('/artists/','Korean artists A–Z | indiek','Browse Korean bands and solo artists, find a song and get to know the people behind it. Artist stories and official recordings, with more to come.',`<main id="main" class="wrap artist-directory" data-artist-directory>
   <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><span>Artists</span></nav>
-  <header class="guide-heading"><p class="eyebrow">${all.length} ARTISTS AND COUNTING</p><h1>Meet the artists.</h1><p class="guide-lead">Bands, songwriters and voices from Korea. A song from each, a little of their story, and more to come.</p></header>
+  <header class="guide-heading"><p class="eyebrow">${artists.length} ARTISTS AND COUNTING</p><h1>Meet the artists.</h1><p class="guide-lead">Bands, songwriters and voices from Korea. A song from each, a little of their story, and more to come.</p></header>
   <div class="directory-controls" data-js-only hidden><label for="artist-query">Find an artist or song</label><input id="artist-query" type="search" enterkeyhint="search" placeholder="Name or song, in English or Korean" autocomplete="off" aria-controls="artist-grid" spellcheck="false"><div class="filter-bar"><div class="filters" role="group" aria-label="Filter by artist type"><button data-directory-filter="all" aria-pressed="true" aria-controls="artist-grid">All artists</button><button data-directory-filter="bands" aria-pressed="false" aria-controls="artist-grid">Bands</button><button data-directory-filter="solo" aria-pressed="false" aria-controls="artist-grid">Solo artists</button></div><button class="directory-reset" data-directory-reset hidden>Reset filters</button></div></div>
-  <div class="directory-summary"><p class="mono" id="artist-result-count" tabindex="-1" role="status" aria-live="polite" aria-atomic="true">${all.length} artists · A–Z</p><a class="underlink" href="/notes/first-listens/">Try a listening guide <span aria-hidden="true">↗</span></a></div>
+  <div class="directory-summary"><p class="mono" id="artist-result-count" tabindex="-1" role="status" aria-live="polite" aria-atomic="true">${artists.length} artists · A–Z</p><a class="underlink" href="/notes/first-listens/">Try a listening guide <span aria-hidden="true">↗</span></a></div>
   <p id="artist-empty" class="directory-empty" hidden>No artists found. Try another name or reset the filters.</p>
   <div class="artist-grid" id="artist-grid">${getArtistDirectory(catalogue).map(artistCard).join('')}</div>
   <div class="directory-consent">${youtubeConsentHTML()}</div>
 </main>`);
 
-for(const r of all) {
-  const feature=features.find(f=>f.id===r.id && f.kind==='portrait');
-  const sources=[{url:r.source,label:r.sourceName,language:r.sourceLanguage},{url:r.artistSource,label:r.artistSourceName,language:r.artistSourceLanguage},...(r.extraSources||[])];
+for(const r of artists) {
+  const artistTracks = [r, ...all.filter(track=>artistId(track)===artistId(r) && track.id!==r.id)];
+  const feature=features.find(f=>f.id===artistId(r) && f.kind==='portrait');
+  const sourceList=[{url:r.source,label:r.sourceName,language:r.sourceLanguage},{url:r.artistSource,label:r.artistSourceName,language:r.artistSourceLanguage},...(r.extraSources||[]),...artistTracks.slice(1).flatMap(track=>[{url:track.source,label:track.sourceName,language:track.sourceLanguage},...(track.extraSources||[])])];
+  const sources=sourceList.filter((source,i)=>sourceList.findIndex(other=>other.url===source.url)===i);
   const main=`<main id="main" class="wrap artist-page"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><a href="/artists/">Artists</a></nav>
   <header class="artist-heading"><p class="eyebrow">MEET THE ARTIST / <span lang="ko">${e(r.korean)}</span></p><h1>${e(r.artist)}</h1><p class="artist-lead">${e(r.artistIntro)}</p>${byline(r.editorial)}${shareControl()}${r.lyricNotes?`<nav class="artist-sections" aria-label="On this artist page"><a href="#listen">Listen ↓</a><a href="#lyrics">Inside the lyrics ↓</a>${(r.performances||[]).map(video=>`<a href="#${video.id}">Full live session ↓</a>`).join('')}</nav>`:''}</header>
   ${feature?`<figure class="artist-portrait">${imageHTML(media,feature.image,feature.alt,{priority:true,sizes:'(max-width: 760px) 92vw, 960px',style:`object-position:${feature.position}`})}<figcaption>${e(rights.images.find(image=>image.file===feature.image)?.caption || 'Artist photograph.')} ${photoCredit(feature.image) || '<a href="/about/#image-credits">Image credits</a>'}</figcaption></figure>`:''}
   ${r.biography?`<div class="artist-extra"><p>${e(r.biography)}</p></div>`:''}
-  <section class="track-page" id="listen" aria-labelledby="track-title"><div class="track-summary">${coverHTML(media,r,{sizes:'(max-width: 760px) 45vw, 300px',className:'detail-cover'})}<p class="eyebrow">${e(r.genre)} / ${r.year}</p><h2 id="track-title">${e(r.track)}${r.koreanTitle?`<span class="track-korean" lang="ko">${e(r.koreanTitle)}</span>`:''}</h2><p class="record-format mono">${videoLabel(r)}</p>${r.releaseYear?`<p class="embed-caption">Single: ${r.year} · ${e(r.release)}: ${r.releaseYear}</p>`:''}${r!==pick?saveButton(r,true):''}<p class="release-link">${out(r.source,'View release on Apple Music','underlink')}</p></div><div class="track-reading"><p class="track-description">${e(r.description)}</p>${r.listeningNote?`<section class="listening-note"><h3>A little background</h3><p>${e(r.listeningNote)}</p></section>`:''}${r.credits?`<p class="pick-credits">${e(r.credits)}</p>`:''}${player(r)}${lyricNotes(r)}</div></section>
+  ${artistTracks.map((track,i)=>trackSection(track,artistTracks.findIndex(other=>other.image===track.image)===i)).join('\n  ')}
   ${performances(r)}
   ${r.moreTracks?`<div class="more-listening">${moreTracks(r)}</div>`:''}
   ${related(r)}
   <section class="page-sources" aria-labelledby="sources-title"><h2 id="sources-title">Sources & further reading</h2><ul>${sources.map(s=>`<li>${sourceLink(s.url,s.label,s.language)}</li>`).join('')}</ul><p>These are independent listening notes, not an interview or an official artist statement. For a correction, email <a href="mailto:${site.email}">${site.email}</a>.</p><p><a href="/about/#image-credits">Image credits</a></p></section><a class="underlink back-to-shelf" href="/artists/">All artists <span aria-hidden="true">↗</span></a></main>`;
   page(artistPath(r),`${r.artist} — ${r.track} | indiek`,`${r.artist}: ${r.track}${r.koreanTitle?` (${r.koreanTitle})`:''}. ${r.note} Listen, meet the artist and explore the release.`,main,'detail-page',r.editorial);
-  promotionItems.push({id:r.id,kind:'artist',title:`${r.artist} — ${r.track}`,path:artistPath(r),description:r.description,artistIds:[r.id],image:shareImagePath(artistPath(r)),altText:`indiek listening notes: ${r.artist} — ${r.track}. Typographic card.`});
+  promotionItems.push({id:artistId(r),kind:'artist',title:`${r.artist} — ${r.track}`,path:artistPath(r),description:r.description,artistIds:[artistId(r)],image:shareImagePath(artistPath(r)),altText:`indiek listening notes: ${r.artist} — ${r.track}. Typographic card.`});
 }
 const prose=(eyebrow,title,body)=>`<main id="main" class="wrap prose-page"><p class="eyebrow">${eyebrow}</p><h1>${title}</h1>${body}<p class="prose-back"><a class="underlink" href="/#records">Back to the music <span aria-hidden="true">↗</span></a></p></main>`;
 page('/notes/first-listens/','Listening guides | indiek','Korean music grouped around live performances, guitars and voices, with an introductory guide for new listeners.',`<main id="main" class="wrap guide-hub">
   <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><span>Listening guides</span></nav>
-  <header class="guide-heading"><p class="eyebrow">${all.length} ARTISTS / ${guides.length} GUIDES</p><h1>Find your way in.</h1><p class="guide-lead">A few ways to browse the music here: live performances, guitar songs or a voice that catches your ear. There’s an introductory guide too, if you’re new to Korean music.</p></header>
+  <header class="guide-heading"><p class="eyebrow">${artists.length} ARTISTS / ${guides.length} GUIDES</p><h1>Find your way in.</h1><p class="guide-lead">A few ways to browse the music here: live performances, guitar songs or a voice that catches your ear. There’s an introductory guide too, if you’re new to Korean music.</p></header>
   ${shareControl()}${guideCards('h2')}<a class="underlink back-to-shelf" href="/#notes">Back to the journal <span aria-hidden="true">↗</span></a></main>`);
 
 for (const guide of guides) {
   const members = guideMembers(guide);
-  const portraits = members.map(r=>features.find(f=>f.id===r.id && f.kind==='portrait')).filter(Boolean);
+  const portraits = members.map(r=>features.find(f=>f.id===artistId(r) && f.kind==='portrait')).filter(Boolean);
   const portrait = portraits.find(f=>f.id===guide.cardImageArtistId) || portraits[0];
   page(guidePath(guide),`${guide.title} — Listening guide | indiek`,guide.description,`<main id="main" class="wrap guide-page" data-guide-page="${guide.id}">
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><a href="/notes/first-listens/">Listening guides</a></nav>
-    <header class="guide-heading${portrait?' guide-heading-with-cover':''}"><div><p class="eyebrow">LISTENING GUIDE / ${members.length} ${members.length===1?'TRACK':'TRACKS'}</p><h1>${e(guide.title)}</h1><p class="guide-lead">${e(guide.intro)}</p>${byline(guide.editorial)}${shareControl()}</div>${portrait?`<figure>${imageHTML(media,portrait.image,portrait.alt,{priority:true,sizes:'(max-width: 760px) 100px, 240px',className:'guide-portrait',style:`object-position:${portrait.position}`})}<figcaption><span>In this guide</span><br><a href="${artistPath(portrait)}">${e(find(portrait.id).artist)}</a>${photoCredit(portrait.image)}</figcaption></figure>`:''}</header>
+    <header class="guide-heading${portrait?' guide-heading-with-cover':''}"><div><p class="eyebrow">LISTENING GUIDE / ${members.length} ${members.length===1?'TRACK':'TRACKS'}</p><h1>${e(guide.title)}</h1><p class="guide-lead">${e(guide.intro)}</p>${byline(guide.editorial)}${shareControl()}</div>${portrait?`<figure>${imageHTML(media,portrait.image,portrait.alt,{priority:true,sizes:'(max-width: 760px) 100px, 240px',className:'guide-portrait',style:`object-position:${portrait.position}`})}<figcaption><span>In this guide</span><br><a href="${artistPath(portrait)}">${e(findArtist(portrait.id).artist)}</a>${photoCredit(portrait.image)}</figcaption></figure>`:''}</header>
     <div class="guide-essay">${(guide.paragraphs||[]).map(text=>`<p>${e(text)}</p>`).join('')}</div>
     ${youtubeConsentHTML()}
     <ol class="guide-tracks" aria-label="Tracks in this guide">${guide.records.map((r,i)=>guideTrack(r,i,guide)).join('')}</ol>
@@ -248,7 +242,7 @@ for (const guide of guides) {
     ${guide.sources?`<section class="guide-sources"><h2>Sources & song context</h2><ul>${guide.sources.map(source=>`<li><a href="${e(source.url)}">${e(source.label)}</a></li>`).join('')}</ul><p>The artist pages link to the interviews, release notes and other sources behind these stories.</p></section>`:''}
     <nav class="guide-next" aria-label="Other listening guides"><h2>Keep exploring.</h2><div>${guides.filter(other=>other.id!==guide.id).map(other=>`<a class="underlink" href="${guidePath(other)}">${e(other.title)} <span aria-hidden="true">↗</span></a>`).join('')}</div></nav>
     <a class="underlink back-to-shelf" href="/notes/first-listens/">All listening guides <span aria-hidden="true">↗</span></a></main>`,'',guide.editorial);
-  if(guide.status!=='draft')promotionItems.push({id:guide.id,kind:'guide',title:guide.title,path:guidePath(guide),description:guide.description,artistIds:members.map(r=>r.id),image:shareImagePath(guidePath(guide)),altText:`indiek listening guide: ${guide.title}. Typographic card.`});
+  if(guide.status!=='draft')promotionItems.push({id:guide.id,kind:'guide',title:guide.title,path:guidePath(guide),description:guide.description,artistIds:[...new Set(members.map(artistId))],image:shareImagePath(guidePath(guide)),altText:`indiek listening guide: ${guide.title}. Typographic card.`});
 }
 
 page('/about/','About & contact | indiek','Korean artists and songs I wish more people knew. A personal music selection, with room for new discoveries. Get in touch at gw@lumejs.com.',prose('A NOTE FROM INDIEK','Good music travels.',`<p class="prose-lead">Korean artists and songs I wish more people knew.</p><section><h2>Why I made indiek.</h2><p>I wanted a place to share music I like with people who might not have heard it. There are bands and solo artists here, from indie and folk to pop, hip-hop and R&amp;B.</p><p>I add to the selection as I find more music. A song doesn’t have to be new to belong here. Alongside the recordings and live clips, there’s a little about the artists and the stories behind their songs.</p><p>indiek is not affiliated with the featured artists, their labels, YouTube or Apple Music.</p></section><section id="editorial"><h2>How the stories are made.</h2><p>Features published under the indiek name use AI-assisted research, drafting and automated factual and editorial checks. We link the original reporting and release records used in each story. These checks can miss things; corrections are welcome.</p><p>We distinguish reported information from interpretation. We do not invent interviews, personal listening memories or visits to a show. An existing interview stays credited to its original publication. A date changes when a story is actually updated, not to make an older article look new.</p><p>Guest contributions carry the contributor’s own name and a description of their involvement. Sources and image credits are part of the editing process; a public photograph is not automatically licensed for reuse.</p></section><section id="contribute"><h2>Have a story in mind?</h2><p>We welcome ideas about music from Korea: a song with an unexpected history, a small scene worth understanding, or a question you have spent time exploring. Send a short pitch, the angle and any relevant writing samples to <a href="mailto:${site.email}?subject=Story%20pitch">${site.email}</a>.</p><p>Please tell us what you have researched or experienced yourself and disclose any involvement with the artists. We will discuss editing, credits, rights and any terms before accepting a contribution. Sending a pitch does not transfer your rights or guarantee publication.</p></section><section id="contact"><h2>Get in touch.</h2><p>For questions, factual corrections, credit updates, or requests concerning an image or other content, email <a href="mailto:${site.email}">${site.email}</a>.</p><p>Include the page address and the material you are referring to. For an image request, please describe your connection to the work. Please avoid sending sensitive personal documents in an initial message.</p></section><section id="image-credits"><h2>Image credits.</h2><p>Artist photographs and release artwork belong to their respective rights holders. The links below identify the sources of images used in the journal. Source credit does not itself grant permission to reuse an image.</p><ul class="credit-list">${rights.images.map(image=>`<li id="${creditId(image.file)}"><strong>${e(image.label)}</strong><br>${sourceLink(image.source,image.credit,image.language)}${image.license?` · ${image.licenseUrl?out(image.licenseUrl,image.license):e(image.license)}<br>${e(image.changes)}`:""}</li>`).join('')}</ul><p>The indiek sharing graphics are original typography. Barlow Condensed, DM Sans and IBM Plex Mono are used under the SIL Open Font License.</p></section>`));

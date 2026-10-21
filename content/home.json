@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "title": "indiek — Music from Korea, worth sharing",
+  "description": "Hear Korean bands and solo artists through recordings and live performances, with stories about the music and the people who make it.",
+  "sections": [
+    {
+      "id": "masthead",
+      "type": "masthead",
+      "enabled": true,
+      "copy": {
+        "label": "Music from Korea, worth sharing",
+        "topLeft": "MUSIC FROM KOREA, WORTH SHARING",
+        "topRight": "AN INDEPENDENT MUSIC MAGAZINE",
+        "eyebrow": "LOCAL ROOTS. OPEN EARS.",
+        "title": "Good music\ntravels.",
+        "link": "Find your next favorite",
+        "bottomLeft": "KOREAN MUSIC, PERSONALLY PICKED.",
+        "bottomRight": "START SOMEWHERE. KEEP LISTENING."
+      }
+    },
+    {
+      "id": "latest",
+      "type": "updates",
+      "enabled": true,
+      "copy": {
+        "eyebrow": "ADDED & UPDATED",
+        "title": "New on indiek.",
+        "intro": "Artists, songs & stories."
+      }
+    },
+    {
+      "id": "discover",
+      "type": "discover",
+      "enabled": true,
+      "features": [
+        {
+          "id": "ydbb",
+          "title": "Hoping to be remembered.",
+          "deck": "YdBB’s <em>ONCE</em> is about letting someone go, with the hope that they’ll remember you kindly."
+        },
+        {
+          "id": "whiteusedsocks",
+          "title": "From the band’s early days.",
+          "deck": "<em>Don’t feel sad</em> is an early WhiteUsedSocks song, written and composed by Jung Jaeheon."
+        },
+        {
+          "id": "motte",
+          "title": "Motte’s song for A-TEEN.",
+          "deck": "Motte sang <em>Don’t run away</em> for the web drama. The song has a place here whether or not you’ve seen it."
+        },
+        {
+          "id": "hanroro",
+          "title": "Getting through the day.",
+          "deck": "In <em>Even if you leave</em>, HANRORO writes about letting go and the blame we turn on ourselves."
+        },
+        {
+          "id": "black-skirts",
+          "title": "A love song from TEAM BABY.",
+          "deck": "<em>EVERYTHING</em> came out on its own before becoming part of The Black Skirts’ <em>TEAM BABY</em>."
+        },
+        {
+          "id": "sunwoojunga",
+          "title": "Run with Me, on stage.",
+          "deck": "sunwoojunga sings a song from <em>Serenade</em> at the concert of the same name."
+        },
+        {
+          "id": "car-the-garden",
+          "title": "Tree, in an Open Mic session.",
+          "deck": "Car, the garden performs <em>Tree</em> for the official <em>Begin Again</em> Open Mic series."
+        },
+        {
+          "id": "choi-yu-ree",
+          "title": "A place to belong.",
+          "deck": "In <em>Forest</em>, Choi Yu Ree finds an image for belonging in trees growing together. Here she sings it live."
+        },
+        {
+          "id": "bol4",
+          "title": "Eternal love, live at Bloom.",
+          "deck": "Ahn Ji-young brings a song from <em>Merry Go Round</em> to BOL4’s 2024 <em>Bloom</em> concert."
+        },
+        {
+          "id": "esegye",
+          "title": "Romance, youth, love.",
+          "deck": "An early ESEGYE song, recorded at the band’s first <em>BLIND</em> concert at Veloso Hongdae."
+        },
+        {
+          "id": "se-so-neon",
+          "title": "The Wave keeps going.",
+          "deck": "SE SO NEON’s <em>The Wave</em> stretches into a long instrumental ending in this <em>2020/NEON</em> performance."
+        },
+        {
+          "id": "yoon-mirae",
+          "title": "Guitar, voice and Breath.",
+          "deck": "<em>Breath</em> is an acoustic R&B song about the little reminders left after a breakup."
+        },
+        {
+          "id": "yerin-baek",
+          "title": "Yerin Baek’s 0310.",
+          "deck": "Yerin Baek sings <em>0310</em> in English, with lyrics on screen in her own video. The song is from <em>Every letter I sent you.</em>"
+        }
+      ],
+      "trackOrder": [],
+      "copy": {
+        "eyebrow": "IN FOCUS",
+        "roomEyebrow": "THE LISTENING ROOM",
+        "roomTitle": "Pick a song.",
+        "roomIntro": "Songs from across the journal, all in one place.",
+        "roomLink": "Meet all the artists"
+      },
+      "spotlightArtistIds": [
+        "gongwon",
+        "yerin-baek"
+      ]
+    },
+    {
+      "id": "directory",
+      "type": "directory",
+      "enabled": true,
+      "copy": {
+        "title": "Meet the people behind the music."
+      }
+    },
+    {
+      "id": "magazine",
+      "type": "story",
+      "enabled": true,
+      "storyId": null,
+      "copy": {
+        "eyebrow": "FROM THE MAGAZINE",
+        "link": "Read the story",
+        "allLink": "All stories"
+      }
+    },
+    {
+      "id": "editors-pick",
+      "type": "pick",
+      "enabled": true,
+      "trackId": "yoon-mirae",
+      "copy": {
+        "eyebrow": "EDITOR’S PICK",
+        "link": "The story behind the voice"
+      }
+    },
+    {
+      "id": "guides",
+      "type": "guides",
+      "enabled": true,
+      "guideOrder": [],
+      "copy": {
+        "eyebrow": "LISTENING GUIDES",
+        "title": "Follow the sound.",
+        "link": "All listening guides",
+        "introBefore": "New to Korean music?",
+        "introLink": "A few places to start ↗",
+        "introAfter": "Or browse live performances, bands and voices."
+      },
+      "layout": "links"
+    },
+    {
+      "id": "about",
+      "type": "closing",
+      "enabled": true,
+      "copy": {
+        "eyebrow": "A NOTE FROM INDIEK",
+        "title": "Different language.\nSame feeling.",
+        "body": "Korean artists and songs I wish more people knew.\nI add to the selection as I find more music to share.\nI hope you find something you like.",
+        "link": "About this journal"
+      }
+    }
+  ]
+}

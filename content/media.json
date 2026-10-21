@@ -47,6 +47,30 @@
       }
     ]
   },
+  "car-the-garden-cam-profile.jpg": {
+    "width": 1778,
+    "height": 1186,
+    "variants": [
+      {
+        "src": "/assets/optimized/car-the-garden-cam-profile-480.webp",
+        "width": 480,
+        "height": 320,
+        "bytes": 12170
+      },
+      {
+        "src": "/assets/optimized/car-the-garden-cam-profile-960.webp",
+        "width": 960,
+        "height": 640,
+        "bytes": 46260
+      },
+      {
+        "src": "/assets/optimized/car-the-garden-cam-profile-1600.webp",
+        "width": 1600,
+        "height": 1067,
+        "bytes": 155818
+      }
+    ]
+  },
   "car-the-garden.jpg": {
     "width": 1000,
     "height": 1000,

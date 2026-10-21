@@ -117,7 +117,7 @@ test('a lost deployment response resumes the same pushed commit without publishi
     exec(root,'git',['config','user.name','Test']);exec(root,'git',['config','user.email','test@example.com']);
     const put=(file,value)=>{mkdirSync(path.dirname(path.join(root,file)),{recursive:true});writeFileSync(path.join(root,file),value);};
     put('.gitignore','editorial/state/\n');
-    put('content/authors.json',JSON.stringify(authors));put('content/catalogue.json',JSON.stringify({records:[],editorPick:{id:'pick'}}));
+    put('content/authors.json',JSON.stringify(authors));put('content/catalogue.json',readFileSync(new URL('../content/catalogue.json',import.meta.url),'utf8'));
     for(const f of ['SKILL.md','references/editing.md','references/benchmarks.json'])put(`skills/indiek-editorial/${f}`,'test');
     exec(root,'git',['add','.']);exec(root,'git',['commit','-m','Baseline']);exec(root,'git',['remote','add','origin',remote]);exec(root,'git',['push','-u','origin','main']);
     const s=story(),g=good();s.review=approval(g.facts,g.editorial,s,skillRevision(root),now);

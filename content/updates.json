@@ -16,5 +16,14 @@
     "title": "Yebit — Only You",
     "description": "A live performance from Rolling, with English notes on the song’s lyrics and a relationship that has changed.",
     "published": "2026-10-21"
+  },
+  {
+    "id": "catalogue-lyric-notes",
+    "status": "published",
+    "kind": "lyrics",
+    "path": "/notes/korean-indie-where-to-start/",
+    "title": "Inside the lyrics, across the listening room",
+    "description": "English notes on the meaning and mood of every song introduced here, with links from the listening guide.",
+    "published": "2026-10-21"
   }
 ]

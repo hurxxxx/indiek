@@ -1,3 +1,4 @@
+import {loadCatalogue} from '../catalogue.mjs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
@@ -39,7 +40,7 @@ async function run() {
     }
     if(command!=='publish'&&!audit.commit&&audit.status!=='approved'&&audit.status!=='published') {
       if(!due(prior,stories,config,now)){console.log('No issue due; publication limits or schedule apply.');return;}
-      const catalogue=readJSON(path.join(root,'content/catalogue.json')),tracks=[...catalogue.records,catalogue.editorPick],authors=readJSON(path.join(root,'content/authors.json'));
+      const catalogue=loadCatalogue(root),tracks=[...catalogue.records,catalogue.editorPick],authors=readJSON(path.join(root,'content/authors.json'));
       const topics=readJSON(path.join(root,'editorial/topics.json')).filter(t=>!stories.some(s=>s.id===t.id)&&!t.duplicateOf&&t.status!=='retired');
       const skill=instructions(root);
       audit.startedAt ||= new Date().toISOString();await save(audit);
@@ -60,7 +61,7 @@ async function run() {
         },
         write:async(topic,dossier,previous)=>{
           const draft=await ask('draft',`${skill}\nWrite the complete revised English article, not edit instructions. Topic: ${JSON.stringify(topic)}. Dossier: ${JSON.stringify(dossier)}. Previous drafts and findings: ${JSON.stringify(previous)}. Facts only from checked sources; do not fill gaps. Use the block schema (unused text/trackId empty); listen blocks only verified catalogue track IDs. Let the material set the length; a specific concise piece is preferable to padded context. Title and description are reviewed too.`);
-          const s={id:topic.id,slug:topic.id,status:'draft',category:topic.category,title:draft.title,description:draft.description,authorId:'indiek',published:day,updated:day,artistIds:tracks.some(t=>t.id===topic.artistId)?[topic.artistId]:[],keywords:draft.keywords,sources:dossier.sources,blocks:draft.blocks.map(b=>b.type==='listen'?{type:b.type,trackId:b.trackId,sources:b.sources}:{type:b.type,text:b.text,sources:b.sources})};
+          const s={id:topic.id,slug:topic.id,status:'draft',category:topic.category,title:draft.title,description:draft.description,authorId:'indiek',published:day,updated:day,artistIds:tracks.some(t=>(t.artistId||t.id)===topic.artistId)?[topic.artistId]:[],keywords:draft.keywords,sources:dossier.sources,blocks:draft.blocks.map(b=>b.type==='listen'?{type:b.type,trackId:b.trackId,sources:b.sources}:{type:b.type,text:b.text,sources:b.sources})};
           validateStory(s,{authors,tracks});return s;
         },
         review:(s,d)=>reviewStory(root,s,d,{ask})

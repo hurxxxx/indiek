@@ -1,4 +1,4 @@
-import {getArtistDirectory} from './shared.mjs';
+import {getArtistDirectory, artistId} from './shared.mjs';
 
 // The state lives with the app so a visit to an artist and Back keeps the filter.
 export function initArtistDirectory(catalogue, state, doc = document) {
@@ -12,7 +12,7 @@ export function initArtistDirectory(catalogue, state, doc = document) {
   const reset = root.querySelector('[data-directory-reset]');
 
   function render() {
-    const ids = new Set(getArtistDirectory(catalogue, state).map(record => record.id));
+    const ids = new Set(getArtistDirectory(catalogue, state).map(artistId));
     cards.forEach(card => { card.hidden = !ids.has(card.dataset.directoryArtist); });
     filters.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.directoryFilter === state.category)));
     count.textContent = `${ids.size === cards.length ? ids.size : `${ids.size} of ${cards.length}`} ${cards.length === 1 ? 'artist' : 'artists'} · A–Z`;

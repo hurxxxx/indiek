@@ -1,23 +1,38 @@
 export const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-export const artistPath = record => `/artists/${record.artistId || record.id}/`;
+export const artistId = record => record.artistId || record.id;
+export const artistPath = record => `/artists/${artistId(record)}/`;
+export const trackAnchor = record => record.primaryTrackId ? (record.id === record.primaryTrackId ? 'listen' : `track-${record.id}`) : record.artistId ? record.id : 'listen';
+export const trackPath = record => `${artistPath(record)}#${trackAnchor(record)}`;
+export const getCatalogueTracks = ({records, editorPick}) => [...records, editorPick];
+export function getArtistRecords(catalogue) {
+  const artists = new Map();
+  for (const track of getCatalogueTracks(catalogue)) {
+    const id = artistId(track);
+    if (!artists.has(id) || track.id === track.primaryTrackId) artists.set(id, track);
+  }
+  return [...artists.values()];
+}
 export const guidePath = guide => `/notes/${guide.id}/`;
 export const formatPosition = number => String(number).padStart(2, '0');
 export const navigationSection = pathname => pathname.startsWith('/stories/') ? 'stories' : pathname.startsWith('/artists/') ? 'artists' : pathname.startsWith('/notes/') ? 'guides' : pathname === '/' ? 'home' : null;
 
 // Extra performances use the shared player but are not catalogue songs or Saved entries.
-export function getPlaybackRecords({records, editorPick}) {
-  const songs = [...records, editorPick];
-  const playback = [...songs, ...songs.flatMap(record => (record.performances || []).map(video => ({
-    ...video, artistId:record.id, artist:record.artist,
+export function getPlaybackRecords(catalogue) {
+  const songs = getCatalogueTracks(catalogue);
+  const playback = [...songs, ...getArtistRecords(catalogue).flatMap(record => (record.performances || []).map(video => ({
+    ...video, artistId:artistId(record), artist:record.artist,
   })))];
   if (new Set(playback.map(record => record.id)).size !== playback.length) throw new Error('Duplicate playback ID');
   return playback;
 }
 
-export function getListeningGuides({records, editorPick, listeningGuides}) {
-  const all = [...records, editorPick];
+export function getListeningGuides(catalogue) {
+  const {listeningGuides} = catalogue;
+  const all = getCatalogueTracks(catalogue);
+  const artists = getArtistRecords(catalogue);
+  const artistIds = artists.map(artistId);
   const recordIds = all.map(record => record.id);
-  if (new Set(recordIds).size !== all.length) throw new Error('Duplicate catalogue artist ID');
+  if (new Set(recordIds).size !== all.length) throw new Error('Duplicate catalogue track ID');
   if (!listeningGuides?.length) throw new Error('No listening guides configured');
   const guideIds = listeningGuides.map(guide => guide.id);
   if (new Set(guideIds).size !== guideIds.length) throw new Error('Duplicate listening guide ID');
@@ -38,30 +53,36 @@ export function getListeningGuides({records, editorPick, listeningGuides}) {
         const record = all.find(record => record.id === id);
         if (!record || !guide.trackNotes?.[id]?.trim()) throw new Error(`Missing curated track or note: ${guide.id}/${id}`);
         const detail = guide.trackDetails?.[id];
-        if (guide.includeCatalogue && (!detail?.listenFor?.trim() || !detail.nextNote?.trim() || detail.nextArtistId === id || !recordIds.includes(detail.nextArtistId))) throw new Error(`Missing listening detail or next artist: ${guide.id}/${id}`);
+        if ((guide.includeCatalogue || detail) && (!detail?.listenFor?.trim() || !detail.nextNote?.trim() || detail.nextArtistId === artistId(record) || !artistIds.includes(detail.nextArtistId))) throw new Error(`Missing listening detail or next artist: ${guide.id}/${id}`);
         return record;
       });
       // Curated essays do not replace automatic coverage of newly added artists.
-      return {...guide, records: ordered, moreRecords: guide.includeCatalogue ? all.filter(record => !guide.trackIds.includes(record.id)) : []};
+      const includedArtists = new Set(ordered.map(artistId));
+      return {...guide, records: ordered, moreRecords: guide.includeCatalogue ? artists.filter(record => !includedArtists.has(artistId(record))) : []};
     }
     const matches = all.filter(record => guide.selection === 'live' ? record.videoType === 'live' : record.guideTags?.includes(guide.id));
-    const first = matches.find(record => record.id === guide.featuredArtistId);
+    const first = matches.find(record => artistId(record) === guide.featuredArtistId && (!record.primaryTrackId || record.id === record.primaryTrackId)) || matches.find(record => artistId(record) === guide.featuredArtistId);
     if (!first) throw new Error(`Featured artist ${guide.featuredArtistId} is not included in ${guide.id}`);
     const ordered = [first, ...matches.filter(record => record !== first)];
     ordered.forEach(record => covered.add(record.id));
     return {...guide, records: ordered};
   });
   const missing = all.filter(record => !covered.has(record.id));
-  if (missing.length) throw new Error(`Artists missing from listening guides: ${missing.map(record => record.id).join(', ')}`);
+  if (missing.length) throw new Error(`Tracks missing from listening guides: ${missing.map(record => record.id).join(', ')}`);
+  for (const guide of guides) {
+    if (guide.cardImageArtistId && ![...guide.records, ...(guide.moreRecords || [])].some(record => artistId(record) === guide.cardImageArtistId)) throw new Error(`Card image artist is not in guide: ${guide.id}`);
+  }
   return guides.filter(guide => guide.status !== 'draft').sort((a,b) => Number(b.selection === 'curated') - Number(a.selection === 'curated'));
 }
 
 // Editorial overrides set the opening order; every catalogue artist still appears.
-export function getFeaturedArtists({records, editorPick, featuredArtists = []}) {
-  const all = [...records, editorPick];
-  const ids = [...new Set([...featuredArtists.map(feature => feature.id), ...all.map(record => record.id)])];
+export function getFeaturedArtists(catalogue) {
+  const {featuredArtists = []} = catalogue;
+  const all = getArtistRecords(catalogue);
+  if (new Set(featuredArtists.map(feature => feature.id)).size !== featuredArtists.length) throw new Error('Duplicate featured artist ID');
+  const ids = [...new Set([...featuredArtists.map(feature => feature.id), ...all.map(artistId)])];
   return ids.map(id => {
-    const record = all.find(record => record.id === id);
+    const record = all.find(record => artistId(record) === id);
     if (!record) throw new Error(`Unknown featured artist: ${id}`);
     const feature = featuredArtists.find(feature => feature.id === id) || {};
     return {
@@ -84,7 +105,8 @@ export function searchCatalogue(records, pick, query) {
 }
 
 export function getArtistDirectory(catalogue, {query = '', category = 'all'} = {}) {
-  return searchCatalogue(catalogue.records, catalogue.editorPick, query)
+  const matches = new Set(searchCatalogue(catalogue.records, catalogue.editorPick, query).map(artistId));
+  return getArtistRecords(catalogue).filter(record => matches.has(artistId(record)))
     .filter(record => category === 'all' || record.category === category)
     .sort((a, b) => a.artist.localeCompare(b.artist, 'en', {sensitivity:'base', ignorePunctuation:true}) || a.id.localeCompare(b.id));
 }

@@ -1,0 +1,451 @@
+{
+  "checked": "2026-10-21",
+  "status": "reviewed-local",
+  "readerQuestion": "What do the words contribute to each song, without needing a full English translation?",
+  "scope": "All 16 introduced catalogue tracks, including the editor pick. Existing two notes revised. External moreTracks links and chapters in the separate full session are outside this song-introduction scope. No new recordings or public publication dates.",
+  "referenceChoices": [
+    {
+      "id": "sunwoojunga-kraze",
+      "url": "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi",
+      "publisher": "The Kraze",
+      "author": "Angelica Vianello",
+      "published": "2024-03-09",
+      "checked": "2026-10-21",
+      "reception": "craft-only; public response not established",
+      "technique": "Use specific songwriting detail and distinguish artist statements from editorial interpretation. No interview scene, metaphors, wording or sequence borrowed."
+    }
+  ],
+  "method": "Original licensed lyric pages and credits opened and read; no lyric text or complete translations stored. Readings concern textual images and speaker positions, not an artist’s private experience. No new claims about the sound or selected live arrangements. Page publication dates are unknown unless separately documented; checked dates are not release dates.",
+  "tracks": [
+    {
+      "trackId": "black-skirts",
+      "angle": "A whole world in a room",
+      "outline": [
+        "Rain and the shared room; affection includes an unpolished appearance.",
+        "Domestic intimacy gives the large declaration a specific scale."
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/30670808",
+          "publisher": "Bugs",
+          "lyricistCredit": "검정치마",
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "Rain and the shared room; affection includes an unpolished appearance."
+        }
+      ],
+      "interpretation": "Domestic intimacy gives the large declaration a specific scale.",
+      "uncertainty": "No private-life referent or exclusive interpretation established."
+    },
+    {
+      "trackId": "sunwoojunga",
+      "angle": "Someone who will go with you",
+      "outline": [
+        "Permission to cry and walk slowly; a return after leaving.",
+        "Companionship accommodates exhaustion without claiming recovery."
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/31780695",
+          "publisher": "Bugs",
+          "lyricistCredit": "선우정아, 곽은정",
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "Permission to cry and walk slowly; a return after leaving."
+        }
+      ],
+      "interpretation": "Companionship accommodates exhaustion without claiming recovery.",
+      "uncertainty": "No private-life referent or exclusive interpretation established."
+    },
+    {
+      "trackId": "car-the-garden",
+      "angle": "Finding room for awkwardness",
+      "outline": [
+        "Beloved as dancing tree; speaker as rough music; timid fears become affectionate imagery.",
+        "Awkwardness belongs to the speaker, not an invented shared personality."
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/31551643",
+          "publisher": "Bugs",
+          "lyricistCredit": "카더가든, 유라",
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "Beloved as dancing tree; speaker as rough music; timid fears become affectionate imagery."
+        }
+      ],
+      "interpretation": "Awkwardness belongs to the speaker, not an invented shared personality.",
+      "uncertainty": "No private-life referent or exclusive interpretation established."
+    },
+    {
+      "trackId": "choi-yu-ree",
+      "angle": "Wanting to be a place for someone",
+      "outline": [
+        "A forest offered to another person; tall trees; uncertainty between forest and sea.",
+        "Care and the wish to be recognised coexist with an unsettled self."
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/6173357",
+          "publisher": "Bugs",
+          "lyricistCredit": "최유리",
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "A forest offered to another person; tall trees; uncertainty between forest and sea."
+        }
+      ],
+      "interpretation": "Care and the wish to be recognised coexist with an unsettled self.",
+      "uncertainty": "No private-life referent or exclusive interpretation established."
+    },
+    {
+      "trackId": "bol4",
+      "angle": "When love asks for restraint",
+      "outline": [
+        "The speaker clasps their hands, watches from afar and steps back over their own desires.",
+        "Restraint within devotion; no claim of holding the beloved’s hands or ending an established relationship."
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/6225562",
+          "publisher": "Bugs",
+          "lyricistCredit": "안지영",
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "The speaker clasps their hands, watches from afar and steps back over their own desires."
+        }
+      ],
+      "interpretation": "Restraint within devotion; no claim of holding the beloved’s hands or ending an established relationship.",
+      "uncertainty": "No private-life referent or exclusive interpretation established."
+    },
+    {
+      "trackId": "esegye",
+      "angle": "Setting off without a destination",
+      "outline": [
+        "Three boat metaphors; unknown destination; repeated assurance of being together.",
+        "Optimism draws on companionship, not knowledge of the future."
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/31940787",
+          "publisher": "Bugs",
+          "lyricistCredit": "김정호",
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "Three boat metaphors; unknown destination; repeated assurance of being together."
+        }
+      ],
+      "interpretation": "Optimism draws on companionship, not knowledge of the future.",
+      "uncertainty": "No private-life referent or exclusive interpretation established."
+    },
+    {
+      "trackId": "se-so-neon",
+      "angle": "A departure with no explanation",
+      "outline": [
+        "A moon-associated figure departs silently; no explained relationship history.",
+        "Dreamlike distance; loss is one possible reading. Avoid exhaustive paraphrase of this very short lyric."
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/30793411",
+          "publisher": "Bugs",
+          "lyricistCredit": "황소윤",
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "A moon-associated figure departs silently; no explained relationship history."
+        }
+      ],
+      "interpretation": "Dreamlike distance; loss is one possible reading. Avoid exhaustive paraphrase of this very short lyric.",
+      "uncertainty": "No private-life referent or exclusive interpretation established."
+    },
+    {
+      "trackId": "ydbb",
+      "angle": "Hoping to be remembered kindly",
+      "outline": [
+        "Immediate affection, kind remembrance, regret and growing distance.",
+        "Continuing attachment during parting; no unsupported decision about who ended the relationship."
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/33005102",
+          "publisher": "Bugs",
+          "lyricistCredit": "유다빈",
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "Immediate affection, kind remembrance, regret and growing distance."
+        }
+      ],
+      "interpretation": "Continuing attachment during parting; no unsupported decision about who ended the relationship.",
+      "uncertainty": "No private-life referent or exclusive interpretation established."
+    },
+    {
+      "trackId": "whiteusedsocks",
+      "angle": "A wish made through regret",
+      "outline": [
+        "Involuntary memory; past selfishness; hope for a memory that permits smiling.",
+        "Regret complicates reassurance; do not claim a specific injury inflicted on the addressee."
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/30686865",
+          "publisher": "Bugs",
+          "lyricistCredit": "정재헌",
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "Involuntary memory; past selfishness; hope for a memory that permits smiling."
+        }
+      ],
+      "interpretation": "Regret complicates reassurance; do not claim a specific injury inflicted on the addressee.",
+      "uncertainty": "No private-life referent or exclusive interpretation established."
+    },
+    {
+      "trackId": "motte",
+      "angle": "Trust after words go wrong",
+      "outline": [
+        "Attempts at closeness create distance; clumsy speech hurts; asks about the other person’s day.",
+        "Trust is a request made with anxiety, and repair is a possible reading."
+      ],
+      "sources": [
+        {
+          "url": "https://www.genie.co.kr/detail/songInfo?xgnm=88246534",
+          "publisher": "Genie",
+          "lyricistCredit": "모트",
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "Attempts at closeness create distance; clumsy speech hurts; asks about the other person’s day."
+        }
+      ],
+      "interpretation": "Trust is a request made with anxiety, and repair is a possible reading.",
+      "uncertainty": "No private-life referent or exclusive interpretation established."
+    },
+    {
+      "trackId": "hanroro",
+      "angle": "The pull of self-blame",
+      "outline": [
+        "Self-blame in the lyric; release note opens the addressee beyond a lover.",
+        "Separate the artist’s stated writing intention from a reading of guilt."
+      ],
+      "sources": [
+        {
+          "url": "https://www.genie.co.kr/detail/songInfo?xgnm=101394050",
+          "publisher": "Genie",
+          "lyricistCredit": "한로로",
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "Self-blame in the lyric; release note opens the addressee beyond a lover."
+        },
+        {
+          "url": "https://poclanos.com/album/52690/",
+          "publisher": "POCLANOS",
+          "author": "HANRORO (artist release note)",
+          "published": null,
+          "releaseDate": "2023-04-21",
+          "checked": "2026-10-21",
+          "supports": "Open addressee; stated intention to stop feeding self-blame."
+        }
+      ],
+      "interpretation": "Separate the artist’s stated writing intention from a reading of guilt.",
+      "uncertainty": "No private-life referent or exclusive interpretation established."
+    },
+    {
+      "trackId": "kim-sawol",
+      "angle": "Reassurance with doubt underneath",
+      "outline": [
+        "Second-person affirmation turns to a first-person night of feeling unloved.",
+        "Reassuring another person can coexist with needing reassurance."
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/31233996",
+          "publisher": "Bugs",
+          "lyricistCredit": "김사월",
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "Second-person affirmation turns to a first-person night of feeling unloved."
+        }
+      ],
+      "interpretation": "Reassuring another person can coexist with needing reassurance.",
+      "uncertainty": "No private-life referent or exclusive interpretation established."
+    },
+    {
+      "trackId": "yerin-baek",
+      "angle": "Trying to sound less attached",
+      "outline": [
+        "English lyric; attempted indifference, fear of another departure, hidden truth and looking fine.",
+        "Defensiveness protects attachment; do not infer the title’s date or private biography."
+      ],
+      "sources": [
+        {
+          "url": "https://www.genie.co.kr/detail/songInfo?xgnm=89702564",
+          "publisher": "Genie",
+          "lyricistCredit": "백예린",
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "English lyric; attempted indifference, fear of another departure, hidden truth and looking fine."
+        }
+      ],
+      "interpretation": "Defensiveness protects attachment; do not infer the title’s date or private biography.",
+      "uncertainty": "No private-life referent or exclusive interpretation established."
+    },
+    {
+      "trackId": "gongwon",
+      "angle": "Growing in a damp room",
+      "outline": [
+        "Mold contrasted with hoped-for flowering; damp room; continued growth and request for love.",
+        "Harsh self-description is a speaker’s position, not a diagnosis. Official title retained."
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/6428956",
+          "publisher": "Bugs",
+          "lyricistCredit": "공원",
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "Mold contrasted with hoped-for flowering; damp room; continued growth and request for love."
+        },
+        {
+          "url": "https://music.apple.com/us/album/0-ep/1878624654",
+          "publisher": "Apple Music",
+          "author": null,
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "Existing official English title Flower; English listing also links Flower - Single."
+        }
+      ],
+      "interpretation": "Harsh self-description is a speaker’s position, not a diagnosis. Official title retained.",
+      "uncertainty": "No private-life referent or exclusive interpretation established."
+    },
+    {
+      "trackId": "yebit",
+      "angle": "When the place stays the same",
+      "outline": [
+        "Seoul Forest, changed relationship, outward smile and comfort sought from the same person.",
+        "Composure conceals hurt. Lyrics credited to Choi Hong-gyu (Rebuild), not the performer."
+      ],
+      "sources": [
+        {
+          "url": "https://www.genie.co.kr/detail/songInfo?xgnm=105545171",
+          "publisher": "Genie",
+          "lyricistCredit": "최홍규 (Rebuild)",
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "Seoul Forest, changed relationship, outward smile and comfort sought from the same person."
+        }
+      ],
+      "interpretation": "Composure conceals hurt. Lyrics credited to Choi Hong-gyu (Rebuild), not the performer.",
+      "uncertainty": "No private-life referent or exclusive interpretation established."
+    },
+    {
+      "trackId": "yoon-mirae",
+      "angle": "Warmth that outlasts a goodbye",
+      "outline": [
+        "Faded scarf still warms; winter evokes the absent person and a private smile.",
+        "Ordinary comfort and pain coexist. Lyrics credited to Tiger JK, not assumed autobiography."
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/6395586",
+          "publisher": "Bugs",
+          "lyricistCredit": "Tiger JK",
+          "published": null,
+          "checked": "2026-10-21",
+          "supports": "Faded scarf still warms; winter evokes the absent person and a private smile."
+        }
+      ],
+      "interpretation": "Ordinary comfort and pain coexist. Lyrics credited to Tiger JK, not assumed autobiography.",
+      "uncertainty": "No private-life referent or exclusive interpretation established."
+    }
+  ],
+  "revision": {
+    "algorithm": "sha256",
+    "scope": "JSON.stringify(catalogue.tracks.map(t => ({trackId:t.id,lyricNotes:t.lyricNotes}))) encoded as UTF-8",
+    "hash": "f8fd06476a336c876fcbb823bca9ad6106026cad1717c767b62fb1186a74d69a"
+  },
+  "reviews": [
+    {
+      "kind": "facts",
+      "checked": "2026-10-21",
+      "reviewer": "indiek AI-assisted review; separate pass by the same assistant, not independent human verification",
+      "revision": "f8fd06476a336c876fcbb823bca9ad6106026cad1717c767b62fb1186a74d69a",
+      "approved": true,
+      "scope": "All 16 complete notes, headings, theme labels, source labels and writer credits. Each claim compared with the opened original lyric text; artist context attributed only for HANRORO. Existing official English titles retained.",
+      "objectionsResolved": [
+        {
+          "trackId": "bol4",
+          "passage": "A gesture as small as holding hands becomes difficult",
+          "issue": "Ambiguous wording suggests two people holding hands; the text describes the speaker clasping their own hands.",
+          "correction": "Specify their own hands and distance; remove the unsupported assumption of ending an established relationship."
+        },
+        {
+          "trackId": "car-the-garden",
+          "passage": "two people’s awkwardness",
+          "issue": "The lyric identifies the speaker’s roughness; it does not establish both people as awkward.",
+          "correction": "Keep the image of speaker as music and beloved as tree; locate awkwardness with the speaker."
+        },
+        {
+          "trackId": "whiteusedsocks",
+          "passage": "a person who knows they have caused hurt",
+          "issue": "Past selfishness and regret do not identify a specific injury to the addressee.",
+          "correction": "State awareness of past selfishness and interpret the hope for happier recollection."
+        },
+        {
+          "trackId": "ydbb",
+          "passage": "after the decision to part",
+          "issue": "A deliberate decision by the speaker is not established by the lyric.",
+          "correction": "Describe two people growing apart and attachment continuing through distance."
+        }
+      ],
+      "remainingUncertainty": "Readings are interpretive, not definitive artist explanations. Forest lyric reference is a later album listing; it is not used to date the original release. No new recording/performance claims."
+    },
+    {
+      "kind": "editorial",
+      "checked": "2026-10-21",
+      "reviewer": "indiek AI-assisted review; separate pass by the same assistant",
+      "revision": "f8fd06476a336c876fcbb823bca9ad6106026cad1717c767b62fb1186a74d69a",
+      "approved": true,
+      "scope": "Reread all 16 final notes as a set and individually after the factual revisions. English commentary adds a concrete interpretive point to the existing introductions. No simulated listening history, invented interviews, full translations or copied reference structure.",
+      "referenceComparison": "The Kraze interview models a clear boundary between an artist’s own explanation and editorial framing; these short notes use their own song-specific images and make no interview claim.",
+      "objectionsResolved": [
+        {
+          "trackId": "black-skirts",
+          "passage": "the setting is strikingly small",
+          "issue": "The room’s physical size is not established; the intended point is intimacy.",
+          "correction": "Use “the scene is intimate” and remove “small” from the heading."
+        },
+        {
+          "trackId": "car-the-garden",
+          "passage": "both a rootedness and a little movement",
+          "issue": "Generic tree associations distract from the actual pairing of tree and music.",
+          "correction": "Focus on the speaker’s timid fears becoming an affectionate picture."
+        },
+        {
+          "trackId": "whiteusedsocks",
+          "passage": "The past remains present",
+          "issue": "Abstract closing repeats the topic without sharpening the song’s wish.",
+          "correction": "End with the possibility of a memory bringing a smile while regret remains."
+        }
+      ],
+      "contribution": "Distinguishes companionship from recovery, devotion from demands, and reassurance from the speaker’s own confidence. Each reading is attached to a specific textual gesture rather than a generic recommendation."
+    }
+  ],
+  "verification": {
+    "checked": "2026-10-21",
+    "build": "Production build and local preview generated; no deployment.",
+    "automated": "178 Node tests pass; 28 static pages checked in production and preview. Coverage includes all lyric paragraphs and source links, guide anchors, editor pick, additional songs, incomplete notes and exact reviewed revision.",
+    "manual": [
+      "Desktop 1440 × 1000 and mobile 390 × 844: Forest lyric notes readable with no horizontal overflow.",
+      "Mobile introductory guide exposes 16 lyric links; Breath link reaches the editor pick’s lyric section.",
+      "Mobile home: ready announcement visible, Yerin spotlight has lyric/story/more-songs links with clean wrapping.",
+      "Desktop home-to-Yerin lyric link reaches the correct section."
+    ],
+    "screenshots": [
+      "/tmp/indiek-lyric-notes-desktop.jpg",
+      "/tmp/indiek-lyric-notes-mobile.jpg"
+    ],
+    "notRetested": [
+      "Actual YouTube playback, fullscreen, mobile landscape and keyboard states; recording IDs and playback implementation were not changed.",
+      "Saved 0/1/13/50 manual playback matrix; existing automatic tests passed and the browser’s saved list was left unchanged."
+    ],
+    "rss": "6 existing dated entries; no invented page publication dates.",
+    "localServer": "http://127.0.0.1:4173"
+  }
+}

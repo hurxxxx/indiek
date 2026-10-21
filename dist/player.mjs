@@ -1,3 +1,5 @@
+import {trackPath} from './shared.mjs';
+
 // Load the official API only after the listener has agreed to load YouTube.
 const apiRequests = new WeakMap();
 export function loadYouTubeAPI({win = window, doc = document} = {}) {
@@ -38,7 +40,7 @@ export function createPlayer(root, {onChange = () => {}, onPlay = () => {}, doc 
   }
   function updateLabel() {
     label.textContent = `${current.track} · ${current.artist}`;
-    label.href = `/artists/${current.artistId || current.id}/#${current.artistId ? current.id : 'listen'}`;
+    label.href = trackPath(current);
     frame.title = `${current.track} by ${current.artist} — ${current.channel}`;
   }
   function release() {

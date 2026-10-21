@@ -1,4 +1,4 @@
-import {escapeHTML as e,imageHTML,youtubeConsentHTML,saveButton} from '../site/shared.mjs';
+import {escapeHTML as e,artistPath,trackPath,imageHTML,youtubeConsentHTML,saveButton} from '../site/shared.mjs';
 import {storyPath,storyMinutes} from '../site/stories.mjs';
 import {shareImagePath} from '../site/editorial.mjs';
 import {storyDigest} from './editorial/content.mjs';
@@ -7,10 +7,9 @@ export function storyViews({stories,authors,media,tracks,pick}) {
   const cover=(s,priority=false)=>s.cover?`<figure class="story-cover">${imageHTML(media,s.cover.file,s.cover.alt,{priority,sizes:'(max-width: 760px) 90vw, 560px'})}<figcaption>${e(s.cover.caption)} <a href="/about/#image-${s.cover.file.replace(/\.[^.]+$/,'')}">Image credit</a></figcaption></figure>`:'';
   const meta=s=>`<span class="mono">${e(s.category.toUpperCase())} / ${storyMinutes(s)} MIN READ</span>`;
   const card=s=>`<article class="story-card">${meta(s)}<h2><a href="${storyPath(s)}">${e(s.title)}</a></h2><p>${e(s.description)}</p><time class="mono" datetime="${s.published}">${s.published}</time></article>`;
-  function home() {
-    if(!stories.length)return '';
-    const [lead]=stories;
-    return `<section class="magazine-cover wrap" aria-labelledby="cover-title"><div class="cover-copy"><p class="eyebrow">FROM THE MAGAZINE</p>${meta(lead)}<h2 id="cover-title"><a href="${storyPath(lead)}">${e(lead.title)}</a></h2><p class="cover-deck">${e(lead.description)}</p><a class="underlink" href="${storyPath(lead)}">Read the story <span aria-hidden="true">↗</span></a></div>${cover(lead,true)}</section><div class="wrap magazine-index-link"><a class="underlink" href="/stories/">All stories ↗</a></div>`;
+  function home(lead=stories[0], {copy={eyebrow:'FROM THE MAGAZINE',link:'Read the story',allLink:'All stories'},showCover=true}={}) {
+    if(!lead)return '';
+    return `<section class="magazine-cover wrap${showCover?'':' home-text-only'}" aria-labelledby="cover-title"><div class="cover-copy"><p class="eyebrow">${e(copy.eyebrow)}</p>${meta(lead)}<h2 id="cover-title"><a href="${storyPath(lead)}">${e(lead.title)}</a></h2><p class="cover-deck">${e(lead.description)}</p><a class="underlink" href="${storyPath(lead)}">${e(copy.link)} <span aria-hidden="true">↗</span></a></div>${showCover?cover(lead,true):''}</section><div class="wrap magazine-index-link"><a class="underlink" href="/stories/">${e(copy.allLink)} ↗</a></div>`;
   }
   const index=`<main id="main" class="wrap story-index"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><span>Stories</span></nav><header class="guide-heading"><p class="eyebrow">THE MAGAZINE</p><h1>A little closer<br>to the music.</h1><p class="guide-lead">The choices behind a song, the people around it, and places it might take you next.</p></header>${stories[0]?`<section class="story-index-feature">${card(stories[0])}${cover(stories[0],true)}</section>`:''}${stories.length>1?`<div class="story-grid">${stories.slice(1).map(card).join('')}</div>`:''}<aside class="story-index-footer"><a class="underlink" href="/notes/first-listens/">Explore the listening guides ↗</a><a class="underlink" href="/about/#contribute">Have a story in mind? ↗</a><a class="underlink" href="/feed.xml">Follow via RSS ↗</a></aside></main>`;
   function article(s) {
@@ -20,7 +19,7 @@ export function storyViews({stories,authors,media,tracks,pick}) {
       if(b.type==='heading')return `<h2>${e(b.text)}</h2>`;
       if(b.type==='listen'){
         const r=tracks.find(t=>t.id===b.trackId);
-        return `<aside class="story-listen" aria-label="Listen to ${e(r.track)}"><p class="eyebrow">LISTEN ALONG</p><h2>${e(r.track)}</h2><p>${e(r.artist)} · ${e(r.performance||r.videoType)}</p><div class="story-listen-actions"><button class="underlink" data-load-player="${r.id}" data-js-only hidden>Agree &amp; play</button>${r!==pick?saveButton(r,true):''}<a class="underlink" href="/artists/${r.id}/">Meet the artist ↗</a></div>${youtubeConsentHTML()}</aside>`;
+        return `<aside class="story-listen" aria-label="Listen to ${e(r.track)}"><p class="eyebrow">LISTEN ALONG</p><h2>${e(r.track)}</h2><p>${e(r.artist)} · ${e(r.performance||r.videoType)}</p><div class="story-listen-actions"><button class="underlink" data-load-player="${r.id}" data-js-only hidden>Agree &amp; play</button>${r!==pick?saveButton(r,true):''}<a class="underlink" href="${r.id===r.primaryTrackId?artistPath(r):trackPath(r)}">Meet the artist ↗</a></div>${youtubeConsentHTML()}</aside>`;
       }
       return `<p>${e(b.text)}${b.sources.length?` <span class="story-source-refs">${sourceRefs(b)}</span>`:''}</p>`;
     }).join('\n');

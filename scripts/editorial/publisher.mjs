@@ -1,3 +1,4 @@
+import {loadCatalogue} from '../catalogue.mjs';
 import {execFileSync} from 'node:child_process';
 import {mkdirSync,existsSync} from 'node:fs';
 import path from 'node:path';
@@ -35,7 +36,7 @@ export async function publishIssue({root,audit,config,save,now=new Date(),execut
     git(root,'worktree','add','--detach',work,base);
     try {
       const authors=readJSON(path.join(work,'content/authors.json'));
-      const catalogue=readJSON(path.join(work,'content/catalogue.json'));
+      const catalogue=loadCatalogue(work);
       validateStory(audit.story,{authors,tracks:[...catalogue.records,catalogue.editorPick],approved:true});
       if(audit.story.review.skillRevision!==skillRevision(work))throw new Error('Editorial skill changed since review');
       const existing=loadStories(work);

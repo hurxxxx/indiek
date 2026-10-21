@@ -10,7 +10,7 @@ export function dailySlots(now=new Date()) {
   return ['threads','instagram'].map(platform=>({platform,id:`${platform==='threads'?'T':'I'}-${day}-${platform==='threads'?'1000':'1015'}-news`,scheduledAt:`${day}T${platform==='threads'?'01:00':'01:15'}:00.000Z`}));
 }
 export function artistsForResearch(publicCatalogue,content) {
-  const records=[...content.records,content.editorPick].filter(Boolean);
+  const records=content.artists || [...content.records,content.editorPick].filter(Boolean);
   const ids=[...new Set(publicCatalogue.items.filter(item=>item.kind==='artist').flatMap(item=>item.artistIds))];
   return ids.map(id=>{
     const artist=records.find(item=>item.id===id);

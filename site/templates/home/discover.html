@@ -1,0 +1,28 @@
+<section data-home-section="{{SECTION_ID}}" class="feature-grid wrap" id="discover" aria-label="Featured artist and listening selections">
+      <article class="feature-story" id="artist-carousel" aria-label="Featured artists">
+        <div class="hero-toolbar" hidden>
+          <span class="mono">{{EYEBROW}} <span id="hero-position" aria-hidden="true">01 / {{FEATURE_COUNT}}</span></span>
+          <div class="hero-controls">
+            <button id="hero-rotation" aria-label="Pause artist rotation"><span aria-hidden="true">Ⅱ</span> Pause</button>
+            <button id="hero-previous" aria-label="Previous artist">←</button>
+            <button id="hero-next" aria-label="Next artist">→</button>
+          </div>
+        </div>
+        <div class="hero-slides" id="hero-slides">{{HERO}}</div>
+        <p class="hero-directory-label mono" data-js-only hidden>EXPLORE ALL {{FEATURE_COUNT}} ARTISTS</p>
+        <div class="hero-artists" id="hero-artists" role="group" aria-label="Choose an artist" hidden></div>
+        <p class="sr-only" id="hero-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      </article>
+
+      <div class="discovery-sidebar{{SIDEBAR_CLASS}}">
+      {{SPOTLIGHTS}}
+      <aside class="rotation" aria-labelledby="rotation-title" data-room-count="{{ROOM_COUNT}}">
+        <div class="section-kicker mono"><span class="red-dot"></span> {{ROOM_EYEBROW}} <span>{{ROOM_COUNT}} TRACKS</span></div>
+        <h2 id="rotation-title">{{ROOM_TITLE}}</h2>
+        <p class="rotation-intro">{{ROOM_INTRO}}</p>
+        {{ROOM_HINT}}
+        <div class="room-track-scroll" role="region" aria-label="All {{ROOM_COUNT}} tracks in the listening room" tabindex="0"><ol class="track-list" id="track-list" role="list">{{TRACKS}}</ol></div>
+        <a class="room-button" href="/artists/">{{ROOM_LINK}} <span aria-hidden="true">↗</span></a>
+      </aside>
+      </div>
+    </section>

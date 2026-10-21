@@ -1,9 +1,10 @@
+import {createCatalogue} from './catalogue.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {getListeningGuides} from '../site/shared.mjs';
 import {publishedEntries, feedXML, relatedRecords, shareImagePath, homeUpdates} from '../site/editorial.mjs';
-const catalogue=JSON.parse(readFileSync(new URL('../content/catalogue.json',import.meta.url)));
+const catalogue=createCatalogue(JSON.parse(readFileSync(new URL('../content/catalogue.json',import.meta.url))));
 test('curated guide order is deliberate, drafts stay private, automatic coverage remains required',()=>{
   const c=structuredClone(catalogue), guides=getListeningGuides(c);
   const intro=guides.find(g=>g.id==='korean-indie-where-to-start');
@@ -16,7 +17,7 @@ test('curated guide order is deliberate, drafts stay private, automatic coverage
 });
 test('the introductory guide includes new artists without expanding or duplicating its opening selection',()=>{
   const c=structuredClone(catalogue);
-  c.records.push({...c.records[0],id:'new-artist'});
+  c.records.push({...c.records[0],id:'new-artist',artistId:'new-artist',primaryTrackId:'new-artist'});
   const intro=getListeningGuides(c).find(g=>g.id==='korean-indie-where-to-start');
   assert.deepEqual(intro.records.map(r=>r.id),intro.trackIds);
   assert.ok(intro.moreRecords.some(r=>r.id==='new-artist'));
@@ -110,16 +111,22 @@ test('built feed, public catalogue and metadata exclude editorial drafts',()=>{
 });
 test('guide headers, cards and publishing data count follow-on artists without changing the curated order',()=>{
   const publicItems=JSON.parse(readFileSync(new URL('../dist/promotion-catalogue.json',import.meta.url))).items;
-  const indexes=['index.html','notes/first-listens/index.html'].map(path=>readFileSync(new URL(`../dist/${path}`,import.meta.url),'utf8'));
+  const home=readFileSync(new URL('../dist/index.html',import.meta.url),'utf8');
+  const guideIndex=readFileSync(new URL('../dist/notes/first-listens/index.html',import.meta.url),'utf8');
   for(const guide of getListeningGuides(catalogue)){
     const members=[...guide.records,...(guide.moreRecords||[])];
     const html=readFileSync(new URL(`../dist/notes/${guide.id}/index.html`,import.meta.url),'utf8');
     assert.ok(html.includes(`LISTENING GUIDE / ${members.length} TRACKS`));
-    for(const index of indexes){
+    for(const index of [guideIndex,...(home.includes('class="guide-link"')?[]:[home])]){
       const card=index.match(new RegExp(`<article class="guide-card" data-guide="${guide.id}"[\\s\\S]*?</article>`))?.[0];
       assert.ok(card?.includes(`data-track-count="${members.length}"`));
       assert.ok(card.includes(`<span>${members.length} TRACKS</span>`));
       if(members.length>3)assert.ok(card.includes(`+ ${members.length-3} more`));
+    }
+    if(home.includes('class="guide-link"')){
+      const link=home.match(new RegExp(`<a class="guide-link"[^>]*data-guide="${guide.id}"[\\s\\S]*?</a>`))?.[0];
+      assert.ok(link?.includes(`data-track-count="${members.length}"`));
+      assert.ok(link.includes(`${members.length} TRACKS`));
     }
     assert.deepEqual(publicItems.find(item=>item.id===guide.id).artistIds,members.map(r=>r.id));
     if(guide.selection==='curated')assert.deepEqual(guide.records.map(r=>r.id),guide.trackIds);

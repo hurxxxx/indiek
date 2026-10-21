@@ -193,6 +193,19 @@
       "status": "unconfirmed",
       "checked": "2026-10-21",
       "notes": "Release artwork retained in the artist introduction for the site owner’s requested deployment. No reuse licence established; source attribution does not establish permission."
+    },
+    {
+      "file": "car-the-garden-cam-profile.jpg",
+      "label": "Car, the garden — official CAM WITH US portrait",
+      "caption": "Official artist portrait from CAM WITH US.",
+      "source": "https://camwus.com/",
+      "original": "https://camwus.com/wp-content/uploads/2026/06/carthergarden_4.jpg",
+      "credit": "CAM WITH US",
+      "language": "Korean",
+      "status": "unconfirmed",
+      "showCredit": true,
+      "changes": "Resized WebP versions; cropped for display.",
+      "notes": "Published on the agency’s official artist roster. No reuse licence was stated; official publication is not reuse permission."
     }
   ]
 }

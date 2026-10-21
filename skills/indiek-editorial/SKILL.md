@@ -1,6 +1,6 @@
 ---
 name: indiek-editorial
-description: Research, plan, write and edit English music features and their social adaptations for indiek. Use for magazine stories, topic selection, reference analysis and editorial review; publishing permissions and delivery remain with the publisher.
+description: Research, write and edit English music features and source-based lyric commentary for indiek. Use for magazine stories, song introductions, reference analysis and editorial review; publishing permissions and delivery remain with the publisher.
 ---
 
 # indiek editorial
@@ -10,6 +10,8 @@ Write something worth spending time with. The reader should leave knowing someth
 ## Before writing
 
 Read the relevant entries in [the reference library](references/benchmarks.json) and [the editing criteria](references/editing.md). For social adaptations also read the project's `promotion/voice.md`. A reference is evidence of a writing technique, not a template or permission to borrow text.
+
+For lyric work, default to [lyric commentary](references/editing.md#lyric-commentary): explain the words' meaning and emotional movement gently, with concrete textual support and without exaggeration. Use the [translation criteria](references/editing.md#lyric-translation) only when translation is explicitly requested.
 
 Prefer identifiable writers' original reporting, interviews and criticism. Check the byline and reporting context, not an AI detector. Separate observed positive reader responses from craft-only references; unavailable metrics remain unknown. Read the actual article and relevant replies. Neither a famous publisher nor a large vote count proves the prose caused engagement. Do not reproduce whole articles in the library.
 
@@ -24,7 +26,7 @@ Build a source dossier: original URLs, publisher/author, publication and checkin
 - Give the unfamiliar reader enough context to follow the point. Explain a Korean term when it matters; avoid treating a whole country as one taste or personality.
 - Prefer concrete choices, people, places, records and consequences to strings of genre adjectives. Keep qualifications that change meaning. Include a reservation when supported, not a token negative to appear balanced.
 - Let the material determine the length and shape. No mandatory hook, three-part arc, paragraph count, rhetorical question or uplifting conclusion. Close where the thought is complete.
-- Preserve proper names and the sense of translated statements. Attribute paraphrases and keep quotations brief. Do not republish lyrics or translations in full. Source credit is not permission to reuse photographs.
+- Preserve proper names and the sense of translated statements. Attribute paraphrases and keep quotations brief. Do not source and reproduce complete copyrighted lyrics or translations from the web. Translation of lyrics directly supplied by the user follows the lyric translation criteria. Source credit is not permission to reuse photographs.
 - Do not borrow another writer's distinctive metaphor, scene, joke, narrative sequence or personal memory. Linking the source does not make a close rewrite original.
 - The byline must describe the actual author. Automated work uses indiek's organization credit and truthful editorial-process notice, never a fabricated contributor.
 

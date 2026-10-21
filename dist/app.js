@@ -5,10 +5,11 @@ import {initNavigation, createPageScroll} from './navigation.mjs';
 import {createPlayer} from './player.mjs';
 import {initArtistDirectory} from './directory.mjs';
 import {mobilePlayerQuery, initMobileViewport} from './mobile.mjs';
-import {escapeHTML as e, artistPath, coverHTML, readSaved, searchCatalogue, getFeaturedArtists, formatPosition, youtubeConsentHTML, getListeningGuides, guidePath, navigationSection, getPlaybackRecords} from './shared.mjs';
+import {escapeHTML as e, artistId, artistPath, trackPath, getArtistRecords, coverHTML, readSaved, searchCatalogue, formatPosition, youtubeConsentHTML, getListeningGuides, guidePath, navigationSection, getPlaybackRecords} from './shared.mjs';
 
 const {records, editorPick: pick, media} = catalogue;
-const features = getFeaturedArtists(catalogue);
+const artists = getArtistRecords(catalogue);
+const findArtist = id => artists.find(record => artistId(record) === id);
 const all = [...records,pick];
 const playbackRecords = getPlaybackRecords(catalogue);
 const findRecord = id => playbackRecords.find(r => r.id === id);
@@ -112,12 +113,12 @@ dialog.addEventListener('click',event=>{
   if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)closeDialog();
 });
 function resultRow(r) {
-  return `<a class="search-result" href="${artistPath(r)}#listen">${coverHTML(media,r,{sizes:'58px'})}<span><strong>${e(r.artist)} <span lang="ko">${e(r.korean)}</span></strong><small>${e(r.track)} · ${r.year}${r===pick?' · Editor’s pick':''}</small></span><span class="result-arrow" aria-hidden="true">↗</span></a>`;
+  return `<a class="search-result" href="${trackPath(r)}">${coverHTML(media,r,{sizes:'58px'})}<span><strong>${e(r.artist)} <span lang="ko">${e(r.korean)}</span></strong><small>${e(r.track)} · ${r.year}${r===pick?' · Editor’s pick':''}</small></span><span class="result-arrow" aria-hidden="true">↗</span></a>`;
 }
 function renderLibrary() {
   const list=records.filter(r=>saved.has(r.id));
   const controls=list.length?'<div class="dialog-toolbar library-queue-controls"><button data-play-all title="Play saved tracks from the beginning">Play all</button><button data-previous-track aria-label="Previous saved track">← Previous</button><button data-next-track aria-label="Next saved track">Next →</button><button data-auto-next aria-pressed="true">Auto-next: on</button></div>':'';
-  const rows=list.map(r=>`<div class="library-row" data-saved-row="${r.id}"><a class="library-info" href="${artistPath(r)}#listen" aria-label="Read about ${e(r.artist)}: ${e(r.track)}">${coverHTML(media,r,{sizes:'44px'})}<span><strong>${e(r.track)}</strong><small>${e(r.artist)}<span class="library-state"></span></small></span></a>${r.externalOnly?`<a class="library-play library-external" href="${e(r.url)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${e(r.track)} on YouTube">YouTube ↗</a>`:`<button class="library-play" data-load-saved="${r.id}"></button>`}<button class="save-button library-remove" data-remove="${r.id}" aria-label="Remove ${e(r.track)} from saved tracks" title="Remove from saved tracks">×</button></div>`).join('');
+  const rows=list.map(r=>`<div class="library-row" data-saved-row="${r.id}"><a class="library-info" href="${trackPath(r)}" aria-label="Read about ${e(r.artist)}: ${e(r.track)}">${coverHTML(media,r,{sizes:'44px'})}<span><strong>${e(r.track)}</strong><small>${e(r.artist)}<span class="library-state"></span></small></span></a>${r.externalOnly?`<a class="library-play library-external" href="${e(r.url)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${e(r.track)} on YouTube">YouTube ↗</a>`:`<button class="library-play" data-load-saved="${r.id}"></button>`}<button class="save-button library-remove" data-remove="${r.id}" aria-label="Remove ${e(r.track)} from saved tracks" title="Remove from saved tracks">×</button></div>`).join('');
   openDialog(`${controls}<div class="dialog-scroll" tabindex="0" aria-label="Saved tracks">${list.length?`${youtubeAllowed?'':youtubeConsentHTML()}${rows}`:'<p class="empty-state">Save a track with the + button to find it here later.</p><a class="underlink" href="/artists/">Browse the artists ↗</a>'}<p class="embed-caption">Saved in this browser. <a href="/privacy-and-terms/">Storage & privacy</a></p></div>`,'library',`Saved · ${list.length}`);
   syncPlayButtons();
   syncQueueControls();restoreLibraryPosition();
@@ -351,7 +352,8 @@ function initArtistCarousel() {
   const interval=9000;
   let current=0,wantsRotation=!reducedMotion.matches,hovered=window.matchMedia('(hover: hover)').matches&&carousel.matches(':hover'),inView=false,timer,touchStart,suppressClick=false,rotationPress;
   const slides=[...slidesRoot.children];
-  selectors.innerHTML=features.map((feature,index)=>`<button data-feature="${index}" aria-controls="hero-${feature.id}" aria-pressed="${index===0}" aria-label="Show ${e(findRecord(feature.id).artist)}"><span class="mono" aria-hidden="true">${formatPosition(index+1)}</span>${e(findRecord(feature.id).artist)}</button>`).join('');
+  const features=slides.map(slide=>({id:slide.dataset.heroArtist}));
+  selectors.innerHTML=features.map((feature,index)=>`<button data-feature="${index}" aria-controls="hero-${feature.id}" aria-pressed="${index===0}" aria-label="Show ${e(findArtist(feature.id).artist)}"><span class="mono" aria-hidden="true">${formatPosition(index+1)}</span>${e(findArtist(feature.id).artist)}</button>`).join('');
   const choices=[...selectors.children];
   carousel.setAttribute('role','region');carousel.setAttribute('aria-roledescription','carousel');
   carousel.querySelector('.hero-toolbar').hidden=false;selectors.hidden=false;
@@ -384,7 +386,7 @@ function initArtistCarousel() {
       choices[i].setAttribute('aria-pressed',String(active));
     });
     position.textContent=`${formatPosition(current+1)} / ${formatPosition(slides.length)}`;
-    if(manual)status.textContent=`${findRecord(features[current].id).artist}, ${current+1} of ${slides.length}`;
+    if(manual)status.textContent=`${findArtist(features[current].id).artist}, ${current+1} of ${slides.length}`;
     syncRotation();
   }
   rotation.addEventListener('click',()=>{

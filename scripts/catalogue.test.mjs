@@ -1,9 +1,10 @@
+import {createCatalogue} from './catalogue.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {searchCatalogue, readSaved, getFeaturedArtists, formatPosition, getListeningGuides, getArtistDirectory, navigationSection, getPlaybackRecords, artistPath} from '../site/shared.mjs';
 
-const catalogue = JSON.parse(readFileSync(new URL('../content/catalogue.json',import.meta.url)));
+const catalogue = createCatalogue(JSON.parse(readFileSync(new URL('../content/catalogue.json',import.meta.url))));
 const {records, editorPick} = catalogue;
 const freshCatalogue = () => JSON.parse(JSON.stringify(catalogue));
 
@@ -73,7 +74,7 @@ test('empty search includes all shelf entries and the editor pick',()=>{
 });
 test('the artist directory includes new artists and the editor pick without changing saved playback order',()=>{
   const edited=freshCatalogue();
-  const added={...edited.records[0],id:'new-artist',artist:'A New Artist'};
+  const added={...edited.records[0],id:'new-artist',artistId:'new-artist',primaryTrackId:'new-artist',artist:'A New Artist'};
   edited.records.push(added);
   const original=edited.records.map(r=>r.id);
   const directory=getArtistDirectory(edited);
@@ -110,7 +111,7 @@ test('hero includes each artist and the editor pick, preserving the editorial op
   assert.equal(features.find(f=>f.id==='yoon-mirae').kind,'portrait');
 });
 test('a newly added artist enters the hero automatically without a separate feature entry',()=>{
-  const record = {id:'new-artist',artist:'New Artist',track:'First Song',image:'new.jpg',release:'First Release',note:'A first listen.'};
+  const record = {id:'new-artist',artistId:'new-artist',primaryTrackId:'new-artist',artist:'New Artist',track:'First Song',image:'new.jpg',release:'First Release',note:'A first listen.'};
   const features = getFeaturedArtists({...catalogue,records:[...records,record]});
   const added = features.filter(f=>f.id===record.id);
   assert.equal(added.length,1);
