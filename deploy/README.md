@@ -31,6 +31,8 @@ YouTube는 모든 페이지에서 공통 영역 `#persistent-player`를 사용�
 
 새 분석 버전은 기존 cookieless 허용을 승계하지 않고 재동의를 요청한다(거절은 유지). 새 허용 후에만 35일 first-party 쿠키·페이지뷰·재생/저장/공유·`from=threads|instagram` 유입 이벤트를 수집한다. 배포 시 허용 전 차단, 기존 선택 이전, 철회·다른 탭 철회, 실제 재생 이벤트 중복 방지, URL 쿼리 제외를 확인하고 `promotion/config.json`의 `measurementChangeDate`에 실제 전환일을 기록한다. 이전 기간과 방문자·재방문 수를 같은 기준으로 비교하지 않는다.
 
+쿠키 배너의 문구·표시만 바꾸는 배포는 측정 방식 전환이 아니다. 기존 동의 저장 키·선택·`measurementChangeDate`를 유지하고, `Allow cookies`·`Reject`·`Details`와 푸터의 `Cookie settings`, 개인정보 안내를 함께 확인한다. 자동 발행 서버에도 같은 빌드 소스를 반영해 이후 기사 발행 때 이전 UI가 복원되지 않게 하며, 서버의 홍보 기록·예약 상태는 보존한다.
+
 ## SNS 자동 게시
 
 웹 서버와 별개인 Linux 서버의 `~/projects/indiek`에서 실행한다. SSH 별칭·접속 정보는 로컬 `SERVER_ACCESS.md`에서 확인한다. Node.js 22+, Python 3/Pillow, ChatGPT로 로그인한 Codex CLI, 사용자 systemd·linger가 필요하다. 추가 API 과금 방식으로 전환하지 않는다.

@@ -110,9 +110,9 @@ export function initAnalytics(config, siteOrigin, win = window, doc = document) 
     }
   }
   function describe() {
-    status.textContent = isBlocked() ? 'Your browser’s privacy preference keeps analytics off.'
-      : choice === 'allowed' ? 'Analytics is allowed. You can turn it off and remove its cookies at any time.'
-      : choice === 'declined' ? 'Analytics is off.' : 'The choice is yours. The site works either way.';
+    status.textContent = isBlocked() ? 'Your browser’s privacy preference keeps analytics cookies off.'
+      : choice === 'allowed' ? 'Analytics cookies are on. Choose Reject to turn them off and remove them.'
+      : choice === 'declined' ? 'Analytics cookies are off.' : '';
     allow.disabled = isBlocked();
   }
   function choose(value) {
