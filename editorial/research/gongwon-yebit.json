@@ -1,7 +1,7 @@
 {
   "checked": "2026-10-21",
-  "status": "release-ready",
-  "publication": "User authorized deployment on 2026-10-21. First-publication dates set for this release; production verification pending. No social posting requested.",
+  "status": "published",
+  "publication": "Published on 2026-10-21 under release ac42da3. Production and automation checkouts updated; both artist pages, home announcements and RSS verified. Existing social queue and publisher timers preserved; no social posting performed.",
   "readerQuestion": "What are these songs about, and what can a listener who does not know Korean learn from one short phrase?",
   "scope": "Artist-page introductions and brief English lyric readings for gongwon — Flower and Yebit — Only You, plus the separate gongwon full live session. Flower replaces the earlier local Window selection; no full lyrics or complete translations.",
   "referenceChoices": [
@@ -288,5 +288,28 @@
   "publicationReview": {
     "checked": "2026-10-21",
     "scope": "Compared both full records with their previously reviewed hashes before adding editorial.published. Only publication metadata changed; all song copy, sources, excerpts and videos remain identical. Updated full-record hashes after the metadata change."
+  },
+  "deploymentVerification": {
+    "date": "2026-10-21",
+    "release": "ac42da3943718a447585dcbe2d962d358a35ad82",
+    "rollback": "21d1d0d1bdeefdb4a9d21e1ff6e831435d64a427",
+    "automated": "Production build; 119 tests and 28 static pages passed locally and on both servers. All 46 changed public files match the local SHA-256. HTTP/www redirects and module/image MIME pass.",
+    "browser": [
+      "Desktop and 390×844 production home show both dated New on indiek cards.",
+      "Both artist lyric sections and gongwon full-session chapter list rendered correctly.",
+      "Korean searches for 곰팡이 and 예빛 each returned the expected song; search result and home card navigation work.",
+      "No iframe or YouTube API loaded before consent; no console errors observed. Existing Saved 2 was left unchanged. Viewport reset after verification."
+    ],
+    "automation": "Catalogue and build sources synchronized. Existing docs/promotion.md and promotion/state/queue.json hashes unchanged; six timers retained. No posting command or schedule change.",
+    "notManuallyVerified": [
+      "Actual playback and Saved interactions were verified locally before release, not repeated on production.",
+      "Saved 50-entry layout, physical mobile keyboard and fullscreen entry/exit remain unverified. Forced error/autoplay and end-of-queue cases are covered by automated tests, not all reproduced in the live browser."
+    ],
+    "screenshots": [
+      "/tmp/indiek-deploy/home-desktop.png",
+      "/tmp/indiek-deploy/home-mobile.png",
+      "/tmp/indiek-deploy/gongwon-lyrics-mobile.png",
+      "/tmp/indiek-deploy/yebit-lyrics-mobile.png"
+    ]
   }
 }
