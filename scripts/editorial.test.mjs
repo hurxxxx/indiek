@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {getListeningGuides} from '../site/shared.mjs';
-import {publishedEntries, feedXML, relatedRecords, shareImagePath, homeUpdates} from '../site/editorial.mjs';
+import {publishedEntries, relatedRecords, shareImagePath, homeUpdates} from '../site/editorial.mjs';
 const catalogue=createCatalogue(JSON.parse(readFileSync(new URL('../content/catalogue.json',import.meta.url))));
 test('curated guide order is deliberate, drafts stay private, automatic coverage remains required',()=>{
   const c=structuredClone(catalogue), guides=getListeningGuides(c);
@@ -34,14 +34,11 @@ test('introductory listening notes cannot silently link to a removed or missing 
   delete intro.trackDetails[intro.trackIds[0]];
   assert.throws(()=>getListeningGuides(c),/Missing listening detail or next artist/);
 });
-test('RSS includes only genuinely dated publications, with stable IDs and escaped content',()=>{
+test('published entries include only genuinely dated publications',()=>{
   const entries=[{path:'/artists/a/',title:'A & B',description:'<music>',published:'2026-10-19'},{path:'/draft/',title:'Draft'},{path:'/future/',published:'2099-01-01'}];
-  assert.equal(publishedEntries(entries,new Date('2026-10-20')).length,1);
-  const xml=feedXML(catalogue.site,entries,new Date('2026-10-20'));
-  assert.match(xml,/A &amp; B/);assert.match(xml,/&lt;music&gt;/);assert.ok(!xml.includes('/draft/'));assert.ok(!xml.includes('/future/'));
-  assert.match(xml,/<guid isPermaLink="true">https:\/\/indiek.com\/artists\/a\//);
+  assert.deepEqual(publishedEntries(entries,new Date('2026-10-20')),[entries[0]]);
 });
-test('home previews can announce ready additions without inventing publication dates or adding them to RSS',()=>{
+test('home previews can announce ready additions without inventing publication dates',()=>{
   const entries=[{id:'a',path:'/artists/a/',type:'Artist',title:'A',description:'New artist.'}];
   const updates=[{id:'a-introduction',status:'ready',kind:'artist',path:'/artists/a/',title:'A',description:'A song and lyric notes.'}];
   const now=new Date('2026-10-21T12:00:00+09:00');
@@ -50,7 +47,7 @@ test('home previews can announce ready additions without inventing publication d
   const preview=homeUpdates(entries,updates,{now,preview:true});
   assert.deepEqual(preview.map(item=>item.id),['a-introduction']);
   assert.ok(!preview[0].date&&!preview[0].published);
-  assert.ok(!feedXML(catalogue.site,entries,now).includes('/artists/a/'));
+  assert.deepEqual(publishedEntries(entries,now),[]);
 });
 test('a meaningful update replaces its original listing; ordinary edits do not change home order',()=>{
   const entries=[

@@ -10,7 +10,7 @@ An independent music magazine introducing Korean musicians to listeners around t
 
 - Reported song stories and listening features, with source notes and an open invitation for contributor pitches.
 - A searchable A–Z artist directory, with band/solo filters, introductions, listening notes and release information in English.
-- Short listening guides, related recommendations, an RSS feed and page-specific sharing cards.
+- Short listening guides, related recommendations and page-specific sharing cards.
 - Official YouTube videos and live performances, with Apple Music release links.
 - One shared YouTube player: a centered listening window on desktop and a bottom dock on mobile, moving beside the page in short landscape views. Mobile playback starts without a popup; use YouTube’s fullscreen control for a larger view. Internal navigation, including Back and Forward, keeps playback running. Selecting another song uses the same player; closing it, reloading or leaving ends playback.
 - Listening guides, artist and song search, and tracks saved in your browser with direct playback from Saved. Saved and search use independently scrolling lists with fixed controls. Saved remembers your place, highlights the current track and closes when a song is selected. Play all starts at the beginning of the first saved track and enables Auto-next. Previous/Next and Auto-next stay within reach. Auto-next follows the displayed order and stops after the last song. If the browser blocks playback, press play in the video.
@@ -89,9 +89,9 @@ Run `npm run build && npm run check`, then inspect desktop and mobile. The check
 
 ### Magazine and guides
 
-Magazine articles live in `content/stories/`, with bylines in `content/authors.json`. One article supplies its Stories page, home feature, search entry, RSS item, sitemap entry and sharing card. Drafts stay private. Published text must have matching factual and editorial reviews; editing the title, body, sources or metadata invalidates that approval. The [editorial skill](skills/indiek-editorial/SKILL.md) covers research and editing, while `editorial/topics.json` holds future angles. Article data records what has actually been published.
+Magazine articles live in `content/stories/`, with bylines in `content/authors.json`. One article supplies its Stories page, home feature, search entry, sitemap entry and sharing card. Drafts stay private. Published text must have matching factual and editorial reviews; editing the title, body, sources or metadata invalidates that approval. The [editorial skill](skills/indiek-editorial/SKILL.md) covers research and editing, while `editorial/topics.json` holds future angles. Article data records what has actually been published.
 
-Curated guides use 3–5 catalogue tracks with an editorial note for each. Guides marked `draft` are excluded from public pages and browser data. Add a real `editorial.published` date when a page is released to include it in RSS and the latest section; preparation dates are not publication dates.
+Curated guides use 3–5 catalogue tracks with an editorial note for each. Guides marked `draft` are excluded from public pages and browser data. Add a real `editorial.published` date when a page is released to include it in home updates; preparation dates are not publication dates.
 
 ### Home updates
 
@@ -103,7 +103,7 @@ Each announcement has a stable `id`, `status`, `kind`, local `path`, `title` and
 - On actual release, set `status` to `published` and record `published` as `YYYY-MM-DD`. A newly released target page also needs its own first publication date. For additions to older pages whose first publication date is unknown, record the announcement date without inventing an original date. Future dates are excluded, including from previews.
 - Published items sort by announcement or first publication date. A manual announcement takes precedence on the same day. Only the newest item for each destination page appears; the lead magazine story is already featured separately. At most four cards appear, with no carousel or permanent pinning.
 - Keep first publication dates unchanged. Fixing a typo or changing `updated` does not create an announcement. Add an entry when there is something worth returning to, and describe that change directly.
-- RSS continues to use first publication dates and stable page URLs. Home announcements do not generate duplicate RSS items or change social publishing schedules.
+- Home announcements do not change social publishing schedules.
 
 Before deployment, use `npm run build` to replace the local preview output. `build:preview` is for local review, not deployment.
 

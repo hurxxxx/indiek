@@ -445,7 +445,6 @@
       "Actual YouTube playback, fullscreen, mobile landscape and keyboard states; recording IDs unchanged. See deployment record for the later public-page checks.",
       "Saved 0/1/13/50 manual playback matrix; existing automatic tests passed and the browser’s saved list was left unchanged."
     ],
-    "rss": "6 existing dated entries; no invented page publication dates.",
     "localServer": "http://127.0.0.1:4173"
   }
 }

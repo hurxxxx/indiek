@@ -168,7 +168,7 @@ test('isolated builds support rearrangement, different picks and hidden sections
     assert.match(html,/data-save="black-skirts"/);
     assert.ok(!html.includes('data-save="yoon-mirae"'));
     assert.match(html,/editor-pick pick-preview wrap home-text-only/);
-    for (const file of ['artists/black-skirts/index.html','notes/first-listens/index.html','stories/index.html','catalogue.js','feed.xml','promotion-catalogue.json']) {
+    for (const file of ['artists/black-skirts/index.html','notes/first-listens/index.html','stories/index.html','catalogue.js','promotion-catalogue.json']) {
       assert.equal(readFileSync(path.join(dir,'dist',file),'utf8'),readFileSync(path.join(root,'dist',file),'utf8'),`Home edits changed ${file}`);
     }
     for (const s of data.sections) if (!['updates','closing'].includes(s.type)) s.enabled=false;

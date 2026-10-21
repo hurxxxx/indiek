@@ -1,4 +1,4 @@
-import {escapeHTML as e, artistId, artistPath, guidePath, getArtistRecords} from './shared.mjs';
+import {artistId, artistPath, guidePath, getArtistRecords} from './shared.mjs';
 
 export const shareImagePath = url => `/assets/social/${url === '/' ? 'home' : url.replace(/^\/+|\/+$/g, '').replaceAll('/', '-')}.jpg`;
 export function editorialEntries(catalogue, guides) {
@@ -46,10 +46,6 @@ export function homeUpdates(entries, updates, {now = new Date(), preview = false
     seenPaths.add(path);
     return true;
   }).slice(0,limit);
-}
-export function feedXML(site, entries, now = new Date()) {
-  const items = publishedEntries(entries, now);
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>indiek — Music from Korea, worth sharing</title><link>${e(site.url)}</link><description>Stories, artist introductions and listening guides from indiek.</description><language>en</language><atom:link href="${site.url}/feed.xml" rel="self" type="application/rss+xml"/>${items.map(item => `<item><title>${e(item.title)}</title><link>${e(site.url + item.path)}</link><guid isPermaLink="true">${e(site.url + item.path)}</guid><pubDate>${new Date(item.published + 'T00:00:00+09:00').toUTCString()}</pubDate><description>${e(item.description)}</description></item>`).join('')}</channel></rss>\n`;
 }
 export function relatedRecords(record, guides) {
   const relevant = guides.filter(g => g.records.some(r => artistId(r) === artistId(record)))

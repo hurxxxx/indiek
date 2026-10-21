@@ -7,7 +7,7 @@ import {storyViews,storyPromotion} from './story-pages.mjs';
 import {spawnSync} from 'node:child_process';
 import {loadCatalogue} from './catalogue.mjs';
 import {resolveHome,renderHome} from './home.mjs';
-import {shareImagePath, editorialEntries, feedXML, relatedRecords} from '../site/editorial.mjs';
+import {shareImagePath, editorialEntries, relatedRecords} from '../site/editorial.mjs';
 import {escapeHTML as e, artistId, artistPath, trackPath, trackAnchor, getArtistRecords, imageHTML, coverHTML, videoLabel, externalLink as out, saveButton, getFeaturedArtists, getListeningGuides, guidePath, formatPosition, youtubeConsentHTML, getArtistDirectory, navigationSection, getPlaybackRecords} from '../site/shared.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -58,7 +58,7 @@ function header(url) {
   </header>`;
 }
 function footer() {
-  return `<footer class="footer wrap"><a class="small-logo" href="/" aria-label="indiek home">indiek.</a><span class="mono">KOREAN MUSIC. OPEN EARS.</span><div><a href="/about/">About & contact</a><a href="/privacy-and-terms/">Privacy & terms</a><a href="/feed.xml">RSS</a><a href="mailto:${site.email}">Get in touch</a><button class="analytics-settings" data-analytics-settings hidden>Cookie settings</button><span class="mono">© 2026 INDIEK</span></div></footer>`;
+  return `<footer class="footer wrap"><a class="small-logo" href="/" aria-label="indiek home">indiek.</a><span class="mono">KOREAN MUSIC. OPEN EARS.</span><div><a href="/about/">About & contact</a><a href="/privacy-and-terms/">Privacy & terms</a><a href="mailto:${site.email}">Get in touch</a><button class="analytics-settings" data-analytics-settings hidden>Cookie settings</button><span class="mono">© 2026 INDIEK</span></div></footer>`;
 }
 function overlays() {
   return `<section class="analytics-notice" id="analytics-notice" aria-labelledby="analytics-title" hidden><div><h2 id="analytics-title">Cookies on indiek</h2><p>We use optional analytics cookies to understand visits and how people listen, save and share on indiek. Change your choice anytime.</p><p id="analytics-status" class="analytics-status" role="status"></p></div><div class="analytics-actions"><button data-analytics-allow>Allow cookies</button><button data-analytics-decline>Reject</button><a href="/privacy-and-terms/#analytics">Details</a></div></section>
@@ -86,7 +86,6 @@ ${site.googleSiteVerification ? `<meta name="google-site-verification" content="
 <meta property="og:title" content="${e(title)}"><meta property="og:description" content="${e(description)}"><meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${site.url}${image}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${e(title)} — indiek listening notes">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${e(title)}"><meta name="twitter:description" content="${e(description)}"><meta name="twitter:image" content="${site.url}${image}"><meta name="twitter:image:alt" content="${e(title)} — indiek listening notes">
-<link rel="alternate" type="application/rss+xml" title="indiek" href="/feed.xml">
 ${structured?`<script type="application/ld+json">${JSON.stringify(structured).replaceAll('<','\\u003c')}</script>`:''}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/fonts.css"><link rel="stylesheet" href="/styles.css?v=${version}"><script type="module" src="/app.js?v=${version}"></script>
 </head><body${kind ? ` class="${kind}"` : ''}><div id="page-content">${header(url)}${main}${footer()}</div>${overlays()}</body></html>\n`;
@@ -176,7 +175,7 @@ function moreTracks(r) {
   if(!r.moreTracks) return '';
   return `<aside class="artist-listens" aria-labelledby="more-listens-title"><p class="eyebrow">MORE SONGS TO EXPLORE</p><h3 id="more-listens-title">Keep listening.</h3><ol class="artist-track-links">${r.moreTracks.map((track,i)=>`<li><a href="${track.url}" target="_blank" rel="noopener noreferrer"><span class="mono">0${i+1} / ${track.year}</span><span><strong>${e(track.title)}</strong><small>${e(track.note)}</small></span><span aria-hidden="true">↗</span></a></li>`).join('')}</ol><p class="artist-listens-note mono">LISTEN ON YOUTUBE ↗</p></aside>`;
 }
-function shareControl() { return '<div class="share-tools"><button class="underlink" data-share-page data-js-only hidden>Share this page ↗</button><a class="underlink" href="/feed.xml">Follow via RSS ↗</a></div>'; }
+function shareControl() { return '<div class="share-tools" data-js-only hidden><button class="underlink" data-share-page data-js-only hidden>Share this page ↗</button></div>'; }
 function byline(editorial) {
   if (!editorial) return '';
   return `<p class="editorial-byline mono">BY <a href="/about/">${e(editorial.author.toUpperCase())}</a>${editorial.published?` / PUBLISHED <time datetime="${editorial.published}">${editorial.published}</time>`:''}${editorial.updated && editorial.updated!==editorial.published?` / UPDATED <time datetime="${editorial.updated}">${editorial.updated}</time>`:''}</p>`;
@@ -266,7 +265,6 @@ copyFileSync(path.join(root,'site/player.mjs'),path.join(root,'dist/player.mjs')
 copyFileSync(path.join(root,'site/styles.css'),path.join(root,'dist/styles.css'));
 writeFileSync(path.join(root,'dist/robots.txt'),`User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
 writeFileSync(path.join(root,'dist/sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.map(url=>`<url><loc>${url}</loc></url>`).join('')}</urlset>\n`);
-writeFileSync(path.join(root,'dist/feed.xml'),feedXML(site,entries));
 writeFileSync(path.join(root,'dist/promotion-catalogue.json'),JSON.stringify({version:1,origin:site.url,items:promotionItems},null,2)+'\n');
 const images = spawnSync('python3',[path.join(root,'scripts/social-images.py')],{input:JSON.stringify(socialImages),encoding:'utf8'});
 if(images.status!==0)throw new Error(images.stderr || 'Sharing image generation failed');
