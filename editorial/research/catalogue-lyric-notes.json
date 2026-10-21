@@ -2,7 +2,7 @@
   "checked": "2026-10-21",
   "status": "reviewed-local",
   "readerQuestion": "What do the words contribute to each song, without needing a full English translation?",
-  "scope": "All 16 introduced catalogue tracks, including the editor pick. Existing two notes revised. External moreTracks links and chapters in the separate full session are outside this song-introduction scope. No new recordings or public publication dates.",
+  "scope": "All 16 introduced catalogue tracks, including the editor pick. Existing two notes revised. External moreTracks links and chapters in the separate full session are outside this song-introduction scope. No new recordings or artist-page first-publication dates.",
   "referenceChoices": [
     {
       "id": "sunwoojunga-kraze",
@@ -429,7 +429,7 @@
   ],
   "verification": {
     "checked": "2026-10-21",
-    "build": "Production build and local preview generated; no deployment.",
+    "build": "Production build and local preview verified. Final deployment and public-page verification: deploy/README.md#확인과-복구 (d8ce439, 2026-10-21).",
     "automated": "178 Node tests pass; 28 static pages checked in production and preview. Coverage includes all lyric paragraphs and source links, guide anchors, editor pick, additional songs, incomplete notes and exact reviewed revision.",
     "manual": [
       "Desktop 1440 × 1000 and mobile 390 × 844: Forest lyric notes readable with no horizontal overflow.",
@@ -442,7 +442,7 @@
       "/tmp/indiek-lyric-notes-mobile.jpg"
     ],
     "notRetested": [
-      "Actual YouTube playback, fullscreen, mobile landscape and keyboard states; recording IDs and playback implementation were not changed.",
+      "Actual YouTube playback, fullscreen, mobile landscape and keyboard states; recording IDs unchanged. See deployment record for the later public-page checks.",
       "Saved 0/1/13/50 manual playback matrix; existing automatic tests passed and the browser’s saved list was left unchanged."
     ],
     "rss": "6 existing dated entries; no invented page publication dates.",
