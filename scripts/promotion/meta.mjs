@@ -1,8 +1,13 @@
 // Official APIs only. Tokens never enter prompts, command arguments or request logs.
 export class MetaError extends Error {
-  constructor(status,code) {
+  constructor(status,code,{platform,operation,apiMessage}={}) {
     super('Meta API request failed');
-    this.safeMessage=`Meta API HTTP ${Number(status)||0}, code ${Number(code)||0}. Check account authorization or platform status.`;
+    this.platform=['threads','instagram'].includes(platform)?platform:undefined;
+    this.operation=['identity','recent','create','container','publish','media'].includes(operation)?operation:undefined;
+    const context=[this.platform,this.operation].filter(Boolean).join(' ');
+    // Only recognize a fixed diagnostic; never log arbitrary API messages or request data.
+    const detail=apiMessage==='API access blocked.'?'API access blocked. Check Meta developer account verification and app restrictions.':'Check account authorization or platform status.';
+    this.safeMessage=`${context?context+': ':''}Meta API HTTP ${Number(status)||0}, code ${Number(code)||0}. ${detail}`;
     this.pausePlatform=[401,403,429].includes(status)||[4,10,190,200,368].includes(code);
   }
 }
@@ -12,14 +17,14 @@ export function metaClient(platform,credentials,{fetcher=fetch}={}) {
   if(!/^v\d+\.\d+$/.test(version))throw new Error('Invalid API version');
   const host=platform==='threads'?'https://graph.threads.com':'https://graph.instagram.com';
   const base=`${host}/${version}`;
-  async function request(endpoint,params={},method='GET') {
+  async function request(endpoint,params={},method='GET',operation) {
     const url=new URL(`${base}/${endpoint}`);
     if(method==='GET')url.search=new URLSearchParams(params).toString();
     let response;
     try{response=await fetcher(url,{method,redirect:'error',headers:{Authorization:`Bearer ${credentials.token}`,...(method==='POST'?{'Content-Type':'application/x-www-form-urlencoded'}:{})},...(method==='POST'?{body:new URLSearchParams(params)}:{}),signal:AbortSignal.timeout(20000)});}
-    catch{throw new MetaError(0,0);}
+    catch{throw new MetaError(0,0,{platform,operation});}
     const data=await response.json().catch(()=>null);
-    if(!response.ok||data?.error||!data)throw new MetaError(response.status,data?.error?.code);
+    if(!response.ok||data?.error||!data)throw new MetaError(response.status,data?.error?.code,{platform,operation,apiMessage:data?.error?.message});
     return data;
   }
   const textField=platform==='threads'?'text':'caption';
@@ -27,14 +32,14 @@ export function metaClient(platform,credentials,{fetcher=fetch}={}) {
   const id=credentials.userId;
   return {
     pollInterval:platform==='threads'?30000:60000,
-    identity:()=>request(id,{fields:'id,username'}),
+    identity:()=>request(id,{fields:'id,username'},'GET','identity'),
     create:post=>request(`${id}/${platform==='threads'?'threads':'media'}`,platform==='threads'
       ?(post.kind==='news'?{media_type:'TEXT',text:post.copy,link_attachment:post.url}:{media_type:'IMAGE',image_url:post.imageUrl,text:post.copy,alt_text:post.altText,topic_tag:'Korean music'})
-      :{image_url:post.imageUrl,caption:post.copy,alt_text:post.altText},'POST'),
-    async container(containerId){const field=platform==='threads'?'status':'status_code';return (await request(containerId,{fields:field}))[field];},
-    publish:containerId=>request(`${id}/${platform==='threads'?'threads_publish':'media_publish'}`,{creation_id:containerId},'POST'),
-    media:mediaId=>request(mediaId,{fields}),
-    async recent(){return (await request(`${id}/${platform==='threads'?'threads':'media'}`,{fields,limit:'50'})).data||[];},
+      :{image_url:post.imageUrl,caption:post.copy,alt_text:post.altText},'POST','create'),
+    async container(containerId){const field=platform==='threads'?'status':'status_code';return (await request(containerId,{fields:field},'GET','container'))[field];},
+    publish:containerId=>request(`${id}/${platform==='threads'?'threads_publish':'media_publish'}`,{creation_id:containerId},'POST','publish'),
+    media:mediaId=>request(mediaId,{fields},'GET','media'),
+    async recent(){return (await request(`${id}/${platform==='threads'?'threads':'media'}`,{fields,limit:'50'},'GET','recent')).data||[];},
   };
 }
 export async function recentOwnPosts(config,credentials,{client=metaClient}={}) {

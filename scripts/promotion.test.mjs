@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import {mkdtempSync,mkdirSync,writeFileSync,readFileSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
-import {Store,slots,eligible,hash,validateDraft,validatePost,verifyLive,publishPost,withLock} from './promotion/core.mjs';
-import {metaClient,refreshToken,MetaError} from './promotion/meta.mjs';
+import {Store,slots,eligible,hash,validateDraft,validatePost,verifyLive,publishPost,publishScheduledPost,withLock} from './promotion/core.mjs';
+import {metaClient,recentOwnPosts,refreshToken,MetaError} from './promotion/meta.mjs';
 const config={origin:'https://indiek.com',platforms:['threads','instagram'],account:'indiekdotcom',maxSlotAgeMinutes:120,cooldownDays:28,previousPosts:[]};
 const now=new Date('2026-10-20T01:00:00Z');
 function post(platform='threads'){
@@ -12,7 +12,7 @@ function post(platform='threads'){
 }
 function fixture(){
  const events=[],remote=[];let sends=0,creates=0;
- const store={save(p,event){events.push({status:p.status,event});}};
+ const store={posts:[],save(p,event){events.push({status:p.status,event});}};
  const api={identity:async()=>({username:'indiekdotcom'}),create:async()=>{creates++;return{id:'container'};},container:async()=>'FINISHED',publish:async()=>{sends++;return{id:'posted'};},media:async()=>remote[0],recent:async()=>remote};
  return {events,remote,api,store,sends:()=>sends,creates:()=>creates,options:{config,api,store,now,verify:async()=>{},sleep:async()=>{}}};
 }
@@ -101,4 +101,41 @@ test('expired tokens stop without refresh or publishing, refresh values are neve
  await assert.rejects(refreshToken('threads',{token:'secret',expiresAt:'2026-10-01',issuedAt:'2026-09-01'},async()=>{throw new Error('must not request');},now),/expired/);
  const c={token:'old',expiresAt:'2026-10-21',issuedAt:'2026-09-01'};
  await refreshToken('threads',c,async()=>new Response(JSON.stringify({access_token:'new',expires_in:5000000})),now);assert.equal(c.token,'new');
+});
+test('blocked account lookup holds the scheduled job and records its platform before any send',async()=>{
+ const p=post(),f=fixture(),other=post('instagram');f.store.posts.push(p,other);
+ const previous=structuredClone(other);
+ await publishScheduledPost(p,{...f.options,recent:async()=>{throw new MetaError(400,200,{platform:'threads',operation:'identity',apiMessage:'API access blocked.'});}});
+ assert.equal(p.status,'held');assert.equal(p.pausePlatform,true);assert.equal(f.creates(),0);assert.equal(f.sends(),0);
+ assert.match(p.issue,/threads identity.*API access blocked/);assert.equal(f.events.at(-1).status,'held');assert.deepEqual(other,previous);
+});
+test('a scheduled platform checks only its own account and still prevents a duplicate daily post',async()=>{
+ const p=post(),f=fixture();f.store.posts.push(p);let calls=0;
+ const recent=()=>recentOwnPosts({...config,platforms:[p.platform]},{threads:{token:'secret'},instagram:{token:'blocked'}},{client:platform=>{
+  assert.equal(platform,'threads');calls++;
+  return {identity:async()=>({username:'indiekdotcom'}),recent:async()=>[{id:'already-posted',text:'An earlier post',permalink:'https://www.threads.com/@indiekdotcom/post/earlier',timestamp:now.toISOString()}]};
+ }});
+ await publishScheduledPost(p,{...f.options,recent});
+ assert.equal(calls,1);assert.equal(p.status,'superseded');assert.equal(f.creates(),0);assert.equal(f.sends(),0);
+});
+test('preflight source failures become visible holds instead of unchanged ready jobs',async()=>{
+ const p=post(),f=fixture();
+ await publishScheduledPost(p,{...f.options,recent:async()=>[],verify:async()=>{throw new Error('Article changed after review');}});
+ assert.equal(p.status,'held');assert.match(p.issue,/Article changed/);assert.equal(p.pausePlatform,undefined);assert.equal(f.sends(),0);
+});
+test('failed reconciliation preserves an uncertain send and never starts another container',async()=>{
+ const p=post(),f=fixture();p.status='submitted';p.remoteId='posted';p.containerId='container';
+ f.api.media=async()=>{throw new MetaError(400,200,{platform:'threads',operation:'media'});};
+ await publishScheduledPost(p,{...f.options,recent:async()=>assert.fail('no daily preflight for uncertain sends')});
+ assert.equal(p.status,'submitted');assert.equal(p.remoteId,'posted');assert.equal(p.pausePlatform,true);assert.equal(f.creates(),0);assert.equal(f.sends(),0);
+});
+test('elapsed scheduled jobs expire without API access or late catch-up publishing',async()=>{
+ const p=post(),f=fixture();f.api.identity=async()=>assert.fail('expired jobs must not contact Meta');
+ await publishScheduledPost(p,{...f.options,now:new Date(now.getTime()+3*3600000),recent:async()=>assert.fail('expired jobs must not fetch recent posts')});
+ assert.equal(p.status,'expired');assert.equal(f.creates(),0);assert.equal(f.sends(),0);
+});
+test('Meta diagnostics identify the operation without copying arbitrary API messages or credentials',async()=>{
+ const client=message=>metaClient('instagram',{token:'private-token',userId:'123'},{fetcher:async()=>new Response(JSON.stringify({error:{code:200,message}}),{status:400})});
+ await assert.rejects(client('API access blocked.').identity(),error=>error.pausePlatform&&/instagram identity.*API access blocked/.test(error.safeMessage));
+ await assert.rejects(client('private-token in untrusted error').recent(),error=>/instagram recent/.test(error.safeMessage)&&!error.safeMessage.includes('private-token'));
 });

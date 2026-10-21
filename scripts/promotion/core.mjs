@@ -1,7 +1,7 @@
 import {readFileSync,writeFileSync,renameSync,mkdirSync,openSync,closeSync,fsyncSync,existsSync,unlinkSync} from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
-import {publicURL,validateCandidate,validateNewsVoice,verifyCandidate,verifyNewsMedia,eventKey,selectedMedia,plain} from './news.mjs';
+import {publicURL,validateCandidate,validateNewsVoice,verifyCandidate,verifyNewsMedia,eventKey,selectedMedia,plain,koreanDay} from './news.mjs';
 
 export const hash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 export const payloadParts = post => post.kind==='news'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.news,post.review,post.sourceVerification,post.media]:post.kind==='story'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.storyId,post.storyRevision,post.review]:[post.platform,post.url,post.imageUrl,post.copy,post.altText];
@@ -125,6 +125,26 @@ export async function verifyLive(post,fetcher=fetch) {
   return {url:url.href,status:response.status,checkedAt:new Date().toISOString(),revision:post.storyRevision,htmlSHA256:createHash('sha256').update(html).digest('hex'),text:plain(html)};
 }
 const normalize = value => String(value||'').replace(/\r\n/g,'\n').trim();
+export async function publishScheduledPost(post,{recent,...options}) {
+  const {config,store,now=new Date()}=options;
+  try {
+    const age=now.getTime()-Date.parse(post.scheduledAt);
+    if(['ready','created'].includes(post.status)&&age>=0&&age<=config.maxSlotAgeMinutes*60000) {
+      const recentPosts=await recent();
+      if([...config.previousPosts,...recentPosts,...store.posts.filter(p=>p.status==='published')].some(p=>p.id!==post.id&&p.platform===post.platform&&koreanDay(new Date(p.publishedAt))===koreanDay(now))) {
+        post.status='superseded';post.issue='A post already exists on this platform today; no extra daily post';store.save(post,'하루 한 건 제한');return post;
+      }
+    }
+    return await publishPost(post,{...options,now});
+  } catch(error) {
+    post.issue=error.safeMessage||error.message;
+    if(['ready','created'].includes(post.status))post.status='held';
+    if(error.pausePlatform)post.pausePlatform=true;
+    // Preserve publishing/submitted: an uncertain send can only be reconciled, never resent.
+    store.save(post,'전송 확인 실패 · 재전송 없이 보류');
+    return post;
+  }
+}
 export async function publishPost(post,{config,store,api,verify=verifyLive,now=new Date(),sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms)),clock=Date.now}) {
   const started=clock();
   const tooLate=()=>now.getTime()+Math.max(0,clock()-started)-Date.parse(post.scheduledAt)>config.maxSlotAgeMinutes*60000;

@@ -2,12 +2,11 @@ import {readFileSync,existsSync,mkdirSync,statSync,chmodSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {homedir} from 'node:os';
-import {Store,atomicWrite,readJSON,withLock,validatePost,verifyLive,publishPost} from './core.mjs';
+import {Store,atomicWrite,readJSON,withLock,validatePost,verifyLive,publishScheduledPost} from './core.mjs';
 import {metaClient,recentOwnPosts,refreshToken} from './meta.mjs';
 import {prepareDaily,reviewBeforePublish} from './news-runner.mjs';
 import {prepareStory} from './stories.mjs';
 import {shareStoryNow} from './on-demand.mjs';
-import {koreanDay} from './news.mjs';
 
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const config=readJSON(path.join(root,'promotion/config.json'));
@@ -45,22 +44,19 @@ async function publish(store,platform) {
   if(!config.platforms.includes(platform))throw new Error('Specify threads or instagram.');
   const secret=credentials(),credential=secret[platform];
   if(!credential?.token){stateNote(`${platform}: account authorization missing; no API calls or posts.`);return;}
-  if(store.posts.some(p=>p.platform===platform&&p.pausePlatform)){stateNote(`${platform}: paused after an authorization or platform restriction; inspect the recorded issue before resuming.`);return;}
+  if(store.posts.some(p=>p.platform===platform&&p.pausePlatform)){stateNote(`${platform}: paused after an authorization or platform restriction; inspect the recorded issue before resuming.`);process.exitCode=1;return;}
   if(await refreshToken(platform,credential))atomicWrite(credentialFile,JSON.stringify(secret,null,2)+'\n');
   const api=metaClient(platform,credential);
   let recentPosts;
+  const recent=async()=>recentPosts??=await recentOwnPosts({...config,platforms:[platform]},secret);
+  let failed=false;
   for(const post of store.posts.filter(p=>p.mode!=='on-demand'&&p.platform===platform&&!['published','expired','superseded'].includes(p.status))) {
-    if(['ready','created'].includes(post.status)&&Date.parse(post.scheduledAt)<=now.getTime()&&now.getTime()-Date.parse(post.scheduledAt)<config.maxSlotAgeMinutes*60000){
-      recentPosts??=await recentOwnPosts(config,secret);
-      if([...config.previousPosts,...recentPosts,...store.posts.filter(p=>p.status==='published')].some(p=>p.id!==post.id&&p.platform===platform&&koreanDay(new Date(p.publishedAt))===koreanDay(now))){
-        post.status='superseded';post.issue='A post already exists on this platform today; no extra daily post';store.save(post,'하루 한 건 제한');continue;
-      }
-    }
-    try{await publishPost(post,{config,store,api,now,verify:post.kind==='news'?async p=>{recentPosts??=await recentOwnPosts(config,secret);return reviewBeforePublish(p,{root,config,posts:store.posts,recentPosts,now});}:verifyLive});}
-    catch(error){post.issue=error.safeMessage||error.message;store.save(post,'전송 전 확인 실패');if(error.pausePlatform){post.pausePlatform=true;store.save(post,'플랫폼 게시 중단');}}
+    await publishScheduledPost(post,{config,store,api,now,recent,verify:post.kind==='news'?async p=>reviewBeforePublish(p,{root,config,posts:store.posts,recentPosts:await recent(),now}):verifyLive});
+    if(['held','creating','publishing','submitted'].includes(post.status)||post.pausePlatform)failed=true;
     if(post.pausePlatform)break;
   }
-  stateNote(`${platform}: scheduled queue checked. Read docs/promotion.md for actual results.`);
+  stateNote(`${platform}: ${failed?'publishing held; inspect the recorded error before resuming':'scheduled queue checked'}. Read docs/promotion.md for actual results.`);
+  if(failed)process.exitCode=1;
 }
 async function storyNow(store) {
   if(local)throw new Error('story-now requires the live public catalogue.');
