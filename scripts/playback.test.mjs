@@ -88,6 +88,21 @@ test('a play action starts the first video and resumes the same song without rep
   assert.deepEqual(b.calls,[['play','one'],['play','one']]);
   assert.equal(b.stage.children[0],frame);assert.equal(b.created.length,1);
 });
+test('a full session shares the iframe, links to its artist and stays outside the saved-song queue',async()=>{
+  const b=playerFixture();b.player.setQueue([first,second]);
+  b.player.load(first,{autoplay:true});await b.ready();
+  const frame=b.stage.children[0],api=b.instances[0];
+  const session={...first,id:'first-live',artistId:'first',track:'Full session',videoId:'live'};
+  b.player.load(session,{autoplay:true});
+  assert.equal(b.label.href,'/artists/first/#first-live');
+  assert.equal(b.stage.children[0],frame);assert.equal(b.created.length,1);
+  assert.equal(b.player.previous,null);assert.equal(b.player.next,null);
+  api.emit('onStateChange',1);api.emit('onStateChange',0);
+  assert.equal(b.player.current.id,'first-live');assert.equal(b.player.state,'ended');
+  b.player.load(first,{autoplay:true});
+  assert.equal(b.label.href,'/artists/first/#listen');
+  assert.equal(b.stage.children[0],frame);assert.deepEqual(b.calls.at(-1),['play','one']);
+});
 test('saved order advances once per completed song, skips external-only entries and stops at the end',async()=>{
   const b=playerFixture();b.player.setQueue([first,{...first,id:'external',externalOnly:true},second,third]);
   b.player.load(first);await b.ready();const api=b.instances[0];

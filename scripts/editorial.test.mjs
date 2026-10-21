@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {getListeningGuides} from '../site/shared.mjs';
-import {publishedEntries, feedXML, relatedRecords, shareImagePath} from '../site/editorial.mjs';
+import {publishedEntries, feedXML, relatedRecords, shareImagePath, homeUpdates} from '../site/editorial.mjs';
 const catalogue=JSON.parse(readFileSync(new URL('../content/catalogue.json',import.meta.url)));
 test('curated guide order is deliberate, drafts stay private, automatic coverage remains required',()=>{
   const c=structuredClone(catalogue), guides=getListeningGuides(c);
@@ -39,6 +39,46 @@ test('RSS includes only genuinely dated publications, with stable IDs and escape
   const xml=feedXML(catalogue.site,entries,new Date('2026-10-20'));
   assert.match(xml,/A &amp; B/);assert.match(xml,/&lt;music&gt;/);assert.ok(!xml.includes('/draft/'));assert.ok(!xml.includes('/future/'));
   assert.match(xml,/<guid isPermaLink="true">https:\/\/indiek.com\/artists\/a\//);
+});
+test('home previews can announce ready additions without inventing publication dates or adding them to RSS',()=>{
+  const entries=[{id:'a',path:'/artists/a/',type:'Artist',title:'A',description:'New artist.'}];
+  const updates=[{id:'a-introduction',status:'ready',kind:'artist',path:'/artists/a/',title:'A',description:'A song and lyric notes.'}];
+  const now=new Date('2026-10-21T12:00:00+09:00');
+  const live=homeUpdates(entries,updates,{now});
+  assert.equal(live.length,0);
+  const preview=homeUpdates(entries,updates,{now,preview:true});
+  assert.deepEqual(preview.map(item=>item.id),['a-introduction']);
+  assert.ok(!preview[0].date&&!preview[0].published);
+  assert.ok(!feedXML(catalogue.site,entries,now).includes('/artists/a/'));
+});
+test('a meaningful update replaces its original listing; ordinary edits do not change home order',()=>{
+  const entries=[
+    {id:'a',path:'/artists/a/',title:'A',description:'Artist',type:'Artist',published:'2026-10-19',updated:'2026-10-23'},
+    {id:'story',path:'/stories/story/',title:'Story',description:'Story',type:'Story',published:'2026-10-20'},
+    {id:'guide',path:'/notes/guide/',title:'Guide',description:'Guide',type:'Guide',published:'2026-10-21'},
+  ];
+  const now=new Date('2026-10-24');
+  assert.deepEqual(homeUpdates(entries,[],{now}).map(item=>item.id),['guide','story','a']);
+  const updates=[{id:'a-lyrics',status:'published',kind:'lyrics',path:'/artists/a/#lyrics',title:'A: inside the lyrics',description:'A new explanation.',published:'2026-10-22'}];
+  const result=homeUpdates(entries,updates,{now,excludePaths:['/stories/story/']});
+  assert.deepEqual(result.map(item=>item.id),['a-lyrics','guide']);
+  assert.equal(result[0].path,'/artists/a/#lyrics');
+  assert.equal(entries[0].published,'2026-10-19');
+});
+test('home updates exclude drafts and future announcements even in preview, and reject broken publication data',()=>{
+  const entries=[{id:'a',path:'/artists/a/',type:'Artist',published:'2026-10-19'}];
+  const update={id:'a-live',status:'published',kind:'live',path:'/artists/a/#live',title:'A live',description:'A live session.',published:'2026-10-22'};
+  const options={now:new Date('2026-10-21T12:00:00+09:00'),preview:true};
+  assert.deepEqual(homeUpdates(entries,[update,{id:'draft',status:'draft'}],options).map(item=>item.id),['a']);
+  for(const patch of [{published:'2026-02-30'},{published:'2026-10-18'},{path:'/artists/missing/'},{status:'ready'},{kind:'unknown'}]){
+    assert.throws(()=>homeUpdates(entries,[{...update,...patch}],options),/home update/i);
+  }
+  assert.throws(()=>homeUpdates(entries,[update,update],options),/duplicate home update ID/);
+  assert.throws(()=>homeUpdates([{...entries[0],published:undefined}],[{...update,kind:'artist'}],options),/actual page and update publication dates/);
+  const legacy=[{...entries[0],published:undefined}];
+  const liveAddition={...update,published:'2026-10-21'};
+  assert.equal(homeUpdates(legacy,[liveAddition],options)[0].id,'a-live');
+  assert.equal(legacy[0].published,undefined); // Announcing a new session must not require a made-up first publication date.
 });
 test('related recommendations never recommend the current artist or duplicate a track',()=>{
   const guides=getListeningGuides(catalogue);

@@ -5,19 +5,22 @@ import {loadStories,validateStory} from './editorial/content.mjs';
 import {publicStories,storyIndex,storyPath} from '../site/stories.mjs';
 import {storyViews,storyPromotion} from './story-pages.mjs';
 import {spawnSync} from 'node:child_process';
-import {shareImagePath, editorialEntries, publishedEntries, feedXML, relatedRecords} from '../site/editorial.mjs';
-import {escapeHTML as e, artistPath, imageHTML, coverHTML, videoLabel, externalLink as out, saveButton, getFeaturedArtists, getListeningGuides, guidePath, formatPosition, youtubeConsentHTML, getArtistDirectory, navigationSection} from '../site/shared.mjs';
+import {shareImagePath, editorialEntries, homeUpdates, feedXML, relatedRecords} from '../site/editorial.mjs';
+import {escapeHTML as e, artistPath, imageHTML, coverHTML, videoLabel, externalLink as out, saveButton, getFeaturedArtists, getListeningGuides, guidePath, formatPosition, youtubeConsentHTML, getArtistDirectory, navigationSection, getPlaybackRecords} from '../site/shared.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = file => readFileSync(path.join(root, file), 'utf8');
 const catalogue = JSON.parse(read('content/catalogue.json'));
 const media = JSON.parse(read('content/media.json'));
 const rights = JSON.parse(read('content/image-rights.json'));
+const updates = JSON.parse(read('content/updates.json'));
+const preview = process.argv.includes('--preview');
 const {site, records, editorPick: pick} = catalogue;
 const features = getFeaturedArtists(catalogue);
 const guides = getListeningGuides(catalogue);
 const all = [...records, pick];
-const version = '20261020-stories';
+const playbackRecords = getPlaybackRecords(catalogue);
+const version = '20261021-gongwon-flower';
 const authors=JSON.parse(read('content/authors.json'));
 const stories=publicStories(loadStories(root));
 for(const s of stories) {
@@ -145,6 +148,27 @@ function player(r, cover = false) {
   ${youtubeConsentHTML()}
   <button class="underlink disconnect-player" data-unload-player hidden>Disconnect YouTube</button></div>`;
 }
+function lyricNotes(r) {
+  const notes = r.lyricNotes;
+  if (!notes) return '';
+  return `<section class="lyric-notes" id="lyrics" aria-labelledby="lyrics-title">
+    <p class="eyebrow">INSIDE THE LYRICS</p><h3 id="lyrics-title">${e(notes.heading)}</h3>
+    <ul class="lyric-themes" aria-label="Lyrical themes">${notes.themes.map(theme=>`<li>${e(theme)}</li>`).join('')}</ul>
+    ${notes.paragraphs.map(text=>`<p>${e(text)}</p>`).join('')}
+    <figure class="lyric-excerpt"><blockquote lang="ko">${e(notes.excerpt.korean)}</blockquote><figcaption><span lang="en">${e(notes.excerpt.english)}</span><small>Brief excerpt · English translation by indiek</small></figcaption></figure>
+    <p>${e(notes.excerpt.note)}</p><p class="lyric-source">${sourceLink(notes.source.url,notes.source.label,notes.source.language)}</p>
+    <p class="lyric-editorial-note">Reading and brief translation by indiek, prepared with AI assistance. <a href="/about/#editorial">How we make these notes</a>.</p>
+  </section>`;
+}
+function performances(r) {
+  return (r.performances || []).map(video=>{
+    const playable = playbackRecords.find(item=>item.id===video.id);
+    return `<section class="artist-performance" id="${video.id}" aria-labelledby="${video.id}-title"><p class="eyebrow">ON STAGE / FULL SESSION</p><h2 id="${video.id}-title">${e(video.track)}</h2><p>${e(video.description)}</p>
+      <ol class="performance-chapters" aria-label="Songs in this live session">${(video.chapters||[]).map(chapter=>`<li><span class="mono">${e(chapter.time)}</span><span>${e(chapter.title)} <span lang="ko">${e(chapter.korean)}</span></span></li>`).join('')}</ol>
+      ${player(playable)}
+    </section>`;
+  }).join('');
+}
 function moreTracks(r) {
   if(!r.moreTracks) return '';
   return `<aside class="artist-listens" aria-labelledby="more-listens-title"><p class="eyebrow">MORE SONGS TO EXPLORE</p><h3 id="more-listens-title">Keep listening.</h3><ol class="artist-track-links">${r.moreTracks.map((track,i)=>`<li><a href="${track.url}" target="_blank" rel="noopener noreferrer"><span class="mono">0${i+1} / ${track.year}</span><span><strong>${e(track.title)}</strong><small>${e(track.note)}</small></span><span aria-hidden="true">↗</span></a></li>`).join('')}</ol><p class="artist-listens-note mono">LISTEN ON YOUTUBE ↗</p></aside>`;
@@ -163,8 +187,9 @@ function related(r) {
   return `<section class="related-listening" aria-labelledby="related-title"><p class="eyebrow">WHERE TO NEXT</p><h2 id="related-title">More music you might like.</h2><div class="related-tracks">${next.records.map(other=>`<a href="${artistPath(other)}"><strong>${e(other.artist)}</strong><span>${e(other.track)}</span></a>`).join('')}</div><p class="related-guide-links">${next.guides.map(g=>`<a class="underlink" href="${guidePath(g)}">${e(g.title)} ↗</a>`).join('')}</p></section>`;
 }
 function latest() {
-  const recent=publishedEntries(entries.filter(item=>item.type!=='Story')).slice(0,4);
-  return `<section class="latest-section wrap" id="latest" aria-labelledby="latest-title"><div class="section-heading"><div><p class="eyebrow">RECENTLY ADDED</p><h2 id="latest-title">New to the journal.</h2></div><a class="underlink" href="/feed.xml">Follow via RSS ↗</a></div><div class="latest-list">${recent.map(item=>`<a href="${item.path}"><span class="mono"><time datetime="${item.published}">${item.published}</time> / ${item.type.toUpperCase()}</span><h3>${e(item.title)}</h3><p>${e(item.description)}</p><span aria-hidden="true">↗</span></a>`).join('')}</div></section>`;
+  const recent=homeUpdates(entries,updates,{preview,excludePaths:stories[0]?[storyPath(stories[0])]:[]});
+  if(!recent.length)return '';
+  return `<section class="latest-section wrap" id="latest" aria-labelledby="latest-title"><div class="section-heading"><div><p class="eyebrow">ADDED &amp; UPDATED</p><h2 id="latest-title">New on indiek.</h2></div><p class="latest-intro">Artists, songs &amp; stories.</p></div><div class="latest-list">${recent.map(item=>`<a href="${e(item.path)}" data-home-update="${e(item.id)}"><span class="latest-meta mono"><span>${e(item.label.toUpperCase())}</span>${item.date?`<time datetime="${item.date}">${item.date}</time>`:''}</span><h3>${e(item.title)}</h3><p>${e(item.description)}</p><span class="latest-arrow" aria-hidden="true">↗</span></a>`).join('')}</div></section>`;
 }
 
 let home = read('site/templates/home.html');
@@ -192,10 +217,11 @@ for(const r of all) {
   const feature=features.find(f=>f.id===r.id && f.kind==='portrait');
   const sources=[{url:r.source,label:r.sourceName,language:r.sourceLanguage},{url:r.artistSource,label:r.artistSourceName,language:r.artistSourceLanguage},...(r.extraSources||[])];
   const main=`<main id="main" class="wrap artist-page"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><a href="/artists/">Artists</a></nav>
-  <header class="artist-heading"><p class="eyebrow">MEET THE ARTIST / <span lang="ko">${e(r.korean)}</span></p><h1>${e(r.artist)}</h1><p class="artist-lead">${e(r.artistIntro)}</p>${byline(r.editorial)}${shareControl()}</header>
+  <header class="artist-heading"><p class="eyebrow">MEET THE ARTIST / <span lang="ko">${e(r.korean)}</span></p><h1>${e(r.artist)}</h1><p class="artist-lead">${e(r.artistIntro)}</p>${byline(r.editorial)}${shareControl()}${r.lyricNotes?`<nav class="artist-sections" aria-label="On this artist page"><a href="#listen">Listen ↓</a><a href="#lyrics">Inside the lyrics ↓</a>${(r.performances||[]).map(video=>`<a href="#${video.id}">Full live session ↓</a>`).join('')}</nav>`:''}</header>
   ${feature?`<figure class="artist-portrait">${imageHTML(media,feature.image,feature.alt,{priority:true,sizes:'(max-width: 760px) 92vw, 960px',style:`object-position:${feature.position}`})}<figcaption>${e(rights.images.find(image=>image.file===feature.image)?.caption || 'Artist photograph.')} ${photoCredit(feature.image) || '<a href="/about/#image-credits">Image credits</a>'}</figcaption></figure>`:''}
   ${r.biography?`<div class="artist-extra"><p>${e(r.biography)}</p></div>`:''}
-  <section class="track-page" id="listen" aria-labelledby="track-title"><div class="track-summary">${coverHTML(media,r,{sizes:'(max-width: 760px) 45vw, 300px',className:'detail-cover'})}<p class="eyebrow">${e(r.genre)} / ${r.year}</p><h2 id="track-title">${e(r.track)}${r.koreanTitle?`<span class="track-korean" lang="ko">${e(r.koreanTitle)}</span>`:''}</h2><p class="record-format mono">${videoLabel(r)}</p>${r.releaseYear?`<p class="embed-caption">Single: ${r.year} · ${e(r.release)}: ${r.releaseYear}</p>`:''}${r!==pick?saveButton(r,true):''}<p class="release-link">${out(r.source,'View release on Apple Music','underlink')}</p></div><div class="track-reading"><p class="track-description">${e(r.description)}</p>${r.listeningNote?`<section class="listening-note"><h3>A little background</h3><p>${e(r.listeningNote)}</p></section>`:''}${r.credits?`<p class="pick-credits">${e(r.credits)}</p>`:''}${player(r)}</div></section>
+  <section class="track-page" id="listen" aria-labelledby="track-title"><div class="track-summary">${coverHTML(media,r,{sizes:'(max-width: 760px) 45vw, 300px',className:'detail-cover'})}<p class="eyebrow">${e(r.genre)} / ${r.year}</p><h2 id="track-title">${e(r.track)}${r.koreanTitle?`<span class="track-korean" lang="ko">${e(r.koreanTitle)}</span>`:''}</h2><p class="record-format mono">${videoLabel(r)}</p>${r.releaseYear?`<p class="embed-caption">Single: ${r.year} · ${e(r.release)}: ${r.releaseYear}</p>`:''}${r!==pick?saveButton(r,true):''}<p class="release-link">${out(r.source,'View release on Apple Music','underlink')}</p></div><div class="track-reading"><p class="track-description">${e(r.description)}</p>${r.listeningNote?`<section class="listening-note"><h3>A little background</h3><p>${e(r.listeningNote)}</p></section>`:''}${r.credits?`<p class="pick-credits">${e(r.credits)}</p>`:''}${player(r)}${lyricNotes(r)}</div></section>
+  ${performances(r)}
   ${r.moreTracks?`<div class="more-listening">${moreTracks(r)}</div>`:''}
   ${related(r)}
   <section class="page-sources" aria-labelledby="sources-title"><h2 id="sources-title">Sources & further reading</h2><ul>${sources.map(s=>`<li>${sourceLink(s.url,s.label,s.language)}</li>`).join('')}</ul><p>These are independent listening notes, not an interview or an official artist statement. For a correction, email <a href="mailto:${site.email}">${site.email}</a>.</p><p><a href="/about/#image-credits">Image credits</a></p></section><a class="underlink back-to-shelf" href="/artists/">All artists <span aria-hidden="true">↗</span></a></main>`;
@@ -252,4 +278,4 @@ writeFileSync(path.join(root,'dist/promotion-catalogue.json'),JSON.stringify({ve
 const images = spawnSync('python3',[path.join(root,'scripts/social-images.py')],{input:JSON.stringify(socialImages),encoding:'utf8'});
 if(images.status!==0)throw new Error(images.stderr || 'Sharing image generation failed');
 console.log(images.stdout.trim());
-console.log(`Built ${pages.length} static pages for ${site.url}. No deployment performed.`);
+console.log(`Built ${pages.length} static pages for ${site.url}.${preview?' Local preview includes ready home updates without publication dates.':''} No deployment performed.`);

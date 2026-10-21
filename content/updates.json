@@ -1,0 +1,20 @@
+[
+  {
+    "id": "gongwon-introduction",
+    "status": "published",
+    "kind": "artist",
+    "path": "/artists/gongwon/",
+    "title": "gongwon — Flower",
+    "description": "The official audio for Flower, English lyric notes and a five-song live session from 0.",
+    "published": "2026-10-21"
+  },
+  {
+    "id": "yebit-introduction",
+    "status": "published",
+    "kind": "artist",
+    "path": "/artists/yebit/",
+    "title": "Yebit — Only You",
+    "description": "A live performance from Rolling, with English notes on the song’s lyrics and a relationship that has changed.",
+    "published": "2026-10-21"
+  }
+]

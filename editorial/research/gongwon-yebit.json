@@ -1,0 +1,292 @@
+{
+  "checked": "2026-10-21",
+  "status": "release-ready",
+  "publication": "User authorized deployment on 2026-10-21. First-publication dates set for this release; production verification pending. No social posting requested.",
+  "readerQuestion": "What are these songs about, and what can a listener who does not know Korean learn from one short phrase?",
+  "scope": "Artist-page introductions and brief English lyric readings for gongwon — Flower and Yebit — Only You, plus the separate gongwon full live session. Flower replaces the earlier local Window selection; no full lyrics or complete translations.",
+  "referenceChoices": [
+    {
+      "id": "sunwoojunga-kraze",
+      "url": "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi",
+      "author": "Angelica Vianello",
+      "checked": "2026-10-21",
+      "reception": "craft-only",
+      "technique": "Distinguish a musician’s stated songwriting context from an outsider’s reading; explain Korean wording where it changes comprehension. No interview claims, scenes, metaphors or wording transferred."
+    }
+  ],
+  "outlines": {
+    "gongwon": [
+      "Introduce the speaker’s self-worth through the contrast between flower and mold",
+      "Keep the official English title Flower and explain the Korean title",
+      "Explain the brief Korean ending using feeling-words named in the release note",
+      "Distinguish the January single from the February EP and locate Flower at 18:55 in the full session"
+    ],
+    "yebit": [
+      "Locate the relationship in Seoul Forest",
+      "Explain the tension between hurt and seeking comfort",
+      "Gloss the distinction between composure and pretence",
+      "Credit the songwriter and distinguish release from live upload"
+    ]
+  },
+  "sources": [
+    {
+      "id": "gongwon-audio",
+      "url": "https://www.youtube.com/watch?v=BvvMdJ6-EIM",
+      "publisher": "공원 gongwon / Genie Music Corporation",
+      "published": "2026-02-24",
+      "supports": [
+        "Official English title Flower and Korean music credit title 곰팡이",
+        "Lyrics by gongwon; composition by gongwon and Bae Do Hyub; arrangement by Bae Do Hyub",
+        "EP recording release date 2026-02-24"
+      ],
+      "access": "Opened official watch-page description in Chrome. Current description includes both composers, unlike older search-indexed metadata. Actual local embed played after a reload.",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "gongwon-lyrics",
+      "url": "https://music.bugs.co.kr/track/6428956",
+      "publisher": "Bugs",
+      "published": null,
+      "supports": [
+        "Korean title 곰팡이; 03:28 track duration",
+        "Lyrics by gongwon; composition by gongwon and Bae Do Hyub; arrangement by Bae Do Hyub",
+        "Brief excerpt and lexical gloss",
+        "An editorial reading of self-worth and difficult feelings"
+      ],
+      "access": "Opened Korean track page",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "gongwon-release",
+      "url": "https://music.apple.com/us/album/0-ep/1878624654",
+      "publisher": "Apple Music",
+      "published": "2026-02-24",
+      "supports": [
+        "0 - EP release date",
+        "Six tracks",
+        "Indie Rock genre",
+        "Release artwork"
+      ],
+      "access": "Opened English release page and iTunes catalogue API",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "gongwon-live",
+      "url": "https://www.youtube.com/watch?v=DFFuWt1Ea6o",
+      "publisher": "공원 gongwon",
+      "published": "2026-03-06",
+      "supports": [
+        "Official full live clip",
+        "Five song chapters and their timestamps",
+        "24:40 duration"
+      ],
+      "access": "Official watch-page description; actual local embed playback checked",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "yebit-lyrics",
+      "url": "https://www.genie.co.kr/detail/songInfo?xgnm=105545171",
+      "publisher": "Genie",
+      "published": null,
+      "supports": [
+        "Choi Hong-gyu (Rebuild): lyrics, composition and arrangement",
+        "Brief excerpt and lexical gloss",
+        "Seoul Forest, changed relationship and concealed hurt as the basis for an editorial reading"
+      ],
+      "access": "Opened Korean track page",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "yebit-release",
+      "url": "https://music.apple.com/us/album/only-you-bargobargo-x-yebit-single/1730849271",
+      "publisher": "Apple Music",
+      "published": "2024-02-20",
+      "supports": [
+        "Official English title Only You",
+        "2024 single release date",
+        "Yebit catalogue titles under More By Yebit",
+        "Release artwork"
+      ],
+      "access": "Opened English release page and iTunes catalogue API",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "yebit-live",
+      "url": "https://www.youtube.com/watch?v=Lceij_QGihY",
+      "publisher": "MAGIC STRAWBERRY SOUND",
+      "published": "2026-02-12",
+      "supports": [
+        "Rolling 31st anniversary concert",
+        "Official live clip and upload date",
+        "220-second video duration"
+      ],
+      "access": "Official watch-page description; actual local embed playback checked",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "gongwon-single",
+      "url": "https://music.bugs.co.kr/album/4139403",
+      "publisher": "Bugs / distributed single release note",
+      "published": "2026-01-30",
+      "checked": "2026-10-21",
+      "supports": [
+        "First single release date",
+        "Lyrics and arrangement credits",
+        "Feeling-words used to explain the repeated Korean ending"
+      ],
+      "access": "Opened full album introduction and credits; not treated as an interview"
+    }
+  ],
+  "uncertainties": [
+    "No artist statement establishes either lyric reading as the sole intended meaning. Theme labels are editorial readings.",
+    "No firsthand listening or attendance claims, or instrumentation analysis, were added.",
+    "New artwork reuse permission remains unconfirmed in content/image-rights.json."
+  ],
+  "factReview": {
+    "reviewer": "Codex, factual pass",
+    "status": "approved",
+    "findings": [
+      {
+        "passage": "Flower / 곰팡이",
+        "decision": "Kept the official English title; explained the Korean title as mold. Replaced the previous mirror reading throughout the song introduction.",
+        "sources": [
+          "gongwon-audio",
+          "gongwon-lyrics",
+          "gongwon-single"
+        ]
+      },
+      {
+        "passage": "Yebit songwriting credits",
+        "decision": "Attributed lyrics, music and arrangement to Choi Hong-gyu, not the performer.",
+        "sources": [
+          "yebit-lyrics"
+        ]
+      },
+      {
+        "passage": "Five songs from 0",
+        "decision": "Distinguished the live clip’s five performances from the release’s six tracks.",
+        "sources": [
+          "gongwon-live",
+          "gongwon-release"
+        ]
+      },
+      {
+        "passage": "Lyric explanations and tags",
+        "decision": "Kept as readings of the speaker and language, without biographical or artist-intent claims.",
+        "sources": [
+          "gongwon-lyrics",
+          "yebit-lyrics"
+        ]
+      },
+      {
+        "passage": "Lyrics, composition and arrangement",
+        "decision": "Current official video description and Bugs track credits agree on gongwon as lyricist, gongwon and Bae Do Hyub as composers, and Bae Do Hyub as arranger. Replaced incomplete cached search metadata with the opened current credits.",
+        "sources": [
+          "gongwon-audio",
+          "gongwon-lyrics"
+        ]
+      },
+      {
+        "passage": "First released on 30 January; EP released on 24 February 2026",
+        "decision": "Distinguished first single release from the EP recording used by the player. Website publication is separately recorded in editorial.published.",
+        "sources": [
+          "gongwon-single",
+          "gongwon-release",
+          "gongwon-audio"
+        ]
+      },
+      {
+        "passage": "Korean feeling-word ending",
+        "decision": "The short excerpt is present in the lyrics; the named examples and translations match the single release note. No claim that the editorial reading is the artist’s sole intended meaning.",
+        "sources": [
+          "gongwon-lyrics",
+          "gongwon-single"
+        ]
+      }
+    ],
+    "fullRevisionRechecked": true,
+    "scope": "Rechecked the full Flower record, linked announcement and documentation. Yebit retains its previously reviewed record hash."
+  },
+  "editorialReview": {
+    "reviewer": "Codex, separate editorial pass",
+    "status": "approved",
+    "findings": [
+      {
+        "passage": "gongwon released Flower as a single in January 2026",
+        "reason": "A release-date opening delays the specific story in the song.",
+        "correction": "Opened with the speaker’s wish to keep growing despite self-dislike; dates remain in the later credits."
+      },
+      {
+        "passage": "makes the absent company feel close",
+        "reason": "Awkward abstraction.",
+        "correction": "Rephrased as the remembered voice making the other person feel close."
+      },
+      {
+        "passage": "Repeated interpretation disclaimers",
+        "reason": "Duplicated the source footer and interrupted the phrase explanation.",
+        "correction": "Removed the repeated caveat and linked the editorial process."
+      }
+    ],
+    "comparisons": [
+      "Compared the final Flower record with the unchanged Yebit note and the earlier reference criteria. Flower now explains a Korean sound pattern using named release-note examples; Yebit explains pretence and the changed relationship.",
+      "No invented instrumentation, first-person listening memory, interview or attendance. The comparison of titles is attributed to the release records, and interpretation stays with the lyric speaker.",
+      "The reference interview’s wording, metaphors and narrative sequence are not reproduced."
+    ],
+    "fullRevisionRechecked": true,
+    "scope": "Full revised Flower introduction, excerpt and interpretation; existing Yebit copy unchanged."
+  },
+  "revision": {
+    "yebit": "5f430c33773951d56389106ac14f16a728a4acb2590418c5253c9187e17d9eb8",
+    "gongwon": "6a8e411fef479a77d92bbd8546c847c00d4ba44128a42a911b0bcf4f9f4e5737"
+  },
+  "revisionHashMethod": "SHA-256 of each full catalogue record, JSON sorted keys, compact separators, UTF-8, ensure_ascii=false. Re-review after any record edit.",
+  "initialVerification": {
+    "automated": "Final npm run build and npm run check passed: 116 tests, 28 static pages, local links and anchors, responsive assets, metadata, sitemap and shared build data. git diff --check passed.",
+    "embedPlayback": [
+      "F_SXneNQKCo",
+      "DFFuWt1Ea6o",
+      "Lceij_QGihY"
+    ],
+    "browser": [
+      "Same iframe retained through all three video choices and artist navigation",
+      "390×844: 200px-high visible video below independent page content",
+      "844×390: page and video side by side, Expand hidden",
+      "Saved 0, 1 and 13 entries; final entry play and removal; current song outside Saved stops after the song",
+      "Korean search for 예빛 and navigation to the artist page",
+      "Reload restores Agree & play and starts with zero iframes; closing removes the iframe",
+      "Temporary Saved changes restored to the original ONCE-only list",
+      "Final page anchor links and revised English copy inspected on desktop/mobile; temporary viewport override reset"
+    ],
+    "notManuallyVerified": [
+      "50-entry Saved fixture (the live catalogue has 15 saveable songs)",
+      "Physical mobile keyboard",
+      "Forced video error and autoplay-block states (unit coverage only)",
+      "Fullscreen entry and return: control present, but the browser preview did not enter fullscreen after activation"
+    ],
+    "scope": "Initial Window and Yebit implementation, before Flower replaced the gongwon selection."
+  },
+  "verification": {
+    "scope": "Flower replacement, 2026-10-21",
+    "automated": "npm run build:preview and npm run check passed: 119 tests and 28 static pages. Related homepage, directory, guide and promotion outputs checked; Yebit hash unchanged.",
+    "embedPlayback": [
+      "BvvMdJ6-EIM"
+    ],
+    "browser": [
+      "Official watch-page description opened; 3:28 recording duration shown there. Embedded controls round to 3:29.",
+      "Initial empty embed recovered after reload. Actual local playback confirmed by Playing status and advancing video time.",
+      "Desktop introduction and 390×844 lyric notes inspected; shared video stays beneath independently scrolling mobile content.",
+      "Korean search for 곰팡이 returned gongwon — Flower; linked artist path remains /artists/gongwon/.",
+      "Saved changed from 1 to 2 for the test; direct Flower playback closed Saved and kept widget2; removal restored the original ONCE-only list.",
+      "Full live remains a separate item with Flower introduced at 18:55; original Window chapter at 06:18 preserved.",
+      "Temporary viewport override reset and player closed after verification."
+    ],
+    "notManuallyVerified": [
+      "Full session and Yebit playback not repeated for this content-only replacement; see initialVerification.",
+      "Saved 13/50 entries, physical mobile keyboard, fullscreen and forced error/autoplay states not rechecked in this replacement."
+    ]
+  },
+  "publicationReview": {
+    "checked": "2026-10-21",
+    "scope": "Compared both full records with their previously reviewed hashes before adding editorial.published. Only publication metadata changed; all song copy, sources, excerpts and videos remain identical. Updated full-record hashes after the metadata change."
+  }
+}

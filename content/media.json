@@ -119,6 +119,30 @@
       }
     ]
   },
+  "gongwon-0.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/gongwon-0-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 4198
+      },
+      {
+        "src": "/assets/optimized/gongwon-0-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 22836
+      },
+      {
+        "src": "/assets/optimized/gongwon-0-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 67528
+      }
+    ]
+  },
   "hanroro-even-if-you-leave.jpg": {
     "width": 1280,
     "height": 720,
@@ -404,6 +428,30 @@
         "width": 1600,
         "height": 1067,
         "bytes": 84478
+      }
+    ]
+  },
+  "yebit-only-you.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/yebit-only-you-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 10468
+      },
+      {
+        "src": "/assets/optimized/yebit-only-you-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 30442
+      },
+      {
+        "src": "/assets/optimized/yebit-only-you-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 78206
       }
     ]
   },

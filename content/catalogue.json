@@ -4,7 +4,7 @@
     "url": "https://indiek.com",
     "email": "gw@lumejs.com",
     "googleSiteVerification": "qkLSg7cuoavGpwWrKgLATqgd9LepNwMJX9b-PRbbKIc",
-    "updated": "2026-10-19",
+    "updated": "2026-10-21",
     "analytics": {
       "enabled": true,
       "url": "https://matomo.lumejs.com",
@@ -528,6 +528,192 @@
         "published": "2026-10-19",
         "updated": "2026-10-19"
       }
+    },
+    {
+      "id": "gongwon",
+      "artist": "gongwon",
+      "korean": "공원",
+      "aliases": "Gong Won Gompangi Mold Mould",
+      "album": "Flower",
+      "release": "0 - EP",
+      "year": "2026",
+      "genre": "INDIE ROCK",
+      "category": "solo",
+      "image": "gongwon-0.jpg",
+      "track": "Flower",
+      "koreanTitle": "곰팡이",
+      "duration": "03:28",
+      "provider": "youtube",
+      "videoId": "BvvMdJ6-EIM",
+      "channel": "공원 gongwon",
+      "url": "https://www.youtube.com/watch?v=BvvMdJ6-EIM",
+      "videoType": "audio",
+      "performance": "Official audio · 0 · 2026",
+      "note": "A bloom that doesn’t look like a flower.",
+      "description": "The speaker in “Flower” hoped to bloom, but compares themselves to mold in a damp room. The song pairs that harsh self-image with a wish to keep growing and be loved. This is the official recording from gongwon’s EP 0.",
+      "source": "https://music.apple.com/us/album/0-ep/1878624654",
+      "sourceName": "gongwon — 0 on Apple Music",
+      "sourceLanguage": "English",
+      "artistIntro": "gongwon’s “Flower” follows someone who wants to keep growing, even when they dislike what they see in themselves. It appears on the EP 0, also featured in the live session below.",
+      "artistSource": "https://music.bugs.co.kr/album/4139403",
+      "artistSourceName": "Bugs — Flower single release note and credits",
+      "artistSourceLanguage": "Korean",
+      "credits": "Lyrics by gongwon; music by gongwon and Bae Do Hyub; arranged by Bae Do Hyub. First released as a single on 30 January 2026, then included on 0 on 24 February 2026.",
+      "guideTags": [
+        "guitars-and-bands",
+        "distinct-voices"
+      ],
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/track/6428956",
+          "label": "Bugs — Flower (곰팡이): lyrics and credits",
+          "language": "Korean"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=DFFuWt1Ea6o",
+          "label": "gongwon — 0 full live session and chapter list",
+          "language": "Korean"
+        }
+      ],
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-10-21",
+        "published": "2026-10-21"
+      },
+      "lyricNotes": {
+        "heading": "Growing in a damp room",
+        "themes": [
+          "Self-acceptance",
+          "Self-worth"
+        ],
+        "paragraphs": [
+          "The official English title is Flower, while 곰팡이 means “mold.” That mismatch points to the song’s central image: the speaker measures their own growth against the flower they had expected to become.",
+          "The single’s release note names loneliness, envy, fear and shame. In the lyrics, difficult feelings help keep the speaker alive, even as they struggle with how they see themselves. Read this way, the request for love does not wait for those feelings to disappear."
+        ],
+        "excerpt": {
+          "korean": "움으로 끝나는",
+          "english": "ending in -um",
+          "note": "Several Korean words for feelings share this ending: 외로움 (loneliness), 두려움 (fear) and 부끄러움 (shame). The single’s release note names each of these, connecting the repeated sound to specific emotions."
+        },
+        "source": {
+          "url": "https://music.bugs.co.kr/track/6428956",
+          "label": "Read the Korean lyrics on Bugs",
+          "language": "Korean"
+        }
+      },
+      "performances": [
+        {
+          "id": "gongwon-live-0",
+          "track": "0 — full live session",
+          "duration": "24:40",
+          "provider": "youtube",
+          "videoId": "DFFuWt1Ea6o",
+          "channel": "공원 gongwon",
+          "url": "https://www.youtube.com/watch?v=DFFuWt1Ea6o",
+          "videoType": "live",
+          "performance": "Five songs from 0 · Official full live clip",
+          "description": "gongwon’s full live clip brings together five songs from 0. It starts with All of me; Flower begins at 18:55. The chapter times below follow the artist’s video description.",
+          "chapters": [
+            {
+              "time": "00:00",
+              "title": "All of me",
+              "korean": "나의 무기"
+            },
+            {
+              "time": "06:18",
+              "title": "Window",
+              "korean": "거울"
+            },
+            {
+              "time": "10:43",
+              "title": "Lullaby",
+              "korean": "자장가"
+            },
+            {
+              "time": "14:49",
+              "title": "Can I Be You?",
+              "korean": "물과 구름"
+            },
+            {
+              "time": "18:55",
+              "title": "Flower",
+              "korean": "곰팡이"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yebit",
+      "artist": "Yebit",
+      "korean": "예빛",
+      "aliases": "Ye Bit",
+      "album": "Only You",
+      "release": "Only You (Bargobargo X Yebit) - Single",
+      "year": "2024",
+      "genre": "POP",
+      "category": "solo",
+      "image": "yebit-only-you.jpg",
+      "track": "Only You",
+      "koreanTitle": "불안한 내 맘 달랠 곳은 너밖에 없어",
+      "duration": "03:40",
+      "provider": "youtube",
+      "videoId": "Lceij_QGihY",
+      "channel": "MAGIC STRAWBERRY SOUND",
+      "url": "https://www.youtube.com/watch?v=Lceij_QGihY",
+      "videoType": "live",
+      "performance": "Rolling 31st anniversary concert · Official live clip",
+      "note": "Familiar streets, a changed relationship.",
+      "description": "In “Only You”, a walk through Seoul Forest brings a changed relationship into focus. The speaker still wants comfort from the person they struggle to face. Yebit sings it here at the Rolling 31st anniversary concert.",
+      "source": "https://music.apple.com/us/album/only-you-bargobargo-x-yebit-single/1730849271",
+      "sourceName": "Yebit — Only You on Apple Music",
+      "sourceLanguage": "English",
+      "artistIntro": "Yebit’s releases include Dancing With You, Home and the EP 23. Here, her performance of “Only You” follows someone trying to hide how much a relationship still matters.",
+      "artistSource": "https://music.apple.com/us/artist/yebit/1503646257",
+      "artistSourceName": "Yebit — Apple Music artist catalogue",
+      "artistSourceLanguage": "English",
+      "credits": "Lyrics, music and arrangement by Choi Hong-gyu (Rebuild). The single was released on 20 February 2024; this live clip was uploaded on 12 February 2026.",
+      "guideTags": [
+        "distinct-voices"
+      ],
+      "extraSources": [
+        {
+          "url": "https://www.genie.co.kr/detail/songInfo?xgnm=105545171",
+          "label": "Genie — Only You: lyrics and credits",
+          "language": "Korean"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Lceij_QGihY",
+          "label": "MAGIC STRAWBERRY SOUND — official live clip and performance details",
+          "language": "Korean"
+        }
+      ],
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-10-21",
+        "published": "2026-10-21"
+      },
+      "lyricNotes": {
+        "heading": "When the place stays the same",
+        "themes": [
+          "Longing",
+          "Changing relationships"
+        ],
+        "paragraphs": [
+          "Seoul Forest is a shared place in the song’s memory. Walking there alone, the speaker finds familiar surroundings that make the change between two people harder to ignore. A remembered voice makes the other person feel close even in their absence.",
+          "The tension is in the request for comfort: the person the speaker finds painful to face is also the person they want to lean on. Read this way, the song leaves affection and hurt together, without resolving the relationship."
+        ],
+        "excerpt": {
+          "korean": "괜찮은 척",
+          "english": "pretending to be okay",
+          "note": "척 marks an appearance or pretence. Here it separates the speaker’s outward composure from what they feel. The smile is part of the effort to conceal hurt, rather than evidence that the hurt has passed."
+        },
+        "source": {
+          "url": "https://www.genie.co.kr/detail/songInfo?xgnm=105545171",
+          "label": "Read the Korean lyrics on Genie",
+          "language": "Korean"
+        }
+      }
     }
   ],
   "featuredArtists": [
@@ -753,7 +939,7 @@
       "editorial": {
         "author": "indiek",
         "published": "2026-10-19",
-        "updated": "2026-10-19"
+        "updated": "2026-10-21"
       },
       "sources": [
         {

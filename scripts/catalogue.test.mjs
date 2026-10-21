@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {searchCatalogue, readSaved, getFeaturedArtists, formatPosition, getListeningGuides, getArtistDirectory, navigationSection} from '../site/shared.mjs';
+import {searchCatalogue, readSaved, getFeaturedArtists, formatPosition, getListeningGuides, getArtistDirectory, navigationSection, getPlaybackRecords, artistPath} from '../site/shared.mjs';
 
 const catalogue = JSON.parse(readFileSync(new URL('../content/catalogue.json',import.meta.url)));
 const {records, editorPick} = catalogue;
@@ -10,7 +10,7 @@ const freshCatalogue = () => JSON.parse(JSON.stringify(catalogue));
 test('listening guides cover every artist with the intended opening tracks and counts',()=>{
   const guides = getListeningGuides(catalogue);
   assert.deepEqual(guides.filter(g=>g.selection!=='curated').map(g=>[g.id,g.records.length,g.records[0].id]),[
-    ['on-stage',6,'sunwoojunga'],['guitars-and-bands',6,'black-skirts'],['distinct-voices',10,'yoon-mirae'],
+    ['on-stage',7,'sunwoojunga'],['guitars-and-bands',7,'black-skirts'],['distinct-voices',12,'yoon-mirae'],
   ]);
   assert.deepEqual([...new Set(guides.flatMap(g=>g.records.map(r=>r.id)))].sort(),[...records,editorPick].map(r=>r.id).sort());
   for (const guide of guides) assert.equal(new Set(guide.records.map(r=>r.id)).size,guide.records.length);
@@ -36,7 +36,7 @@ test('edited tags change membership without changing the artist catalogue order'
   edited.records.find(r=>r.id==='hanroro').guideTags=['distinct-voices'];
   edited.records.push({id:'new-guitar',guideTags:['guitars-and-bands','guitars-and-bands']});
   const ids=getListeningGuides(edited).find(g=>g.id==='guitars-and-bands').records.map(r=>r.id);
-  assert.deepEqual(ids,['black-skirts','esegye','se-so-neon','ydbb','whiteusedsocks','new-guitar']);
+  assert.deepEqual(ids,['black-skirts','esegye','se-so-neon','ydbb','whiteusedsocks','gongwon','new-guitar']);
 });
 test('unclassified artists and unknown tags cannot silently disappear from guides',()=>{
   const missing=freshCatalogue();
@@ -118,4 +118,18 @@ test('a newly added artist enters the hero automatically without a separate feat
   assert.equal(added[0].kind,'artwork');
   assert.equal(formatPosition(features.length),String(records.length+2).padStart(2,'0'));
   assert.equal(formatPosition(1),'01');
+});
+
+test('full performances are playable without creating extra artists, saved songs or search hits',()=>{
+  const session=getPlaybackRecords(catalogue).find(r=>r.id==='gongwon-live-0');
+  assert.equal(session.videoId,'DFFuWt1Ea6o');
+  assert.equal(artistPath(session),'/artists/gongwon/');
+  assert.deepEqual(searchCatalogue(records,editorPick,'공원').map(r=>r.id),['gongwon']);
+  assert.deepEqual(searchCatalogue(records,editorPick,'예 빛').map(r=>r.id),['yebit']);
+  assert.deepEqual([...readSaved('["ydbb","gongwon","yebit","gongwon-live-0"]',records)],['ydbb','gongwon','yebit']);
+  const intro=getListeningGuides(catalogue).find(g=>g.includeCatalogue);
+  assert.ok(intro.moreRecords.some(r=>r.id==='gongwon'));
+  assert.ok(intro.moreRecords.some(r=>r.id==='yebit'));
+  const duplicate=freshCatalogue();duplicate.records.find(r=>r.id==='gongwon').performances[0].id='gongwon';
+  assert.throws(()=>getPlaybackRecords(duplicate),/Duplicate playback ID/);
 });

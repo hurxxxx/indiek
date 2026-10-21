@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-19",
+  "reviewed": "2026-10-21",
   "publicationStatus": "Rights review outstanding. Images retained at the site owner’s explicit request; publication does not establish reuse permission.",
   "images": [
     {
@@ -171,6 +171,28 @@
       "showCredit": true,
       "changes": "Resized WebP versions; cropped for display.",
       "notes": "Published on the agency’s official artist roster. No reuse licence was stated; official publication is not reuse permission."
+    },
+    {
+      "file": "gongwon-0.jpg",
+      "label": "gongwon — 0 - EP artwork",
+      "source": "https://music.apple.com/us/album/0-ep/1878624654",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/c5/04/96/c5049669-26c2-ce03-15d1-32577da91f15/888272177213_Cover.jpg/1200x1200bb.jpg",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed",
+      "checked": "2026-10-21",
+      "notes": "Release artwork retained in the artist introduction for the site owner’s requested deployment. No reuse licence established; source attribution does not establish permission."
+    },
+    {
+      "file": "yebit-only-you.jpg",
+      "label": "Yebit — Only You (Bargobargo X Yebit) - Single artwork",
+      "source": "https://music.apple.com/us/album/only-you-bargobargo-x-yebit-single/1730849271",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/36/52/e7/3652e72c-7cf2-e48f-3300-5d464f801366/c.jpg/1200x1200bb.jpg",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed",
+      "checked": "2026-10-21",
+      "notes": "Release artwork retained in the artist introduction for the site owner’s requested deployment. No reuse licence established; source attribution does not establish permission."
     }
   ]
 }

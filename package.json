@@ -6,8 +6,9 @@
   "description": "An independent listening journal sharing Korean artists and songs with the world.",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "build:preview": "node scripts/build.mjs --preview",
     "images": "python3 scripts/prepare-images.py",
-    "dev": "npm run build && python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",
+    "dev": "npm run build:preview && python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",
     "check": "node --check dist/app.js && node --test scripts/*.test.mjs && python3 scripts/check.py",
     "promotion": "node scripts/promotion/run.mjs",
     "editorial": "node scripts/editorial/run.mjs"

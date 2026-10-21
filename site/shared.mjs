@@ -1,8 +1,18 @@
 export const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-export const artistPath = record => `/artists/${record.id}/`;
+export const artistPath = record => `/artists/${record.artistId || record.id}/`;
 export const guidePath = guide => `/notes/${guide.id}/`;
 export const formatPosition = number => String(number).padStart(2, '0');
 export const navigationSection = pathname => pathname.startsWith('/stories/') ? 'stories' : pathname.startsWith('/artists/') ? 'artists' : pathname.startsWith('/notes/') ? 'guides' : pathname === '/' ? 'home' : null;
+
+// Extra performances use the shared player but are not catalogue songs or Saved entries.
+export function getPlaybackRecords({records, editorPick}) {
+  const songs = [...records, editorPick];
+  const playback = [...songs, ...songs.flatMap(record => (record.performances || []).map(video => ({
+    ...video, artistId:record.id, artist:record.artist,
+  })))];
+  if (new Set(playback.map(record => record.id)).size !== playback.length) throw new Error('Duplicate playback ID');
+  return playback;
+}
 
 export function getListeningGuides({records, editorPick, listeningGuides}) {
   const all = [...records, editorPick];

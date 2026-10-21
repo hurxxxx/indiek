@@ -187,6 +187,30 @@
       "altText": "indiek listening notes: Yerin Baek — 0310. Typographic card."
     },
     {
+      "id": "gongwon",
+      "kind": "artist",
+      "title": "gongwon — Flower",
+      "path": "/artists/gongwon/",
+      "description": "The speaker in “Flower” hoped to bloom, but compares themselves to mold in a damp room. The song pairs that harsh self-image with a wish to keep growing and be loved. This is the official recording from gongwon’s EP 0.",
+      "artistIds": [
+        "gongwon"
+      ],
+      "image": "/assets/social/artists-gongwon.jpg",
+      "altText": "indiek listening notes: gongwon — Flower. Typographic card."
+    },
+    {
+      "id": "yebit",
+      "kind": "artist",
+      "title": "Yebit — Only You",
+      "path": "/artists/yebit/",
+      "description": "In “Only You”, a walk through Seoul Forest brings a changed relationship into focus. The speaker still wants comfort from the person they struggle to face. Yebit sings it here at the Rolling 31st anniversary concert.",
+      "artistIds": [
+        "yebit"
+      ],
+      "image": "/assets/social/artists-yebit.jpg",
+      "altText": "indiek listening notes: Yebit — Only You. Typographic card."
+    },
+    {
       "id": "yoon-mirae",
       "kind": "artist",
       "title": "Yoon Mirae — Breath",
@@ -218,6 +242,8 @@
         "whiteusedsocks",
         "motte",
         "kim-sawol",
+        "gongwon",
+        "yebit",
         "yoon-mirae"
       ],
       "image": "/assets/social/notes-korean-indie-where-to-start.jpg",
@@ -235,7 +261,8 @@
         "choi-yu-ree",
         "bol4",
         "esegye",
-        "se-so-neon"
+        "se-so-neon",
+        "yebit"
       ],
       "image": "/assets/social/notes-on-stage.jpg",
       "altText": "indiek listening guide: On stage. Typographic card."
@@ -252,7 +279,8 @@
         "se-so-neon",
         "ydbb",
         "whiteusedsocks",
-        "hanroro"
+        "hanroro",
+        "gongwon"
       ],
       "image": "/assets/social/notes-guitars-and-bands.jpg",
       "altText": "indiek listening guide: Guitars & bands. Typographic card."
@@ -273,7 +301,9 @@
         "motte",
         "hanroro",
         "kim-sawol",
-        "yerin-baek"
+        "yerin-baek",
+        "gongwon",
+        "yebit"
       ],
       "image": "/assets/social/notes-distinct-voices.jpg",
       "altText": "indiek listening guide: Distinct voices. Typographic card."

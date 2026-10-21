@@ -5,12 +5,13 @@ import {initNavigation, createPageScroll} from './navigation.mjs';
 import {createPlayer} from './player.mjs';
 import {initArtistDirectory} from './directory.mjs';
 import {mobilePlayerQuery, initMobileViewport} from './mobile.mjs';
-import {escapeHTML as e, artistPath, coverHTML, readSaved, searchCatalogue, getFeaturedArtists, formatPosition, youtubeConsentHTML, getListeningGuides, guidePath, navigationSection} from './shared.mjs';
+import {escapeHTML as e, artistPath, coverHTML, readSaved, searchCatalogue, getFeaturedArtists, formatPosition, youtubeConsentHTML, getListeningGuides, guidePath, navigationSection, getPlaybackRecords} from './shared.mjs';
 
 const {records, editorPick: pick, media} = catalogue;
 const features = getFeaturedArtists(catalogue);
 const all = [...records,pick];
-const findRecord = id => all.find(r => r.id === id);
+const playbackRecords = getPlaybackRecords(catalogue);
+const findRecord = id => playbackRecords.find(r => r.id === id);
 const storageKey = 'indiek-saved-v1';
 let saved;
 try { saved = readSaved(localStorage.getItem(storageKey),records); } catch { saved = new Set(); }
@@ -212,8 +213,8 @@ function syncPlaylist() {
   syncQueueControls();
   const status=playerRoot.querySelector('[data-playback-status]');
   status.textContent=({idle:'',loading:'Starting playback…',ready:'Starting playback…',paused:'Paused.',
-    playing:player.autoNext&&player.next?`Up next: ${player.next.track} · ${player.next.artist}`:'Playing · Stops after this song.',
-    ended:'Song finished. Choose a track to listen again.',blocked:'Press play in the video to continue.',
+    playing:player.autoNext&&player.next?`Up next: ${player.next.track} · ${player.next.artist}`:`Playing · Stops after this ${player.current?.artistId?'video':'song'}.`,
+    ended:'Playback finished. Choose a track to listen again.',blocked:'Press play in the video to continue.',
     error:'This video is unavailable here. Please choose another track.',
     unavailable:'Automatic next is unavailable. You can still play this video or choose another track.',
   })[player.state];
@@ -321,7 +322,7 @@ window.addEventListener('storage',event=>{
 });
 window.addEventListener('pagehide',()=>{player.close();setCompactPlayer(false);});
 syncSaved();
-const analytics=initAnalytics({...catalogue.site.analytics,trackIds:all.map(r=>r.id),contentPaths:['/','/stories/','/artists/','/notes/first-listens/',...(catalogue.stories||[]).map(s=>s.path),...all.map(artistPath),...getListeningGuides(catalogue).map(guidePath)]}, catalogue.site.url);
+const analytics=initAnalytics({...catalogue.site.analytics,trackIds:playbackRecords.map(r=>r.id),contentPaths:['/','/stories/','/artists/','/notes/first-listens/',...(catalogue.stories||[]).map(s=>s.path),...all.map(artistPath),...getListeningGuides(catalogue).map(guidePath)]}, catalogue.site.url);
 
 async function sharePage(button) {
   const url=document.querySelector('link[rel="canonical"]').href;

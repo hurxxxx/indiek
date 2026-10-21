@@ -38,7 +38,7 @@ export function createPlayer(root, {onChange = () => {}, onPlay = () => {}, doc 
   }
   function updateLabel() {
     label.textContent = `${current.track} · ${current.artist}`;
-    label.href = `/artists/${current.id}/#listen`;
+    label.href = `/artists/${current.artistId || current.id}/#${current.artistId ? current.id : 'listen'}`;
     frame.title = `${current.track} by ${current.artist} — ${current.channel}`;
   }
   function release() {
