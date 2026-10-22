@@ -7,6 +7,7 @@ import {metaClient,recentOwnPosts,refreshToken} from './meta.mjs';
 import {prepareDaily,reviewBeforePublish} from './news-runner.mjs';
 import {prepareStory} from './stories.mjs';
 import {shareStoryNow} from './on-demand.mjs';
+import {sharePageNow} from './page-now.mjs';
 
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const config=readJSON(path.join(root,'promotion/config.json'));
@@ -70,6 +71,17 @@ async function storyNow(store) {
   console.log(JSON.stringify(result,null,2));
   if(!['published','story-already-queued-or-shared'].includes(result.status))process.exitCode=1;
 }
+async function pageNow(store) {
+  if(local)throw new Error('page-now requires the live public catalogue.');
+  const secret=credentials(),checkOnly=process.argv.includes('--check');
+  for(const platform of config.platforms) {
+    if(!secret[platform]?.token)throw new Error(`${platform}: authorization required for this request.`);
+    if(!checkOnly&&await refreshToken(platform,secret[platform]))atomicWrite(credentialFile,JSON.stringify(secret,null,2)+'\n');
+  }
+  const result=await sharePageNow({root,config,store,catalogue:await publicCatalogue(),kind:argument,pageId:process.argv[4],checkOnly,recent:()=>recentOwnPosts(config,secret),apiFor:platform=>metaClient(platform,secret[platform])});
+  console.log(JSON.stringify(result,null,2));
+  if(!['checked','published','already-queued-or-shared'].includes(result.status))process.exitCode=1;
+}
 async function matomoReport(secret) {
   if(!secret?.matomo?.token)return {status:'Not connected. No visitor count inferred.'};
   const request=async(method,period,date,extra={})=>{
@@ -100,9 +112,16 @@ async function run() {
     for(const platform of config.platforms)if(incoming[platform]){metaClient(platform,incoming[platform]);if(!incoming[platform].expiresAt||!incoming[platform].issuedAt)throw new Error('Token issue and expiry dates required.');}
     atomicWrite(credentialFile,JSON.stringify({...credentials(),...incoming},null,2)+'\n');chmodSync(credentialFile,0o600);console.log('Credentials saved outside the repository. Values not logged.');return;
   }
+  if(command==='check') {
+    const secret=credentials();
+    for(const platform of config.platforms)if(!secret[platform]?.token)throw new Error(`${platform}: account authorization missing.`);
+    const recent=await recentOwnPosts(config,secret),catalogue=await publicCatalogue();
+    console.log(JSON.stringify({account:config.account,platforms:config.platforms.map(platform=>({platform,accessible:true,recentPosts:recent.filter(p=>p.platform===platform).length})),publicItems:catalogue.items.length,sent:false},null,2));return;
+  }
   await withLock(state,async()=>{
     if(command==='prepare')await prepare(store);
     else if(command==='story-now')await storyNow(store);
+    else if(command==='page-now')await pageNow(store);
     else if(command==='publish')await publish(store,argument);
     else if(command==='report')await report(store);
     else if(command==='weekly')await report(store);
@@ -110,7 +129,7 @@ async function run() {
     else if(command==='dry-run'){
       for(const post of store.posts.filter(p=>!['published','expired','superseded'].includes(p.status))){validatePost(post,config);try{await verifyLive(post);console.log(`${post.id}: source and any required image accessible; independent review runs again at send time; not sent`);}catch(error){console.log(`${post.id}: blocked — ${error.message}`);}}
       if(!store.posts.length){await publicCatalogue();console.log('Public catalogue readable; no prepared jobs.');}
-    }else throw new Error('Commands: status, prepare [--local], story-now STORY_ID (publishes), dry-run, publish threads|instagram, report, weekly, sync-log, credentials --stdin');
+    }else throw new Error('Commands: status, check, prepare [--local], story-now STORY_ID (publishes), page-now artist|guide ID [--check] (publishes without --check), dry-run, publish threads|instagram, report, weekly, sync-log, credentials --stdin');
   });
 }
 run().catch(error=>{stateNote(error.safeMessage||error.message);process.exitCode=1;});

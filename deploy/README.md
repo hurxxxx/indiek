@@ -35,6 +35,8 @@ YouTube는 모든 페이지에서 공통 영역 `#persistent-player`를 사용�
 
 ## SNS 자동 게시
 
+현재 상태(2026-10-22): 사용자 요청으로 원격 SNS 타이머 4개를 다시 활성화했다. 정기 예약과 로컬의 즉시 공유 요청 모두 같은 공식 API 게시기를 사용하며, 로컬에는 토큰이나 별도 게시 큐를 복제하지 않는다. 백아의 기존 수동 게시 기록은 유지하고 다시 전송하지 않는다. 변경·검증 기록은 [홍보 기록 G011](../docs/promotion.md#g011--공식-api-게시-통일과-원격-sns-재개)을 따른다.
+
 웹 서버와 별개인 Linux 서버의 `~/projects/indiek`에서 실행한다. SSH 별칭·접속 정보는 로컬 `SERVER_ACCESS.md`에서 확인한다. Node.js 22+, Python 3/Pillow, ChatGPT로 로그인한 Codex CLI, 사용자 systemd·linger가 필요하다. 추가 API 과금 방식으로 전환하지 않는다.
 
 ```sh
@@ -59,6 +61,22 @@ npm run promotion -- story-now yerin-0310
 
 `promotion/state/stories/on-demand/<기사 ID>.json`에 요청·초안·탈락·최종 문안·게시 결과를 보존한다. 요청당 초안 포함 최대 2개 버전이며 양쪽 검수가 통과하기 전에는 전송하지 않는다. 재실행은 같은 요청·컨테이너·게시 ID를 이어서 확인한다. 불확실한 응답을 새 게시로 재시도하거나 상태 파일을 지워 예산을 초기화하지 않는다. 기사가 바뀌거나 2시간이 지나면 보류·만료하며 운영자가 기록을 확인한다. 일반 `publish` 타이머는 이 요청을 처리하지 않는다. 명령 실행과 실제 결과는 [홍보 기록](../docs/promotion.md)에 남긴다.
 
+### 로컬에서 공식 API로 요청
+
+로컬은 SSH로 위의 공통 게시기를 호출한다. `~/.config/indiek-promotion/remote.json`에 SSH 별칭인 `host`와 서버 체크아웃의 절대 경로인 `directory`를 설정한다. 이 파일에는 접속 위치만 있고 토큰은 없다. 실제 값은 로컬 전용 `SERVER_ACCESS.md`에서 관리한다. 요청할 수 있는 명령을 제한하고 인자를 인용하므로 임의 셸 명령이나 자격 증명 전송에는 사용하지 않는다.
+
+```sh
+npm run promotion:remote -- check
+npm run promotion:remote -- page-now artist baek-a --check
+npm run promotion:remote -- page-now artist ARTIST_ID
+npm run promotion:remote -- page-now guide GUIDE_ID
+npm run promotion:remote -- story-now STORY_ID
+```
+
+`check`는 공식 API의 계정 일치·최근 게시물 조회와 공개 카탈로그 접근만 확인한다. `page-now ... --check`는 공개 페이지·글자 카드·중복 상태를 확인하며 문안 생성·큐 등록·전송을 하지 않는다. **`--check` 없는 `page-now`와 `story-now`는 검수 통과 시 실제 게시한다.** 서버에서는 같은 인자를 `npm run promotion -- ...`에 전달한다. 이 경로는 사용자가 즉시 공유를 요청한 경우에만 사용하며 기존 정기 슬롯은 유지한다.
+
+아티스트·가이드 소개는 `promotion/state/pages/on-demand/<artist|guide>-<ID>.json`에 공개 HTML·자체 제작 카드의 해시, 초안 최대 2개 버전, 양쪽의 정확한 문안 검수와 작업 ID를 저장한다. 하나라도 검수에서 탈락하면 양쪽 전송을 보류한다. 승인된 두 작업을 먼저 기록해 재시작 때 같은 검수·작업을 이어가며, 전송 직전 다시 계정·페이지·카드·중복을 확인한다. 기존 브라우저 게시도 실제 계정과 공통 큐의 공개 주소로 감지한다. 제한·인증 오류나 불확실한 응답은 이력으로 남기고 브라우저 작성창으로 대체하지 않는다. 브라우저는 계정 연결·보안 확인과 결과 화면 확인에 사용한다.
+
 비정기 발행 검증(2026-10-20): `7ae6eb9`를 두 서버에 반영하고 자동화 서버의 일회성 systemd 작업으로 백예린 기사 문안을 새로 작성·검수·게시했다. Threads 16:51, Instagram 16:52 KST 게시를 공식 API와 로그인 화면에서 확인했다. 같은 명령의 재실행으로 큐가 바뀌지 않았고 각 계정에 같은 기사 게시물이 1건씩만 있었다. 기존 작업·6개 타이머·다음 날 선우정아 예약은 유지했다. 로컬·두 서버 114개 테스트·26페이지 검사 통과. 프런트엔드 변경은 없으며 비로그인 노출·유입 성과는 이 검증에 포함하지 않는다.
 
 공식 아티스트·레이블·공연장·주최자·티켓 판매처·원 인터뷰의 소식을 조사한다. 발표일 14일 이내의 뉴스 또는 30일 안의 공연이 명시된 현재 공식 일정만 후보로 삼는다. 공식 일정에 발표일이 없으면 새로 발표됐다고 쓰지 않는다. 출처 원문의 근거를 직접 확인하고 별도 실시간 사실·문체 검수를 통과한 주제 하나만 준비한다. 같은 소식은 URL·언어를 바꿔 재게시하지 않으며, 새 소식에는 예전 아티스트 소개용 28일 제한을 적용하지 않는다. 새 소식이 없거나 출처를 읽을 수 없으면 이유를 기록하고 쉰다.
@@ -75,8 +93,10 @@ Meta 개발자 앱에서 본인 계정 `indiekdotcom`만 연결한다. Threads�
 ```sh
 # 점검 및 즉시 중단
 journalctl --user -u indiek-promotion-threads.service -n 50 --no-pager
-systemctl --user stop indiek-promotion-prepare.timer indiek-promotion-threads.timer indiek-promotion-instagram.timer
+systemctl --user disable --now indiek-promotion-prepare.timer indiek-promotion-threads.timer indiek-promotion-instagram.timer indiek-promotion-weekly.timer
 ```
+
+사용자가 재개를 요청하면 먼저 계정·현재 큐의 제한과 미확인 전송을 대조한 뒤 위 4개 타이머를 `enable --now`한다. 지난 슬롯을 새 예약으로 바꾸거나 이미 게시된 소개를 다시 보내지 않는다.
 
 공개 원문·계정과 필요한 경우 이미지까지 확인한 뒤 보낸다. 기존의 미전송 정적 소개 예약은 일일 소식 정책으로 전환할 때 `superseded`로 기록하며 삭제하지 않는다. 이미 생성·제출·게시된 작업은 바꾸지 않는다. `publishing`·`submitted`는 게시 ID나 정확히 일치하는 최근 문안으로 조회하며 새로 전송하지 않는다. `held`·`creating` 또는 `pausePlatform`이 있으면 실제 계정과 로그를 확인한다. 원인을 해결해도 불확실한 작업을 `ready`로 바꾸지 않는다. 인증·플랫폼 제한이 해소된 경우에만 상태 백업 후 해당 `pausePlatform`을 해제하고 타이머를 시작한다. 기존 큐를 삭제해서 재시도하지 않는다. 토큰은 만료 7일 전부터 갱신하며 갱신 실패·만료 시 재연결 전까지 전송하지 않는다.
 

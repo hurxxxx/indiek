@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {publicURL,validateCandidate,validateNewsVoice,verifyCandidate,verifyNewsMedia,eventKey,selectedMedia,plain,koreanDay} from './news.mjs';
 
 export const hash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
-export const payloadParts = post => post.kind==='news'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.news,post.review,post.sourceVerification,post.media]:post.kind==='story'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.storyId,post.storyRevision,post.review]:[post.platform,post.url,post.imageUrl,post.copy,post.altText];
+export const payloadParts = post => post.kind==='news'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.news,post.review,post.sourceVerification,post.media]:post.kind==='story'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.storyId,post.storyRevision,post.review]:post.kind==='page'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.pageKind,post.pageId,post.pageRevision,post.artistIds,post.review]:[post.platform,post.url,post.imageUrl,post.copy,post.altText];
 export function atomicWrite(file, value) {
   mkdirSync(path.dirname(file),{recursive:true});
   const tmp=`${file}.${process.pid}.tmp`;
@@ -106,6 +106,10 @@ export function validatePost(post,config) {
     if(!/^[a-f0-9]{64}$/.test(post.storyRevision)||!post.review?.approved||post.review.issues?.length||post.review.copy!==post.copy||!post.review.reason?.trim()||url.pathname!==`/stories/${post.storyId}/`)throw new Error('Story caption needs an exact independent review');
     if(post.payloadHash!==hash(payloadParts(post)))throw new Error('Reviewed story payload changed');
   }else if(url.pathname.startsWith('/stories/'))throw new Error('Story requires article verification');
+  if(post.kind==='page'){
+    const section=({artist:'artists',guide:'notes'})[post.pageKind];
+    if(!section||url.pathname!==`/${section}/${post.pageId}/`||!/^[a-f0-9]{64}$/.test(post.pageRevision)||post.review?.approved!==true||!Array.isArray(post.review.issues)||post.review.issues.length||post.review.copy!==post.copy||!post.review.reason?.trim()||post.mode!=='on-demand')throw new Error('Page caption needs an exact review and published-page identity.');
+  }
   if(post.payloadHash!==hash(payloadParts(post)))throw new Error('Prepared payload changed; create a reviewed replacement job.');
 }
 export async function verifyLive(post,fetcher=fetch) {

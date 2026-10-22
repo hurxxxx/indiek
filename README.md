@@ -40,6 +40,7 @@ Open [localhost:4173](http://127.0.0.1:4173). After editing files, run `npm run 
 | `npm run check` | Check catalogue behavior, pages, links and assets |
 | `npm run images` | Generate responsive images; requires Pillow with WebP support |
 | `npm run promotion -- status` | Inspect the optional social publisher without posting |
+| `npm run promotion:remote -- check` | Check the shared publisher's official APIs and public catalogue without posting |
 | `npm run editorial -- status` | Inspect magazine scheduling and the current issue |
 
 ## Contributing
@@ -111,7 +112,7 @@ Before deployment, use `npm run build` to replace the local preview output. `bui
 
 Run `npm run build && npm run check`, then check the affected pages on desktop and mobile. Follow the [repository guidelines](AGENTS.md) when adding artists or songs so related sections stay in sync. Magazine scheduling and hosting details are in the [deployment guide](deploy/README.md).
 
-The optional publisher in `scripts/promotion/` gives a new published story priority in the daily social slot, otherwise researching current news about artists in the live catalogue. An explicitly requested immediate story share can use the same writing, review and publishing workflow without changing the schedule. It uses the official Threads API, with an Instagram version when a relevant image has documented reuse rights. It runs separately from the website and follows the shared [social writing guide](promotion/voice.md). Scheduling, authorization and recovery are covered in the [deployment guide](deploy/README.md#sns-자동-게시). Actual attempts are recorded in the [promotion log](docs/promotion.md).
+The optional publisher in `scripts/promotion/` gives a new published story priority in the daily social slot, otherwise researching current news about artists in the live catalogue. Scheduled posts and explicitly requested immediate story, artist or guide shares use the official Threads and Instagram APIs. Local requests call the same server publisher through `promotion:remote`, keeping credentials, the queue and publication history in one place. Exact captions receive separate platform reviews; page introductions use the site's original typographic card, while news images need documented reuse rights. It runs separately from the website and follows the shared [social writing guide](promotion/voice.md). Commands, scheduling, authorization and recovery are covered in the [deployment guide](deploy/README.md#sns-자동-게시). Actual attempts are recorded in the [promotion log](docs/promotion.md).
 
 ## Credits and contact
 
