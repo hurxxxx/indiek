@@ -133,19 +133,22 @@
   ],
   "verification": {
     "checked": "2026-10-22",
-    "status": "Local build and browser checks passed; public deployment recorded in deploy/README.md",
+    "status": "Deployed as fbaad9b; public content and actual playback verified",
     "automated": "182 Node tests and 29 static pages pass. Includes retry after connection timeout/playback error and preservation of the normal shared iframe.",
     "manual": [
       "User-selected MONTBEST video actually plays inside the common player on localhost; mobile screenshot shows the performance alongside the supplied adaptation.",
       "Desktop existing Yerin video plays on localhost and production. Baek video also plays in a fresh desktop page; reloading the initially stalled page restores it. No evidence of an embedding restriction.",
-      "Mobile 390 x 844: 12 adaptation stanzas, no horizontal overflow, Saved add/direct play/current-track label/remove, Korean search finds Baek A. Original Saved entry retained."
+      "Mobile 390 x 844: 12 adaptation stanzas, no horizontal overflow, Saved add/direct play/current-track label/remove, Korean search finds Baek A. Original Saved entry retained.",
+      "Production desktop 1440 x 1000 and mobile 390 x 844: MONTBEST video actually playing; mobile adaptation remains readable above the bottom player. Home highlights Baek A first; introductory guide includes the artist.",
+      "Isolated local fault fixture rejects the first API connection. Try again reconnects and reaches actual playing state with one iframe; fixture server stopped afterward."
     ],
     "screenshots": [
-      "/tmp/indiek-baek-a-mobile-playing.png"
+      "/tmp/indiek-baek-a-production-mobile.png"
     ],
     "limitations": [
       "Initial empty iframe did not report a YouTube error code; the underlying transient connection cause is not established. A confirmed same-song retry bug is fixed.",
       "Full Saved 0/1/13/50, fullscreen, keyboard and complete automatic song-end matrix not manually repeated; automated playback tests pass."
-    ]
+    ],
+    "public": "44 changed public files match local SHA-256; 29 pages, 17 artists. Runtime/log/credential files (48) and all six timer states/schedules unchanged."
   }
 }
