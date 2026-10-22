@@ -26,11 +26,17 @@ function validateLyricNotes(track) {
   const fail = field => { throw new Error(`Invalid lyricNotes: ${track.id}.${field}`); };
   const text = value => typeof value === 'string' && Boolean(value.trim());
   if (!notes || typeof notes !== 'object' || Array.isArray(notes)) fail('lyricNotes');
-  const fields = ['heading','themes','paragraphs','source','backgroundSources','excerpt'];
+  const fields = ['heading','themes','paragraphs','source','backgroundSources','excerpt','translation'];
   for (const key of Object.keys(notes)) if (!fields.includes(key)) fail(key);
   if (!text(notes.heading)) fail('heading');
   for (const key of ['themes','paragraphs']) {
-    if (!Array.isArray(notes[key]) || !notes[key].length || !notes[key].every(text)) fail(key);
+    if (!Array.isArray(notes[key]) || (!notes[key].length && !(key === 'paragraphs' && notes.translation)) || !notes[key].every(text)) fail(key);
+  }
+  if (notes.translation !== undefined) {
+    const translation = notes.translation;
+    if (!translation || typeof translation !== 'object' || Array.isArray(translation)) fail('translation');
+    if (Object.keys(translation).some(key=>!['label','stanzas'].includes(key)) || !text(translation.label)) fail('translation.label');
+    if (!Array.isArray(translation.stanzas) || !translation.stanzas.length || !translation.stanzas.every(text)) fail('translation.stanzas');
   }
   if (notes.backgroundSources !== undefined && !Array.isArray(notes.backgroundSources)) fail('backgroundSources');
   for (const source of [notes.source,...(notes.backgroundSources || [])]) {

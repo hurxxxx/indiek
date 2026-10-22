@@ -25,16 +25,16 @@ function withSecondSong() {
 test('existing saved IDs remain tracks, with the editor pick and full session excluded', () => {
   const catalogue = createCatalogue(source());
   const oldIDs = ['black-skirts','sunwoojunga','car-the-garden','choi-yu-ree','bol4','esegye','se-so-neon','ydbb','whiteusedsocks','motte','hanroro','kim-sawol','yerin-baek','gongwon','yebit'];
-  assert.deepEqual(catalogue.records.map(track => track.id), oldIDs);
+  assert.deepEqual(catalogue.records.filter(track => oldIDs.includes(track.id)).map(track => track.id), oldIDs);
   assert.deepEqual([...readSaved(JSON.stringify([...oldIDs,'yoon-mirae','gongwon-live-0']), catalogue.records)], oldIDs);
   assert.equal(trackPath(catalogue.records.find(track => track.id === 'gongwon')), '/artists/gongwon/#listen');
 });
 
-test('every introduced song, including the editor pick, has sourced lyric commentary without mandatory quotations', () => {
+test('every introduced song has sourced commentary or an explicitly requested adaptation', () => {
   const data = source();
   for (const track of data.tracks) {
     assert.ok(track.lyricNotes, `Missing lyric notes: ${track.id}`);
-    assert.ok(track.lyricNotes.paragraphs.length, track.id);
+    assert.ok(track.lyricNotes.paragraphs.length || track.lyricNotes.translation?.stanzas.length, track.id);
     assert.ok(track.lyricNotes.source.url.startsWith('https://'), track.id);
   }
   for (const track of data.tracks) delete track.lyricNotes.excerpt;
@@ -117,6 +117,8 @@ for (const [label, edit, error] of [
   ['unsafe lyric source', data => data.tracks[0].lyricNotes.source.url='javascript:alert(1)', /Invalid lyricNotes/],
   ['incomplete optional quotation', data => data.tracks[0].lyricNotes.excerpt={korean:'검증'}, /Invalid lyricNotes/],
   ['missing background citation', data => data.tracks[0].lyricNotes.backgroundSources=[{}], /Invalid lyricNotes/],
+  ['empty adaptation', data => data.tracks[0].lyricNotes.translation={label:'English adaptation',stanzas:[]}, /Invalid lyricNotes/],
+  ['blank adaptation stanza', data => data.tracks[0].lyricNotes.translation={label:'English adaptation',stanzas:[' ']}, /Invalid lyricNotes/],
 ]) {
   test(`catalogue validation rejects ${label}`, () => {
     const data = source(); edit(data);
@@ -145,8 +147,8 @@ test('an isolated build renders multiple songs, unique anchors and artist counts
     assert.equal((page.match(/id="persistent-player"/g)||[]).length,1);
     assert.equal((page.match(/id="gongwon-live-0"/g)||[]).length,1);
     const home = readFileSync(path.join(dir,'dist/index.html'),'utf8');
-    assert.match(home,/Browse all 16 artists/);
-    assert.match(home,/data-room-count="17"/);
+    assert.ok(home.includes(`Browse all ${data.artists.length} artists`));
+    assert.ok(home.includes(`data-room-count="${data.tracks.length}"`));
     assert.match(home,/href="\/artists\/gongwon\/#track-gongwon"/);
     const promotion = JSON.parse(readFileSync(path.join(dir,'dist/promotion-catalogue.json'),'utf8'));
     assert.equal(promotion.items.filter(item=>item.kind==='artist'&&item.id==='gongwon').length,1);

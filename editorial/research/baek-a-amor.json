@@ -1,0 +1,151 @@
+{
+  "checked": "2026-10-22",
+  "status": "reviewed-local",
+  "artistId": "baek-a",
+  "trackId": "baek-a-amor",
+  "readerQuestion": "Hear Baek A’s Amor live and read the supplied poetic English adaptation.",
+  "scope": "Artist introduction, one song, supplied English adaptation, home feature and catalogue integration. No SNS posting.",
+  "referenceChoices": [
+    {
+      "source": "User-supplied English adaptation and skills/indiek-editorial/references/editing.md lyric translation criteria",
+      "technique": "Preserve supplied stanzas, images, repetition and emotional register. No external critic’s phrasing or structure used."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=-deMEvvmMeA",
+      "publisher": "MONTBEST",
+      "checked": "2026-10-22",
+      "published": "2023-09-07",
+      "supports": [
+        "User-selected official MONTBEST LIVE video",
+        "188-second video",
+        "Baek A and Amor identified by title and artist Instagram in description"
+      ],
+      "method": "Opened YouTube page and read its public title, description and player metadata; actual embed verification recorded separately."
+    },
+    {
+      "url": "https://music.apple.com/us/album/amor-single/1512931469",
+      "publisher": "Apple Music",
+      "checked": "2026-10-22",
+      "published": "2018-10-11",
+      "supports": [
+        "Official English title Amor",
+        "Release date",
+        "Amor - Single and release artwork",
+        "Folk classification"
+      ]
+    },
+    {
+      "url": "https://music.bugs.co.kr/track/31258117",
+      "publisher": "Bugs",
+      "checked": "2026-10-22",
+      "supports": [
+        "Korean title",
+        "Baek A credited for lyrics, music and arrangement",
+        "Original lyric imagery; naming/formation and erasure in the final refrain"
+      ],
+      "method": "Original lyrics read for factual comparison; full Korean lyrics not stored or copied."
+    },
+    {
+      "url": "https://poclanos.com/artist/%EB%B0%B1%EC%95%84/",
+      "publisher": "POCLANOS",
+      "checked": "2026-10-22",
+      "supports": [
+        "Artist identity and distributor artist portrait"
+      ],
+      "originalImage": "https://poclanos.com/drmvsn/wp-content/uploads/2025/06/250624-%EB%A9%94%EC%9D%B8-%ED%94%84%EB%A1%9C%ED%95%84-%EB%B0%B1%EC%95%84.jpg"
+    }
+  ],
+  "sourceLedger": {
+    "userSupplied": "Complete English adaptation reused verbatim by explicit request; permission to transform supplied text is not represented as a rights-holder licence.",
+    "bugs": "Song credits and brief original prose grounded in imagery; no sourced Korean verses republished.",
+    "appleMusic": "Release metadata and title only.",
+    "poclanos": "Identity and photo source only."
+  },
+  "outline": [
+    "Short introduction highlighting poetic imagery",
+    "Requested live video and release credits",
+    "Twelve supplied adaptation stanzas without translation commentary"
+  ],
+  "adaptation": {
+    "provenance": "Full English text directly supplied by the user in this conversation on 2026-10-22.",
+    "sha256": "299e0f0be8c5d11bfe89b00a5ed6e44bdbc0dd277b83e7ee5a71eeac36b64b6c",
+    "stanzaCount": 12,
+    "changes": "None. User subsequently asked not to add explanations; no discussion of wordplay or translation choices appears on the page.",
+    "designation": "Poetic English adaptation, not an official translation",
+    "uncertainty": "A literary rendering rather than a line-for-line equivalence; the supplied written/erased wording is retained. No authorship beyond supplied provenance inferred."
+  },
+  "images": [
+    {
+      "file": "baek-a-portrait.jpg",
+      "source": "https://poclanos.com/artist/%EB%B0%B1%EC%95%84/",
+      "original": "https://poclanos.com/drmvsn/wp-content/uploads/2025/06/250624-%EB%A9%94%EC%9D%B8-%ED%94%84%EB%A1%9C%ED%95%84-%EB%B0%B1%EC%95%84.jpg",
+      "rights": "unconfirmed; source and credit recorded"
+    },
+    {
+      "file": "baek-a-amor.jpg",
+      "source": "https://music.apple.com/us/album/amor-single/1512931469",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/a4/ae/f3/a4aef345-7ec9-8c09-a462-7389200876f9/BaekA_Amor_3000.jpg/1200x1200bb.jpg",
+      "rights": "unconfirmed; source and credit recorded"
+    }
+  ],
+  "revision": {
+    "algorithm": "sha256",
+    "scope": "JSON.stringify({artist,track})",
+    "hash": "f741bf4ccc27b2e4fa37d07be329f313ccd0cc68c2d9c42da5cfa926ebe3e2c1"
+  },
+  "reviews": [
+    {
+      "kind": "facts",
+      "checked": "2026-10-22",
+      "approved": true,
+      "reviewer": "Separate factual pass by the same assistant; not independent human review",
+      "revision": "f741bf4ccc27b2e4fa37d07be329f313ccd0cc68c2d9c42da5cfa926ebe3e2c1",
+      "supportedClaims": [
+        "English/Korean titles, release date and writing/arrangement credits checked against opened Apple Music/Bugs pages.",
+        "Performance identified as MONTBEST LIVE; publication date and duration taken from YouTube metadata, not the 2018 studio date.",
+        "Poetic characterization is the site owner’s supplied editorial description; imagery appears in supplied adaptation and referenced lyric."
+      ],
+      "issues": [],
+      "limitations": [
+        "Image reuse rights not established.",
+        "Not presented as an official English lyric or definitive songwriter interpretation."
+      ],
+      "issuesResolved": [
+        "Corrected the English brand spelling to MONTBEST after confirming the official channel handle @MONTBEST."
+      ]
+    },
+    {
+      "kind": "editorial",
+      "checked": "2026-10-22",
+      "approved": true,
+      "reviewer": "Separate editorial pass by the same assistant",
+      "revision": "f741bf4ccc27b2e4fa37d07be329f313ccd0cc68c2d9c42da5cfa926ebe3e2c1",
+      "findings": [
+        "Full twelve-stanza supplied text compared byte-for-byte.",
+        "No added translation analysis, private biography, imagined listening experience or arrangement claims.",
+        "Brief introductions use concrete images; no imitation of a benchmark author.",
+        "Original 16 song notes remain unchanged."
+      ],
+      "issues": []
+    }
+  ],
+  "verification": {
+    "checked": "2026-10-22",
+    "status": "Local build and browser checks passed; public deployment recorded in deploy/README.md",
+    "automated": "182 Node tests and 29 static pages pass. Includes retry after connection timeout/playback error and preservation of the normal shared iframe.",
+    "manual": [
+      "User-selected MONTBEST video actually plays inside the common player on localhost; mobile screenshot shows the performance alongside the supplied adaptation.",
+      "Desktop existing Yerin video plays on localhost and production. Baek video also plays in a fresh desktop page; reloading the initially stalled page restores it. No evidence of an embedding restriction.",
+      "Mobile 390 x 844: 12 adaptation stanzas, no horizontal overflow, Saved add/direct play/current-track label/remove, Korean search finds Baek A. Original Saved entry retained."
+    ],
+    "screenshots": [
+      "/tmp/indiek-baek-a-mobile-playing.png"
+    ],
+    "limitations": [
+      "Initial empty iframe did not report a YouTube error code; the underlying transient connection cause is not established. A confirmed same-song retry bug is fixed.",
+      "Full Saved 0/1/13/50, fullscreen, keyboard and complete automatic song-end matrix not manually repeated; automated playback tests pass."
+    ]
+  }
+}

@@ -1,8 +1,8 @@
 {
-  "checked": "2026-10-21",
+  "checked": "2026-10-22",
   "status": "reviewed-local",
   "readerQuestion": "What do the words contribute to each song, without needing a full English translation?",
-  "scope": "All 16 introduced catalogue tracks, including the editor pick. Existing two notes revised. External moreTracks links and chapters in the separate full session are outside this song-introduction scope. No new recordings or artist-page first-publication dates.",
+  "scope": "All 17 introduced tracks: 16 previously reviewed English commentaries unchanged, plus the user-supplied twelve-stanza Amor adaptation. External recommendations and full-session chapters remain outside this scope.",
   "referenceChoices": [
     {
       "id": "sunwoojunga-kraze",
@@ -15,7 +15,7 @@
       "technique": "Use specific songwriting detail and distinguish artist statements from editorial interpretation. No interview scene, metaphors, wording or sequence borrowed."
     }
   ],
-  "method": "Original licensed lyric pages and credits opened and read; no lyric text or complete translations stored. Readings concern textual images and speaker positions, not an artist’s private experience. No new claims about the sound or selected live arrangements. Page publication dates are unknown unless separately documented; checked dates are not release dates.",
+  "method": "Original lyric references support commentary; complete copyrighted lyrics are not collected from the web. Amor is an explicitly requested English adaptation supplied directly by the user and retained verbatim without additional explanation.",
   "tracks": [
     {
       "trackId": "black-skirts",
@@ -353,21 +353,79 @@
       ],
       "interpretation": "Ordinary comfort and pain coexist. Lyrics credited to Tiger JK, not assumed autobiography.",
       "uncertainty": "No private-life referent or exclusive interpretation established."
+    },
+    {
+      "trackId": "baek-a-amor",
+      "angle": "User-supplied poetic English adaptation without added translation explanation",
+      "outline": [
+        "Short introduction highlighting poetic imagery",
+        "Requested live video and release credits",
+        "Twelve supplied adaptation stanzas without translation commentary"
+      ],
+      "sources": [
+        {
+          "url": "https://www.youtube.com/watch?v=-deMEvvmMeA",
+          "publisher": "MONTBEST",
+          "checked": "2026-10-22",
+          "published": "2023-09-07",
+          "supports": [
+            "User-selected official MONTBEST LIVE video",
+            "188-second video",
+            "Baek A and Amor identified by title and artist Instagram in description"
+          ],
+          "method": "Opened YouTube page and read its public title, description and player metadata; actual embed verification recorded separately."
+        },
+        {
+          "url": "https://music.apple.com/us/album/amor-single/1512931469",
+          "publisher": "Apple Music",
+          "checked": "2026-10-22",
+          "published": "2018-10-11",
+          "supports": [
+            "Official English title Amor",
+            "Release date",
+            "Amor - Single and release artwork",
+            "Folk classification"
+          ]
+        },
+        {
+          "url": "https://music.bugs.co.kr/track/31258117",
+          "publisher": "Bugs",
+          "checked": "2026-10-22",
+          "supports": [
+            "Korean title",
+            "Baek A credited for lyrics, music and arrangement",
+            "Original lyric imagery; naming/formation and erasure in the final refrain"
+          ],
+          "method": "Original lyrics read for factual comparison; full Korean lyrics not stored or copied."
+        },
+        {
+          "url": "https://poclanos.com/artist/%EB%B0%B1%EC%95%84/",
+          "publisher": "POCLANOS",
+          "checked": "2026-10-22",
+          "supports": [
+            "Artist identity and distributor artist portrait"
+          ],
+          "originalImage": "https://poclanos.com/drmvsn/wp-content/uploads/2025/06/250624-%EB%A9%94%EC%9D%B8-%ED%94%84%EB%A1%9C%ED%95%84-%EB%B0%B1%EC%95%84.jpg"
+        }
+      ],
+      "interpretation": "User-supplied literary rendering; no added interpretation.",
+      "uncertainty": "A literary rendering rather than a line-for-line equivalence; the supplied written/erased wording is retained. No authorship beyond supplied provenance inferred.",
+      "research": "editorial/research/baek-a-amor.json"
     }
   ],
   "revision": {
     "algorithm": "sha256",
     "scope": "JSON.stringify(catalogue.tracks.map(t => ({trackId:t.id,lyricNotes:t.lyricNotes}))) encoded as UTF-8",
-    "hash": "f8fd06476a336c876fcbb823bca9ad6106026cad1717c767b62fb1186a74d69a"
+    "hash": "440f7fc44e0ad517d2859658f0a4f3c337d66c5514010db33224da35863cf1cf"
   },
   "reviews": [
     {
       "kind": "facts",
-      "checked": "2026-10-21",
+      "checked": "2026-10-22",
       "reviewer": "indiek AI-assisted review; separate pass by the same assistant, not independent human verification",
-      "revision": "f8fd06476a336c876fcbb823bca9ad6106026cad1717c767b62fb1186a74d69a",
+      "revision": "440f7fc44e0ad517d2859658f0a4f3c337d66c5514010db33224da35863cf1cf",
       "approved": true,
-      "scope": "All 16 complete notes, headings, theme labels, source labels and writer credits. Each claim compared with the opened original lyric text; artist context attributed only for HANRORO. Existing official English titles retained.",
+      "scope": "The 16 previously approved notes are byte-identical to the prior approved revision f8fd06476a336c876fcbb823bca9ad6106026cad1717c767b62fb1186a74d69a. The new Amor adaptation and its labels/source were reviewed in a separate facts pass; details in editorial/research/baek-a-amor.json.",
       "objectionsResolved": [
         {
           "trackId": "bol4",
@@ -398,11 +456,11 @@
     },
     {
       "kind": "editorial",
-      "checked": "2026-10-21",
+      "checked": "2026-10-22",
       "reviewer": "indiek AI-assisted review; separate pass by the same assistant",
-      "revision": "f8fd06476a336c876fcbb823bca9ad6106026cad1717c767b62fb1186a74d69a",
+      "revision": "440f7fc44e0ad517d2859658f0a4f3c337d66c5514010db33224da35863cf1cf",
       "approved": true,
-      "scope": "Reread all 16 final notes as a set and individually after the factual revisions. English commentary adds a concrete interpretive point to the existing introductions. No simulated listening history, invented interviews, full translations or copied reference structure.",
+      "scope": "The 16 previously approved notes are byte-identical to the prior approved revision f8fd06476a336c876fcbb823bca9ad6106026cad1717c767b62fb1186a74d69a. The new Amor adaptation and its labels/source were reviewed in a separate editorial pass; details in editorial/research/baek-a-amor.json.",
       "referenceComparison": "The Kraze interview models a clear boundary between an artist’s own explanation and editorial framing; these short notes use their own song-specific images and make no interview claim.",
       "objectionsResolved": [
         {
@@ -428,6 +486,13 @@
     }
   ],
   "verification": {
+    "checked": "2026-10-22",
+    "automated": "182 Node tests and 29 static pages pass. All original sixteen commentaries unchanged; supplied Baek A adaptation and new schema/render checks pass.",
+    "manual": "Baek A desktop/mobile content, actual common-player playback, Saved and Korean search checked; see editorial/research/baek-a-amor.json.",
+    "deployment": "See deploy/README.md#확인과-복구"
+  },
+  "previousApprovedRevision": "f8fd06476a336c876fcbb823bca9ad6106026cad1717c767b62fb1186a74d69a",
+  "previousVerification": {
     "checked": "2026-10-21",
     "build": "Production build and local preview verified. Final deployment and public-page verification: deploy/README.md#확인과-복구 (d8ce439, 2026-10-21).",
     "automated": "178 Node tests pass; 28 static pages checked in production and preview. Coverage includes all lyric paragraphs and source links, guide anchors, editor pick, additional songs, incomplete notes and exact reviewed revision.",

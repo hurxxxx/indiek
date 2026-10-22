@@ -363,6 +363,23 @@
         "author": "indiek",
         "updated": "2026-10-21"
       }
+    },
+    {
+      "id": "baek-a",
+      "primaryTrackId": "baek-a-amor",
+      "artist": "Baek A",
+      "korean": "백아",
+      "aliases": "BaekA Baek Ah Baek-A 백 아",
+      "category": "solo",
+      "artistIntro": "Baek A writes songs with a poet’s attention to images and small changes in language. In “Amor”, memories of first love take the shape of a film, a night sky and stars drawn together.",
+      "artistSource": "https://poclanos.com/artist/%EB%B0%B1%EC%95%84/",
+      "artistSourceName": "POCLANOS — Baek A artist profile",
+      "artistSourceLanguage": "Korean",
+      "editorial": {
+        "author": "indiek",
+        "published": "2026-10-22",
+        "updated": "2026-10-22"
+      }
     }
   ],
   "tracks": [
@@ -1146,6 +1163,75 @@
           "language": "Korean"
         }
       }
+    },
+    {
+      "id": "baek-a-amor",
+      "artistId": "baek-a",
+      "album": "Amor",
+      "release": "Amor - Single",
+      "year": "2018",
+      "genre": "FOLK / INDIE POP",
+      "image": "baek-a-amor.jpg",
+      "track": "Amor",
+      "koreanTitle": "첫사랑",
+      "duration": "03:08",
+      "provider": "youtube",
+      "videoId": "-deMEvvmMeA",
+      "channel": "몽베스트 (MONTBEST)",
+      "url": "https://www.youtube.com/watch?v=-deMEvvmMeA",
+      "videoType": "live",
+      "performance": "MONTBEST LIVE · 2023",
+      "note": "First love, remembered in images.",
+      "description": "A love remembered as a film, a sky full of stars, and a moment still taking shape. Baek A sings “Amor” (첫사랑) here for MONTBEST LIVE. A poetic English adaptation follows below.",
+      "source": "https://music.apple.com/us/album/amor-single/1512931469",
+      "sourceName": "Baek A — Amor on Apple Music",
+      "sourceLanguage": "English",
+      "credits": "Lyrics, music and arrangement by Baek A. Released on 11 October 2018. This MONTBEST LIVE video was uploaded on 7 September 2023.",
+      "guideTags": [
+        "distinct-voices"
+      ],
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/track/31258117",
+          "label": "Bugs — Amor (첫사랑): lyrics and credits",
+          "language": "Korean"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=-deMEvvmMeA",
+          "label": "MONTBEST — Baek A, Amor: official live video",
+          "language": "Korean"
+        }
+      ],
+      "lyricNotes": {
+        "heading": "First Love",
+        "themes": [
+          "First love",
+          "Memory"
+        ],
+        "paragraphs": [],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/31258117",
+          "label": "Original lyrics and credits on Bugs",
+          "language": "Korean"
+        },
+        "translation": {
+          "label": "Poetic English adaptation",
+          "stanzas": [
+            "I know, if you gently knock\nupon the door of my heart,\nI'll have to let you go—\nyou, blurred and brimming in my eyes.",
+            "Memories can no longer keep pace\nwith the hands of a racing clock.\nAnd when the story that began\nthe moment I first found you reaches its end,\nI'll try to smile.",
+            "That slanting light cuts through the air,\nkindling a fire that reaches for me.\nI turn away,\nafraid of turning into ash.",
+            "Yet the color we called \"us,\"\nfilling the spaces between empty pages,\nwas a beautiful film\nthat never needed to be perfect.",
+            "Through the nights we shared,\nto the sound of a heart coming into bloom,\nI connect the stars across the night sky\nand trace the shape of you.",
+            "Here, in this moment,\nI paint the time I spent with you,\nand perhaps this version of me\nis being written into a name—\nFirst Love.",
+            "Ooh-ooh-ooh-ooh-ooh-ooh-ooh-ooh\nOoh-ooh-ooh-ooh-ooh",
+            "Our blue sky,\nbeloved even by the stars and the moon,\nfeels like a Milky Way\nthat shattered without a single touch.",
+            "Through the nights we shared (ooh-ooh-ooh-ooh),\nto the sound of a heart coming into bloom (ooh-ooh-ooh-ooh-ooh),\nI connect the stars across the night sky (ooh-ooh-ooh-ooh)\nand trace the shape of you (ooh-ooh-ooh-ooh-ooh).",
+            "Here, in this moment (ooh-ooh-ooh-ooh),\nI paint the time I spent with you (ooh-ooh-ooh-ooh-ooh),\nand perhaps this version of me\nis being written into a name—\nFirst Love.",
+            "Here, in this moment (ooh-ooh-ooh-ooh-ooh),\n(ooh-ooh-ooh-ooh-ooh-ooh-ooh),\nperhaps this version of me\nis being erased\nin the name of First Love.",
+            "Mmh-mmh-mmh-mmh-mmh-mmh-mmh-mmh"
+          ]
+        }
+      }
     }
   ],
   "featuredArtists": [
@@ -1219,6 +1305,13 @@
     },
     {
       "id": "yerin-baek"
+    },
+    {
+      "id": "baek-a",
+      "image": "baek-a-portrait.jpg",
+      "alt": "Baek A with dark hair and bangs outdoors against a green background",
+      "position": "50% 44%",
+      "kind": "portrait"
     }
   ],
   "editorPickTrackId": "yoon-mirae",
@@ -1258,7 +1351,7 @@
       "intro": "Some songs, live performances and a little about the people behind them. A place to start if Korean music is new to you.",
       "paragraphs": [
         "There’s a love song by The Black Skirts, a farewell from YdBB and a live version of SE SO NEON’s The Wave that carries on long after the singing ends. You can dip in wherever you like.",
-        "You don’t need to know Korean to spend time here. Yerin Baek’s 0310 is sung in English, and each song’s artist page has English notes on the meaning and mood of its lyrics. More artists appear below, with new additions as the journal grows."
+        "You don’t need to know Korean to spend time here. Yerin Baek’s 0310 is sung in English, and the artist pages offer English lyric notes or a poetic adaptation alongside the music. More artists appear below, with new additions as the journal grows."
       ],
       "trackIds": [
         "black-skirts",
@@ -1278,7 +1371,7 @@
       "editorial": {
         "author": "indiek",
         "published": "2026-10-19",
-        "updated": "2026-10-21"
+        "updated": "2026-10-22"
       },
       "sources": [
         {

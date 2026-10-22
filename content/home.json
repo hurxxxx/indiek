@@ -34,6 +34,11 @@
       "enabled": true,
       "features": [
         {
+          "id": "baek-a",
+          "title": "First love, in Baek A’s words.",
+          "deck": "Baek A performs <em>Amor</em> live for MONTBEST, with a poetic English adaptation to read alongside the song."
+        },
+        {
           "id": "ydbb",
           "title": "Hoping to be remembered.",
           "deck": "YdBB’s <em>ONCE</em> is about letting someone go, with the hope that they’ll remember you kindly."
@@ -99,7 +104,9 @@
           "deck": "Yerin Baek sings <em>0310</em> in English, with lyrics on screen in her own video. The song is from <em>Every letter I sent you.</em>"
         }
       ],
-      "trackOrder": [],
+      "trackOrder": [
+        "baek-a-amor"
+      ],
       "copy": {
         "eyebrow": "IN FOCUS",
         "roomEyebrow": "THE LISTENING ROOM",

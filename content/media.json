@@ -1,4 +1,52 @@
 {
+  "baek-a-amor.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/baek-a-amor-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 15892
+      },
+      {
+        "src": "/assets/optimized/baek-a-amor-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 46924
+      },
+      {
+        "src": "/assets/optimized/baek-a-amor-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 86140
+      }
+    ]
+  },
+  "baek-a-portrait.jpg": {
+    "width": 2128,
+    "height": 2128,
+    "variants": [
+      {
+        "src": "/assets/optimized/baek-a-portrait-480.webp",
+        "width": 480,
+        "height": 480,
+        "bytes": 25174
+      },
+      {
+        "src": "/assets/optimized/baek-a-portrait-960.webp",
+        "width": 960,
+        "height": 960,
+        "bytes": 151134
+      },
+      {
+        "src": "/assets/optimized/baek-a-portrait-1600.webp",
+        "width": 1600,
+        "height": 1600,
+        "bytes": 562672
+      }
+    ]
+  },
   "black-skirts.jpg": {
     "width": 1200,
     "height": 1200,

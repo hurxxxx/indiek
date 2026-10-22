@@ -45,6 +45,7 @@ function playerFixture(onPlay = () => {}) {
   const created=[], instances=[], calls=[], starts=[];
   const doc={createElement(tag){assert.equal(tag,'iframe');const frame={focus(){}};created.push(frame);return frame;}};
   let resolveAPI, rejectAPI, requests=0;
+  const timers=new Map();let timerId=0;
   const api=new Promise((resolve,reject)=>{resolveAPI=resolve;rejectAPI=reject;});
   class Player {
     constructor(frame,{events}) { this.events=events;this.videoId=new URL(frame.src).pathname.split('/').at(-1);instances.push(this); }
@@ -55,8 +56,10 @@ function playerFixture(onPlay = () => {}) {
     destroy(){calls.push(['destroy']);}
     emit(name,data){this.events[name]({target:this,data});}
   }
-  const player=createPlayer(root,{onPlay,doc,win:{location:{origin:'http://127.0.0.1:4173'},setTimeout(){return 1;},clearTimeout(){}},loadAPI:()=>{requests++;return api;}});
+  const player=createPlayer(root,{onPlay,doc,win:{location:{origin:'http://127.0.0.1:4173'},setTimeout(fn){timers.set(++timerId,fn);return timerId;},clearTimeout(id){timers.delete(id);}},loadAPI:()=>{requests++;return api;}});
   return {player,stage,root,created,label,calls,starts,instances,requests:()=>requests,
+    async connect(){resolveAPI({Player});await api;},
+    timeout(){for(const fn of [...timers.values()])fn();},
     async ready(){resolveAPI({Player});await api;instances.at(-1)?.emit('onReady');},
     async fail(){rejectAPI(new Error('offline'));await api.catch(()=>{});await Promise.resolve();},
   };
@@ -177,6 +180,24 @@ test('a newer selection wins while the API is loading, and API failure preserves
   b.player.load({...third,externalOnly:true});assert.equal(b.player.current.id,'second');
   const failed=playerFixture();failed.player.load(first);await failed.fail();
   assert.equal(failed.player.state,'unavailable');assert.equal(failed.stage.children.length,1);
+});
+test('retrying a timed-out connection creates one fresh frame and ignores stale callbacks',async()=>{
+  const b=playerFixture();b.player.load(first,{autoplay:true});await b.connect();
+  const stale=b.instances[0],oldFrame=b.stage.children[0];b.timeout();
+  assert.equal(b.player.state,'unavailable');
+  b.player.load(first,{autoplay:true});await b.ready();
+  assert.equal(b.stage.children.length,1);assert.notEqual(b.stage.children[0],oldFrame);
+  assert.equal(b.player.ready,true);assert.equal(b.requests(),2);
+  stale.emit('onError',150);assert.equal(b.player.state,'ready');
+  b.instances[1].emit('onStateChange',1);assert.equal(b.player.state,'playing');
+});
+test('retrying a playback error reconnects without changing the saved queue or auto-next setting',async()=>{
+  const b=playerFixture();b.player.setQueue([first,second]);b.player.setAutoNext(false);
+  b.player.load(first,{autoplay:true});await b.ready();const frame=b.stage.children[0];
+  b.instances[0].emit('onError',150);b.player.load(first,{autoplay:true});await b.ready();
+  assert.notEqual(b.stage.children[0],frame);assert.equal(b.stage.children.length,1);
+  assert.equal(b.player.next.id,'second');assert.equal(b.player.autoNext,false);
+  assert.equal(b.player.state,'ready');
 });
 test('official API loader is shared and can retry after a blocked script',async()=>{
   const scripts=[];

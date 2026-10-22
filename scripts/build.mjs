@@ -23,7 +23,7 @@ const guides = getListeningGuides(catalogue);
 const all = [...records, pick];
 const artists = getArtistRecords(catalogue);
 const playbackRecords = getPlaybackRecords(catalogue);
-const version = '20261021-catalogue-lyrics';
+const version = '20261022-baek-a';
 const authors=JSON.parse(read('content/authors.json'));
 const stories=publicStories(loadStories(root));
 for(const s of stories) {
@@ -69,7 +69,7 @@ function overlays() {
     <div class="persistent-player-heading"><div><p class="mono">NOW LISTENING</p><a data-current-track href="/#records"></a></div><button class="player-saved-toggle" data-library data-mobile-queue aria-label="Open saved tracks" hidden>Saved <span class="saved-count">0</span></button><button class="player-size-toggle" data-resize-player aria-label="Minimize and keep listening">Minimize</button><button data-unload-player aria-label="Stop and close YouTube player" title="Stop and close">×</button></div>
     <div class="persistent-player-body"><div class="persistent-player-stage" data-player-stage></div>
       <aside class="player-playlist" data-player-playlist aria-labelledby="playlist-title" hidden><div class="playlist-heading"><h2 id="playlist-title">Your saved tracks</h2><span class="mono" data-playlist-count></span></div><ol data-playlist-rows></ol><div class="playlist-footer"><p>Play all starts from the first track.<br>Auto-next follows the order shown.</p><button data-library>Manage saved tracks ↗</button></div></aside>
-    </div><div class="player-transport"><div class="queue-controls" data-queue-controls hidden><button data-play-all title="Play saved tracks from the beginning">Play all</button><button data-previous-track aria-label="Previous saved track" disabled>← Previous</button><button data-next-track aria-label="Next saved track" disabled>Next →</button><button data-auto-next aria-pressed="true">Auto-next: on</button></div><div class="playback-message"><p data-playback-status role="status" aria-live="polite"></p></div></div><span class="sr-only" tabindex="0" data-player-focus="end" hidden></span>
+    </div><div class="player-transport"><div class="queue-controls" data-queue-controls hidden><button data-play-all title="Play saved tracks from the beginning">Play all</button><button data-previous-track aria-label="Previous saved track" disabled>← Previous</button><button data-next-track aria-label="Next saved track" disabled>Next →</button><button data-auto-next aria-pressed="true">Auto-next: on</button></div><div class="playback-message"><p data-playback-status role="status" aria-live="polite"></p><button data-retry-player hidden>Try again</button></div></div><span class="sr-only" tabindex="0" data-player-focus="end" hidden></span>
   </section>`;
 }
 function page(url, title, description, main, kind = '', editorial = null) {
@@ -131,7 +131,8 @@ function guideTrack(r,i,guide) {
 }
 
 function lyricNotesLink(r) {
-  return r.lyricNotes ? `<a class="underlink" href="${artistPath(r)}#${trackAnchor(r)==='listen'?'lyrics':`lyrics-${r.id}`}" aria-label="Inside the lyrics: ${e(r.track)} by ${e(r.artist)}">Inside the lyrics ↗</a>` : '';
+  const label = r.lyricNotes?.translation ? 'English adaptation' : 'Inside the lyrics';
+  return r.lyricNotes ? `<a class="underlink" href="${artistPath(r)}#${trackAnchor(r)==='listen'?'lyrics':`lyrics-${r.id}`}" aria-label="${label}: ${e(r.track)} by ${e(r.artist)}">${label} ↗</a>` : '';
 }
 
 function guideCatalogue(guide) {
@@ -154,6 +155,7 @@ function lyricNotes(r) {
     <p class="eyebrow">INSIDE THE LYRICS</p><h3 id="${id}-title">${e(notes.heading)}</h3>
     <ul class="lyric-themes" aria-label="Lyrical themes">${notes.themes.map(theme=>`<li>${e(theme)}</li>`).join('')}</ul>
     ${notes.paragraphs.map(text=>`<p>${e(text)}</p>`).join('')}
+    ${notes.translation?`<div class="lyric-translation" lang="en"><p class="eyebrow">${e(notes.translation.label)}</p>${notes.translation.stanzas.map(stanza=>`<p class="lyric-stanza">${e(stanza).replaceAll('\n','<br>')}</p>`).join('')}</div>`:''}
     ${notes.excerpt?`<figure class="lyric-excerpt"><blockquote lang="ko">${e(notes.excerpt.korean)}</blockquote><figcaption><span lang="en">${e(notes.excerpt.english)}</span><small>Brief excerpt · English translation by indiek</small></figcaption></figure><p>${e(notes.excerpt.note)}</p>`:''}
     ${[notes.source,...(notes.backgroundSources||[])].map(source=>`<p class="lyric-source">${sourceLink(source.url,source.label,source.language)}</p>`).join('')}
   </section>`;
@@ -209,7 +211,7 @@ for(const r of artists) {
   const sourceList=[{url:r.source,label:r.sourceName,language:r.sourceLanguage},{url:r.artistSource,label:r.artistSourceName,language:r.artistSourceLanguage},...(r.extraSources||[]),...artistTracks.slice(1).flatMap(track=>[{url:track.source,label:track.sourceName,language:track.sourceLanguage},...(track.extraSources||[])])];
   const sources=sourceList.filter((source,i)=>sourceList.findIndex(other=>other.url===source.url)===i);
   const main=`<main id="main" class="wrap artist-page"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><a href="/artists/">Artists</a></nav>
-  <header class="artist-heading"><p class="eyebrow">MEET THE ARTIST / <span lang="ko">${e(r.korean)}</span></p><h1>${e(r.artist)}</h1><p class="artist-lead">${e(r.artistIntro)}</p>${byline(r.editorial)}${shareControl()}${r.lyricNotes?`<nav class="artist-sections" aria-label="On this artist page"><a href="#listen">Listen ↓</a><a href="#lyrics">Inside the lyrics ↓</a>${(r.performances||[]).map(video=>`<a href="#${video.id}">Full live session ↓</a>`).join('')}</nav>`:''}</header>
+  <header class="artist-heading"><p class="eyebrow">MEET THE ARTIST / <span lang="ko">${e(r.korean)}</span></p><h1>${e(r.artist)}</h1><p class="artist-lead">${e(r.artistIntro)}</p>${byline(r.editorial)}${shareControl()}${r.lyricNotes?`<nav class="artist-sections" aria-label="On this artist page"><a href="#listen">Listen ↓</a><a href="#lyrics">${r.lyricNotes.translation?'English adaptation':'Inside the lyrics'} ↓</a>${(r.performances||[]).map(video=>`<a href="#${video.id}">Full live session ↓</a>`).join('')}</nav>`:''}</header>
   ${feature?`<figure class="artist-portrait">${imageHTML(media,feature.image,feature.alt,{priority:true,sizes:'(max-width: 760px) 92vw, 960px',style:`object-position:${feature.position}`})}<figcaption>${e(rights.images.find(image=>image.file===feature.image)?.caption || 'Artist photograph.')} ${photoCredit(feature.image) || '<a href="/about/#image-credits">Image credits</a>'}</figcaption></figure>`:''}
   ${r.biography?`<div class="artist-extra"><p>${e(r.biography)}</p></div>`:''}
   ${artistTracks.map((track,i)=>trackSection(track,artistTracks.findIndex(other=>other.image===track.image)===i)).join('\n  ')}

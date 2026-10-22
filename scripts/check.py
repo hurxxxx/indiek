@@ -118,6 +118,9 @@ for record in tracks:
             if anchor not in pages[target].ids: errors.append('Missing lyric anchor: '+record['id'])
             for paragraph in notes['paragraphs']:
                 if escape(paragraph).replace('&#x27;', '&#39;') not in text: errors.append('Stale or missing lyric commentary: '+record['id'])
+            for stanza in notes.get('translation',{}).get('stanzas',[]):
+                rendered=escape(stanza).replace('&#x27;', '&#39;').replace('\n','<br>')
+                if rendered not in text: errors.append('Stale or missing lyric adaptation: '+record['id'])
             for source in [notes['source'], *notes.get('backgroundSources',[])]:
                 if source['url'] not in pages[target].refs: errors.append('Missing lyric source: '+record['id'])
 for name, image in media.items():

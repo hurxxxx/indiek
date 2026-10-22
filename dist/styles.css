@@ -106,6 +106,9 @@ dialog{padding:0;border:0;background:var(--paper);color:var(--ink);width:min(820
 .lyric-excerpt small{display:block;font-size:11px;color:var(--muted);margin-top:7px}
 .lyric-notes>.lyric-source{font-size:12px;color:var(--muted)}
 .lyric-source a{text-decoration:underline;text-underline-offset:3px}
+.lyric-translation{margin:24px 0;max-width:38rem}
+.lyric-translation>.eyebrow{color:var(--muted);margin-bottom:24px}
+.lyric-stanza{font-size:17px;line-height:1.85;margin:0 0 26px;overflow-wrap:anywhere}
 .artist-performance{max-width:860px;margin:48px auto 0;padding-top:30px;border-top:1px solid var(--ink)}
 .artist-performance h2{font:600 clamp(30px,4vw,44px)/1.2 var(--display);margin:12px 0 20px}
 .artist-performance>p:not(.eyebrow){font-size:16px;line-height:1.85;max-width:65ch}
@@ -381,7 +384,8 @@ main[aria-busy="true"]{cursor:progress}
 .queue-controls [aria-pressed=true]{background:var(--paper);color:var(--ink)}
 .playback-message{flex:1;min-width:180px}
 .playback-message p{font-size:11px;line-height:1.5;color:#d3d2ca}
-.playback-message a{font-size:11px;text-decoration:underline;text-underline-offset:3px}
+.playback-message a,.playback-message button{font-size:11px;text-decoration:underline;text-underline-offset:3px}
+.playback-message button{padding:6px 0}
 .is-compact .player-transport{padding:10px 12px;gap:8px}
 @media(max-width:760px), (max-width:1024px) and (max-height:540px){.player-transport{padding:12px 14px;gap:10px}.queue-controls button{padding:8px 9px}}
 

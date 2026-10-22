@@ -125,7 +125,7 @@ test('guide headers, cards and publishing data count follow-on artists without c
       assert.ok(link?.includes(`data-track-count="${members.length}"`));
       assert.ok(link.includes(`${members.length} TRACKS`));
     }
-    assert.deepEqual(publicItems.find(item=>item.id===guide.id).artistIds,members.map(r=>r.id));
+    assert.deepEqual(publicItems.find(item=>item.id===guide.id).artistIds,[...new Set(members.map(r=>r.artistId))]);
     if(guide.selection==='curated')assert.deepEqual(guide.records.map(r=>r.id),guide.trackIds);
   }
 });

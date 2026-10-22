@@ -11,7 +11,7 @@ const freshCatalogue = () => JSON.parse(JSON.stringify(catalogue));
 test('listening guides cover every artist with the intended opening tracks and counts',()=>{
   const guides = getListeningGuides(catalogue);
   assert.deepEqual(guides.filter(g=>g.selection!=='curated').map(g=>[g.id,g.records.length,g.records[0].id]),[
-    ['on-stage',7,'sunwoojunga'],['guitars-and-bands',7,'black-skirts'],['distinct-voices',12,'yoon-mirae'],
+    ['on-stage',8,'sunwoojunga'],['guitars-and-bands',7,'black-skirts'],['distinct-voices',13,'yoon-mirae'],
   ]);
   assert.deepEqual([...new Set(guides.flatMap(g=>g.records.map(r=>r.id)))].sort(),[...records,editorPick].map(r=>r.id).sort());
   for (const guide of guides) assert.equal(new Set(guide.records.map(r=>r.id)).size,guide.records.length);
@@ -107,7 +107,7 @@ test('missing, corrupt and non-array browser storage are harmless',()=>{
 test('hero includes each artist and the editor pick, preserving the editorial opening order',()=>{
   const features = getFeaturedArtists(catalogue);
   assert.deepEqual(features.slice(0,4).map(f=>f.id),['ydbb','whiteusedsocks','motte','hanroro']);
-  assert.deepEqual(features.map(f=>f.id).sort(),[...records,editorPick].map(r=>r.id).sort());
+  assert.deepEqual(features.map(f=>f.id).sort(),[...records,editorPick].map(r=>r.artistId).sort());
   assert.equal(features.find(f=>f.id==='yoon-mirae').kind,'portrait');
 });
 test('a newly added artist enters the hero automatically without a separate feature entry',()=>{

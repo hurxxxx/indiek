@@ -216,9 +216,10 @@ function syncPlaylist() {
   status.textContent=({idle:'',loading:'Starting playback…',ready:'Starting playback…',paused:'Paused.',
     playing:player.autoNext&&player.next?`Up next: ${player.next.track} · ${player.next.artist}`:`Playing · Stops after this ${player.current?.artistId?'video':'song'}.`,
     ended:'Playback finished. Choose a track to listen again.',blocked:'Press play in the video to continue.',
-    error:'This video is unavailable here. Please choose another track.',
-    unavailable:'Automatic next is unavailable. You can still play this video or choose another track.',
+    error:'This video could not play. Try again or choose another track.',
+    unavailable:'YouTube did not finish connecting. Try again, or use the video’s play button if it appears.',
   })[player.state];
+  playerRoot.querySelector('[data-retry-player]').hidden=!['error','unavailable'].includes(player.state);
   playerRoot.classList.toggle('needs-attention',['blocked','error','unavailable'].includes(player.state));
   if(focused)(playlistRows.querySelector(`[data-load-saved="${focused}"]`)||playerFocusButton()).focus({preventScroll:true});
 }
@@ -312,6 +313,7 @@ document.addEventListener('click',event=>{
   else if(button.hasAttribute('data-next-track'))player.nextTrack();
   else if(button.hasAttribute('data-previous-track'))player.previousTrack();
   else if(button.hasAttribute('data-auto-next'))player.setAutoNext(!player.autoNext);
+  else if(button.hasAttribute('data-retry-player')){player.load(player.current,{autoplay:true});playerFocusButton().focus({preventScroll:true});}
   else if(button.hasAttribute('data-unload-player'))closePlayer();
   else if(button.hasAttribute('data-resize-player'))setCompactPlayer(!playerRoot.classList.contains('is-compact'));
 });

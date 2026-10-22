@@ -54,7 +54,10 @@ export function createPlayer(root, {onChange = () => {}, onPlay = () => {}, doc 
   }
   function load(record, {autoplay = false, restart = false} = {}) {
     if (!record || record.externalOnly) return;
-    if (current?.id === record.id) {
+    // A failed connection cannot recover by focusing the old frame. Retry only
+    // after an explicit selection; normal same-song playback keeps its position.
+    const retry = current?.id === record.id && ['error','unavailable'].includes(state);
+    if (current?.id === record.id && !retry) {
       if (restart && ready) {
         played = false;playReported = false;state = 'loading';onChange();
         if (autoplay) embedded.loadVideoById(record.videoId, 0);
@@ -73,7 +76,7 @@ export function createPlayer(root, {onChange = () => {}, onPlay = () => {}, doc 
     playReported = false;
     state = 'loading';
     root.hidden = false;
-    if (ready) {
+    if (ready && !retry) {
       updateLabel();
       onChange();
       if (autoplay) embedded.loadVideoById(record.videoId);

@@ -206,6 +206,31 @@
       "showCredit": true,
       "changes": "Resized WebP versions; cropped for display.",
       "notes": "Published on the agency’s official artist roster. No reuse licence was stated; official publication is not reuse permission."
+    },
+    {
+      "file": "baek-a-amor.jpg",
+      "label": "Baek A — Amor - Single artwork",
+      "source": "https://music.apple.com/us/album/amor-single/1512931469",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/a4/ae/f3/a4aef345-7ec9-8c09-a462-7389200876f9/BaekA_Amor_3000.jpg/1200x1200bb.jpg",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed",
+      "checked": "2026-10-22",
+      "notes": "Release artwork used to identify the requested recording. No reuse licence established; attribution does not establish permission."
+    },
+    {
+      "file": "baek-a-portrait.jpg",
+      "label": "Baek A — artist portrait from POCLANOS",
+      "caption": "Artist portrait from POCLANOS.",
+      "source": "https://poclanos.com/artist/%EB%B0%B1%EC%95%84/",
+      "original": "https://poclanos.com/drmvsn/wp-content/uploads/2025/06/250624-%EB%A9%94%EC%9D%B8-%ED%94%84%EB%A1%9C%ED%95%84-%EB%B0%B1%EC%95%84.jpg",
+      "credit": "POCLANOS",
+      "language": "Korean",
+      "status": "unconfirmed",
+      "checked": "2026-10-22",
+      "showCredit": true,
+      "changes": "Resized WebP variants; cropped for display.",
+      "notes": "Published on the distributor’s artist page. No reuse licence was stated."
     }
   ]
 }

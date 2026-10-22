@@ -1,5 +1,14 @@
 [
   {
+    "id": "baek-a-introduction",
+    "status": "published",
+    "kind": "artist",
+    "path": "/artists/baek-a/",
+    "title": "Baek A — Amor",
+    "description": "A MONTBEST live performance of First Love, with a poetic English adaptation.",
+    "published": "2026-10-22"
+  },
+  {
     "id": "gongwon-introduction",
     "status": "published",
     "kind": "artist",
