@@ -33,6 +33,29 @@ YouTube는 모든 페이지에서 공통 영역 `#persistent-player`를 사용�
 
 쿠키 배너의 문구·표시만 바꾸는 배포는 측정 방식 전환이 아니다. 기존 동의 저장 키·선택·`measurementChangeDate`를 유지하고, `Allow cookies`·`Reject`·`Details`와 푸터의 `Cookie settings`, 개인정보 안내를 함께 확인한다. 자동 발행 서버에도 같은 빌드 소스를 반영해 이후 기사 발행 때 이전 UI가 복원되지 않게 하며, 서버의 홍보 기록·예약 상태는 보존한다.
 
+## 접속 로그
+
+2026-10-23부터 indiek의 HTTP·HTTPS·www 요청은 `/var/log/nginx/indiek/access.log`에 JSON Lines 형식으로 기록한다. 연결 IP, 시간(서버 시간대 Asia/Seoul), 호스트·스킴·메서드·원래 요청 경로, 응답 코드·본문 크기·처리 시간·User-Agent를 남긴다. 쿼리 문자열·Referer·Cookie·Authorization은 기록하지 않는다. 이는 쿠키를 사용하지 않는 서버 로그이며 선택적 Matomo와 별개다. 공개 [개인정보 안내](https://indiek.com/privacy-and-terms/)도 같은 수집 범위를 설명한다. 활성화 전의 전체 접속은 복원할 수 없다.
+
+설정 원본은 [nginx.conf](nginx.conf)와 [logrotate-indiek.conf](logrotate-indiek.conf)다. 전용 하위 디렉터리로 기존 `/var/log/nginx/*.log` 규칙과 겹치지 않게 한다. 기존 error log와 다른 사이트의 규칙은 유지한다. 설정을 백업한 뒤 저장소 루트에서 설치한다.
+
+```sh
+install -d -o www-data -g adm -m 0750 /var/log/nginx/indiek
+install -o root -g root -m 0644 deploy/nginx.conf /etc/nginx/sites-available/indiek.com
+install -o root -g root -m 0644 deploy/logrotate-indiek.conf /etc/logrotate.d/indiek
+nginx -t
+logrotate --debug /etc/logrotate.conf
+systemctl reload nginx
+chown www-data:adm /var/log/nginx/indiek/access.log
+chmod 0640 /var/log/nginx/indiek/access.log
+systemctl is-active logrotate.timer
+systemctl is-enabled logrotate.timer
+```
+
+기존 `logrotate.timer`가 매일 실행한다(현재 자정 KST 기준, 시스템 설정상 최대 1시간 지연). 비어 있는 날도 회전하며 현재 파일과 과거 29회분을 보관하고 30일 지난 회전 파일은 제거한다. `.1`은 Nginx가 파일을 다시 여는 동안의 기록 유실을 피하기 위해 하루간 비압축으로 두고 `.2.gz`부터 gzip 압축한다. `create 0640 www-data adm`과 Nginx의 로그 reopen으로 회전 뒤에도 기록을 이어 간다. 압축 보관은 같은 서버 안에서 이루어지며 별도 서버 백업은 구성하지 않았다. 원시 로그는 Git·웹 루트·공개 문서에 복사하지 않는다.
+
+적용 후 실제 HTTPS 요청이 기록되는지, HTTP·www 리다이렉트가 유지되는지 확인한다. 전용 규칙만 `logrotate --force /etc/logrotate.d/indiek`로 회전할 수 있으며 전체 서버 설정을 강제 회전하지 않는다. 검증 시 회전 뒤 새 파일에 기록되는지와 `gzip -t`로 압축 파일 무결성을 확인한다. 검증 요청은 `indiek-log-check/` User-Agent로 구별하며 방문 집계에서 제외한다. 집계는 정상 HTML 요청과 알려진 봇·점검 요청을 분리하며 IP·User-Agent 기반 고유 방문자는 NAT·동적 IP·브라우저 변경 때문에 추정치로 표시한다. Matomo 방문자 수와 동일한 지표로 합산하지 않는다.
+
 ## SNS 자동 게시
 
 현재 상태(2026-10-22): 사용자 요청으로 원격 SNS 타이머 4개를 다시 활성화했다. 정기 예약과 로컬의 즉시 공유 요청 모두 같은 공식 API 게시기를 사용하며, 로컬에는 토큰이나 별도 게시 큐를 복제하지 않는다. 백아의 기존 수동 게시 기록은 유지하고 다시 전송하지 않는다. 변경·검증 기록은 [홍보 기록 G011](../docs/promotion.md#g011--공식-api-게시-통일과-원격-sns-재개)을 따른다.
