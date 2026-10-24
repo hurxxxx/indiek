@@ -4,10 +4,10 @@ import {fileURLToPath} from 'node:url';
 import {homedir} from 'node:os';
 import {Store,atomicWrite,readJSON,withLock,validatePost,verifyLive,publishScheduledPost} from './core.mjs';
 import {metaClient,recentOwnPosts,refreshToken} from './meta.mjs';
-import {prepareDaily,reviewBeforePublish} from './news-runner.mjs';
+import {reviewBeforePublish} from './news-runner.mjs';
 import {prepareStory} from './stories.mjs';
 import {shareStoryNow} from './on-demand.mjs';
-import {sharePageNow} from './page-now.mjs';
+import {sharePageNow,prepareDailyPages,verifyPagePost} from './page-now.mjs';
 
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const config=readJSON(path.join(root,'promotion/config.json'));
@@ -38,8 +38,8 @@ async function publicCatalogue() {
 async function prepare(store) {
   const catalogue=await publicCatalogue();
   const recentPosts=await recentOwnPosts(config,credentials());
-  const result=await prepareStory({root,config,store,catalogue,recentPosts,now})||await prepareDaily({root,config,store,catalogue,recentPosts,now});
-  stateNote(`Daily news ${result.day}: ${result.status}. ${result.reason||'Read the recorded selection.'} No posts published.`);
+  const result=await prepareStory({root,config,store,catalogue,recentPosts,now})||await prepareDailyPages({root,config,store,catalogue,recentPosts,now});
+  stateNote(`Daily editorial discovery ${result.day}: ${result.status}. ${result.reason||'Read the recorded selection.'} No posts published.`);
 }
 async function publish(store,platform) {
   if(!config.platforms.includes(platform))throw new Error('Specify threads or instagram.');
@@ -52,7 +52,7 @@ async function publish(store,platform) {
   const recent=async()=>recentPosts??=await recentOwnPosts({...config,platforms:[platform]},secret);
   let failed=false;
   for(const post of store.posts.filter(p=>p.mode!=='on-demand'&&p.platform===platform&&!['published','expired','superseded'].includes(p.status))) {
-    await publishScheduledPost(post,{config,store,api,now,recent,verify:post.kind==='news'?async p=>reviewBeforePublish(p,{root,config,posts:store.posts,recentPosts:await recent(),now}):verifyLive});
+    await publishScheduledPost(post,{config,store,api,now,recent,verify:post.kind==='news'?async p=>reviewBeforePublish(p,{root,config,posts:store.posts,recentPosts:await recent(),now}):post.kind==='page'?async p=>verifyPagePost(p,{root,catalogue:await publicCatalogue()}):verifyLive});
     if(['held','creating','publishing','submitted'].includes(post.status)||post.pausePlatform)failed=true;
     if(post.pausePlatform)break;
   }

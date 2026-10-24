@@ -4,7 +4,9 @@ Use this for English posts and replies, including automated drafts and their rev
 
 ## What goes into a post
 
-- Choose one actual piece of news or one specific detail from a published story. Lead with the artist and what happened; add the detail a reader can use. A concert needs the place and date, a release needs the title and release status, a live clip needs the performer and recording context.
+- Scheduled discovery posts lead with one specific detail from an existing indiek lyric note, song-background story or listening guide. Explain a lyric's scene or change of perspective, an attributed creative choice, or a useful connection between named songs. Give the basic insight in the post; do not withhold it as clickbait. Introduce the artist and song so an unfamiliar listener can follow.
+- Link the matching indiek artist, story or guide page. New-page announcements are not the default angle. Fresh published magazine stories take the daily slot first; otherwise alternate eligible artist notes and guides where possible. Respect the repeat window and skip a slot when no worthwhile material clears review.
+- External concert and release announcements are no longer the automatic fallback. A separately requested news post still needs the artist, place/date or release status, a verified original and honest attribution. Do not append an unrelated site link merely to capture a click.
 - Prefer one or two short sentences. A third is fine when it supplies necessary context. Remove the generic introduction and closing before cutting useful details. There is no mandatory hook–explanation–question formula.
 - Use your own concise wording. Preserve official artist/song names, dates and the difference between a show, a livestream and a newly uploaded recording. Credit the original announcement or interview with its direct link.
 - For dates, distinguish the announcement from the event. Use an explicit month/day and local timezone when giving a time. Do not turn a future release into “out now”, an old upload into a new performance, or a listing into a claim that tickets remain available.
@@ -17,6 +19,7 @@ Use this for English posts and replies, including automated drafts and their rev
 - Replace vague praise with an observable detail. Avoid stock hooks such as “hidden gem”, “must-listen”, “you need to hear this”, “on repeat”, “stop scrolling”, “criminally underrated”, “sonic journey” and “mark your calendars”. Avoid interchangeable strings of adjectives, forced metaphors and “not just X, but Y”. A word is not proof of AI authorship; the problem is empty or repetitive writing.
 - Do not claim to have attended, watched, replayed, cried to or grown up with something unless the user supplied that experience. Do not manufacture popularity, consensus, urgency or endorsements. Keep cancellation and sensitive news factual.
 - Vary the opening, rhythm and amount of context according to the news. Compare the last several actual posts: if this one could be produced by swapping artist names into yesterday’s text, rewrite it. Do not end every post with a question. Ask one only when it follows from a real conversation.
+- For lyrics, distinguish the speaker from the performer. Explain what the verified words suggest without diagnosing the artist, inventing a relationship history or turning an uncertain feeling into a universal lesson. Summarise selectively; do not reproduce or translate whole verses for social posts.
 - Replies answer the actual comment, usually in one or two brief sentences. A possible feature stays “considering”; a planned update is not “live”. Identify indiek’s involvement where relevant. Never use this voice to evade a community’s AI or promotion rules.
 
 ## Review before sending

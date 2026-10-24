@@ -3,18 +3,20 @@ import assert from 'node:assert/strict';
 import {mkdtempSync,mkdirSync,writeFileSync,readFileSync,rmSync,existsSync} from 'node:fs';
 import path from 'node:path';
 import {tmpdir} from 'node:os';
-import {sharePageNow} from './promotion/page-now.mjs';
-import {publishPost,validatePost} from './promotion/core.mjs';
+import {sharePageNow,prepareDailyPages,pageCandidates,verifyPagePost} from './promotion/page-now.mjs';
+import {publishPost,publishScheduledPost,validatePost} from './promotion/core.mjs';
 import {remoteRequest,runRemote} from './promotion/remote.mjs';
 
 function fixture(t,kind='artist') {
   const root=mkdtempSync(path.join(tmpdir(),'indiek-page-now-'));t.after(()=>rmSync(root,{recursive:true,force:true}));
   mkdirSync(path.join(root,'promotion'));writeFileSync(path.join(root,'promotion/voice.md'),'Use concrete facts and no fabricated listening.');
+  const skill=path.join(root,'skills/indiek-editorial');mkdirSync(path.join(skill,'references'),{recursive:true});
+  for(const name of ['SKILL.md','references/editing.md','references/benchmarks.json'])writeFileSync(path.join(skill,name),'Explain verified words without exaggerating or inventing intention.');
   const section=kind==='artist'?'artists':'notes';
   const item={id:'a-song',kind,path:`/${section}/a-song/`,image:`/assets/social/${section}-a-song.jpg`,description:'An earlier live performance and English lyric notes.',altText:'Original indiek typography card',artistIds:['a-song']};
   const store={posts:[],save(p){const i=this.posts.findIndex(old=>old.id===p.id);if(i<0)this.posts.push(p);else this.posts[i]=p;}};
   const stats={asks:0,sends:0,verifies:0};
-  const options={root,config:{origin:'https://indiek.com',account:'indiekdotcom',platforms:['threads','instagram'],maxSlotAgeMinutes:120},store,catalogue:{items:[item]},kind,pageId:item.id,clock:()=>new Date('2026-10-22T13:00:00Z'),recent:async()=>[],apiFor:()=>({}),
+  const options={root,config:{origin:'https://indiek.com',account:'indiekdotcom',platforms:['threads','instagram'],previousPosts:[],maxSlotAgeMinutes:120},store,catalogue:{items:[item]},kind,pageId:item.id,clock:()=>new Date('2026-10-22T13:00:00Z'),recent:async()=>[],apiFor:()=>({}),
     verify:async()=>{stats.verifies++;return {htmlSHA256:'a'.repeat(64),imageSHA256:'b'.repeat(64),text:'A song introduces first love in images. An earlier live performance and English lyric notes.'};},
     ask:async prompt=>{stats.asks++;return {copy:prompt.includes('Final copy: ')?JSON.parse(prompt.split('Final copy: ')[1]):'First love takes shape in a film and a night sky. The page pairs an earlier live performance with English notes.',approved:true,reason:'Exact caption checked against the page.',issues:[]};},
     send:async(p,{store})=>{stats.sends++;p.status='published';p.remoteId='remote-'+p.platform;p.permalink='https://social.example/'+p.platform;store.save(p);}
@@ -33,6 +35,60 @@ for(const kind of ['artist','guide'])test(`${kind} immediate API share requires 
   for(const post of options.store.posts.slice(1))validatePost(post,options.config);
   assert.equal(audit().attempts.length,1);
   await sharePageNow(options);assert.equal(stats.sends,2);assert.equal(stats.asks,3);
+});
+
+test('scheduled lyric discovery prepares exact reviewed posts without publishing and resumes once',async t=>{
+  const {options,stats}=fixture(t);const now=new Date('2026-10-24T00:00:00Z');
+  const result=await prepareDailyPages({...options,now});
+  assert.equal(result.status,'page-prepared');assert.equal(stats.sends,0);assert.equal(stats.asks,3);
+  assert.ok(options.store.posts.every(p=>p.mode==='scheduled'&&p.id.endsWith('-page')));
+  for(const p of options.store.posts)validatePost(p,options.config);
+  await prepareDailyPages({...options,now});
+  assert.equal(stats.asks,3);assert.equal(options.store.posts.length,2);assert.equal(stats.sends,0);
+});
+
+test('a scheduled page never consumes an occupied or attempted daily slot',async t=>{
+  const {options,stats}=fixture(t);
+  const prior={id:'T-2026-10-24-1000-news',kind:'news',platform:'threads',status:'created',scheduledAt:'2026-10-24T01:00:00Z',containerId:'existing'};
+  options.store.posts.push(prior);const before=structuredClone(prior);
+  assert.equal((await prepareDailyPages({...options,now:new Date('2026-10-24T00:00:00Z')})).status,'page-slot-occupied');
+  assert.deepEqual(prior,before);assert.equal(stats.asks,0);assert.equal(stats.sends,0);
+});
+
+test('scheduled page rejection budget survives restart and cannot move to a fresh candidate',async t=>{
+  const {options,stats,item}=fixture(t);const ask=options.ask;
+  options.ask=async prompt=>({...await ask(prompt),...(prompt.includes('Final copy: ')?{approved:false,issues:['Overstated interpretation']}:{})});
+  const now=new Date('2026-10-24T00:00:00Z');
+  assert.equal((await prepareDailyPages({...options,now})).status,'held');
+  const count=stats.asks;
+  options.catalogue.items.unshift({...item,id:'different',path:'/artists/different/',image:'/assets/social/artists-different.jpg'});
+  assert.equal((await prepareDailyPages({...options,now})).status,'held');
+  assert.equal(stats.asks,count);assert.equal(stats.sends,0);assert.equal(options.store.posts.length,0);
+});
+
+test('scheduled discovery alternates available kinds and respects actual-account repeat history',()=>{
+  const artist={id:'artist',kind:'artist',path:'/artists/artist/'},guide={id:'guide',kind:'guide',path:'/notes/guide/'};
+  const now=new Date('2026-10-24T00:00:00Z');
+  assert.equal(pageCandidates([artist,guide],[],[],now)[0],artist);
+  const prior={kind:'page',pageKind:'artist',status:'published',publishedAt:'2026-10-23T01:00:00Z',url:'https://indiek.com/artists/other/'};
+  assert.equal(pageCandidates([artist,guide],[prior],[],now)[0],guide);
+  const recent=[{copy:'https://indiek.com/notes/guide/?from=threads',publishedAt:'2026-10-22T01:00:00Z'}];
+  assert.deepEqual(pageCandidates([artist,guide],[prior],recent,now),[artist]);
+  assert.deepEqual(pageCandidates([artist],[],[{copy:artist.path,publishedAt:'2026-09-01T00:00:00Z'}],now),[artist]);
+});
+
+test('changed scheduled page content or image fails before API publication',async t=>{
+  const {options}=fixture(t);await prepareDailyPages({...options,now:new Date('2026-10-24T00:00:00Z')});
+  const post=options.store.posts[0];
+  await assert.rejects(verifyPagePost(post,{root:options.root,catalogue:options.catalogue,inspect:async()=>({htmlSHA256:'changed',imageSHA256:'b'.repeat(64)})}),/changed/);
+  assert.equal(post.status,'ready');
+});
+
+test('daily publication guard also applies to reviewed scheduled lyric posts',async t=>{
+  const {options}=fixture(t);await prepareDailyPages({...options,now:new Date('2026-10-24T00:00:00Z')});
+  let apiCalls=0;const post=options.store.posts[0];
+  await publishScheduledPost(post,{config:options.config,store:options.store,now:new Date('2026-10-24T01:01:00Z'),recent:async()=>[{platform:'threads',publishedAt:'2026-10-24T00:30:00Z'}],api:{identity:async()=>{apiCalls++;throw new Error('must not publish');}}});
+  assert.equal(post.status,'superseded');assert.equal(apiCalls,0);
 });
 
 test('read-only page check verifies live data and duplicates without drafting, queueing or audit writes',async t=>{

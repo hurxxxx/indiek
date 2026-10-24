@@ -1,5 +1,5 @@
 [Unit]
-Description=indiek daily artist news preparation, Korea time
+Description=indiek daily editorial discovery preparation, Korea time
 [Timer]
 OnCalendar=*-*-* 08:00:00 Asia/Seoul
 Persistent=false

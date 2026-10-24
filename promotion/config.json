@@ -33,7 +33,7 @@
     }
   ],
   "measurementChangeDate": "2026-10-19",
-  "policy": "daily-artist-news",
+  "policy": "editorial-discovery",
   "news": {
     "maxAgeDays": 14,
     "upcomingDays": 30,

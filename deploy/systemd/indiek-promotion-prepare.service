@@ -1,5 +1,5 @@
 [Unit]
-Description=indiek daily primary-source artist news research and copy review
+Description=indiek daily lyric commentary and listening-guide selection and review
 Wants=network-online.target
 After=network-online.target
 
