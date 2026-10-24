@@ -66,6 +66,29 @@ test('scheduled page rejection budget survives restart and cannot move to a fres
   assert.equal(stats.asks,count);assert.equal(stats.sends,0);assert.equal(options.store.posts.length,0);
 });
 
+test('scheduled reviews receive the future target day rather than treating preparation as publication',async t=>{
+  const {options}=fixture(t);const ask=options.ask;const prompts=[];
+  options.ask=async prompt=>{prompts.push(prompt);return ask(prompt);};
+  await prepareDailyPages({...options,now:new Date('2026-10-24T02:00:00Z')});
+  assert.equal(prompts.length,3);
+  for(const prompt of prompts){assert.match(prompt,/TARGET PUBLICATION DAY: 2026-10-25 Asia\/Seoul/);assert.match(prompt,/2026-10-25T01:00:00/);assert.match(prompt,/preparation is NOT publication/);}
+});
+
+test('legacy review-context repair rechecks the same draft once without resetting its two-version budget',async t=>{
+  const {options,stats}=fixture(t);const ask=options.ask;const now=new Date('2026-10-24T02:00:00Z');
+  options.ask=async prompt=>({...await ask(prompt),...(prompt.includes('Final copy: ')?{approved:false,issues:['Preparation date mistaken for target day']}:{})});
+  assert.equal((await prepareDailyPages({...options,now})).status,'held');
+  const file=path.join(options.root,'promotion/state/pages/2026-10-25.json');const old=JSON.parse(readFileSync(file,'utf8'));
+  delete old.reviewContextVersion;writeFileSync(file,JSON.stringify(old));
+  const before=stats.asks;options.ask=ask;
+  assert.equal((await prepareDailyPages({...options,now})).status,'page-prepared');
+  const result=JSON.parse(readFileSync(file,'utf8'));
+  assert.equal(stats.asks-before,2);assert.deepEqual(result.attempts,old.attempts);
+  assert.equal(result.contextRechecks.length,1);assert.equal(result.contextRechecks[0].draftVersion,2);
+  for(const post of options.store.posts)assert.ok(post.copy.startsWith(old.attempts[1].draft.copy));
+  await prepareDailyPages({...options,now});assert.equal(stats.asks-before,2);
+});
+
 test('scheduled discovery alternates available kinds and respects actual-account repeat history',()=>{
   const artist={id:'artist',kind:'artist',path:'/artists/artist/'},guide={id:'guide',kind:'guide',path:'/notes/guide/'};
   const now=new Date('2026-10-24T00:00:00Z');
