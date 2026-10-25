@@ -38,7 +38,8 @@ async function publicCatalogue() {
 async function prepare(store) {
   const catalogue=await publicCatalogue();
   const recentPosts=await recentOwnPosts(config,credentials());
-  const result=await prepareStory({root,config,store,catalogue,recentPosts,now})||await prepareDailyPages({root,config,store,catalogue,recentPosts,now});
+  const story=await prepareStory({root,config,store,catalogue,recentPosts,now});
+  const result=story&&story.status!=='story-held'?story:await prepareDailyPages({root,config,store,catalogue,recentPosts,now});
   stateNote(`Daily editorial discovery ${result.day}: ${result.status}. ${result.reason||'Read the recorded selection.'} No posts published.`);
 }
 async function publish(store,platform) {

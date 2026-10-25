@@ -34,6 +34,10 @@
   ],
   "measurementChangeDate": "2026-10-19",
   "policy": "editorial-discovery",
+  "editorial": {
+    "maxCaptionVersions": 4,
+    "maxDailyCandidates": 3
+  },
   "news": {
     "maxAgeDays": 14,
     "upcomingDays": 30,

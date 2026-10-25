@@ -114,6 +114,76 @@ test('daily publication guard also applies to reviewed scheduled lyric posts',as
   assert.equal(post.status,'superseded');assert.equal(apiCalls,0);
 });
 
+test('revision findings are carried forward until the configured fourth version passes',async t=>{
+  const {options,stats}=fixture(t);options.config.editorial={maxCaptionVersions:4,maxDailyCandidates:1};
+  const ask=options.ask;let version=0;
+  options.ask=async prompt=>{
+    if(!prompt.includes('Final copy: ')) {
+      version++;
+      if(version>1)assert.match(prompt,/Remove the unsupported object detail/);
+      return ask(prompt);
+    }
+    const result=await ask(prompt);
+    return version<4?{...result,approved:false,issues:['Remove the unsupported object detail']} : result;
+  };
+  assert.equal((await sharePageNow(options)).status,'published');
+  assert.equal(stats.sends,2);assert.equal(stats.asks,12);
+  assert.equal(JSON.parse(readFileSync(path.join(options.root,'promotion/state/pages/on-demand/artist-a-song.json'),'utf8')).attempts.length,4);
+});
+
+test('a rejected daily topic falls back to another frozen candidate and queues only that approved pair',async t=>{
+  const {options,stats,item}=fixture(t);options.config.editorial={maxCaptionVersions:2,maxDailyCandidates:2};
+  options.catalogue.items.push({...item,id:'another',path:'/artists/another/',image:'/assets/social/artists-another.jpg'});
+  const ask=options.ask;
+  options.ask=async prompt=>{
+    const result=await ask(prompt);const page=JSON.parse(prompt.match(/^PUBLIC PAGE: (.+)$/m)[1]);
+    return prompt.includes('Final copy: ')&&page.id==='a-song'?{...result,approved:false,issues:['Choose another supported point']} : result;
+  };
+  const now=new Date('2026-10-25T00:00:00Z');
+  assert.equal((await prepareDailyPages({...options,now})).status,'page-prepared');
+  assert.equal(stats.asks,9);assert.equal(stats.sends,0);
+  assert.ok(options.store.posts.every(p=>p.pageId==='another'&&p.status==='ready'));
+  const first=JSON.parse(readFileSync(path.join(options.root,'promotion/state/pages/2026-10-25.json'),'utf8'));
+  assert.equal(first.attempts.length,2);assert.ok(first.attempts.every(a=>a.status==='rejected'));
+  await prepareDailyPages({...options,now});assert.equal(stats.asks,9);assert.equal(options.store.posts.length,2);
+});
+
+test('restarting cannot expand the frozen daily candidate or per-topic draft limits',async t=>{
+  const {options,stats,item}=fixture(t);options.config.editorial={maxCaptionVersions:2,maxDailyCandidates:2};
+  options.catalogue.items.push({...item,id:'another',path:'/artists/another/',image:'/assets/social/artists-another.jpg'});
+  const ask=options.ask;options.ask=async prompt=>({...await ask(prompt),...(prompt.includes('Final copy: ')?{approved:false,issues:['Unsupported']}:{})});
+  const now=new Date('2026-10-25T00:00:00Z');
+  assert.equal((await prepareDailyPages({...options,now})).status,'held');const count=stats.asks;
+  options.catalogue.items.unshift({...item,id:'third',path:'/artists/third/',image:'/assets/social/artists-third.jpg'});
+  assert.equal((await prepareDailyPages({...options,now})).status,'held');assert.equal(stats.asks,count);assert.equal(stats.sends,0);
+  const manifest=JSON.parse(readFileSync(path.join(options.root,'promotion/state/pages/2026-10-25-selection.json'),'utf8'));
+  assert.deepEqual(manifest.candidates.map(i=>i.id),['a-song','another']);
+});
+
+test('source or account failures stop preparation rather than trying to bypass them with another topic',async t=>{
+  const {options,stats,item}=fixture(t);options.config.editorial={maxCaptionVersions:4,maxDailyCandidates:3};
+  options.catalogue.items.push({...item,id:'another',path:'/artists/another/',image:'/assets/social/artists-another.jpg'});
+  options.verify=async()=>{throw new Error('Public page unavailable');};
+  await assert.rejects(prepareDailyPages({...options,now:new Date('2026-10-25T00:00:00Z')}),/unavailable/);
+  assert.equal(stats.asks,0);assert.equal(stats.sends,0);assert.equal(options.store.posts.length,0);
+});
+
+test('a draft formatting failure is corrected before independent review instead of ending the run',async t=>{
+  const {options,stats,audit}=fixture(t);const ask=options.ask;let drafts=0;
+  options.ask=async prompt=>{
+    const result=await ask(prompt);
+    if(!prompt.includes('Final copy: ')) {
+      drafts++;
+      if(drafts===1)return {...result,copy:'First love takes shape in a film. https://unwanted.example/'};
+      assert.ok(prompt.includes(audit().attempts[0].issue));
+    }
+    return result;
+  };
+  assert.equal((await sharePageNow(options)).status,'published');
+  assert.equal(audit().attempts.length,2);assert.equal(audit().attempts[0].status,'failed');
+  assert.equal(stats.asks,4);assert.equal(stats.sends,2);
+});
+
 test('read-only page check verifies live data and duplicates without drafting, queueing or audit writes',async t=>{
   const {options,stats,file}=fixture(t);
   options.recent=async()=>[{platform:'threads',copy:'https://indiek.com/artists/a-song/'}];
