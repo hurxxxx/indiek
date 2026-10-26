@@ -1,0 +1,202 @@
+{
+  "id": "hanroro-writing",
+  "slug": "hanroro-writing",
+  "status": "published",
+  "category": "Song stories",
+  "title": "What spring means in HANRORO’s “Let Me Love My Youth”",
+  "description": "Her debut’s dedication and a later concert theme connect personal flowering with other people’s beginnings.",
+  "authorId": "indiek",
+  "published": "2026-10-27",
+  "updated": "2026-10-27",
+  "artistIds": [
+    "hanroro"
+  ],
+  "keywords": [
+    "HANRORO",
+    "한로로",
+    "입춘",
+    "Let Me Love My Youth",
+    "songwriting"
+  ],
+  "sources": [
+    {
+      "id": "hanroro-kitto",
+      "url": "https://kitto.today/contents/1786",
+      "label": "HANRORO exclusive interview — Heather; original Q&A with disclosed concert attendance",
+      "publisher": "Kitto",
+      "published": "2025-03-16",
+      "checked": "2026-10-26",
+      "language": "Japanese"
+    },
+    {
+      "id": "hanroro-billboard-japan",
+      "url": "https://www.billboard-japan.com/d_news/detail/165192/2",
+      "label": "HANRORO interview — Maho Kakehi (筧真帆); signed Text & Interview credit",
+      "publisher": "Billboard Japan",
+      "published": "2026-09-04",
+      "checked": "2026-10-26",
+      "language": "Japanese"
+    },
+    {
+      "id": "hanroro-ipchun-credits",
+      "url": "https://poclanos.com/album/%EC%9E%85%EC%B6%98/",
+      "label": "입춘 — distributor’s release record, introductory statement and credits; no individual byline",
+      "publisher": "POCLANOS",
+      "published": "Page publication date unstated; release date 2022-03-14",
+      "checked": "2026-10-26",
+      "language": "Korean; English credit labels"
+    },
+    {
+      "id": "sunwoojunga-kraze",
+      "url": "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi",
+      "label": "Sunwoojunga on Her Love for Hugs and Björk — Angelica Vianello; original interview conducted in Hongdae in January 2024",
+      "publisher": "The Kraze",
+      "published": "2024-03-09",
+      "checked": "2026-10-26",
+      "language": "English"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Asked why she chose germination as the theme of her January 2025 concert, HANRORO looked back to her debut, “Let Me Love My Youth”. Its Korean title, 입춘, means the beginning of spring. In Heather’s interview for Kitto, she recalled thinking of people as new shoots growing in the world. The concert returned to that image: she wanted to share her determination to make something bloom as a new year began. [Kitto interview](https://kitto.today/contents/1786).",
+      "sources": [
+        "hanroro-kitto"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "In a separate answer about spring’s significance, she described beginnings as holding fear and excitement together. Spring made her want to find courage for the life ahead and share it with others. This was her broader explanation of what the season meant to her. [Kitto interview](https://kitto.today/contents/1786).",
+      "sources": [
+        "hanroro-kitto"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "“Let Me Love My Youth” was released on March 14, 2022, with lyrics and composition credited to HANRORO and production and arrangement to Lee Ji-hoon (이지훈). Its release note describes the song as a record of her own flowering, then dedicates it to someone who has decided to welcome an uncertain spring. [Release note and credits on POCLANOS](https://poclanos.com/album/%EC%9E%85%EC%B6%98/).",
+      "sources": [
+        "hanroro-ipchun-credits"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "That outward address was already present in the 2022 dedication. By returning to the debut’s growth image for her 2025 concert, HANRORO gave it another setting: a new year beginning, with an audience to share her wish to bloom. [POCLANOS](https://poclanos.com/album/%EC%9E%85%EC%B6%98/); [Kitto](https://kitto.today/contents/1786).",
+      "sources": [
+        "hanroro-ipchun-credits",
+        "hanroro-kitto"
+      ]
+    }
+  ],
+  "review": {
+    "contentHash": "c9cc20413d1f368431744b799348e82d86549513af0791e5b519900cb8f41d1b",
+    "skillRevision": "096364c5a2ccaf903dd1c9e294cf1ac3c0d96a8f0a32ef5a64bc6fee9436abcf",
+    "checkedAt": "2026-10-26T18:16:09.390Z",
+    "facts": {
+      "approved": true,
+      "reason": "No unresolved blocking factual issues found in the exact draft. All four listed originals were opened successfully; Kitto required a retry. The title, deck, chronology, translations and credits are supported. The closing connection is a reasonable synthesis of the attributed interview and release note. Billboard Japan and The Kraze support source metadata but are unused in the article’s body. October 27 remains scheduled draft metadata. This is factual approval only; no audio or video was independently heard.",
+      "issues": [],
+      "checkedURLs": [
+        "https://kitto.today/contents/1786",
+        "https://www.billboard-japan.com/d_news/detail/165192/2",
+        "https://poclanos.com/album/%EC%9E%85%EC%B6%98/",
+        "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi"
+      ],
+      "supportedClaims": [
+        {
+          "claim": "Kitto identifies the debut by its Korean title, its Japanese equivalent meaning beginning of spring, and its English title.",
+          "sourceURL": "https://kitto.today/contents/1786",
+          "evidence": "입춘(立春/Let Me Love My Youth)"
+        },
+        {
+          "claim": "The interview places the concert in January; its March 2025 publication and surrounding references to this year establish January 2025.",
+          "sourceURL": "https://kitto.today/contents/1786",
+          "evidence": "1月に単独コンサートを終えられましたね。"
+        },
+        {
+          "claim": "HANRORO recalls understanding people as growing shoots.",
+          "sourceURL": "https://kitto.today/contents/1786",
+          "evidence": "この世界で育っていく新芽のような存在"
+        },
+        {
+          "claim": "Her concert explanation includes wanting to share that feeling with the audience.",
+          "sourceURL": "https://kitto.today/contents/1786",
+          "evidence": "観客の皆さんにもその気持ちを分かち合いたかったんです。"
+        },
+        {
+          "claim": "Her separate explanation of beginnings preserves fear alongside excitement.",
+          "sourceURL": "https://kitto.today/contents/1786",
+          "evidence": "始まりというのは怖いけれど、それだけでときめきも共存している"
+        },
+        {
+          "claim": "She connects spring with finding courage for life ahead.",
+          "sourceURL": "https://kitto.today/contents/1786",
+          "evidence": "これから先、生きていく勇気を持って"
+        },
+        {
+          "claim": "The distributor gives March 14, 2022 as the release date.",
+          "sourceURL": "https://poclanos.com/album/%EC%9E%85%EC%B6%98/",
+          "evidence": "Release 2022.03.14"
+        },
+        {
+          "claim": "HANRORO receives lyrics and composition credits.",
+          "sourceURL": "https://poclanos.com/album/%EC%9E%85%EC%B6%98/",
+          "evidence": "Lyrics by 한로로\nComposed by 한로로"
+        },
+        {
+          "claim": "Lee Ji-hoon receives production and arrangement credits.",
+          "sourceURL": "https://poclanos.com/album/%EC%9E%85%EC%B6%98/",
+          "evidence": "Produce & Arranged by 이지훈"
+        },
+        {
+          "claim": "The release note describes recording flowering.",
+          "sourceURL": "https://poclanos.com/album/%EC%9E%85%EC%B6%98/",
+          "evidence": "발화(發花)를 기록하기 위한 곡입니다."
+        },
+        {
+          "claim": "The release note addresses someone who has decided to welcome an uncertain spring.",
+          "sourceURL": "https://poclanos.com/album/%EC%9E%85%EC%B6%98/",
+          "evidence": "불확실한 봄맞이를 결심해 준 그대에게 이 곡을 전합니다."
+        },
+        {
+          "claim": "The listed Billboard Japan interview is dated September 4, 2026.",
+          "sourceURL": "https://www.billboard-japan.com/d_news/detail/165192/2",
+          "evidence": "2026/09/04 15:00"
+        },
+        {
+          "claim": "Billboard Japan credits Maho Kakehi for text and interview.",
+          "sourceURL": "https://www.billboard-japan.com/d_news/detail/165192/2",
+          "evidence": "Text & Interview：日韓音楽コミュニケーター 筧真帆"
+        },
+        {
+          "claim": "The Kraze identifies Angelica Vianello and the March 9, 2024 publication date.",
+          "sourceURL": "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi",
+          "evidence": "Angelica Vianello March 9, 2024"
+        },
+        {
+          "claim": "The Kraze reports conducting the interview in Hongdae the preceding January.",
+          "sourceURL": "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi",
+          "evidence": "We sat with Sunwoojunga for a lengthy chat in Hongdae, Seoul, last January"
+        }
+      ]
+    },
+    "editorial": {
+      "approved": true,
+      "reason": "The exact draft makes a modest, useful connection between the debut’s dedication and its imagery’s later concert setting. Opened originals support that connection; comparison found no material imitation, invented experience or substantive editorial defect. This is editorial approval of the supplied text only, not publication authorization.",
+      "issues": [],
+      "contribution": "Shows that addressing other people was already part of the debut’s release statement: the later concert renewed that shared invitation rather than turning an exclusively personal image outward for the first time.",
+      "referenceIds": [
+        "sunwoojunga-kraze"
+      ],
+      "comparisons": [
+        "Reader promise: the title asks what spring means around this particular debut. The text answers through attributed explanations and release commentary without pretending to analyse the lyrics, sound or composition sequence.",
+        "Against the opened [Kitto interview](https://kitto.today/contents/1786/), the opening accurately condenses HANRORO’s explanation. Growth imagery belongs to her attributed answer; the draft does not appropriate Heather’s elaborate introductory imagery, concert observations or personal attendance. The first two paragraphs follow related interview topics, but the release-note comparison supplies an independent purpose and structure.",
+        "The opened [POCLANOS record](https://poclanos.com/album/%EC%9E%85%EC%B6%98/) supports the release context and dedication. The closing phrase ‘already present’ earns its place by establishing continuity across the two sources rather than merely repeating the opening.",
+        "The opened [Angelica Vianello interview](https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi) offers a relevant technique: explain an identified creative choice through the musician’s account. No distinctive metaphors, interview scenes, listening route or paragraph sequence are borrowed. This remains a craft reference, with no claim about reader reception.",
+        "Compared with the supplied sunwoojunga story, both connect a song with a later audience setting, but the conclusions differ: continued shared beginnings here versus companionship and performance expectations there. The opening also avoids that story’s reconstructed personal incident. Compared with the Yerin Baek story, neither the credits-led opening nor the concluding listening itinerary is repeated.",
+        "The paragraph about fear and excitement is relatively transferable alone, but its attribution and spring context make it useful here. Its final sentence preserves the distinction between a general explanation and a song-specific origin story. The release paragraph provides necessary evidence, not biography padding.",
+        "Conservative source ledger, counting entire shared paragraphs and assigning the complete title and deck to each relevant source: approximately 179 words for Kitto and 116 for POCLANOS, excluding citation labels. Both fit the retrieved 200-word budgets. No substantive direct quotations or lyrics are reproduced.",
+        "No firsthand listening, attendance, interviews or emotional reactions are claimed. The supplied organization credit and rendered process notice are appropriate. Billboard Japan and The Kraze are unused as factual evidence in the article body; neither is needed to substantiate its argument."
+      ]
+    }
+  }
+}

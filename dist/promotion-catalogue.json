@@ -3,6 +3,20 @@
   "origin": "https://indiek.com",
   "items": [
     {
+      "id": "hanroro-writing",
+      "kind": "story",
+      "title": "What spring means in HANRORO’s “Let Me Love My Youth”",
+      "path": "/stories/hanroro-writing/",
+      "description": "Her debut’s dedication and a later concert theme connect personal flowering with other people’s beginnings.",
+      "artistIds": [
+        "hanroro"
+      ],
+      "image": "/assets/social/stories-hanroro-writing.jpg",
+      "altText": "What spring means in HANRORO’s “Let Me Love My Youth” — indiek. Original typographic article card.",
+      "revision": "c9cc20413d1f368431744b799348e82d86549513af0791e5b519900cb8f41d1b",
+      "published": "2026-10-27"
+    },
+    {
       "id": "sunwoojunga-run-with-me",
       "kind": "story",
       "title": "Inside sunwoojunga’s “Run with Me”",
