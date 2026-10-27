@@ -1,6 +1,6 @@
 {
   "checked": "2026-10-27",
-  "status": "reviewed-for-publication",
+  "status": "published",
   "artist": "유라 (youra)",
   "scope": "Representative-song story, artist page, three shared-player recordings, photographs and release artwork, home announcement and Stories listing.",
   "readerQuestion": "What can three representative songs show a new listener about youra’s writing and collaborators?",
@@ -532,8 +532,14 @@
     ],
     "recordingChoice": "Flicker and MIMI use official ONSTAGE live performances. Motif uses the artist’s standalone official audio. A publisher-produced three-song HUP session was found (HpprYBdqstY), but was not substituted for a standalone Motif track or counted as one saved song.",
     "publication": {
-      "state": "locally-verified",
-      "requestedByUser": true,
+      "state": "published",
+      "contentCommit": "ef9d59f",
+      "previousProductionCommit": "e59d0b7",
+      "checked": "2026-10-27",
+      "url": "https://indiek.com/stories/youra-private-worlds/",
+      "artistURL": "https://indiek.com/artists/youra/",
+      "servers": "Production and automation checkouts updated together; automation promotion log preserved byte-for-byte.",
+      "verification": "Public home, Stories, article, artist, sitemap and promotion catalogue returned HTTP 200. Production check passed 210 tests and 32 pages. Public article revision matches the local reviewed revision. Actual public-domain playback verified; no Apple Music links in either new page.",
       "scheduledSocialPost": false
     }
   },
