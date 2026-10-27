@@ -2,7 +2,7 @@ import {createCatalogue} from './catalogue.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {getListeningGuides} from '../site/shared.mjs';
+import {getListeningGuides, getArtistRecords} from '../site/shared.mjs';
 import {publishedEntries, relatedRecords, shareImagePath, homeUpdates} from '../site/editorial.mjs';
 const catalogue=createCatalogue(JSON.parse(readFileSync(new URL('../content/catalogue.json',import.meta.url))));
 test('curated guide order is deliberate, drafts stay private, automatic coverage remains required',()=>{
@@ -24,7 +24,7 @@ test('the introductory guide includes new artists without expanding or duplicati
   assert.ok(intro.moreRecords.some(r=>r.id===c.editorPick.id));
   const ids=[...intro.records,...intro.moreRecords].map(r=>r.id);
   assert.equal(new Set(ids).size,ids.length);
-  assert.deepEqual(ids.sort(),[...c.records,c.editorPick].map(r=>r.id).sort());
+  assert.deepEqual(ids.sort(),getArtistRecords(c).map(r=>r.id).sort());
 });
 test('introductory listening notes cannot silently link to a removed or missing next artist',()=>{
   const c=structuredClone(catalogue);
@@ -63,6 +63,15 @@ test('a meaningful update replaces its original listing; ordinary edits do not c
   assert.equal(result[0].path,'/artists/a/#lyrics');
   assert.equal(entries[0].published,'2026-10-19');
 });
+test('a featured story can explicitly announce its listening additions without duplicate cards',()=>{
+  const entries=[{id:'story',path:'/stories/story/',type:'Story',published:'2026-10-20'}];
+  const announcement={id:'story-listening',status:'published',kind:'story',path:'/stories/story/',title:'Listen along',description:'Three performances.',published:'2026-10-21'};
+  const options={now:new Date('2026-10-24'),excludePaths:['/stories/story/']};
+  assert.deepEqual(homeUpdates(entries,[announcement],options),[]);
+  assert.deepEqual(homeUpdates(entries,[{...announcement,includeWithFeature:true}],options).map(x=>x.id),['story-listening']);
+  assert.deepEqual(homeUpdates(entries,[{...announcement,includeWithFeature:true}],{now:options.now}).map(x=>x.id),['story-listening']);
+  assert.throws(()=>homeUpdates(entries,[{...announcement,includeWithFeature:'true'}],options),/includeWithFeature/);
+});
 test('home updates exclude drafts and future announcements even in preview, and reject broken publication data',()=>{
   const entries=[{id:'a',path:'/artists/a/',type:'Artist',published:'2026-10-19'}];
   const update={id:'a-live',status:'published',kind:'live',path:'/artists/a/#live',title:'A live',description:'A live session.',published:'2026-10-22'};
@@ -100,7 +109,7 @@ test('built feed, public catalogue and metadata exclude editorial drafts',()=>{
   const opening=[...html.matchAll(/data-guide-track="([^"]+)"/g)].map(match=>match[1]);
   const more=[...html.matchAll(/data-guide-more="([^"]+)"/g)].map(match=>match[1]);
   const playable=[...html.matchAll(/data-load-player="([^"]+)"/g)].map(match=>match[1]);
-  const all=[...catalogue.records,catalogue.editorPick].map(r=>r.id).sort();
+  const all=getArtistRecords(catalogue).map(r=>r.id).sort();
   assert.deepEqual(opening,guide.trackIds);
   assert.deepEqual([...opening,...more].sort(),all);
   assert.deepEqual(playable.sort(),all);

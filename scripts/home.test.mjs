@@ -11,7 +11,8 @@ import {getArtistRecords,getFeaturedArtists,getListeningGuides,readSaved} from '
 
 const root = fileURLToPath(new URL('../',import.meta.url));
 const read = name => JSON.parse(readFileSync(path.join(root,'content',name),'utf8'));
-const source = () => read('home.json');
+// Unit fixtures use their own story list, independent of the production editorial pin.
+const source = () => { const data=read('home.json'); data.sections.find(s=>s.type==='story').storyId=null; return data; };
 const catalogue = loadCatalogue(root);
 const context = {catalogue,media:read('media.json'),rights:read('image-rights.json'),stories:[
   {id:'older',slug:'older',status:'published',published:'2025-01-01'},
@@ -134,7 +135,7 @@ for (const [name,edit,pattern] of [
   ['arbitrary HTML in a deck',d=>section(d,'discover').features[0].deck='<img src=x>',/only <em>/],
   ['unbalanced deck emphasis',d=>section(d,'discover').features[0].deck='<em>hello',/unbalanced/],
   ['uncredited photo',d=>Object.assign(section(d,'discover').features[0],{image:'missing.jpg',alt:'Missing',kind:'portrait'}),/uncredited or missing/],
-  ['photo without alt',d=>section(d,'discover').features[0].image='ydbb.jpg',/needs alt and kind/],
+  ['photo without alt',d=>{section(d,'discover').features[0].image='ydbb.jpg';delete section(d,'discover').features[0].alt;},/needs alt and kind/],
   ['duplicate hero photo',d=>Object.assign(section(d,'discover').features[0],{image:getFeaturedArtists(catalogue)[1].image,alt:'Duplicate',kind:'portrait'}),/duplicate hero image/],
 ]) test(`home validation rejects ${name}`,()=>{
   const data=source(); edit(data);

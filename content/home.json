@@ -34,6 +34,14 @@
       "enabled": true,
       "features": [
         {
+          "id": "youra",
+          "title": "A name to call in MIMI.",
+          "deck": "Hear <em>MIMI</em> live, with two more songs and a story about youra’s writing and collaborators.",
+          "image": "youra-gaussian.jpg",
+          "alt": "Cover of youra’s EP GAUSSIAN",
+          "kind": "artwork"
+        },
+        {
           "id": "baek-a",
           "title": "First love, in Baek A’s words.",
           "deck": "Baek A performs <em>Amor</em> live for MONTBEST, with a poetic English adaptation to read alongside the song."
@@ -131,7 +139,7 @@
       "id": "magazine",
       "type": "story",
       "enabled": true,
-      "storyId": null,
+      "storyId": "youra-private-worlds",
       "copy": {
         "eyebrow": "FROM THE MAGAZINE",
         "link": "Read the story",

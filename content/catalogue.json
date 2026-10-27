@@ -380,6 +380,24 @@
         "published": "2026-10-22",
         "updated": "2026-10-22"
       }
+    },
+    {
+      "id": "youra",
+      "primaryTrackId": "youra-mimi",
+      "artist": "youra",
+      "korean": "유라",
+      "aliases": "Youra",
+      "category": "solo",
+      "artistIntro": "In “MIMI”, an absent name becomes someone to call for. Hear youra’s ONSTAGE performance alongside “Flicker” and “Motif”, three songs from different points in her work.",
+      "biography": "youra’s first EP, B side, arrived in 2019. GAUSSIAN followed in 2021, and her first full-length album in 2023. In an interview with Allure Korea, she described her lyrics as personal diary writing and credited her collaboration with Mandong with giving her confidence.",
+      "artistSource": "https://www.allurekorea.com/2023/06/22/here-again/",
+      "artistSourceName": "Allure Korea — interview with youra",
+      "artistSourceLanguage": "Korean",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-10-27",
+        "published": "2026-10-27"
+      }
     }
   ],
   "tracks": [
@@ -1232,6 +1250,142 @@
           ]
         }
       }
+    },
+    {
+      "id": "youra-flicker",
+      "track": "Flicker (feat. Car, the garden)",
+      "koreanTitle": "깜빡",
+      "album": "B side",
+      "release": "B side — EP",
+      "year": "2019",
+      "releaseDate": "2019-03-05",
+      "image": "youra-b-side.jpg",
+      "duration": "03:39",
+      "videoId": "kmLmsXqL6BI",
+      "channel": "온스테이지ONSTAGE",
+      "videoType": "live",
+      "performance": "Official live performance · ONSTAGE 2.0",
+      "note": "Closeness, with a question still unanswered.",
+      "description": "Written and composed by youra, “Flicker” appeared on her first EP, B side. Car, the garden arranged and featured on the original recording after hearing her demo. This version is an ONSTAGE live performance.",
+      "source": "https://music.bugs.co.kr/album/20234500",
+      "sourceName": "Bugs — B side: release notes and credits",
+      "credits": "Lyrics and music by youra; original recording arranged by Car, the garden.",
+      "lyricNotes": {
+        "heading": "Closeness and hesitation",
+        "themes": [
+          "Intimacy",
+          "Uncertainty"
+        ],
+        "paragraphs": [
+          "An embrace under a flickering streetlight leads into uncertainty about whether the connection is imagined. The speaker’s wish to hide leaves that uncertainty unresolved."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/31485668",
+          "label": "Flicker: lyrics and credits on Bugs",
+          "language": "Korean"
+        }
+      },
+      "artistId": "youra",
+      "provider": "youtube",
+      "url": "https://www.youtube.com/watch?v=kmLmsXqL6BI",
+      "genre": "R&B / SOUL",
+      "sourceLanguage": "Korean",
+      "guideTags": [
+        "distinct-voices"
+      ]
+    },
+    {
+      "id": "youra-mimi",
+      "track": "MIMI",
+      "koreanTitle": "미미",
+      "album": "GAUSSIAN",
+      "release": "GAUSSIAN — EP",
+      "year": "2021",
+      "releaseDate": "2021-02-02",
+      "image": "youra-gaussian.jpg",
+      "duration": "03:34",
+      "videoId": "5e78ltMjHN8",
+      "channel": "온스테이지ONSTAGE",
+      "videoType": "live",
+      "performance": "Official live performance · ONSTAGE × D Museum",
+      "note": "A name to call, and a wish to be found.",
+      "description": "“MIMI” calls to someone who has disappeared. youra wrote the lyrics and composed the song with Cosmic Boy for GAUSSIAN. The recording here is the ONSTAGE × D Museum live performance.",
+      "source": "https://music.bugs.co.kr/album/20375620",
+      "sourceName": "Bugs — GAUSSIAN: release notes and credits",
+      "credits": "Lyrics by youra; music by youra and Cosmic Boy; original recording arranged by Cosmic Boy, with guitar by Kim Chunchu.",
+      "lyricNotes": {
+        "heading": "Calling to someone absent",
+        "themes": [
+          "Absence",
+          "Longing"
+        ],
+        "paragraphs": [
+          "The refrain calls out to Mimi and asks why love disappears. A request for a friend to find the speaker gives the absence a second direction: someone missing also wants to be sought. The lyric leaves Mimi’s identity open."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/32136561",
+          "label": "MIMI: lyrics and credits on Bugs",
+          "language": "Korean"
+        }
+      },
+      "artistId": "youra",
+      "provider": "youtube",
+      "url": "https://www.youtube.com/watch?v=5e78ltMjHN8",
+      "genre": "R&B / SOUL",
+      "sourceLanguage": "Korean",
+      "guideTags": [
+        "distinct-voices"
+      ]
+    },
+    {
+      "id": "youra-motif",
+      "track": "Motif",
+      "koreanTitle": "구운듯한 얼굴이 너의 모티프",
+      "album": "(1)",
+      "release": "꽤 많은 수의 촉수 돌기 / (1)",
+      "year": "2023",
+      "releaseDate": "2023-07-07",
+      "image": "youra-motif.jpg",
+      "duration": "02:52",
+      "videoId": "bTA4Kvo2Rew",
+      "channel": "youra 유라",
+      "videoType": "audio",
+      "performance": "Official audio · youra",
+      "note": "A sandcastle, a garden and another few steps.",
+      "description": "“Motif” places a sinking sandcastle beside a garden where eternity was promised. It opens youra’s first full-length album and was composed with Mandong bassist Song Namhyun. This is the artist’s official audio.",
+      "source": "https://music.bugs.co.kr/album/20576196",
+      "sourceName": "Bugs — 꽤 많은 수의 촉수 돌기: release notes and credits",
+      "credits": "Lyrics by youra; music by youra and Song Namhyun; arranged by Song Namhyun. Best R&B & Soul Song, Korean Music Awards 2024.",
+      "extraSources": [
+        {
+          "url": "https://koreanmusicawards.com/project/유라youra-구운듯한-얼굴이-너의-모티프/",
+          "label": "Korean Music Awards — 2024 category winner",
+          "language": "Korean"
+        }
+      ],
+      "lyricNotes": {
+        "heading": "Something fragile beside a promise",
+        "themes": [
+          "Fragility",
+          "Uncertainty"
+        ],
+        "paragraphs": [
+          "A sinking sandcastle and a garden associated with eternity put fragility beside a promise of permanence. The recurring invitation to walk farther keeps the song moving while leaving the relationship between those images open."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/32902369",
+          "label": "Motif: lyrics and credits on Bugs",
+          "language": "Korean"
+        }
+      },
+      "artistId": "youra",
+      "provider": "youtube",
+      "url": "https://www.youtube.com/watch?v=bTA4Kvo2Rew",
+      "genre": "R&B / SOUL",
+      "sourceLanguage": "Korean",
+      "guideTags": [
+        "distinct-voices"
+      ]
     }
   ],
   "featuredArtists": [
@@ -1312,6 +1466,13 @@
       "alt": "Baek A with dark hair and bangs outdoors against a green background",
       "position": "50% 44%",
       "kind": "portrait"
+    },
+    {
+      "id": "youra",
+      "image": "youra-brush-portrait.jpg",
+      "alt": "youra smiling in a white dress in a black-and-white portrait",
+      "position": "50% 32%",
+      "kind": "portrait"
     }
   ],
   "editorPickTrackId": "yoon-mirae",
@@ -1371,7 +1532,7 @@
       "editorial": {
         "author": "indiek",
         "published": "2026-10-19",
-        "updated": "2026-10-22"
+        "updated": "2026-10-27"
       },
       "sources": [
         {

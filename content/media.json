@@ -598,5 +598,95 @@
         "bytes": 178944
       }
     ]
+  },
+  "youra-b-side.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/youra-b-side-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 17810
+      },
+      {
+        "src": "/assets/optimized/youra-b-side-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 72458
+      },
+      {
+        "src": "/assets/optimized/youra-b-side-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 175060
+      }
+    ]
+  },
+  "youra-brush-portrait.jpg": {
+    "width": 736,
+    "height": 942,
+    "variants": [
+      {
+        "src": "/assets/optimized/youra-brush-portrait-480.webp",
+        "width": 480,
+        "height": 614,
+        "bytes": 15584
+      },
+      {
+        "src": "/assets/optimized/youra-brush-portrait-736.webp",
+        "width": 736,
+        "height": 942,
+        "bytes": 37022
+      }
+    ]
+  },
+  "youra-gaussian.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/youra-gaussian-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 9342
+      },
+      {
+        "src": "/assets/optimized/youra-gaussian-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 27184
+      },
+      {
+        "src": "/assets/optimized/youra-gaussian-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 82738
+      }
+    ]
+  },
+  "youra-motif.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/youra-motif-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 17766
+      },
+      {
+        "src": "/assets/optimized/youra-motif-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 68688
+      },
+      {
+        "src": "/assets/optimized/youra-motif-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 131340
+      }
+    ]
   }
 }

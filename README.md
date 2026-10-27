@@ -73,7 +73,7 @@ Preserve existing artist IDs, track IDs and the `indiek-saved-v1` storage key. H
 | --- | --- |
 | `masthead` | Brand introduction and short lines in `copy`; `\n` gives a line break. |
 | `updates` | Heading and introduction in `copy`; items still follow [Home updates](#home-updates). |
-| `story` | `storyId: null` selects the newest public story, or specify a published story ID. Only the visible lead is excluded from updates. |
+| `story` | `storyId: null` selects the newest public story, or specify a published story ID. The visible lead is excluded from automatic updates; an explicit announcement can opt in. |
 | `discover` | `features` sets the preferred artist order and home `title`/`deck`; unlisted artists append automatically. Optional image overrides use `image`, `alt`, `kind` and `position`, with existing media metadata and credits. `spotlightArtistIds` selects up to two artists for short side introductions; available lyric notes, full sessions, published stories and further songs supply up to three links, with a song introduction as fallback. `trackOrder` puts selected songs first in the Listening Room, followed by all remaining songs. |
 | `directory` | Invitation copy; the link and full artist count are automatic. |
 | `pick` | `trackId` selects any catalogue song. Optional `copy.description` is home-only; omitted values use the song description. Release details and save eligibility follow the selected song. This never changes `editorPickTrackId`, song IDs or existing Saved entries. |
@@ -104,7 +104,7 @@ Each announcement has a stable `id`, `status`, `kind`, local `path`, `title` and
 
 - `draft` is omitted from every build. Use `ready` for an announcement to review locally; it appears only in `build:preview` and `dev`, without a publication date.
 - On actual release, set `status` to `published` and record `published` as `YYYY-MM-DD`. A newly released target page also needs its own first publication date. For additions to older pages whose first publication date is unknown, record the announcement date without inventing an original date. Future dates are excluded, including from previews.
-- Published items sort by announcement or first publication date. A manual announcement takes precedence on the same day. Only the newest item for each destination page appears; the lead magazine story is already featured separately. At most four cards appear, with no carousel or permanent pinning.
+- Published items sort by announcement or first publication date. A manual announcement takes precedence on the same day. Only the newest item for each destination page appears. The lead magazine story is excluded by default; set `includeWithFeature: true` on an explicit announcement when it should also appear in New on indiek. At most four cards appear, with no carousel or permanent pinning.
 - Keep first publication dates unchanged. Fixing a typo or changing `updated` does not create an announcement. Add an entry when there is something worth returning to, and describe that change directly.
 - Home announcements do not change social publishing schedules.
 

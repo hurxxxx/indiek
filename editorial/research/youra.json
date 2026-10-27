@@ -1,0 +1,541 @@
+{
+  "checked": "2026-10-27",
+  "status": "reviewed-for-publication",
+  "artist": "유라 (youra)",
+  "scope": "Representative-song story, artist page, three shared-player recordings, photographs and release artwork, home announcement and Stories listing.",
+  "readerQuestion": "What can three representative songs show a new listener about youra’s writing and collaborators?",
+  "userPreference": {
+    "songs": [
+      "세탁소",
+      "수영해"
+    ],
+    "swimVersion": "Unspecified; do not assume the user means Virus Edit.",
+    "requiredSongs": false,
+    "followup": "Select representative songs and tell a connected story; Laundry and Swim need not be centrepieces."
+  },
+  "referenceChoices": [
+    {
+      "source": "skills/indiek-editorial/references/editing.md",
+      "technique": "Keep lyric imagery, artist explanations and editorial readings distinct. Start with the two requested songs and their documented creative choices.",
+      "note": "Research brief, not a magazine article; no benchmark prose or listening descriptions adopted."
+    }
+  ],
+  "sources": [
+    {
+      "id": "artist-profile",
+      "url": "https://music.bugs.co.kr/artist/20059161",
+      "publisher": "Bugs",
+      "author": "Artist profile and release catalogue; individual writer not identified",
+      "published": null,
+      "checked": "2026-10-27",
+      "supports": [
+        "2018 debut; October 2018 solo single my",
+        "The Fan appearance as Lena Park's recommended artist"
+      ],
+      "caution": "Biography is historical promotional copy; do not reuse its newcomer wording as a current description."
+    },
+    {
+      "id": "b-side",
+      "url": "https://music.bugs.co.kr/album/20234500",
+      "publisher": "Bugs / MUN HWA IN release notes",
+      "author": "Release notes; individual writer not identified",
+      "published": "2019-03-05",
+      "checked": "2026-10-27",
+      "supports": [
+        "First EP, four tracks",
+        "Laundry lyrics by youra; music by youra, Car, the garden and U-Turn; arrangement by Car, the garden and U-Turn",
+        "Na Zamm Soo mixed and mastered the EP",
+        "Flicker and Dance are the two title tracks; Car, the garden offered to feature after hearing the Flicker demo"
+      ],
+      "releaseURL": "https://music.apple.com/us/album/b-side-ep/1673887826",
+      "englishSongURL": "https://music.apple.com/us/song/laundry/1673887830"
+    },
+    {
+      "id": "laundry-lyrics",
+      "url": "https://music.bugs.co.kr/track/31485670",
+      "publisher": "Bugs",
+      "author": "Lyrics credited to youra",
+      "published": "2019-03-05",
+      "checked": "2026-10-27",
+      "supports": [
+        "Coat left at a laundry with a treasured letter inside; regret and the wish to deal with accumulated laundry"
+      ],
+      "method": "Read licensed lyric display; no complete lyrics or translation retained."
+    },
+    {
+      "id": "swim-soundcloud",
+      "url": "https://soundcloud.com/yourayoura",
+      "publisher": "youra on SoundCloud",
+      "author": "youra",
+      "published": "2018-03-06",
+      "checked": "2026-10-27",
+      "supports": [
+        "Profile lists 수영해(swim) with upload timestamp 2018-03-06T03:00:25Z"
+      ],
+      "caution": "Upload date, not the composition date or proof that this was the earliest performance."
+    },
+    {
+      "id": "swim-the-fan",
+      "url": "https://music.apple.com/us/album/swim-from-the-fan-3round-pt-2-single/1673895278",
+      "publisher": "Apple Music",
+      "author": "Release metadata",
+      "published": "2019-01-05",
+      "checked": "2026-10-27",
+      "supports": [
+        "Swim (From THE FAN 3ROUND, Pt. 2), released January 5, 2019"
+      ]
+    },
+    {
+      "id": "virus-mix",
+      "url": "https://music.bugs.co.kr/album/20340403",
+      "publisher": "Bugs / MUN HWA IN release notes",
+      "author": "youra's first-person notes and album credits",
+      "published": "2020-07-28",
+      "checked": "2026-10-27",
+      "supports": [
+        "Swim was made in 2017 and reworked as Virus Edit",
+        "A note labelled 2017 diary describes water as frightening but also associated with refuge and hometown",
+        "Lyrics by youra; music by youra, Car, the garden and U-Turn; arrangement by Shin Yechan and Kang Jiwon; guitar by Kim Chunchu",
+        "The release pairs Swim (Virus Edit) with Homework!"
+      ],
+      "releaseURL": "https://music.apple.com/us/album/virus-mix-single/1754267389"
+    },
+    {
+      "id": "swim-lyrics",
+      "url": "https://music.bugs.co.kr/track/31980561",
+      "publisher": "Bugs",
+      "author": "Lyrics credited to youra",
+      "published": "2020-07-28",
+      "checked": "2026-10-27",
+      "supports": [
+        "Swimming across seasons; distortion and movement of water recur in the imagery"
+      ],
+      "method": "Read licensed lyric display; no complete lyrics or translation retained."
+    },
+    {
+      "id": "sportsseoul-interview",
+      "url": "https://www.sportsseoul.com/news/read/942990",
+      "publisher": "Sports Seoul",
+      "author": "홍승한",
+      "published": "2020-08-04",
+      "checked": "2026-10-27",
+      "supports": [
+        "2018 participation in 015B's My Hair Is Green before solo debut",
+        "youra wanted a new arrangement because she was dissatisfied with the previously available live recording",
+        "youra discusses deliberately indirect sentence construction and metaphor"
+      ],
+      "method": "Web open returned 403; original article successfully read with a separate direct HTTPS request.",
+      "caution": "Guitarist is misnamed in the article. Use the album credit Kim Chunchu, not its inconsistent parenthetical names."
+    },
+    {
+      "id": "newsis-interview",
+      "url": "https://mobile.newsis.com/view/NISX20221202_0002109816",
+      "publisher": "Newsis",
+      "author": "이재훈",
+      "published": "2022-12-06",
+      "checked": "2026-10-27",
+      "supports": [
+        "All six tracks of The Vibe is a Chance made with Mandong",
+        "youra says good lyrics tell personal things and unfamiliar words can be chosen for their spoken sound",
+        "She met Mandong at a music academy and does not want to limit her work to a genre"
+      ]
+    },
+    {
+      "id": "kma-motif",
+      "url": "https://koreanmusicawards.com/project/유라youra-구운듯한-얼굴이-너의-모티프/",
+      "publisher": "Korean Music Awards",
+      "author": "Award database; accompanying texts by 이진수 and 이진석",
+      "published": null,
+      "checked": "2026-10-27",
+      "supports": [
+        "Motif won Best R&B & Soul Song at the 2024 awards",
+        "Release date July 7, 2023; debut studio album 꽤 많은 수의 촉수 돌기",
+        "Music by youra and Song Namhyun; lyrics by youra"
+      ],
+      "caution": "Do not adopt the committee's listening descriptions as firsthand observations."
+    },
+    {
+      "id": "brush",
+      "url": "https://music.bugs.co.kr/album/4151265",
+      "publisher": "Bugs / youra release metadata",
+      "author": "Release metadata and artist notes",
+      "published": "2026-07-09",
+      "checked": "2026-10-27",
+      "supports": [
+        "Five-track EP Brush, released July 9, 2026",
+        "Tracks include 고삐 and 목욕탕"
+      ],
+      "caution": "Recent release verified; not an exhaustive claim about every appearance or collaboration through the checking date."
+    }
+  ],
+  "findings": [
+    {
+      "type": "fact",
+      "text": "Laundry and Swim (Virus Edit) share the credited composition team of youra, Car, the garden and U-Turn.",
+      "sources": [
+        "b-side",
+        "virus-mix"
+      ]
+    },
+    {
+      "type": "interpretation",
+      "text": "The laundry scene connects an ordinary errand with attachment to a remembered relationship; the water imagery in Swim can hold comfort and unease together.",
+      "sources": [
+        "laundry-lyrics",
+        "swim-lyrics",
+        "virus-mix"
+      ]
+    },
+    {
+      "type": "attributed-statement",
+      "text": "youra has said that personal experience and the spoken sound of unfamiliar words both matter in her lyric writing.",
+      "sources": [
+        "newsis-interview"
+      ]
+    },
+    {
+      "type": "editorial-suggestion",
+      "text": "Flicker and Dance extend the B side context; Motif introduces the later collaboration with Song Namhyun.",
+      "sources": [
+        "b-side",
+        "kma-motif"
+      ]
+    }
+  ],
+  "listeningLinks": [
+    {
+      "url": "https://www.youtube.com/watch?v=vQHqAfc6Mjk",
+      "title": "[온스테이지2.0]유라(YOURA) - 세탁소",
+      "channel": "온스테이지ONSTAGE",
+      "format": "live",
+      "verification": "YouTube oEmbed confirmed title and official channel on 2026-10-27. Playback and embedding were not tested; this is a research candidate, not a selected site player."
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=WWULS79hFYE",
+      "title": "Laundry",
+      "channel": "youra - Topic",
+      "format": "audio",
+      "verification": "YouTube oEmbed confirmed title and Topic channel on 2026-10-27. Playback and embedding were not tested."
+    }
+  ],
+  "uncertainties": [
+    "No original artist statement was located establishing that the lost letter in Laundry is a literal autobiographical event. Do not repeat that claim from secondary newsletters.",
+    "The user's preferred recording of Swim remains unspecified.",
+    "No firsthand listening notes supplied; no original sonic analysis asserted.",
+    "Two historical Virus Edit visualizer links found on a creator portfolio returned oEmbed 404 and are not selected listening links.",
+    "Photo and artwork sources are recorded in content/image-rights.json; no reuse licence was stated by those sources."
+  ],
+  "sourceLedger": "Release metadata, short paraphrases and selective lyric commentary only. No complete lyrics, translations, interview copies or borrowed review imagery retained.",
+  "review": {
+    "fact": "Checked dates, credits and version distinctions against release sources. Replaced the interview's inconsistent guitarist naming with the album credit. Excluded the unsupported Laundry autobiographical claim.",
+    "editorial": "Kept the requested songs central; labelled the connection between their imagery as interpretation; avoided fabricated listening experience and categorical predictions about the user's taste.",
+    "publicationApproval": false,
+    "reason": "Initial notes do not authorize publication. The subsequent article has its own fact and editorial reviews and remains a local draft. In-site playback would require actual embed verification.",
+    "scope": "Initial Laundry/Swim research only; exact article reviews are recorded separately under story.review and in the article JSON."
+  },
+  "story": {
+    "file": "content/stories/youra-private-worlds.json",
+    "contentHash": "4bb5a0dd30a93d4bad90ac33863246a4aaabc41710879cdfd55673b55a92f547",
+    "readerQuestion": "What can three representative songs show a new listener about youra’s writing and collaborators?",
+    "angle": "A studio demo leads into two contrasting lyrical requests, then a documented band collaboration and a later recommendation from the artist.",
+    "selection": [
+      {
+        "track": "Flicker",
+        "reason": "One of the first EP’s title tracks; documented early collaboration."
+      },
+      {
+        "track": "MIMI",
+        "reason": "A later collaboration and a 2022 Korean Music Awards nomination."
+      },
+      {
+        "track": "Motif",
+        "reason": "A first-album collaboration and the 2024 category winner."
+      },
+      {
+        "track": "Bathtub",
+        "role": "Brief coda, connected to earlier songs by youra herself."
+      }
+    ],
+    "outline": [
+      "The demo and invitation to collaborate",
+      "Flicker: uncertainty within a close encounter",
+      "MIMI: a contrasting request and new musical collaborator",
+      "Motif: Mandong context, imagery and diary writing",
+      "Bathtub: the artist supplies a recent connection"
+    ],
+    "sources": [
+      {
+        "id": "b-side",
+        "label": "B side: release notes and credits",
+        "url": "https://music.bugs.co.kr/album/20234500",
+        "publisher": "Bugs / MUN HWA IN",
+        "language": "Korean",
+        "published": "2019-03-05",
+        "checked": "2026-10-27"
+      },
+      {
+        "id": "flicker-words",
+        "label": "Flicker: lyrics and credits",
+        "url": "https://music.bugs.co.kr/track/31485668",
+        "publisher": "Bugs / youra",
+        "language": "Korean",
+        "checked": "2026-10-27"
+      },
+      {
+        "id": "flicker-live",
+        "label": "Listen: Flicker — ONSTAGE live performance",
+        "url": "https://www.youtube.com/watch?v=kmLmsXqL6BI",
+        "publisher": "ONSTAGE",
+        "language": "Korean",
+        "checked": "2026-10-27"
+      },
+      {
+        "id": "gaussian",
+        "label": "GAUSSIAN: release notes and credits",
+        "url": "https://music.bugs.co.kr/album/20375620",
+        "publisher": "Bugs / MUN HWA IN",
+        "language": "Korean",
+        "published": "2021-02-02",
+        "checked": "2026-10-27"
+      },
+      {
+        "id": "mimi-words",
+        "label": "MIMI: lyrics and credits",
+        "url": "https://music.bugs.co.kr/track/32136561",
+        "publisher": "Bugs / youra",
+        "language": "Korean",
+        "checked": "2026-10-27"
+      },
+      {
+        "id": "mimi-award",
+        "label": "MIMI: 2022 Best R&B & Soul Song nomination",
+        "url": "https://koreanmusicawards.com/project/유라-미미-mimi/",
+        "publisher": "Korean Music Awards",
+        "language": "Korean",
+        "checked": "2026-10-27"
+      },
+      {
+        "id": "mimi-live",
+        "label": "Listen: MIMI — ONSTAGE × D Museum live performance",
+        "url": "https://www.youtube.com/watch?v=5e78ltMjHN8",
+        "publisher": "ONSTAGE",
+        "language": "Korean",
+        "checked": "2026-10-27"
+      },
+      {
+        "id": "allure",
+        "label": "HERE, AGAIN: interview with youra",
+        "url": "https://www.allurekorea.com/2023/06/22/here-again/",
+        "publisher": "Allure Korea / Go Youngjin",
+        "language": "Korean",
+        "published": "2023-06-22",
+        "checked": "2026-10-27"
+      },
+      {
+        "id": "motif-words",
+        "label": "Motif: lyrics and credits",
+        "url": "https://music.bugs.co.kr/track/32902369",
+        "publisher": "Bugs / youra",
+        "language": "Korean",
+        "checked": "2026-10-27"
+      },
+      {
+        "id": "motif-award",
+        "label": "Motif: 2024 Best R&B & Soul Song winner",
+        "url": "https://koreanmusicawards.com/project/유라youra-구운듯한-얼굴이-너의-모티프/",
+        "publisher": "Korean Music Awards",
+        "language": "Korean",
+        "checked": "2026-10-27"
+      },
+      {
+        "id": "motif-audio",
+        "label": "Listen: Motif — official audio",
+        "url": "https://www.youtube.com/watch?v=bTA4Kvo2Rew",
+        "publisher": "youra 유라",
+        "language": "Korean",
+        "checked": "2026-10-27"
+      },
+      {
+        "id": "melon",
+        "label": "September’s artist: youra, on Brush",
+        "url": "https://www.melon.com/musicstory/informView.htm?mstorySeq=17212",
+        "publisher": "Melon Magazine / Track Zero",
+        "language": "Korean",
+        "published": "2026-09-03",
+        "checked": "2026-10-27"
+      },
+      {
+        "id": "first-album",
+        "label": "꽤 많은 수의 촉수 돌기: release notes and credits",
+        "url": "https://music.bugs.co.kr/album/20576196",
+        "publisher": "Bugs / youra",
+        "language": "Korean",
+        "published": "2023-07-07",
+        "checked": "2026-10-27"
+      },
+      {
+        "id": "brush",
+        "label": "Brush: release details",
+        "url": "https://music.bugs.co.kr/album/4151265",
+        "publisher": "Bugs / youra",
+        "language": "Korean",
+        "published": "2026-07-09",
+        "checked": "2026-10-27"
+      }
+    ],
+    "referenceChoices": [
+      {
+        "id": "nick-parannoul",
+        "title": "Interview w/ Parannoul",
+        "author": "Nick Caceres",
+        "url": "https://nicholasc2002271.wixsite.com/nickc/copy-of-interview-w-matt-cruz-from-lr",
+        "published": "2024-12-20",
+        "checked": "2026-10-27",
+        "format": "Email interview",
+        "authorshipEvidence": "Signed byline and stated email-interview period.",
+        "readerPromise": "Specific accounts of records and live work.",
+        "technique": "Concrete questions let the artist qualify the proposed creative narrative.",
+        "opening": "Supplies career context before the Q&A.",
+        "development": "Specific records elicit explanations and occasional disagreement with the question.",
+        "ending": "Ends with the artist’s hoped-for influence on younger musicians and a brief sign-off.",
+        "doNotCopy": "Questions, slang, interview encounters or sonic descriptions.",
+        "reception": "craft-only for this use; no current response metrics asserted"
+      }
+    ],
+    "sourceContributionLedger": {
+      "method": "Conservative body count assigns the whole paragraph to every attached source. Short source labels and review pointers add no substantive interview content. Titles and brief factual metadata remain within each 200-word allowance.",
+      "words": [
+        {
+          "sourceId": "b-side",
+          "bodyWords": 106
+        },
+        {
+          "sourceId": "flicker-words",
+          "bodyWords": 130
+        },
+        {
+          "sourceId": "flicker-live",
+          "bodyWords": 38
+        },
+        {
+          "sourceId": "b-side-release",
+          "bodyWords": 38
+        },
+        {
+          "sourceId": "gaussian",
+          "bodyWords": 54
+        },
+        {
+          "sourceId": "mimi-words",
+          "bodyWords": 65
+        },
+        {
+          "sourceId": "mimi-award",
+          "bodyWords": 101
+        },
+        {
+          "sourceId": "mimi-live",
+          "bodyWords": 54
+        },
+        {
+          "sourceId": "gaussian-release",
+          "bodyWords": 54
+        },
+        {
+          "sourceId": "allure",
+          "bodyWords": 127
+        },
+        {
+          "sourceId": "motif-words",
+          "bodyWords": 110
+        },
+        {
+          "sourceId": "motif-award",
+          "bodyWords": 47
+        },
+        {
+          "sourceId": "motif-audio",
+          "bodyWords": 60
+        },
+        {
+          "sourceId": "first-album",
+          "bodyWords": 47
+        },
+        {
+          "sourceId": "melon",
+          "bodyWords": 60
+        },
+        {
+          "sourceId": "brush",
+          "bodyWords": 60
+        }
+      ],
+      "interviewQuotes": 0,
+      "lyricVersesReproduced": 0
+    },
+    "review": {
+      "contentHash": "4bb5a0dd30a93d4bad90ac33863246a4aaabc41710879cdfd55673b55a92f547",
+      "skillRevision": "096364c5a2ccaf903dd1c9e294cf1ac3c0d96a8f0a32ef5a64bc6fee9436abcf",
+      "checkedAt": "2026-10-27T06:52:41.881Z",
+      "method": "Separate fact and editorial passes by the drafting assistant; not an independent reviewer or a listening review.",
+      "findingsLocation": "content/stories/youra-private-worlds.json#review",
+      "changeReview": "Reviewed the final three listen blocks, photo caption and source changes. Existing prose remains source-based. The catalogue’s three lyric notes have their own exact revision review."
+    },
+    "limitations": [
+      "No first-person sonic criticism asserted.",
+      "The public youra pages use YouTube listening controls and Bugs release references; Apple Music remains only in the research history as English-title evidence.",
+      "Full 13/50-song Saved stress cases, hardware mobile keyboard and fullscreen were not repeated; player implementation is unchanged."
+    ],
+    "preview": "http://127.0.0.1:4185/stories/youra-private-worlds/",
+    "validation": {
+      "checked": "2026-10-27",
+      "automated": "npm run build and npm run check passed: 210 Node tests and 32 static-page/link/metadata/player checks.",
+      "home": "Explicit new-story announcement and featured portrait cover both present; story appears in Stories, search data, sitemap and promotion catalogue.",
+      "catalogue": "18 artists / 20 songs; youra appears once in Artists and hero, three times in the Listening Room and applicable guides. Introductory guide includes primary track MIMI.",
+      "desktop": "Actual playback of all three videos; same iframe across switching, minimization and navigation to Artists and the artist detail; Saved 0/1/3 and Play all restart; additional Korean-title search finds the artist.",
+      "mobile": "390×844: real MIMI playback in a 390×200 bottom iframe; separate 600px reading area and no Expand. Saved last-track selection works. 844×390: one 354×200 player beside the reading area, no overlap.",
+      "links": "No Apple Music URLs or Apple Music release labels in either new public page. Source and image-credit anchors resolve.",
+      "limitations": [
+        "No first-person sonic criticism asserted.",
+        "The public youra pages use YouTube listening controls and Bugs release references; Apple Music remains only in the research history as English-title evidence.",
+        "Full 13/50-song Saved stress cases, hardware mobile keyboard and fullscreen were not repeated; player implementation is unchanged."
+      ],
+      "screenshots": [
+        "qa/youra-story/mobile-playback.jpg"
+      ]
+    },
+    "recordings": [
+      {
+        "trackId": "youra-flicker",
+        "url": "https://www.youtube.com/watch?v=kmLmsXqL6BI",
+        "channel": "온스테이지ONSTAGE",
+        "videoType": "live",
+        "checked": "2026-10-27",
+        "verification": "Played through the real common player in Chrome. YouTube content loaded, video title matched, playing status observed. One persistent iframe was retained across track changes."
+      },
+      {
+        "trackId": "youra-mimi",
+        "url": "https://www.youtube.com/watch?v=5e78ltMjHN8",
+        "channel": "온스테이지ONSTAGE",
+        "videoType": "live",
+        "checked": "2026-10-27",
+        "verification": "Played through the real common player in Chrome. YouTube content loaded, video title matched, playing status observed. One persistent iframe was retained across track changes."
+      },
+      {
+        "trackId": "youra-motif",
+        "url": "https://www.youtube.com/watch?v=bTA4Kvo2Rew",
+        "channel": "youra 유라",
+        "videoType": "audio",
+        "checked": "2026-10-27",
+        "verification": "Played through the real common player in Chrome. YouTube content loaded, video title matched, playing status observed. One persistent iframe was retained across track changes."
+      }
+    ],
+    "recordingChoice": "Flicker and MIMI use official ONSTAGE live performances. Motif uses the artist’s standalone official audio. A publisher-produced three-song HUP session was found (HpprYBdqstY), but was not substituted for a standalone Motif track or counted as one saved song.",
+    "publication": {
+      "state": "locally-verified",
+      "requestedByUser": true,
+      "scheduledSocialPost": false
+    }
+  },
+  "initialResearchQuestion": "What do Laundry and Swim reveal about youra's songwriting, collaborators and subsequent work?"
+}

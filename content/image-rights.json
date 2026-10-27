@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-21",
+  "reviewed": "2026-10-27",
   "publicationStatus": "Rights review outstanding. Images retained at the site owner’s explicit request; publication does not establish reuse permission.",
   "images": [
     {
@@ -231,6 +231,53 @@
       "showCredit": true,
       "changes": "Resized WebP variants; cropped for display.",
       "notes": "Published on the distributor’s artist page. No reuse licence was stated."
+    },
+    {
+      "file": "youra-b-side.jpg",
+      "label": "youra — B side artwork",
+      "source": "https://music.bugs.co.kr/album/20234500",
+      "original": "https://image.bugsm.co.kr/album/images/1200/202345/20234500.jpg",
+      "credit": "Release artwork via Bugs",
+      "language": "Korean",
+      "status": "unconfirmed",
+      "checked": "2026-10-27",
+      "notes": "Used to identify the recording at the site owner’s request. No reuse licence stated."
+    },
+    {
+      "file": "youra-gaussian.jpg",
+      "label": "youra — GAUSSIAN artwork",
+      "source": "https://music.bugs.co.kr/album/20375620",
+      "original": "https://image.bugsm.co.kr/album/images/1200/203756/20375620.jpg",
+      "credit": "Release artwork via Bugs",
+      "language": "Korean",
+      "status": "unconfirmed",
+      "checked": "2026-10-27",
+      "notes": "Used to identify the recording at the site owner’s request. No reuse licence stated."
+    },
+    {
+      "file": "youra-motif.jpg",
+      "label": "youra — (1) artwork",
+      "source": "https://music.bugs.co.kr/album/20576196",
+      "original": "https://image.bugsm.co.kr/album/images/1200/205761/20576196.jpg",
+      "credit": "Release artwork via Bugs",
+      "language": "Korean",
+      "status": "unconfirmed",
+      "checked": "2026-10-27",
+      "notes": "Used to identify the recording at the site owner’s request. No reuse licence stated."
+    },
+    {
+      "file": "youra-brush-portrait.jpg",
+      "label": "youra — portrait from Melon Track Zero",
+      "caption": "Portrait published with Melon’s September 2026 Track Zero interview.",
+      "source": "https://www.melon.com/musicstory/informView.htm?mstorySeq=17212",
+      "original": "https://cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/08/d7/1d0/imgUrl20260831012852116.jpg",
+      "credit": "Melon Magazine / Track Zero",
+      "language": "Korean",
+      "status": "unconfirmed",
+      "checked": "2026-10-27",
+      "showCredit": true,
+      "changes": "Resized WebP variants; cropped for display.",
+      "notes": "Artist portrait published with the original interview. No individual photographer credit or reuse licence stated; source credit is not permission."
     }
   ]
 }

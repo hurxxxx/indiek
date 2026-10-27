@@ -4,14 +4,16 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {searchCatalogue, readSaved, getFeaturedArtists, formatPosition, getListeningGuides, getArtistDirectory, navigationSection, getPlaybackRecords, artistPath} from '../site/shared.mjs';
 
-const catalogue = createCatalogue(JSON.parse(readFileSync(new URL('../content/catalogue.json',import.meta.url))));
+const authored = JSON.parse(readFileSync(new URL('../content/catalogue.json',import.meta.url)));
+const catalogue = createCatalogue(authored);
+const artistTrackIds = authored.artists.map(artist=>artist.primaryTrackId);
 const {records, editorPick} = catalogue;
 const freshCatalogue = () => JSON.parse(JSON.stringify(catalogue));
 
 test('listening guides cover every artist with the intended opening tracks and counts',()=>{
   const guides = getListeningGuides(catalogue);
   assert.deepEqual(guides.filter(g=>g.selection!=='curated').map(g=>[g.id,g.records.length,g.records[0].id]),[
-    ['on-stage',8,'sunwoojunga'],['guitars-and-bands',7,'black-skirts'],['distinct-voices',13,'yoon-mirae'],
+    ['on-stage',10,'sunwoojunga'],['guitars-and-bands',7,'black-skirts'],['distinct-voices',16,'yoon-mirae'],
   ]);
   assert.deepEqual([...new Set(guides.flatMap(g=>g.records.map(r=>r.id)))].sort(),[...records,editorPick].map(r=>r.id).sort());
   for (const guide of guides) assert.equal(new Set(guide.records.map(r=>r.id)).size,guide.records.length);
@@ -60,12 +62,12 @@ test('invalid guide definitions fail before generating misleading pages',()=>{
 });
 for(const [query,expected] of [
   ['볼빨간 사춘기','bol4'],['사랑할수밖에','bol4'],['Sunwoo Jung A','sunwoojunga'],
-  ['Sunwoo Jung-a','sunwoojunga'],['Car the garden','car-the-garden'],['최 유리','choi-yu-ree'],
+  ['Sunwoo Jung-a','sunwoojunga'],['Car the garden',['car-the-garden','youra-flicker']],['최 유리','choi-yu-ree'],
   ['윤미래','yoon-mirae'],['Yoon Mi Rae','yoon-mirae'],['Don’t feel sad','whiteusedsocks'],
   ["Don't feel sad",'whiteusedsocks'],['Romance Youth Love','esegye'],['  ＢＯＬ４  ','bol4'],
 ]) {
   test(`search finds ${query}`,()=>{
-    assert.deepEqual(searchCatalogue(records,editorPick,query).map(r=>r.id),[expected]);
+    assert.deepEqual(searchCatalogue(records,editorPick,query).map(r=>r.id),Array.isArray(expected)?expected:[expected]);
   });
 }
 test('empty search includes all shelf entries and the editor pick',()=>{
@@ -79,8 +81,8 @@ test('the artist directory includes new artists and the editor pick without chan
   const original=edited.records.map(r=>r.id);
   const directory=getArtistDirectory(edited);
   assert.equal(directory[0].id,'new-artist');
-  assert.equal(directory.at(-1).id,'yoon-mirae');
-  assert.deepEqual(directory.map(r=>r.id).sort(),[...original,editorPick.id].sort());
+  assert.equal(directory.at(-1).id,'youra-mimi');
+  assert.deepEqual(directory.map(r=>r.id).sort(),[...artistTrackIds,'new-artist'].sort());
   assert.deepEqual(edited.records.map(r=>r.id),original);
 });
 test('directory searches combine artist type with Korean names, song titles and aliases',()=>{
@@ -91,7 +93,7 @@ test('directory searches combine artist type with Korean names, song titles and 
   assert.deepEqual(getArtistDirectory(catalogue,{query:'no such musician 983'}),[]);
   const bands=getArtistDirectory(catalogue,{category:'bands'});
   const solo=getArtistDirectory(catalogue,{category:'solo'});
-  assert.deepEqual([...bands,...solo].map(r=>r.id).sort(),[...records,editorPick].map(r=>r.id).sort());
+  assert.deepEqual([...bands,...solo].map(r=>r.id).sort(),[...artistTrackIds].sort());
 });
 test('navigation identifies artist and guide detail pages as their parent sections',()=>{
   for(const [path,section] of [['/','home'],['/artists/','artists'],['/artists/ydbb/','artists'],['/notes/first-listens/','guides'],['/notes/on-stage/','guides'],['/about/',null]]) {
@@ -107,7 +109,7 @@ test('missing, corrupt and non-array browser storage are harmless',()=>{
 test('hero includes each artist and the editor pick, preserving the editorial opening order',()=>{
   const features = getFeaturedArtists(catalogue);
   assert.deepEqual(features.slice(0,4).map(f=>f.id),['ydbb','whiteusedsocks','motte','hanroro']);
-  assert.deepEqual(features.map(f=>f.id).sort(),[...records,editorPick].map(r=>r.artistId).sort());
+  assert.deepEqual(features.map(f=>f.id).sort(),authored.artists.map(r=>r.id).sort());
   assert.equal(features.find(f=>f.id==='yoon-mirae').kind,'portrait');
 });
 test('a newly added artist enters the hero automatically without a separate feature entry',()=>{
@@ -117,7 +119,7 @@ test('a newly added artist enters the hero automatically without a separate feat
   assert.equal(added.length,1);
   assert.equal(added[0].image,record.image);
   assert.equal(added[0].kind,'artwork');
-  assert.equal(formatPosition(features.length),String(records.length+2).padStart(2,'0'));
+  assert.equal(formatPosition(features.length),String(authored.artists.length+1).padStart(2,'0'));
   assert.equal(formatPosition(1),'01');
 });
 

@@ -22,6 +22,7 @@ export function homeUpdates(entries, updates, {now = new Date(), preview = false
     if (!update.id || seenIds.has(update.id)) throw new Error(`Missing or duplicate home update ID: ${update.id}`);
     seenIds.add(update.id);
     if (!['draft','ready','published'].includes(update.status)) throw new Error(`Invalid home update status: ${update.id}`);
+    if (update.includeWithFeature !== undefined && typeof update.includeWithFeature !== 'boolean') throw new Error(`Invalid home update includeWithFeature: ${update.id}`);
     if (update.status === 'draft') continue;
     const target = typeof update.path === 'string' && targets.get(pagePath(update.path));
     if (!target || !updateLabels[update.kind] || !update.title?.trim() || !update.description?.trim()) throw new Error(`Incomplete home update or unknown page: ${update.id}`);
@@ -39,9 +40,11 @@ export function homeUpdates(entries, updates, {now = new Date(), preview = false
     ...additions,
     ...publishedEntries(entries,now).map(entry => ({...entry,label:updateLabels[entry.type.toLowerCase()] || entry.type,date:entry.published})),
   ].sort((a,b) => Number(Boolean(b.preview)) - Number(Boolean(a.preview)) || b.date.localeCompare(a.date) || Number(Boolean(b.explicit)) - Number(Boolean(a.explicit)));
-  const seenPaths = new Set(excludePaths);
+  const excludedPaths = new Set(excludePaths);
+  const seenPaths = new Set();
   return candidates.filter(item => {
     const path = pagePath(item.path);
+    if (excludedPaths.has(path) && !(item.explicit && item.includeWithFeature)) return false;
     if (seenPaths.has(path)) return false;
     seenPaths.add(path);
     return true;

@@ -17,6 +17,20 @@
       "published": "2026-10-27"
     },
     {
+      "id": "youra-private-worlds",
+      "kind": "story",
+      "title": "The private worlds of youra",
+      "path": "/stories/youra-private-worlds/",
+      "description": "From “Flicker” to “MIMI” and “Motif”, three songs follow youra’s personal writing through a changing circle of collaborators.",
+      "artistIds": [
+        "youra"
+      ],
+      "image": "/assets/social/stories-youra-private-worlds.jpg",
+      "altText": "The private worlds of youra — indiek. Original typographic article card.",
+      "revision": "4bb5a0dd30a93d4bad90ac33863246a4aaabc41710879cdfd55673b55a92f547",
+      "published": "2026-10-27"
+    },
+    {
       "id": "sunwoojunga-run-with-me",
       "kind": "story",
       "title": "Inside sunwoojunga’s “Run with Me”",
@@ -237,6 +251,18 @@
       "altText": "indiek listening notes: Baek A — Amor. Typographic card."
     },
     {
+      "id": "youra",
+      "kind": "artist",
+      "title": "youra — MIMI",
+      "path": "/artists/youra/",
+      "description": "“MIMI” calls to someone who has disappeared. youra wrote the lyrics and composed the song with Cosmic Boy for GAUSSIAN. The recording here is the ONSTAGE × D Museum live performance.",
+      "artistIds": [
+        "youra"
+      ],
+      "image": "/assets/social/artists-youra.jpg",
+      "altText": "indiek listening notes: youra — MIMI. Typographic card."
+    },
+    {
       "id": "yoon-mirae",
       "kind": "artist",
       "title": "Yoon Mirae — Breath",
@@ -271,6 +297,7 @@
         "gongwon",
         "yebit",
         "baek-a",
+        "youra",
         "yoon-mirae"
       ],
       "image": "/assets/social/notes-korean-indie-where-to-start.jpg",
@@ -290,7 +317,8 @@
         "esegye",
         "se-so-neon",
         "yebit",
-        "baek-a"
+        "baek-a",
+        "youra"
       ],
       "image": "/assets/social/notes-on-stage.jpg",
       "altText": "indiek listening guide: On stage. Typographic card."
@@ -332,7 +360,8 @@
         "yerin-baek",
         "gongwon",
         "yebit",
-        "baek-a"
+        "baek-a",
+        "youra"
       ],
       "image": "/assets/social/notes-distinct-voices.jpg",
       "altText": "indiek listening guide: Distinct voices. Typographic card."

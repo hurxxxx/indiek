@@ -1,8 +1,8 @@
 {
-  "checked": "2026-10-22",
+  "checked": "2026-10-27",
   "status": "reviewed-local",
   "readerQuestion": "What do the words contribute to each song, without needing a full English translation?",
-  "scope": "All 17 introduced tracks: 16 previously reviewed English commentaries unchanged, plus the user-supplied twelve-stanza Amor adaptation. External recommendations and full-session chapters remain outside this scope.",
+  "scope": "All 20 introduced tracks: the 17 previously reviewed notes/adaptation remain byte-identical; three new youra commentaries have separate factual and editorial passes. External recommendations and full-session chapters remain outside this scope.",
   "referenceChoices": [
     {
       "id": "sunwoojunga-kraze",
@@ -411,21 +411,87 @@
       "interpretation": "User-supplied literary rendering; no added interpretation.",
       "uncertainty": "A literary rendering rather than a line-for-line equivalence; the supplied written/erased wording is retained. No authorship beyond supplied provenance inferred.",
       "research": "editorial/research/baek-a-amor.json"
+    },
+    {
+      "trackId": "youra-flicker",
+      "angle": "Closeness and hesitation",
+      "outline": [
+        "A selected lyrical detail",
+        "A restrained reading of the speaker’s request or image"
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/31485668",
+          "publisher": "Bugs / youra",
+          "checked": "2026-10-27",
+          "supports": [
+            "Selected lyric details and credits"
+          ],
+          "method": "Original licensed lyric display read; full lyrics and translations not retained."
+        }
+      ],
+      "interpretation": "Selective editorial reading, not a claim about the artist’s private life.",
+      "uncertainty": "No identity assigned to an addressee and no literal autobiographical event inferred.",
+      "research": "editorial/research/youra.json"
+    },
+    {
+      "trackId": "youra-mimi",
+      "angle": "Calling to someone absent",
+      "outline": [
+        "A selected lyrical detail",
+        "A restrained reading of the speaker’s request or image"
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/32136561",
+          "publisher": "Bugs / youra",
+          "checked": "2026-10-27",
+          "supports": [
+            "Selected lyric details and credits"
+          ],
+          "method": "Original licensed lyric display read; full lyrics and translations not retained."
+        }
+      ],
+      "interpretation": "Selective editorial reading, not a claim about the artist’s private life.",
+      "uncertainty": "No identity assigned to an addressee and no literal autobiographical event inferred.",
+      "research": "editorial/research/youra.json"
+    },
+    {
+      "trackId": "youra-motif",
+      "angle": "Something fragile beside a promise",
+      "outline": [
+        "A selected lyrical detail",
+        "A restrained reading of the speaker’s request or image"
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/32902369",
+          "publisher": "Bugs / youra",
+          "checked": "2026-10-27",
+          "supports": [
+            "Selected lyric details and credits"
+          ],
+          "method": "Original licensed lyric display read; full lyrics and translations not retained."
+        }
+      ],
+      "interpretation": "Selective editorial reading, not a claim about the artist’s private life.",
+      "uncertainty": "No identity assigned to an addressee and no literal autobiographical event inferred.",
+      "research": "editorial/research/youra.json"
     }
   ],
   "revision": {
     "algorithm": "sha256",
     "scope": "JSON.stringify(catalogue.tracks.map(t => ({trackId:t.id,lyricNotes:t.lyricNotes}))) encoded as UTF-8",
-    "hash": "440f7fc44e0ad517d2859658f0a4f3c337d66c5514010db33224da35863cf1cf"
+    "hash": "ba5c780b95269935ed46e6bd9478a540f13ea9afc001200378105d212f0104fa"
   },
   "reviews": [
     {
       "kind": "facts",
-      "checked": "2026-10-22",
+      "checked": "2026-10-27",
       "reviewer": "indiek AI-assisted review; separate pass by the same assistant, not independent human verification",
-      "revision": "440f7fc44e0ad517d2859658f0a4f3c337d66c5514010db33224da35863cf1cf",
+      "revision": "ba5c780b95269935ed46e6bd9478a540f13ea9afc001200378105d212f0104fa",
       "approved": true,
-      "scope": "The 16 previously approved notes are byte-identical to the prior approved revision f8fd06476a336c876fcbb823bca9ad6106026cad1717c767b62fb1186a74d69a. The new Amor adaptation and its labels/source were reviewed in a separate facts pass; details in editorial/research/baek-a-amor.json.",
+      "scope": "The 17 prior notes/adaptation are byte-identical to approved revision 440f7fc44e0ad517d2859658f0a4f3c337d66c5514010db33224da35863cf1cf. Reviewed the exact three new youra notes, including their headings, themes and source labels.",
       "objectionsResolved": [
         {
           "trackId": "bol4",
@@ -452,16 +518,16 @@
           "correction": "Describe two people growing apart and attachment continuing through distance."
         }
       ],
-      "remainingUncertainty": "Readings are interpretive, not definitive artist explanations. Forest lyric reference is a later album listing; it is not used to date the original release. No new recording/performance claims."
+      "remainingUncertainty": "The youra passages are lyric readings; no identity for Mimi or specific autobiographical relationship is established. Original lyric scenes support the stated requests and images."
     },
     {
       "kind": "editorial",
-      "checked": "2026-10-22",
+      "checked": "2026-10-27",
       "reviewer": "indiek AI-assisted review; separate pass by the same assistant",
-      "revision": "440f7fc44e0ad517d2859658f0a4f3c337d66c5514010db33224da35863cf1cf",
+      "revision": "ba5c780b95269935ed46e6bd9478a540f13ea9afc001200378105d212f0104fa",
       "approved": true,
-      "scope": "The 16 previously approved notes are byte-identical to the prior approved revision f8fd06476a336c876fcbb823bca9ad6106026cad1717c767b62fb1186a74d69a. The new Amor adaptation and its labels/source were reviewed in a separate editorial pass; details in editorial/research/baek-a-amor.json.",
-      "referenceComparison": "The Kraze interview models a clear boundary between an artist’s own explanation and editorial framing; these short notes use their own song-specific images and make no interview claim.",
+      "scope": "The 17 prior notes/adaptation are byte-identical to approved revision 440f7fc44e0ad517d2859658f0a4f3c337d66c5514010db33224da35863cf1cf. Reviewed the exact three new youra notes, including their headings, themes and source labels.",
+      "referenceComparison": "The existing lyric-commentary criteria and youra dossier were applied. Each new note stays with a specific image or request, preserves ambiguity and adds no instruction about how listeners should feel.",
       "objectionsResolved": [
         {
           "trackId": "black-skirts",
@@ -486,12 +552,12 @@
     }
   ],
   "verification": {
-    "checked": "2026-10-22",
-    "automated": "182 Node tests and 29 static pages pass. All original sixteen commentaries unchanged; supplied Baek A adaptation and new schema/render checks pass.",
-    "manual": "Baek A desktop/mobile content, actual common-player playback, Saved and Korean search checked; see editorial/research/baek-a-amor.json.",
+    "checked": "2026-10-27",
+    "automated": "Final build/check recorded in editorial/research/youra.json.",
+    "manual": "New recording playback and desktop/mobile checks recorded in editorial/research/youra.json.",
     "deployment": "See deploy/README.md#확인과-복구"
   },
-  "previousApprovedRevision": "f8fd06476a336c876fcbb823bca9ad6106026cad1717c767b62fb1186a74d69a",
+  "previousApprovedRevision": "440f7fc44e0ad517d2859658f0a4f3c337d66c5514010db33224da35863cf1cf",
   "previousVerification": {
     "checked": "2026-10-21",
     "build": "Production build and local preview verified. Final deployment and public-page verification: deploy/README.md#확인과-복구 (d8ce439, 2026-10-21).",

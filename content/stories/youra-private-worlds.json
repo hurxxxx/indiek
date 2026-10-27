@@ -1,0 +1,373 @@
+{
+  "id": "youra-private-worlds",
+  "slug": "youra-private-worlds",
+  "status": "published",
+  "category": "Listening paths",
+  "title": "The private worlds of youra",
+  "description": "From “Flicker” to “MIMI” and “Motif”, three songs follow youra’s personal writing through a changing circle of collaborators.",
+  "authorId": "indiek",
+  "published": "2026-10-27",
+  "updated": "2026-10-27",
+  "artistIds": [
+    "youra"
+  ],
+  "keywords": [
+    "유라",
+    "youra",
+    "깜빡",
+    "Flicker",
+    "미미",
+    "MIMI",
+    "구운듯한 얼굴이 너의 모티프",
+    "Motif",
+    "목욕탕",
+    "Bathtub",
+    "Mandong",
+    "songwriting"
+  ],
+  "sources": [
+    {
+      "id": "b-side",
+      "label": "B side: release notes and credits",
+      "url": "https://music.bugs.co.kr/album/20234500",
+      "publisher": "Bugs / MUN HWA IN",
+      "language": "Korean",
+      "published": "2019-03-05",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "flicker-words",
+      "label": "Flicker: lyrics and credits",
+      "url": "https://music.bugs.co.kr/track/31485668",
+      "publisher": "Bugs / youra",
+      "language": "Korean",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "flicker-live",
+      "label": "Listen: Flicker — ONSTAGE live performance",
+      "url": "https://www.youtube.com/watch?v=kmLmsXqL6BI",
+      "publisher": "ONSTAGE",
+      "language": "Korean",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "gaussian",
+      "label": "GAUSSIAN: release notes and credits",
+      "url": "https://music.bugs.co.kr/album/20375620",
+      "publisher": "Bugs / MUN HWA IN",
+      "language": "Korean",
+      "published": "2021-02-02",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "mimi-words",
+      "label": "MIMI: lyrics and credits",
+      "url": "https://music.bugs.co.kr/track/32136561",
+      "publisher": "Bugs / youra",
+      "language": "Korean",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "mimi-award",
+      "label": "MIMI: 2022 Best R&B & Soul Song nomination",
+      "url": "https://koreanmusicawards.com/project/유라-미미-mimi/",
+      "publisher": "Korean Music Awards",
+      "language": "Korean",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "mimi-live",
+      "label": "Listen: MIMI — ONSTAGE × D Museum live performance",
+      "url": "https://www.youtube.com/watch?v=5e78ltMjHN8",
+      "publisher": "ONSTAGE",
+      "language": "Korean",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "allure",
+      "label": "HERE, AGAIN: interview with youra",
+      "url": "https://www.allurekorea.com/2023/06/22/here-again/",
+      "publisher": "Allure Korea / Go Youngjin",
+      "language": "Korean",
+      "published": "2023-06-22",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "motif-words",
+      "label": "Motif: lyrics and credits",
+      "url": "https://music.bugs.co.kr/track/32902369",
+      "publisher": "Bugs / youra",
+      "language": "Korean",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "motif-award",
+      "label": "Motif: 2024 Best R&B & Soul Song winner",
+      "url": "https://koreanmusicawards.com/project/유라youra-구운듯한-얼굴이-너의-모티프/",
+      "publisher": "Korean Music Awards",
+      "language": "Korean",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "motif-audio",
+      "label": "Listen: Motif — official audio",
+      "url": "https://www.youtube.com/watch?v=bTA4Kvo2Rew",
+      "publisher": "youra 유라",
+      "language": "Korean",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "melon",
+      "label": "September’s artist: youra, on Brush",
+      "url": "https://www.melon.com/musicstory/informView.htm?mstorySeq=17212",
+      "publisher": "Melon Magazine / Track Zero",
+      "language": "Korean",
+      "published": "2026-09-03",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "first-album",
+      "label": "꽤 많은 수의 촉수 돌기: release notes and credits",
+      "url": "https://music.bugs.co.kr/album/20576196",
+      "publisher": "Bugs / youra",
+      "language": "Korean",
+      "published": "2023-07-07",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "brush",
+      "label": "Brush: release details",
+      "url": "https://music.bugs.co.kr/album/4151265",
+      "publisher": "Bugs / youra",
+      "language": "Korean",
+      "published": "2026-07-09",
+      "checked": "2026-10-27"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Car, the garden first heard “Flicker” as a demo in Korean singer-songwriter youra’s studio. According to the release notes for her 2019 debut EP, B side, he offered to feature on it there and then. The song’s words and music were hers; he arranged it and joined her on vocals. It is an early example of a recurring arrangement in her work: personal writing developed with another musician.",
+      "sources": [
+        "b-side"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "“Flicker” (깜빡): close enough to hesitate",
+      "sources": []
+    },
+    {
+      "type": "listen",
+      "trackId": "youra-flicker",
+      "sources": []
+    },
+    {
+      "type": "paragraph",
+      "text": "The song opens with an embrace beneath a flickering streetlight. Later, its speaker wonders whether an apparent connection is only their own imagining. There are small details of time spent together, but being close does not settle the question of what either person means to the other. By the time the speaker asks to stay hidden, the hesitation has become as important as the intimacy.",
+      "sources": [
+        "flicker-words"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "“Flicker” was one of B side’s two title tracks, alongside “Dance”. The EP also includes “Laundry”, another collaboration with him, this time with U-Turn sharing composition and arrangement credits.",
+      "sources": [
+        "b-side",
+        "flicker-live"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "“MIMI” (미미): asking to be found",
+      "sources": []
+    },
+    {
+      "type": "listen",
+      "trackId": "youra-mimi",
+      "sources": []
+    },
+    {
+      "type": "paragraph",
+      "text": "On “MIMI”, from the 2021 EP GAUSSIAN, the request changes. Its speaker calls to an absent Mimi, questions why love disappears, and asks a friend to find them. Set beside the wish to hide in “Flicker”, that appeal makes an illuminating contrast. Read as separate scenes, they show how youra can write both the impulse to withdraw and the wish for someone to come looking.",
+      "sources": [
+        "mimi-words",
+        "flicker-words"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Here her writing partner is Cosmic Boy, who co-composed and arranged the track; youra wrote the lyrics, and Kim Chunchu played guitar. “MIMI” earned a nomination for Best R&B & Soul Song at the 2022 Korean Music Awards. The performance here comes from ONSTAGE × D Museum.",
+      "sources": [
+        "gaussian",
+        "mimi-award",
+        "mimi-live"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "“Motif” (구운듯한 얼굴이 너의 모티프): a little farther",
+      "sources": []
+    },
+    {
+      "type": "listen",
+      "trackId": "youra-motif",
+      "sources": []
+    },
+    {
+      "type": "paragraph",
+      "text": "By June 2023, youra was preparing her first full-length album. Speaking to Go Youngjin for Allure Korea, she credited her recent collaboration with the band Mandong with giving her confidence. She described bringing some jazz elements into the new record, while keeping other songs closer to the band sound of her earlier work. The collaboration had opened possibilities without giving the whole album a single new genre.",
+      "sources": [
+        "allure"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "“Motif”, released that July on the album listed in English as (1), was co-composed with Mandong bassist Song Namhyun, who also arranged it. It went on to win Best R&B & Soul Song at the 2024 Korean Music Awards—the category in which “MIMI” had previously been nominated.",
+      "sources": [
+        "motif-words",
+        "motif-award",
+        "first-album",
+        "mimi-award"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The lyrics give us a sinking sandcastle and a garden where eternity was promised. Those images put something fragile beside something supposedly lasting. The invitation to walk a little farther lets the song continue past that tension without explaining it away. A few objects and a small movement carry the feeling; the listener is left room to work out how they belong together.",
+      "sources": [
+        "motif-words"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "In the Allure interview, youra described her lyrics as closer to a diary than fiction. That offers a way into their intimacy, without making every image a literal account of her life. She also resisted prescribing how people should hear her music, acknowledging that each listener would feel differently. The player above presents the artist’s official audio of “Motif”.",
+      "sources": [
+        "allure",
+        "motif-audio"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "A connection youra makes herself",
+      "sources": []
+    },
+    {
+      "type": "paragraph",
+      "text": "There is a recent link back to these earlier songs. Discussing her July 2026 EP Brush with Melon’s Track Zero, youra singled out “Bathtub” (목욕탕) as recognisably her own kind of song. She suggested comparing it with “MIMI” or “Laundry”. She also explained its flute part: she had briefly learned the instrument as a child and remained drawn to it.",
+      "sources": [
+        "melon",
+        "brush"
+      ]
+    }
+  ],
+  "review": {
+    "contentHash": "4bb5a0dd30a93d4bad90ac33863246a4aaabc41710879cdfd55673b55a92f547",
+    "skillRevision": "096364c5a2ccaf903dd1c9e294cf1ac3c0d96a8f0a32ef5a64bc6fee9436abcf",
+    "checkedAt": "2026-10-27T06:43:40.079Z",
+    "method": "Separate fact and editorial passes by the drafting assistant; not an independent reviewer or a listening review.",
+    "facts": {
+      "approved": true,
+      "reason": "The complete revised text, title, caption, three catalogue listen blocks and source labels were checked. Release facts, lyric interpretations and attributed interview statements remain supported by the opened originals. Public Apple Music links were replaced with Bugs release references; English title evidence remains in the research record. Video identity and channel were verified; actual embed verification is recorded separately after the local build. This approval covers the exact written content, not image licensing.",
+      "issues": [],
+      "checkedURLs": [
+        "https://music.bugs.co.kr/album/20234500",
+        "https://music.bugs.co.kr/track/31485668",
+        "https://www.youtube.com/watch?v=kmLmsXqL6BI",
+        "https://music.apple.com/us/album/b-side-ep/1673887826",
+        "https://music.bugs.co.kr/album/20375620",
+        "https://music.bugs.co.kr/track/32136561",
+        "https://koreanmusicawards.com/project/유라-미미-mimi/",
+        "https://www.youtube.com/watch?v=5e78ltMjHN8",
+        "https://music.apple.com/us/album/gaussian-ep/1754267581",
+        "https://www.allurekorea.com/2023/06/22/here-again/",
+        "https://music.bugs.co.kr/track/32902369",
+        "https://koreanmusicawards.com/project/유라youra-구운듯한-얼굴이-너의-모티프/",
+        "https://www.youtube.com/watch?v=bTA4Kvo2Rew",
+        "https://music.apple.com/us/album/1/1695683074",
+        "https://www.melon.com/musicstory/informView.htm?mstorySeq=17212",
+        "https://music.apple.com/us/album/brush-ep/6788589667",
+        "https://music.bugs.co.kr/album/20576196",
+        "https://music.bugs.co.kr/album/4151265"
+      ],
+      "supportedClaims": [
+        {
+          "claim": "Opening and Flicker release context",
+          "sourceURL": "https://music.bugs.co.kr/album/20234500",
+          "evidence": "Release notes and track-by-track credits."
+        },
+        {
+          "claim": "Flicker commentary",
+          "sourceURL": "https://music.bugs.co.kr/track/31485668",
+          "evidence": "Selected opening and refrain imagery; interpretation kept separate from biography."
+        },
+        {
+          "claim": "MIMI credits",
+          "sourceURL": "https://music.bugs.co.kr/album/20375620",
+          "evidence": "Composition, arrangement and guitar personnel in the release notes."
+        },
+        {
+          "claim": "MIMI commentary",
+          "sourceURL": "https://music.bugs.co.kr/track/32136561",
+          "evidence": "The refrain supports the stated absence and request; no identity assigned to Mimi."
+        },
+        {
+          "claim": "MIMI nomination",
+          "sourceURL": "https://koreanmusicawards.com/project/유라-미미-mimi/",
+          "evidence": "2022 category entry; no winner designation."
+        },
+        {
+          "claim": "Mandong collaboration and approach to lyrics",
+          "sourceURL": "https://www.allurekorea.com/2023/06/22/here-again/",
+          "evidence": "Answers about the collaboration, album direction and diary writing."
+        },
+        {
+          "claim": "Motif credits and commentary",
+          "sourceURL": "https://music.bugs.co.kr/track/32902369",
+          "evidence": "Credit fields; two selected images and recurring invitation."
+        },
+        {
+          "claim": "Motif award and bassist identification",
+          "sourceURL": "https://koreanmusicawards.com/project/유라youra-구운듯한-얼굴이-너의-모티프/",
+          "evidence": "2024 winner designation and Song Namhyun identification."
+        },
+        {
+          "claim": "English album title and release",
+          "sourceURL": "https://music.apple.com/us/album/1/1695683074",
+          "evidence": "Apple Music lists (1), July 7, 2023."
+        },
+        {
+          "claim": "Bathtub coda",
+          "sourceURL": "https://www.melon.com/musicstory/informView.htm?mstorySeq=17212",
+          "evidence": "Answers about the third track, flute and earlier-song comparison."
+        },
+        {
+          "claim": "Brush release and English track title",
+          "sourceURL": "https://music.apple.com/us/album/brush-ep/6788589667",
+          "evidence": "English Apple Music release and linked Bathtub track."
+        }
+      ]
+    },
+    "editorial": {
+      "approved": true,
+      "reason": "The revised article retains its three-song narrative and now places a shared-player control beside each song introduction. The portrait identifies the artist and credits its source. External streaming links no longer serve as listening controls. No new biographical inference or sonic description was added.",
+      "issues": [],
+      "contribution": "A compact introduction connecting three documented collaborations with selective lyric readings, then a recent recommendation from the artist herself. Selection is editorial rather than a streaming popularity ranking.",
+      "referenceIds": [
+        "nick-parannoul"
+      ],
+      "comparisons": [
+        "The Nick Caceres interview uses record-specific questions and leaves room for the artist to resist a neat progression. This article similarly preserves youra’s qualified account of jazz elements; it does not borrow the interview’s voice, questions, opening or events.",
+        "The Allure interview is source reporting, not a prose template. Two attributed passages support the collaboration and diary context; the cross-song lyric connection is an editorial reading assembled separately.",
+        "Compared with sunwoojunga-run-with-me and yerin-0310, the draft uses three lyrical scenes alongside changing collaborators, with a short recent coda. It avoids their next-listen imperative ending. The studio anecdote contains only the release note’s verifiable detail.",
+        "The first revision’s unsupported claim about who appeared in the ONSTAGE performance was removed. Wording that implied established identities for separate songs’ speakers was softened. Co-composition is distinguished from lyric writing. The generic closing synthesis was cut.",
+        "Rechecked the full revision against the original dossier. New text only identifies the displayed recordings; original lyric readings remain measured and separately sourced. The recent HANRORO story uses a single-song question, while this piece connects three collaborations and lyrical scenes."
+      ]
+    }
+  },
+  "cover": {
+    "file": "youra-brush-portrait.jpg",
+    "alt": "youra smiling in a white dress in a black-and-white portrait",
+    "caption": "youra, pictured in Melon’s September 2026 Track Zero interview."
+  }
+}
