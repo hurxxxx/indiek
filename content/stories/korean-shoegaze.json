@@ -1,0 +1,307 @@
+{
+  "id": "korean-shoegaze",
+  "slug": "korean-shoegaze",
+  "status": "published",
+  "category": "Scenes & people",
+  "title": "Sharing the work: one circle in Korean shoegaze",
+  "description": "Five years after Downfall of the Neon Youth, credits and concert accounts trace shared production, guest vocals and organising—with a connection to Brazil.",
+  "authorId": "indiek",
+  "published": "2026-11-05",
+  "updated": "2026-11-05",
+  "artistIds": [],
+  "keywords": [
+    "Korean shoegaze",
+    "Parannoul",
+    "Asian Glow",
+    "sonhos tomam conta",
+    "Della Zyr",
+    "Wapddi",
+    "Downfall of the Neon Youth",
+    "Paraglow",
+    "Digital Dawn"
+  ],
+  "sources": [
+    {
+      "id": "downfall",
+      "url": "https://longinusrecordings.bandcamp.com/album/downfall-of-the-neon-youth",
+      "label": "Downfall of the Neon Youth — original label release and credits",
+      "publisher": "Longinus Recordings; institutional release notes",
+      "published": "2021-10-22 (release date; page publication date unspecified)",
+      "checked": "2026-11-04",
+      "language": "English; multilingual lyrics not used"
+    },
+    {
+      "id": "longinus",
+      "url": "https://longinusrecordings.com/pages/news",
+      "label": "Artist profiles and Digital Dawn account",
+      "publisher": "Longinus Recordings; label participant account, no individual byline",
+      "published": "Undated; mutable page",
+      "checked": "2026-11-04",
+      "language": "English"
+    },
+    {
+      "id": "gui",
+      "url": "https://pitchfork.com/features/article/parannoul-and-the-new-generation-of-korean-indie/",
+      "label": "Parannoul and the New Generation of Korean Indie",
+      "publisher": "Pitchfork; James Gui, named reporter with original interviews and attendance reporting",
+      "published": "2024-03-28",
+      "checked": "2026-11-04",
+      "language": "English"
+    },
+    {
+      "id": "lua-profile",
+      "url": "https://linktr.ee/sonhostomamconta",
+      "label": "Lua Viana — artist-controlled profile identifying projects",
+      "publisher": "Lua Viana / Linktree",
+      "published": "Undated",
+      "checked": "2026-11-04",
+      "language": "English and Portuguese"
+    },
+    {
+      "id": "pesadelos",
+      "url": "https://sonhostomamconta.bandcamp.com/album/pesadelos",
+      "label": "pesadelos — release page and artist location",
+      "publisher": "Lua Viana / sonhos tomam conta",
+      "published": "2020-04-07 (release date; profile update date unspecified)",
+      "checked": "2026-11-04",
+      "language": "Portuguese and English"
+    },
+    {
+      "id": "paraglow",
+      "url": "https://paraglow.bandcamp.com/album/paraglow",
+      "label": "Paraglow — artist release credits",
+      "publisher": "Parannoul & Asian Glow",
+      "published": "2022-09-21 (listed release date)",
+      "checked": "2026-11-04",
+      "language": "English and Korean"
+    },
+    {
+      "id": "paraglow-distributor",
+      "url": "https://poclanos.com/album/paraglow/",
+      "label": "Paraglow — distributor release record",
+      "publisher": "POCLANOS",
+      "published": "2022-10-13 (listed release date)",
+      "checked": "2026-11-04",
+      "language": "Korean and English"
+    },
+    {
+      "id": "nebulous",
+      "url": "https://dellazyr.bandcamp.com/album/nebulous-you",
+      "label": "Nebulous You — artist credits and acknowledgments",
+      "publisher": "Della Zyr",
+      "published": "2022-12-15 (release date)",
+      "checked": "2026-11-04",
+      "language": "English and Korean"
+    },
+    {
+      "id": "seoul-electronic",
+      "url": "https://daily.bandcamp.com/scene-report/seoul-experimental-electronic-list",
+      "label": "A Guide to Seoul’s Experimental Electronic Scene — craft reference",
+      "publisher": "Bandcamp Daily; Henry Ivry, named writer with attributed original conversations",
+      "published": "2022-04-13",
+      "checked": "2026-11-04",
+      "language": "English"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Downfall of the Neon Youth turned five on October 22, 2026. The split album brings together contributions from three projects: Parannoul, Asian Glow and sonhos tomam conta. That last name belongs to Lua Viana, whose artist profile lists São Paulo, Brazil. This starting point for exploring a circle around Korean shoegaze already reaches beyond Korea. [Original release](https://longinusrecordings.bandcamp.com/album/downfall-of-the-neon-youth); [Longinus artist profiles](https://longinusrecordings.com/pages/news); [Viana’s projects](https://linktr.ee/sonhostomamconta) and [Bandcamp profile](https://sonhostomamconta.bandcamp.com/album/pesadelos).",
+      "sources": [
+        "downfall",
+        "longinus",
+        "lua-profile",
+        "pesadelos"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The credits show the billed musicians taking several roles. Music and mixing are credited to Parannoul, Gyungwon Shin and Lua Viana. Shin is Asian Glow, identified as Shin Gyungwon in James Gui’s reporting for Pitchfork; Viana also mastered the record. These album-level credits do not explain each song’s division of labour. Sharing a split release does not, by itself, mean that every song was jointly written. [Downfall credits](https://longinusrecordings.bandcamp.com/album/downfall-of-the-neon-youth); [Gui’s reporting](https://pitchfork.com/features/article/parannoul-and-the-new-generation-of-korean-indie/).",
+      "sources": [
+        "downfall",
+        "gui"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "On the 2022 joint project Paraglow, Parannoul and Asian Glow—the two musicians who appeared alongside sonhos tomam conta on the split—share production and mixing credits. Here, their names sit together against responsibility for producing the record, although the credits do not specify who played each part or how they exchanged ideas. [Paraglow credits](https://paraglow.bandcamp.com/album/paraglow).",
+      "sources": [
+        "paraglow",
+        "downfall"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "On Della Zyr’s Nebulous You, released in December 2022, Parannoul takes a guest role, contributing vocals to tracks one, two and four. A separate acknowledgment thanks Ian Lim, Wapddi, BrokenTeeth and Asian Glow for “moral support & quality assurance”. It does not describe what that support involved. [Nebulous You credits](https://dellazyr.bandcamp.com/album/nebulous-you).",
+      "sources": [
+        "nebulous"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The same circle also shared the work of putting on a concert. In his 2024 Pitchfork report, James Gui describes Asian Glow suggesting a showcase for their solo projects to Wapddi’s Yang Jihoon, who pursued the idea. According to Longinus Recordings’ participant account, Digital Dawn took place in Seoul on August 14, 2022. The label credits Wapddi with organising it, helped by the performing artists and, to a lesser extent, Longinus itself. [Gui’s scene report](https://pitchfork.com/features/article/parannoul-and-the-new-generation-of-korean-indie/); [Longinus’s Digital Dawn account](https://longinusrecordings.com/pages/news).",
+      "sources": [
+        "gui",
+        "longinus"
+      ]
+    }
+  ],
+  "review": {
+    "contentHash": "02b926ddcc4f0db4ef8f8883533b438965e9f0f1aec79f8fe40b94b10a895c5a",
+    "skillRevision": "096364c5a2ccaf903dd1c9e294cf1ac3c0d96a8f0a32ef5a64bc6fee9436abcf",
+    "checkedAt": "2026-11-04T18:14:07.776Z",
+    "facts": {
+      "approved": true,
+      "reason": "Applied the supplied skill and freshly opened all nine listed originals. No unresolved blocking factual errors found in the exact article, including its title and deck. Credits support the distinctions between shared production, guest vocals and acknowledged support. Concert accounts remain attributed. The conflicting Paraglow dates both support the draft’s use of 2022. November 5 is scheduled draft metadata. This is factual approval only; no audio or video was independently heard.",
+      "issues": [],
+      "checkedURLs": [
+        "https://longinusrecordings.bandcamp.com/album/downfall-of-the-neon-youth",
+        "https://longinusrecordings.com/pages/news",
+        "https://pitchfork.com/features/article/parannoul-and-the-new-generation-of-korean-indie/",
+        "https://linktr.ee/sonhostomamconta",
+        "https://sonhostomamconta.bandcamp.com/album/pesadelos",
+        "https://paraglow.bandcamp.com/album/paraglow",
+        "https://poclanos.com/album/paraglow/",
+        "https://dellazyr.bandcamp.com/album/nebulous-you",
+        "https://daily.bandcamp.com/scene-report/seoul-experimental-electronic-list"
+      ],
+      "supportedClaims": [
+        {
+          "claim": "Downfall’s release date supports its fifth anniversary on October 22, 2026.",
+          "sourceURL": "https://longinusrecordings.bandcamp.com/album/downfall-of-the-neon-youth",
+          "evidence": "released October 22, 2021"
+        },
+        {
+          "claim": "The same three musicians receive music and mixing credits.",
+          "sourceURL": "https://longinusrecordings.bandcamp.com/album/downfall-of-the-neon-youth",
+          "evidence": "Music - Parannoul, Gyungwon Shin, Lua Viana\nMixing - Parannoul, Gyungwon Shin, Lua Viana"
+        },
+        {
+          "claim": "Lua Viana receives the mastering credit.",
+          "sourceURL": "https://longinusrecordings.bandcamp.com/album/downfall-of-the-neon-youth",
+          "evidence": "Mastering - Lua Viana"
+        },
+        {
+          "claim": "Longinus identifies Downfall as a three-artist split.",
+          "sourceURL": "https://longinusrecordings.com/pages/news",
+          "evidence": "3-artist split"
+        },
+        {
+          "claim": "The label places Digital Dawn in Seoul.",
+          "sourceURL": "https://longinusrecordings.com/pages/news",
+          "evidence": "Digital Dawn was a concert held in Seoul"
+        },
+        {
+          "claim": "The label dates the concert to August 14, 2022.",
+          "sourceURL": "https://longinusrecordings.com/pages/news",
+          "evidence": "August 14th, 2022"
+        },
+        {
+          "claim": "The participant account identifies Wapddi as organiser.",
+          "sourceURL": "https://longinusrecordings.com/pages/news",
+          "evidence": "The event was organized by 왑띠 (Wapddi)"
+        },
+        {
+          "claim": "Gui identifies Asian Glow as Shin Gyungwon.",
+          "sourceURL": "https://pitchfork.com/features/article/parannoul-and-the-new-generation-of-korean-indie/",
+          "evidence": "Shin Gyungwon of Asian Glow"
+        },
+        {
+          "claim": "Gui identifies Wapddi as Yang Jihoon.",
+          "sourceURL": "https://pitchfork.com/features/article/parannoul-and-the-new-generation-of-korean-indie/",
+          "evidence": "(Yang Jihoon)"
+        },
+        {
+          "claim": "Gui reports Shin proposing the concert to Yang.",
+          "sourceURL": "https://pitchfork.com/features/article/parannoul-and-the-new-generation-of-korean-indie/",
+          "evidence": "Shin joked to Yang of Wapddi"
+        },
+        {
+          "claim": "Gui reports that Yang pursued the suggestion.",
+          "sourceURL": "https://pitchfork.com/features/article/parannoul-and-the-new-generation-of-korean-indie/",
+          "evidence": "Yang took the idea seriously."
+        },
+        {
+          "claim": "Lua Viana’s profile includes sonhos tomam conta among their projects.",
+          "sourceURL": "https://linktr.ee/sonhostomamconta",
+          "evidence": "Antropoceno, DJ URUTAU & sonhos tomam conta"
+        },
+        {
+          "claim": "The artist’s Bandcamp profile lists São Paulo, Brazil.",
+          "sourceURL": "https://sonhostomamconta.bandcamp.com/album/pesadelos",
+          "evidence": "Lua Viana (Antropoceno) São Paulo, Brazil"
+        },
+        {
+          "claim": "The pesadelos source metadata correctly identifies its release date.",
+          "sourceURL": "https://sonhostomamconta.bandcamp.com/album/pesadelos",
+          "evidence": "released April 7, 2020"
+        },
+        {
+          "claim": "Paraglow’s artist page dates the release to 2022.",
+          "sourceURL": "https://paraglow.bandcamp.com/album/paraglow",
+          "evidence": "released September 21, 2022"
+        },
+        {
+          "claim": "Parannoul and Asian Glow share production and mixing credits.",
+          "sourceURL": "https://paraglow.bandcamp.com/album/paraglow",
+          "evidence": "Produced, Mixed by Parannoul, Asian Glow"
+        },
+        {
+          "claim": "POCLANOS lists a different Paraglow release date, also in 2022.",
+          "sourceURL": "https://poclanos.com/album/paraglow/",
+          "evidence": "Release 2022.10.13"
+        },
+        {
+          "claim": "POCLANOS independently presents Paraglow as joint work.",
+          "sourceURL": "https://poclanos.com/album/paraglow/",
+          "evidence": "All by Parannoul & Asian Glow"
+        },
+        {
+          "claim": "Nebulous You was released in December 2022.",
+          "sourceURL": "https://dellazyr.bandcamp.com/album/nebulous-you",
+          "evidence": "released December 15, 2022"
+        },
+        {
+          "claim": "Parannoul receives vocal credits on tracks one, two and four.",
+          "sourceURL": "https://dellazyr.bandcamp.com/album/nebulous-you",
+          "evidence": "Vox: Parannoul (tracks 1, 2, 4)"
+        },
+        {
+          "claim": "The separate acknowledgment names the four musicians and describes their support as quoted in the draft.",
+          "sourceURL": "https://dellazyr.bandcamp.com/album/nebulous-you",
+          "evidence": "Ian Lim, Wapddi, BrokenTeeth, & Asian Glow for moral support & quality assurance"
+        },
+        {
+          "claim": "The craft reference identifies Henry Ivry as its author.",
+          "sourceURL": "https://daily.bandcamp.com/scene-report/seoul-experimental-electronic-list",
+          "evidence": "Henry Ivry"
+        },
+        {
+          "claim": "The craft reference’s publication date matches the supplied source metadata.",
+          "sourceURL": "https://daily.bandcamp.com/scene-report/seoul-experimental-electronic-list",
+          "evidence": "April 13, 2022"
+        }
+      ]
+    },
+    "editorial": {
+      "approved": true,
+      "reason": "The exact draft makes a modest, useful connection between distinct forms of collaboration. Comparison with opened originals and the supplied recent stories found no substantive editorial defect, imitation or invented experience. This is editorial approval of the supplied text only, not publication authorization or a computed content-hash certification.",
+      "issues": [],
+      "contribution": "Connects a split release, joint production, guest vocals, acknowledged support and concert organising within one documented circle. The distinctions explain what shared credits establish without inventing a recording workflow, while the Brazilian connection prevents an exclusively national framing.",
+      "referenceIds": [
+        "seoul-electronic"
+      ],
+      "comparisons": [
+        "Reader promise: ‘one circle’ accurately limits the title. The article answers which kinds of work these musicians shared; it does not promise a comprehensive scene history or a detailed account of studio methods.",
+        "The opened [Henry Ivry scene report](https://daily.bandcamp.com/scene-report/seoul-experimental-electronic-list) connects people and institutions before discussing releases. That technique is relevant here. The draft borrows neither its curry metaphor, listening descriptions nor interview scenes. Its progression through types of work differs from Ivry’s community introduction followed by six release assessments. The reference remains craft-only; no reception claim was verified.",
+        "Against [James Gui’s reporting](https://pitchfork.com/features/article/parannoul-and-the-new-generation-of-korean-indie/), the draft retains explicit attribution and uses only identity and organising context. Although both end with Digital Dawn, this short account does not reproduce Gui’s opening scene, biographical progression or personal-transformation conclusion. The shared event alone does not establish imitation.",
+        "The [Downfall credits](https://longinusrecordings.bandcamp.com/album/downfall-of-the-neon-youth) and [Paraglow credits](https://paraglow.bandcamp.com/album/paraglow) support the distinction between appearing on a split and sharing production credit. ‘These album-level credits do not explain each song’s division of labour’ supplies a useful limit. The Paraglow paragraph slightly restates its production credit, but its qualification prevents a substantive overclaim.",
+        "The [Nebulous You credits](https://dellazyr.bandcamp.com/album/nebulous-you) distinguish a vocal contribution from an acknowledgment. The paragraph preserves that distinction without inventing what support involved. The closing [Longinus account](https://longinusrecordings.com/pages/news) adds organising responsibility and preserves the label’s qualification about its own smaller role.",
+        "Each paragraph contains specific relationships, credits or responsibilities; replacing names alone would leave those particulars needing replacement too. The anniversary supplies a legitimate retrospective occasion. There is no biography padding, unsupported sonic judgment, claimed listening, attendance or interview access.",
+        "Compared with all four supplied history articles: the anniversary opening differs from HANRORO’s interview question, youra’s studio anecdote, sunwoojunga’s departure story and Yerin Baek’s credits-led opening. Collaboration overlaps thematically with youra and Yerin Baek, but this article distinguishes roles across a network. Its organising-account ending repeats neither their listening recommendations nor the other stories’ emotional synthesis.",
+        "Source ledger, apportioned by supported clauses rather than charging unrelated material in shared paragraphs: Gui contributes approximately 50–60 words, below its 100-word allowance. Downfall, Longinus, Paraglow and Nebulous You each contribute fewer than 200 words, including relevant framing; the artist profiles contribute substantially less. The sole substantive quotation is the five-token acknowledgment phrase, below 25 words. No lyrics or extended interview answers are reproduced.",
+        "The opened [artist profile](https://linktr.ee/sonhostomamconta) and [Bandcamp profile](https://sonhostomamconta.bandcamp.com/album/pesadelos) support the opening’s project identification and Brazilian connection. The organization byline and supplied editorial-process notice describe automated involvement without inventing a contributor."
+      ]
+    }
+  }
+}

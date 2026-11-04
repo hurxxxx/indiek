@@ -3,6 +3,18 @@
   "origin": "https://indiek.com",
   "items": [
     {
+      "id": "korean-shoegaze",
+      "kind": "story",
+      "title": "Sharing the work: one circle in Korean shoegaze",
+      "path": "/stories/korean-shoegaze/",
+      "description": "Five years after Downfall of the Neon Youth, credits and concert accounts trace shared production, guest vocals and organising—with a connection to Brazil.",
+      "artistIds": [],
+      "image": "/assets/social/stories-korean-shoegaze.jpg",
+      "altText": "Sharing the work: one circle in Korean shoegaze — indiek. Original typographic article card.",
+      "revision": "02b926ddcc4f0db4ef8f8883533b438965e9f0f1aec79f8fe40b94b10a895c5a",
+      "published": "2026-11-05"
+    },
+    {
       "id": "hanroro-writing",
       "kind": "story",
       "title": "What spring means in HANRORO’s “Let Me Love My Youth”",
