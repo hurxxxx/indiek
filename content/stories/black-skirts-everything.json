@@ -1,0 +1,297 @@
+{
+  "id": "black-skirts-everything",
+  "slug": "black-skirts-everything",
+  "status": "published",
+  "category": "Song stories",
+  "title": "“EVERYTHING”: The Black Skirts’ album ending and Japanese introduction",
+  "description": "Announced as a closing track in 2016, “EVERYTHING” took its place on TEAM BABY before Jo Hyu-il chose it for his Japanese debut.",
+  "authorId": "indiek",
+  "published": "2026-11-09",
+  "updated": "2026-11-09",
+  "artistIds": [
+    "black-skirts"
+  ],
+  "keywords": [
+    "The Black Skirts",
+    "검정치마",
+    "EVERYTHING",
+    "TEAM BABY",
+    "Jo Hyu-il",
+    "Japanese debut"
+  ],
+  "sources": [
+    {
+      "id": "everything-release",
+      "url": "https://www.genie.co.kr/detail/albumInfo?axnm=80780854",
+      "label": "EVERYTHING — release metadata, introduction and songwriting credits",
+      "publisher": "Genie; release-copy author unnamed",
+      "published": "Page publication date unstated; release dated 2016-01-29",
+      "checked": "2026-11-08",
+      "language": "ko"
+    },
+    {
+      "id": "melon-release-story",
+      "url": "https://m.melon.com/cds/musicstory/mobile2/musicstory_view.htm?mstorySeq=3227",
+      "label": "일했다, 조휴일! 검정치마 'EVERYTHING' 뮤직비디오 제작기 — contemporaneous promotional feature",
+      "publisher": "Melon Music Story; individual author not identified",
+      "published": "2016-01-29",
+      "checked": "2026-11-08",
+      "language": "ko"
+    },
+    {
+      "id": "team-baby-release",
+      "url": "https://www.genie.co.kr/detail/albumInfo?axnm=80951471",
+      "label": "TEAM BABY — release date and ten-track sequence",
+      "publisher": "Genie",
+      "published": "Page publication date unstated; release dated 2017-05-30",
+      "checked": "2026-11-08",
+      "language": "ko"
+    },
+    {
+      "id": "japanese-single",
+      "url": "https://sensa.jp/news/20210630-tbs.html",
+      "label": "Japanese debut announcement, release details and attributed artist statement",
+      "publisher": "SENSA; unsigned news item containing statements from The Black Skirts and Margt",
+      "published": "2021-06-30",
+      "checked": "2026-11-08",
+      "language": "ja"
+    },
+    {
+      "id": "kstyle-interview",
+      "url": "https://news.livedoor.com/article/detail/20961774/",
+      "label": "The Black Skirts、日本デビューを決めた最大の理由は？アルバム「TEAM BABY」をリリース",
+      "publisher": "Kstyle, syndicated by Livedoor; interview cooperation credited to Bside; individual interviewer unnamed",
+      "published": "2021-10-02",
+      "checked": "2026-11-08",
+      "language": "ja"
+    },
+    {
+      "id": "sunwoojunga-kraze",
+      "url": "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi",
+      "label": "INTERVIEW: Sunwoojunga on Her Love for Hugs and Björk, the Need for Black Coffee, and How Music Can Be Like Kimchi — technique reference only",
+      "publisher": "The Kraze; Angelica Vianello",
+      "published": "2024-03-09",
+      "checked": "2026-11-08",
+      "language": "en"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Listeners heard the planned ending of The Black Skirts’ third album more than a year before the album arrived. Released on January 29, 2016, “EVERYTHING” was explicitly introduced as an advance single intended for the record’s final slot. Its place in the sequence was already part of its public story. [Original release notes](https://www.genie.co.kr/detail/albumInfo?axnm=80780854); [TEAM BABY release record](https://www.genie.co.kr/detail/albumInfo?axnm=80951471).",
+      "sources": [
+        "everything-release",
+        "team-baby-release"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The Black Skirts is songwriter Jo Hyu-il’s solo project, and the single credits him with lyrics, composition and arrangement. It was also his first release after joining HIGHGRND. The promotional notes anticipated a third album that year; TEAM BABY eventually appeared on May 30, 2017, with “EVERYTHING” tenth and last. The timetable had changed, but the intended position held. [Contemporaneous Melon feature](https://m.melon.com/cds/musicstory/mobile2/musicstory_view.htm?mstorySeq=3227); [single notes and credits](https://www.genie.co.kr/detail/albumInfo?axnm=80780854); [album sequence](https://www.genie.co.kr/detail/albumInfo?axnm=80951471).",
+      "sources": [
+        "melon-release-story",
+        "everything-release",
+        "team-baby-release"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Jo later described TEAM BABY to Kstyle as a soft-rock album about love, with enough variety that he hoped any listener could find a song they liked. For someone arriving through “EVERYTHING”, his description offers a reason to explore the surrounding record: the album approaches that shared subject through several genres. [Kstyle interview, syndicated by Livedoor](https://news.livedoor.com/article/detail/20961774/).",
+      "sources": [
+        "kstyle-interview"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "On June 30, 2021, “EVERYTHING (Japanese Ver.)” became his Japanese debut single. Asked by Kstyle why he chose it, Jo said it was his most-loved song and one he personally liked. In his account, listeners’ affection and his own attachment made an established song the choice for a new introduction. [Japanese release announcement](https://sensa.jp/news/20210630-tbs.html); [Kstyle interview](https://news.livedoor.com/article/detail/20961774/).",
+      "sources": [
+        "japanese-single",
+        "kstyle-interview"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The familiar song nevertheless presented an unfamiliar task. In his release-day statement, Jo said this was his first time singing in Japanese. Pronunciation initially felt awkward, and he took particular care to make the emotional expression feel natural. His account locates the work of returning to “EVERYTHING” in how he could convey it in another language. [Artist statement published by SENSA](https://sensa.jp/news/20210630-tbs.html).",
+      "sources": [
+        "japanese-single"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The Japanese-language TEAM BABY followed on September 29, 2021, retaining “EVERYTHING” as its tenth and final track. Both release sequences therefore offered the same possible route: encounter the song on its own, then return to it at the album’s end. Its role as an introduction coexisted with the closing position announced back in 2016. [Japanese album details](https://news.livedoor.com/article/detail/20961774/); [original single notes](https://www.genie.co.kr/detail/albumInfo?axnm=80780854).",
+      "sources": [
+        "kstyle-interview",
+        "everything-release"
+      ]
+    }
+  ],
+  "review": {
+    "contentHash": "cf5e1b9429842a2fcfe2b2f82ebdd6992afe9e6769caf4570377c2db57136a87",
+    "skillRevision": "096364c5a2ccaf903dd1c9e294cf1ac3c0d96a8f0a32ef5a64bc6fee9436abcf",
+    "checkedAt": "2026-11-08T18:25:21.291Z",
+    "facts": {
+      "approved": true,
+      "reason": "Applied the supplied skill and freshly opened all six listed sources. No unresolved blocking factual errors found in the exact title, deck, source metadata or six paragraphs. Dates, credits and translated accounts are supported. Popularity and recording priorities remain attributed to Jo; the closing listening route is appropriately qualified interpretation. November 9 is scheduled draft metadata. This is factual approval only, not publication authorization or content-hash certification. No audio or video was independently heard.",
+      "issues": [],
+      "checkedURLs": [
+        "https://www.genie.co.kr/detail/albumInfo?axnm=80780854",
+        "https://m.melon.com/cds/musicstory/mobile2/musicstory_view.htm?mstorySeq=3227",
+        "https://www.genie.co.kr/detail/albumInfo?axnm=80951471",
+        "https://sensa.jp/news/20210630-tbs.html",
+        "https://news.livedoor.com/article/detail/20961774/",
+        "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi"
+      ],
+      "supportedClaims": [
+        {
+          "claim": "EVERYTHING's single release date was January 29, 2016.",
+          "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=80780854",
+          "evidence": "2016.01.29"
+        },
+        {
+          "claim": "The release introduction designated the advance single as the third album's closing track.",
+          "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=80780854",
+          "evidence": "3집의 마지막 트랙이자 선공개하는 싱글"
+        },
+        {
+          "claim": "The release introduction identifies it as his first song presented after joining HIGHGRND.",
+          "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=80780854",
+          "evidence": "하이그라운드에 합류한 후 처음으로 선보이는 곡이다."
+        },
+        {
+          "claim": "Jo Hyu-il receives lyrics, composition and arrangement credits.",
+          "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=80780854",
+          "evidence": "작사,작곡,편곡: 조휴일"
+        },
+        {
+          "claim": "Melon's contemporaneous feature is dated January 29, 2016.",
+          "sourceURL": "https://m.melon.com/cds/musicstory/mobile2/musicstory_view.htm?mstorySeq=3227",
+          "evidence": "2016.01.29"
+        },
+        {
+          "claim": "Melon identifies The Black Skirts as songwriter Jo Hyu-il's one-person band.",
+          "sourceURL": "https://m.melon.com/cds/musicstory/mobile2/musicstory_view.htm?mstorySeq=3227",
+          "evidence": "검정치마는 싱어송라이터 조휴일의 원-맨 밴드입니다."
+        },
+        {
+          "claim": "The 2016 promotional notes anticipated the third album that year.",
+          "sourceURL": "https://m.melon.com/cds/musicstory/mobile2/musicstory_view.htm?mstorySeq=3227",
+          "evidence": "정말 올해만큼은 꼭 발매될 검정치마 3집"
+        },
+        {
+          "claim": "TEAM BABY arrived on May 30, 2017, more than a year after the single.",
+          "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=80951471",
+          "evidence": "2017.05.30"
+        },
+        {
+          "claim": "EVERYTHING occupies row ten, the final entry in the opened TEAM BABY track list.",
+          "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=80951471",
+          "evidence": "EVERYTHING"
+        },
+        {
+          "claim": "SENSA's announcement is dated June 30, 2021.",
+          "sourceURL": "https://sensa.jp/news/20210630-tbs.html",
+          "evidence": "2021.06.30"
+        },
+        {
+          "claim": "The announcement reports the Japanese-language version's release on June 30.",
+          "sourceURL": "https://sensa.jp/news/20210630-tbs.html",
+          "evidence": "6月30日にリリースした"
+        },
+        {
+          "claim": "SENSA identifies the release as his Japanese debut single.",
+          "sourceURL": "https://sensa.jp/news/20210630-tbs.html",
+          "evidence": "日本デビューシングルとなる"
+        },
+        {
+          "claim": "Jo said this was his first time singing in Japanese.",
+          "sourceURL": "https://sensa.jp/news/20210630-tbs.html",
+          "evidence": "日本語で歌うのは初めてだった"
+        },
+        {
+          "claim": "Jo described initially unfamiliar, awkward pronunciation.",
+          "sourceURL": "https://sensa.jp/news/20210630-tbs.html",
+          "evidence": "はじめ発音に慣れておらずぎこちなかった"
+        },
+        {
+          "claim": "Jo said he took considerable care over natural emotional expression.",
+          "sourceURL": "https://sensa.jp/news/20210630-tbs.html",
+          "evidence": "感情表現に違和感がないようたくさん気を使って"
+        },
+        {
+          "claim": "The syndicated Kstyle interview was published on October 2, 2021.",
+          "sourceURL": "https://news.livedoor.com/article/detail/20961774/",
+          "evidence": "2021年10月2日"
+        },
+        {
+          "claim": "Jo described TEAM BABY as a soft-rock album.",
+          "sourceURL": "https://news.livedoor.com/article/detail/20961774/",
+          "evidence": "SOFT ROCKアルバムです"
+        },
+        {
+          "claim": "Jo identified love as its theme.",
+          "sourceURL": "https://news.livedoor.com/article/detail/20961774/",
+          "evidence": "愛をテーマにしました"
+        },
+        {
+          "claim": "Jo connected the album's variety with his expectation that any listener could find a song they liked.",
+          "sourceURL": "https://news.livedoor.com/article/detail/20961774/",
+          "evidence": "誰が聴いても一曲くらいは好みの曲が絶対にあるだろうというくらい、多様なジャンルを試みた"
+        },
+        {
+          "claim": "Explaining his debut-song choice, Jo called EVERYTHING his most-loved song and one he personally liked.",
+          "sourceURL": "https://news.livedoor.com/article/detail/20961774/",
+          "evidence": "僕の曲の中で最も愛されている曲でもあり、個人的にも好きな曲です。"
+        },
+        {
+          "claim": "The interview identifies the Japanese album as containing ten Japanese-language tracks.",
+          "sourceURL": "https://news.livedoor.com/article/detail/20961774/",
+          "evidence": "日本語詞、全10曲入りアルバム"
+        },
+        {
+          "claim": "The Japanese TEAM BABY release panel gives September 29, 2021.",
+          "sourceURL": "https://news.livedoor.com/article/detail/20961774/",
+          "evidence": "2021.09.29"
+        },
+        {
+          "claim": "The Japanese album's sequence also ends with EVERYTHING at track ten.",
+          "sourceURL": "https://news.livedoor.com/article/detail/20961774/",
+          "evidence": "10. EVERYTHING"
+        },
+        {
+          "claim": "The interview credits Bside for interview cooperation.",
+          "sourceURL": "https://news.livedoor.com/article/detail/20961774/",
+          "evidence": "インタビュー協力：Bside"
+        },
+        {
+          "claim": "The technique reference credits Angelica Vianello.",
+          "sourceURL": "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi",
+          "evidence": "Angelica Vianello"
+        },
+        {
+          "claim": "The technique reference's publication date matches the article's source metadata.",
+          "sourceURL": "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi",
+          "evidence": "March 9, 2024"
+        }
+      ]
+    },
+    "editorial": {
+      "approved": true,
+      "reason": "The exact draft makes a useful, supported connection between the song’s planned closing position and its later selection as a Japanese debut. Comparison with the opened sources, technique reference and all five supplied recent articles found no substantive imitation or unresolved editorial defect. This is editorial approval of the supplied text only; no content hash was computed and no audio or video was heard.",
+      "issues": [],
+      "contribution": "Connects two release campaigns to show how the same song could introduce an album while remaining its ending. Jo’s attributed selection reasons and account of singing in Japanese explain the later decision without inventing an artistic rationale for the original closing position.",
+      "referenceIds": [
+        "sunwoojunga-kraze"
+      ],
+      "comparisons": [
+        "Reader question: How did EVERYTHING function within the catalogue and become the Japanese introduction? The title and deck accurately promise the release-history answer delivered. The closing phrase ‘same possible route’ describes an available listening sequence, without claiming documented audience behaviour.",
+        "The opened [Angelica Vianello interview](https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi) supplies a relevant technique: use the musician’s explanation to examine an established song’s subsequent role. The draft does not borrow its catalogue-map opening, interview scene, metaphors, question sequence or future-facing ending. This remains a craft-only reference; no reception claim is made.",
+        "The [2016 single notes](https://www.genie.co.kr/detail/albumInfo?axnm=80780854) and [2017 album record](https://www.genie.co.kr/detail/albumInfo?axnm=80951471) support the opening’s intended-versus-realised sequence. The draft avoids their promotional imagery, sonic descriptions and extended career narrative. ‘The timetable had changed, but the intended position held’ adds a useful comparison across records.",
+        "The [Melon feature](https://m.melon.com/cds/musicstory/mobile2/musicstory_view.htm?mstorySeq=3227) supplies concise identity and release context. The draft omits its fan-reaction narrative, jokes and biographical progression. Melon repeats the single’s promotional copy, so those overlapping passages are one evidence lineage, not independent corroboration.",
+        "The [Kstyle interview via Livedoor](https://news.livedoor.com/article/detail/20961774/) supports the attributed album description, selection reasons and Japanese album sequence. The draft rearranges selected answers around its own release-history question; it does not reconstruct the interview. ‘Most-loved’ remains Jo’s assessment. Paragraph three is the most transferable passage, but its attributed album description gives unfamiliar readers relevant context rather than generic praise.",
+        "The [SENSA announcement](https://sensa.jp/news/20210630-tbs.html) supports the Japanese single date and Jo’s stated pronunciation and expression concerns. Paragraph five adds a concrete task involved in revisiting the song. It does not present his account as independently heard performance quality.",
+        "Compared with all five supplied history articles, the opening differs from the shoegaze anniversary, HANRORO’s concert question, youra’s studio anecdote, sunwoojunga’s personal departure and Yerin Baek’s credits. The closing continuity resembles HANRORO’s broad method of connecting earlier and later settings, but establishes a different, specific relationship. It repeats neither the other stories’ emotional conclusions nor their listening itineraries.",
+        "Source contribution ledger for the article, including relevant title/deck language and shared synthesis: approximately 150–190 words attributable to Kstyle, 150–190 to the original single material, under 130 to the 2017 record, under 100 to SENSA, and substantially less to Melon’s distinct reporting. Each fits the retrieved 200-word allowance; duplicated promotional material is not treated as extra budget. No substantive quotations, lyrics or translated verses are reproduced.",
+        "All six paragraphs supply evidence, context or a distinct connection. Some concluding sentences restate their paragraphs’ implications, but the article is short and they clarify the argument. No invented listening, attendance, interview access or personal experience appears. The supplied organization byline and process notice truthfully identify automated involvement."
+      ]
+    }
+  }
+}

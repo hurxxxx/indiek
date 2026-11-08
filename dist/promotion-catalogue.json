@@ -3,6 +3,20 @@
   "origin": "https://indiek.com",
   "items": [
     {
+      "id": "black-skirts-everything",
+      "kind": "story",
+      "title": "“EVERYTHING”: The Black Skirts’ album ending and Japanese introduction",
+      "path": "/stories/black-skirts-everything/",
+      "description": "Announced as a closing track in 2016, “EVERYTHING” took its place on TEAM BABY before Jo Hyu-il chose it for his Japanese debut.",
+      "artistIds": [
+        "black-skirts"
+      ],
+      "image": "/assets/social/stories-black-skirts-everything.jpg",
+      "altText": "“EVERYTHING”: The Black Skirts’ album ending and Japanese introduction — indiek. Original typographic article card.",
+      "revision": "cf5e1b9429842a2fcfe2b2f82ebdd6992afe9e6769caf4570377c2db57136a87",
+      "published": "2026-11-09"
+    },
+    {
       "id": "korean-shoegaze",
       "kind": "story",
       "title": "Sharing the work: one circle in Korean shoegaze",
