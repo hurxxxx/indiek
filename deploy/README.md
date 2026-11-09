@@ -201,6 +201,8 @@ cat promotion/state/search-console/latest.md
 systemctl --user list-timers indiek-search-console.timer --no-pager
 ```
 
+최초 연결(2026-11-09): 서비스 계정을 `전체` 권한 사용자로 추가하고 `check`에서 `siteFullUser`를 확인했다. systemd로 실행한 첫 `daily`는 사이트맵을 다시 제출하고 37개 URL을 약 4분 30초에 검사했다(색인 34/37). URL당 약 7초가 걸리므로 페이지가 120개를 넘으면 서비스의 `TimeoutStartSec`(15분)을 늘린다.
+
 키가 없으면 `daily`는 `연결 안 됨`만 기록하고 Google에 아무것도 보내지 않는다. 인증·권한·할당량 오류는 실패 종료 코드로 남으며 `journalctl --user -u indiek-search-console.service -n 50 --no-pager`로 확인한다. 중단은 `systemctl --user disable --now indiek-search-console.timer`다.
 
 ## 확인과 복구
