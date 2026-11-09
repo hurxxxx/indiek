@@ -7,9 +7,10 @@ import {storyViews,storyPromotion} from './story-pages.mjs';
 import {spawnSync} from 'node:child_process';
 import {loadCatalogue} from './catalogue.mjs';
 import {lastmodTracker, sitemapXML} from './sitemap.mjs';
+import {songPageStatus, readingPath, lyricsPath, lyricsAnchor, similarSongs, songStructuredData, backgroundSources} from './song-pages.mjs';
 import {resolveHome,renderHome} from './home.mjs';
 import {shareImagePath, editorialEntries, relatedRecords} from '../site/editorial.mjs';
-import {escapeHTML as e, artistId, artistPath, trackPath, trackAnchor, getArtistRecords, imageHTML, coverHTML, videoLabel, externalLink as out, saveButton, getFeaturedArtists, getListeningGuides, guidePath, formatPosition, youtubeConsentHTML, getArtistDirectory, navigationSection, getPlaybackRecords} from '../site/shared.mjs';
+import {escapeHTML as e, artistId, artistPath, trackPath, trackAnchor, getArtistRecords, imageHTML, coverHTML, videoLabel, externalLink as out, saveButton, getFeaturedArtists, getListeningGuides, guidePath, formatPosition, youtubeConsentHTML, getArtistDirectory, navigationSection, getPlaybackRecords, songPath} from '../site/shared.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = file => readFileSync(path.join(root, file), 'utf8');
@@ -24,7 +25,7 @@ const guides = getListeningGuides(catalogue);
 const all = [...records, pick];
 const artists = getArtistRecords(catalogue);
 const playbackRecords = getPlaybackRecords(catalogue);
-const version = '20261022-baek-a';
+const version = '20261109-song-pages';
 const authors=JSON.parse(read('content/authors.json'));
 const stories=publicStories(loadStories(root));
 for(const s of stories) {
@@ -89,13 +90,13 @@ function artistSearchMeta(r, tracks) {
 function artistStructuredData(r, tracks) {
   const artistURL = site.url + artistPath(r);
   const group = {'@type':'MusicGroup','@id':`${artistURL}#artist`,name:r.artist,...(r.korean && r.korean !== r.artist ? {alternateName:r.korean} : {}),url:artistURL};
-  return [group, ...tracks.map((track, i) => ({'@type':'MusicRecording',name:track.track,...(track.koreanTitle ? {alternateName:track.koreanTitle} : {}),url:`${artistURL}#${i === 0 ? 'listen' : `track-${track.id}`}`,byArtist:{'@id':group['@id']},...(track.release ? {inAlbum:{'@type':'MusicAlbum',name:track.release}} : {})}))];
+  return [group, ...tracks.map((track, i) => ({'@type':'MusicRecording',name:track.track,...(track.koreanTitle ? {alternateName:track.koreanTitle} : {}),url:songPageStatus(track).ready ? site.url + songPath(track) : `${artistURL}#${i === 0 ? 'listen' : `track-${track.id}`}`,byArtist:{'@id':group['@id']},...(track.release ? {inAlbum:{'@type':'MusicAlbum',name:track.release}} : {})}))];
 }
 // options.shareTitle keeps share cards stable when the search title changes; options.structured adds schema.org nodes.
 function page(url, title, description, main, kind = '', editorial = null, options = {}) {
   const canonical = site.url + url;
   const image = shareImagePath(url);
-  socialImages.push({image, title:options.shareTitle || title.replace(/ \| indiek$/, '').replace(' — Listening guide',''), subtitle:'Find your next listen at indiek.com', label:editorial ? 'Listening notes' : 'Music from Korea'});
+  socialImages.push({image, title:options.shareTitle || title.replace(/ \| indiek$/, '').replace(' — Listening guide',''), subtitle:'Find your next listen at indiek.com', label:options.shareLabel || (editorial ? 'Listening notes' : 'Music from Korea')});
   const article = editorial ? {'@type':'Article',headline:title.replace(/ \| indiek$/, ''),description,url:canonical,image:site.url + image,author:{'@type':editorial.authorType||'Organization',name:editorial.author,url:site.url+(editorial.authorURL||'/about/')},...(editorial.published ? {datePublished:editorial.published} : {}),dateModified:editorial.updated,mainEntityOfPage:canonical} : null;
   const nodes = [article, ...(options.structured || [])].filter(Boolean);
   const structured = nodes.length > 1 ? {'@context':'https://schema.org','@graph':nodes} : nodes.length ? {'@context':'https://schema.org',...nodes[0]} : null;
@@ -103,7 +104,7 @@ function page(url, title, description, main, kind = '', editorial = null, option
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 ${site.googleSiteVerification ? `<meta name="google-site-verification" content="${e(site.googleSiteVerification)}">` : ''}
-<title>${e(title)}</title><meta name="description" content="${e(description)}"><meta name="theme-color" content="#f5f3ed">
+<title>${e(title)}</title><meta name="description" content="${e(description)}">${options.noindex ? '<meta name="robots" content="noindex">' : ''}<meta name="theme-color" content="#f5f3ed">
 <link rel="canonical" href="${canonical}"><meta property="og:type" content="${editorial?'article':'website'}"><meta property="og:site_name" content="indiek">
 <meta property="og:title" content="${e(title)}"><meta property="og:description" content="${e(description)}"><meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${site.url}${image}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${e(title)} — indiek listening notes">
@@ -115,7 +116,8 @@ ${structured?`<script type="application/ld+json">${JSON.stringify(structured).re
   mkdirSync(path.dirname(file), {recursive:true});
   const output = html.replace(/[\t ]+$/gm, '');
   writeFileSync(file, output);
-  pages.push({url:canonical, lastmod:lastmod(canonical, output)});
+  // noindex pages stay reachable but out of the sitemap until their content is complete.
+  pages.push({url:canonical, lastmod:options.noindex ? null : lastmod(canonical, output), index:!options.noindex});
 }
 function artistCard(r) {
   const feature = features.find(feature => feature.id === artistId(r));
@@ -146,16 +148,28 @@ function guideCards(heading = 'h3', compact = false, selection = guides, imageGu
 function guideTrack(r,i,guide) {
   const detail = guide?.trackDetails?.[r.id];
   const next = detail && findArtist(detail.nextArtistId);
-  return `<li${detail?' class="guide-track-expanded"':''}><a class="guide-track" href="${trackPath(r)}" data-guide-track="${r.id}">
+  return `<li id="guide-${r.id}"${detail?' class="guide-track-expanded"':''}><a class="guide-track" href="${readingPath(r)}" data-guide-track="${r.id}">
     <span class="guide-track-number mono" aria-hidden="true">${formatPosition(i+1)}</span>${!guide || guide.records.findIndex(track=>track.image===r.image)===i ? coverHTML(media,r,{sizes:'(max-width: 760px) 76px, 100px'}) : '<span aria-hidden="true"></span>'}
     <div class="guide-track-copy"><p class="eyebrow">${e(r.artist)} / <span lang="ko">${e(r.korean)}</span></p><h2>${e(r.track)}</h2><p class="guide-track-note">${e(guide?.trackNotes?.[r.id] || r.note)}</p></div>
     <span class="guide-track-action"><span class="mono">${videoLabel(r)}</span><span>Listen & read <span aria-hidden="true">↗</span></span></span>
-  </a>${detail?`<div class="guide-track-details"><p><strong>Behind the song.</strong> ${e(detail.listenFor)}</p><p><strong>You might also like:</strong> <a href="${artistPath(next)}">${e(next.artist)} / ${e(next.track)}</a>. ${e(detail.nextNote)}</p></div>`:''}<div class="guide-track-controls"><button class="underlink" data-load-player="${r.id}" data-js-only hidden>Agree &amp; play</button>${r!==pick?saveButton(r,true):''}${lyricNotesLink(r)}</div></li>`;
+  </a>${detail?`<div class="guide-track-details"><p><strong>Behind the song.</strong> ${e(detail.listenFor)}</p><p><strong>You might also like:</strong> <a href="${artistPath(next)}">${e(next.artist)} / ${e(next.track)}</a>. ${e(detail.nextNote)}</p></div>`:''}<div class="guide-track-controls"><button class="underlink" data-load-player="${r.id}" data-js-only hidden>Agree &amp; play</button>${r!==pick?saveButton(r,true):''}${lyricNotesLink(r)}${readingPath(r)!==trackPath(r)?`<a class="underlink" href="${artistPath(r)}">More from ${e(r.artist)} ↗</a>`:''}</div></li>`;
 }
 
+const countWords = ['No','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten'];
+// Curated guides open with an in-page contents list: the opening songs, the follow-on artists and sources.
+function guideContents(guide) {
+  const songs = guide.records.length;
+  const items = [
+    `<li><a href="#guide-tracks">${countWords[songs] || songs} ${songs===1?'song':'songs'} to start with</a><ol>${guide.records.map(r=>`<li><a href="#guide-${r.id}">${e(r.artist)} — ${e(r.track)}</a></li>`).join('')}</ol></li>`,
+    guide.moreRecords?.length && `<li><a href="#guide-catalogue-title">More artists to spend time with</a></li>`,
+    guide.sources?.length && `<li><a href="#guide-sources">Sources &amp; song context</a></li>`,
+    `<li><a href="#guide-next">Other listening guides</a></li>`,
+  ].filter(Boolean);
+  return `<nav class="guide-contents" aria-labelledby="guide-contents-title"><p class="eyebrow" id="guide-contents-title">IN THIS GUIDE</p><ol>${items.join('')}</ol></nav>`;
+}
 function lyricNotesLink(r) {
   const label = r.lyricNotes?.translation ? 'English adaptation' : 'Inside the lyrics';
-  return r.lyricNotes ? `<a class="underlink" href="${artistPath(r)}#${trackAnchor(r)==='listen'?'lyrics':`lyrics-${r.id}`}" aria-label="${label}: ${e(r.track)} by ${e(r.artist)}">${label} ↗</a>` : '';
+  return r.lyricNotes ? `<a class="underlink" href="${lyricsPath(r)}" aria-label="${label}: ${e(r.track)} by ${e(r.artist)}">${label} ↗</a>` : '';
 }
 
 function guideCatalogue(guide) {
@@ -170,12 +184,11 @@ function player(r, cover = false) {
   ${youtubeConsentHTML()}
   <button class="underlink disconnect-player" data-unload-player hidden>Disconnect YouTube</button></div>`;
 }
-function lyricNotes(r) {
+function lyricNotes(r, {id = lyricsAnchor(r), level = 3} = {}) {
   const notes = r.lyricNotes;
   if (!notes) return '';
-  const id = trackAnchor(r) === 'listen' ? 'lyrics' : `lyrics-${r.id}`;
   return `<section class="lyric-notes" id="${id}" aria-labelledby="${id}-title">
-    <p class="eyebrow">INSIDE THE LYRICS</p><h3 id="${id}-title">${e(notes.heading)}</h3>
+    <p class="eyebrow">INSIDE THE LYRICS</p><h${level} id="${id}-title">${e(notes.heading)}</h${level}>
     <ul class="lyric-themes" aria-label="Lyrical themes">${notes.themes.map(theme=>`<li>${e(theme)}</li>`).join('')}</ul>
     ${notes.paragraphs.map(text=>`<p>${e(text)}</p>`).join('')}
     ${notes.translation?`<div class="lyric-translation" lang="en"><p class="eyebrow">${e(notes.translation.label)}</p>${notes.translation.stanzas.map(stanza=>`<p class="lyric-stanza">${e(stanza).replaceAll('\n','<br>')}</p>`).join('')}</div>`:''}
@@ -192,14 +205,72 @@ function performances(r) {
     </section>`;
   }).join('');
 }
+const releaseLine = r => r.releaseYear ? `Single: ${r.year} · ${e(r.release)}: ${r.releaseYear}` : `${e(r.release || r.album)} · ${e(r.releaseDate || r.year)}`;
+const releaseLink = r => `<p class="release-link">${out(r.source,new URL(r.source).hostname==='music.apple.com'?'View release on Apple Music':'Release details','underlink')}</p>`;
+const featuredLines = r => (r.featuredArtistIds || []).map(id=>{const guest=findArtist(id);return `<p class="pick-credits">Meet featured artist <a href="${artistPath(guest)}">${e(guest.artist)}</a> through <a href="${readingPath(guest)}">${e(guest.track)} ↗</a>.</p>`;}).join('');
+// A complete song page carries the background and lyric notes; its artist-page section keeps
+// the old anchors, the recording and a short pointer, so existing links still land on the song.
+function lyricPreview(r) {
+  const notes = r.lyricNotes, id = lyricsAnchor(r);
+  const adaptation = notes.translation && !notes.paragraphs.length;
+  return `<section class="lyric-notes lyric-preview" id="${id}" aria-labelledby="${id}-title"><p class="eyebrow">INSIDE THE LYRICS</p><h3 id="${id}-title">${e(notes.heading)}</h3><ul class="lyric-themes" aria-label="Lyrical themes">${notes.themes.map(theme=>`<li>${e(theme)}</li>`).join('')}</ul><p><a class="underlink" href="${lyricsPath(r)}">${adaptation?'Read the English adaptation':'Read the lyric notes'} <span aria-hidden="true">↗</span></a></p></section>`;
+}
 function trackSection(r, showCover = true) {
   const titleId = trackAnchor(r) === 'listen' ? 'track-title' : `track-title-${r.id}`;
-  return `<section class="track-page" id="${trackAnchor(r)}" aria-labelledby="${titleId}"><div class="track-summary">${showCover ? coverHTML(media,r,{sizes:'(max-width: 760px) 45vw, 300px',className:'detail-cover'}) : ''}<p class="eyebrow">${e(r.genre)} / ${r.year}</p><h2 id="${titleId}">${e(r.track)}${r.koreanTitle?`<span class="track-korean" lang="ko">${e(r.koreanTitle)}</span>`:''}</h2><p class="record-format mono">${videoLabel(r)}</p>${r.releaseYear?`<p class="embed-caption">Single: ${r.year} · ${e(r.release)}: ${r.releaseYear}</p>`:''}${r!==pick?saveButton(r,true):''}<p class="release-link">${out(r.source,new URL(r.source).hostname==='music.apple.com'?'View release on Apple Music':'Release details','underlink')}</p></div><div class="track-reading"><p class="track-description">${e(r.description)}</p>${r.listeningNote?`<section class="listening-note"><h3>A little background</h3><p>${e(r.listeningNote)}</p></section>`:''}${r.credits?`<p class="pick-credits">${e(r.credits)}</p>`:''}${(r.featuredArtistIds || []).map(id=>{const guest=findArtist(id);return `<p class="pick-credits">Meet featured artist <a href="${artistPath(guest)}">${e(guest.artist)}</a> through <a href="${trackPath(guest)}">${e(guest.track)} ↗</a>.</p>`;}).join('')}${player(r)}${lyricNotes(r)}</div></section>`;
+  const song = songPageStatus(r);
+  const summary = `<div class="track-summary">${showCover ? coverHTML(media,r,{sizes:'(max-width: 760px) 45vw, 300px',className:'detail-cover'}) : ''}<p class="eyebrow">${e(r.genre)} / ${r.year}</p><h2 id="${titleId}">${e(r.track)}${r.koreanTitle?`<span class="track-korean" lang="ko">${e(r.koreanTitle)}</span>`:''}</h2><p class="record-format mono">${videoLabel(r)}</p>${r.releaseYear?`<p class="embed-caption">${releaseLine(r)}</p>`:''}${r!==pick?saveButton(r,true):''}${releaseLink(r)}</div>`;
+  const reading = song.ready
+    ? `<p class="track-description">${e(r.description)}</p>${r.credits?`<p class="pick-credits">${e(r.credits)}</p>`:''}${featuredLines(r)}${player(r)}${lyricPreview(r)}<a class="room-button song-page-button" href="${song.path}">${e(r.track)}: lyrics meaning, credits &amp; background <span aria-hidden="true">↗</span></a>`
+    : `<p class="track-description">${e(r.description)}</p>${r.listeningNote?`<section class="listening-note"><h3>A little background</h3><p>${e(r.listeningNote)}</p></section>`:''}${r.credits?`<p class="pick-credits">${e(r.credits)}</p>`:''}${featuredLines(r)}${player(r)}${lyricNotes(r)}${song.path?`<p class="song-page-link"><a class="underlink" href="${song.path}">Song page: ${e(r.track)} <span aria-hidden="true">↗</span></a></p>`:''}`;
+  return `<section class="track-page${song.ready?' track-hub':''}" id="${trackAnchor(r)}" aria-labelledby="${titleId}">${summary}<div class="track-reading">${reading}</div></section>`;
+}
+function songSources(r, artist) {
+  const list = [{url:r.source,label:r.sourceName,language:r.sourceLanguage},...(r.lyricNotes?[r.lyricNotes.source]:[]),...backgroundSources(r),{url:artist.artistSource,label:artist.artistSourceName,language:artist.artistSourceLanguage}];
+  return list.filter((source,i)=>list.findIndex(other=>other.url===source.url)===i);
+}
+function songMain(r) {
+  const status = songPageStatus(r);
+  const artist = findArtist(artistId(r));
+  const guests = (r.featuredArtistIds || []).map(findArtist);
+  const moreSongs = [...all.filter(track=>artistId(track)===artistId(r)&&track!==r).sort((a,b)=>Number(b.id===b.primaryTrackId)-Number(a.id===a.primaryTrackId)),...all.filter(track=>track.featuredArtistIds?.includes(artistId(r)))];
+  const portrait = features.find(f=>f.id===artistId(r) && f.kind==='portrait');
+  const facts = [
+    ['Artist',`<a href="${artistPath(r)}">${e(r.artist)}</a> <span lang="ko">${e(r.korean)}</span>`],
+    guests.length && ['Featuring',guests.map(guest=>`<a href="${artistPath(guest)}">${e(guest.artist)}</a>`).join(', ')],
+    r.koreanTitle && ['Korean title',`<span lang="ko">${e(r.koreanTitle)}</span>`],
+    r.credits && ['Credits',e(r.credits)],
+    ['Release',releaseLine(r)],
+    ['This recording',e(r.performance || `${videoLabel(r)} · ${r.channel}`)],
+  ].filter(Boolean);
+  const sections = [['listen','Listen'],['credits','Credits & release'],r.listeningNote&&['background','Background'],r.lyricNotes&&['lyrics',r.lyricNotes.translation&&!r.lyricNotes.paragraphs.length?'English adaptation':'Inside the lyrics'],['similar','Similar songs'],['about-artist',`About ${r.artist}`]].filter(Boolean);
+  const similar = similarSongs(r, catalogue, {guides});
+  return `<main id="main" class="wrap artist-page song-page" data-song-page="${r.id}"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><a href="/artists/">Artists</a><span aria-hidden="true">/</span><a href="${artistPath(r)}">${e(r.artist)}</a></nav>
+  <header class="artist-heading song-heading"><p class="eyebrow">SONG / ${e(r.artist)} / <span lang="ko">${e(r.korean)}</span></p><h1>${e(r.track)}${r.koreanTitle?`<span class="song-korean" lang="ko">${e(r.koreanTitle)}</span>`:''}</h1><p class="artist-lead">${e(r.description)}</p>${shareControl()}<nav class="artist-sections" aria-label="On this song page">${sections.map(([id,label])=>`<a href="#${id}">${e(label)} ↓</a>`).join('')}</nav></header>
+  <section class="track-page" id="listen" aria-labelledby="listen-title"><div class="track-summary">${coverHTML(media,r,{priority:true,sizes:'(max-width: 760px) 45vw, 300px',className:'detail-cover'})}<p class="eyebrow">${e(r.genre)} / ${r.year}</p><h2 id="listen-title" class="sr-only">Listen to ${e(r.track)}</h2><p class="record-format mono">${videoLabel(r)}</p>${r!==pick?saveButton(r,true):''}${releaseLink(r)}</div>
+  <div class="track-reading">${player(r)}
+    <section class="song-facts" id="credits" aria-labelledby="credits-title"><p class="eyebrow">CREDITS &amp; RELEASE</p><h2 id="credits-title">About the recording</h2><dl>${facts.map(([term,value])=>`<div><dt>${term}</dt><dd>${value}</dd></div>`).join('')}</dl></section>
+    ${r.listeningNote?`<section class="listening-note" id="background" aria-labelledby="background-title"><p class="eyebrow">BACKGROUND</p><h2 id="background-title">A little background</h2><p>${e(r.listeningNote)}</p><ul class="song-source-list">${backgroundSources(r).map(source=>`<li>${sourceLink(source.url,source.label,source.language)}</li>`).join('')}</ul></section>`:''}
+    ${lyricNotes(r,{id:'lyrics',level:2})}
+  </div></section>
+  <section class="related-listening song-similar" id="similar" aria-labelledby="similar-title"><p class="eyebrow">SIMILAR SONGS</p><h2 id="similar-title">Three more to try.</h2><div class="related-tracks">${similar.map(({track,note,guide})=>`<article data-similar-song="${track.id}"><a href="${readingPath(track)}"><h3>${e(track.artist)}</h3><span>${e(track.track)} / ${videoLabel(track)}</span><p>${e(note)}</p>${guide?`<span class="similar-reason mono">${guide.selection==='curated'?'SUGGESTED IN':'ALSO IN'} ${e(guide.title.toUpperCase())}</span>`:''}</a><div class="guide-track-controls"><button class="underlink" data-load-player="${track.id}" data-js-only hidden>Agree &amp; play</button>${track!==pick?saveButton(track,true):''}</div></article>`).join('')}</div></section>
+  <section class="song-artist${portrait?' song-artist-with-photo':''}" id="about-artist" aria-labelledby="about-artist-title">${portrait?`<figure>${imageHTML(media,portrait.image,portrait.alt,{sizes:'(max-width: 760px) 40vw, 280px',style:`object-position:${portrait.position}`})}<figcaption>${photoCredit(portrait.image) || '<a href="/about/#image-credits">Image credits</a>'}</figcaption></figure>`:''}<div><p class="eyebrow">ABOUT THE ARTIST / <span lang="ko">${e(r.korean)}</span></p><h2 id="about-artist-title">${e(r.artist)}</h2><p>${e(artist.artistIntro)}</p>${artist.biography?`<p>${e(artist.biography)}</p>`:''}
+    ${moreSongs.length?`<h3>More from ${e(r.artist)}</h3><ul class="song-list">${moreSongs.map(track=>`<li><a href="${readingPath(track)}">${e(track.track)}${artistId(track)!==artistId(r)?` <span>with ${e(track.artist)}</span>`:''} <span aria-hidden="true">↗</span></a></li>`).join('')}</ul>`:''}
+    <a class="underlink" href="${artistPath(r)}">Meet ${e(r.artist)} <span aria-hidden="true">↗</span></a></div></section>
+  <section class="page-sources" aria-labelledby="sources-title"><h2 id="sources-title">Sources & further reading</h2><ul>${songSources(r,artist).map(source=>`<li>${sourceLink(source.url,source.label,source.language)}</li>`).join('')}</ul><p>These are independent listening notes, not an interview or an official artist statement. For a correction, email <a href="mailto:${site.email}">${site.email}</a>.</p><p><a href="/about/#image-credits">Image credits</a></p></section><a class="underlink back-to-shelf" href="${artistPath(r)}">All about ${e(r.artist)} <span aria-hidden="true">↗</span></a></main>`;
+}
+function songMeta(r) {
+  const korean = r.koreanTitle ? ` (${r.koreanTitle})` : '';
+  const adaptation = r.lyricNotes?.translation && !r.lyricNotes.paragraphs.length;
+  const parts = [adaptation ? 'An English adaptation' : 'Lyrics meaning in English', r.credits && 'credits', r.listeningNote && 'background', 'release details'].filter(Boolean);
+  return {
+    title:`${r.artist} — ${searchTrackName(r)}${korean}: ${adaptation ? 'English adaptation' : 'lyrics meaning'}${r.listeningNote ? ' & background' : ''} | indiek`,
+    description:`${r.description} ${parts.slice(0,-1).join(', ')} and ${parts.at(-1)}.`,
+  };
 }
 function collaborations(r) {
   const tracks = all.filter(track => track.featuredArtistIds?.includes(artistId(r)));
   if (!tracks.length) return '';
-  return `<section class="related-listening" id="collaborations" aria-labelledby="collaborations-title"><p class="eyebrow">AS A FEATURED ARTIST</p><h2 id="collaborations-title">With other artists.</h2><div class="related-tracks">${tracks.map(track=>`<article><a href="${trackPath(track)}"><h3>${e(track.artist)}</h3><span>${e(track.track)}</span><p>${e(track.description)}</p></a><div class="guide-track-controls"><button class="underlink" data-load-player="${track.id}" data-js-only hidden>Agree &amp; play</button>${track!==pick?saveButton(track,true):''}${lyricNotesLink(track)}</div></article>`).join('')}</div></section>`;
+  return `<section class="related-listening" id="collaborations" aria-labelledby="collaborations-title"><p class="eyebrow">AS A FEATURED ARTIST</p><h2 id="collaborations-title">With other artists.</h2><div class="related-tracks">${tracks.map(track=>`<article><a href="${readingPath(track)}"><h3>${e(track.artist)}</h3><span>${e(track.track)}</span><p>${e(track.description)}</p></a><div class="guide-track-controls"><button class="underlink" data-load-player="${track.id}" data-js-only hidden>Agree &amp; play</button>${track!==pick?saveButton(track,true):''}${lyricNotesLink(track)}</div></article>`).join('')}</div></section>`;
 }
 function moreTracks(r) {
   if(!r.moreTracks) return '';
@@ -239,7 +310,7 @@ for(const r of artists) {
   const sourceList=[{url:r.source,label:r.sourceName,language:r.sourceLanguage},{url:r.artistSource,label:r.artistSourceName,language:r.artistSourceLanguage},...(r.extraSources||[]),...artistTracks.slice(1).flatMap(track=>[{url:track.source,label:track.sourceName,language:track.sourceLanguage},...(track.extraSources||[])])];
   const sources=sourceList.filter((source,i)=>sourceList.findIndex(other=>other.url===source.url)===i);
   const main=`<main id="main" class="wrap artist-page"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><a href="/artists/">Artists</a></nav>
-  <header class="artist-heading"><p class="eyebrow">MEET THE ARTIST / <span lang="ko">${e(r.korean)}</span></p><h1>${e(r.artist)}</h1><p class="artist-lead">${e(r.artistIntro)}</p>${byline(r.editorial)}${shareControl()}${r.lyricNotes?`<nav class="artist-sections" aria-label="On this artist page"><a href="#listen">Listen ↓</a><a href="#lyrics">${r.lyricNotes.translation?'English adaptation':'Inside the lyrics'} ↓</a>${(r.performances||[]).map(video=>`<a href="#${video.id}">Full live session ↓</a>`).join('')}</nav>`:''}</header>
+  <header class="artist-heading"><p class="eyebrow">MEET THE ARTIST / <span lang="ko">${e(r.korean)}</span></p><h1>${e(r.artist)}</h1><p class="artist-lead">${e(r.artistIntro)}</p>${byline(r.editorial)}${shareControl()}${r.lyricNotes?`<nav class="artist-sections" aria-label="On this artist page"><a href="#listen">Listen ↓</a><a href="#lyrics">${r.lyricNotes.translation?'English adaptation':'Inside the lyrics'} ↓</a>${(r.performances||[]).map(video=>`<a href="#${video.id}">Full live session ↓</a>`).join('')}</nav>`:''}${artistTracks.some(songPath)?`<nav class="artist-song-pages" aria-label="Song pages for ${e(r.artist)}"><span class="mono">SONG PAGES</span>${artistTracks.filter(songPath).map(track=>`<a href="${songPath(track)}">${e(track.track)} <span aria-hidden="true">↗</span></a>`).join('')}</nav>`:''}</header>
   ${feature?`<figure class="artist-portrait">${imageHTML(media,feature.image,feature.alt,{priority:true,sizes:'(max-width: 760px) 92vw, 960px',style:`object-position:${feature.position}`})}<figcaption>${e(rights.images.find(image=>image.file===feature.image)?.caption || 'Artist photograph.')} ${photoCredit(feature.image) || '<a href="/about/#image-credits">Image credits</a>'}</figcaption></figure>`:''}
   ${r.biography?`<div class="artist-extra"><p>${e(r.biography)}</p></div>`:''}
   ${artistTracks.map((track,i)=>trackSection(track,artistTracks.findIndex(other=>other.image===track.image)===i)).join('\n  ')}
@@ -251,6 +322,10 @@ for(const r of artists) {
   const search = artistSearchMeta(r, artistTracks);
   page(artistPath(r),search.title,search.description,main,'detail-page',r.editorial,{shareTitle:`${r.artist} — ${r.track}`,structured:artistStructuredData(r, artistTracks)});
   promotionItems.push({id:artistId(r),kind:'artist',title:`${r.artist} — ${r.track}`,path:artistPath(r),description:r.description,artistIds:[artistId(r)],image:shareImagePath(artistPath(r)),altText:`indiek listening notes: ${r.artist} — ${r.track}. Typographic card.`});
+}
+for (const r of all.filter(songPath)) {
+  const meta = songMeta(r);
+  page(songPath(r),meta.title,meta.description,songMain(r),'detail-page song-detail',null,{shareTitle:`${r.artist} — ${r.track}`,shareLabel:'Song notes',structured:songStructuredData(r,site.url),noindex:!songPageStatus(r).ready});
 }
 const prose=(eyebrow,title,body)=>`<main id="main" class="wrap prose-page"><p class="eyebrow">${eyebrow}</p><h1>${title}</h1>${body}<p class="prose-back"><a class="underlink" href="/#records">Back to the music <span aria-hidden="true">↗</span></a></p></main>`;
 page('/notes/first-listens/','Listening guides | indiek','Korean music grouped around live performances, guitars and voices, with an introductory guide for new listeners.',`<main id="main" class="wrap guide-hub">
@@ -266,11 +341,12 @@ for (const guide of guides) {
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><a href="/notes/first-listens/">Listening guides</a></nav>
     <header class="guide-heading${portrait?' guide-heading-with-cover':''}"><div><p class="eyebrow">LISTENING GUIDE / ${members.length} ${members.length===1?'TRACK':'TRACKS'}</p><h1>${e(guide.title)}</h1><p class="guide-lead">${e(guide.intro)}</p>${byline(guide.editorial)}${shareControl()}</div>${portrait?`<figure>${imageHTML(media,portrait.image,portrait.alt,{priority:true,sizes:'(max-width: 760px) 100px, 240px',className:'guide-portrait',style:`object-position:${portrait.position}`})}<figcaption><span>In this guide</span><br><a href="${artistPath(portrait)}">${e(findArtist(portrait.id).artist)}</a>${photoCredit(portrait.image)}</figcaption></figure>`:''}</header>
     <div class="guide-essay">${(guide.paragraphs||[]).map(text=>`<p>${e(text)}</p>`).join('')}</div>
+    ${guide.selection==='curated'?guideContents(guide):''}
     ${youtubeConsentHTML()}
-    <ol class="guide-tracks" aria-label="Tracks in this guide">${guide.records.map((r,i)=>guideTrack(r,i,guide)).join('')}</ol>
+    <ol class="guide-tracks" id="guide-tracks" aria-label="Tracks in this guide">${guide.records.map((r,i)=>guideTrack(r,i,guide)).join('')}</ol>
     ${guideCatalogue(guide)}
-    ${guide.sources?`<section class="guide-sources"><h2>Sources & song context</h2><ul>${guide.sources.map(source=>`<li><a href="${e(source.url)}">${e(source.label)}</a></li>`).join('')}</ul><p>The artist pages link to the interviews, release notes and other sources behind these stories.</p></section>`:''}
-    <nav class="guide-next" aria-label="Other listening guides"><h2>Keep exploring.</h2><div>${guides.filter(other=>other.id!==guide.id).map(other=>`<a class="underlink" href="${guidePath(other)}">${e(other.title)} <span aria-hidden="true">↗</span></a>`).join('')}</div></nav>
+    ${guide.sources?`<section class="guide-sources" id="guide-sources"><h2>Sources & song context</h2><ul>${guide.sources.map(source=>`<li><a href="${e(source.url)}">${e(source.label)}</a></li>`).join('')}</ul><p>The artist pages link to the interviews, release notes and other sources behind these stories.</p></section>`:''}
+    <nav class="guide-next" id="guide-next" aria-label="Other listening guides"><h2>Keep exploring.</h2><div>${guides.filter(other=>other.id!==guide.id).map(other=>`<a class="underlink" href="${guidePath(other)}">${e(other.title)} <span aria-hidden="true">↗</span></a>`).join('')}</div></nav>
     <a class="underlink back-to-shelf" href="/notes/first-listens/">All listening guides <span aria-hidden="true">↗</span></a></main>`,'',guide.editorial,{shareTitle:guide.title});
   if(guide.status!=='draft')promotionItems.push({id:guide.id,kind:'guide',title:guide.title,path:guidePath(guide),description:guide.description,artistIds:[...new Set(members.map(artistId))],image:shareImagePath(guidePath(guide)),altText:`indiek listening guide: ${guide.title}. Typographic card.`});
 }
@@ -296,7 +372,7 @@ copyFileSync(path.join(root,'site/directory.mjs'),path.join(root,'dist/directory
 copyFileSync(path.join(root,'site/player.mjs'),path.join(root,'dist/player.mjs'));
 copyFileSync(path.join(root,'site/styles.css'),path.join(root,'dist/styles.css'));
 writeFileSync(path.join(root,'dist/robots.txt'),`User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
-writeFileSync(path.join(root,'dist/sitemap.xml'),sitemapXML(pages));
+writeFileSync(path.join(root,'dist/sitemap.xml'),sitemapXML(pages.filter(entry=>entry.index)));
 writeFileSync(path.join(root,'dist/promotion-catalogue.json'),JSON.stringify({version:1,origin:site.url,items:promotionItems},null,2)+'\n');
 const images = spawnSync('python3',[path.join(root,'scripts/social-images.py')],{input:JSON.stringify(socialImages),encoding:'utf8'});
 if(images.status!==0)throw new Error(images.stderr || 'Sharing image generation failed');

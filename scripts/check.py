@@ -19,6 +19,12 @@ by_id = {track['id']:track for track in tracks}
 artists = list({track['artistId']:by_id[track['primaryTrackId']] for track in tracks}.values())
 def artist_path(track): return f"/artists/{track['artistId']}/"
 def track_path(track): return artist_path(track) + ('#listen' if track['id']==track['primaryTrackId'] else '#track-'+track['id'])
+def lyrics_anchor(track): return 'lyrics' if track['id']==track['primaryTrackId'] else 'lyrics-'+track['id']
+# Song page paths, index status and similar songs come from scripts/song-pages.mjs, the rule the build uses.
+song_pages = json.loads(subprocess.check_output(['node', str(root/'scripts/song-pages.mjs'), str(root)], text=True))
+def song_path(track): return song_pages[track['id']]['path']
+def song_ready(track): return song_pages[track['id']]['ready']
+def reading_path(track): return song_path(track) if song_ready(track) else track_path(track)
 site = catalogue['site']
 errors = []
 today = datetime.now(timezone(timedelta(hours=9))).date().isoformat()
@@ -29,7 +35,7 @@ class Page(HTMLParser):
         super().__init__(); self.path=path; self.refs=[]; self.ids=set(); self.meta={}; self.canonical=[]; self.h1=0; self.frames=0
         self.guide_cards=[]; self.guide_tracks=[]; self.guide_more=[]; self.guide_id=None
         self.room_tracks=[]; self.room_count=None; self.directory_artists=[]; self.images=[]; self.nav=[]
-        self.home_sections=[]; self.hero_artists=[]
+        self.home_sections=[]; self.hero_artists=[]; self.song_id=None; self.similar=[]; self.loads=[]; self.saves=[]
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
         if 'data-home-section' in a: self.home_sections.append(a['data-home-section'])
@@ -42,6 +48,10 @@ class Page(HTMLParser):
         if 'data-guide-track' in a: self.guide_tracks.append((a['data-guide-track'],a.get('href')))
         if 'data-guide-more' in a: self.guide_more.append(a['data-guide-more'])
         if 'data-guide-page' in a: self.guide_id=a['data-guide-page']
+        if 'data-song-page' in a: self.song_id=a['data-song-page']
+        if 'data-similar-song' in a: self.similar.append(a['data-similar-song'])
+        if 'data-load-player' in a: self.loads.append(a['data-load-player'])
+        if 'data-save' in a: self.saves.append(a['data-save'])
         if 'id' in a:
             if a['id'] in self.ids: errors.append(f'{self.path}: duplicate id {a["id"]}')
             self.ids.add(a['id'])
@@ -86,9 +96,14 @@ for path in dist.rglob('*.html'):
         artist_id=relative.split('/')[1]
         opening=next((t for t in artists if t['artistId']==artist_id), None)
         if len(groups)!=1 or not recordings: errors.append(f'{path}: missing artist structured data')
+        # Complete songs point at their own page; incomplete ones at the section on this page.
+        allowed={site['url']+song_path(t) for t in tracks if t['artistId']==artist_id and song_ready(t)}
         for recording in recordings:
-            anchor=urlsplit(recording.get('url','')).fragment
-            if anchor not in page.ids or recording.get('byArtist',{}).get('@id')!=(groups[0]['@id'] if groups else None): errors.append(f'{path}: structured recording does not match the page')
+            url=recording.get('url','')
+            anchor=urlsplit(url).fragment
+            if not (url in allowed or (url.startswith(page.canonical[0]+'#') and anchor in page.ids)) or recording.get('byArtist',{}).get('@id')!=(groups[0]['@id'] if groups else None): errors.append(f'{path}: structured recording does not match the page')
+        for t in tracks:
+            if t['artistId']==artist_id and song_path(t) not in page.refs: errors.append(f'{path}: missing link to song page {song_path(t)}')
         title=re.search(r'<title>(.*?)</title>', text, re.S)
         title=unescape(title.group(1)) if title else ''
         if opening and re.sub(r'\s*\(feat\.[^)]*\)','',opening['track'],flags=re.I) not in title: errors.append(f'{path}: search title must name the opening song')
@@ -127,17 +142,50 @@ for record in tracks:
         if record['videoId'] not in text: errors.append('Missing direct video link: '+record['id'])
         if record.get('externalOnly') and f'data-load-player="{record["id"]}"' in text: errors.append('External-only performance has an embed: '+record['id'])
         notes=record.get('lyricNotes')
+        song_file=(dist/song_path(record).lstrip('/')/'index.html').resolve()
         if not notes: errors.append('Missing lyric commentary: '+record['id'])
+        elif song_file not in pages: errors.append('Missing song page: '+record['id'])
         else:
-            anchor='lyrics' if record['id']==record['primaryTrackId'] else 'lyrics-'+record['id']
-            if anchor not in pages[target].ids: errors.append('Missing lyric anchor: '+record['id'])
-            for paragraph in notes['paragraphs']:
-                if escape(paragraph).replace('&#x27;', '&#39;') not in text: errors.append('Stale or missing lyric commentary: '+record['id'])
-            for stanza in notes.get('translation',{}).get('stanzas',[]):
-                rendered=escape(stanza).replace('&#x27;', '&#39;').replace('\n','<br>')
-                if rendered not in text: errors.append('Stale or missing lyric adaptation: '+record['id'])
-            for source in [notes['source'], *notes.get('backgroundSources',[])]:
-                if source['url'] not in pages[target].refs: errors.append('Missing lyric source: '+record['id'])
+            if lyrics_anchor(record) not in pages[target].ids: errors.append('Missing lyric anchor: '+record['id'])
+            if 'lyrics' not in pages[song_file].ids: errors.append('Missing song page lyric anchor: '+record['id'])
+            for file in [song_file]+([] if song_ready(record) else [target]):
+                body=file.read_text()
+                for paragraph in notes['paragraphs']:
+                    if escape(paragraph).replace('&#x27;', '&#39;') not in body: errors.append('Stale or missing lyric commentary: '+record['id'])
+                for stanza in notes.get('translation',{}).get('stanzas',[]):
+                    rendered=escape(stanza).replace('&#x27;', '&#39;').replace('\n','<br>')
+                    if rendered not in body: errors.append('Stale or missing lyric adaptation: '+record['id'])
+                for source in [notes['source'], *notes.get('backgroundSources',[])]:
+                    if source['url'] not in pages[file].refs: errors.append('Missing lyric source: '+record['id'])
+# Song pages: one per catalogue track at /artists/<artist-id>/<slug>/, indexed only when complete.
+song_paths=[song_pages.get(t['id'],{}).get('path') for t in tracks]
+if len(set(song_paths))!=len(tracks): errors.append('Song pages must have one unique path per track')
+for record in tracks:
+    status=song_pages.get(record['id'])
+    if not status or status['path']!=f"/artists/{record['artistId']}/{record.get('slug')}/": errors.append('Missing or misplaced song page: '+record['id']); continue
+    file=(dist/status['path'].lstrip('/')/'index.html').resolve()
+    song=pages.get(file)
+    if not song: errors.append('Missing song page: '+status['path']); continue
+    text=file.read_text(); label='Song page '+status['path']
+    if song.song_id!=record['id']: errors.append(f'{label}: wrong song identity')
+    if (song.meta.get('robots')=='noindex')==status['ready']: errors.append(f"{label}: noindex must follow completeness (missing: {', '.join(status['missing']) or 'nothing'})")
+    if record['id'] not in song.loads or record['videoId'] not in text: errors.append(f'{label}: missing shared-player button or direct video link')
+    if (record['id']!=catalogue['editorPick']['id'])!=(record['id'] in song.saves): errors.append(f'{label}: save button must follow Saved eligibility')
+    if artist_path(record) not in song.refs or record['source'] not in song.refs: errors.append(f'{label}: missing artist or release link')
+    for field in ['credits','listeningNote','description']:
+        if record.get(field) and escape(record[field]).replace('&#x27;','&#39;') not in text: errors.append(f'{label}: missing {field}')
+    for source in [*record.get('extraSources',[]), *record.get('lyricNotes',{}).get('backgroundSources',[])] if record.get('listeningNote') else []:
+        if source['url'] not in song.refs: errors.append(f'{label}: missing background source')
+    title=re.search(r'<title>(.*?)</title>', text, re.S)
+    title=unescape(title.group(1)) if title else ''
+    if record['artist'] not in title or re.sub(r'\s*\(feat\.[^)]*\)','',record['track'],flags=re.I) not in title: errors.append(f'{label}: search title must name the artist and song')
+    similar=[by_id.get(id) for id in song.similar]
+    if song.similar!=status['similar'] or len(similar)!=3 or any(not t or t['artistId']==record['artistId'] or reading_path(t) not in song.refs for t in similar): errors.append(f'{label}: needs three linked similar songs by other artists')
+    ld=re.search(r'<script type="application/ld\+json">(.*?)</script>', text, re.S)
+    nodes=json.loads(ld.group(1)).get('@graph', []) if ld else []
+    recording=next((n for n in nodes if n.get('@type')=='MusicRecording'), {})
+    crumbs=next((n for n in nodes if n.get('@type')=='BreadcrumbList'), {}).get('itemListElement', [])
+    if recording.get('url')!=song.canonical[0] or recording.get('byArtist',{}).get('@id')!=site['url']+artist_path(record)+'#artist' or not crumbs or crumbs[-1].get('item')!=song.canonical[0]: errors.append(f'{label}: structured data must describe this song page')
 for name, image in media.items():
     if name not in credits: errors.append('Missing image credit: '+name)
     for variant in image['variants']:
@@ -150,7 +198,7 @@ for page in pages.values():
 sitemap_ns='{http://www.sitemaps.org/schemas/sitemap/0.9}'
 sitemap_entries=ET.parse(dist/'sitemap.xml').findall(f'.//{sitemap_ns}url')
 urls={entry.findtext(f'{sitemap_ns}loc') for entry in sitemap_entries}
-if urls!={p.canonical[0] for p in pages.values()}: errors.append('Sitemap does not match generated pages')
+if urls!={p.canonical[0] for p in pages.values() if p.meta.get('robots')!='noindex'}: errors.append('Sitemap does not match generated indexable pages')
 seoul_today=datetime.now(timezone(timedelta(hours=9))).date().isoformat()
 for entry in sitemap_entries:
     lastmod=entry.findtext(f'{sitemap_ns}lastmod') or ''
@@ -187,16 +235,25 @@ for id in guide_ids:
     covered.update(r for r,href in guide_page.guide_tracks)
     if not members or len(members)!=len(set(members)): errors.append('Empty or duplicate guide tracks: '+id)
     for record_id,href in guide_page.guide_tracks:
-        if record_id not in by_id or href!=track_path(by_id[record_id]): errors.append('Wrong guide listening link: '+id)
+        if record_id not in by_id or href!=reading_path(by_id[record_id]): errors.append('Wrong guide listening link: '+id)
     for record_id in guide_page.guide_more:
         if record_id not in by_id or artist_path(by_id[record_id]) not in guide_page.refs: errors.append('Missing follow-on artist link: '+id)
+    # Curated guides open with contents; the introductory guide links every artist page and every complete song page.
+    source_guide=next(g for g in catalogue['listeningGuides'] if g['id']==id)
+    if source_guide.get('selection')=='curated' and any(f'#guide-{r}' not in guide_page.refs for r,href in guide_page.guide_tracks): errors.append('Missing guide contents link: '+id)
+    if source_guide.get('includeCatalogue'):
+        member_ids=[r for r,href in guide_page.guide_tracks]+guide_page.guide_more
+        linked={urlsplit(ref).path for ref in guide_page.refs}
+        for t in tracks:
+            if artist_path(t) not in linked: errors.append(f'Introductory guide misses artist page {artist_path(t)}')
+            if t['id'] in member_ids and song_ready(t) and song_path(t) not in linked: errors.append(f'Introductory guide misses song page {song_path(t)}')
 if covered!={r['id'] for r in catalogue['records']+[catalogue['editorPick']]}: errors.append('Listening guides do not cover the catalogue')
 for file in ['index.html','notes/first-listens/index.html']:
     index=pages.get((dist/file).resolve())
     selected=guide_ids if file!='index.html' else list(dict.fromkeys(home_sections['guides']['guideOrder']+guide_ids)) if 'guides' in home_sections else []
     if not index or index.guide_cards!=[(id,guide_counts.get(id)) for id in selected]: errors.append('Guide cards disagree with guide pages: '+file)
     elif any(f'/notes/{id}/' not in index.refs for id in selected): errors.append('Guide card link missing: '+file)
-expected_count=len(artists)+6+len(guide_ids)+len(stories)
+expected_count=len(artists)+len(tracks)+6+len(guide_ids)+len(stories)
 if len(pages)!=expected_count: errors.append(f'Expected {expected_count} pages, found {len(pages)}')
 if site['url']+'/sitemap.xml' not in (dist/'robots.txt').read_text(): errors.append('Missing robots sitemap')
 for source,target in [(f'site/{name}',f'dist/{name}') for name in ['app.js','analytics.mjs','navigation.mjs','directory.mjs','mobile.mjs','player.mjs','styles.css','shared.mjs','stories.mjs']]:

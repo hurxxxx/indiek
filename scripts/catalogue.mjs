@@ -4,7 +4,7 @@ import path from 'node:path';
 import {getListeningGuides, getFeaturedArtists, getPlaybackRecords} from '../site/shared.mjs';
 
 const artistFields = new Set(['id','primaryTrackId','artist','korean','aliases','category','artistIntro','biography','artistSource','artistSourceName','artistSourceLanguage','editorial','moreTracks','performances']);
-const trackFields = new Set(['id','artistId','featuredArtistIds','album','release','releaseYear','year','releaseDate','genre','image','track','koreanTitle','duration','provider','videoId','channel','url','videoType','performance','note','description','source','sourceName','sourceLanguage','extraSources','guideTags','listeningNote','credits','lyricNotes','externalOnly']);
+const trackFields = new Set(['id','artistId','slug','featuredArtistIds','album','release','releaseYear','year','releaseDate','genre','image','track','koreanTitle','duration','provider','videoId','channel','url','videoType','performance','note','description','source','sourceName','sourceLanguage','extraSources','guideTags','listeningNote','credits','lyricNotes','externalOnly']);
 const validId = value => typeof value === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
 function index(items, kind, fields) {
   if (!Array.isArray(items) || !items.length) throw new Error(`Missing ${kind} list`);
@@ -69,6 +69,14 @@ export function createCatalogue(source) {
     if (track.videoType && !['live','music-video','lyric-video','audio'].includes(track.videoType)) throw new Error(`Invalid videoType: ${track.id}`);
     const videoURL = new URL(track.url);
     if (videoURL.protocol !== 'https:' || videoURL.hostname !== 'www.youtube.com' || videoURL.searchParams.get('v') !== track.videoId) throw new Error(`Mismatched video URL: ${track.id}`);
+  }
+  // A song page path is /artists/<artist-id>/<slug>/, so slugs only need to be unique within one artist.
+  const slugs = new Set();
+  for (const track of tracks.values()) {
+    if (!validId(track.slug)) throw new Error(`Missing or invalid song slug: ${track.id}`);
+    const key = `${track.artistId}/${track.slug}`;
+    if (slugs.has(key)) throw new Error(`Duplicate song slug: ${key}`);
+    slugs.add(key);
   }
   if (!tracks.has(source.editorPickTrackId)) throw new Error(`Unknown editor pick track: ${source.editorPickTrackId}`);
   const resolved = source.tracks.map(track => {

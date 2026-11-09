@@ -456,6 +456,7 @@
   "tracks": [
     {
       "id": "black-skirts",
+      "slug": "everything",
       "artistId": "black-skirts",
       "album": "EVERYTHING",
       "release": "TEAM BABY",
@@ -500,6 +501,7 @@
     },
     {
       "id": "sunwoojunga",
+      "slug": "run-with-me",
       "artistId": "sunwoojunga",
       "album": "Run with Me",
       "release": "Serenade",
@@ -542,6 +544,7 @@
     },
     {
       "id": "car-the-garden",
+      "slug": "tree",
       "artistId": "car-the-garden",
       "album": "Tree",
       "release": "Tree - Single",
@@ -584,6 +587,7 @@
     },
     {
       "id": "choi-yu-ree",
+      "slug": "forest",
       "artistId": "choi-yu-ree",
       "album": "Forest",
       "release": "Stroll - Single",
@@ -633,6 +637,7 @@
     },
     {
       "id": "bol4",
+      "slug": "eternal-love",
       "artistId": "bol4",
       "album": "Eternal love",
       "release": "Merry Go Round - EP",
@@ -675,6 +680,7 @@
     },
     {
       "id": "esegye",
+      "slug": "romance-youth-love",
       "artistId": "esegye",
       "album": "RomanceYouthLove",
       "release": "Cry For Me / RomanceYouthLove - Single",
@@ -717,6 +723,7 @@
     },
     {
       "id": "se-so-neon",
+      "slug": "the-wave",
       "artistId": "se-so-neon",
       "album": "The Wave",
       "release": "Summer Plumage - EP",
@@ -767,6 +774,7 @@
     },
     {
       "id": "ydbb",
+      "slug": "once",
       "artistId": "ydbb",
       "album": "ONCE",
       "release": "ONCE",
@@ -816,6 +824,7 @@
     },
     {
       "id": "whiteusedsocks",
+      "slug": "dont-feel-sad",
       "artistId": "whiteusedsocks",
       "album": "Don’t feel sad",
       "release": "Don’t feel sad",
@@ -864,6 +873,7 @@
     },
     {
       "id": "motte",
+      "slug": "dont-run-away",
       "artistId": "motte",
       "album": "Don’t run away",
       "release": "A-TEEN Part.4",
@@ -905,6 +915,7 @@
     },
     {
       "id": "hanroro",
+      "slug": "even-if-you-leave",
       "artistId": "hanroro",
       "album": "Even if you leave",
       "release": "Even if you leave,",
@@ -924,6 +935,7 @@
       "sourceName": "HANRORO — Even if you leave on Apple Music",
       "sourceLanguage": "English",
       "listeningNote": "Her release note leaves room for more than a breakup: it could be a choice, a neglected relationship or something you keep turning over in your mind. The song came out in April 2023.",
+      "credits": "Lyrics and music by HANRORO; produced and arranged by Lee Ji-hoon (이지훈).",
       "extraSources": [
         {
           "url": "https://poclanos.com/album/52690/",
@@ -962,6 +974,7 @@
     },
     {
       "id": "kim-sawol",
+      "slug": "someone",
       "artistId": "kim-sawol",
       "album": "Someone",
       "release": "Romance",
@@ -1005,6 +1018,7 @@
     },
     {
       "id": "yerin-baek",
+      "slug": "0310",
       "artistId": "yerin-baek",
       "album": "0310",
       "release": "Every letter I sent you.",
@@ -1066,6 +1080,7 @@
     },
     {
       "id": "gongwon",
+      "slug": "flower",
       "artistId": "gongwon",
       "album": "Flower",
       "release": "0 - EP",
@@ -1122,6 +1137,7 @@
     },
     {
       "id": "yebit",
+      "slug": "only-you",
       "artistId": "yebit",
       "album": "Only You",
       "release": "Only You (Bargobargo X Yebit) - Single",
@@ -1177,6 +1193,7 @@
     },
     {
       "id": "yoon-mirae",
+      "slug": "breath",
       "artistId": "yoon-mirae",
       "album": "Breath",
       "track": "Breath",
@@ -1237,6 +1254,7 @@
     },
     {
       "id": "baek-a-amor",
+      "slug": "amor",
       "artistId": "baek-a",
       "album": "Amor",
       "release": "Amor - Single",
@@ -1306,6 +1324,7 @@
     },
     {
       "id": "youra-flicker",
+      "slug": "flicker",
       "track": "Flicker (feat. Car, the garden)",
       "koreanTitle": "깜빡",
       "album": "B side",
@@ -1349,6 +1368,7 @@
     },
     {
       "id": "youra-mimi",
+      "slug": "mimi",
       "track": "MIMI",
       "koreanTitle": "미미",
       "album": "GAUSSIAN",
@@ -1392,6 +1412,7 @@
     },
     {
       "id": "youra-motif",
+      "slug": "motif",
       "track": "Motif",
       "koreanTitle": "구운듯한 얼굴이 너의 모티프",
       "album": "(1)",
@@ -1442,6 +1463,7 @@
     },
     {
       "id": "sondia-grown-ups",
+      "slug": "grown-ups",
       "artistId": "sondia",
       "track": "Grown Ups",
       "koreanTitle": "어른",
@@ -1485,6 +1507,7 @@
     },
     {
       "id": "moneto-she",
+      "slug": "she",
       "artistId": "moneto",
       "featuredArtistIds": [
         "mrch"
@@ -1538,6 +1561,7 @@
     },
     {
       "id": "mrch-surrender",
+      "slug": "surrender",
       "artistId": "mrch",
       "track": "Surrender",
       "koreanTitle": "항복",
@@ -1719,10 +1743,10 @@
       "seoDescription": "New to Korean indie music? Start here with official recordings, live performances, English lyric notes and the stories behind the artists.",
       "status": "ready",
       "description": "Korean songs worth sharing, with live performances, artist stories and more music to try.",
-      "intro": "Some songs, live performances and a little about the people behind them. A place to start if Korean music is new to you.",
+      "intro": "New to Korean indie music? This guide opens with five songs, each with an official video or audio and English notes on the lyrics, followed by a song from every other artist on indiek, across rock, folk, R&B and pop.",
       "paragraphs": [
-        "There’s a love song by The Black Skirts, a farewell from YdBB and a live version of SE SO NEON’s The Wave that carries on long after the singing ends. You can dip in wherever you like.",
-        "You don’t need to know Korean to spend time here. Yerin Baek’s 0310 is sung in English, and the artist pages offer English lyric notes or a poetic adaptation alongside the music. More artists appear below, with new additions as the journal grows."
+        "The Black Skirts’ EVERYTHING builds its love song from two people in a room on a rainy day. In Yerin Baek’s 0310, sung in English, someone tries to sound casual about the thought of being left. YdBB’s ONCE says goodbye while still wanting a place in the other person’s memory, and the Korean title of HANRORO’s Even if you leave, 자처, carries the sense of bringing something on yourself. SE SO NEON’s The Wave links a departing figure with the moon and never explains what happened.",
+        "You don’t need to know Korean to read along with these songs. Every song here links to English notes on its lyrics or an English adaptation, with release details and sources; songwriting credits appear where we’ve confirmed them. The artist pages gather each artist’s songs, and new artists join as the journal grows."
       ],
       "trackIds": [
         "black-skirts",

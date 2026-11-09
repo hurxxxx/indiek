@@ -5,7 +5,7 @@ import {initNavigation, createPageScroll} from './navigation.mjs';
 import {createPlayer} from './player.mjs';
 import {initArtistDirectory} from './directory.mjs';
 import {mobilePlayerQuery, initMobileViewport} from './mobile.mjs';
-import {escapeHTML as e, artistId, artistPath, trackPath, getArtistRecords, coverHTML, readSaved, searchCatalogue, formatPosition, youtubeConsentHTML, getListeningGuides, guidePath, navigationSection, getPlaybackRecords} from './shared.mjs';
+import {escapeHTML as e, artistId, artistPath, trackPath, getArtistRecords, coverHTML, readSaved, searchCatalogue, formatPosition, youtubeConsentHTML, getListeningGuides, guidePath, navigationSection, getPlaybackRecords, songPath} from './shared.mjs';
 
 const {records, editorPick: pick, media} = catalogue;
 const artists = getArtistRecords(catalogue);
@@ -325,7 +325,7 @@ window.addEventListener('storage',event=>{
 });
 window.addEventListener('pagehide',()=>{player.close();setCompactPlayer(false);});
 syncSaved();
-const analytics=initAnalytics({...catalogue.site.analytics,trackIds:playbackRecords.map(r=>r.id),contentPaths:['/','/stories/','/artists/','/notes/first-listens/',...(catalogue.stories||[]).map(s=>s.path),...all.map(artistPath),...getListeningGuides(catalogue).map(guidePath)]}, catalogue.site.url);
+const analytics=initAnalytics({...catalogue.site.analytics,trackIds:playbackRecords.map(r=>r.id),contentPaths:['/','/stories/','/artists/','/notes/first-listens/',...(catalogue.stories||[]).map(s=>s.path),...all.map(artistPath),...all.map(songPath),...getListeningGuides(catalogue).map(guidePath)]}, catalogue.site.url);
 
 async function sharePage(button) {
   const url=document.querySelector('link[rel="canonical"]').href;

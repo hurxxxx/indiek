@@ -17,7 +17,7 @@ function withSecondSong() {
   const data = source();
   // A synthetic title using an existing recording tests relationships, not new music.
   const first = data.tracks.find(track => track.id === 'gongwon');
-  data.tracks.push({...structuredClone(first), id:'gongwon-test-track', track:'Relationship fixture', koreanTitle:'관계 검증'});
+  data.tracks.push({...structuredClone(first), id:'gongwon-test-track', slug:'relationship-fixture', track:'Relationship fixture', koreanTitle:'관계 검증'});
   data.tracks.at(-1).lyricNotes.paragraphs.push(`Synthetic markup fixture: <text> & "quotes" don't become HTML.`);
   return data;
 }
@@ -97,6 +97,12 @@ test('artist identity and primary song identity may differ, with editorial notes
   assert.ok(!resolvedGuide.moreRecords.some(track => artistId(track) === 'gongwon'));
 });
 
+test('song slugs only need to be unique within an artist', () => {
+  const data = source();
+  data.tracks.find(track => track.id === 'mrch-surrender').slug = 'flower';
+  assert.doesNotThrow(() => createCatalogue(data));
+});
+
 test('featured songs connect both artists in search without duplicating songs or changing saved IDs', () => {
   const data = source();
   const song = data.tracks.find(track => track.id === 'gongwon');
@@ -130,6 +136,9 @@ for (const [label, edit, error] of [
   ['broken feature reference', data => data.featuredArtists[0].id='missing', /Unknown featured artist/],
   ['duplicate performance identity', data => data.artists.find(artist=>artist.performances).performances[0].id=data.tracks[0].id, /Duplicate playback ID/],
   ['two authoring formats', data => data.records=[], /one source of truth/],
+  ['missing song slug', data => delete data.tracks[0].slug, /song slug/],
+  ['invalid song slug', data => data.tracks[0].slug='Even If You Leave', /song slug/],
+  ['duplicate song slug for one artist', data => data.tracks.find(track=>track.id==='youra-motif').slug='mimi', /Duplicate song slug: youra\/mimi/],
   ['empty lyric commentary', data => data.tracks[0].lyricNotes.paragraphs=[], /Invalid lyricNotes/],
   ['blank lyric paragraph', data => data.tracks[0].lyricNotes.paragraphs=[' '], /Invalid lyricNotes/],
   ['missing lyric source', data => delete data.tracks[0].lyricNotes.source, /Invalid lyricNotes/],
@@ -173,6 +182,18 @@ test('an isolated build renders multiple songs, unique anchors and artist counts
     assert.match(guestPage,/data-load-player="gongwon"/);
     assert.match(guestPage,/data-save="gongwon"/);
     assert.equal((guestPage.match(/id="persistent-player"/g)||[]).length,1);
+    // Every song gets a page under its artist; incomplete ones stay out of search and the sitemap.
+    const songPage = readFileSync(path.join(dir,'dist/artists/gongwon/relationship-fixture/index.html'),'utf8');
+    assert.match(songPage,/<meta name="robots" content="noindex">/);
+    assert.match(songPage,/data-load-player="gongwon-test-track"/);
+    assert.match(songPage,/data-save="gongwon-test-track"/);
+    assert.ok(!songPage.includes('<iframe'));
+    assert.ok(songPage.includes('Synthetic markup fixture: &lt;text&gt; &amp; &quot;quotes&quot; don&#39;t become HTML.'));
+    assert.match(page,/href="\/artists\/gongwon\/relationship-fixture\/"/);
+    assert.match(page,/href="\/artists\/gongwon\/flower\/"/);
+    const sitemap = readFileSync(path.join(dir,'dist/sitemap.xml'),'utf8');
+    assert.ok(!sitemap.includes('/artists/gongwon/relationship-fixture/'));
+    assert.ok(sitemap.includes('/artists/yerin-baek/0310/'));
     const home = readFileSync(path.join(dir,'dist/index.html'),'utf8');
     assert.ok(home.includes(`Browse all ${data.artists.length} artists`));
     assert.ok(home.includes(`data-room-count="${data.tracks.length}"`));

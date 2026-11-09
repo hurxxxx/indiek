@@ -1,0 +1,57 @@
+{
+  "checked": "2026-11-09",
+  "status": "approved-local",
+  "scope": "W2 song pages (/artists/<artist-id>/<slug>/) for all 23 catalogue tracks, and the credit added to make an existing song page complete.",
+  "decisions": {
+    "approved": "2026-11-09, user (relayed by the planning session): prototype layout, slug rule, strict index rule, romance-youth-love and the HANRORO credit line.",
+    "slugRule": "Official English title in lowercase ASCII words joined by hyphens; apostrophes and featuring credits dropped; RomanceYouthLove is split into romance-youth-love. Stored explicitly as tracks[].slug; unique within an artist.",
+    "indexRule": "A song page is indexed only with credits, an Apple Music release link, a background note with a cited source (extraSources or lyricNotes.backgroundSources) and lyric notes. Otherwise it is noindex and outside the sitemap, and the artist page keeps the full song section. The rule lives in scripts/song-pages.mjs; run `node scripts/song-pages.mjs` for the current status of every song."
+  },
+  "credits": [
+    {
+      "trackId": "hanroro",
+      "added": "Lyrics and music by HANRORO; produced and arranged by Lee Ji-hoon (이지훈).",
+      "source": {
+        "url": "https://poclanos.com/album/52690/",
+        "publisher": "POCLANOS (label release page)",
+        "checked": "2026-11-09",
+        "supports": [
+          "Release title 자처, single, release date 2023.04.21",
+          "Lyrics by 한로로; Composed by 한로로",
+          "Produce & Arranged by 이지훈 (no separate arrangement line)"
+        ]
+      },
+      "uncertainty": "The page gives the producer/arranger only in Hangul. \"Lee Ji-hoon\" is indiek's own romanization, not an official spelling; the Hangul is kept beside it. Replace it if an official romanization is found."
+    }
+  ],
+  "openItems": [
+    "20 song pages remain noindex until credits, a sourced background note or an Apple Music release link are verified. Missing fields per song: `node scripts/song-pages.mjs`.",
+    "youra's three songs link release details to Bugs; Apple Music URLs for B side and other releases are recorded in youra.json but are not yet checked for each song."
+  ],
+  "guideRevision": {
+    "guideId": "korean-indie-where-to-start",
+    "scope": "intro and paragraphs rewritten for the search query \"korean indie music\"; contents list and song/artist links added by the build.",
+    "hash": {
+      "algorithm": "sha256",
+      "scope": "JSON.stringify({intro, paragraphs}) of the guide, UTF-8 (Python json.dumps, ensure_ascii=False)",
+      "value": "c7e7c19445d9840111f49aa3785f28e07cc0575afabc63ca8058f5aa3df86e38"
+    },
+    "sources": "Paragraph 1 paraphrases the reviewed lyricNotes of black-skirts, yerin-baek, ydbb, hanroro and se-so-neon (catalogue-lyric-notes.json); no new external claims.",
+    "reviews": [
+      {
+        "kind": "facts",
+        "checked": "2026-11-09",
+        "reviewer": "Separate review pass (subagent), read-only",
+        "approved": true,
+        "notes": "First draft rejected: unverified instrumental-ending claim, credits overstated, ONCE and HANRORO paraphrases beyond sources. Second draft: all clauses verified except one tense issue; the reviewer's exact correction (\"the thought of being left\") was applied to give the final text, without a third pass."
+      },
+      {
+        "kind": "editorial",
+        "checked": "2026-11-09",
+        "reviewer": "Separate review pass (subagent), read-only",
+        "approved": true,
+        "notes": "First draft rejected: listening-order instruction in the intro and a paragraph that repeated the track notes. Final text approved: keyword used once, specifics tied to each song, scope kept open."
+      }
+    ]
+  }
+}

@@ -3,6 +3,8 @@ export const artistId = record => record.artistId || record.id;
 export const artistPath = record => `/artists/${artistId(record)}/`;
 export const trackAnchor = record => record.primaryTrackId ? (record.id === record.primaryTrackId ? 'listen' : `track-${record.id}`) : record.artistId ? record.id : 'listen';
 export const trackPath = record => `${artistPath(record)}#${trackAnchor(record)}`;
+// Song pages live under their artist: /artists/<artist-id>/<song-slug>/. Track IDs and anchors stay unchanged.
+export const songPath = record => record.slug ? `${artistPath(record)}${record.slug}/` : null;
 export const getCatalogueTracks = ({records, editorPick}) => [...records, editorPick];
 export function getArtistRecords(catalogue) {
   const artists = new Map();

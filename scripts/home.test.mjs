@@ -104,7 +104,8 @@ test('artist spotlights use existing content and only published related stories,
   const spots=section(resolveHome(data,{...context,stories}),'discover').spotlights;
   assert.deepEqual(spots.map(s=>s.record.artistId),['gongwon','yerin-baek']);
   assert.deepEqual(spots[0].links.map(l=>l.href),['/artists/gongwon/#lyrics','/artists/gongwon/#gongwon-live-0']);
-  assert.deepEqual(spots[1].links.map(l=>l.href),['/artists/yerin-baek/#lyrics','/stories/yerin/','/artists/yerin-baek/#more-listens-title']);
+  // 0310 has a complete song page, so its lyric link reads there instead of the artist-page pointer.
+  assert.deepEqual(spots[1].links.map(l=>l.href),['/artists/yerin-baek/0310/#lyrics','/stories/yerin/','/artists/yerin-baek/#more-listens-title']);
   const multi=structuredClone(catalogue),gongwon=multi.records.find(t=>t.id==='gongwon');
   gongwon.primaryTrackId='new-song';
   multi.records.push({...gongwon,id:'new-song',lyricNotes:undefined});
