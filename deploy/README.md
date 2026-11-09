@@ -162,6 +162,8 @@ systemctl --user list-timers 'indiek-editorial*' --no-pager
 
 발행은 `editorial/state/worktrees/`의 분리된 체크아웃에서 빌드·검증한 뒤 `content/stories/*.json`과 생성된 `dist/`만 커밋한다. origin/main이 바뀌면 force push하거나 자동 병합하지 않고 보류한다. SSH 별칭 `indiek-publish`는 강제 명령 `/usr/local/bin/indiek-editorial-receive`만 실행하는 전용 키다. 수신기는 origin/main·변경 경로·심볼릭 링크·깨끗한 운영 체크아웃을 확인하고 임시 worktree에서 검사한 뒤 fast-forward한다. 공개 결과물이 다르면 이전 커밋으로 복구한다. 이 키로 일반 셸·포트 포워딩을 허용하지 않는다. GitHub 쓰기 키는 이 저장소의 전용 deploy key로만 사용한다.
 
+실행 전과 발행 후에는 자동화 서버 체크아웃을 origin/main으로 fast-forward한다(`scripts/editorial/sync.mjs`). SNS 게시기는 `docs/promotion.md`의 자동 구간만 서버 상태에서 다시 쓴다. 그래서 그 구간만 바뀐 경우에는 커밋된 파일로 되돌린 뒤 갱신하고, 자동 구간을 다시 생성한다. 로컬에서 기록을 커밋해도 발행이 멈추지 않는다. 자동 구간 밖을 서버에서 수정했거나 다른 파일이 바뀌어 있으면 갱신하지 않고 실패한다.
+
 `editorial/state/YYYY-MM-DD.json`에 시도·탈락 이유·승인 원고·커밋·배포 단계를 보존한다. push 또는 배포 응답이 불확실하면 같은 커밋을 확인하며 새 기사를 만들지 않는다. 이전 날짜의 미확인 커밋은 운영자가 GitHub·운영 페이지의 revision을 대조해 정리한다. 상태 파일이나 로그를 삭제해 재시도하지 않는다.
 
 새 공개 기사는 다음 일일 SNS 슬롯에 우선 준비한다. 문안 생성과 플랫폼별 최종 검수는 각각 3분, 초안 포함 하루 2개 버전으로 제한한다. 어느 플랫폼에서든 문안 문제가 나오면 공통 문안을 고쳐 양쪽을 다시 검수하며, 기존 탈락 이유와 문안을 보존한다. 최종 문안은 기사와 독립 비교하고, 전송 직전 공개 기사 revision·공유 이미지·계정·당일 기존 게시물을 다시 확인한다. 정기 게시는 플랫폼별 하루 최대 1건이며 기사 홍보에는 자체 제작 글자 이미지를 사용한다. 사용자 지정 비정기 SNS 공유는 위 `story-now` 절차를 따른다. 실제 전송·원격 확인은 기존 SNS 게시기가 담당한다. 예약·보류를 게시 성공으로 기록하지 않는다.

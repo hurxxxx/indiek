@@ -1,13 +1,13 @@
 import {loadCatalogue} from '../catalogue.mjs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {execFileSync} from 'node:child_process';
 import {atomicWrite,readJSON,withLock} from '../promotion/core.mjs';
 import {koreanDay} from '../promotion/news.mjs';
 import {loadStories,validateStory,skillRevision} from './content.mjs';
 import {due,prepareIssue,tomorrow} from './workflow.mjs';
 import {askJSON,instructions,reviewStory} from './ai.mjs';
 import {publishIssue} from './publisher.mjs';
+import {syncServerCheckout} from './sync.mjs';
 
 const root=fileURLToPath(new URL('../../',import.meta.url)),state=path.join(root,'editorial/state');
 const config=readJSON(path.join(root,'editorial/config.json')),command=process.argv[2]||'status';
@@ -27,10 +27,7 @@ async function run() {
       atomicWrite(path.join(state,`references-${day.slice(0,7)}.json`),JSON.stringify({checkedAt:now.toISOString(),skillRevision:skillRevision(root),...result},null,2)+'\n');return;
     }
     if(!['prepare','publish','run'].includes(command))throw new Error('Commands: status, prepare, publish, run, references');
-    if(process.env.INDIEK_EDITORIAL_SERVER==='1'){
-      execFileSync('git',['fetch',config.remote,'main'],{cwd:root,stdio:'ignore'});
-      execFileSync('git',['merge','--ff-only',`${config.remote}/main`],{cwd:root,stdio:'ignore'});
-    }
+    if(process.env.INDIEK_EDITORIAL_SERVER==='1')syncServerCheckout(root,config.remote);
     const prior=readJSON(statusFile,{}),stories=loadStories(root);
     let audit=readJSON(file,{day,status:'pending',skillRevision:skillRevision(root)});
     // A committed but unconfirmed publication always needs reconciliation before another issue.
@@ -72,10 +69,7 @@ async function run() {
     if(['exhausted','deferred'].includes(audit.status))status.deferredUntil=tomorrow(now);
     atomicWrite(statusFile,JSON.stringify(status,null,2)+'\n');
     console.log(JSON.stringify(status));
-    if(audit.status==='published'&&process.env.INDIEK_EDITORIAL_SERVER==='1'){
-      execFileSync('git',['fetch',config.remote,'main'],{cwd:root,stdio:'ignore'});
-      execFileSync('git',['merge','--ff-only',`${config.remote}/main`],{cwd:root,stdio:'ignore'});
-    }
+    if(audit.status==='published'&&process.env.INDIEK_EDITORIAL_SERVER==='1')syncServerCheckout(root,config.remote);
   });
 }
 run().catch(error=>{
