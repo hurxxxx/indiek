@@ -2,7 +2,7 @@
 
 ## 기본 원칙
 
-- 기존 코드와 디자인을 기준으로 요청 범위만 수정한다. 구조 개편·라이브러리 도입·백엔드 개발은 별도 논의한다. 백엔드 언어는 Rust를 고려 중이다.
+- 기존 코드와 디자인을 기준으로 요청 범위만 수정한다. 구조 개편·라이브러리 도입·백엔드 개발은 별도 논의한다. 백엔드는 `api/`의 Rust 서비스(axum·SQLite)이며 페이지·재생·Saved는 API 없이도 동작해야 한다. 실행은 [README](README.md#participation-api), 배포는 [배포 문서](deploy/README.md#참여-api)를 따른다.
 - 기본 작업과 확인은 로컬에서 진행한다. 원격 push·배포는 사용자가 요청한 범위에서만 수행하며 Sites 호스팅은 사용하지 않는다.
 - 생성된 `dist/`의 HTML·JS·CSS는 직접 수정하지 않는다. 기존 주소·곡 ID·저장 목록 호환성을 유지한다.
 - 콘텐츠 원본은 `content/catalogue.json`의 `artists`·`tracks`를 분리해서 관리한다. 한 아티스트에 여러 곡을 연결할 수 있으며, 대표곡·가이드·홈의 참조 및 추가 절차는 [README의 Artists and tracks](README.md#artists-and-tracks)를 따른다.

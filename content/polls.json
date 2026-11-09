@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "polls": [
+    {
+      "id": "listeners-picks-2026",
+      "title": "indiek Listeners' Picks 2026",
+      "status": "draft",
+      "opensAt": "2026-12-10T12:00:00+09:00",
+      "closesAt": "2027-01-01T00:00:00+09:00",
+      "choiceKind": "track",
+      "maxChoices": 3,
+      "resultsVisibility": "after-close"
+    }
+  ]
+}

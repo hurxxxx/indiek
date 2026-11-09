@@ -249,6 +249,120 @@ systemctl --user list-timers indiek-search-console.timer --no-pager
 
 키가 없으면 `daily`는 `연결 안 됨`만 기록하고 Google에 아무것도 보내지 않는다. 인증·권한·할당량 오류는 실패 종료 코드로 남으며 `journalctl --user -u indiek-search-console.service -n 50 --no-pager`로 확인한다. 중단은 `systemctl --user disable --now indiek-search-console.timer`다.
 
+## 참여 API
+
+상태(2026-11-09): **초안, 운영 적용 승인 대기.** 웹 서버에는 아무것도 설치·변경하지 않았다. 아래 절차는 사용자가 승인한 범위에서만 실행한다. 로컬 검증: `cargo test` 26개 통과, 실제 바이너리의 serve·check·backup·requests 명령, nginx 1.28 컨테이너에서 [nginx-api.conf](api/nginx-api.conf)를 병합한 설정의 `nginx -t`와 프록시 동작(결과 마이크로 캐시 MISS→HIT, API 중지 시 JSON 503·캐시된 결과 유지·페이지 200, 두 단계의 JSON 429, IP 없는 API 로그)을 확인했다.
+
+`api/`의 Rust 서비스 `indiek-api`가 웹 서버의 `127.0.0.1:8787`에서 systemd 시스템 서비스로 실행된다. Nginx는 `/api/`만 프록시하고 페이지는 지금처럼 정적으로 제공한다. 같은 출처라 CSP는 바꾸지 않는다(`connect-src 'self'`). API가 멈추면 `/api/`는 JSON 503을, 결과 조회는 마지막 캐시를 돌려주며 페이지·재생·Saved는 영향을 받지 않는다. Matomo 등 공유 서버의 다른 서비스는 건드리지 않는다. 엔드포인트·투표 정의 형식은 [README](../README.md#participation-api)를 따른다.
+
+| 원본 | 적용 위치 |
+| --- | --- |
+| [indiek-api.service](api/indiek-api.service) | `/etc/systemd/system/indiek-api.service` |
+| [indiek-api-backup.service](api/indiek-api-backup.service), [indiek-api-backup.timer](api/indiek-api-backup.timer) | `/etc/systemd/system/` (매일 04:40 KST) |
+| [nginx-api.conf](api/nginx-api.conf) | 승인 시 두 부분을 [nginx.conf](nginx.conf)에 병합·커밋한 뒤 기존 방식으로 설치 |
+| [logrotate-indiek.conf](logrotate-indiek.conf) | `/etc/logrotate.d/indiek` (`api.log` 추가, 같은 30일 규칙) |
+
+실행 계정은 로그인할 수 없는 시스템 계정 `indiek-api`, 바이너리는 `/usr/local/bin/indiek-api`, DB는 `/var/lib/indiek-api/indiek-api.sqlite3`(WAL, `synchronous=NORMAL`, `busy_timeout` 5초, 쓰기 연결 1개·읽기 풀 4개), 백업은 `/var/lib/indiek-api/backups/`다. 서비스는 `/projects/indiek`을 읽기 전용으로만 보고 `dist/catalogue.js`와 `content/polls.json`이 바뀌면 30초 안에 다시 읽으므로 사이트 배포에 재시작이 필요 없다. 새 파일이 잘못되면 오류를 남기고 이전 목록을 유지한다.
+
+### 빌드 (승인 필요)
+
+운영 서버와 같은 OS·아키텍처에서 `cargo build --release --locked`로 만든다. 권장안은 웹 서버의 전용 빌드 계정 `indiek-build`에 rustup을 사용자 단위로 설치하는 것이다. 번들 SQLite 컴파일에 C 컴파일러(`cc`)가 필요하며, 없으면 `build-essential` 설치도 별도 승인 대상이다. apt의 시스템 `cargo`나 root 계정 설치는 피한다. 매거진 수신기(웹 서버)와 발행기(자동화 서버)는 300초 제한 안에서 `npm run check`를 실행하는데, cargo가 PATH에 있으면 새 체크아웃에서 Rust 전체 빌드를 시작한다. 빌드 계정의 `~/.cargo/bin`은 이들의 PATH에 없어 API 테스트를 건너뛴다. 다른 곳에 설치해야 하면 해당 실행 환경에 `INDIEK_SKIP_API_TESTS=1`을 둔다.
+
+```sh
+# 최초 1회
+useradd --create-home --shell /bin/bash indiek-build
+sudo -iu indiek-build sh -c 'curl --proto =https --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal'
+sudo -iu indiek-build git clone https://github.com/hurxxxx/indiek.git
+cc --version   # 없으면 build-essential 설치를 먼저 승인받는다
+
+# 배포할 커밋마다
+sudo -iu indiek-build sh -c 'cd indiek && git fetch origin && git checkout --detach origin/main \
+  && cargo test --locked --manifest-path api/Cargo.toml \
+  && cargo build --release --locked --manifest-path api/Cargo.toml'
+```
+
+### 최초 설치 (승인 후)
+
+`git pull` 전 확인은 [업데이트](#업데이트) 절차를 따른다. 설정 변경 전 기존 Nginx 설정을 백업한다.
+
+```sh
+cd /projects/indiek
+useradd --system --home-dir /var/lib/indiek-api --shell /usr/sbin/nologin indiek-api
+install -o root -g root -m 0755 ~indiek-build/indiek/api/target/release/indiek-api /usr/local/bin/indiek-api
+api() { runuser -u indiek-api -- env INDIEK_API_DB=/var/lib/indiek-api/indiek-api.sqlite3 \
+  INDIEK_API_SITE_DIR=/projects/indiek/dist INDIEK_API_POLLS=/projects/indiek/content/polls.json \
+  /usr/local/bin/indiek-api "$@"; }
+api check
+install -o root -g root -m 0644 deploy/api/indiek-api.service deploy/api/indiek-api-backup.service \
+  deploy/api/indiek-api-backup.timer /etc/systemd/system/
+systemctl daemon-reload
+systemctl enable --now indiek-api.service
+curl -s http://127.0.0.1:8787/api/health
+systemctl enable --now indiek-api-backup.timer
+systemctl start indiek-api-backup.service && ls -l /var/lib/indiek-api/backups
+
+# nginx-api.conf를 deploy/nginx.conf에 병합해 커밋·pull한 뒤
+cp /etc/nginx/sites-available/indiek.com /root/indiek.com.nginx.$(date +%Y%m%d%H%M%S)
+install -d -o www-data -g www-data -m 0700 /var/cache/nginx/indiek-api
+install -o root -g root -m 0644 deploy/nginx.conf /etc/nginx/sites-available/indiek.com
+install -o root -g root -m 0644 deploy/logrotate-indiek.conf /etc/logrotate.d/indiek
+nginx -t && systemctl reload nginx
+chown www-data:adm /var/log/nginx/indiek/api.log && chmod 0640 /var/log/nginx/indiek/api.log
+logrotate --debug /etc/logrotate.d/indiek
+```
+
+설치 후 확인: `https://indiek.com/api/health`가 JSON 200, 초안 투표 `…/api/polls/listeners-picks-2026/results`가 404, 다른 Origin의 POST가 403, `api.log`에 IP·User-Agent가 없고 기존 `access.log`에 `/api/` 요청이 섞이지 않는지 본다. `systemctl stop indiek-api` 동안 `/api/health`가 JSON 503이고 홈·아티스트 페이지가 200인지 확인한 뒤 다시 시작한다. `journalctl -u indiek-api -n 50 --no-pager`로 기동·카탈로그 로드를 확인한다.
+
+### 운영
+
+서비스의 파일 권한을 유지하도록 관리 명령은 위의 `api` 함수처럼 `indiek-api` 계정으로 실행한다.
+
+```sh
+api requests                          # 검토 대기 요청(JSON Lines). --status all|accepted|declined|done
+api request-status <id> accepted      # pending · accepted · declined · done
+api cleanup                           # 보관 기간 정리(서비스가 매시간 자동 실행)
+api backup /var/lib/indiek-api/backups --keep 14
+```
+
+- 요청은 운영자가 확인하기 전에는 어디에도 공개하지 않는다. 사이트에 "Requested by readers"를 표시할 때도 요청 원문을 옮기지 않는다.
+- 투표를 열 때는 `content/polls.json`의 날짜·`maxChoices`를 확정하고 `status`를 `published`로 바꿔 사이트와 함께 배포한다. 결과 페이지·투표 화면과 개인정보 안내(아래 초안)를 같은 배포에 포함한다. 조기 종료는 `closed`.
+- 참여 완료 수(W0 주간 표)는 공개 결과의 `ballots`와 `api requests --status all`로 센다.
+- 백업은 같은 서버에만 둔다(디스크 장애 대비 아님). 서버 밖 사본이나 Litestream 실시간 복제는 필요해지면 별도로 정한다.
+
+### 업데이트와 복구
+
+```sh
+systemctl start indiek-api-backup.service                       # 새 마이그레이션 전 백업
+install -m 0755 /usr/local/bin/indiek-api /usr/local/bin/indiek-api.prev
+install -o root -g root -m 0755 ~indiek-build/indiek/api/target/release/indiek-api /usr/local/bin/indiek-api
+systemctl restart indiek-api && curl -s http://127.0.0.1:8787/api/health
+```
+
+- 이전 바이너리로 복구: `install -m 0755 /usr/local/bin/indiek-api.prev /usr/local/bin/indiek-api && systemctl restart indiek-api`. 마이그레이션은 앞으로만 적용되므로 새 마이그레이션이 들어간 판을 되돌릴 때는 서비스를 멈추고 직전 백업 파일을 `indiek-api.sqlite3`로 복사한다(`-wal`·`-shm` 제거, 소유자 `indiek-api`).
+- 즉시 중단: `systemctl disable --now indiek-api.service indiek-api-backup.timer`. 페이지·재생·Saved는 계속 동작하고 `/api/`만 JSON 503이 된다. 프록시까지 제거할 때는 Nginx 백업을 복원하고 `nginx -t` 후 reload한다.
+
+### 개인정보 안내 추가 초안
+
+출시(투표·요청 화면 공개) 전에 [개인정보 안내](https://indiek.com/privacy-and-terms/)의 원문(`scripts/build.mjs`)에 반영하고 `LAST UPDATED`를 실제 날짜로 바꾼다. 실제 동작과 다르면 코드나 문구를 먼저 맞춘다.
+
+| 항목 | 저장 방식 | 보관 |
+| --- | --- | --- |
+| 투표 선택 | 곡·아티스트별 합계와 총 투표 수만 저장. 어떤 투표가 무엇을 골랐는지는 남기지 않는다 | 결과 공개용으로 유지 |
+| 투표 토큰 | 원본은 방문자 브라우저의 local storage. 서버는 투표별 SHA-256 해시만 저장 | 투표 종료 30일 후 삭제 |
+| 해설 요청 | 곡·아티스트 ID 또는 140자 이하 텍스트, 접수 시각, 검토 상태. 연락처 칸 없음, 링크·이메일·전화번호 거부 | 거절은 검토 30일 후 삭제, 수락·완료는 편집 기록으로 보관 |
+| IP 주소 | API는 메모리의 빈도 제한에만 사용. 매일 자정(KST) 바뀌는 무작위 솔트로 해시하며 DB·API 로그에 쓰지 않음. Nginx의 쓰기 빈도 제한은 공유 메모리에서만 쓰고 거절 기록을 오류 로그 수준 아래(`info`)로 둔다 | API는 자정에 폐기, Nginx 제한 상태는 수 분 안에 만료 |
+| API 접속 로그 | 시간·메서드·경로·응답 코드·크기·처리 시간·캐시 상태. IP·User-Agent·쿼리·본문 없음 | 30일(기존 회전 규칙) |
+| Nginx 오류 로그 | API가 멈췄거나 응답하지 않을 때 IP를 포함한 요청 정보가 남을 수 있음(기존 안내 범위) | 기존 회전 규칙 |
+| DB 백업 | 위 DB와 같은 내용 | 14일, 같은 서버 |
+
+안내 페이지에 넣을 영어 문안 초안:
+
+> **Listener polls and requests.** When you vote in an indiek listener poll, your browser creates a random voting code and keeps it in this site’s local storage. It is sent with your ballot so the same browser cannot vote twice in that poll. We store only a one-way hash of the code, separately for each poll, and delete it 30 days after the poll closes. Your choices are added to totals for each song or artist; we do not keep a record of what an individual ballot chose. Polls do not use cookies or accounts. Clearing this site’s browser data removes the code.
+>
+> A song or artist request contains the song or artist you chose and, if you add one, a note of up to 140 characters, with the time it was received. The form has no contact field, so we cannot reply, and notes containing links, email addresses or phone numbers are not accepted. Please leave out personal information. Requests are reviewed by indiek and are never published as submitted; a page written in response may mention that readers asked for it without identifying anyone. Declined requests are deleted within 30 days of review, and requests we take up are kept with our editorial records.
+>
+> To limit abuse, the server uses your IP address in memory to count recent submissions. It is combined with a random value that changes every day and is not written to the poll and request database or to the participation service’s logs. Requests to these features are logged without IP addresses or browser details (time, path, response status, size and processing time) and kept for up to 30 days; error logs are handled as described below. Poll and request data, including backups kept for up to 14 days, stay on our server and are not shared with advertising services. If these features are unavailable, the rest of the site keeps working.
+
 ## 확인과 복구
 
 - Latest deployment: 2026-11-09 `0407538` - sitemap `<lastmod>` dates from each page's last content change (37/37 live over HTTPS) and the daily Search Console check on the automation server (`indiek-search-console.timer`, 04:20 KST). Production passed 224 tests and 37 pages with a clean checkout. The automation checkout was fast-forwarded with its uncommitted promotion files restored from stash (backup `~/backups/indiek-20261109-055855-before-search-console.tgz`), passed 227 tests and now runs 7 timers. A manual service run recorded "not connected": no service account key yet, so nothing has been sent to Google. Sharing cards and pages other than the sitemap are unchanged. Rollback baseline: `e5a7ce2`.

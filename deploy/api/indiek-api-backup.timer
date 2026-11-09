@@ -1,0 +1,11 @@
+# Draft, awaiting approval. Install as /etc/systemd/system/indiek-api-backup.timer.
+[Unit]
+Description=Daily indiek API backup at 04:40 KST
+
+[Timer]
+OnCalendar=*-*-* 04:40:00 Asia/Seoul
+RandomizedDelaySec=5min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

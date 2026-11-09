@@ -1,0 +1,54 @@
+# Draft, awaiting approval. System unit for the web server:
+# install as /etc/systemd/system/indiek-api.service (steps in deploy/README.md#참여-api).
+# The static site keeps working while this service is stopped.
+[Unit]
+Description=indiek participation API (listener polls, reader requests)
+After=network.target
+
+[Service]
+Type=simple
+User=indiek-api
+Group=indiek-api
+ExecStart=/usr/local/bin/indiek-api serve
+Environment=INDIEK_API_BIND=127.0.0.1:8787
+Environment=INDIEK_API_DB=/var/lib/indiek-api/indiek-api.sqlite3
+Environment=INDIEK_API_SITE_DIR=/projects/indiek/dist
+Environment=INDIEK_API_POLLS=/projects/indiek/content/polls.json
+Environment=INDIEK_API_ALLOWED_ORIGINS=https://indiek.com
+Environment=INDIEK_API_RESULTS_CACHE_SECONDS=5
+Environment=RUST_LOG=info
+StateDirectory=indiek-api
+StateDirectoryMode=0700
+UMask=0077
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=15s
+MemoryMax=256M
+TasksMax=64
+
+NoNewPrivileges=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/projects/indiek
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+[Install]
+WantedBy=multi-user.target

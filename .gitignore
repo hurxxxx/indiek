@@ -9,3 +9,6 @@ SERVER_ACCESS.md
 promotion/state/
 
 editorial/state/
+
+api/target/
+api/data/

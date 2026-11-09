@@ -16,13 +16,13 @@ An independent music magazine introducing Korean musicians to listeners around t
 - Listening guides, artist and song search, and tracks saved in your browser with direct playback from Saved. Saved and search use independently scrolling lists with fixed controls. Saved remembers your place, highlights the current track and closes when a song is selected. Play all starts at the beginning of the first saved track and enables Auto-next. Previous/Next and Auto-next stay within reach. Auto-next follows the displayed order and stops after the last song. If the browser blocks playback, press play in the video.
 - Responsive pages with keyboard navigation and reduced-motion support.
 
-Built with HTML, CSS and JavaScript. Pages are generated as static files; no application server or database is required. “Agree & play” combines YouTube consent, connection and the first playback request. Later selections use “Play” during the same page session; if the browser blocks playback, use the video’s play button. Reloading resets this choice. Optional Matomo statistics use first-party cookies after explicit consent to measure visits, returning browsers and listening interactions. A compact cookie banner covers both cookies and statistics, with Cookie settings in the footer to change the choice; local previews are excluded.
+Built with HTML, CSS and JavaScript. Pages are generated as static files and need no application server or database. An optional Rust service in `api/` accepts listener-poll votes and reader requests; pages, playback and Saved never depend on it. “Agree & play” combines YouTube consent, connection and the first playback request. Later selections use “Play” during the same page session; if the browser blocks playback, use the video’s play button. Reloading resets this choice. Optional Matomo statistics use first-party cookies after explicit consent to measure visits, returning browsers and listening interactions. A compact cookie banner covers both cookies and statistics, with Cookie settings in the footer to change the choice; local previews are excluded.
 
 Home opens with **New on indiek**, followed by a rotating artist feature, two short artist introductions and the full listening list. The lead [Story](https://indiek.com/stories/) follows the artist section, and themed guides appear as compact links further down. The four update cards mix new artists, songs, stories and guides with substantial additions to existing pages. [Artists](https://indiek.com/artists/) holds the complete catalogue; [Guides](https://indiek.com/notes/first-listens/) offers themed ways to explore it. Each story, artist, song and guide has its own shareable, directly loadable URL. Small JavaScript navigation keeps the shared player alive between these static pages, with no routing framework. Directory searches and filters stay in place during internal navigation.
 
 ## Getting started
 
-Requires Node.js 22+ and Python 3 with Pillow (including WebP support). There are no npm dependencies. Install Pillow in a Python virtual environment with `python3 -m pip install Pillow` if it is not already available.
+Requires Node.js 22+ and Python 3 with Pillow (including WebP support). There are no npm dependencies. Install Pillow in a Python virtual environment with `python3 -m pip install Pillow` if it is not already available. The optional [participation API](#participation-api) needs Rust 1.94+ with `cargo`.
 
 ```sh
 git clone https://github.com/hurxxxx/indiek.git
@@ -37,11 +37,12 @@ Open [localhost:4173](http://127.0.0.1:4173). After editing files, run `npm run 
 | `npm run dev` | Build and serve the local preview, including ready home updates |
 | `npm run build:preview` | Rebuild the local preview in `dist/` without restarting the server |
 | `npm run build` | Generate the publication build in `dist/`; omit unpublished home updates |
-| `npm run check` | Check catalogue behavior, pages, links and assets |
+| `npm run check` | Check catalogue behavior, pages, links and assets; also runs the API tests when `cargo` is installed |
 | `npm run images` | Generate responsive images; requires Pillow with WebP support |
 | `npm run promotion -- status` | Inspect the optional social publisher without posting |
 | `npm run promotion:remote -- check` | Check the shared publisher's official APIs and public catalogue without posting |
 | `npm run editorial -- status` | Inspect magazine scheduling and the current issue |
+| `cargo run --manifest-path api/Cargo.toml` | Run the participation API on `127.0.0.1:8787` (needs a built `dist/`) |
 
 The publication build dates each sitemap entry (`<lastmod>`) with the Korea-time day its title, description, structured data or main content last changed, carrying dates forward from the committed `dist/sitemap.xml`. Commit `dist/` with its source so those dates stay accurate. A daily job on the automation server resubmits a changed sitemap and checks index status through the Search Console API ([deployment notes](deploy/README.md#search-console-점검)).
 
@@ -118,6 +119,32 @@ Before deployment, use `npm run build` to replace the local preview output. `bui
 Run `npm run build && npm run check`, then check the affected pages on desktop and mobile. Follow the [repository guidelines](AGENTS.md) when adding artists or songs so related sections stay in sync. Magazine scheduling and hosting details are in the [deployment guide](deploy/README.md).
 
 The optional publisher in `scripts/promotion/` gives a newly published story priority in the daily social slot, then selects existing lyric commentary, song background or a listening guide. Posts explain one concrete detail and link its indiek page; external concert announcements are no longer the automatic fallback. Artist notes and guides alternate when eligible, with a 28-day page repeat window. Scheduled posts and explicitly requested immediate shares use the official Threads and Instagram APIs. Local requests call the same server publisher through `promotion:remote`, keeping credentials, the queue and publication history in one place. Exact captions receive separate platform reviews and use the site's original typographic cards. It runs separately from the website and follows the shared [social writing guide](promotion/voice.md). Commands, scheduling, authorization and recovery are covered in the [deployment guide](deploy/README.md#sns-자동-게시). Actual attempts are recorded in the [promotion log](docs/promotion.md).
+
+### Participation API
+
+`api/` is a Rust crate (axum, tokio, sqlx with SQLite) for the features that need to write: the year-end listener poll and reader requests for song or artist commentary. Static pages remain the whole site. Browser code that calls the API must treat it as optional: send requests only after the page has rendered, use a short timeout, and on any error or non-2xx response hide counts or show a short "try later" message. Never block navigation, playback or Saved on it. Nginx answers `/api/` with JSON 503 while the service is down.
+
+```sh
+cargo test --manifest-path api/Cargo.toml
+cargo run --manifest-path api/Cargo.toml             # serve on 127.0.0.1:8787
+cargo run --manifest-path api/Cargo.toml -- check    # validate dist/catalogue.js and content/polls.json
+cargo run --manifest-path api/Cargo.toml -- --help   # backup, cleanup and request review commands
+```
+
+| Endpoint | Body or result |
+| --- | --- |
+| `GET /api/health` | Database status and counts of public tracks, artists and polls |
+| `POST /api/polls/{id}/votes` | `{"token": "…", "choices": ["track-id"]}` → `201`; a token that already voted gets `409 already_voted` |
+| `GET /api/polls/{id}/results` | `state` (`upcoming`, `open`, `closed`), `ballots`, and `results` (`[{"id", "votes"}]`, or `null` while hidden); cached for a few seconds |
+| `POST /api/requests` | `{"type": "song" \| "artist", "trackId"?, "artistId"?, "text"?}` → `202`; stored for review, never published by the API |
+
+Errors are `{"error": "<code>"}` with a matching status (`400`, `404`, `409`, `415`, `422`, `429` with `Retry-After`, `503`). Posts from other origins are refused.
+
+Track and artist IDs come from the built `dist/catalogue.js`; the service rereads it (and the poll file) within 30 seconds of a change and keeps the previous version if the new one is invalid. Polls live in `content/polls.json` (`schemaVersion: 1`): `id`, `status` (`draft` stays hidden, `published`, or `closed` to stop early), `opensAt` and `closesAt` (RFC 3339 with offset), `choiceKind` (`track` or `artist`), optional `choiceIds` (otherwise every public track or artist), `maxChoices` (1–10) and `resultsVisibility` (`after-close` by default, or `live`). Every choice must exist in the built catalogue. `title` and other display fields are ignored by the API. `listeners-picks-2026` stays a draft until its dates are confirmed.
+
+A voting page creates a random token of at least 128 bits (`crypto.getRandomValues`, base64url, 22–64 characters) and keeps it in local storage; the API uses no cookies or accounts. Requests accept catalogue IDs and up to 140 characters of plain text, refusing links, email addresses and phone numbers; there is no contact field. Stored data, retention and the privacy-notice draft are in the [deployment guide](deploy/README.md#참여-api).
+
+All SQL is in `api/src/db.rs` and `api/migrations/`, written as standard SQL (`ON CONFLICT` upserts, `$n` placeholders) so a later PostgreSQL move stays contained. Settings are `INDIEK_API_BIND`, `INDIEK_API_DB`, `INDIEK_API_SITE_DIR`, `INDIEK_API_POLLS`, `INDIEK_API_ALLOWED_ORIGINS` and `INDIEK_API_RESULTS_CACHE_SECONDS`; local defaults use this checkout and `api/data/` (ignored by Git). `npm run check` runs `cargo test` when `cargo` is on PATH; set `INDIEK_SKIP_API_TESTS=1` to skip it.
 
 ## Credits and contact
 
