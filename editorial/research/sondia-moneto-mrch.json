@@ -1,6 +1,6 @@
 {
   "checked": "2026-11-09",
-  "status": "reviewed-local",
+  "status": "published",
   "artistIds": [
     "sondia",
     "moneto",
@@ -273,16 +273,38 @@
       "/tmp/indiek-sondia-mobile-landscape.png",
       "/tmp/indiek-mrch-collaboration-mobile.png",
       "/tmp/indiek-new-artists-preview.png",
-      "/tmp/indiek-home-mobile.png"
+      "/tmp/indiek-home-mobile.png",
+      "/tmp/indiek-production-release-20261109.png",
+      "/tmp/indiek-production-sondia-playback.png"
     ],
-    "deployment": "Not performed; local generated promotion catalogue includes all three artists. Automatic publisher server remains unchanged until deployment."
+    "deployment": "Deployed on 2026-11-09 to production and automation; clean release and production each passed 215 tests / 37 pages. Automation passed 218 tests with its existing independent SNS changes preserved."
   },
   "publication": {
     "authorized": "2026-11-09",
     "published": "2026-11-09",
     "rollback": "244d933739719f13d93bbce049bc6ba8c62d813a",
-    "status": "prepared",
+    "status": "published",
     "priorReviewedRevision": "0e8ad962bd2bf900dae78fd806b653abc3d74b93886dfdb73d355c63a90b9463",
-    "change": "Publication date metadata only; reviewed prose, recordings and home copy unchanged."
+    "change": "Publication date metadata only; reviewed prose, recordings and home copy unchanged.",
+    "commit": "f63930c6e43936411187e81f6a4a9fe0acdcbbda",
+    "productionChecks": {
+      "tests": 215,
+      "pages": 37
+    },
+    "automationChecks": {
+      "tests": 218,
+      "pages": 37
+    },
+    "httpChecks": {
+      "matchingReleaseFiles": 14,
+      "redirects": 2
+    },
+    "preservedAutomationFiles": 118,
+    "publicPlayback": [
+      "moneto-she",
+      "mrch-surrender",
+      "sondia-grown-ups"
+    ],
+    "notes": "All three recordings visibly played on https://indiek.com. She continued through internal navigation to MRCH and changed to Surrender in the same shared iframe. Production and automation received the same commit; no SNS publication command was run and timers were not changed."
   }
 }
