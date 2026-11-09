@@ -43,5 +43,42 @@
     "upcomingDays": 30,
     "researchTimeoutSeconds": 420,
     "maxReviewCandidates": 3
+  },
+  "schedule": {
+    "basis": "Threads insights (2026-11-09): most active Fri and Sun 15:00-18:00, Sat 18:00-21:00 KST. 16:00 sits early in the Fri/Sun window so the post is fresh while activity is highest. Instagram had 0 views in 30 days, so its daily text card stops; two own commentary carousels a week use the Threads peak days.",
+    "threads": {
+      "time": "16:00"
+    },
+    "instagram": {
+      "format": "carousel",
+      "days": [
+        "Fri",
+        "Sun"
+      ],
+      "time": "17:00"
+    }
+  },
+  "engage": {
+    "platform": "threads",
+    "ownPostDays": 14,
+    "maxOwnRepliesPerDay": 20,
+    "maxExternalRepliesPerDay": 5,
+    "maxDiscoveryCandidatesPerDay": 10,
+    "perAccountDays": 7,
+    "discoveryMaxAgeHours": 48,
+    "maxSearchesPerRun": 4,
+    "replyQuotaStopRatio": 0.5,
+    "queries": [
+      "korean indie",
+      "korean indie music",
+      "k-indie",
+      "korean band recommendations",
+      "korean ost singer",
+      "hanroro",
+      "se so neon",
+      "the black skirts",
+      "choi yu ree",
+      "yerin baek"
+    ]
   }
 }

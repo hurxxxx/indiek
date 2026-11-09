@@ -1,7 +1,7 @@
 [Unit]
-Description=indiek Instagram daily when approved media exists, Korea time
+Description=indiek Instagram commentary carousel, Fri and Sun, Korea time
 [Timer]
-OnCalendar=*-*-* 10:15:00 Asia/Seoul
+OnCalendar=Fri,Sun *-*-* 17:00:00 Asia/Seoul
 Persistent=false
 AccuracySec=30s
 Unit=indiek-promotion-instagram.service

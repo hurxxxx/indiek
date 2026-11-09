@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["reply", "needsReply", "relevant", "sensitive", "sensitiveCategory", "answersDirectQuestion", "link", "reason"],
+  "properties": {
+    "reply": {"type": "string"},
+    "needsReply": {"type": "boolean"},
+    "relevant": {"type": "boolean"},
+    "sensitive": {"type": "boolean"},
+    "sensitiveCategory": {"type": "string", "enum": ["none", "private-life", "fandom-dispute", "politics", "health", "other"]},
+    "answersDirectQuestion": {"type": "boolean"},
+    "link": {"type": "string"},
+    "reason": {"type": "string"}
+  }
+}

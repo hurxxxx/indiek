@@ -1,0 +1,9 @@
+[Unit]
+Description=indiek Threads conversation check four times a day, Korea time
+[Timer]
+OnCalendar=*-*-* 09,13,17,21:30:00 Asia/Seoul
+Persistent=false
+AccuracySec=30s
+Unit=indiek-promotion-engage.service
+[Install]
+WantedBy=timers.target

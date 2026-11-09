@@ -1,5 +1,5 @@
 [Unit]
-Description=indiek Instagram scheduled publishing
+Description=indiek Instagram scheduled carousel publishing
 Wants=network-online.target
 After=network-online.target
 

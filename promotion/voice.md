@@ -2,12 +2,16 @@
 
 Use this for English posts and replies, including automated drafts and their review. Write as a music editor passing along something specific. The aim is useful, recognisable writing, not passing an AI detector or pretending to be an unaffiliated listener.
 
+Revised 2026-11-09 (growth plan D6): the opening line now carries one concrete scene or one real question, and a post may tag the artist's verified official account. The accuracy, invented-experience and lyric-quotation rules below are unchanged.
+
 ## What goes into a post
 
-- Scheduled discovery posts lead with one specific detail from an existing indiek lyric note, song-background story or listening guide. Explain a lyric's scene or change of perspective, an attributed creative choice, or a useful connection between named songs. Give the basic insight in the post; do not withhold it as clickbait. Introduce the artist and song so an unfamiliar listener can follow.
+- Open with one concrete scene or one real question. A scene is something a reader can picture from the published notes: a room, a gesture, a time of day, a change of perspective. A question must be specific to this song or story and answered in the post or on the linked page (“why does a song called EVERYTHING stay inside one rainy room?”). Never open with a question the post cannot answer, a poll, or bait such as “who's excited?”.
+- Scheduled discovery posts build that opening from one specific detail in an existing indiek lyric note, song-background story or listening guide. Explain a lyric's scene or change of perspective, an attributed creative choice, or a useful connection between named songs. Give the basic insight in the post; do not withhold it as clickbait. Introduce the artist and song so an unfamiliar listener can follow.
+- A post may tag the artist's official account once, written as @handle next to the artist's name. Use only handles recorded for that platform and that artist in `promotion/artist-accounts.json`, which needs an official source (artist, label or agency site, or the official channel) linking the account. At most two tags per post, and only for artists the post is about. Never tag fans, other creators, journalists or a label that is not recorded, and never use a tag to ask for a reshare, a follow or a reply. No recorded handle means no tag.
 - Link the matching indiek artist, story or guide page. New-page announcements are not the default angle. Fresh published magazine stories take the daily slot first; otherwise alternate eligible artist notes and guides where possible. Treat review objections as instructions to revise: remove unsupported details and recheck the exact new copy. If a topic still fails, consider another eligible page through the maintained runner. Respect the repeat window and skip only when no reviewed candidate qualifies.
 - External concert and release announcements are no longer the automatic fallback. A separately requested news post still needs the artist, place/date or release status, a verified original and honest attribution. Do not append an unrelated site link merely to capture a click.
-- Prefer one or two short sentences. A third is fine when it supplies necessary context. Remove the generic introduction and closing before cutting useful details. There is no mandatory hook–explanation–question formula.
+- Prefer one or two short sentences. A third is fine when it supplies necessary context. Remove the generic introduction and closing before cutting useful details. The opening rule above is the only fixed part; there is no hook–explanation–question template after it.
 - Use your own concise wording. Preserve official artist/song names, dates and the difference between a show, a livestream and a newly uploaded recording. Credit the original announcement or interview with its direct link.
 - For dates, distinguish the announcement from the event. Use an explicit month/day and local timezone when giving a time. Do not turn a future release into “out now”, an old upload into a new performance, or a listing into a claim that tickets remain available.
 - Site links belong where the artist introduction genuinely helps. Do not append a site slogan, “link in bio” or a request to visit to every post. Never claim the bio contains a link without checking it.
@@ -15,22 +19,25 @@ Use this for English posts and replies, including automated drafts and their rev
 ## How it should sound
 
 - Familiar English, contractions and short paragraphs. Relaxed lowercase and an omitted final period are welcome; official names can keep their own styling. Clarity matters more than polished punctuation. Do not force lowercase on every post or introduce mistakes, fake slang or random commas to look human.
-- No bullets, headings, bold text, decorative symbols, hashtag blocks or routine emoji in the public copy. An occasional purposeful tag is an editorial choice, not a template.
+- No bullets, headings, bold text, decorative symbols, hashtag blocks or routine emoji in the public copy. An artist's verified @handle and an occasional purposeful topic tag are editorial choices, not a template.
 - Replace vague praise with an observable detail. Avoid stock hooks such as “hidden gem”, “must-listen”, “you need to hear this”, “on repeat”, “stop scrolling”, “criminally underrated”, “sonic journey” and “mark your calendars”. Avoid interchangeable strings of adjectives, forced metaphors and “not just X, but Y”. A word is not proof of AI authorship; the problem is empty or repetitive writing.
 - Do not claim to have attended, watched, replayed, cried to or grown up with something unless the user supplied that experience. Do not manufacture popularity, consensus, urgency or endorsements. Keep cancellation and sensitive news factual.
-- Vary the opening, rhythm and amount of context according to the news. Compare the last several actual posts: if this one could be produced by swapping artist names into yesterday’s text, rewrite it. Do not end every post with a question. Ask one only when it follows from a real conversation.
+- Vary the scene, rhythm and amount of context. Compare the last several actual posts: if this one could be produced by swapping artist names into yesterday’s text, rewrite it. Do not open two consecutive posts with a question, and do not end every post with one. A closing question is only for a real conversation.
 - For lyrics, distinguish the speaker from the performer. Explain what the verified words suggest without diagnosing the artist, inventing a relationship history or turning an uncertain feeling into a universal lesson. Summarise selectively; do not reproduce or translate whole verses for social posts.
 - Replies answer the actual comment, usually in one or two brief sentences. A possible feature stays “considering”; a planned update is not “live”. Identify indiek’s involvement where relevant. Never use this voice to evade a community’s AI or promotion rules.
+- Automated replies (see the reply rules in `deploy/README.md`) follow the same facts rule: only what the published indiek page or its sources support. Add an indiek link only when the comment asks something the linked page directly answers. Thanks, agreement or a short answer needs no link. Do not reply to artist private life, fandom disputes, politics or health; those conversations are held for the operator.
 
 ## Review before sending
 
 Check names, event/release dates, current status and every factual clause against the primary source. Check that the source link supports the copy, not merely the artist’s identity. Then remove any sentence that adds only enthusiasm. Read it aloud once and compare recent posts for repeated hooks. If facts cannot be verified or the draft is still generic, hold it; do not publish to fill a slot. Automated review is a quality gate, not proof of truth or human authorship.
 
-Instagram additionally needs a relevant image with recorded reuse rights, provenance and accurate alt text. An official poster or publicly visible photo is not automatically reusable. No unrelated album card just to meet the image requirement.
+Instagram additionally needs a relevant image with recorded reuse rights, provenance and accurate alt text. An official poster or publicly visible photo is not automatically reusable. No unrelated album card just to meet the image requirement. Scheduled Instagram posts are indiek's own commentary carousels: typographic slides that carry the published lyric-note paragraphs word for word, so the caption only needs the opening scene or question, the artist (with a recorded tag) and the page link.
 
 ## Example, not a reusable news template
 
 Avoid: “Calling all music lovers! Get ready for an unforgettable sonic journey with SE SO NEON. Who’s excited?”
+
+Scene opening, from a published lyric note: “Two people in a room on a rainy day, with little need to speak. that’s the whole world of The Black Skirts’ EVERYTHING, and why the title doesn’t feel too big”. Add the @handle only if the artist's account is recorded.
 
 More useful: “SE SO NEON play Billboard Live Tokyo on Oct 30, with sets at 5:30 and 8:30pm JST. the venue has the details”
 
@@ -47,4 +54,4 @@ Checked 2026-10-19. These are editorial sources, not evidence that any punctuati
 
 ## Magazine stories
 
-Read `skills/indiek-editorial/SKILL.md` when adapting a feature. Give one concrete detail that the article can support, then its direct link. Do not promise a revelation or force every feature into breaking-news language. Use the published article revision; edits require a fresh caption review. Scheduled stories take an existing daily slot. A user-requested immediate share follows the separate `story-now` procedure in `deploy/README.md`. Original typographic article cards are eligible for Instagram; article photographs do not acquire social reuse rights from appearing on the site.
+Read `skills/indiek-editorial/SKILL.md` when adapting a feature. Open with one concrete scene or question that the article supports, then its direct link. Do not promise a revelation or force every feature into breaking-news language. Use the published article revision; edits require a fresh caption review. Scheduled stories take an existing daily slot. A user-requested immediate share follows the separate `story-now` procedure in `deploy/README.md`. Original typographic article cards are eligible for Instagram; article photographs do not acquire social reuse rights from appearing on the site.

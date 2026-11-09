@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["approved", "copy", "reason", "issues", "sensitive", "directQuestion", "linkJustified", "factsSupported"],
+  "properties": {
+    "approved": {"type": "boolean"},
+    "copy": {"type": "string"},
+    "reason": {"type": "string"},
+    "issues": {"type": "array", "items": {"type": "string"}},
+    "sensitive": {"type": "boolean"},
+    "directQuestion": {"type": "boolean"},
+    "linkJustified": {"type": "boolean"},
+    "factsSupported": {"type": "boolean"}
+  }
+}

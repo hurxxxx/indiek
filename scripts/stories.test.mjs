@@ -98,10 +98,12 @@ for(const rejectBoth of [false,true])test(`caption review ${rejectBoth?'keeps th
       const copy=JSON.parse(prompt.split('Final copy: ')[1]),approved=version===2&&!rejectBoth||!copy.includes('?from=threads');
       return {copy,approved,issues:approved?[]:['Attribute her recollection.'],reason:'Checked against the attributed account'};
     };
-    const options={root,store,ask,verify:async()=>{},now:new Date('2026-10-20T06:00:00Z'),recentPosts:[],config:{origin:'https://indiek.com',platforms:['threads','instagram'],previousPosts:[]},catalogue:{items:[{id:s.id,kind:'story',path:'/stories/a-song/',published:s.published,revision:storyDigest(s),artistIds:[],image:'/assets/social/stories-a-song.jpg',altText:'Original type card',description:'A reported account'}]}};
+    const options={root,store,ask,verify:async()=>{},now:new Date('2026-10-20T07:30:00Z'),recentPosts:[],config:{origin:'https://indiek.com',platforms:['threads','instagram'],previousPosts:[],schedule:{threads:{time:'16:00'},instagram:{format:'carousel',days:['Fri','Sun'],time:'17:00'}}},catalogue:{items:[{id:s.id,kind:'story',path:'/stories/a-song/',published:s.published,revision:storyDigest(s),artistIds:[],image:'/assets/social/stories-a-song.jpg',altText:'Original type card',description:'A reported account'}]}};
     const result=await prepareStory(options);
     assert.equal(result.status,rejectBoth?'story-held':'story-prepared');
-    assert.equal(store.posts.length,rejectBoth?0:2);assert.deepEqual(seen,[0,0,0,0]);
+    // Scheduled stories take the 16:00 KST Threads slot only (growth plan W6).
+    assert.equal(store.posts.length,rejectBoth?0:1);assert.deepEqual(seen,[0,0]);
+    if(!rejectBoth)assert.deepEqual(store.posts.map(p=>[p.id,p.scheduledAt]),[['T-2026-10-21-1600-story','2026-10-21T07:00:00.000Z']]);
     if(!rejectBoth)assert.ok(store.posts.every(p=>p.copy.startsWith('She recalled')));
     const audit=JSON.parse(readFileSync(path.join(root,'promotion/state/stories/2026-10-21.json'),'utf8'));
     assert.equal(audit.attempts.length,2);assert.equal(audit.attempts[0].status,'rejected');

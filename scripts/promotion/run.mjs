@@ -8,6 +8,11 @@ import {reviewBeforePublish} from './news-runner.mjs';
 import {prepareStory} from './stories.mjs';
 import {shareStoryNow} from './on-demand.mjs';
 import {sharePageNow,prepareDailyPages,verifyPagePost} from './page-now.mjs';
+import {prepareCarousel,verifyCarouselPost,validateManifest} from './carousel.mjs';
+import {engageRun,engageApprove,engageReject,engagePause,engageResume,engageQueue,engageCheck} from './engage.mjs';
+import {engageSummary} from './engage-log.mjs';
+import {codexJSON} from './news-runner.mjs';
+import {askJSON,instructions} from '../editorial/ai.mjs';
 import {reportSummary as searchConsoleSummary} from '../search-console/core.mjs';
 
 const root=fileURLToPath(new URL('../../',import.meta.url));
@@ -36,12 +41,22 @@ async function publicCatalogue() {
   if(data.origin!==config.origin||data.version!==1||!Array.isArray(data.items))throw new Error('Invalid public promotion catalogue.');
   return data;
 }
+// Built next to promotion-catalogue.json by scripts/promotion/carousel.mjs; absent until that build step is deployed.
+async function publicCarousels() {
+  if(local)return readJSON(path.join(root,'dist/promotion-carousels.json'),null);
+  const response=await fetch(`${config.origin}/promotion-carousels.json`,{redirect:'error',signal:AbortSignal.timeout(15000)});
+  if(response.status===404)return null;
+  if(!response.ok)throw new Error(`Public carousel manifest unavailable (HTTP ${response.status}).`);
+  return validateManifest(await response.json(),config.origin);
+}
 async function prepare(store) {
   const catalogue=await publicCatalogue();
   const recentPosts=await recentOwnPosts(config,credentials());
   const story=await prepareStory({root,config,store,catalogue,recentPosts,now});
   const result=story&&story.status!=='story-held'?story:await prepareDailyPages({root,config,store,catalogue,recentPosts,now});
-  stateNote(`Daily editorial discovery ${result.day}: ${result.status}. ${result.reason||'Read the recorded selection.'} No posts published.`);
+  // W6: Instagram has its own Fri/Sun carousel slot; a carousel problem never blocks the Threads slot above.
+  const carousel=await prepareCarousel({root,config,store,catalogue,manifest:await publicCarousels(),recentPosts,now,instructions,ask:prompt=>askJSON(root,'social',prompt,{timeout:180000})});
+  stateNote(`Daily editorial discovery ${result.day}: ${result.status}. ${result.reason||'Read the recorded selection.'} Instagram carousel: ${carousel.status}${carousel.reason?` (${carousel.reason})`:''}. No posts published.`);
 }
 async function publish(store,platform) {
   if(!config.platforms.includes(platform))throw new Error('Specify threads or instagram.');
@@ -54,7 +69,7 @@ async function publish(store,platform) {
   const recent=async()=>recentPosts??=await recentOwnPosts({...config,platforms:[platform]},secret);
   let failed=false;
   for(const post of store.posts.filter(p=>p.mode!=='on-demand'&&p.platform===platform&&!['published','expired','superseded'].includes(p.status))) {
-    await publishScheduledPost(post,{config,store,api,now,recent,verify:post.kind==='news'?async p=>reviewBeforePublish(p,{root,config,posts:store.posts,recentPosts:await recent(),now}):post.kind==='page'?async p=>verifyPagePost(p,{root,catalogue:await publicCatalogue()}):verifyLive});
+    await publishScheduledPost(post,{config,store,api,now,recent,verify:post.kind==='news'?async p=>reviewBeforePublish(p,{root,config,posts:store.posts,recentPosts:await recent(),now}):post.kind==='page'?async p=>verifyPagePost(p,{root,catalogue:await publicCatalogue()}):post.kind==='carousel'?async p=>{const manifest=await publicCarousels();if(!manifest)throw new Error('Public carousel manifest missing.');return verifyCarouselPost(p,{root,catalogue:await publicCatalogue(),manifest,origin:config.origin});}:verifyLive});
     if(['held','creating','publishing','submitted'].includes(post.status)||post.pausePlatform)failed=true;
     if(post.pausePlatform)break;
   }
@@ -97,18 +112,34 @@ async function matomoReport(secret) {
   const start=new Date(Date.parse(`${day}T00:00:00Z`)-29*86400000).toISOString().slice(0,10);
   return {status:'Consenting browsers only; not all people or social impressions.',range:`${start},${day}`,visits:await request('VisitsSummary.get','range',`${start},${day}`),returning:await request('VisitFrequency.get','range',`${start},${day}`),events:await request('Events.getCategory','range',`${start},${day}`)};
 }
+async function engage(store) {
+  const sub=argument,secret=credentials(),credential=secret.threads;
+  if(sub==='queue'){console.log(JSON.stringify(engageQueue({root}),null,2));return;}
+  if(sub==='reject'){console.log(JSON.stringify(engageReject({root,id:process.argv[4],code:process.argv[5]}),null,2));return;}
+  if(sub==='pause'){console.log(JSON.stringify(engagePause({root}),null,2));return;}
+  if(sub==='resume'){console.log(JSON.stringify(engageResume({root,cause:process.argv[4]}),null,2));return;}
+  if(!['run','check','approve'].includes(sub))throw new Error('Engage commands: run, check, queue, approve E-ID, reject E-ID [off-topic|tone|fact|timing|other], pause, resume CAUSE');
+  if(!credential?.token){stateNote('threads: account authorization missing; no engagement API calls.');return;}
+  if(sub!=='check'&&await refreshToken('threads',credential))atomicWrite(credentialFile,JSON.stringify(secret,null,2)+'\n');
+  const api=metaClient('threads',credential);
+  if(sub==='check'){console.log(JSON.stringify(await engageCheck({config,api,credential}),null,2));return;}
+  if(sub==='approve'){const result=await engageApprove({root,config,api,credential,id:process.argv[4],now});console.log(JSON.stringify(result,null,2));if(result.status!=='published')process.exitCode=1;return;}
+  const result=await engageRun({root,config,api,credential,store,catalogue:await publicCatalogue(),now,ask:(stage,prompt)=>codexJSON(root,stage,prompt,{timeout:180000})});
+  stateNote(`Threads conversations: ${result.status}. ${JSON.stringify(result)}`);
+  if(['stopped'].includes(result.status))process.exitCode=1;
+}
 async function report(store) {
   let analytics;
   try{analytics=await matomoReport(credentials());}catch{analytics={status:'Matomo unavailable; no figures inferred.'};}
-  const report={checkedAt:now.toISOString(),queue:store.posts.map(({id,platform,status,permalink,issue})=>({id,platform,status,permalink,issue})),analytics,searchConsole:searchConsoleSummary(readJSON(path.join(state,'search-console/latest.json'),null))||'No daily Search Console check has run yet; no search figures inferred.',nextReview:['Compare search clicks with consenting visits, not social impressions.','Review one guide and one artist page; spend 1–2 hours checking selection and facts.','After four weeks, keep topics that bring actual listening and returns.']};
+  const report={checkedAt:now.toISOString(),queue:store.posts.map(({id,platform,status,permalink,issue})=>({id,platform,status,permalink,issue})),analytics,conversations:engageSummary(readJSON(path.join(state,'engage/state.json'),null),now),searchConsole:searchConsoleSummary(readJSON(path.join(state,'search-console/latest.json'),null))||'No daily Search Console check has run yet; no search figures inferred.',nextReview:['Compare search clicks with consenting visits, not social impressions.','Review one guide and one artist page; spend 1–2 hours checking selection and facts.','After four weeks, keep topics that bring actual listening and returns.']};
   atomicWrite(path.join(state,'reports',`${now.toISOString().slice(0,10)}.json`),JSON.stringify(report,null,2)+'\n');
-  const summary=`# indiek weekly review\n\nChecked: ${report.checkedAt}\n\n${store.posts.filter(p=>p.status==='published').length} API-verified posts. ${store.posts.filter(p=>p.status==='ready').length} prepared posts.\n\nAnalytics: ${analytics.status}\n\nSearch Console: ${report.searchConsole}\n\n${report.nextReview.map(s=>'- '+s).join('\n')}\n\nDetailed observed values: ${now.toISOString().slice(0,10)}.json\n`;
+  const summary=`# indiek weekly review\n\nChecked: ${report.checkedAt}\n\n${store.posts.filter(p=>p.status==='published').length} API-verified posts. ${store.posts.filter(p=>p.status==='ready').length} prepared posts.\n\nAnalytics: ${analytics.status}\n\nThreads conversations (7 days): ${report.conversations.ownReplies} replies on indiek posts, ${report.conversations.externalReplies} approved replies elsewhere, ${report.conversations.operatorRejected} rejected by the operator, ${report.conversations.pending} waiting, ${report.conversations.heldSensitive} held as sensitive, ${report.conversations.stops} stops${report.conversations.paused?` (stopped: ${report.conversations.paused.kind})`:''}. Likes, profile-link clicks and follower change need threads_manage_insights and are not measured.\n\nSearch Console: ${report.searchConsole}\n\n${report.nextReview.map(s=>'- '+s).join('\n')}\n\nDetailed observed values: ${now.toISOString().slice(0,10)}.json\n`;
   atomicWrite(path.join(state,'reports/latest.md'),summary);stateNote('Weekly report saved. Missing measurements are identified, not estimated.');
 }
 async function run() {
   const store=new Store(root);
   if(command==='status') {
-    const secret=credentials();console.log(JSON.stringify({account:config.account,credentials:Object.fromEntries(config.platforms.map(p=>[p,{connected:Boolean(secret[p]?.token),expiresAt:secret[p]?.expiresAt||null}])),queue:store.posts.map(({id,status,scheduledAt,issue})=>({id,status,scheduledAt,issue})),lastRun:readJSON(path.join(state,'status.json'),null)},null,2));return;
+    const secret=credentials();console.log(JSON.stringify({account:config.account,credentials:Object.fromEntries(config.platforms.map(p=>[p,{connected:Boolean(secret[p]?.token),expiresAt:secret[p]?.expiresAt||null}])),queue:store.posts.map(({id,status,scheduledAt,issue})=>({id,status,scheduledAt,issue})),conversations:engageSummary(readJSON(path.join(state,'engage/state.json'),null)),lastRun:readJSON(path.join(state,'status.json'),null)},null,2));return;
   }
   if(command==='credentials') {
     if(argument!=='--stdin')throw new Error('Use credentials --stdin with JSON from a secure local file; never put tokens in command arguments.');
@@ -127,13 +158,14 @@ async function run() {
     else if(command==='story-now')await storyNow(store);
     else if(command==='page-now')await pageNow(store);
     else if(command==='publish')await publish(store,argument);
+    else if(command==='engage')await engage(store);
     else if(command==='report')await report(store);
     else if(command==='weekly')await report(store);
     else if(command==='sync-log')store.log();
     else if(command==='dry-run'){
       for(const post of store.posts.filter(p=>!['published','expired','superseded'].includes(p.status))){validatePost(post,config);try{await verifyLive(post);console.log(`${post.id}: source and any required image accessible; independent review runs again at send time; not sent`);}catch(error){console.log(`${post.id}: blocked — ${error.message}`);}}
       if(!store.posts.length){await publicCatalogue();console.log('Public catalogue readable; no prepared jobs.');}
-    }else throw new Error('Commands: status, check, prepare [--local], story-now STORY_ID (publishes), page-now artist|guide ID [--check] (publishes without --check), dry-run, publish threads|instagram, report, weekly, sync-log, credentials --stdin');
+    }else throw new Error('Commands: status, check, prepare [--local], story-now STORY_ID (publishes), page-now artist|guide ID [--check] (publishes without --check), dry-run, publish threads|instagram, engage run|check|queue|approve|reject|pause|resume, report, weekly, sync-log, credentials --stdin');
   });
 }
 run().catch(error=>{stateNote(error.safeMessage||error.message);process.exitCode=1;});

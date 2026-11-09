@@ -21,7 +21,7 @@ function fixture(t) {
   const item={id:story.id,kind:'story',path:'/stories/a-song/',published:story.published,revision:storyDigest(story),artistIds:[],image:'/assets/social/stories-a-song.jpg',altText:'Original type card',description:story.description};
   const store={posts:[],save(p){const i=this.posts.findIndex(old=>old.id===p.id);if(i<0)this.posts.push(p);else this.posts[i]=p;}};
   const stats={asks:0,sends:0,receipts:0};
-  const options={root,store,storyId:story.id,config:{origin:'https://indiek.com',platforms:['threads','instagram'],previousPosts:[],maxSlotAgeMinutes:120},catalogue:{items:[item]},
+  const options={root,store,storyId:story.id,config:{origin:'https://indiek.com',platforms:['threads','instagram'],previousPosts:[],maxSlotAgeMinutes:120,schedule:{threads:{time:'16:00'},instagram:{format:'carousel',days:['Fri','Sun'],time:'17:00'}}},catalogue:{items:[item]},
     clock:()=>new Date('2026-10-20T07:50:00Z'),recent:async()=>[],apiFor:()=>({}),
     ask:async(stage,prompt)=>{
       stats.asks++;

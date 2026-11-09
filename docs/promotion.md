@@ -1627,3 +1627,29 @@ https://indiek.com/artists/sunwoojunga/?from=instagram
   - Instagram API로 프로필 `website` 값이 `https://indiek.com`임을 확인했다. 팔로워는 0, 게시물은 25개다.
   - 계정 상태(추천 가능 여부)는 확인하지 않았다.
 - 결정: 권한 범위를 안내했고, 사용자가 슈퍼유저 토큰을 그대로 두기로 했다. 읽기 전용 토큰으로 교체하면 같은 `credentials --stdin` 절차로 덮어쓴다.
+
+## G018 · 11월 SNS 전환(W6)과 Threads 대화 에이전트 v1(W8) 로컬 구현
+
+- 작업일: 2026-11-09. [성장 계획](growth-phase-1.md)의 D6·W6·W8을 로컬 저장소에 구현하고 검증했다. 자동화 서버 배포, 타이머 변경, 게시·답글, Meta 권한 요청은 하지 않았다. 서버 반영은 사용자 승인을 기다린다.
+- 문체(D6): [문체 지침](../promotion/voice.md)을 개정했다. 첫 문장에는 구체적 장면 하나나 글이 답하는 질문 하나를 둔다. 태그는 `promotion/artist-accounts.json`에 공식 출처와 함께 기록한 계정만 허용한다. 정확성·경험 날조 금지·가사 인용 규칙은 유지했다. 등록부는 비어 있어 아직 태그가 붙지 않는다.
+- 일정(W6):
+  - Threads는 매일 16:00 KST로 옮긴다. 근거는 Threads 인사이트의 활동 집중 시간(금·일 15~18시, 토 18~21시)이다.
+  - Instagram은 30일 조회 0이라 매일 글자 카드를 멈춘다. 대신 금·일 17:00에 자체 해설 캐러셀을 올린다.
+  - 로컬 빌드에서 아티스트 20명분 덱, 슬라이드 77장(1080×1350)을 만들었다. 슬라이드는 공개 가사 해설 문단을 그대로 옮기며 사진·앨범 아트는 쓰지 않는다.
+  - 캐러셀 생성 단계(`node scripts/promotion/carousel.mjs build`)는 아직 사이트 빌드·배포에 연결하지 않았다. 그 전까지 Instagram 슬롯은 쉰다.
+  - Instagram API는 스토리 링크 스티커를 지원하지 않아 자동화하지 않는다.
+- 대화 에이전트(W8 v1):
+  - indiek 게시물의 댓글·언급은 초안과 독립 검수를 통과하면 자동으로 답한다.
+  - 키워드 검색으로 찾은 다른 계정 글은 승인 대기열에 넣는다. `promotion:remote -- engage queue|approve|reject`로 처리한다.
+  - 한도는 자체 게시물 답글 하루 20건, 외부 답글 하루 5건이며 같은 계정에는 7일에 1번만 답한다.
+  - 링크는 질문에 직접 답할 때만 붙인다. 사생활·팬덤 분쟁·정치·건강은 보류한다.
+  - 제한·신고 신호(숨겨진 답글)·오류가 생기면 중단하고, 원인 코드를 남겨야 재개한다.
+  - 이 기록의 자동 구간에는 indiek 답글만 남기고 댓글 원문은 서버 상태에만 둔다.
+- 시작 조건:
+  - 처음 설치하면 `not-started` 중지 상태다. 실제 시작은 `engage resume go-live`로 한다.
+  - Threads bio에 AI 작성 보조 안내가 없으면 답글을 쓰지 않는다.
+  - 현재 토큰(2026-10-19 기록)은 `threads_basic`·`threads_content_publish`뿐이다. 답글 읽기·쓰기(`threads_read_replies`, `threads_manage_replies`), 언급(`threads_manage_mentions`), 검색(`threads_keyword_search`)이 없어 지금 배포하면 `권한 없음`만 기록한다.
+  - 언급·검색은 앱 심사(고급 접근) 전에는 테스터와 indiek 자신의 글만 돌려준다.
+- 확인 못 한 것: Threads API 문서에는 본문 `@handle`이 실제 언급으로 연결된다는 설명이 없다. 첫 태그 게시물을 앱에서 확인한다.
+- 검증: 로컬 `npm run build && npm run check` 통과(테스트 257개, 37페이지). 실제 API 호출·게시는 하지 않았다.
+- 후속: 서버 반영 절차는 [배포 문서](../deploy/README.md#sns-자동-게시)의 새 항목과 이 세션의 반영 계획을 따른다. Reddit 초안과 연락 초안은 1월 이후 작업이다.

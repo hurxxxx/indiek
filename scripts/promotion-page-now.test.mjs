@@ -16,7 +16,7 @@ function fixture(t,kind='artist') {
   const item={id:'a-song',kind,path:`/${section}/a-song/`,image:`/assets/social/${section}-a-song.jpg`,description:'An earlier live performance and English lyric notes.',altText:'Original indiek typography card',artistIds:['a-song']};
   const store={posts:[],save(p){const i=this.posts.findIndex(old=>old.id===p.id);if(i<0)this.posts.push(p);else this.posts[i]=p;}};
   const stats={asks:0,sends:0,verifies:0};
-  const options={root,config:{origin:'https://indiek.com',account:'indiekdotcom',platforms:['threads','instagram'],previousPosts:[],maxSlotAgeMinutes:120},store,catalogue:{items:[item]},kind,pageId:item.id,clock:()=>new Date('2026-10-22T13:00:00Z'),recent:async()=>[],apiFor:()=>({}),
+  const options={root,config:{origin:'https://indiek.com',account:'indiekdotcom',platforms:['threads','instagram'],previousPosts:[],maxSlotAgeMinutes:120,schedule:{threads:{time:'16:00'},instagram:{format:'carousel',days:['Fri','Sun'],time:'17:00'}}},store,catalogue:{items:[item]},kind,pageId:item.id,clock:()=>new Date('2026-10-22T13:00:00Z'),recent:async()=>[],apiFor:()=>({}),
     verify:async()=>{stats.verifies++;return {htmlSHA256:'a'.repeat(64),imageSHA256:'b'.repeat(64),text:'A song introduces first love in images. An earlier live performance and English lyric notes.'};},
     ask:async prompt=>{stats.asks++;return {copy:prompt.includes('Final copy: ')?JSON.parse(prompt.split('Final copy: ')[1]):'First love takes shape in a film and a night sky. The page pairs an earlier live performance with English notes.',approved:true,reason:'Exact caption checked against the page.',issues:[]};},
     send:async(p,{store})=>{stats.sends++;p.status='published';p.remoteId='remote-'+p.platform;p.permalink='https://social.example/'+p.platform;store.save(p);}
@@ -37,14 +37,15 @@ for(const kind of ['artist','guide'])test(`${kind} immediate API share requires 
   await sharePageNow(options);assert.equal(stats.sends,2);assert.equal(stats.asks,3);
 });
 
-test('scheduled lyric discovery prepares exact reviewed posts without publishing and resumes once',async t=>{
+test('scheduled lyric discovery prepares one exact reviewed Threads post at 16:00 KST without publishing and resumes once',async t=>{
   const {options,stats}=fixture(t);const now=new Date('2026-10-24T00:00:00Z');
   const result=await prepareDailyPages({...options,now});
-  assert.equal(result.status,'page-prepared');assert.equal(stats.sends,0);assert.equal(stats.asks,3);
+  assert.equal(result.status,'page-prepared');assert.equal(stats.sends,0);assert.equal(stats.asks,2);
+  assert.deepEqual(options.store.posts.map(p=>[p.id,p.platform,p.scheduledAt]),[['T-2026-10-24-1600-page','threads','2026-10-24T07:00:00.000Z']]);
   assert.ok(options.store.posts.every(p=>p.mode==='scheduled'&&p.id.endsWith('-page')));
   for(const p of options.store.posts)validatePost(p,options.config);
   await prepareDailyPages({...options,now});
-  assert.equal(stats.asks,3);assert.equal(options.store.posts.length,2);assert.equal(stats.sends,0);
+  assert.equal(stats.asks,2);assert.equal(options.store.posts.length,1);assert.equal(stats.sends,0);
 });
 
 test('a scheduled page never consumes an occupied or attempted daily slot',async t=>{
@@ -69,13 +70,13 @@ test('scheduled page rejection budget survives restart and cannot move to a fres
 test('scheduled reviews receive the future target day rather than treating preparation as publication',async t=>{
   const {options}=fixture(t);const ask=options.ask;const prompts=[];
   options.ask=async prompt=>{prompts.push(prompt);return ask(prompt);};
-  await prepareDailyPages({...options,now:new Date('2026-10-24T02:00:00Z')});
-  assert.equal(prompts.length,3);
-  for(const prompt of prompts){assert.match(prompt,/TARGET PUBLICATION DAY: 2026-10-25 Asia\/Seoul/);assert.match(prompt,/2026-10-25T01:00:00/);assert.match(prompt,/preparation is NOT publication/);}
+  await prepareDailyPages({...options,now:new Date('2026-10-24T08:00:00Z')});
+  assert.equal(prompts.length,2);
+  for(const prompt of prompts){assert.match(prompt,/TARGET PUBLICATION DAY: 2026-10-25 Asia\/Seoul/);assert.match(prompt,/2026-10-25T07:00:00/);assert.match(prompt,/preparation is NOT publication/);}
 });
 
 test('legacy review-context repair rechecks the same draft once without resetting its two-version budget',async t=>{
-  const {options,stats}=fixture(t);const ask=options.ask;const now=new Date('2026-10-24T02:00:00Z');
+  const {options,stats}=fixture(t);const ask=options.ask;const now=new Date('2026-10-24T08:00:00Z');
   options.ask=async prompt=>({...await ask(prompt),...(prompt.includes('Final copy: ')?{approved:false,issues:['Preparation date mistaken for target day']}:{})});
   assert.equal((await prepareDailyPages({...options,now})).status,'held');
   const file=path.join(options.root,'promotion/state/pages/2026-10-25.json');const old=JSON.parse(readFileSync(file,'utf8'));
@@ -83,10 +84,10 @@ test('legacy review-context repair rechecks the same draft once without resettin
   const before=stats.asks;options.ask=ask;
   assert.equal((await prepareDailyPages({...options,now})).status,'page-prepared');
   const result=JSON.parse(readFileSync(file,'utf8'));
-  assert.equal(stats.asks-before,2);assert.deepEqual(result.attempts,old.attempts);
+  assert.equal(stats.asks-before,1);assert.deepEqual(result.attempts,old.attempts);
   assert.equal(result.contextRechecks.length,1);assert.equal(result.contextRechecks[0].draftVersion,2);
   for(const post of options.store.posts)assert.ok(post.copy.startsWith(old.attempts[1].draft.copy));
-  await prepareDailyPages({...options,now});assert.equal(stats.asks-before,2);
+  await prepareDailyPages({...options,now});assert.equal(stats.asks-before,1);
 });
 
 test('scheduled discovery alternates available kinds and respects actual-account repeat history',()=>{
@@ -110,7 +111,7 @@ test('changed scheduled page content or image fails before API publication',asyn
 test('daily publication guard also applies to reviewed scheduled lyric posts',async t=>{
   const {options}=fixture(t);await prepareDailyPages({...options,now:new Date('2026-10-24T00:00:00Z')});
   let apiCalls=0;const post=options.store.posts[0];
-  await publishScheduledPost(post,{config:options.config,store:options.store,now:new Date('2026-10-24T01:01:00Z'),recent:async()=>[{platform:'threads',publishedAt:'2026-10-24T00:30:00Z'}],api:{identity:async()=>{apiCalls++;throw new Error('must not publish');}}});
+  await publishScheduledPost(post,{config:options.config,store:options.store,now:new Date('2026-10-24T07:01:00Z'),recent:async()=>[{platform:'threads',publishedAt:'2026-10-24T00:30:00Z'}],api:{identity:async()=>{apiCalls++;throw new Error('must not publish');}}});
   assert.equal(post.status,'superseded');assert.equal(apiCalls,0);
 });
 
@@ -141,11 +142,11 @@ test('a rejected daily topic falls back to another frozen candidate and queues o
   };
   const now=new Date('2026-10-25T00:00:00Z');
   assert.equal((await prepareDailyPages({...options,now})).status,'page-prepared');
-  assert.equal(stats.asks,9);assert.equal(stats.sends,0);
-  assert.ok(options.store.posts.every(p=>p.pageId==='another'&&p.status==='ready'));
+  assert.equal(stats.asks,6);assert.equal(stats.sends,0);
+  assert.ok(options.store.posts.length===1&&options.store.posts.every(p=>p.pageId==='another'&&p.status==='ready'));
   const first=JSON.parse(readFileSync(path.join(options.root,'promotion/state/pages/2026-10-25.json'),'utf8'));
   assert.equal(first.attempts.length,2);assert.ok(first.attempts.every(a=>a.status==='rejected'));
-  await prepareDailyPages({...options,now});assert.equal(stats.asks,9);assert.equal(options.store.posts.length,2);
+  await prepareDailyPages({...options,now});assert.equal(stats.asks,6);assert.equal(options.store.posts.length,1);
 });
 
 test('restarting cannot expand the frozen daily candidate or per-topic draft limits',async t=>{

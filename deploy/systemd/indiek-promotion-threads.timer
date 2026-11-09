@@ -1,7 +1,7 @@
 [Unit]
-Description=indiek Threads daily editorial discovery, Korea time
+Description=indiek Threads daily editorial discovery at the account activity peak, Korea time
 [Timer]
-OnCalendar=*-*-* 10:00:00 Asia/Seoul
+OnCalendar=*-*-* 16:00:00 Asia/Seoul
 Persistent=false
 AccuracySec=30s
 Unit=indiek-promotion-threads.service

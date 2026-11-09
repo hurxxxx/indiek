@@ -3,9 +3,13 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {validateStoryBrief,verifyStoryPhoto} from './story-brief.mjs';
 import {publicURL,validateCandidate,validateNewsVoice,verifyCandidate,verifyNewsMedia,eventKey,selectedMedia,plain,koreanDay} from './news.mjs';
+import {validateTags} from './tags.mjs';
+import {engageMarkdown} from './engage-log.mjs';
 
 export const hash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
-export const payloadParts = post => post.kind==='news'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.news,post.review,post.sourceVerification,post.media]:post.kind==='story'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.storyId,post.storyRevision,post.review,...(post.storyBrief?[post.storyBrief]:[])]:post.kind==='page'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.pageKind,post.pageId,post.pageRevision,post.artistIds,post.review]:[post.platform,post.url,post.imageUrl,post.copy,post.altText];
+// Tags were added after jobs existed; they join the hash only when present so queued jobs keep their hash.
+const tagParts = post => post.tags?[post.tags]:[];
+export const payloadParts = post => post.kind==='news'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.news,post.review,post.sourceVerification,post.media]:post.kind==='story'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.storyId,post.storyRevision,post.review,...(post.storyBrief?[post.storyBrief]:[]),...tagParts(post)]:post.kind==='page'?[post.platform,post.url,post.imageUrl,post.copy,post.altText,post.pageKind,post.pageId,post.pageRevision,post.artistIds,post.review,...tagParts(post)]:post.kind==='carousel'?[post.platform,post.url,post.copy,post.pageKind,post.pageId,post.pageRevision,post.artistIds,post.slides,post.review,post.tags]:[post.platform,post.url,post.imageUrl,post.copy,post.altText];
 export function atomicWrite(file, value) {
   mkdirSync(path.dirname(file),{recursive:true});
   const tmp=`${file}.${process.pid}.tmp`;
@@ -54,7 +58,8 @@ export class Store {
     const labels={ready:'준비',creating:'컨테이너 생성 중',created:'게시 준비 중',publishing:'게시 응답 확인 중',submitted:'제출 확인 · 링크 확인 대기',published:'API 게시 확인',held:'보류 · 수동 확인 필요',expired:'보류 · 예약 시간 경과',superseded:'미전송 예약 대체'};
     const days=readJSON(path.join(this.root,'promotion/state/news/days.json'),[]);
     const daily=days.map(day=>`### 일일 SNS 선정 · ${day.day} · ${day.status}\n\n- 확인: ${day.updatedAt}\n- 결과: ${day.reason}\n- Instagram: ${day.instagram||'선정 전'}${day.coverage?`\n- 전체 아티스트 확인: ${day.coverage.map(item=>`${item.artistId}: ${item.status}`).join(', ')||'미완료'}`:''}\n- 검토 원문: ${(day.sources||[]).join(' · ')||'없음'}\n- 감사 기록: ${day.auditPath||`promotion/state/news/${day.day}.json`}\n`).join('\n');
-    const body=`${start}\n## 자동 게시 기록\n\n서버 실행 기록. API 조회는 로그인 권한으로 확인한 결과이며 비로그인 노출이나 유입을 증명하지 않는다.\n\n`+daily+'\n'+this.posts.map(p=>`### ${p.id} · ${p.platform} · ${labels[p.status]||p.status}\n\n- 예약: ${p.scheduledAt} · 확인: ${p.updatedAt}\n- 콘텐츠: ${p.url}\n- 이미지: ${p.imageUrl||'없음 · 텍스트 게시'}\n- 대체 텍스트: ${p.altText||'해당 없음'}${p.kind==='news'?`\n- 선정: ${p.news.selectionReason}\n- 원문 게시자: ${p.news.source.publisher} · ${p.news.source.relationship}\n- 사실·문체 검토: ${p.review.reason}`:''}\n- 결과: ${p.permalink||'게시 링크 없음'}${p.remoteId?` · 게시물 ID ${p.remoteId}`:''}\n- 후속 조치: ${p.issue||'예약 시 공개 콘텐츠·인증 상태를 다시 확인'}\n\n문안:\n\n${p.copy.split('\n').map(line=>line?'> '+line:'>').join('\n')}\n\n이력: ${(p.history||[]).map(h=>`${h.at} ${h.event}`).join(' / ')}\n`).join('\n')+`${end}\n`;
+    const conversations=engageMarkdown(this.root);
+    const body=`${start}\n## 자동 게시 기록\n\n서버 실행 기록. API 조회는 로그인 권한으로 확인한 결과이며 비로그인 노출이나 유입을 증명하지 않는다.\n\n`+(conversations?conversations+'\n':'')+daily+'\n'+this.posts.map(p=>`### ${p.id} · ${p.platform} · ${labels[p.status]||p.status}\n\n- 예약: ${p.scheduledAt} · 확인: ${p.updatedAt}\n- 콘텐츠: ${p.url}\n- 이미지: ${p.slides?`자체 해설 캐러셀 ${p.slides.length}장 · ${p.slides[0].imageUrl}`:p.imageUrl||'없음 · 텍스트 게시'}\n- 대체 텍스트: ${p.altText||'해당 없음'}${p.kind==='news'?`\n- 선정: ${p.news.selectionReason}\n- 원문 게시자: ${p.news.source.publisher} · ${p.news.source.relationship}\n- 사실·문체 검토: ${p.review.reason}`:''}\n- 결과: ${p.permalink||'게시 링크 없음'}${p.remoteId?` · 게시물 ID ${p.remoteId}`:''}\n- 후속 조치: ${p.issue||'예약 시 공개 콘텐츠·인증 상태를 다시 확인'}\n\n문안:\n\n${p.copy.split('\n').map(line=>line?'> '+line:'>').join('\n')}\n\n이력: ${(p.history||[]).map(h=>`${h.at} ${h.event}`).join(' / ')}\n`).join('\n')+`${end}\n`;
     if(original.includes(start)!==original.includes(end))throw new Error('Incomplete promotion log markers; repair before publishing.');
     const next=original.includes(start)?original.slice(0,original.indexOf(start))+body+original.slice(original.indexOf(end)+end.length).replace(/^\n/,''):original.trimEnd()+'\n\n'+body;
     atomicWrite(file,next);
@@ -83,7 +88,7 @@ export function validateDraft(copy, sourceQuotes, source, platform) {
   if(!['threads','instagram'].includes(platform))throw new Error('Unsupported platform.');
 }
 export function validatePost(post,config) {
-  if(!/^[TI]-\d{4}-\d{2}-\d{2}-\d{4}(?:-news|-story|-page)?$/.test(post.id)||!config.platforms.includes(post.platform))throw new Error('Invalid job identity.');
+  if(!/^[TI]-\d{4}-\d{2}-\d{2}-\d{4}(?:-news|-story|-page|-carousel)?$/.test(post.id)||!config.platforms.includes(post.platform))throw new Error('Invalid job identity.');
   if(!Number.isFinite(Date.parse(post.scheduledAt)))throw new Error('Invalid schedule.');
   if(post.kind==='news'){
     validateCandidate(post.news,(post.artistIds||[]).map(id=>({id})),config,new Date(post.scheduledAt));
@@ -98,6 +103,8 @@ export function validatePost(post,config) {
     if(post.payloadHash!==hash(payloadParts(post)))throw new Error('Prepared payload changed; create a reviewed replacement job.');
     return;
   }
+  if(post.kind!=='news')validateTags(post.copy,post.tags);
+  if(post.kind==='carousel'){validateCarouselPost(post,config);return;}
   const url=new URL(post.url),image=new URL(post.imageUrl);
   if(url.origin!==config.origin||url.search!==`?from=${post.platform}`||url.hash||!/^\/(artists|notes|stories)\/[a-z0-9-]+\/$/.test(url.pathname))throw new Error('Post link must point to the selected indiek page.');
   if(post.storyBrief) {
@@ -117,6 +124,22 @@ export function validatePost(post,config) {
   }
   if(post.payloadHash!==hash(payloadParts(post)))throw new Error('Prepared payload changed; create a reviewed replacement job.');
 }
+// Scheduled Instagram posts are indiek's own commentary carousels (growth plan W6).
+export function validateCarouselPost(post,config) {
+  const url=new URL(post.url);
+  if(post.platform!=='instagram'||post.mode!=='scheduled'||!post.id.endsWith('-carousel')||post.pageKind!=='artist'||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(post.pageId||''))throw new Error('Carousel jobs are scheduled Instagram artist-page posts.');
+  if(url.origin!==config.origin||url.pathname!==`/artists/${post.pageId}/`||url.search!=='?from=instagram'||url.hash)throw new Error('Carousel link must point to its indiek artist page.');
+  if(!Array.isArray(post.slides)||post.slides.length<2||post.slides.length>10)throw new Error('A carousel needs 2–10 slides.');
+  post.slides.forEach((slide,index)=>{
+    const image=new URL(slide.imageUrl);
+    if(image.origin!==config.origin||image.pathname!==`/assets/social/carousel/artists-${post.pageId}-${index+1}.jpg`||image.search||image.hash||!/^[a-f0-9]{64}$/.test(slide.sha256||''))throw new Error('Carousel slides must be indiek’s own published slides, in order.');
+    if(!slide.altText?.trim()||slide.altText.length>1000)throw new Error('Every carousel slide needs alt text.');
+  });
+  if(post.imageUrl!==post.slides[0].imageUrl||post.altText!==post.slides[0].altText)throw new Error('Carousel cover must be its first slide.');
+  if(typeof post.copy!=='string'||Buffer.byteLength(post.copy)>800||!post.copy.includes(post.url)||!post.artistIds?.includes(post.pageId))throw new Error('Invalid carousel caption.');
+  if(!/^[a-f0-9]{64}$/.test(post.pageRevision)||post.review?.approved!==true||!Array.isArray(post.review.issues)||post.review.issues.length||post.review.copy!==post.copy||!post.review.reason?.trim())throw new Error('Carousel caption needs an exact independent review.');
+  if(post.payloadHash!==hash(payloadParts(post)))throw new Error('Prepared payload changed; create a reviewed replacement job.');
+}
 export async function verifyLive(post,fetcher=fetch) {
   if(post.kind==='news'){
     await verifyCandidate(post.news);
@@ -130,7 +153,17 @@ export async function verifyLive(post,fetcher=fetch) {
   if(post.kind==='story'&&!html.includes(`data-story-revision="${post.storyRevision}"`))throw new Error('Article changed after caption review; prepare a new reviewed caption');
   if(!html.includes(`href="${url.href}"`)||!html.includes(post.sourceDescription.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))))throw new Error('Published source differs from the prepared selection.');
   let imageReceipt;
-  if(post.storyBrief)imageReceipt=await verifyStoryPhoto(post.storyBrief.media,fetcher);
+  if(post.slides){
+    const slides=[];
+    for(const slide of post.slides){
+      const image=await fetcher(slide.imageUrl,{redirect:'error',signal:AbortSignal.timeout(15000)});
+      if(!image.ok||!image.headers.get('content-type')?.includes('image/jpeg'))throw new Error('Carousel slide is not public yet.');
+      const bytes=Buffer.from(await image.arrayBuffer());
+      if(bytes.length>8*1024*1024)throw new Error('Carousel slide exceeds the Instagram size limit.');
+      slides.push(createHash('sha256').update(bytes).digest('hex'));
+    }
+    imageReceipt={slides};
+  }else if(post.storyBrief)imageReceipt=await verifyStoryPhoto(post.storyBrief.media,fetcher);
   else {
     const image=await fetcher(post.imageUrl,{method:'HEAD',redirect:'error',signal:AbortSignal.timeout(15000)});
     if(!image.ok||!image.headers.get('content-type')?.includes('image/jpeg'))throw new Error('Sharing image is not public yet.');

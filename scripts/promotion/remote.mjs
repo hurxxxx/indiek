@@ -4,13 +4,23 @@ import {homedir} from 'node:os';
 import {pathToFileURL} from 'node:url';
 import {readJSON} from './core.mjs';
 
+// W8 approval commands. `engage run` stays on the server timer; approve publishes one reviewed reply.
+function engageRequest(args) {
+  if(args[0]!=='engage')return false;
+  const id=/^E-\d{1,30}$/;
+  return (args.length===2&&['check','queue','pause'].includes(args[1]))||
+    (args.length===3&&args[1]==='approve'&&id.test(args[2]))||
+    ([3,4].includes(args.length)&&args[1]==='reject'&&id.test(args[2])&&(args.length===3||['off-topic','tone','fact','timing','other'].includes(args[3])))||
+    (args.length===3&&args[1]==='resume'&&/^[a-z0-9]+(?:-[a-z0-9]+){0,5}$/.test(args[2]));
+}
 // The local CLI requests the sole publisher; credentials and the queue stay there.
 export function remoteRequest(args,config) {
   const slug=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
   const valid=(args.length===1&&['status','check','dry-run'].includes(args[0]))||
     ([2,3].includes(args.length)&&args[0]==='story-now'&&slug.test(args[1])&&(args.length===2||args[2]==='--brief'))||
-    ([3,4].includes(args.length)&&args[0]==='page-now'&&['artist','guide'].includes(args[1])&&slug.test(args[2])&&(args.length===3||args[3]==='--check'));
-  if(!valid)throw new Error('Use status, check, dry-run, story-now ID or page-now artist|guide ID [--check].');
+    ([3,4].includes(args.length)&&args[0]==='page-now'&&['artist','guide'].includes(args[1])&&slug.test(args[2])&&(args.length===3||args[3]==='--check'))||
+    engageRequest(args);
+  if(!valid)throw new Error('Use status, check, dry-run, story-now ID, page-now artist|guide ID [--check], or engage check|queue|approve E-ID|reject E-ID [reason]|pause|resume CAUSE.');
   if(!config||!/^[A-Za-z0-9][A-Za-z0-9_.@-]*$/.test(config.host||'')||typeof config.directory!=='string'||!config.directory.startsWith('/')||/[\r\n\0]/.test(config.directory))throw new Error('Configure host and absolute directory in ~/.config/indiek-promotion/remote.json; see SERVER_ACCESS.md.');
   const quote=value=>`'${value.replace(/'/g,"'\\''")}'`;
   return {command:'ssh',args:['-o','BatchMode=yes','-o','ConnectTimeout=10',config.host,`cd ${quote(config.directory)} && node scripts/promotion/run.mjs ${args.map(quote).join(' ')}`]};

@@ -64,7 +64,7 @@ systemctl is-enabled logrotate.timer
 
 ## SNS 자동 게시
 
-현재 방식(2026-10-24): 정기 SNS는 새 공개 기사 다음으로 기존 가사 해설·곡 배경·듣기 가이드를 소개하고 관련 indiek 페이지로 연결한다. 외부 공연·발매 공지를 자동 대체재로 사용하지 않는다. 정기 예약과 로컬의 즉시 공유는 같은 공식 API 게시기를 사용하며, 로컬에는 토큰이나 별도 게시 큐를 복제하지 않는다. 기존 게시물은 유지하고 같은 요청을 다시 전송하지 않는다.
+현재 방식(2026-10-24, 11월 전환은 로컬 구현·서버 미반영): 정기 SNS는 새 공개 기사 다음으로 기존 가사 해설·곡 배경·듣기 가이드를 소개하고 관련 indiek 페이지로 연결한다. 외부 공연·발매 공지를 자동 대체재로 사용하지 않는다. [성장 계획](../docs/growth-phase-1.md) W6·W8에 따라 Threads는 활동 시간대의 하루 1건, Instagram은 주 2회 자체 해설 캐러셀로 바꾸고, Threads 답글은 아래 대화 에이전트가 맡는다. 정기 예약과 로컬의 즉시 공유는 같은 공식 API 게시기를 사용하며, 로컬에는 토큰이나 별도 게시 큐를 복제하지 않는다. 기존 게시물은 유지하고 같은 요청을 다시 전송하지 않는다.
 
 웹 서버와 별개인 Linux 서버의 `~/projects/indiek`에서 실행한다. SSH 별칭·접속 정보는 로컬 `SERVER_ACCESS.md`에서 확인한다. Node.js 22+, Python 3/Pillow, ChatGPT로 로그인한 Codex CLI, 사용자 systemd·linger가 필요하다. 추가 API 과금 방식으로 전환하지 않는다.
 
@@ -76,9 +76,9 @@ npm run promotion -- status
 npm run promotion -- dry-run
 ```
 
-한국 시간 매일 08:00 편집 소재 선정·문안 준비, 10:00 Threads, 10:15 Instagram, 월 09:00 주간 보고. 사용할 공개 원문·자체 제작 카드와 검수가 없으면 해당 게시를 쉰다. 서버 시간대가 UTC여도 타이머에 `Asia/Seoul`을 지정한다. 놓친 예약은 몰아서 보내지 않으며 2시간 지난 전송은 만료한다. 웹과 별개로 타이머를 설치해야 동작한다.
+한국 시간 매일 08:00 편집 소재 선정·문안 준비, 16:00 Threads, 금·일 17:00 Instagram 캐러셀, 09·13·17·21시 30분 Threads 대화 점검, 월 09:00 주간 보고. 시각은 `promotion/config.json`의 `schedule`과 `deploy/systemd/` 타이머가 같아야 하며 테스트가 대조한다. 16:00은 Threads 인사이트(2026-11-09)의 활동 집중 시간(금·일 15~18시, 토 18~21시)에서 고른 하나의 시각이다. 금·일 창의 앞쪽이라 게시물이 가장 활발한 시간에 새 글로 노출되고, 토요일 창보다 두 시간 앞선다. Instagram은 30일 조회가 0이라 매일 글자 카드를 중단하고 같은 금·일에 캐러셀을 올린다. 사용할 공개 원문·자체 제작 이미지와 검수가 없으면 해당 게시를 쉰다. 서버 시간대가 UTC여도 타이머에 `Asia/Seoul`을 지정한다. 놓친 예약은 몰아서 보내지 않으며 2시간 지난 전송은 만료한다. 웹과 별개로 타이머를 설치해야 동작한다.
 
-`npm run promotion -- prepare`는 게시 없이 다음 예약을 준비한다. 미공유 공개 기사를 우선하고, 없거나 기사 문안 검수가 끝내 통과하지 못하면 공개 목록의 아티스트 소개·가이드 중 최근 28일에 공유하지 않은 페이지를 고른다. 직전 아티스트 소개 뒤에는 가능한 경우 가이드를 고르며 가사 장면·의미의 변화·공식 배경·곡 사이의 연결 중 한 가지를 짧게 전달한다. 운영 공지나 일반적인 추천 문구로 대신하지 않는다. 반려 사유를 다음 초안에 전달해 수정하고, 한 소재가 끝내 통과하지 못하면 다음 적합한 소재를 검토한다. `promotion/config.json`의 `editorial`에서 하루 최대 3개 페이지 소재·소재당 초안 포함 4개 버전을 관리한다. 날짜별 소재 목록은 `promotion/state/pages/YYYY-MM-DD-selection.json`에 고정하고 첫 소재의 초안·검수는 `YYYY-MM-DD.json`, 후속 소재는 `YYYY-MM-DD-<kind>-<id>.json`에 보존한다. 재시작으로 후보나 버전 예산을 초기화하지 않는다. 원문·자체 제작 카드의 해시와 플랫폼별 정확한 문안 검수가 모두 통과해야 해당 소재의 한 쌍만 큐에 넣으며 준비 명령은 전송하지 않는다. 계정·인증·출처 접근·모델 사용량 문제는 소재 교체로 우회하지 않고 중단한다. 전송 직전에도 페이지·카드 변경과 당일 게시를 다시 확인한다. 아티스트·곡 변경 배포 때 자동 게시 서버의 소스도 함께 갱신한다. `--local`은 로컬 공개 목록을 사용하는 점검 옵션이다.
+`npm run promotion -- prepare`는 게시 없이 다음 예약을 준비한다. 정기 기사·페이지 소재는 Threads 슬롯만 사용한다. 미공유 공개 기사를 우선하고, 없거나 기사 문안 검수가 끝내 통과하지 못하면 공개 목록의 아티스트 소개·가이드 중 최근 28일에 공유하지 않은 페이지를 고른다. 직전 아티스트 소개 뒤에는 가능한 경우 가이드를 고르며 가사 장면·의미의 변화·공식 배경·곡 사이의 연결 중 한 가지를 짧게 전달한다. 운영 공지나 일반적인 추천 문구로 대신하지 않는다. 반려 사유를 다음 초안에 전달해 수정하고, 한 소재가 끝내 통과하지 못하면 다음 적합한 소재를 검토한다. `promotion/config.json`의 `editorial`에서 하루 최대 3개 페이지 소재·소재당 초안 포함 4개 버전을 관리한다. 날짜별 소재 목록은 `promotion/state/pages/YYYY-MM-DD-selection.json`에 고정하고 첫 소재의 초안·검수는 `YYYY-MM-DD.json`, 후속 소재는 `YYYY-MM-DD-<kind>-<id>.json`에 보존한다. 재시작으로 후보나 버전 예산을 초기화하지 않는다. 원문·자체 제작 카드의 해시와 플랫폼별 정확한 문안 검수가 모두 통과해야 해당 소재의 한 쌍만 큐에 넣으며 준비 명령은 전송하지 않는다. 계정·인증·출처 접근·모델 사용량 문제는 소재 교체로 우회하지 않고 중단한다. 전송 직전에도 페이지·카드 변경과 당일 게시를 다시 확인한다. 아티스트·곡 변경 배포 때 자동 게시 서버의 소스도 함께 갱신한다. `--local`은 로컬 공개 목록을 사용하는 점검 옵션이다.
 
 예약 검수에는 실제 게시 날짜·시각을 명시해 준비일의 게시물과 혼동하지 않게 하고, 가이드에서 아티스트 페이지를 거쳐 연결되는 원출처도 전달한다. 이 정보가 빠졌던 초기 검수 컨텍스트(v1)만 기존 마지막 문안을 그대로 한 번 재검수할 수 있다. 초안 수를 초기화하거나 이전 반려를 지우지 않으며 `contextRechecks`에 새 판단을 별도로 보존한다. 수정된 컨텍스트의 반려는 이 경로로 반복 재검수하지 않는다.
 
@@ -94,6 +94,40 @@ npm run promotion -- story-now yerin-0310
 
 중단된 검수는 기록된 정확한 문안으로 이어간다. 생성 도중 중단돼 해당 버전에 문안이 없으면 이전 버전의 기록된 문안을 재사용하며 새 초안을 추가하지 않는다. 이전 판단·보완 근거와 재개 이력을 남기고 양쪽을 다시 검수한다. 사진 요청에는 해시가 일치하는 실제 이미지를 검수 입력에 첨부한다.
 
+### 문안 기준과 아티스트 태그
+
+문안은 [문체 지침](../promotion/voice.md)을 따른다. 2026-11-09 개정(D6)으로 첫 문장에 공개 페이지가 뒷받침하는 구체적 장면 하나나 글이 답하는 질문 하나를 둔다. 아티스트 공식 계정은 `promotion/artist-accounts.json`에 플랫폼별로 기록된 것만 태그한다. 항목마다 계정을 연결한 공식 출처(아티스트·레이블·소속사 사이트나 공식 채널), 확인 메모, 확인일이 필요하며 Instagram 계정이 있어도 Threads 계정은 따로 확인한다. 초안은 `[[tag:아티스트 ID]]` 표시만 쓰고 실행기가 플랫폼별 핸들을 넣거나 지운다. 게시물당 최대 2개, 다루는 아티스트만 허용하며 최종 문안의 `@` 표기가 기록된 태그와 정확히 같아야 검수·전송한다. 전송 직전 등록부에서 빠진 핸들은 보류한다. 현재 등록부는 비어 있어 태그가 붙지 않는다. Threads API 문서에는 본문 `@handle`이 실제 언급으로 연결된다는 설명이 없으므로 첫 태그 게시물에서 앱 화면의 연결 여부를 확인한다.
+
+### Instagram 해설 캐러셀
+
+정기 Instagram은 금·일 17:00 KST에 자체 해설 캐러셀 1건만 올린다. 슬라이드는 아티스트 페이지 대표곡의 공개 가사 해설 문단을 그대로 옮긴 1080×1350 JPEG(표지·본문·끝 장, 최대 10장)이며 아티스트 사진·앨범 아트는 쓰지 않는다. 사이트 빌드 뒤 `node scripts/promotion/carousel.mjs build`가 `dist/assets/social/carousel/`과 `dist/promotion-carousels.json`(슬라이드 경로·대체 텍스트·SHA-256)을 만든다. **이 단계는 아직 `npm run build`에 연결되지 않았고 운영 사이트에 없다.** 목록이 없으면 Instagram 슬롯은 기록만 남기고 쉰다.
+
+같은 날 08:00 준비가 Instagram 기록 기준 28일 안에 올리지 않은 덱을 고른다. 하루 최대 3개 소재·소재당 4개 버전 안에서 캡션을 쓰고 Instagram 최종 문안을 독립 검수한다. 일정·후보·초안·반려는 `promotion/state/carousels/YYYY-MM-DD.json`에 남는다. 전송 직전에는 공개 페이지·슬라이드 해시와 본문 문단 일치, 태그 등록을 다시 확인한다. 게시는 공식 API의 자식 컨테이너(슬라이드별 `alt_text`) → `CAROUSEL` 부모(캡션) → `media_publish` 순서이며 캐러셀은 게시 1건으로 집계된다. 스토리 링크 스티커는 Instagram API가 지원하지 않아 자동화하지 않는다. `story-now`·`page-now`의 명시적 즉시 공유는 기존처럼 양쪽 플랫폼에 글자 카드를 쓴다.
+
+### Threads 대화 에이전트 (W8 v1)
+
+`engage run`이 하루 네 번 공식 Threads API로 다음을 처리한다. 원격 작성·독립 검수에는 기존 Codex 호출(`scripts/promotion/engage-*.schema.json`)을 쓴다.
+
+- **자동 답글**: 최근 14일 indiek 게시물의 댓글과 indiek 언급에 답한다. 초안은 최대 2개이며 별도 검수를 통과한 답글만 보낸다. 72시간이 지난 댓글은 운영자에게 남긴다.
+- **대화 탐색**: `promotion/config.json`의 `engage.queries`로 최근 48시간 공개 글을 검색한다. 하루 최대 10개 후보를 작성·검수해 승인 대기열에 넣으며 자동으로 보내지 않는다.
+- **한도**: 자체 게시물 답글은 하루 20건, 승인된 외부 답글은 하루 5건이다. 같은 계정에는 7일에 1번만 답하며 초과분은 건너뛴다. Meta 답글 한도(24시간 1,000건)의 50%에 닿으면 중단한다.
+- **링크·내용**: 링크는 질문에 공개 indiek 페이지가 직접 답할 때만 1개 붙인다. 태그·해시태그는 쓰지 않고 공개 페이지에 있는 사실만 쓴다. 최근 답글과 같은 문장도 막는다.
+- **보류**: 아티스트 사생활, 팬덤 분쟁, 정치, 건강·사망, 법적 문제는 키워드 선별과 모델 판단 중 하나만 해당해도 답하지 않고 보류한다.
+- **중단**: API 오류·제한, 결과가 불확실한 전송, 숨겨지거나 삭제된 indiek 답글(신고·제한 신호), 한도 초과 중 하나라도 생기면 상태를 `중지`로 바꾸고 원인을 기록한다. 재개는 원인 코드를 남기는 `engage resume CAUSE`로만 하며 불확실한 전송이 남아 있으면 거부한다.
+- **시작 조건**: 처음 설치하면 `not-started` 중지 상태다. 권한이 없으면 하루 한 번 `권한 없음`만 기록하고, Threads 소개글(bio)에 `AI`가 없으면 답글을 쓰지 않는다.
+
+필요한 Threads 권한은 아래와 같다. 현재 토큰은 `threads_basic`·`threads_content_publish`만 받았다(2026-10-19).
+
+| 기능 | 권한 |
+| --- | --- |
+| 자기 게시물의 답글 읽기·작성 | `threads_read_replies`, `threads_manage_replies` |
+| 언급 읽기 | `threads_manage_mentions` |
+| 대화 검색 | `threads_keyword_search` |
+
+언급과 검색은 앱 심사(고급 접근) 전에는 테스터 계정과 indiek 자신의 글만 돌려준다. 다른 계정 글에 답하려면 `threads_keyword_search`나 `threads_manage_mentions`도 필요하다. 권한 요청·재승인은 사용자가 승인한 뒤 진행한다. `engage check`가 `debug_token`의 실제 권한을 보여 준다. 그 호출이 거부되면 재승인 때 인증 JSON의 `threads.scopes`에 받은 권한 목록을 기록한다. 검색 결과에 다른 계정 글이 있는지(고급 접근 여부)와 bio 안내, 답글 한도도 함께 확인하며 아무것도 보내지 않는다.
+
+상태는 `promotion/state/engage/state.json`에 있다. 다른 사람의 댓글 원문은 서버 상태에만 두며 [홍보 기록](../docs/promotion.md)의 자동 구간에는 시각·작업·대상 주소와 indiek 답글만 남긴다. 주간 보고에 답글 수·승인률·보류·중단을 요약한다. 반응·프로필 링크 클릭·팔로워 변화는 `threads_manage_insights`가 없어 미측정으로 둔다. Threads API가 지원하지 않는 계정 팔로우는 대상만 보고하고 사용자가 앱에서 처리한다.
+
 ### 로컬에서 공식 API로 요청
 
 로컬은 SSH로 위의 공통 게시기를 호출한다. `~/.config/indiek-promotion/remote.json`에 SSH 별칭인 `host`와 서버 체크아웃의 절대 경로인 `directory`를 설정한다. 이 파일에는 접속 위치만 있고 토큰은 없다. 실제 값은 로컬 전용 `SERVER_ACCESS.md`에서 관리한다. 요청할 수 있는 명령을 제한하고 인자를 인용하므로 임의 셸 명령이나 자격 증명 전송에는 사용하지 않는다.
@@ -105,9 +139,15 @@ npm run promotion:remote -- page-now artist ARTIST_ID
 npm run promotion:remote -- page-now guide GUIDE_ID
 npm run promotion:remote -- story-now STORY_ID
 npm run promotion:remote -- story-now STORY_ID --brief
+npm run promotion:remote -- engage check            # 권한·bio·한도·검색 범위 확인, 전송 없음
+npm run promotion:remote -- engage queue            # 승인 대기 답글 보기
+npm run promotion:remote -- engage approve E-ID     # 검수된 답글 1건 게시
+npm run promotion:remote -- engage reject E-ID tone # off-topic|tone|fact|timing|other
+npm run promotion:remote -- engage pause
+npm run promotion:remote -- engage resume go-live   # 원인 코드를 기록하고 재개
 ```
 
-`check`는 공식 API의 계정 일치·최근 게시물 조회와 공개 카탈로그 접근만 확인한다. `page-now ... --check`는 공개 페이지·글자 카드·중복 상태를 확인하며 문안 생성·큐 등록·전송을 하지 않는다. **`--check` 없는 `page-now`와 `story-now`는 검수 통과 시 실제 게시한다.** 서버에서는 같은 인자를 `npm run promotion -- ...`에 전달한다. 이 경로는 사용자가 즉시 공유를 요청한 경우에만 사용하며 기존 정기 슬롯은 유지한다.
+`check`는 공식 API의 계정 일치·최근 게시물 조회와 공개 카탈로그 접근만 확인한다. `page-now ... --check`는 공개 페이지·글자 카드·중복 상태를 확인하며 문안 생성·큐 등록·전송을 하지 않는다. **`--check` 없는 `page-now`와 `story-now`, `engage approve`는 실제 게시한다.** `engage run`은 원격 명령으로 허용하지 않고 서버 타이머만 실행한다. 서버에서는 같은 인자를 `npm run promotion -- ...`에 전달한다. 이 경로는 사용자가 즉시 공유를 요청한 경우에만 사용하며 기존 정기 슬롯은 유지한다.
 
 사용자가 기사 공유에 아티스트 사진을 명시적으로 요청한 경우 `--brief`는 `promotion/briefs/<기사 ID>.json`의 문안 방향·사진을 사용한다. 원본 URL·출처·사진가·크레딧·대체 텍스트·JPEG 크기·SHA-256과 실제 요청을 기록한다. 발행 지시와 저작권자 허가는 구분하고, 확인되지 않은 이용 허락은 `unconfirmed`로 남긴다. 사진 크레딧을 포함한 최종 문안을 양쪽에서 다시 검수하며 전송 직전 원본 바이트를 대조한다. 최초 요청에 저장된 사진·문안 방향은 재실행으로 변경하지 않는다. 정기 게시와 `--brief` 없는 요청은 기존 글자 카드를 사용한다.
 
@@ -119,20 +159,22 @@ npm run promotion:remote -- story-now STORY_ID --brief
 
 생성·검수는 [문체 지침](../promotion/voice.md)과 편집 스킬을 공통으로 읽는다. 자체 계정은 공식 API에서 계정 일치를 먼저 확인한 뒤 최근 공개 게시물의 본문·링크·게시일만 가져와 중복과 문체를 비교한다. 검수에는 링크를 붙인 최종 게시 문안 전체를 전달하며, 같은 날의 Threads·Instagram 동시 게시는 플랫폼별 한 번씩 허용한다. Codex는 임시 작업 디렉터리에서 공개 자료만 전달받으며 셸·앱·플러그인·다중 에이전트·브라우저 조작 기능을 끈다. 웹 검색은 실시간으로 사용하고 인증 파일을 프롬프트에 넣지 않는다. 작성·각 검수는 3분이며 페이지 문안은 위 수정·대체 절차를 따른다(기사 문안의 별도 2개 버전 한도는 유지). 사용량·시간 제한 시 유료 API로 대체하지 않는다. 준비 서비스의 전체 제한은 20분이다.
 
-가사·곡 배경·가이드 소개는 해당 페이지의 공개된 자체 제작 타이포그래피 카드를 사용한다. 페이지의 아티스트 사진·앨범 커버를 SNS로 자동 전용하지 않는다. 예전 뉴스 작업을 복구할 때는 기존 `promotion/media.json`의 `topicKey`·출처·이용 권한·승인일·대체 텍스트 검증을 그대로 적용한다. 정기 준비는 새 뉴스 작업을 만들지 않는다.
-Meta 개발자 앱에서 본인 계정 `indiekdotcom`만 연결한다. Threads는 기본 정보·게시 권한, Instagram은 프로페셔널 계정의 기본 정보·콘텐츠 게시 권한을 사용한다. 앱 심사나 계정 전환이 필요한지는 실제 대시보드에서 확인한다. 최초 승인은 브라우저에서 하고 장기 토큰을 서버의 `~/.config/indiek-promotion/credentials.json`에 0600으로 저장한다. 토큰을 Git·문안·채팅·명령 인자에 넣지 않는다.
+Threads의 가사·곡 배경·가이드 소개는 해당 페이지의 공개된 자체 제작 타이포그래피 카드를 사용한다. 페이지의 아티스트 사진·앨범 커버를 SNS로 자동 전용하지 않는다. 예전 뉴스 작업을 복구할 때는 기존 `promotion/media.json`의 `topicKey`·출처·이용 권한·승인일·대체 텍스트 검증을 그대로 적용한다. 정기 준비는 새 뉴스 작업을 만들지 않는다.
+Meta 개발자 앱에서 본인 계정 `indiekdotcom`만 연결한다. Threads는 기본 정보·게시 권한, Instagram은 프로페셔널 계정의 기본 정보·콘텐츠 게시 권한을 사용한다(캐러셀도 같은 권한). 대화 에이전트의 추가 Threads 권한은 위 표를 따른다. 앱 심사나 계정 전환이 필요한지는 실제 대시보드에서 확인한다. 최초 승인은 브라우저에서 하고 장기 토큰을 서버의 `~/.config/indiek-promotion/credentials.json`에 0600으로 저장한다. 토큰을 Git·문안·채팅·명령 인자에 넣지 않는다.
 
-인증 JSON의 플랫폼별 항목은 `threads` / `instagram`이며 `userId`, `token`, `issuedAt`, `expiresAt`(ISO 날짜)가 필요하다. Instagram API 기본 버전은 `v26.0`이다. 선택적인 Matomo 항목은 `matomo.token`으로, 사이트 4만 읽는 별도 토큰을 사용한다. 안전한 로컬 파일을 준비한 뒤 `npm run promotion -- credentials --stdin < /secure/path/credentials.json`으로 가져오면 기존 다른 플랫폼 설정은 유지한다. 연결하지 않은 통계는 미측정으로 보고하며 Search Console은 수동 확인이다.
+인증 JSON의 플랫폼별 항목은 `threads` / `instagram`이며 `userId`, `token`, `issuedAt`, `expiresAt`(ISO 날짜)가 필요하다. 선택 항목 `scopes`에는 승인 화면에서 받은 권한 목록을 기록한다. Instagram API 기본 버전은 `v26.0`이다. 선택적인 Matomo 항목은 `matomo.token`으로, 사이트 4만 읽는 별도 토큰을 사용한다. 안전한 로컬 파일을 준비한 뒤 `npm run promotion -- credentials --stdin < /secure/path/credentials.json`으로 가져오면 기존 다른 플랫폼 설정은 유지한다. 연결하지 않은 통계는 미측정으로 보고하며 Search Console은 수동 확인이다.
 
-실행 결과는 `promotion/state/queue.json`, 페이지 문안·검수는 `promotion/state/pages/`, 기사 문안은 `promotion/state/stories/`, 주간 보고는 `promotion/state/reports/`에 저장한다. 과거 뉴스 기록은 `promotion/state/news/`에 보존한다. 이 상태 디렉터리와 자격 증명은 배포 복사·Git 대상에서 제외하고 보존한다. **자동 게시 기록의 기준은 실행 서버**다. `docs/promotion.md`의 `automatic-promotion` 구간을 로컬로 병합하며 수동 기록이나 서버 로그를 통째로 덮어쓰지 않는다. SNS 게시기는 Git push를 실행하지 않는다. 아래 매거진 발행기만 승인 범위에서 기사와 생성 결과물을 push한다.
+실행 결과는 `promotion/state/queue.json`, 페이지 문안·검수는 `promotion/state/pages/`, 캐러셀은 `promotion/state/carousels/`, 기사 문안은 `promotion/state/stories/`, 대화는 `promotion/state/engage/`, 주간 보고는 `promotion/state/reports/`에 저장한다. 과거 뉴스 기록은 `promotion/state/news/`에 보존한다. 이 상태 디렉터리와 자격 증명은 배포 복사·Git 대상에서 제외하고 보존한다. **자동 게시 기록의 기준은 실행 서버**다. `docs/promotion.md`의 `automatic-promotion` 구간을 로컬로 병합하며 수동 기록이나 서버 로그를 통째로 덮어쓰지 않는다. SNS 게시기는 Git push를 실행하지 않는다. 아래 매거진 발행기만 승인 범위에서 기사와 생성 결과물을 push한다.
 
 ```sh
 # 점검 및 즉시 중단
 journalctl --user -u indiek-promotion-threads.service -n 50 --no-pager
-systemctl --user disable --now indiek-promotion-prepare.timer indiek-promotion-threads.timer indiek-promotion-instagram.timer indiek-promotion-weekly.timer
+systemctl --user disable --now indiek-promotion-prepare.timer indiek-promotion-threads.timer indiek-promotion-instagram.timer indiek-promotion-engage.timer indiek-promotion-weekly.timer
+# 답글만 중단 (게시 타이머 유지)
+npm run promotion -- engage pause
 ```
 
-사용자가 재개를 요청하면 먼저 계정·현재 큐의 제한과 미확인 전송을 대조한 뒤 위 4개 타이머를 `enable --now`한다. 지난 슬롯을 새 예약으로 바꾸거나 이미 게시된 소개를 다시 보내지 않는다.
+사용자가 재개를 요청하면 먼저 계정·현재 큐의 제한과 미확인 전송을 대조한 뒤 위 5개 타이머를 `enable --now`한다. 지난 슬롯을 새 예약으로 바꾸거나 이미 게시된 소개를 다시 보내지 않는다.
 
 공개 원문·계정과 필요한 경우 이미지까지 확인한 뒤 보낸다. 기존의 미전송 정적 소개 예약은 일일 소식 정책으로 전환할 때 `superseded`로 기록하며 삭제하지 않는다. 이미 생성·제출·게시된 작업은 바꾸지 않는다. `publishing`·`submitted`는 게시 ID나 정확히 일치하는 최근 문안으로 조회하며 새로 전송하지 않는다. `held`·`creating` 또는 `pausePlatform`이 있으면 실제 계정과 로그를 확인한다. 원인을 해결해도 불확실한 작업을 `ready`로 바꾸지 않는다. 인증·플랫폼 제한이 해소된 경우에만 상태 백업 후 해당 `pausePlatform`을 해제하고 타이머를 시작한다. 기존 큐를 삭제해서 재시도하지 않는다. 토큰은 만료 7일 전부터 갱신하며 갱신 실패·만료 시 재연결 전까지 전송하지 않는다.
 
