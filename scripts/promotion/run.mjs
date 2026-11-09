@@ -8,6 +8,7 @@ import {reviewBeforePublish} from './news-runner.mjs';
 import {prepareStory} from './stories.mjs';
 import {shareStoryNow} from './on-demand.mjs';
 import {sharePageNow,prepareDailyPages,verifyPagePost} from './page-now.mjs';
+import {reportSummary as searchConsoleSummary} from '../search-console/core.mjs';
 
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const config=readJSON(path.join(root,'promotion/config.json'));
@@ -97,7 +98,7 @@ async function matomoReport(secret) {
 async function report(store) {
   let analytics;
   try{analytics=await matomoReport(credentials());}catch{analytics={status:'Matomo unavailable; no figures inferred.'};}
-  const report={checkedAt:now.toISOString(),queue:store.posts.map(({id,platform,status,permalink,issue})=>({id,platform,status,permalink,issue})),analytics,searchConsole:'Review the verified indiek.com property; automatic Google reporting is not connected.',nextReview:['Compare search clicks with consenting visits, not social impressions.','Review one guide and one artist page; spend 1–2 hours checking selection and facts.','After four weeks, keep topics that bring actual listening and returns.']};
+  const report={checkedAt:now.toISOString(),queue:store.posts.map(({id,platform,status,permalink,issue})=>({id,platform,status,permalink,issue})),analytics,searchConsole:searchConsoleSummary(readJSON(path.join(state,'search-console/latest.json'),null))||'No daily Search Console check has run yet; no search figures inferred.',nextReview:['Compare search clicks with consenting visits, not social impressions.','Review one guide and one artist page; spend 1–2 hours checking selection and facts.','After four weeks, keep topics that bring actual listening and returns.']};
   atomicWrite(path.join(state,'reports',`${now.toISOString().slice(0,10)}.json`),JSON.stringify(report,null,2)+'\n');
   const summary=`# indiek weekly review\n\nChecked: ${report.checkedAt}\n\n${store.posts.filter(p=>p.status==='published').length} API-verified posts. ${store.posts.filter(p=>p.status==='ready').length} prepared posts.\n\nAnalytics: ${analytics.status}\n\nSearch Console: ${report.searchConsole}\n\n${report.nextReview.map(s=>'- '+s).join('\n')}\n\nDetailed observed values: ${now.toISOString().slice(0,10)}.json\n`;
   atomicWrite(path.join(state,'reports/latest.md'),summary);stateNote('Weekly report saved. Missing measurements are identified, not estimated.');

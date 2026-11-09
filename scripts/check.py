@@ -147,8 +147,15 @@ for page in pages.values():
     images=[image_families.get(src,src) for src in page.images]
     if len(images)!=len(set(images)): errors.append(f'{page.path}: repeated artist image or release cover')
 
-urls={node.text for node in ET.parse(dist/'sitemap.xml').findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc')}
+sitemap_ns='{http://www.sitemaps.org/schemas/sitemap/0.9}'
+sitemap_entries=ET.parse(dist/'sitemap.xml').findall(f'.//{sitemap_ns}url')
+urls={entry.findtext(f'{sitemap_ns}loc') for entry in sitemap_entries}
 if urls!={p.canonical[0] for p in pages.values()}: errors.append('Sitemap does not match generated pages')
+seoul_today=datetime.now(timezone(timedelta(hours=9))).date().isoformat()
+for entry in sitemap_entries:
+    lastmod=entry.findtext(f'{sitemap_ns}lastmod') or ''
+    # Dates come from scripts/sitemap.mjs: the Korea-time day a page's content last changed.
+    if not re.fullmatch(r'\d{4}-\d{2}-\d{2}',lastmod) or lastmod>seoul_today: errors.append(f'Sitemap lastmod missing or in the future: {entry.findtext(f"{sitemap_ns}loc")}')
 home=pages[(dist/'index.html').resolve()]
 section_ids=[s['id'] for s in home_source['sections'] if s['enabled']]
 if home.home_sections!=[id for id in section_ids if id in home.home_sections]: errors.append('Home sections disagree with configured order or visibility')

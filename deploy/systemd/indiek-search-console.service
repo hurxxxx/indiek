@@ -1,0 +1,14 @@
+[Unit]
+Description=indiek daily Search Console sitemap and index check
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/projects/indiek
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/node %h/projects/indiek/scripts/search-console/run.mjs daily
+TimeoutStartSec=15min
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true

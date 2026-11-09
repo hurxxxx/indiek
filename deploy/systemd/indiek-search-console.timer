@@ -1,0 +1,9 @@
+[Unit]
+Description=indiek Search Console check after the 03:00 magazine run, Korea time
+[Timer]
+OnCalendar=*-*-* 04:20:00 Asia/Seoul
+Persistent=true
+AccuracySec=1min
+Unit=indiek-search-console.service
+[Install]
+WantedBy=timers.target

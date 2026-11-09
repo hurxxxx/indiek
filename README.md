@@ -43,6 +43,8 @@ Open [localhost:4173](http://127.0.0.1:4173). After editing files, run `npm run 
 | `npm run promotion:remote -- check` | Check the shared publisher's official APIs and public catalogue without posting |
 | `npm run editorial -- status` | Inspect magazine scheduling and the current issue |
 
+The publication build dates each sitemap entry (`<lastmod>`) with the Korea-time day its title, description, structured data or main content last changed, carrying dates forward from the committed `dist/sitemap.xml`. Commit `dist/` with its source so those dates stay accurate. A daily job on the automation server resubmits a changed sitemap and checks index status through the Search Console API ([deployment notes](deploy/README.md#search-console-점검)).
+
 ## Contributing
 
 Content lives in `content/`, templates and browser code in `site/`, and build tools in `scripts/`. Edit these sources and include the rebuilt `dist/` files with your changes.

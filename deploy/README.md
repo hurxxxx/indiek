@@ -169,6 +169,35 @@ systemctl --user stop indiek-editorial.timer indiek-editorial.service
 journalctl --user -u indiek-editorial.service -n 50 --no-pager
 ```
 
+## Search Console 점검
+
+자동화 서버가 매일 04:20 KST(03:00 매거진 실행 뒤)에 Google Search Console 공식 API로 사이트맵과 색인 상태를 확인한다. 로컬 컴퓨터와 브라우저 로그인 없이 동작한다. Search Console 화면의 `색인 생성 요청`은 공개 API가 없어 자동화하지 않는다. Indexing API는 채용 공고·라이브 방송 페이지 전용이라 사용하지 않는다.
+
+- 빌드는 페이지의 제목·설명·구조화 데이터·본문이 마지막으로 바뀐 날(KST)을 사이트맵 `<lastmod>`로 기록한다([sitemap.mjs](../scripts/sitemap.mjs)). 커밋된 `dist/sitemap.xml`의 날짜를 이어 쓰며 공통 머리말·자산 버전만 바뀐 페이지는 날짜를 옮기지 않는다.
+- 운영 사이트맵이 마지막 제출본과 다르면 API로 다시 제출하고, 사이트맵의 모든 URL을 URL 검사 API(속성당 하루 2,000건)로 확인한다.
+- 결과는 `promotion/state/search-console/`의 `latest.md`·`latest.json`·`reports/YYYY-MM-DD.json`에 남고 월요일 주간 보고의 Search Console 항목에 요약된다. 미색인 페이지, 사이트맵 수정일 이후 다시 읽히지 않은 페이지, Google이 다른 대표 URL을 고른 페이지를 표시하며 수치를 추정하지 않는다.
+
+최초 연결은 사용자가 진행한다. 키는 Git·문서·채팅에 넣지 않는다.
+
+1. Google Cloud 프로젝트에서 `Google Search Console API`를 사용 설정한다.
+2. 서비스 계정을 만들고 JSON 키를 발급한다. 프로젝트 IAM 역할은 부여하지 않는다.
+3. Search Console `https://indiek.com/` 속성의 설정 → 사용자 및 권한에서 서비스 계정 이메일을 `전체` 권한 사용자로 추가한다. 사이트맵 제출과 URL 검사에 소유자 권한은 필요 없다.
+4. 키를 자동화 서버의 `~/.config/indiek-search-console/service-account.json`에 mode 600으로 둔다.
+
+```sh
+scp service-account.json <automation-server>:.config/indiek-search-console/service-account.json
+# 이하 자동화 서버의 ~/projects/indiek에서
+node deploy/install-search-console.mjs
+chmod 600 ~/.config/indiek-search-console/service-account.json
+node scripts/search-console/run.mjs check    # 읽기 전용: 권한과 사이트맵 상태
+node scripts/search-console/run.mjs daily    # 바뀐 사이트맵 재제출과 전체 URL 검사
+node scripts/search-console/run.mjs status
+cat promotion/state/search-console/latest.md
+systemctl --user list-timers indiek-search-console.timer --no-pager
+```
+
+키가 없으면 `daily`는 `연결 안 됨`만 기록하고 Google에 아무것도 보내지 않는다. 인증·권한·할당량 오류는 실패 종료 코드로 남으며 `journalctl --user -u indiek-search-console.service -n 50 --no-pager`로 확인한다. 중단은 `systemctl --user disable --now indiek-search-console.timer`다.
+
 ## 확인과 복구
 
 - Latest deployment: 2026-11-09 `1ee7ff3` - search titles and descriptions for artist pages (`Artist (Korean name) — “Song” lyrics meaning`, or `in English` for an adaptation), MusicGroup/MusicRecording structured data linked to song anchors, the introductory guide's search title (`Korean indie music: where to start`), page checks for both, and the read-only weekly traffic report. Sharing cards are unchanged (live hashes match the previous release). Production passed 215 tests and 37 pages; live titles and sitemap verified over HTTPS. The automation checkout was fast-forwarded with its uncommitted promotion files preserved (backup `~/indiek-predeploy-20261109-1ee7ff3.tar.gz`), passed 218 tests, and kept its 6 timers. No SNS post, timer or Search Console indexing request was made. Rollback baseline: `d9ed788`.

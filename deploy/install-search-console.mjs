@@ -1,0 +1,13 @@
+import {mkdirSync,copyFileSync} from 'node:fs';
+import {homedir} from 'node:os';
+import {fileURLToPath} from 'node:url';
+import path from 'node:path';
+import {execFileSync} from 'node:child_process';
+const root=fileURLToPath(new URL('../',import.meta.url));
+if(process.platform!=='linux'||root.replace(/\/$/,'')!==path.join(homedir(),'projects/indiek'))throw new Error('Run from ~/projects/indiek on the Linux promotion server.');
+const units=path.join(homedir(),'.config/systemd/user');
+for(const dir of [units,path.join(root,'promotion/state/search-console'),path.join(homedir(),'.config/indiek-search-console')])mkdirSync(dir,{recursive:true,mode:0o700});
+for(const extension of ['service','timer'])copyFileSync(path.join(root,`deploy/systemd/indiek-search-console.${extension}`),path.join(units,`indiek-search-console.${extension}`));
+execFileSync('systemctl',['--user','daemon-reload'],{stdio:'inherit'});
+execFileSync('systemctl',['--user','enable','--now','indiek-search-console.timer'],{stdio:'inherit'});
+console.log('Timer installed. Until ~/.config/indiek-search-console/service-account.json exists (mode 600), daily runs record "not connected" and send nothing to Google.');

@@ -6,6 +6,7 @@ import {publicStories,storyIndex,storyPath} from '../site/stories.mjs';
 import {storyViews,storyPromotion} from './story-pages.mjs';
 import {spawnSync} from 'node:child_process';
 import {loadCatalogue} from './catalogue.mjs';
+import {lastmodTracker, sitemapXML} from './sitemap.mjs';
 import {resolveHome,renderHome} from './home.mjs';
 import {shareImagePath, editorialEntries, relatedRecords} from '../site/editorial.mjs';
 import {escapeHTML as e, artistId, artistPath, trackPath, trackAnchor, getArtistRecords, imageHTML, coverHTML, videoLabel, externalLink as out, saveButton, getFeaturedArtists, getListeningGuides, guidePath, formatPosition, youtubeConsentHTML, getArtistDirectory, navigationSection, getPlaybackRecords} from '../site/shared.mjs';
@@ -33,6 +34,7 @@ for(const s of stories) {
 if(new Set(stories.map(s=>s.slug)).size!==stories.length||new Set(stories.map(s=>s.id)).size!==stories.length)throw new Error('Duplicate story identity');
 const storyView=storyViews({stories,authors,media,tracks:all,pick});
 const homeConfig=resolveHome(JSON.parse(read('content/home.json')),{catalogue,stories,media,rights});
+const lastmod = lastmodTracker(root);
 rmSync(path.join(root,'dist/stories'),{recursive:true,force:true});
 const entries = editorialEntries(catalogue, guides);
 entries.push(...stories.map(s=>({id:s.id,path:storyPath(s),title:s.title,description:s.description,type:'Story',published:s.published,updated:s.updated})));
@@ -111,8 +113,9 @@ ${structured?`<script type="application/ld+json">${JSON.stringify(structured).re
 </head><body${kind ? ` class="${kind}"` : ''}><div id="page-content">${header(url)}${main}${footer()}</div>${overlays()}</body></html>\n`;
   const file = path.join(root, 'dist', url, 'index.html');
   mkdirSync(path.dirname(file), {recursive:true});
-  writeFileSync(file, html.replace(/[\t ]+$/gm, ''));
-  pages.push(canonical);
+  const output = html.replace(/[\t ]+$/gm, '');
+  writeFileSync(file, output);
+  pages.push({url:canonical, lastmod:lastmod(canonical, output)});
 }
 function artistCard(r) {
   const feature = features.find(feature => feature.id === artistId(r));
@@ -293,7 +296,7 @@ copyFileSync(path.join(root,'site/directory.mjs'),path.join(root,'dist/directory
 copyFileSync(path.join(root,'site/player.mjs'),path.join(root,'dist/player.mjs'));
 copyFileSync(path.join(root,'site/styles.css'),path.join(root,'dist/styles.css'));
 writeFileSync(path.join(root,'dist/robots.txt'),`User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
-writeFileSync(path.join(root,'dist/sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.map(url=>`<url><loc>${url}</loc></url>`).join('')}</urlset>\n`);
+writeFileSync(path.join(root,'dist/sitemap.xml'),sitemapXML(pages));
 writeFileSync(path.join(root,'dist/promotion-catalogue.json'),JSON.stringify({version:1,origin:site.url,items:promotionItems},null,2)+'\n');
 const images = spawnSync('python3',[path.join(root,'scripts/social-images.py')],{input:JSON.stringify(socialImages),encoding:'utf8'});
 if(images.status!==0)throw new Error(images.stderr || 'Sharing image generation failed');
