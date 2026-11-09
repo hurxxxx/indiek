@@ -94,6 +94,7 @@ test('On stage keeps an image when its preferred cover is the lead story, withou
 
 test('artist spotlights use existing content and only published related stories, with a song fallback',()=>{
   const data=source();
+  section(data,'discover').spotlightArtistIds=['gongwon','yerin-baek'];
   const stories=[
     {id:'unrelated',slug:'unrelated',status:'published',published:'2025-04-01',artistIds:['motte']},
     {id:'future',slug:'future',status:'published',published:'2999-01-01',artistIds:['yerin-baek']},

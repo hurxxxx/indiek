@@ -34,6 +34,21 @@
       "enabled": true,
       "features": [
         {
+          "id": "sondia",
+          "title": "Sondia’s voice in My Mister.",
+          "deck": "The official OST video for <em>Grown Ups</em>, with English notes on a tired day and dreams that feel far away."
+        },
+        {
+          "id": "moneto",
+          "title": "moneto and MRCH, in She.",
+          "deck": "An English-language collaboration, performed live by MRCH on her own channel. Follow her voice to <em>Surrender</em> too."
+        },
+        {
+          "id": "mrch",
+          "title": "A white flag in the everyday.",
+          "deck": "MRCH performs <em>Surrender</em> live, with the story behind its chorus and a link back to her collaboration with moneto."
+        },
+        {
           "id": "youra",
           "title": "A name to call in MIMI.",
           "deck": "Hear <em>MIMI</em> live, with two more songs and a story about youra’s writing and collaborators.",
@@ -113,6 +128,9 @@
         }
       ],
       "trackOrder": [
+        "sondia-grown-ups",
+        "moneto-she",
+        "mrch-surrender",
         "baek-a-amor"
       ],
       "copy": {
@@ -123,8 +141,8 @@
         "roomLink": "Meet all the artists"
       },
       "spotlightArtistIds": [
-        "gongwon",
-        "yerin-baek"
+        "moneto",
+        "mrch"
       ]
     },
     {

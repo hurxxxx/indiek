@@ -97,7 +97,26 @@ test('artist identity and primary song identity may differ, with editorial notes
   assert.ok(!resolvedGuide.moreRecords.some(track => artistId(track) === 'gongwon'));
 });
 
+test('featured songs connect both artists in search without duplicating songs or changing saved IDs', () => {
+  const data = source();
+  const song = data.tracks.find(track => track.id === 'gongwon');
+  song.featuredArtistIds = ['yebit'];
+  const catalogue = createCatalogue(data);
+  assert.equal(getArtistRecords(catalogue).length, data.artists.length);
+  assert.equal(getPlaybackRecords(catalogue).filter(track => track.id === song.id).length, 1);
+  for (const query of ['Yebit', '예빛']) assert.ok(searchCatalogue(catalogue.records, catalogue.editorPick, query).some(track => track.id === song.id));
+  const directory = getArtistDirectory(catalogue, {query:song.track}).map(artistId);
+  assert.ok(directory.includes('gongwon'));
+  assert.ok(directory.includes('yebit'));
+  assert.equal(new Set(directory).size, directory.length);
+  assert.deepEqual([...readSaved(JSON.stringify(['gongwon','yebit']), catalogue.records)], ['gongwon','yebit']);
+});
+
 for (const [label, edit, error] of [
+  ['unknown featured artist', data => data.tracks[0].featuredArtistIds=['missing'], /Invalid featuredArtistIds/],
+  ['self featured artist', data => data.tracks[0].featuredArtistIds=[data.tracks[0].artistId], /Invalid featuredArtistIds/],
+  ['duplicate featured artists', data => data.tracks[0].featuredArtistIds=['yebit','yebit'], /Invalid featuredArtistIds/],
+  ['non-list featured artists', data => data.tracks[0].featuredArtistIds='yebit', /Invalid featuredArtistIds/],
   ['duplicate artists', data => data.artists.push(data.artists[0]), /duplicate artist ID/],
   ['duplicate tracks', data => data.tracks.push(data.tracks[0]), /duplicate track ID/],
   ['orphan tracks', data => data.tracks[0].artistId='missing', /primary track|Unknown artist/],
@@ -135,6 +154,7 @@ test('an isolated build renders multiple songs, unique anchors and artist counts
     cpSync(path.join(root,'dist/favicon.svg'),path.join(dir,'dist/favicon.svg'));
     const data = withSecondSong();
     data.artists.find(artist=>artist.id==='gongwon').primaryTrackId = 'gongwon-test-track';
+    data.tracks.find(track=>track.id==='gongwon').featuredArtistIds = ['yebit'];
     writeFileSync(path.join(dir,'content/catalogue.json'),JSON.stringify(data));
     execFileSync('python3',['scripts/prepare-images.py'],{cwd:dir,stdio:'pipe'});
     execFileSync(process.execPath,['scripts/build.mjs'],{cwd:dir,stdio:'pipe'});
@@ -146,6 +166,13 @@ test('an isolated build renders multiple songs, unique anchors and artist counts
     assert.match(page,/data-save="gongwon-test-track"/);
     assert.equal((page.match(/id="persistent-player"/g)||[]).length,1);
     assert.equal((page.match(/id="gongwon-live-0"/g)||[]).length,1);
+    assert.match(page,/Meet featured artist <a href="\/artists\/yebit\/">Yebit<\/a>/);
+    const guestPage = readFileSync(path.join(dir,'dist/artists/yebit/index.html'),'utf8');
+    assert.match(guestPage,/id="collaborations"/);
+    assert.match(guestPage,/href="\/artists\/gongwon\/#track-gongwon"/);
+    assert.match(guestPage,/data-load-player="gongwon"/);
+    assert.match(guestPage,/data-save="gongwon"/);
+    assert.equal((guestPage.match(/id="persistent-player"/g)||[]).length,1);
     const home = readFileSync(path.join(dir,'dist/index.html'),'utf8');
     assert.ok(home.includes(`Browse all ${data.artists.length} artists`));
     assert.ok(home.includes(`data-room-count="${data.tracks.length}"`));

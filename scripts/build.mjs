@@ -171,7 +171,12 @@ function performances(r) {
 }
 function trackSection(r, showCover = true) {
   const titleId = trackAnchor(r) === 'listen' ? 'track-title' : `track-title-${r.id}`;
-  return `<section class="track-page" id="${trackAnchor(r)}" aria-labelledby="${titleId}"><div class="track-summary">${showCover ? coverHTML(media,r,{sizes:'(max-width: 760px) 45vw, 300px',className:'detail-cover'}) : ''}<p class="eyebrow">${e(r.genre)} / ${r.year}</p><h2 id="${titleId}">${e(r.track)}${r.koreanTitle?`<span class="track-korean" lang="ko">${e(r.koreanTitle)}</span>`:''}</h2><p class="record-format mono">${videoLabel(r)}</p>${r.releaseYear?`<p class="embed-caption">Single: ${r.year} · ${e(r.release)}: ${r.releaseYear}</p>`:''}${r!==pick?saveButton(r,true):''}<p class="release-link">${out(r.source,new URL(r.source).hostname==='music.apple.com'?'View release on Apple Music':'Release details','underlink')}</p></div><div class="track-reading"><p class="track-description">${e(r.description)}</p>${r.listeningNote?`<section class="listening-note"><h3>A little background</h3><p>${e(r.listeningNote)}</p></section>`:''}${r.credits?`<p class="pick-credits">${e(r.credits)}</p>`:''}${player(r)}${lyricNotes(r)}</div></section>`;
+  return `<section class="track-page" id="${trackAnchor(r)}" aria-labelledby="${titleId}"><div class="track-summary">${showCover ? coverHTML(media,r,{sizes:'(max-width: 760px) 45vw, 300px',className:'detail-cover'}) : ''}<p class="eyebrow">${e(r.genre)} / ${r.year}</p><h2 id="${titleId}">${e(r.track)}${r.koreanTitle?`<span class="track-korean" lang="ko">${e(r.koreanTitle)}</span>`:''}</h2><p class="record-format mono">${videoLabel(r)}</p>${r.releaseYear?`<p class="embed-caption">Single: ${r.year} · ${e(r.release)}: ${r.releaseYear}</p>`:''}${r!==pick?saveButton(r,true):''}<p class="release-link">${out(r.source,new URL(r.source).hostname==='music.apple.com'?'View release on Apple Music':'Release details','underlink')}</p></div><div class="track-reading"><p class="track-description">${e(r.description)}</p>${r.listeningNote?`<section class="listening-note"><h3>A little background</h3><p>${e(r.listeningNote)}</p></section>`:''}${r.credits?`<p class="pick-credits">${e(r.credits)}</p>`:''}${(r.featuredArtistIds || []).map(id=>{const guest=findArtist(id);return `<p class="pick-credits">Meet featured artist <a href="${artistPath(guest)}">${e(guest.artist)}</a> through <a href="${trackPath(guest)}">${e(guest.track)} ↗</a>.</p>`;}).join('')}${player(r)}${lyricNotes(r)}</div></section>`;
+}
+function collaborations(r) {
+  const tracks = all.filter(track => track.featuredArtistIds?.includes(artistId(r)));
+  if (!tracks.length) return '';
+  return `<section class="related-listening" id="collaborations" aria-labelledby="collaborations-title"><p class="eyebrow">AS A FEATURED ARTIST</p><h2 id="collaborations-title">With other artists.</h2><div class="related-tracks">${tracks.map(track=>`<article><a href="${trackPath(track)}"><h3>${e(track.artist)}</h3><span>${e(track.track)}</span><p>${e(track.description)}</p></a><div class="guide-track-controls"><button class="underlink" data-load-player="${track.id}" data-js-only hidden>Agree &amp; play</button>${track!==pick?saveButton(track,true):''}${lyricNotesLink(track)}</div></article>`).join('')}</div></section>`;
 }
 function moreTracks(r) {
   if(!r.moreTracks) return '';
@@ -216,6 +221,7 @@ for(const r of artists) {
   ${r.biography?`<div class="artist-extra"><p>${e(r.biography)}</p></div>`:''}
   ${artistTracks.map((track,i)=>trackSection(track,artistTracks.findIndex(other=>other.image===track.image)===i)).join('\n  ')}
   ${performances(r)}
+  ${collaborations(r)}
   ${r.moreTracks?`<div class="more-listening">${moreTracks(r)}</div>`:''}
   ${related(r)}
   <section class="page-sources" aria-labelledby="sources-title"><h2 id="sources-title">Sources & further reading</h2><ul>${sources.map(s=>`<li>${sourceLink(s.url,s.label,s.language)}</li>`).join('')}</ul><p>These are independent listening notes, not an interview or an official artist statement. For a correction, email <a href="mailto:${site.email}">${site.email}</a>.</p><p><a href="/about/#image-credits">Image credits</a></p></section><a class="underlink back-to-shelf" href="/artists/">All artists <span aria-hidden="true">↗</span></a></main>`;

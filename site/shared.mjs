@@ -98,14 +98,16 @@ export const normalizeSearch = value => String(value).normalize('NFKC').toLowerC
 export function searchCatalogue(records, pick, query) {
   const compact = normalizeSearch(query);
   const words = query.trim().split(/\s+/).map(normalizeSearch).filter(Boolean);
-  return [...records, pick].filter(record => {
-    const text = normalizeSearch([record.artist, record.korean, record.aliases, record.track, record.koreanTitle, record.release, record.genre, record.category].filter(Boolean).join(' '));
+  const all = [...records, pick];
+  return all.filter(record => {
+    const guests = (record.featuredArtistIds || []).map(id => all.find(track => artistId(track) === id)).filter(Boolean);
+    const text = normalizeSearch([record.artist, record.korean, record.aliases, record.track, record.koreanTitle, record.release, record.genre, record.category, ...guests.flatMap(guest => [guest.artist, guest.korean, guest.aliases])].filter(Boolean).join(' '));
     return text.includes(compact) || words.every(word => text.includes(word));
   });
 }
 
 export function getArtistDirectory(catalogue, {query = '', category = 'all'} = {}) {
-  const matches = new Set(searchCatalogue(catalogue.records, catalogue.editorPick, query).map(artistId));
+  const matches = new Set(searchCatalogue(catalogue.records, catalogue.editorPick, query).flatMap(record => [artistId(record), ...(record.featuredArtistIds || [])]));
   return getArtistRecords(catalogue).filter(record => matches.has(artistId(record)))
     .filter(record => category === 'all' || record.category === category)
     .sort((a, b) => a.artist.localeCompare(b.artist, 'en', {sensitivity:'base', ignorePunctuation:true}) || a.id.localeCompare(b.id));

@@ -1,5 +1,32 @@
 [
   {
+    "id": "sondia-introduction",
+    "status": "published",
+    "kind": "artist",
+    "path": "/artists/sondia/",
+    "title": "Sondia — Grown Ups",
+    "description": "The official My Mister OST video, with English lyric notes.",
+    "published": "2026-11-09"
+  },
+  {
+    "id": "moneto-introduction",
+    "status": "published",
+    "kind": "artist",
+    "path": "/artists/moneto/",
+    "title": "moneto — She (Feat. MRCH)",
+    "description": "MRCH’s official live clip of She, with both collaborators introduced.",
+    "published": "2026-11-09"
+  },
+  {
+    "id": "mrch-introduction",
+    "status": "published",
+    "kind": "artist",
+    "path": "/artists/mrch/",
+    "title": "MRCH — Surrender",
+    "description": "An official Surrender live clip, the story behind its chorus and She with moneto.",
+    "published": "2026-11-09"
+  },
+  {
     "id": "youra-private-worlds",
     "status": "published",
     "kind": "story",

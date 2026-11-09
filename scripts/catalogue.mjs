@@ -4,7 +4,7 @@ import path from 'node:path';
 import {getListeningGuides, getFeaturedArtists, getPlaybackRecords} from '../site/shared.mjs';
 
 const artistFields = new Set(['id','primaryTrackId','artist','korean','aliases','category','artistIntro','biography','artistSource','artistSourceName','artistSourceLanguage','editorial','moreTracks','performances']);
-const trackFields = new Set(['id','artistId','album','release','releaseYear','year','releaseDate','genre','image','track','koreanTitle','duration','provider','videoId','channel','url','videoType','performance','note','description','source','sourceName','sourceLanguage','extraSources','guideTags','listeningNote','credits','lyricNotes','externalOnly']);
+const trackFields = new Set(['id','artistId','featuredArtistIds','album','release','releaseYear','year','releaseDate','genre','image','track','koreanTitle','duration','provider','videoId','channel','url','videoType','performance','note','description','source','sourceName','sourceLanguage','extraSources','guideTags','listeningNote','credits','lyricNotes','externalOnly']);
 const validId = value => typeof value === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
 function index(items, kind, fields) {
   if (!Array.isArray(items) || !items.length) throw new Error(`Missing ${kind} list`);
@@ -62,6 +62,7 @@ export function createCatalogue(source) {
   }
   for (const track of tracks.values()) {
     if (!artists.has(track.artistId)) throw new Error(`Unknown artist for track ${track.id}: ${track.artistId}`);
+    if (track.featuredArtistIds !== undefined && (!Array.isArray(track.featuredArtistIds) || new Set(track.featuredArtistIds).size !== track.featuredArtistIds.length || track.featuredArtistIds.some(id => id === track.artistId || !artists.has(id)))) throw new Error(`Invalid featuredArtistIds: ${track.id}`);
     required(track, ['track','image','year','genre','note','description','source','sourceName','channel','url','videoType']);
     validateLyricNotes(track);
     if (track.provider !== 'youtube' || !/^[\w-]{11}$/.test(track.videoId)) throw new Error(`Invalid YouTube recording: ${track.id}`);

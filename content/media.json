@@ -287,6 +287,30 @@
       }
     ]
   },
+  "moneto-she.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/moneto-she-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 17514
+      },
+      {
+        "src": "/assets/optimized/moneto-she-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 57020
+      },
+      {
+        "src": "/assets/optimized/moneto-she-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 115080
+      }
+    ]
+  },
   "motte-dont-run-away.jpg": {
     "width": 1280,
     "height": 720,
@@ -335,6 +359,30 @@
       }
     ]
   },
+  "mrch-oh-life.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/mrch-oh-life-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 13604
+      },
+      {
+        "src": "/assets/optimized/mrch-oh-life-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 82038
+      },
+      {
+        "src": "/assets/optimized/mrch-oh-life-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 193862
+      }
+    ]
+  },
   "se-so-neon.jpg": {
     "width": 1000,
     "height": 1000,
@@ -356,6 +404,30 @@
         "width": 1000,
         "height": 1000,
         "bytes": 72190
+      }
+    ]
+  },
+  "sondia-my-mister.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/sondia-my-mister-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 13500
+      },
+      {
+        "src": "/assets/optimized/sondia-my-mister-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 40952
+      },
+      {
+        "src": "/assets/optimized/sondia-my-mister-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 74950
       }
     ]
   },

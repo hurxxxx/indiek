@@ -13,7 +13,7 @@ const freshCatalogue = () => JSON.parse(JSON.stringify(catalogue));
 test('listening guides cover every artist with the intended opening tracks and counts',()=>{
   const guides = getListeningGuides(catalogue);
   assert.deepEqual(guides.filter(g=>g.selection!=='curated').map(g=>[g.id,g.records.length,g.records[0].id]),[
-    ['on-stage',10,'sunwoojunga'],['guitars-and-bands',7,'black-skirts'],['distinct-voices',16,'yoon-mirae'],
+    ['on-stage',12,'sunwoojunga'],['guitars-and-bands',9,'black-skirts'],['distinct-voices',19,'yoon-mirae'],
   ]);
   assert.deepEqual([...new Set(guides.flatMap(g=>g.records.map(r=>r.id)))].sort(),[...records,editorPick].map(r=>r.id).sort());
   for (const guide of guides) assert.equal(new Set(guide.records.map(r=>r.id)).size,guide.records.length);
@@ -39,7 +39,7 @@ test('edited tags change membership without changing the artist catalogue order'
   edited.records.find(r=>r.id==='hanroro').guideTags=['distinct-voices'];
   edited.records.push({id:'new-guitar',guideTags:['guitars-and-bands','guitars-and-bands']});
   const ids=getListeningGuides(edited).find(g=>g.id==='guitars-and-bands').records.map(r=>r.id);
-  assert.deepEqual(ids,['black-skirts','esegye','se-so-neon','ydbb','whiteusedsocks','gongwon','new-guitar']);
+  assert.deepEqual(ids,['black-skirts','esegye','se-so-neon','ydbb','whiteusedsocks','gongwon','moneto-she','mrch-surrender','new-guitar']);
 });
 test('unclassified artists and unknown tags cannot silently disappear from guides',()=>{
   const missing=freshCatalogue();

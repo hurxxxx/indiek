@@ -289,6 +289,42 @@
       "altText": "indiek listening notes: youra — MIMI. Typographic card."
     },
     {
+      "id": "sondia",
+      "kind": "artist",
+      "title": "Sondia — Grown Ups",
+      "path": "/artists/sondia/",
+      "description": "“Grown Ups” follows someone worn down by the day, wondering whether their small world will ever smile back. Sondia recorded it for the 2018 drama My Mister. This official OST music video uses scenes from the series.",
+      "artistIds": [
+        "sondia"
+      ],
+      "image": "/assets/social/artists-sondia.jpg",
+      "altText": "indiek listening notes: Sondia — Grown Ups. Typographic card."
+    },
+    {
+      "id": "moneto",
+      "kind": "artist",
+      "title": "moneto — She (Feat. MRCH)",
+      "path": "/artists/moneto/",
+      "description": "“She” asks that someone’s memories stay with her as she grows older. moneto wrote the English lyrics and composed the song with featured singer MRCH. The live clip here comes from MRCH’s own channel.",
+      "artistIds": [
+        "moneto"
+      ],
+      "image": "/assets/social/artists-moneto.jpg",
+      "altText": "indiek listening notes: moneto — She (Feat. MRCH). Typographic card."
+    },
+    {
+      "id": "mrch",
+      "kind": "artist",
+      "title": "MRCH — Surrender",
+      "path": "/artists/mrch/",
+      "description": "An alarm clock, afternoon dessert and a phone before bed become everyday opponents in “Surrender”. MRCH’s song from Oh, Life lets go of the wish to be invincible. This live clip was shared on her own channel before the EP’s release.",
+      "artistIds": [
+        "mrch"
+      ],
+      "image": "/assets/social/artists-mrch.jpg",
+      "altText": "indiek listening notes: MRCH — Surrender. Typographic card."
+    },
+    {
       "id": "yoon-mirae",
       "kind": "artist",
       "title": "Yoon Mirae — Breath",
@@ -324,6 +360,9 @@
         "yebit",
         "baek-a",
         "youra",
+        "sondia",
+        "moneto",
+        "mrch",
         "yoon-mirae"
       ],
       "image": "/assets/social/notes-korean-indie-where-to-start.jpg",
@@ -344,7 +383,9 @@
         "se-so-neon",
         "yebit",
         "baek-a",
-        "youra"
+        "youra",
+        "moneto",
+        "mrch"
       ],
       "image": "/assets/social/notes-on-stage.jpg",
       "altText": "indiek listening guide: On stage. Typographic card."
@@ -362,7 +403,9 @@
         "ydbb",
         "whiteusedsocks",
         "hanroro",
-        "gongwon"
+        "gongwon",
+        "moneto",
+        "mrch"
       ],
       "image": "/assets/social/notes-guitars-and-bands.jpg",
       "altText": "indiek listening guide: Guitars & bands. Typographic card."
@@ -387,7 +430,10 @@
         "gongwon",
         "yebit",
         "baek-a",
-        "youra"
+        "youra",
+        "sondia",
+        "moneto",
+        "mrch"
       ],
       "image": "/assets/social/notes-distinct-voices.jpg",
       "altText": "indiek listening guide: Distinct voices. Typographic card."

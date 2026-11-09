@@ -59,6 +59,7 @@ function spotlightList(section, context) {
     if (lyrics) links.push({href:`${artistPath(lyrics)}#${trackAnchor(lyrics)==='listen'?'lyrics':`lyrics-${lyrics.id}`}`,label:'Inside the lyrics'});
     if (session) links.push({href:`${artistPath(record)}#${session.id}`,label:'Full live session'});
     if (story) links.push({href:storyPath(story),label:'Read the story'});
+    if (context.tracks.some(track => track.featuredArtistIds?.includes(id))) links.push({href:`${artistPath(record)}#collaborations`,label:'Featured with other artists'});
     if (record.moreTracks?.length) links.push({href:`${artistPath(record)}#more-listens-title`,label:'More songs'});
     if (!links.length) links.push({href:trackPath(record),label:'Listen & read'});
     return {record,links:links.slice(0,3)};

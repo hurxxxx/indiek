@@ -278,6 +278,39 @@
       "showCredit": true,
       "changes": "Resized WebP variants; cropped for display.",
       "notes": "Artist portrait published with the original interview. No individual photographer credit or reuse licence stated; source credit is not permission."
+    },
+    {
+      "file": "sondia-my-mister.jpg",
+      "label": "Sondia — My Mister, Pt. 2 (Original Television Soundtrack) - Single artwork",
+      "source": "https://music.apple.com/us/album/my-mister-pt-2-original-television-soundtrack-single/1628294279",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/11/38/28/113828ac-376a-c42a-ffe7-4ae8bc9f8468/8809603541147_Cover.jpg/1200x1200bb.jpg",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed",
+      "checked": "2026-11-09",
+      "notes": "Release artwork used to identify the requested recording. No reuse licence established; source credit does not establish permission."
+    },
+    {
+      "file": "moneto-she.jpg",
+      "label": "moneto — She (Feat. MRCH) - Single artwork",
+      "source": "https://music.apple.com/us/album/she-feat-mrch-single/1696919481",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/57/8e/47/578e4707-665c-2e7e-c7cf-3ad6ca4dcd3b/191953293028.jpg/1200x1200bb.jpg",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed",
+      "checked": "2026-11-09",
+      "notes": "Release artwork used to identify the requested recording. No reuse licence established; source credit does not establish permission."
+    },
+    {
+      "file": "mrch-oh-life.jpg",
+      "label": "MRCH — Oh, Life - EP artwork",
+      "source": "https://music.apple.com/us/album/oh-life-ep/1896168712",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/a6/57/01/a657015d-020b-0fc1-3e89-899a48066a3e/8809973501529.jpg/1200x1200bb.jpg",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed",
+      "checked": "2026-11-09",
+      "notes": "Release artwork used to identify the requested recording. No reuse licence established; source credit does not establish permission."
     }
   ]
 }

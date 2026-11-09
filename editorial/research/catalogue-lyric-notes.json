@@ -1,8 +1,8 @@
 {
-  "checked": "2026-10-27",
+  "checked": "2026-11-09",
   "status": "reviewed-local",
   "readerQuestion": "What do the words contribute to each song, without needing a full English translation?",
-  "scope": "All 20 introduced tracks: the 17 previously reviewed notes/adaptation remain byte-identical; three new youra commentaries have separate factual and editorial passes. External recommendations and full-session chapters remain outside this scope.",
+  "scope": "All 23 introduced tracks: the 20 previously reviewed notes/adaptation remain byte-identical; three new commentaries have separate factual and editorial passes in sondia-moneto-mrch.json.",
   "referenceChoices": [
     {
       "id": "sunwoojunga-kraze",
@@ -477,105 +477,125 @@
       "interpretation": "Selective editorial reading, not a claim about the artist’s private life.",
       "uncertainty": "No identity assigned to an addressee and no literal autobiographical event inferred.",
       "research": "editorial/research/youra.json"
+    },
+    {
+      "trackId": "sondia-grown-ups",
+      "angle": "A question at the end of a long day",
+      "outline": [
+        "Selected lyrical image",
+        "Measured interpretation tied to that image"
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/31009023",
+          "publisher": "Bugs",
+          "checked": "2026-11-09",
+          "supports": [
+            "Lyric details and credits"
+          ],
+          "method": "Licensed lyric display read; no full lyric copy retained."
+        }
+      ],
+      "interpretation": "Selective editorial reading, not a claim about the performer’s personal life.",
+      "uncertainty": "No specific addressee, cause of absence or biographical event is inferred.",
+      "research": "editorial/research/sondia-moneto-mrch.json"
+    },
+    {
+      "trackId": "moneto-she",
+      "angle": "Keeping someone’s memories close",
+      "outline": [
+        "Selected lyrical image",
+        "Measured interpretation tied to that image"
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/32909568",
+          "publisher": "Bugs",
+          "checked": "2026-11-09",
+          "supports": [
+            "Lyric details and credits"
+          ],
+          "method": "Licensed lyric display read; no full lyric copy retained."
+        }
+      ],
+      "interpretation": "Selective editorial reading, not a claim about the performer’s personal life.",
+      "uncertainty": "No specific addressee, cause of absence or biographical event is inferred.",
+      "research": "editorial/research/sondia-moneto-mrch.json"
+    },
+    {
+      "trackId": "mrch-surrender",
+      "angle": "Putting down the need to win",
+      "outline": [
+        "Selected lyrical image",
+        "Measured interpretation tied to that image"
+      ],
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/track/32992876",
+          "publisher": "Bugs",
+          "checked": "2026-11-09",
+          "supports": [
+            "Lyric details and credits"
+          ],
+          "method": "Licensed lyric display read; no full lyric copy retained."
+        }
+      ],
+      "interpretation": "Selective editorial reading, not a claim about the performer’s personal life.",
+      "uncertainty": "No specific addressee, cause of absence or biographical event is inferred.",
+      "research": "editorial/research/sondia-moneto-mrch.json"
     }
   ],
   "revision": {
     "algorithm": "sha256",
     "scope": "JSON.stringify(catalogue.tracks.map(t => ({trackId:t.id,lyricNotes:t.lyricNotes}))) encoded as UTF-8",
-    "hash": "ba5c780b95269935ed46e6bd9478a540f13ea9afc001200378105d212f0104fa"
+    "hash": "2579ac32043b7e8f6e209f2faaeb61124c0737d615c9e8508c6e47802d25f17e"
   },
   "reviews": [
     {
       "kind": "facts",
-      "checked": "2026-10-27",
-      "reviewer": "indiek AI-assisted review; separate pass by the same assistant, not independent human verification",
-      "revision": "ba5c780b95269935ed46e6bd9478a540f13ea9afc001200378105d212f0104fa",
+      "checked": "2026-11-09",
+      "reviewer": "Separate pass by the same assistant; not independent human verification",
+      "revision": "2579ac32043b7e8f6e209f2faaeb61124c0737d615c9e8508c6e47802d25f17e",
       "approved": true,
-      "scope": "The 17 prior notes/adaptation are byte-identical to approved revision 440f7fc44e0ad517d2859658f0a4f3c337d66c5514010db33224da35863cf1cf. Reviewed the exact three new youra notes, including their headings, themes and source labels.",
-      "objectionsResolved": [
-        {
-          "trackId": "bol4",
-          "passage": "A gesture as small as holding hands becomes difficult",
-          "issue": "Ambiguous wording suggests two people holding hands; the text describes the speaker clasping their own hands.",
-          "correction": "Specify their own hands and distance; remove the unsupported assumption of ending an established relationship."
-        },
-        {
-          "trackId": "car-the-garden",
-          "passage": "two people’s awkwardness",
-          "issue": "The lyric identifies the speaker’s roughness; it does not establish both people as awkward.",
-          "correction": "Keep the image of speaker as music and beloved as tree; locate awkwardness with the speaker."
-        },
-        {
-          "trackId": "whiteusedsocks",
-          "passage": "a person who knows they have caused hurt",
-          "issue": "Past selfishness and regret do not identify a specific injury to the addressee.",
-          "correction": "State awareness of past selfishness and interpret the hope for happier recollection."
-        },
-        {
-          "trackId": "ydbb",
-          "passage": "after the decision to part",
-          "issue": "A deliberate decision by the speaker is not established by the lyric.",
-          "correction": "Describe two people growing apart and attachment continuing through distance."
-        }
+      "findings": [
+        "Titles, release dates, credits, channel names and recording durations checked against opened original sources.",
+        "The white flag and daily distractions support Surrender’s interpretation; the closing question supports Grown Ups; memory and absence support She. No particular bereavement, diagnosis or personal experience is inferred."
       ],
-      "remainingUncertainty": "The youra passages are lyric readings; no identity for Mimi or specific autobiographical relationship is established. Original lyric scenes support the stated requests and images."
+      "corrections": [
+        "Used the current Oh, Life Apple Music edition.",
+        "Removed the redundant manufactured Korean display title for the English-language She.",
+        "Replaced brighter self with the lyric’s wish to be fully oneself."
+      ],
+      "scope": "Twenty prior notes/adaptation byte-identical to approved revision ba5c780b95269935ed46e6bd9478a540f13ea9afc001200378105d212f0104fa. New three notes reviewed in full with headings, themes, prose and sources."
     },
     {
       "kind": "editorial",
-      "checked": "2026-10-27",
-      "reviewer": "indiek AI-assisted review; separate pass by the same assistant",
-      "revision": "ba5c780b95269935ed46e6bd9478a540f13ea9afc001200378105d212f0104fa",
+      "checked": "2026-11-09",
+      "reviewer": "Separate pass by the same assistant",
+      "revision": "2579ac32043b7e8f6e209f2faaeb61124c0737d615c9e8508c6e47802d25f17e",
       "approved": true,
-      "scope": "The 17 prior notes/adaptation are byte-identical to approved revision 440f7fc44e0ad517d2859658f0a4f3c337d66c5514010db33224da35863cf1cf. Reviewed the exact three new youra notes, including their headings, themes and source labels.",
-      "referenceComparison": "The existing lyric-commentary criteria and youra dossier were applied. Each new note stays with a specific image or request, preserves ambiguity and adds no instruction about how listeners should feel.",
-      "objectionsResolved": [
-        {
-          "trackId": "black-skirts",
-          "passage": "the setting is strikingly small",
-          "issue": "The room’s physical size is not established; the intended point is intimacy.",
-          "correction": "Use “the scene is intimate” and remove “small” from the heading."
-        },
-        {
-          "trackId": "car-the-garden",
-          "passage": "both a rootedness and a little movement",
-          "issue": "Generic tree associations distract from the actual pairing of tree and music.",
-          "correction": "Focus on the speaker’s timid fears becoming an affectionate picture."
-        },
-        {
-          "trackId": "whiteusedsocks",
-          "passage": "The past remains present",
-          "issue": "Abstract closing repeats the topic without sharpening the song’s wish.",
-          "correction": "End with the possibility of a memory bringing a smile while regret remains."
-        }
+      "findings": [
+        "Each introduction identifies the recording and a specific image or collaboration.",
+        "Three short lyric paragraphs are selective interpretations, not verse-by-verse translations. The artist account stays attributed to Newsis.",
+        "Compared against existing catalogue introductions and the relevant reference technique; no borrowed metaphor, personal listening claim or prescriptive emotional response."
       ],
-      "contribution": "Distinguishes companionship from recovery, devotion from demands, and reassurance from the speaker’s own confidence. Each reading is attached to a specific textual gesture rather than a generic recommendation."
+      "corrections": [
+        "Reduced enjoy being alive to some peace and a little fun to preserve the scale of Surrender."
+      ],
+      "scope": "Twenty prior notes/adaptation byte-identical to approved revision ba5c780b95269935ed46e6bd9478a540f13ea9afc001200378105d212f0104fa. New three notes reviewed in full with headings, themes, prose and sources."
     }
   ],
   "verification": {
+    "checked": "2026-11-09",
+    "automated": "See editorial/research/sondia-moneto-mrch.json for final build and checks.",
+    "manual": "New recordings and responsive checks recorded in the same dossier.",
+    "deployment": "Not performed."
+  },
+  "previousApprovedRevision": "ba5c780b95269935ed46e6bd9478a540f13ea9afc001200378105d212f0104fa",
+  "previousVerification": {
     "checked": "2026-10-27",
     "automated": "Final build/check recorded in editorial/research/youra.json.",
     "manual": "New recording playback and desktop/mobile checks recorded in editorial/research/youra.json.",
     "deployment": "See deploy/README.md#확인과-복구"
-  },
-  "previousApprovedRevision": "440f7fc44e0ad517d2859658f0a4f3c337d66c5514010db33224da35863cf1cf",
-  "previousVerification": {
-    "checked": "2026-10-21",
-    "build": "Production build and local preview verified. Final deployment and public-page verification: deploy/README.md#확인과-복구 (d8ce439, 2026-10-21).",
-    "automated": "178 Node tests pass; 28 static pages checked in production and preview. Coverage includes all lyric paragraphs and source links, guide anchors, editor pick, additional songs, incomplete notes and exact reviewed revision.",
-    "manual": [
-      "Desktop 1440 × 1000 and mobile 390 × 844: Forest lyric notes readable with no horizontal overflow.",
-      "Mobile introductory guide exposes 16 lyric links; Breath link reaches the editor pick’s lyric section.",
-      "Mobile home: ready announcement visible, Yerin spotlight has lyric/story/more-songs links with clean wrapping.",
-      "Desktop home-to-Yerin lyric link reaches the correct section."
-    ],
-    "screenshots": [
-      "/tmp/indiek-lyric-notes-desktop.jpg",
-      "/tmp/indiek-lyric-notes-mobile.jpg"
-    ],
-    "notRetested": [
-      "Actual YouTube playback, fullscreen, mobile landscape and keyboard states; recording IDs unchanged. See deployment record for the later public-page checks.",
-      "Saved 0/1/13/50 manual playback matrix; existing automatic tests passed and the browser’s saved list was left unchanged."
-    ],
-    "localServer": "http://127.0.0.1:4173"
   }
 }

@@ -398,6 +398,59 @@
         "updated": "2026-10-27",
         "published": "2026-10-27"
       }
+    },
+    {
+      "id": "sondia",
+      "primaryTrackId": "sondia-grown-ups",
+      "artist": "Sondia",
+      "korean": "손디아",
+      "aliases": "SONDIA 어른 Adult Grown Ups 나의 아저씨 My Mister",
+      "category": "solo",
+      "artistIntro": "Sondia sings “Grown Ups” for My Mister, a song about feeling out of step with the people around you. The drama’s official OST video brings her voice back to its characters and their everyday lives.",
+      "artistSource": "https://www.youtube.com/watch?v=5a-tqIQc8RM",
+      "artistSourceName": "STONE MUSIC — My Mister OST video and credits",
+      "artistSourceLanguage": "Korean",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-11-09",
+        "published": "2026-11-09"
+      }
+    },
+    {
+      "id": "moneto",
+      "primaryTrackId": "moneto-she",
+      "artist": "moneto",
+      "korean": "모네토",
+      "aliases": "Moneto MONETO",
+      "category": "solo",
+      "artistIntro": "moneto and MRCH meet in “She”, an English-language song about absence and the memories someone hopes to keep. He wrote the lyrics, co-composed the song with MRCH and played its guitars, synth and bass.",
+      "biography": "MRCH also features on moneto’s “Lullaby” and “Classic”, released in 2021 and 2022. “She” continued their collaboration in July 2023. Here, MRCH performs it in a live clip shared on her own channel.",
+      "artistSource": "https://music.bugs.co.kr/artist/20138911",
+      "artistSourceName": "Bugs — moneto: artist and releases",
+      "artistSourceLanguage": "Korean",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-11-09",
+        "published": "2026-11-09"
+      }
+    },
+    {
+      "id": "mrch",
+      "primaryTrackId": "mrch-surrender",
+      "artist": "MRCH",
+      "korean": "윤마치 · 마치",
+      "aliases": "윤마치 마치 Yoon March Yoon MRCH March",
+      "category": "solo",
+      "artistIntro": "MRCH raises a white flag in “Surrender”: even an alarm clock or a late-night message can feel like another battle. The singer-songwriter, also known as Yoon March, sings on moneto’s “She” and has her own songs to share here.",
+      "biography": "MRCH released her first EP, Let’s march!, in 2019. Her work also includes co-writing TWICE’s “Talk that Talk”. In a 2024 interview with Newsis, she described how a friend’s criticism helped her simplify the chorus of “Surrender”.",
+      "artistSource": "https://v.daum.net/v/20241123152110886",
+      "artistSourceName": "Newsis — Lee Jae-hoon’s interview with MRCH, November 23, 2024",
+      "artistSourceLanguage": "Korean",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-11-09",
+        "published": "2026-11-09"
+      }
     }
   ],
   "tracks": [
@@ -1386,6 +1439,161 @@
       "guideTags": [
         "distinct-voices"
       ]
+    },
+    {
+      "id": "sondia-grown-ups",
+      "artistId": "sondia",
+      "track": "Grown Ups",
+      "koreanTitle": "어른",
+      "album": "My Mister, Pt. 2 (Original Television Soundtrack)",
+      "release": "My Mister, Pt. 2 (Original Television Soundtrack) — Single",
+      "year": "2018",
+      "releaseDate": "2018-03-29",
+      "genre": "SOUNDTRACK / BALLAD",
+      "image": "sondia-my-mister.jpg",
+      "duration": "04:44",
+      "videoId": "5a-tqIQc8RM",
+      "channel": "STONE MUSIC",
+      "videoType": "music-video",
+      "performance": "Official OST music video · My Mister · STONE MUSIC",
+      "note": "A tired day, distant dreams and a question left open.",
+      "description": "“Grown Ups” follows someone worn down by the day, wondering whether their small world will ever smile back. Sondia recorded it for the 2018 drama My Mister. This official OST music video uses scenes from the series.",
+      "credits": "Lyrics by Seo Dong-seong and Lee Chi-hoon; music by Park Seong-il; arranged by Park Seong-il and Uncle Sam.",
+      "source": "https://music.apple.com/us/album/my-mister-pt-2-original-television-soundtrack-single/1628294279",
+      "sourceName": "Apple Music — My Mister, Pt. 2: release information",
+      "sourceLanguage": "English",
+      "guideTags": [
+        "distinct-voices"
+      ],
+      "lyricNotes": {
+        "heading": "A question at the end of a long day",
+        "themes": [
+          "Weariness",
+          "Belonging"
+        ],
+        "paragraphs": [
+          "Among smiling people, the speaker feels like a stranger. Dreams once pursued now seem far away, and the dream of being fully themselves gives way to disappointment on waking. The final question asks whether this small world might someday smile back. It leaves that possibility open, without pretending the sadness has already passed."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/31009023",
+          "label": "Grown Ups: lyrics and credits on Bugs",
+          "language": "Korean"
+        }
+      },
+      "provider": "youtube",
+      "url": "https://www.youtube.com/watch?v=5a-tqIQc8RM"
+    },
+    {
+      "id": "moneto-she",
+      "artistId": "moneto",
+      "featuredArtistIds": [
+        "mrch"
+      ],
+      "track": "She (Feat. MRCH)",
+      "album": "She",
+      "release": "She (Feat. MRCH) — Single",
+      "year": "2023",
+      "releaseDate": "2023-07-14",
+      "genre": "INDIE ROCK / POP",
+      "image": "moneto-she.jpg",
+      "duration": "03:34",
+      "videoId": "qdC0zV_6JkI",
+      "channel": "윤마치(MRCH)",
+      "videoType": "live",
+      "performance": "Official live clip · MRCH’s artist channel",
+      "note": "A wish for memories to remain, like a melody.",
+      "description": "“She” asks that someone’s memories stay with her as she grows older. moneto wrote the English lyrics and composed the song with featured singer MRCH. The live clip here comes from MRCH’s own channel.",
+      "credits": "Lyrics and arrangement by moneto; music by moneto and MRCH. Electric and acoustic guitars, synth and bass by moneto; featured and background vocals by MRCH.",
+      "source": "https://music.apple.com/us/album/she-feat-mrch-single/1696919481",
+      "sourceName": "Apple Music — She (Feat. MRCH): release information",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/album/20578255",
+          "label": "Bugs — She: full recording credits",
+          "language": "Korean"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands",
+        "distinct-voices"
+      ],
+      "lyricNotes": {
+        "heading": "Keeping someone’s memories close",
+        "themes": [
+          "Absence",
+          "Memory"
+        ],
+        "paragraphs": [
+          "The woman in the song feels alone even in a crowd. The refrain imagines sleep as a place where she can find the company she misses, then looks ahead to old age and asks that her memories remain. Comparing them to a melody gives that wish a form: something that can return, even when the person is absent. The lyric does not explain exactly why they are apart."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/32909568",
+          "label": "She: English lyrics and credits on Bugs",
+          "language": "English"
+        }
+      },
+      "provider": "youtube",
+      "url": "https://www.youtube.com/watch?v=qdC0zV_6JkI"
+    },
+    {
+      "id": "mrch-surrender",
+      "artistId": "mrch",
+      "track": "Surrender",
+      "koreanTitle": "항복",
+      "album": "Oh, Life",
+      "release": "Oh, Life — EP",
+      "year": "2023",
+      "releaseDate": "2023-10-18",
+      "genre": "POP ROCK",
+      "image": "mrch-oh-life.jpg",
+      "duration": "03:32",
+      "videoId": "fxAGHl7bEp0",
+      "channel": "윤마치(MRCH)",
+      "videoType": "live",
+      "performance": "Official live clip · MRCH’s artist channel",
+      "note": "An alarm clock, a phone and a white flag.",
+      "description": "An alarm clock, afternoon dessert and a phone before bed become everyday opponents in “Surrender”. MRCH’s song from Oh, Life lets go of the wish to be invincible. This live clip was shared on her own channel before the EP’s release.",
+      "listeningNote": "MRCH told Newsis that the lyrics were ready, but the chorus took a year to resolve. She rewrote its melody after a friend’s candid response, and felt the simpler version better suited the song’s wish to make things less complicated.",
+      "credits": "Lyrics by MRCH; music and arrangement by MRCH and Lee Woo-min “collapsedone”.",
+      "source": "https://music.apple.com/us/album/oh-life-ep/1896168712",
+      "sourceName": "Apple Music — Oh, Life: release information",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/album/20598166",
+          "label": "Bugs — Oh, Life: artist’s release notes and credits",
+          "language": "Korean"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands",
+        "distinct-voices"
+      ],
+      "lyricNotes": {
+        "heading": "Putting down the need to win",
+        "themes": [
+          "Everyday life",
+          "Letting go"
+        ],
+        "paragraphs": [
+          "Battle language gives ordinary distractions an outsized role: an alarm calls, a screen keeps the speaker awake, and a message unsettles them. Waving a white flag means giving up the demand to defeat every one of these small pressures. The wish is modest: some peace and a little fun."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/32992876",
+          "label": "Surrender: lyrics and credits on Bugs",
+          "language": "Korean"
+        },
+        "backgroundSources": [
+          {
+            "url": "https://v.daum.net/v/20241123152110886",
+            "label": "Newsis — MRCH on writing the chorus of Surrender",
+            "language": "Korean"
+          }
+        ]
+      },
+      "provider": "youtube",
+      "url": "https://www.youtube.com/watch?v=fxAGHl7bEp0"
     }
   ],
   "featuredArtists": [
@@ -1532,7 +1740,7 @@
       "editorial": {
         "author": "indiek",
         "published": "2026-10-19",
-        "updated": "2026-10-27"
+        "updated": "2026-11-09"
       },
       "sources": [
         {

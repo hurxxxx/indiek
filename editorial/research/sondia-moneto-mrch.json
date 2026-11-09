@@ -1,0 +1,288 @@
+{
+  "checked": "2026-11-09",
+  "status": "reviewed-local",
+  "artistIds": [
+    "sondia",
+    "moneto",
+    "mrch"
+  ],
+  "trackIds": [
+    "sondia-grown-ups",
+    "moneto-she",
+    "mrch-surrender"
+  ],
+  "scope": "Three requested artist introductions, three songs, English lyric commentary, home features and an explicit featured-artist connection. No remote deployment or SNS posting.",
+  "readerQuestion": "Who made these songs, what do their words convey, and where can the featured singer MRCH be heard in her own work?",
+  "referenceChoices": [
+    {
+      "source": "skills/indiek-editorial/references/editing.md#lyric-commentary",
+      "technique": "Keep each reading close to a concrete lyrical detail; distinguish speaker and performer."
+    },
+    {
+      "source": "https://v.daum.net/v/20241123152110886",
+      "author": "Lee Jae-hoon",
+      "publisher": "Newsis",
+      "format": "Original reported interview",
+      "published": "2024-11-23",
+      "checked": "2026-11-09",
+      "reception": "craft-only; reader response not measured",
+      "technique": "A specific question about a song elicits a verifiable creative decision. Use MRCH’s account with attribution, without copying the interviewer’s language or structure."
+    }
+  ],
+  "outline": [
+    "Sondia: My Mister OST video, followed by weariness and the unanswered closing question.",
+    "moneto: She’s credits and memories; connect featured vocalist and co-composer MRCH to her own page.",
+    "MRCH: Surrender live, a documented chorus revision, everyday pressures, then the shared She recording."
+  ],
+  "sources": [
+    {
+      "url": "https://music.apple.com/us/album/my-mister-pt-2-original-television-soundtrack-single/1628294279",
+      "publisher": "Apple Music",
+      "checked": "2026-11-09",
+      "published": "2018-03-29",
+      "supports": [
+        "Release title, date and cover; official English song title checked through Apple/iTunes metadata."
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=5a-tqIQc8RM",
+      "publisher": "STONE MUSIC",
+      "checked": "2026-11-09",
+      "supports": [
+        "Official channel, performance format and video duration."
+      ],
+      "method": "Opened original page metadata and verified this recording playing in the local site’s shared YouTube player. She was also visually inspected on MRCH’s official artist channel."
+    },
+    {
+      "url": "https://music.bugs.co.kr/track/31009023",
+      "publisher": "Bugs",
+      "checked": "2026-11-09",
+      "supports": [
+        "Writing credits and selected lyrical images underlying original commentary."
+      ],
+      "method": "Read the licensed lyric display; full lyrics and translations were not stored."
+    },
+    {
+      "url": "https://music.apple.com/us/album/she-feat-mrch-single/1696919481",
+      "publisher": "Apple Music",
+      "checked": "2026-11-09",
+      "published": "2023-07-14",
+      "supports": [
+        "Release title, date and cover; official English song title checked through Apple/iTunes metadata."
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=qdC0zV_6JkI",
+      "publisher": "윤마치(MRCH)",
+      "checked": "2026-11-09",
+      "supports": [
+        "Official channel, performance format and video duration."
+      ],
+      "method": "Opened original page metadata and verified this recording playing in the local site’s shared YouTube player. She was also visually inspected on MRCH’s official artist channel."
+    },
+    {
+      "url": "https://music.bugs.co.kr/track/32909568",
+      "publisher": "Bugs",
+      "checked": "2026-11-09",
+      "supports": [
+        "Writing credits and selected lyrical images underlying original commentary."
+      ],
+      "method": "Read the licensed lyric display; full lyrics and translations were not stored."
+    },
+    {
+      "url": "https://music.bugs.co.kr/album/20578255",
+      "publisher": "Bugs / artist release notes",
+      "checked": "2026-11-09",
+      "supports": [
+        "Recording credits and release context."
+      ]
+    },
+    {
+      "url": "https://music.apple.com/us/album/oh-life-ep/1896168712",
+      "publisher": "Apple Music",
+      "checked": "2026-11-09",
+      "published": "2023-10-18",
+      "supports": [
+        "Release title, date and cover; official English song title checked through Apple/iTunes metadata."
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=fxAGHl7bEp0",
+      "publisher": "윤마치(MRCH)",
+      "checked": "2026-11-09",
+      "supports": [
+        "Official channel, performance format and video duration."
+      ],
+      "method": "Opened original page metadata and verified this recording playing in the local site’s shared YouTube player. She was also visually inspected on MRCH’s official artist channel."
+    },
+    {
+      "url": "https://music.bugs.co.kr/track/32992876",
+      "publisher": "Bugs",
+      "checked": "2026-11-09",
+      "supports": [
+        "Writing credits and selected lyrical images underlying original commentary."
+      ],
+      "method": "Read the licensed lyric display; full lyrics and translations were not stored."
+    },
+    {
+      "url": "https://music.bugs.co.kr/album/20598166",
+      "publisher": "Bugs / artist release notes",
+      "checked": "2026-11-09",
+      "supports": [
+        "Recording credits and release context."
+      ]
+    },
+    {
+      "url": "https://music.bugs.co.kr/artist/20138911",
+      "publisher": "Bugs",
+      "checked": "2026-11-09",
+      "supports": [
+        "moneto solo identity and earlier collaborations Lullaby (2021) and Classic (2022)."
+      ]
+    },
+    {
+      "url": "https://v.daum.net/v/20241123152110886",
+      "publisher": "Newsis via Daum",
+      "author": "Lee Jae-hoon",
+      "published": "2024-11-23",
+      "checked": "2026-11-09",
+      "supports": [
+        "MRCH debut EP in 2019 and Talk that Talk songwriting credit; attributed account of revising Surrender’s chorus."
+      ]
+    }
+  ],
+  "sourceLedger": {
+    "appleMusic": "Release metadata, titles and artwork only.",
+    "bugs": "Credits and selective original commentary. No lyric quotations or complete lyrics republished.",
+    "newsis": "A brief biography and attributed chorus background; under 100 words of site prose derived from the interview.",
+    "youtube": "Recording identity, uploader, duration and official video format; no inferred instrumental listening claims."
+  },
+  "decisions": [
+    "MRCH’s artist-channel She clip qdC0zV_6JkI selected as the requested live recording.",
+    "Sondia uses STONE MUSIC’s My Mister OST music video, not a fan upload.",
+    "Surrender uses MRCH’s official 2023 live clip; the video predates the EP and the two dates are not conflated.",
+    "Apple Music’s old Oh, Life ID 1712256467 returned 404 in a direct request; its linked alternate 1896168712 and iTunes lookup are current and confirm the English title Surrender.",
+    "Use separate artist IDs and a single She track ID; guest references do not duplicate Saved or guide counts.",
+    "Publication authorized on 2026-11-09; the three new pages and their home announcements use that date. Existing guide publication date is unchanged.",
+    "Home section types and layout remain unchanged; existing two spotlights now introduce moneto and MRCH."
+  ],
+  "revision": {
+    "algorithm": "sha256",
+    "scope": "JSON.stringify({artists: catalogue.artists.slice(-3),tracks: catalogue.tracks.slice(-3),home: discoverSection})",
+    "hash": "deb8d7b10e7ea23fbb1e57443604c0ee41d5a892308098dafd633ca5580167ca"
+  },
+  "reviews": [
+    {
+      "kind": "facts",
+      "checked": "2026-11-09",
+      "reviewer": "Separate pass by the same assistant; not independent human verification",
+      "revision": "deb8d7b10e7ea23fbb1e57443604c0ee41d5a892308098dafd633ca5580167ca",
+      "approved": true,
+      "findings": [
+        "Titles, release dates, credits, channel names and recording durations checked against opened original sources.",
+        "The white flag and daily distractions support Surrender’s interpretation; the closing question supports Grown Ups; memory and absence support She. No particular bereavement, diagnosis or personal experience is inferred."
+      ],
+      "corrections": [
+        "Used the current Oh, Life Apple Music edition.",
+        "Removed the redundant manufactured Korean display title for the English-language She.",
+        "Replaced brighter self with the lyric’s wish to be fully oneself."
+      ]
+    },
+    {
+      "kind": "editorial",
+      "checked": "2026-11-09",
+      "reviewer": "Separate pass by the same assistant",
+      "revision": "deb8d7b10e7ea23fbb1e57443604c0ee41d5a892308098dafd633ca5580167ca",
+      "approved": true,
+      "findings": [
+        "Each introduction identifies the recording and a specific image or collaboration.",
+        "Three short lyric paragraphs are selective interpretations, not verse-by-verse translations. The artist account stays attributed to Newsis.",
+        "Compared against existing catalogue introductions and the relevant reference technique; no borrowed metaphor, personal listening claim or prescriptive emotional response."
+      ],
+      "corrections": [
+        "Reduced enjoy being alive to some peace and a little fun to preserve the scale of Surrender."
+      ]
+    }
+  ],
+  "images": [
+    {
+      "file": "sondia-my-mister.jpg",
+      "source": "https://music.apple.com/us/album/my-mister-pt-2-original-television-soundtrack-single/1628294279",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/11/38/28/113828ac-376a-c42a-ffe7-4ae8bc9f8468/8809603541147_Cover.jpg/1200x1200bb.jpg",
+      "rights": "unconfirmed",
+      "notes": "Release artwork used to identify the requested recording. No reuse licence established; source credit does not establish permission."
+    },
+    {
+      "file": "moneto-she.jpg",
+      "source": "https://music.apple.com/us/album/she-feat-mrch-single/1696919481",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/57/8e/47/578e4707-665c-2e7e-c7cf-3ad6ca4dcd3b/191953293028.jpg/1200x1200bb.jpg",
+      "rights": "unconfirmed",
+      "notes": "Release artwork used to identify the requested recording. No reuse licence established; source credit does not establish permission."
+    },
+    {
+      "file": "mrch-oh-life.jpg",
+      "source": "https://music.apple.com/us/album/oh-life-ep/1896168712",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/a6/57/01/a657015d-020b-0fc1-3e89-899a48066a3e/8809973501529.jpg/1200x1200bb.jpg",
+      "rights": "unconfirmed",
+      "notes": "Release artwork used to identify the requested recording. No reuse licence established; source credit does not establish permission."
+    }
+  ],
+  "verification": {
+    "status": "passed-with-manual-scope-notes",
+    "checked": "2026-11-09",
+    "localServer": "http://127.0.0.1:4173",
+    "commands": [
+      "npm run images",
+      "npm run build",
+      "npm run check",
+      "npm run build:preview",
+      "python3 scripts/check.py",
+      "git diff --check"
+    ],
+    "automated": "218 tests passed; 35 generated pages passed links, anchors, assets, metadata and sitemap validation. Production build and local ready-announcement preview both generated successfully.",
+    "actualEmbeddedPlayback": [
+      {
+        "trackId": "moneto-she",
+        "videoId": "qdC0zV_6JkI",
+        "result": "MRCH singing in a studio, player state Playing and advancing timestamp observed. Continued from moneto to MRCH through internal navigation while minimized."
+      },
+      {
+        "trackId": "mrch-surrender",
+        "videoId": "fxAGHl7bEp0",
+        "result": "Selected from MRCH’s page; existing shared player changed to Surrender and its timestamp advanced beyond one minute."
+      },
+      {
+        "trackId": "sondia-grown-ups",
+        "videoId": "5a-tqIQc8RM",
+        "result": "STONE MUSIC My Mister OST MV visibly played on desktop and mobile emulation; also started directly from Saved on mobile."
+      }
+    ],
+    "manual": [
+      "Desktop: all three artist pages, release covers, titles, player controls and reciprocal moneto–MRCH links.",
+      "Mobile Chrome emulation: 393×852 portrait and 852×393 landscape; Sondia player remained visible as layout changed.",
+      "Mobile: MRCH collaboration section; Artists searches She and 마치 each returned moneto and MRCH without duplicate artist entries.",
+      "Mobile Saved: added Grown Ups, opened two-song list, played it directly, observed current-song highlight, removed only this temporary test entry and preserved pre-existing ONCE.",
+      "Desktop preview home: three ready notices, Sondia hero and moneto/MRCH spotlights present.",
+      "Mobile preview home at 393×852: new notices and Sondia hero render without overflow; device emulation and DevTools were closed after QA."
+    ],
+    "notRepeated": [
+      "Physical-device keyboard and touch testing.",
+      "Full manual Saved 0/13/50-track matrix, end-of-queue/error/full-screen cases. Existing automated player tests passed; player implementation was not changed."
+    ],
+    "screenshots": [
+      "/tmp/indiek-sondia-mobile-landscape.png",
+      "/tmp/indiek-mrch-collaboration-mobile.png",
+      "/tmp/indiek-new-artists-preview.png",
+      "/tmp/indiek-home-mobile.png"
+    ],
+    "deployment": "Not performed; local generated promotion catalogue includes all three artists. Automatic publisher server remains unchanged until deployment."
+  },
+  "publication": {
+    "authorized": "2026-11-09",
+    "published": "2026-11-09",
+    "rollback": "244d933739719f13d93bbce049bc6ba8c62d813a",
+    "status": "prepared",
+    "priorReviewedRevision": "0e8ad962bd2bf900dae78fd806b653abc3d74b93886dfdb73d355c63a90b9463",
+    "change": "Publication date metadata only; reviewed prose, recordings and home copy unchanged."
+  }
+}

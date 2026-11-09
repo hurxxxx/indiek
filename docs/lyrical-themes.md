@@ -4,7 +4,7 @@
 
 ## 현재 범위
 
-`content/catalogue.json`의 소개 곡 20곡 중 19곡에는 영어 `Inside the lyrics` 해설이 있다. Editor’s pick인 윤미래의 Breath도 포함한다. 백아의 Amor(첫사랑)는 사용자가 직접 제공하고 게재를 요청한 영어 번안 12연을 싣는다. 별도 번안 설명은 덧붙이지 않는다. 제공받은 번안을 제외한 기존 해설에는 가사 전문이나 행별 번역이 없다.
+`content/catalogue.json`의 소개 곡 23곡 중 22곡에는 영어 `Inside the lyrics` 해설이 있다. Editor’s pick인 윤미래의 Breath도 포함한다. 백아의 Amor(첫사랑)는 사용자가 직접 제공하고 게재를 요청한 영어 번안 12연을 싣는다. 별도 번안 설명은 덧붙이지 않는다. 제공받은 번안을 제외한 기존 해설에는 가사 전문이나 행별 번역이 없다.
 
 각 아티스트 페이지에는 곡별 해설과 가사 출처가 표시된다. 가이드의 선정곡·입문 가이드 후속 목록에서 해당 해설로 바로 이동할 수 있다. 홈의 아티스트 소개도 해설을 연결하며, 기존 기사·추가 곡 링크와 함께 최대 세 개의 연결을 표시한다.
 
@@ -14,6 +14,7 @@
 
 - 전체 가사 콘텐츠의 원문 출처·작사 크레딧·정확한 원고 검수는 [조사 기록](../editorial/research/catalogue-lyric-notes.json)에 둔다. 백아의 영상·이미지·사용자 제공 번안의 근거는 [백아 조사 기록](../editorial/research/baek-a-amor.json)에 둔다. 웹에서 가사 전문이나 번역을 수집해 저장하지 않는다.
 - [공원·예빛의 이전 조사 기록](../editorial/research/gongwon-yebit.json)은 최초 소개와 영상 교체의 근거를 보존한다. 현재 해설의 검수는 위의 전체 곡 기록을 따른다.
+- Sondia의 Grown Ups, moneto의 She (Feat. MRCH), MRCH의 Surrender는 [세 아티스트 조사 기록](../editorial/research/sondia-moneto-mrch.json)에 영상·가사·발매 정보와 검수를 둔다. She는 피처링 아티스트 페이지에도 연결하지만 해설과 재생·저장 ID는 하나다.
 - 해설의 근거가 되는 가사와 곡·작사 크레딧을 확인한다. 창작자가 밝힌 배경은 출처와 함께 구분하며, 편집 해석이 가사에서 확인할 수 있는 범위를 넘지 않는지 검토한다.
 - 콘텐츠 구조와 실행·검증 방법은 [README](../README.md#artists-and-tracks)를 따른다. 원고를 바꾸면 해당 검수를 다시 한다.
 
