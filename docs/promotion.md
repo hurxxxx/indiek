@@ -1614,3 +1614,16 @@ https://indiek.com/artists/sunwoojunga/?from=instagram
 - Instagram 인사이트(최근 30일): 조회 0·조회한 사람 0·반응 0·프로필 방문 0·팔로워 0. 11/4~11/8 게시물도 각각 조회 0으로 표시됐다. 웹에서는 계정 상태(추천 가능 여부) 화면을 확인하지 못해 원인을 확정하지 않았다.
 - Search Console(`https://indiek.com/` 속성, 최근 28일, 데이터 10/17~11/6): 클릭 1·노출 261·CTR 0.4%·평균 순위 18.6. 10/25 확인값(노출 45)보다 늘었다. 검색어 노출 상위는 korean indie music 43, indiek 19(클릭 1), the black skirts 10, youra mimi 5, even if you leave hanroro lyrics english 3 등. 페이지 노출 상위는 입문 가이드 61, 홈 30, 검정치마 18, 최유리 17, 한로로 16. `sc-domain:indiek.com` 속성은 이 계정에서 접근 권한이 없다.
 - 판단: 정기 게시는 정상 동작하지만 확인 가능한 사람 유입은 사실상 없다. Threads는 비팔로워 노출이 소폭 있으나 링크 클릭으로 이어지지 않고, Instagram은 노출 자체가 0이다. 검색 노출은 늘고 있으나 클릭은 아직 없다. 증빙: 로컬 `qa/status-matomo-20261109.json`, `qa/status-traffic-20261109.json`.
+
+## G017 · Matomo 주간 보고 연결과 Instagram 프로필 링크 확인
+
+- 확인일: 2026-11-09 16:20~16:30 KST. 사용자가 Matomo 토큰을 전달하고 Instagram 프로필 링크를 등록했다고 알렸다. 이번 작업에서 게시·예약·사이트 변경은 하지 않았다.
+- Matomo:
+  - 토큰을 자동화 서버 `~/.config/indiek-promotion/credentials.json`의 `matomo.token`에 저장했다. 저장은 `credentials --stdin`으로 했고 파일 권한은 0600이다. 기존 Threads·Instagram 항목은 유지했다.
+  - 권한을 API로 확인한 결과 슈퍼유저였다. 사이트 1~4의 관리 권한이 있어 [배포 문서](../deploy/README.md)의 "사이트 4만 읽는 별도 토큰" 기준과 맞지 않는다.
+  - 다시 생성한 주간 보고(`promotion/state/reports/2026-11-09.json`)의 최근 30일(10/11~11/9) 수치: 동의 방문 75, 액션 170, 재방문 5, 이벤트 Acquisition 51·Music 2.
+  - Acquisition에는 G016에서 확인한 Meta 자동 링크 점검으로 보이는 방문이 섞여 있다. 사람 유입으로 해석하지 않는다.
+- Instagram:
+  - Instagram API로 프로필 `website` 값이 `https://indiek.com`임을 확인했다. 팔로워는 0, 게시물은 25개다.
+  - 계정 상태(추천 가능 여부)는 확인하지 않았다.
+- 결정: 권한 범위를 안내했고, 사용자가 슈퍼유저 토큰을 그대로 두기로 했다. 읽기 전용 토큰으로 교체하면 같은 `credentials --stdin` 절차로 덮어쓴다.
