@@ -251,7 +251,7 @@ systemctl --user list-timers indiek-search-console.timer --no-pager
 
 ## 참여 API
 
-상태(2026-11-09): **초안, 운영 적용 승인 대기.** 웹 서버에는 아무것도 설치·변경하지 않았다. 아래 절차는 사용자가 승인한 범위에서만 실행한다. 로컬 검증: `cargo test` 26개 통과, 실제 바이너리의 serve·check·backup·requests 명령, nginx 1.28 컨테이너에서 [nginx-api.conf](api/nginx-api.conf)를 병합한 설정의 `nginx -t`와 프록시 동작(결과 마이크로 캐시 MISS→HIT, API 중지 시 JSON 503·캐시된 결과 유지·페이지 200, 두 단계의 JSON 429, IP 없는 API 로그)을 확인했다.
+상태(2026-11-09): **운영 적용 승인 대기.** 빌드 위치(웹 서버의 전용 계정)와 연말 투표 설정은 승인됐지만 계정 생성·패키지 설치·서비스·Nginx 적용과 main push는 아직 승인되지 않았다. 웹 서버에는 아무것도 설치·변경하지 않았다. 로컬 검증: `cargo test` 26개 통과, 실제 바이너리의 serve·check·backup·requests 명령, nginx 1.28 컨테이너에서 [nginx-api.conf](api/nginx-api.conf)를 병합한 설정의 `nginx -t`와 프록시 동작(결과 마이크로 캐시 MISS→HIT, API 중지 시 JSON 503·캐시된 결과 유지·페이지 200, 두 단계의 JSON 429, IP 없는 API 로그)을 확인했다.
 
 `api/`의 Rust 서비스 `indiek-api`가 웹 서버의 `127.0.0.1:8787`에서 systemd 시스템 서비스로 실행된다. Nginx는 `/api/`만 프록시하고 페이지는 지금처럼 정적으로 제공한다. 같은 출처라 CSP는 바꾸지 않는다(`connect-src 'self'`). API가 멈추면 `/api/`는 JSON 503을, 결과 조회는 마지막 캐시를 돌려주며 페이지·재생·Saved는 영향을 받지 않는다. Matomo 등 공유 서버의 다른 서비스는 건드리지 않는다. 엔드포인트·투표 정의 형식은 [README](../README.md#participation-api)를 따른다.
 
@@ -264,22 +264,55 @@ systemctl --user list-timers indiek-search-console.timer --no-pager
 
 실행 계정은 로그인할 수 없는 시스템 계정 `indiek-api`, 바이너리는 `/usr/local/bin/indiek-api`, DB는 `/var/lib/indiek-api/indiek-api.sqlite3`(WAL, `synchronous=NORMAL`, `busy_timeout` 5초, 쓰기 연결 1개·읽기 풀 4개), 백업은 `/var/lib/indiek-api/backups/`다. 서비스는 `/projects/indiek`을 읽기 전용으로만 보고 `dist/catalogue.js`와 `content/polls.json`이 바뀌면 30초 안에 다시 읽으므로 사이트 배포에 재시작이 필요 없다. 새 파일이 잘못되면 오류를 남기고 이전 목록을 유지한다.
 
-### 빌드 (승인 필요)
+### push 전 확인: 자동 검사에 cargo가 보이지 않아야 한다
 
-운영 서버와 같은 OS·아키텍처에서 `cargo build --release --locked`로 만든다. 권장안은 웹 서버의 전용 빌드 계정 `indiek-build`에 rustup을 사용자 단위로 설치하는 것이다. 번들 SQLite 컴파일에 C 컴파일러(`cc`)가 필요하며, 없으면 `build-essential` 설치도 별도 승인 대상이다. apt의 시스템 `cargo`나 root 계정 설치는 피한다. 매거진 수신기(웹 서버)와 발행기(자동화 서버)는 300초 제한 안에서 `npm run check`를 실행하는데, cargo가 PATH에 있으면 새 체크아웃에서 Rust 전체 빌드를 시작한다. 빌드 계정의 `~/.cargo/bin`은 이들의 PATH에 없어 API 테스트를 건너뛴다. 다른 곳에 설치해야 하면 해당 실행 환경에 `INDIEK_SKIP_API_TESTS=1`을 둔다.
+`npm run check`는 cargo가 PATH에 있으면 `cargo test`를 실행한다. 매거진 발행기(자동화 서버 사용자 서비스, `PATH=%h/.npm-global/bin:/usr/local/bin:/usr/bin:/bin`)와 수신기(웹 서버 SSH 강제 명령, sshd 기본 PATH)는 새 체크아웃에서 300초 제한으로 검사하므로, cargo가 보이면 Rust 전체 빌드가 시작돼 발행이 실패할 수 있다. API 브랜치를 main에 올리기 전에 두 서버에서 아래 읽기 전용 명령이 모두 `no-cargo`를 출력하는지 확인한다.
 
 ```sh
-# 최초 1회
-useradd --create-home --shell /bin/bash indiek-build
-sudo -iu indiek-build sh -c 'curl --proto =https --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal'
-sudo -iu indiek-build git clone https://github.com/hurxxxx/indiek.git
-cc --version   # 없으면 build-essential 설치를 먼저 승인받는다
-
-# 배포할 커밋마다
-sudo -iu indiek-build sh -c 'cd indiek && git fetch origin && git checkout --detach origin/main \
-  && cargo test --locked --manifest-path api/Cargo.toml \
-  && cargo build --release --locked --manifest-path api/Cargo.toml'
+# 자동화 서버: 발행기 서비스와 같은 PATH
+ssh <automation-server> 'env -i HOME="$HOME" PATH="$HOME/.npm-global/bin:/usr/local/bin:/usr/bin:/bin" sh -c "command -v cargo || echo no-cargo"; ls -d "$HOME/.cargo/bin" 2>/dev/null || true'
+# 웹 서버: 수신기 키가 등록된 계정을 찾고, 비대화형 SSH의 PATH에서 확인
+ssh root@<web-server> 'grep -l indiek-editorial-receive /root/.ssh/authorized_keys /home/*/.ssh/authorized_keys 2>/dev/null; echo "PATH=$PATH"; command -v cargo || echo no-cargo; ls /usr/bin/cargo /usr/local/bin/cargo /root/.cargo/bin/cargo 2>/dev/null || true'
 ```
+
+수신기 키가 root가 아닌 계정에 있으면 그 계정의 `~/.cargo/bin`도 없는지 본다. 어느 쪽에서든 cargo가 보이면 push 전에 그 실행 환경에 `INDIEK_SKIP_API_TESTS=1`을 설정하거나 해당 설치를 정리한다.
+
+### 빌드 계정과 Rust (위치 승인됨, 서버 변경은 확인 대기)
+
+2026-11-09 사용자가 빌드 위치를 승인했다: 웹 서버의 전용 계정 `indiek-build`에만 Rust를 둔다. 계정 생성·설치는 아직 실행하지 않았으며 실행 전에 사용자에게 다시 확인한다.
+
+- rustup 설치 파일의 SHA-256을 확인하고 `--no-modify-path`로 설치해 셸 설정 파일을 바꾸지 않는다. cargo는 빌드 명령 안에서만 PATH에 넣으므로 root·수신기·다른 계정에는 보이지 않는다. apt의 `cargo`·`rustc`나 root 설치는 쓰지 않는다.
+- 툴체인은 로컬 검증과 같은 1.99.1로 고정한다(크레이트 최소 1.94).
+- 번들 SQLite 컴파일에 C 컴파일러가 필요하다. `cc`가 없으면 `build-essential` 설치를 별도로 승인받는다.
+- 빌드 저장소는 운영 체크아웃 `/projects/indiek`의 복제본이다. 운영에 반영된 커밋을 그대로 빌드하며 GitHub 자격 증명이 필요 없다. 첫 빌드는 crates.io에서 의존성을 내려받는다.
+
+```sh
+# root, 최초 1회
+command -v cargo rustc || echo "no system Rust"
+cc --version || echo "C compiler missing: build-essential needs approval"
+useradd --create-home --shell /bin/bash indiek-build
+sudo -iu indiek-build bash -euc '
+  url="https://static.rust-lang.org/rustup/dist/$(uname -m)-unknown-linux-gnu/rustup-init"
+  curl --proto "=https" --tlsv1.2 -sSf -o rustup-init "$url"
+  echo "$(curl --proto "=https" --tlsv1.2 -sSf "$url.sha256" | cut -d" " -f1)  rustup-init" | sha256sum -c -
+  chmod +x rustup-init
+  ./rustup-init -y --profile minimal --default-toolchain 1.99.1 --no-modify-path
+  rm rustup-init
+  git config --global --add safe.directory /projects/indiek
+  git config --global --add safe.directory /projects/indiek/.git
+  git clone /projects/indiek "$HOME/indiek"
+  "$HOME/.cargo/bin/cargo" --version'
+command -v cargo || echo "cargo not on root PATH (expected)"
+
+# 배포할 때마다: 운영 체크아웃을 업데이트 절차대로 pull한 뒤
+sudo -iu indiek-build bash -euc '
+  export PATH="$HOME/.cargo/bin:$PATH"
+  cd "$HOME/indiek" && git pull --ff-only && git log --oneline -1
+  cargo test --locked --manifest-path api/Cargo.toml
+  cargo build --release --locked --manifest-path api/Cargo.toml'
+```
+
+메모리가 작은 서버에서 빌드가 멈추면 같은 명령 앞에 `CARGO_BUILD_JOBS=1`을 둔다. 빌드 계정을 지우면(`userdel -r indiek-build`) Rust와 빌드 저장소가 함께 제거된다.
 
 ### 최초 설치 (승인 후)
 
@@ -301,7 +334,8 @@ curl -s http://127.0.0.1:8787/api/health
 systemctl enable --now indiek-api-backup.timer
 systemctl start indiek-api-backup.service && ls -l /var/lib/indiek-api/backups
 
-# nginx-api.conf를 deploy/nginx.conf에 병합해 커밋·pull한 뒤
+# nginx-api.conf를 deploy/nginx.conf에 병합해 커밋·pull한 뒤: Part 1은 `log_format indiek_access` 바로 아래,
+# Part 2는 indiek.com 443 server 안 `# Ubuntu's default mime.types` 주석 위. 이 병합은 nginx 1.28에서 nginx -t를 통과했다.
 cp /etc/nginx/sites-available/indiek.com /root/indiek.com.nginx.$(date +%Y%m%d%H%M%S)
 install -d -o www-data -g www-data -m 0700 /var/cache/nginx/indiek-api
 install -o root -g root -m 0644 deploy/nginx.conf /etc/nginx/sites-available/indiek.com
@@ -325,21 +359,40 @@ api backup /var/lib/indiek-api/backups --keep 14
 ```
 
 - 요청은 운영자가 확인하기 전에는 어디에도 공개하지 않는다. 사이트에 "Requested by readers"를 표시할 때도 요청 원문을 옮기지 않는다.
-- 투표를 열 때는 `content/polls.json`의 날짜·`maxChoices`를 확정하고 `status`를 `published`로 바꿔 사이트와 함께 배포한다. 결과 페이지·투표 화면과 개인정보 안내(아래 초안)를 같은 배포에 포함한다. 조기 종료는 `closed`.
+- 연말 투표 설정은 승인됨(2026-11-09): 12/10 12:00 ~ 1/1 00:00 KST, 최대 3곡, 결과는 마감 후 공개. 투표를 열 때 `content/polls.json`의 `status`를 `published`로 바꿔 사이트와 함께 배포한다. 결과 페이지·투표 화면과 개인정보 안내(아래 초안)를 같은 배포에 포함한다. 조기 종료는 `closed`.
 - 참여 완료 수(W0 주간 표)는 공개 결과의 `ballots`와 `api requests --status all`로 센다.
 - 백업은 같은 서버에만 둔다(디스크 장애 대비 아님). 서버 밖 사본이나 Litestream 실시간 복제는 필요해지면 별도로 정한다.
 
 ### 업데이트와 복구
 
 ```sh
+# 새 바이너리 적용 (빌드 후)
 systemctl start indiek-api-backup.service                       # 새 마이그레이션 전 백업
 install -m 0755 /usr/local/bin/indiek-api /usr/local/bin/indiek-api.prev
 install -o root -g root -m 0755 ~indiek-build/indiek/api/target/release/indiek-api /usr/local/bin/indiek-api
 systemctl restart indiek-api && curl -s http://127.0.0.1:8787/api/health
 ```
 
-- 이전 바이너리로 복구: `install -m 0755 /usr/local/bin/indiek-api.prev /usr/local/bin/indiek-api && systemctl restart indiek-api`. 마이그레이션은 앞으로만 적용되므로 새 마이그레이션이 들어간 판을 되돌릴 때는 서비스를 멈추고 직전 백업 파일을 `indiek-api.sqlite3`로 복사한다(`-wal`·`-shm` 제거, 소유자 `indiek-api`).
-- 즉시 중단: `systemctl disable --now indiek-api.service indiek-api-backup.timer`. 페이지·재생·Saved는 계속 동작하고 `/api/`만 JSON 503이 된다. 프록시까지 제거할 때는 Nginx 백업을 복원하고 `nginx -t` 후 reload한다.
+```sh
+# 이전 바이너리로
+install -m 0755 /usr/local/bin/indiek-api.prev /usr/local/bin/indiek-api && systemctl restart indiek-api
+
+# DB를 직전 백업으로 (마이그레이션은 앞으로만 적용되므로 새 마이그레이션을 되돌릴 때)
+systemctl stop indiek-api
+ls -1 /var/lib/indiek-api/backups | tail -3
+install -o indiek-api -g indiek-api -m 0600 /var/lib/indiek-api/backups/indiek-api-YYYYMMDD-HHMMSS.sqlite3 /var/lib/indiek-api/indiek-api.sqlite3
+rm -f /var/lib/indiek-api/indiek-api.sqlite3-wal /var/lib/indiek-api/indiek-api.sqlite3-shm
+systemctl start indiek-api
+
+# Nginx를 적용 전 설정으로 (logrotate 설정은 api.log가 없어도 무해하므로 그대로 둬도 된다)
+install -o root -g root -m 0644 /root/indiek.com.nginx.<백업 시각> /etc/nginx/sites-available/indiek.com
+nginx -t && systemctl reload nginx
+
+# API 즉시 중단: 페이지·재생·Saved는 그대로, /api/만 JSON 503
+systemctl disable --now indiek-api.service indiek-api-backup.timer
+```
+
+완전히 걷어낼 때는 위 중단과 Nginx 복원 뒤 `/etc/systemd/system/indiek-api*.{service,timer}`를 지우고 `systemctl daemon-reload`한다. `/var/lib/indiek-api`(DB·백업)의 보존 여부와 `indiek-api`·`indiek-build` 계정 삭제는 따로 정한다.
 
 ### 개인정보 안내 추가 초안
 
