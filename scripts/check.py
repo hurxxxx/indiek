@@ -3,7 +3,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
 import json
-from html import escape
+from html import escape, unescape
 import subprocess
 import re
 import xml.etree.ElementTree as ET
@@ -77,6 +77,21 @@ for path in dist.rglob('*.html'):
     if any('matomo.lumejs.com' in ref for ref in page.refs): errors.append(f'{path}: Matomo loaded before consent')
     if page.frames: errors.append(f'{path}: player loaded without consent')
     if '{{' in text or 'lumejs.chatgpt.site' in text or 'data-story=' in text: errors.append(f'{path}: stale template content')
+    if re.fullmatch(r'artists/[^/]+/', relative):
+        # Search titles name the opening song; structured recordings must point at anchors on this page.
+        ld=re.search(r'<script type="application/ld\+json">(.*?)</script>', text, re.S)
+        nodes=json.loads(ld.group(1)).get('@graph', []) if ld else []
+        groups=[n for n in nodes if n.get('@type')=='MusicGroup']
+        recordings=[n for n in nodes if n.get('@type')=='MusicRecording']
+        artist_id=relative.split('/')[1]
+        opening=next((t for t in artists if t['artistId']==artist_id), None)
+        if len(groups)!=1 or not recordings: errors.append(f'{path}: missing artist structured data')
+        for recording in recordings:
+            anchor=urlsplit(recording.get('url','')).fragment
+            if anchor not in page.ids or recording.get('byArtist',{}).get('@id')!=(groups[0]['@id'] if groups else None): errors.append(f'{path}: structured recording does not match the page')
+        title=re.search(r'<title>(.*?)</title>', text, re.S)
+        title=unescape(title.group(1)) if title else ''
+        if opening and re.sub(r'\s*\(feat\.[^)]*\)','',opening['track'],flags=re.I) not in title: errors.append(f'{path}: search title must name the opening song')
     section='stories' if relative.startswith('stories/') else 'artists' if relative.startswith('artists/') else 'guides' if relative.startswith('notes/') else 'home' if not relative else None
     expected_nav=[(id,href,('page' if href=='/'+relative else 'true') if id==section else None) for id,href in [('home','/'),('stories','/stories/'),('artists','/artists/'),('guides','/notes/first-listens/')]]
     if page.nav!=expected_nav: errors.append(f'{path}: incorrect main navigation or current section')

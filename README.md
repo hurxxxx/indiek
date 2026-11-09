@@ -95,7 +95,7 @@ Run `npm run build && npm run check`, then inspect desktop and mobile. The check
 
 Magazine articles live in `content/stories/`, with bylines in `content/authors.json`. One article supplies its Stories page, home feature, search entry, sitemap entry and sharing card. Drafts stay private. Published text must have matching factual and editorial reviews; editing the title, body, sources or metadata invalidates that approval. The [editorial skill](skills/indiek-editorial/SKILL.md) covers research and editing, while `editorial/topics.json` holds future angles. Article data records what has actually been published.
 
-Curated guides use 3–5 catalogue tracks with an editorial note for each. Guides marked `draft` are excluded from public pages and browser data. Add a real `editorial.published` date when a page is released to include it in home updates; preparation dates are not publication dates.
+Curated guides use 3–5 catalogue tracks with an editorial note for each. Guides marked `draft` are excluded from public pages and browser data. Optional `seoTitle` and `seoDescription` set a guide's search title and meta description; cards, sharing images and the on-page heading keep `title` and `description`. Artist pages build their search title from the artist, Korean name and first two songs (`… lyrics meaning`, or `… in English` for an adaptation) and add `MusicGroup`/`MusicRecording` structured data linked to the song anchors. Sharing cards keep the shorter `Artist — Song` title so existing cards and scheduled posts are unaffected. Add a real `editorial.published` date when a page is released to include it in home updates; preparation dates are not publication dates.
 
 ### Home updates
 

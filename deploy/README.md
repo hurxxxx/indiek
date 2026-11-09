@@ -37,6 +37,12 @@ YouTube는 모든 페이지에서 공통 영역 `#persistent-player`를 사용�
 
 2026-10-23부터 indiek의 HTTP·HTTPS·www 요청은 `/var/log/nginx/indiek/access.log`에 JSON Lines 형식으로 기록한다. 연결 IP, 시간(서버 시간대 Asia/Seoul), 호스트·스킴·메서드·원래 요청 경로, 응답 코드·본문 크기·처리 시간·User-Agent를 남긴다. 쿼리 문자열·Referer·Cookie·Authorization은 기록하지 않는다. 이는 쿠키를 사용하지 않는 서버 로그이며 선택적 Matomo와 별개다. 공개 [개인정보 안내](https://indiek.com/privacy-and-terms/)도 같은 수집 범위를 설명한다. 활성화 전의 전체 접속은 복원할 수 없다.
 
+주간 방문 집계는 저장소의 [traffic-report.py](../scripts/traffic-report.py)를 웹 서버에서 읽기 전용으로 실행한다. HTML과 JS/CSS를 5분 안에 함께 받은 브라우저 환경만 사람 페이지 로드로 세고, 날짜·유입 앱·시간대·상위 경로·수집기 요청의 집계만 출력한다. IP·User-Agent는 서버 밖으로 내보내지 않는다. 운영자 확인 접속이 섞이고 캐시·스크립트 차단 방문은 빠지는 추정치다.
+
+```sh
+ssh root@<web-server> 'python3 -I - --days 7' < scripts/traffic-report.py
+```
+
 설정 원본은 [nginx.conf](nginx.conf)와 [logrotate-indiek.conf](logrotate-indiek.conf)다. 전용 하위 디렉터리로 기존 `/var/log/nginx/*.log` 규칙과 겹치지 않게 한다. 기존 error log와 다른 사이트의 규칙은 유지한다. 설정을 백업한 뒤 저장소 루트에서 설치한다.
 
 ```sh
