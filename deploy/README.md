@@ -251,7 +251,22 @@ systemctl --user list-timers indiek-search-console.timer --no-pager
 
 ## 참여 API
 
-상태(2026-11-09): **운영 설치 승인됨, 설치 전.** 사용자가 main 반영과 운영 설치(전용 빌드 계정 `indiek-build`와 그 계정에만 Rust 1.99.1, API 서비스와 매일 백업 타이머, Nginx `/api/` 설정)를 승인했다. 투표·요청 화면은 아직 없다. 설치 전 서버 확인(읽기 전용): 자동화 서버의 발행기 PATH와 웹 서버 수신기(root 키)의 PATH 모두 `no-cargo`이고, 웹 서버에 C 컴파일러(gcc 13.3)가 있어 `build-essential`은 필요 없다. 자동화 서버에는 `~/.cargo/bin`이 있지만 `indiek-editorial.service`가 PATH를 고정해 보이지 않는다. 로컬 검증: `cargo test` 26개, 실제 바이너리의 serve·check·backup·requests 명령, nginx 1.28 컨테이너에서 이 저장소의 [nginx.conf](nginx.conf) 그대로 `nginx -t`와 프록시 동작(결과 마이크로 캐시 MISS→HIT, API 중지 시 JSON 503·캐시된 결과 유지·페이지 200, 두 단계의 JSON 429, IP 없는 API 로그, Nginx가 캐시 디렉터리를 직접 생성)을 확인했다. 실제 설치 결과는 설치 후 기록한다.
+상태(2026-11-09): **운영 설치 완료.** 사용자 승인 후 웹 서버에 `30f85f3`을 반영했다. 투표·요청 화면은 아직 없어 방문자에게 보이는 변화는 없다. 연말 투표는 `draft`다.
+
+- 설치 전 서버 확인(읽기 전용):
+  - 자동화 서버의 발행기 PATH와 웹 서버 수신기(root 키)의 PATH 모두 `no-cargo`다.
+  - 자동화 서버에는 `~/.cargo/bin`이 있지만 `indiek-editorial.service`가 PATH를 고정해 보이지 않는다.
+  - 웹 서버에 C 컴파일러(gcc 13.3)가 있어 `build-essential`은 설치하지 않았다.
+- 설치한 것:
+  - `indiek-build` 계정과 그 계정에만 Rust 1.99.1. rustup 설치 파일 SHA-256 확인, 셸 설정 파일 변경 없음, root PATH에 cargo 없음.
+  - 서버에서 `cargo test` 26개 통과 후 릴리스 빌드(6.4MB, 테스트 포함 185초).
+  - `indiek-api` 서비스(`127.0.0.1:8787`, `api check`: 23곡·21명·투표 1개 정의)와 백업 타이머(첫 백업 생성, 다음 04:40 KST).
+  - Nginx·logrotate 설정. 적용 전 운영 설정이 직전 저장소 버전과 같음을 확인했고, 이전 설정은 `/root/indiek.com.nginx.20261109180136`에 백업했다.
+- HTTPS 확인:
+  - `/api/health` JSON 200, 초안 투표 결과 404, 다른 Origin의 POST 403.
+  - `api.log`에 IP·User-Agent가 없고, reload 뒤 `/api/` 요청은 `access.log`에 남지 않는다.
+  - 서비스 중지 동안 `/api/`는 JSON 503이고 홈·아티스트·곡 페이지는 200이다. 확인 뒤 다시 시작했다.
+- 로컬 검증: `cargo test` 26개, 실제 바이너리의 serve·check·backup·requests 명령, nginx 1.28 컨테이너에서 이 저장소의 [nginx.conf](nginx.conf)로 `nginx -t`와 프록시 동작.
 
 `api/`의 Rust 서비스 `indiek-api`가 웹 서버의 `127.0.0.1:8787`에서 systemd 시스템 서비스로 실행된다. Nginx는 `/api/`만 프록시하고 페이지는 지금처럼 정적으로 제공한다. 같은 출처라 CSP는 바꾸지 않는다(`connect-src 'self'`). API가 멈추면 `/api/`는 JSON 503을, 결과 조회는 마지막 캐시를 돌려주며 페이지·재생·Saved는 영향을 받지 않는다. Matomo 등 공유 서버의 다른 서비스는 건드리지 않는다. 엔드포인트·투표 정의 형식은 [README](../README.md#participation-api)를 따른다.
 
@@ -295,25 +310,29 @@ ssh root@<web-server> 'grep -l indiek-editorial-receive /root/.ssh/authorized_ke
 command -v cargo rustc || echo "no system Rust"
 cc --version || echo "C compiler missing: build-essential needs approval"
 useradd --create-home --shell /bin/bash indiek-build
-sudo -iu indiek-build bash -euc '
-  url="https://static.rust-lang.org/rustup/dist/$(uname -m)-unknown-linux-gnu/rustup-init"
-  curl --proto "=https" --tlsv1.2 -sSf -o rustup-init "$url"
-  echo "$(curl --proto "=https" --tlsv1.2 -sSf "$url.sha256" | cut -d" " -f1)  rustup-init" | sha256sum -c -
-  chmod +x rustup-init
-  ./rustup-init -y --profile minimal --default-toolchain 1.99.1 --no-modify-path
-  rm rustup-init
-  git config --global --add safe.directory /projects/indiek
-  git config --global --add safe.directory /projects/indiek/.git
-  git clone /projects/indiek "$HOME/indiek"
-  "$HOME/.cargo/bin/cargo" --version'
+# 스크립트는 표준 입력으로 넘긴다. `sudo -i ... bash -c '여러 줄'`은 sudo가 인자를 다시 해석해 URL이 깨진다.
+sudo -u indiek-build -H bash -eus <<'EOF'
+cd "$HOME"
+url="https://static.rust-lang.org/rustup/dist/$(uname -m)-unknown-linux-gnu/rustup-init"
+curl --proto "=https" --tlsv1.2 -sSf -o rustup-init "$url"
+echo "$(curl --proto "=https" --tlsv1.2 -sSf "$url.sha256" | cut -d" " -f1)  rustup-init" | sha256sum -c -
+chmod +x rustup-init
+./rustup-init -y --profile minimal --default-toolchain 1.99.1 --no-modify-path
+rm rustup-init
+git config --global --add safe.directory /projects/indiek
+git config --global --add safe.directory /projects/indiek/.git
+git clone /projects/indiek "$HOME/indiek"
+"$HOME/.cargo/bin/cargo" --version
+EOF
 command -v cargo || echo "cargo not on root PATH (expected)"
 
-# 배포할 때마다: 운영 체크아웃을 업데이트 절차대로 pull한 뒤
-sudo -iu indiek-build bash -euc '
-  export PATH="$HOME/.cargo/bin:$PATH"
-  cd "$HOME/indiek" && git pull --ff-only && git log --oneline -1
-  cargo test --locked --manifest-path api/Cargo.toml
-  cargo build --release --locked --manifest-path api/Cargo.toml'
+# 배포할 때마다: 운영 체크아웃을 업데이트 절차대로 pull한 뒤 (4코어 기준 테스트+릴리스 빌드 약 3분)
+sudo -u indiek-build -H bash -eus <<'EOF'
+export PATH="$HOME/.cargo/bin:$PATH"
+cd "$HOME/indiek" && git pull --ff-only && git log --oneline -1
+cargo test --locked --manifest-path api/Cargo.toml
+cargo build --release --locked --manifest-path api/Cargo.toml
+EOF
 ```
 
 메모리가 작은 서버에서 빌드가 멈추면 같은 명령 앞에 `CARGO_BUILD_JOBS=1`을 둔다. 빌드 계정을 지우면(`userdel -r indiek-build`) Rust와 빌드 저장소가 함께 제거된다.
@@ -420,7 +439,12 @@ systemctl disable --now indiek-api.service indiek-api-backup.timer
 
 ## 확인과 복구
 
-- Latest deployment: 2026-11-09 `0407538` - sitemap `<lastmod>` dates from each page's last content change (37/37 live over HTTPS) and the daily Search Console check on the automation server (`indiek-search-console.timer`, 04:20 KST). Production passed 224 tests and 37 pages with a clean checkout. The automation checkout was fast-forwarded with its uncommitted promotion files restored from stash (backup `~/backups/indiek-20261109-055855-before-search-console.tgz`), passed 227 tests and now runs 7 timers. A manual service run recorded "not connected": no service account key yet, so nothing has been sent to Google. Sharing cards and pages other than the sitemap are unchanged. Rollback baseline: `e5a7ce2`.
+- Latest deployment: 2026-11-09 `30f85f3`
+  - Site (`5c59acf`): song pages under each artist (3 indexed, 20 `noindex`; sitemap 40 URLs) and the reworked starter-guide intro.
+  - API (`30f85f3`): the participation API (`indiek-api`, backup timer, Nginx `/api/` proxy), installed as described in [참여 API](#참여-api).
+  - Production passed 266 tests and 60 pages with a clean checkout; the API tests are skipped there because cargo is not on root PATH. Live song pages, robots tags, sitemap and `/api/` were verified over HTTPS.
+  - The automation checkout runs `c1fd004` with the new SNS timers (Threads 16:00, Instagram Fri/Sun 17:00 KST, reply agent stopped).
+  - Rollback baselines: site `09ad86d`; API `systemctl disable --now indiek-api.service indiek-api-backup.timer` and restore the backed-up Nginx file.
 - Google 검색 등록: 2026-10-19 HTML 태그 소유권 확인 완료. 사이트맵 처리 상태 `성공`, 발견된 페이지 20개를 확인했고 홈페이지는 이후 `색인이 생성됨`으로 확인됐으며 Googlebot 스마트폰의 최근 크롤링은 2026-10-19 00:51:16이다. 실제 Google 검색에서도 홈페이지와 일부 상세 페이지가 노출된다. 현재 공개 사이트맵은 37개 URL이며 Search Console의 마지막 확인된 처리 결과는 20개다. 매거진 목록과 기사 두 주소의 색인은 아직 확인하지 않았다. 새 백예린 페이지는 당시 색인되지 않았지만 실시간 검사에서 `페이지 색인을 생성할 수 있음`으로 통과했다. 입문 가이드와 Artists 목록 페이지의 색인은 미확인이다. 실적·코어 웹 바이탈 보고서는 당시 데이터 처리 중이었다. 실제 색인 상태는 Search Console에서 별도로 확인한다.
 - Matomo 최근 점검: 2026-10-19 새 버전 배포 후 운영 브라우저에서 허용 전 스크립트 미로드, 허용 후 페이지뷰·내부 이동·저장·Threads 유입 이벤트의 DB 반영, 쿼리 없는 URL 저장을 확인했다. 철회는 다른 열린 탭에도 반영됐고 두 탭의 후속 이동에서 DB 기록이 늘지 않았다. 점검으로 페이지뷰 3건·저장 1건·Threads 유입 1건이 포함되므로 자연 유입 성과로 계산하지 않는다. 실제 재생·공유 이벤트는 이번 운영 점검에서 발생시키지 않았다. 전체 방문 수가 아닌 통계를 허용한 방문만 집계하며 DNT·GPC 신호도 존중한다.
 - 통계 비교 시 사이트 ID `4`, 날짜·시간대(`Asia/Seoul`), 방문 수와 페이지뷰의 구분을 먼저 확인한다. 실시간 보고서와 요약 보고서는 갱신 시점이 다르다. 현재 서버는 5분마다 아카이브를 실행하며 당일 보고서 캐시의 기본 유효기간은 15분이다. Reddit 게시글 조회수와 사이트 방문 수를 직접 비교하지 않는다.
