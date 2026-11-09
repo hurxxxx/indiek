@@ -8,7 +8,7 @@ import {readJSON} from './core.mjs';
 export function remoteRequest(args,config) {
   const slug=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
   const valid=(args.length===1&&['status','check','dry-run'].includes(args[0]))||
-    (args.length===2&&args[0]==='story-now'&&slug.test(args[1]))||
+    ([2,3].includes(args.length)&&args[0]==='story-now'&&slug.test(args[1])&&(args.length===2||args[2]==='--brief'))||
     ([3,4].includes(args.length)&&args[0]==='page-now'&&['artist','guide'].includes(args[1])&&slug.test(args[2])&&(args.length===3||args[3]==='--check'));
   if(!valid)throw new Error('Use status, check, dry-run, story-now ID or page-now artist|guide ID [--check].');
   if(!config||!/^[A-Za-z0-9][A-Za-z0-9_.@-]*$/.test(config.host||'')||typeof config.directory!=='string'||!config.directory.startsWith('/')||/[\r\n\0]/.test(config.directory))throw new Error('Configure host and absolute directory in ~/.config/indiek-promotion/remote.json; see SERVER_ACCESS.md.');

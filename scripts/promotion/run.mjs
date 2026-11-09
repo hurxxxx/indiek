@@ -68,7 +68,9 @@ async function storyNow(store) {
     if(!secret[platform]?.token)throw new Error(`${platform}: authorization required for this request.`);
     if(await refreshToken(platform,secret[platform]))atomicWrite(credentialFile,JSON.stringify(secret,null,2)+'\n');
   }
-  const result=await shareStoryNow({root,config,store,catalogue:await publicCatalogue(),storyId:argument,recent:()=>recentOwnPosts(config,secret),apiFor:platform=>metaClient(platform,secret[platform])});
+  if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(argument||''))throw new Error('Specify a published story ID.');
+  const brief=process.argv.includes('--brief')?readJSON(path.join(root,`promotion/briefs/${argument}.json`),null):undefined;
+  const result=await shareStoryNow({root,config,store,catalogue:await publicCatalogue(),storyId:argument,brief,recent:()=>recentOwnPosts(config,secret),apiFor:platform=>metaClient(platform,secret[platform])});
   stateNote(`On-demand story ${argument}: ${result.status}. Read docs/promotion.md for actual results.`);
   console.log(JSON.stringify(result,null,2));
   if(!['published','story-already-queued-or-shared'].includes(result.status))process.exitCode=1;

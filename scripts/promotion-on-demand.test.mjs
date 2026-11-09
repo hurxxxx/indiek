@@ -6,7 +6,10 @@ import path from 'node:path';
 import {shareStoryNow} from './promotion/on-demand.mjs';
 import {prepareStory} from './promotion/stories.mjs';
 import {storyDigest} from './editorial/content.mjs';
-import {verifyLive,publishPost} from './promotion/core.mjs';
+import {verifyLive,publishPost,validatePost} from './promotion/core.mjs';
+import {verifyStoryPhoto} from './promotion/story-brief.mjs';
+import {createHash} from 'node:crypto';
+import {remoteRequest} from './promotion/remote.mjs';
 
 function fixture(t) {
   const root=mkdtempSync(path.join(tmpdir(),'indiek-story-now-'));
@@ -132,4 +135,42 @@ test('public receipt contains fetched page evidence only after exact revision an
   assert.equal(receipt.status,200);assert.equal(receipt.revision,post.storyRevision);
   assert.equal(receipt.url,'https://indiek.com/stories/a-song/');assert.match(receipt.htmlSHA256,/^[a-f0-9]{64}$/);assert.ok(receipt.text.includes('A & B'));
   await assert.rejects(verifyLive({...post,storyRevision:'b'.repeat(64)},fetcher),/changed/);
+});
+
+test('explicit photograph brief is credited, reviewed and bound to one immutable on-demand request',async t=>{
+  const {options,stats,audit}=fixture(t);
+  options.brief={storyId:'a-song',direction:'Explain the documented demo.',media:{url:'https://images.example/artist.jpg',sourceURL:'https://magazine.example/interview/',creator:'Photographer',publisher:'Magazine',credit:'Photo: Photographer / Magazine.',altText:'Portrait of the artist.',sha256:'a'.repeat(64),width:960,height:1200,rightsStatus:'unconfirmed',rightsNote:'No reuse licence found; explicitly requested by user.',authorization:{basis:'explicit-user-request',request:'Use an artist photograph for this post.',requestedAt:'2026-10-20T07:49:00Z'}}};
+  await shareStoryNow(options);
+  assert.equal(stats.sends,2);
+  for(const post of options.store.posts){
+    assert.ok(post.copy.includes(options.brief.media.credit));
+    assert.equal(post.review.copy,post.copy);validatePost(post,options.config);
+    assert.throws(()=>validatePost({...post,mode:'scheduled'},options.config),/explicit/);
+    assert.throws(()=>validatePost({...post,storyBrief:{...post.storyBrief,direction:'Changed after review'}},options.config),/changed/);
+  }
+  assert.deepEqual(audit().request.brief,options.brief);
+  await assert.rejects(shareStoryNow({...options,brief:{...options.brief,direction:'Changed'}}),/brief changed/);
+  await shareStoryNow(options);assert.equal(stats.sends,2);
+  assert.ok(remoteRequest(['story-now','a-song','--brief'],{host:'server',directory:'/srv/indiek'}).args.at(-1).includes("'--brief'"));
+});
+
+test('photograph bytes are checked again and a changed image cannot publish',async()=>{
+  const bytes=Buffer.from('same JPEG bytes'),media={url:'https://images.example/artist.jpg',sha256:createHash('sha256').update(bytes).digest('hex')};
+  const fetcher=async()=>new Response(bytes,{headers:{'content-type':'image/jpeg'}});
+  assert.equal((await verifyStoryPhoto(media,fetcher)).sha256,media.sha256);
+  await assert.rejects(verifyStoryPhoto({...media,sha256:'0'.repeat(64)},fetcher),/changed/);
+});
+
+test('interrupted second review resumes exact recorded copy without a third caption version',async t=>{
+  const {options,stats,audit}=fixture(t);const original=options.ask;
+  options.ask=async(stage,prompt)=>({...await original(stage,prompt),...(prompt.includes('Final copy: ')?{approved:false,issues:['Source not accessible.']}:{})});
+  await shareStoryNow(options);
+  const file=path.join(options.root,'promotion/state/stories/on-demand/a-song.json'),a=audit();
+  a.attempts[1].status='started';a.attempts[1].posts=[];delete a.attempts[1].draft;
+  writeFileSync(file,JSON.stringify(a));options.ask=original;
+  const before=stats.asks;
+  assert.equal((await shareStoryNow(options)).status,'published');
+  assert.equal(stats.asks-before,2);assert.equal(audit().attempts.length,2);
+  assert.equal(audit().attempts[1].reusedDraftVersion,1);
+  assert.deepEqual(audit().attempts[0],a.attempts[0]);
 });
