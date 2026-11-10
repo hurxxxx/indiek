@@ -8,7 +8,7 @@ import {loadCatalogue} from '../catalogue.mjs';
 import {atomicWrite,readJSON,withLock} from '../promotion/core.mjs';
 import {koreanDay} from '../promotion/news.mjs';
 import {askJSON} from '../editorial/ai.mjs';
-import {LENSES,lensPrompt,existingNames,mergeCandidates,scoreCandidates,lookupDeezer,lookupApple,renderCandidates} from './candidates.mjs';
+import {LENSES,lensPrompt,existingNames,mergeCandidates,scoreCandidates,lookupDeezer,lookupApple,appleReleases,renderCandidates} from './candidates.mjs';
 import {catalogueInstructions,loadSearchRows,parseSearchConsoleCSV} from './context.mjs';
 import {prepareTracks,reviewExisting,trackStatus} from './tracks.mjs';
 import {applyApproved} from './apply.mjs';
@@ -54,9 +54,10 @@ async function enrich({force=false}={}) {
   for(const c of merged){
     if(!force&&c.checked&&Date.now()-Date.parse(c.checked)<30*86400000)continue;
     try{
-      c.deezer=await lookupDeezer(c);
       // The iTunes Search API allows roughly 20 requests a minute.
       c.apple=await lookupApple(c);await sleep(3200);
+      const releases=c.apple?await appleReleases(c.apple.id):null;if(c.apple)await sleep(3200);
+      c.deezer=await lookupDeezer(c,{releases});
       c.checked=day;
     }catch(error){console.error(`${c.id}: ${error.message}`);await sleep(10000);}
     if(++n%20===0){write(files.candidates,{generated:day,candidates:merged});console.log(`enriched ${n}`);}

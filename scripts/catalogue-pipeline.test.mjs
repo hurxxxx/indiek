@@ -55,13 +55,20 @@ test('scores are explainable components; candidates with blockers sort last', ()
   const weights = {streaming:0.5, community:0.5};
   const base = {aliases:[], scopes:['indie'], tracks:[], signals:[]};
   const ranked = scoreCandidates([
-    {...base, id:'a', name:'A', deezer:{id:1, fans:100}, apple:{url:'https://music.apple.com/us/artist/a/1'}},
-    {...base, id:'b', name:'B', deezer:{id:2, fans:10000}, apple:{url:'https://music.apple.com/us/artist/b/2'}, signals:[sig('community','https://1'), sig('community','https://2')]},
-    {...base, id:'c', name:'C', deezer:{id:3, fans:1000000}},
+    {...base, id:'a', name:'A', deezer:{id:1, fans:100, verified:true}, apple:{url:'https://music.apple.com/us/artist/a/1'}},
+    {...base, id:'b', name:'B', deezer:{id:2, fans:10000, verified:true}, apple:{url:'https://music.apple.com/us/artist/b/2'}, signals:[sig('community','https://1'), sig('community','https://2')]},
+    {...base, id:'c', name:'C', deezer:{id:3, fans:1000000, verified:null}},
+    {...base, id:'d', name:'D', deezer:{id:4, fans:9000000, verified:false}, apple:{url:'https://music.apple.com/us/artist/d/4'}},
+    {...base, id:'e', name:'E', scopes:['other-adjacent'], deezer:{id:5, fans:100, verified:true}, apple:{url:'https://music.apple.com/us/artist/e/5'}},
   ], {weights});
-  assert.deepEqual(ranked.map(c => c.id), ['b','a','c']);
+  assert.deepEqual(ranked.slice(0, 2).map(c => c.id), ['b','a']);
   assert.equal(ranked[0].components.community, 0.5);
-  assert.deepEqual(ranked[2].blockers, ['no English Apple Music artist page found']);
+  assert.equal(ranked.find(c => c.id === 'd').components.streaming, 0, 'an unconfirmed same-name profile earns no streaming score');
+  assert.match(ranked.find(c => c.id === 'd').blockers[0], /possible name clash/);
+  assert.match(ranked.find(c => c.id === 'e').blockers[0], /outside the indie-centred scope/);
+  assert.deepEqual(ranked.find(c => c.id === 'c').blockers, ['no English Apple Music artist page found']);
+  assert.ok(ranked.find(c => c.id === 'c').components.streaming > 0, 'a profile hidden in this region still counts, with a note');
+  assert.match(ranked.find(c => c.id === 'c').notes[0], /unconfirmed/);
   assert.ok(ranked[0].score > ranked[1].score && ranked[0].score <= 100);
 });
 
