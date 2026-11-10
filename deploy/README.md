@@ -439,11 +439,12 @@ systemctl disable --now indiek-api.service indiek-api-backup.timer
 
 ## 확인과 복구
 
-- Latest deployment: 2026-11-09 `30f85f3`
+- Latest deployment: 2026-11-10 `68fc649` - Instagram commentary carousels built with the site (76 slides for 20 artists, about 8.1 MB). Production passed 267 tests and 60 pages, and the carousel list and slides are live over HTTPS. The automation checkout was fast-forwarded through `scripts/editorial/sync.mjs`, which restored and regenerated the automatic section of `docs/promotion.md` because the commit also changed that file. It then passed 117 promotion tests and confirmed all 20 decks match the live pages without sending anything. Rollback baseline: `a02ea43`.
+- Previous deployment: 2026-11-09 `30f85f3`
   - Site (`5c59acf`): song pages under each artist (3 indexed, 20 `noindex`; sitemap 40 URLs) and the reworked starter-guide intro.
   - API (`30f85f3`): the participation API (`indiek-api`, backup timer, Nginx `/api/` proxy), installed as described in [참여 API](#참여-api).
   - Production passed 266 tests and 60 pages with a clean checkout; the API tests are skipped there because cargo is not on root PATH. Live song pages, robots tags, sitemap and `/api/` were verified over HTTPS.
-  - The automation checkout runs `c1fd004` with the new SNS timers (Threads 16:00, Instagram Fri/Sun 17:00 KST, reply agent stopped).
+  - The automation checkout ran `c1fd004` with the new SNS timers (Threads 16:00, Instagram Fri/Sun 17:00 KST, reply agent stopped).
   - Rollback baselines: site `09ad86d`; API `systemctl disable --now indiek-api.service indiek-api-backup.timer` and restore the backed-up Nginx file.
 - Google 검색 등록: 2026-10-19 HTML 태그 소유권 확인 완료. 사이트맵 처리 상태 `성공`, 발견된 페이지 20개를 확인했고 홈페이지는 이후 `색인이 생성됨`으로 확인됐으며 Googlebot 스마트폰의 최근 크롤링은 2026-10-19 00:51:16이다. 실제 Google 검색에서도 홈페이지와 일부 상세 페이지가 노출된다. 현재 공개 사이트맵은 37개 URL이며 Search Console의 마지막 확인된 처리 결과는 20개다. 매거진 목록과 기사 두 주소의 색인은 아직 확인하지 않았다. 새 백예린 페이지는 당시 색인되지 않았지만 실시간 검사에서 `페이지 색인을 생성할 수 있음`으로 통과했다. 입문 가이드와 Artists 목록 페이지의 색인은 미확인이다. 실적·코어 웹 바이탈 보고서는 당시 데이터 처리 중이었다. 실제 색인 상태는 Search Console에서 별도로 확인한다.
 - Matomo 최근 점검: 2026-10-19 새 버전 배포 후 운영 브라우저에서 허용 전 스크립트 미로드, 허용 후 페이지뷰·내부 이동·저장·Threads 유입 이벤트의 DB 반영, 쿼리 없는 URL 저장을 확인했다. 철회는 다른 열린 탭에도 반영됐고 두 탭의 후속 이동에서 DB 기록이 늘지 않았다. 점검으로 페이지뷰 3건·저장 1건·Threads 유입 1건이 포함되므로 자연 유입 성과로 계산하지 않는다. 실제 재생·공유 이벤트는 이번 운영 점검에서 발생시키지 않았다. 전체 방문 수가 아닌 통계를 허용한 방문만 집계하며 DNT·GPC 신호도 존중한다.
