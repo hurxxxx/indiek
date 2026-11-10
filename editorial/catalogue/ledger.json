@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "description": "Catalogue entries added by the expansion pipeline (npm run catalogue). Each track records the exact reviewed content hash, cited sources, release lookup and playback check; scripts/catalogue-pipeline.test.mjs fails when the catalogue drifts from it.",
+  "artists": {},
+  "tracks": {}
+}

@@ -1,0 +1,67 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "approved",
+    "reason",
+    "issues",
+    "invented",
+    "gradeChecks"
+  ],
+  "properties": {
+    "approved": {
+      "type": "boolean"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Each issue names the field, the passage, the problem and an actionable correction."
+    },
+    "invented": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Any invented listening experience, memory, sound description or unsupported claim."
+    },
+    "gradeChecks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "grade",
+          "meets",
+          "missing"
+        ],
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "grade": {
+            "type": "string",
+            "enum": [
+              "A",
+              "B"
+            ]
+          },
+          "meets": {
+            "type": "boolean"
+          },
+          "missing": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
