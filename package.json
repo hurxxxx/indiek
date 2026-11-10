@@ -9,6 +9,7 @@
     "build:preview": "node scripts/build.mjs --preview",
     "images": "python3 scripts/prepare-images.py",
     "dev": "npm run build:preview && python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",
+    "serve": "node scripts/serve.mjs",
     "check": "node --check dist/app.js && node --test scripts/*.test.mjs && python3 scripts/check.py && node scripts/check-api.mjs",
     "promotion": "node scripts/promotion/run.mjs",
     "promotion:remote": "node scripts/promotion/remote.mjs",

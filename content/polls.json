@@ -9,7 +9,9 @@
       "closesAt": "2027-01-01T00:00:00+09:00",
       "choiceKind": "track",
       "maxChoices": 3,
-      "resultsVisibility": "after-close"
+      "resultsVisibility": "after-close",
+      "description": "The 2026 listener poll: choose the songs from indiek you kept going back to this year. Every song in the journal is on the list, and the results are published after voting closes.",
+      "intro": "Which songs from indiek did you keep going back to this year? Every song in the journal is on the list, and the results go up on this page once voting closes."
     }
   ]
 }

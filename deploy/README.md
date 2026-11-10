@@ -251,7 +251,7 @@ systemctl --user list-timers indiek-search-console.timer --no-pager
 
 ## 참여 API
 
-상태(2026-11-09): **운영 설치 완료.** 사용자 승인 후 웹 서버에 `30f85f3`을 반영했다. 투표·요청 화면은 아직 없어 방문자에게 보이는 변화는 없다. 연말 투표는 `draft`다.
+상태(2026-11-09): **운영 설치 완료.** 사용자 승인 후 웹 서버에 `30f85f3`을 반영했다. 연말 투표는 `draft`다. 투표 화면(`/polls/<id>/`)·요청 화면(`/request/`)과 개인정보 안내 `#participation`은 2026-11-10 구현했으나 아직 배포하지 않았다. 배포하면 요청 화면은 바로 공개되고, 투표 화면은 `status`를 `published`로 바꾼 배포부터 공개된다.
 
 - 설치 전 서버 확인(읽기 전용):
   - 자동화 서버의 발행기 PATH와 웹 서버 수신기(root 키)의 PATH 모두 `no-cargo`다.
@@ -380,7 +380,7 @@ api backup /var/lib/indiek-api/backups --keep 14
 ```
 
 - 요청은 운영자가 확인하기 전에는 어디에도 공개하지 않는다. 사이트에 "Requested by readers"를 표시할 때도 요청 원문을 옮기지 않는다.
-- 연말 투표 설정은 승인됨(2026-11-09): 12/10 12:00 ~ 1/1 00:00 KST, 최대 3곡, 결과는 마감 후 공개. 투표를 열 때 `content/polls.json`의 `status`를 `published`로 바꿔 사이트와 함께 배포한다. 결과 페이지·투표 화면과 개인정보 안내(아래 초안)를 같은 배포에 포함한다. 조기 종료는 `closed`.
+- 연말 투표 설정은 승인됨(2026-11-09): 12/10 12:00 ~ 1/1 00:00 KST, 최대 3곡, 결과는 마감 후 공개. 공개 승인 후 `content/polls.json`의 `status`를 `published`로 바꿔 `npm run build`한 사이트와 함께 배포한다. 같은 페이지가 개표 전에는 투표 화면, 마감 후에는 결과를 보여준다(결과는 API에서 읽는다). 조기 종료는 `closed`. 공개 알림은 `content/updates.json`에 별도로 추가한다.
 - 참여 완료 수(W0 주간 표)는 공개 결과의 `ballots`와 `api requests --status all`로 센다.
 - 백업은 같은 서버에만 둔다(디스크 장애 대비 아님). 서버 밖 사본이나 Litestream 실시간 복제는 필요해지면 별도로 정한다.
 
@@ -415,27 +415,19 @@ systemctl disable --now indiek-api.service indiek-api-backup.timer
 
 완전히 걷어낼 때는 위 중단과 Nginx 복원 뒤 `/etc/systemd/system/indiek-api*.{service,timer}`를 지우고 `systemctl daemon-reload`한다. `/var/lib/indiek-api`(DB·백업)의 보존 여부와 `indiek-api`·`indiek-build` 계정 삭제는 따로 정한다.
 
-### 개인정보 안내 추가 초안
+### 개인정보 안내
 
-출시(투표·요청 화면 공개) 전에 [개인정보 안내](https://indiek.com/privacy-and-terms/)의 원문(`scripts/build.mjs`)에 반영하고 `LAST UPDATED`를 실제 날짜로 바꾼다. 실제 동작과 다르면 코드나 문구를 먼저 맞춘다.
+2026-11-10 [개인정보 안내](https://indiek.com/privacy-and-terms/#participation)의 원문(`scripts/build.mjs`, `LAST UPDATED / 10 NOVEMBER 2026`)에 반영했다(미배포). 영어 문구는 그 원문만 관리한다. 초안과 실제 동작을 대조해 다음을 고쳤다: 투표 토큰 해시는 실제 종료가 아니라 예정 종료(`closesAt`) 30일 뒤 삭제, 브라우저에 투표 여부 표시도 함께 저장, Nginx 빈도 제한은 솔트 없이 공유 메모리에 잠시 보관, 검토 전 요청은 검토 때까지 보관, 투표·요청은 Matomo로 보내지 않음. 수집 항목이나 보관 기간을 바꾸면 이 표와 원문을 함께 고친다.
 
 | 항목 | 저장 방식 | 보관 |
 | --- | --- | --- |
 | 투표 선택 | 곡·아티스트별 합계와 총 투표 수만 저장. 어떤 투표가 무엇을 골랐는지는 남기지 않는다 | 결과 공개용으로 유지 |
-| 투표 토큰 | 원본은 방문자 브라우저의 local storage. 서버는 투표별 SHA-256 해시만 저장 | 투표 종료 30일 후 삭제 |
-| 해설 요청 | 곡·아티스트 ID 또는 140자 이하 텍스트, 접수 시각, 검토 상태. 연락처 칸 없음, 링크·이메일·전화번호 거부 | 거절은 검토 30일 후 삭제, 수락·완료는 편집 기록으로 보관 |
+| 투표 토큰 | 원본은 방문자 브라우저의 local storage(`indiek-polls-v1`, 투표 여부 표시 포함). 서버는 투표별 SHA-256 해시만 저장 | 예정 종료(`closesAt`) 30일 후 삭제 |
+| 해설 요청 | 요청 종류, 곡·아티스트 ID 또는 140자 이하 텍스트, 접수 시각, 검토 상태. 연락처 칸 없음, 링크·이메일·전화번호 거부. 브라우저에는 저장하지 않음 | 검토 전에는 보관, 거절은 검토 30일 후 삭제, 수락·완료는 편집 기록으로 보관 |
 | IP 주소 | API는 메모리의 빈도 제한에만 사용. 매일 자정(KST) 바뀌는 무작위 솔트로 해시하며 DB·API 로그에 쓰지 않음. Nginx의 쓰기 빈도 제한은 공유 메모리에서만 쓰고 거절 기록을 오류 로그 수준 아래(`info`)로 둔다 | API는 자정에 폐기, Nginx 제한 상태는 수 분 안에 만료 |
 | API 접속 로그 | 시간·메서드·경로·응답 코드·크기·처리 시간·캐시 상태. IP·User-Agent·쿼리·본문 없음 | 30일(기존 회전 규칙) |
 | Nginx 오류 로그 | API가 멈췄거나 응답하지 않을 때 IP를 포함한 요청 정보가 남을 수 있음(기존 안내 범위) | 기존 회전 규칙 |
 | DB 백업 | 위 DB와 같은 내용 | 14일, 같은 서버 |
-
-안내 페이지에 넣을 영어 문안 초안:
-
-> **Listener polls and requests.** When you vote in an indiek listener poll, your browser creates a random voting code and keeps it in this site’s local storage. It is sent with your ballot so the same browser cannot vote twice in that poll. We store only a one-way hash of the code, separately for each poll, and delete it 30 days after the poll closes. Your choices are added to totals for each song or artist; we do not keep a record of what an individual ballot chose. Polls do not use cookies or accounts. Clearing this site’s browser data removes the code.
->
-> A song or artist request contains the song or artist you chose and, if you add one, a note of up to 140 characters, with the time it was received. The form has no contact field, so we cannot reply, and notes containing links, email addresses or phone numbers are not accepted. Please leave out personal information. Requests are reviewed by indiek and are never published as submitted; a page written in response may mention that readers asked for it without identifying anyone. Declined requests are deleted within 30 days of review, and requests we take up are kept with our editorial records.
->
-> To limit abuse, the server uses your IP address in memory to count recent submissions. It is combined with a random value that changes every day and is not written to the poll and request database or to the participation service’s logs. Requests to these features are logged without IP addresses or browser details (time, path, response status, size and processing time) and kept for up to 30 days; error logs are handled as described below. Poll and request data, including backups kept for up to 14 days, stay on our server and are not shared with advertising services. If these features are unavailable, the rest of the site keeps working.
 
 ## 확인과 복구
 
