@@ -128,7 +128,7 @@ export function validatePost(post,config) {
 export function validateCarouselPost(post,config) {
   const url=new URL(post.url);
   if(post.platform!=='instagram'||post.mode!=='scheduled'||!post.id.endsWith('-carousel')||post.pageKind!=='artist'||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(post.pageId||''))throw new Error('Carousel jobs are scheduled Instagram artist-page posts.');
-  if(url.origin!==config.origin||url.pathname!==`/artists/${post.pageId}/`||url.search!=='?from=instagram'||url.hash)throw new Error('Carousel link must point to its indiek artist page.');
+  if(url.origin!==config.origin||!new RegExp(`^/artists/${post.pageId}/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)?$`).test(url.pathname)||url.search!=='?from=instagram'||url.hash)throw new Error('Carousel link must point to its indiek artist or song page.');
   if(!Array.isArray(post.slides)||post.slides.length<2||post.slides.length>10)throw new Error('A carousel needs 2–10 slides.');
   post.slides.forEach((slide,index)=>{
     const image=new URL(slide.imageUrl);

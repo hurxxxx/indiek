@@ -6,7 +6,8 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {threadsSlot,carouselSlot,timerCalendars,validateSchedule} from './promotion/schedule.mjs';
 import {validateAccounts,renderTags,validateTags,validateTagTokens,tagsStillRecorded} from './promotion/tags.mjs';
-import {carouselDecks,buildCarousels,prepareCarousel,verifyCarouselPost,validateManifest,carouselCandidates} from './promotion/carousel.mjs';
+import {carouselDecks,buildCarousels,prepareCarousel,verifyCarouselPost,validateManifest,carouselCandidates,builtPages} from './promotion/carousel.mjs';
+import {createHash} from 'node:crypto';
 import {validatePost,publishPost,hash,payloadParts} from './promotion/core.mjs';
 import {metaClient} from './promotion/meta.mjs';
 import {sharePageNow,verifyPagePost} from './promotion/page-now.mjs';
@@ -74,11 +75,19 @@ function workspace(t) {
   put('docs/promotion.md','# Manual history\n');
   for(const f of ['SKILL.md','references/editing.md','references/benchmarks.json'])put(`skills/indiek-editorial/${f}`,'Explain verified words.');
   const long='The speaker counts the hours. '.repeat(26).trim();
-  put('content/catalogue.json',{artists:[{id:'a-song',artist:'A Song',primaryTrackId:'t1'},{id:'no-notes',artist:'Quiet',primaryTrackId:'t2'}],tracks:[{id:'t1',artistId:'a-song',track:'Rainy Room',lyricNotes:{heading:'A whole world in a room',paragraphs:['Two people in a room on a rainy day, with little need to speak.',long]}},{id:'t2',artistId:'no-notes',track:'Plain'}]});
+  const second='The chorus moves the clock forward by one hour.';
+  put('content/catalogue.json',{artists:[{id:'a-song',artist:'A Song',primaryTrackId:'t1'},{id:'no-notes',artist:'Quiet',primaryTrackId:'t2'},{id:'song-page',artist:'Song Page',primaryTrackId:'t3'}],tracks:[{id:'t1',artistId:'a-song',slug:'rainy-room',track:'Rainy Room',lyricNotes:{heading:'A whole world in a room',paragraphs:['Two people in a room on a rainy day, with little need to speak.',long]}},{id:'t2',artistId:'no-notes',track:'Plain'},{id:'t3',artistId:'song-page',slug:'quiet-hours',track:'Quiet Hours',lyricNotes:{heading:'Late clocks',paragraphs:[second]}}]});
   const catalogue={version:1,origin:'https://indiek.com',items:[
     {id:'a-song',kind:'artist',title:'A Song — Rainy Room',path:'/artists/a-song/',description:'Lyric notes on a rainy room.',artistIds:['a-song'],image:'/assets/social/artists-a-song.jpg',altText:'card'},
-    {id:'no-notes',kind:'artist',title:'Quiet — Plain',path:'/artists/no-notes/',description:'No notes.',artistIds:['no-notes'],image:'/assets/social/artists-no-notes.jpg',altText:'card'}]};
+    {id:'no-notes',kind:'artist',title:'Quiet — Plain',path:'/artists/no-notes/',description:'No notes.',artistIds:['no-notes'],image:'/assets/social/artists-no-notes.jpg',altText:'card'},
+    {id:'song-page',kind:'artist',title:'Song Page — Quiet Hours',path:'/artists/song-page/',description:'Artist hub.',artistIds:['song-page'],image:'/assets/social/artists-song-page.jpg',altText:'card'}]};
   put('dist/promotion-catalogue.json',catalogue);
+  // Built pages: full notes on the A Song artist page; only a preview on the Song Page artist page, full notes on its song page.
+  const html=(canonical,description,body)=>`<html><head><meta name="description" content="${description}"><link rel="canonical" href="https://indiek.com${canonical}"></head><body><main>${body}</main></body></html>`;
+  put('dist/artists/a-song/index.html',html('/artists/a-song/','Rainy Room &amp; its lyric notes.',`<p>Two people in a room on a rainy day, with little need to speak.</p><p>${long}</p>`));
+  put('dist/artists/a-song/rainy-room/index.html',html('/artists/a-song/rainy-room/','Song page.',`<p>Two people in a room on a rainy day, with little need to speak.</p><p>${long}</p>`));
+  put('dist/artists/song-page/index.html',html('/artists/song-page/','Artist hub.','<section class="lyric-preview"><h3>Late clocks</h3><a href="/artists/song-page/quiet-hours/">Read the lyric notes</a></section>'));
+  put('dist/artists/song-page/quiet-hours/index.html',html('/artists/song-page/quiet-hours/','“Quiet Hours” lyric notes, credits and background.',`<p>${second}</p>`));
   for(const f of ['font-1.ttf','font-3.ttf']){mkdirSync(path.join(root,'dist/assets'),{recursive:true});copyFileSync(path.join(repo,'dist/assets',f),path.join(root,'dist/assets',f));}
   mkdirSync(path.join(root,'scripts/promotion'),{recursive:true});copyFileSync(path.join(repo,'scripts/promotion/carousel-images.py'),path.join(root,'scripts/promotion/carousel-images.py'));
   return {root,put,catalogue,long};
@@ -86,14 +95,18 @@ function workspace(t) {
 
 test('commentary carousels reproduce published lyric notes as own 4:5 slides with alt text',t=>{
   const {root,catalogue,long}=workspace(t);
-  const decks=carouselDecks(JSON.parse(readFileSync(path.join(root,'content/catalogue.json'),'utf8')),catalogue);
-  assert.deepEqual(decks.map(d=>d.pageId),['a-song']);
+  const manifest=buildCarousels(root);
+  const pageText=pagePath=>{const file=path.join(root,'dist',pagePath,'index.html');return existsSync(file)?{text:readFileSync(file,'utf8').replace(/<[^>]*>/g,' '),description:'page'}:null;};
+  const decks=carouselDecks(JSON.parse(readFileSync(path.join(root,'content/catalogue.json'),'utf8')),catalogue,pageText);
+  assert.deepEqual(carouselDecks(JSON.parse(readFileSync(path.join(root,'content/catalogue.json'),'utf8')),catalogue),[],'no built page, no deck');
+  // The deck links the page that publishes the notes: the artist page, or the song page when the artist page shows a preview.
+  assert.deepEqual(manifest.decks.map(d=>[d.pageId,d.path,d.description]),[['a-song','/artists/a-song/','Rainy Room & its lyric notes.'],['song-page','/artists/song-page/quiet-hours/','“Quiet Hours” lyric notes, credits and background.']]);
+  assert.match(decks[1].slides.at(-1).altText,/indiek\.com\/artists\/song-page\/quiet-hours\/$/);
   const slides=decks[0].slides;
   assert.equal(slides[0].kind,'cover');assert.equal(slides.at(-1).kind,'end');
   assert.ok(slides.length>4,'long paragraphs are split at sentence boundaries');
   assert.equal(slides.filter(s=>s.kind==='text').map(s=>s.text).join(' '),`Two people in a room on a rainy day, with little need to speak. ${long}`);
   slides.forEach((s,i)=>{assert.equal(s.image,`/assets/social/carousel/artists-a-song-${i+1}.jpg`);assert.match(s.altText,new RegExp(`^Slide ${i+1} of ${slides.length}\\.`));});
-  const manifest=buildCarousels(root);
   validateManifest(manifest,'https://indiek.com');
   const first=readFileSync(path.join(root,'dist',slides[0].image));
   assert.equal(first.readUInt16BE(0),0xffd8);
@@ -136,6 +149,7 @@ test('Friday carousel preparation queues one reviewed Instagram job with a recor
 
 test('rejected carousel captions stay unsent and restarts cannot reset the version budget',async t=>{
   const {options,store,stats}=carouselFixture(t,{reject:true});
+  options.config={...options.config,editorial:{...options.config.editorial,maxDailyCandidates:1}};
   const friday=new Date('2026-11-13T00:00:00Z');
   assert.equal((await prepareCarousel({...options,now:friday})).status,'held');
   const calls=stats.asks;assert.equal(calls,2*options.config.editorial.maxCaptionVersions);
@@ -146,8 +160,8 @@ test('missing carousel manifest or an Instagram post already today leaves Instag
   const {options}=carouselFixture(t);const friday=new Date('2026-11-13T00:00:00Z');
   assert.equal((await prepareCarousel({...options,manifest:null,now:friday})).status,'skipped');
   assert.equal((await prepareCarousel({...options,now:friday,recentPosts:[{platform:'instagram',publishedAt:'2026-11-13T00:30:00Z'}]})).status,'carousel-slot-occupied');
-  assert.deepEqual(carouselCandidates(options.manifest,options.catalogue,[],[{platform:'instagram',copy:'https://indiek.com/artists/a-song/?from=instagram',publishedAt:'2026-11-01T00:00:00Z'}],friday),[]);
-  assert.equal(carouselCandidates(options.manifest,options.catalogue,[],[{platform:'threads',copy:'https://indiek.com/artists/a-song/?from=threads',publishedAt:'2026-11-12T00:00:00Z'}],friday).length,1);
+  assert.deepEqual(carouselCandidates(options.manifest,options.catalogue,[],[{platform:'instagram',copy:'https://indiek.com/artists/a-song/?from=instagram',publishedAt:'2026-11-01T00:00:00Z'}],friday).map(d=>d.pageId),['song-page']);
+  assert.equal(carouselCandidates(options.manifest,options.catalogue,[],[{platform:'threads',copy:'https://indiek.com/artists/a-song/?from=threads',publishedAt:'2026-11-12T00:00:00Z'}],friday).length,2);
 });
 
 test('send-time carousel check refuses changed slides, pages or tags',async t=>{
@@ -209,4 +223,16 @@ test('page captions carry a recorded tag on the matching platform and are re-che
   assert.equal(hash(payloadParts(instagram)),instagram.payloadHash,'untagged jobs keep the original payload shape');
   writeFileSync(path.join(root,'promotion/artist-accounts.json'),JSON.stringify({version:1,accounts:[]}));
   await assert.rejects(verifyPagePost(threads,{root,catalogue:options.catalogue,inspect:async()=>({htmlSHA256:'a'.repeat(64),imageSHA256:'b'.repeat(64)})}),/registry/);
+});
+
+// Guards the committed build: `npm run build` must have regenerated the slides after the last content change.
+test('the built site publishes carousels that match the current lyric notes',()=>{
+  const read=file=>JSON.parse(readFileSync(path.join(repo,file),'utf8'));
+  const manifest=validateManifest(read('dist/promotion-carousels.json'),config.origin);
+  const expected=carouselDecks(read('content/catalogue.json'),read('dist/promotion-catalogue.json'),builtPages(path.join(repo,'dist')));
+  const shape=decks=>decks.map(d=>({pageId:d.pageId,path:d.path,description:d.description,slides:d.slides.map(({kind,image,altText,text})=>({kind,image,altText,...(kind==='text'?{text}:{})}))}));
+  assert.deepEqual(shape(manifest.decks),shape(expected),'run npm run build to regenerate carousel slides');
+  for(const slide of manifest.decks.flatMap(d=>d.slides))assert.equal(createHash('sha256').update(readFileSync(path.join(repo,'dist',slide.image))).digest('hex'),slide.sha256);
+  const files=readdirSync(path.join(repo,'dist/assets/social/carousel')).sort();
+  assert.deepEqual(files,manifest.decks.flatMap(d=>d.slides.map(s=>path.basename(s.image))).sort());
 });

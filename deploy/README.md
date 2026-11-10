@@ -64,7 +64,7 @@ systemctl is-enabled logrotate.timer
 
 ## SNS 자동 게시
 
-현재 방식(2026-10-24, 11월 전환은 로컬 구현·서버 미반영): 정기 SNS는 새 공개 기사 다음으로 기존 가사 해설·곡 배경·듣기 가이드를 소개하고 관련 indiek 페이지로 연결한다. 외부 공연·발매 공지를 자동 대체재로 사용하지 않는다. [성장 계획](../docs/growth-phase-1.md) W6·W8에 따라 Threads는 활동 시간대의 하루 1건, Instagram은 주 2회 자체 해설 캐러셀로 바꾸고, Threads 답글은 아래 대화 에이전트가 맡는다. 정기 예약과 로컬의 즉시 공유는 같은 공식 API 게시기를 사용하며, 로컬에는 토큰이나 별도 게시 큐를 복제하지 않는다. 기존 게시물은 유지하고 같은 요청을 다시 전송하지 않는다.
+현재 방식(2026-10-24, 11월 전환은 2026-11-09 자동화 서버 반영): 정기 SNS는 새 공개 기사 다음으로 기존 가사 해설·곡 배경·듣기 가이드를 소개하고 관련 indiek 페이지로 연결한다. 외부 공연·발매 공지를 자동 대체재로 사용하지 않는다. [성장 계획](../docs/growth-phase-1.md) W6·W8에 따라 Threads는 활동 시간대의 하루 1건, Instagram은 주 2회 자체 해설 캐러셀로 바꾸고, Threads 답글은 아래 대화 에이전트가 맡는다. 정기 예약과 로컬의 즉시 공유는 같은 공식 API 게시기를 사용하며, 로컬에는 토큰이나 별도 게시 큐를 복제하지 않는다. 기존 게시물은 유지하고 같은 요청을 다시 전송하지 않는다.
 
 웹 서버와 별개인 Linux 서버의 `~/projects/indiek`에서 실행한다. SSH 별칭·접속 정보는 로컬 `SERVER_ACCESS.md`에서 확인한다. Node.js 22+, Python 3/Pillow, ChatGPT로 로그인한 Codex CLI, 사용자 systemd·linger가 필요하다. 추가 API 과금 방식으로 전환하지 않는다.
 
@@ -100,7 +100,7 @@ npm run promotion -- story-now yerin-0310
 
 ### Instagram 해설 캐러셀
 
-정기 Instagram은 금·일 17:00 KST에 자체 해설 캐러셀 1건만 올린다. 슬라이드는 아티스트 페이지 대표곡의 공개 가사 해설 문단을 그대로 옮긴 1080×1350 JPEG(표지·본문·끝 장, 최대 10장)이며 아티스트 사진·앨범 아트는 쓰지 않는다. 사이트 빌드 뒤 `node scripts/promotion/carousel.mjs build`가 `dist/assets/social/carousel/`과 `dist/promotion-carousels.json`(슬라이드 경로·대체 텍스트·SHA-256)을 만든다. **이 단계는 아직 `npm run build`에 연결되지 않았고 운영 사이트에 없다.** 목록이 없으면 Instagram 슬롯은 기록만 남기고 쉰다.
+정기 Instagram은 금·일 17:00 KST에 자체 해설 캐러셀 1건만 올린다. 슬라이드는 아티스트 대표곡의 공개 가사 해설 문단을 그대로 옮긴 1080×1350 JPEG(표지·본문·끝 장, 최대 10장)이며 아티스트 사진·앨범 아트는 쓰지 않는다. 영어 번안만 있는 곡은 가사를 옮기게 되므로 만들지 않는다. 캐러셀 링크는 그 해설 전문을 싣는 페이지다. 아티스트 페이지에 전문이 있으면 아티스트 페이지, 미리보기만 있으면 곡 페이지로 연결한다. `npm run build`가 사이트 빌드 뒤 `node scripts/promotion/carousel.mjs build`로 `dist/assets/social/carousel/`과 `dist/promotion-carousels.json`(연결 페이지·설명·슬라이드 경로·대체 텍스트·SHA-256)을 만든다. 2026-11-09 기준 20명·76장, 약 8MB다. 테스트는 커밋된 슬라이드가 현재 해설과 같은지 대조한다. 운영 사이트에 목록이 없으면 Instagram 슬롯은 기록만 남기고 쉰다.
 
 같은 날 08:00 준비가 Instagram 기록 기준 28일 안에 올리지 않은 덱을 고른다. 하루 최대 3개 소재·소재당 4개 버전 안에서 캡션을 쓰고 Instagram 최종 문안을 독립 검수한다. 일정·후보·초안·반려는 `promotion/state/carousels/YYYY-MM-DD.json`에 남는다. 전송 직전에는 공개 페이지·슬라이드 해시와 본문 문단 일치, 태그 등록을 다시 확인한다. 게시는 공식 API의 자식 컨테이너(슬라이드별 `alt_text`) → `CAROUSEL` 부모(캡션) → `media_publish` 순서이며 캐러셀은 게시 1건으로 집계된다. 스토리 링크 스티커는 Instagram API가 지원하지 않아 자동화하지 않는다. `story-now`·`page-now`의 명시적 즉시 공유는 기존처럼 양쪽 플랫폼에 글자 카드를 쓴다.
 

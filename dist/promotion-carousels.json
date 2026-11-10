@@ -1,0 +1,738 @@
+{
+  "version": 1,
+  "origin": "https://indiek.com",
+  "decks": [
+    {
+      "pageKind": "artist",
+      "pageId": "black-skirts",
+      "path": "/artists/black-skirts/",
+      "description": "The Black Skirts (검정치마): what “EVERYTHING” is about, in English. A love song from TEAM BABY. Official recording, release details and sources.",
+      "artistIds": [
+        "black-skirts"
+      ],
+      "title": "The Black Skirts — EVERYTHING",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-black-skirts-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: The Black Skirts — “EVERYTHING”. A whole world in a room.",
+          "sha256": "e703e9cea1767f8b4aa24809f455bf6030bf3425efb9c194e887e7a929df9be6"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-black-skirts-2.jpg",
+          "altText": "Slide 2 of 4. For a song called EVERYTHING, the scene is intimate: two people in a room on a rainy day, with little need to speak. The scale of the declaration comes from how completely that ordinary company fills the speaker’s attention.",
+          "text": "For a song called EVERYTHING, the scene is intimate: two people in a room on a rainy day, with little need to speak. The scale of the declaration comes from how completely that ordinary company fills the speaker’s attention.",
+          "sha256": "6f5ba938cc01fe986a1a31ab922ff9d371571b86d1e250a3c335070992714278"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-black-skirts-3.jpg",
+          "altText": "Slide 3 of 4. Affection includes the other person’s less polished moments. There is a fondness for being close enough to see them without ceremony, which gives the repeated declaration its warmth. The lyric makes devotion feel domestic and familiar; very little has to happen for the time together to matter.",
+          "text": "Affection includes the other person’s less polished moments. There is a fondness for being close enough to see them without ceremony, which gives the repeated declaration its warmth. The lyric makes devotion feel domestic and familiar; very little has to happen for the time together to matter.",
+          "sha256": "6601addebf8c9dab3b045edfd6919d5f26fe9fd6198800d82495fedae3d4bbfd"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-black-skirts-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/black-skirts/",
+          "sha256": "9186be29bb5abdbc00f1e3a2922bffd773c86c2ec4735a8cab2b8deab8cc8dca"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "sunwoojunga",
+      "path": "/artists/sunwoojunga/",
+      "description": "sunwoojunga (선우정아): what “Run with Me” (도망가자) is about, in English. Run with Me, live at SERENADE. Official recording, release details and sources.",
+      "artistIds": [
+        "sunwoojunga"
+      ],
+      "title": "sunwoojunga — Run with Me",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-sunwoojunga-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: sunwoojunga — “Run with Me”. Someone who will go with you.",
+          "sha256": "4c1fca1a9a6017545feac35614a756caf935841806e9fc98708d4799ecb96217"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-sunwoojunga-2.jpg",
+          "altText": "Slide 2 of 4. The invitation to escape comes with room for exhaustion. The person being addressed can cry, move slowly and take the time they need. The speaker offers to accompany them without requiring an explanation of everything that has gone wrong.",
+          "text": "The invitation to escape comes with room for exhaustion. The person being addressed can cry, move slowly and take the time they need. The speaker offers to accompany them without requiring an explanation of everything that has gone wrong.",
+          "sha256": "a8ba4a6ebca12b2829615e1d78aad3964a5415957bb08e2006becfe0af3e9c80"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-sunwoojunga-3.jpg",
+          "altText": "Slide 3 of 4. There is also a return in the lyric’s imagined journey. Leaving can be temporary, a pause made possible by someone willing to stay beside you. That gives the reassurance a patient quality: the companion remains present through the difficult part, before anything is fixed.",
+          "text": "There is also a return in the lyric’s imagined journey. Leaving can be temporary, a pause made possible by someone willing to stay beside you. That gives the reassurance a patient quality: the companion remains present through the difficult part, before anything is fixed.",
+          "sha256": "8459d68af3e0d34d4badc51960dbc3279163dfb9531f89845016122ce2412c90"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-sunwoojunga-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/sunwoojunga/",
+          "sha256": "1cd04bac3fbc4819ae7635f82c913f7c9cc988ff34d7ce6df9971f73feb77dcc"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "car-the-garden",
+      "path": "/artists/car-the-garden/",
+      "description": "Car, the garden (카더가든): what “Tree” (나무) is about, in English. A quiet moment with Car, the garden. Official recording, release details and sources.",
+      "artistIds": [
+        "car-the-garden"
+      ],
+      "title": "Car, the garden — Tree",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-car-the-garden-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: Car, the garden — “Tree”. Finding room for awkwardness.",
+          "sha256": "b2d393837cb87f3ac0d3e097357960bb15da6ae782ee957209172501cc7dfdab"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-car-the-garden-2.jpg",
+          "altText": "Slide 2 of 4. The beloved becomes a dancing tree, and the speaker becomes the rough music within it. The pairing gives awkwardness somewhere to belong. The speaker imagines even their timid fears becoming part of an affectionate picture when they are beside this person.",
+          "text": "The beloved becomes a dancing tree, and the speaker becomes the rough music within it. The pairing gives awkwardness somewhere to belong. The speaker imagines even their timid fears becoming part of an affectionate picture when they are beside this person.",
+          "sha256": "ebce0258332c51190689bc65bc2728fb30bd0ac7d8ed01667e4ad3a38f037ee6"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-car-the-garden-3.jpg",
+          "altText": "Slide 3 of 4. Asking for a smile suggests how much that acceptance matters. The lyric treats closeness as permission to bring an uncertain, unpolished self into a relationship. Its tenderness comes from the hope that someone can receive those parts with affection.",
+          "text": "Asking for a smile suggests how much that acceptance matters. The lyric treats closeness as permission to bring an uncertain, unpolished self into a relationship. Its tenderness comes from the hope that someone can receive those parts with affection.",
+          "sha256": "71b86eb597fb971fdd9f505b7d32a7be75f84e25104d41289451358ddef85b88"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-car-the-garden-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/car-the-garden/",
+          "sha256": "56e74db93507d17610c09e8be2d90cac35c93a076d13cdd2ec5a008a962bb01a"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "choi-yu-ree",
+      "path": "/artists/choi-yu-ree/",
+      "description": "Choi Yu Ree (최유리): what “Forest” (숲) is about, in English. A song about finding a place among others. Official recording, release details and sources.",
+      "artistIds": [
+        "choi-yu-ree"
+      ],
+      "title": "Choi Yu Ree — Forest",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-choi-yu-ree-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: Choi Yu Ree — “Forest”. Wanting to be a place for someone.",
+          "sha256": "04827b58884d3f5dd41e85fe896a030f8360e8185c4656196c85f39b13b1f50e"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-choi-yu-ree-2.jpg",
+          "altText": "Slide 2 of 4. The wish to become a forest carries a question about belonging. The speaker wants to offer someone a place to enter and stay, while remaining uneasy about their own place among the trees. A generous wish and a sense of inadequacy occupy the same image.",
+          "text": "The wish to become a forest carries a question about belonging. The speaker wants to offer someone a place to enter and stay, while remaining uneasy about their own place among the trees. A generous wish and a sense of inadequacy occupy the same image.",
+          "sha256": "00a0182a2a6a0337da2eb3e0ceec8cafa808ba79d8031d2ff8ae4f881e96d369"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-choi-yu-ree-3.jpg",
+          "altText": "Slide 3 of 4. The lyric keeps returning to uncertainty, including whether this place is a forest or a sea. That shifting landscape leaves the speaker’s own position unsettled. Offering shelter does not mean they feel secure themselves; the longing to be recognised remains part of the care they want to give.",
+          "text": "The lyric keeps returning to uncertainty, including whether this place is a forest or a sea. That shifting landscape leaves the speaker’s own position unsettled. Offering shelter does not mean they feel secure themselves; the longing to be recognised remains part of the care they want to give.",
+          "sha256": "fef28c0b5c50ca1272683bafeec565a86d7636eee84631cb699552f72ebca993"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-choi-yu-ree-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/choi-yu-ree/",
+          "sha256": "fed34eafad4980a2b85ab0c4678735227528a44c9264033db8e850905389d4d0"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "bol4",
+      "path": "/artists/bol4/",
+      "description": "BOL4 (볼빨간사춘기): what “Eternal love” (사랑할 수밖에) is about, in English. Eternal love, from the Bloom concert. Official recording, release details and sources.",
+      "artistIds": [
+        "bol4"
+      ],
+      "title": "BOL4 — Eternal love",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-bol4-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: BOL4 — “Eternal love”. When love asks for restraint.",
+          "sha256": "572bae3b207027f95bc2a6a6f5eed5134a4d5a67035422cc9961fad0798263c1"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-bol4-2.jpg",
+          "altText": "Slide 2 of 4. The speaker can only clasp their own hands while watching someone they love from a distance. The gesture holds back a desire to give everything, alongside a fear that their own wants might hurt the person they hope to protect.",
+          "text": "The speaker can only clasp their own hands while watching someone they love from a distance. The gesture holds back a desire to give everything, alongside a fear that their own wants might hurt the person they hope to protect.",
+          "sha256": "9e6b825be3ffc1ce7646b9f387bfa51215d88f2e03845f7f0657123beb1413ee"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-bol4-3.jpg",
+          "altText": "Slide 3 of 4. The devotion in Eternal love includes taking a step back. Its repeated certainty of loving someone sits beside uncertainty about what that love should ask of them. Restraint makes the affection ache: the desire to draw closer persists through the effort to keep it from becoming a burden.",
+          "text": "The devotion in Eternal love includes taking a step back. Its repeated certainty of loving someone sits beside uncertainty about what that love should ask of them. Restraint makes the affection ache: the desire to draw closer persists through the effort to keep it from becoming a burden.",
+          "sha256": "5abe683503f65f95098bf2e8c646083c4b297a4b4e47ce735174477374ee1eab"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-bol4-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/bol4/",
+          "sha256": "414bdf9bc23e97827f435bdbed9467dcc1d8fb9755c94eff263fcb1de8d645cc"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "esegye",
+      "path": "/artists/esegye/",
+      "description": "ESEGYE (이세계): what “RomanceYouthLove” (낭만젊음사랑) is about, in English. An early song, in front of a live audience. Official recording, release details and sources.",
+      "artistIds": [
+        "esegye"
+      ],
+      "title": "ESEGYE — RomanceYouthLove",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-esegye-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: ESEGYE — “RomanceYouthLove”. Setting off without a destination.",
+          "sha256": "38e4aeb5653fb42f9c30546a9b709602509ec68716535cb3bb86e7f9b5b20806"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-esegye-2.jpg",
+          "altText": "Slide 2 of 4. Romance, youth and love become boats in this song’s central image: things that can carry two people somewhere together. Their destination stays unknown. The repeated reassurance draws its confidence from companionship, even as the lyric admits how little they know.",
+          "text": "Romance, youth and love become boats in this song’s central image: things that can carry two people somewhere together. Their destination stays unknown. The repeated reassurance draws its confidence from companionship, even as the lyric admits how little they know.",
+          "sha256": "2453c569782122ba6007d4e1dd08a688f25c5f120ad9bc7d80f8ce4c18910ba2"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-esegye-3.jpg",
+          "altText": "Slide 3 of 4. That admission keeps the optimism a little reckless. Youth appears as a willingness to depart before having an answer, with another person close enough to share the uncertainty. The promise depends on their togetherness; the world ahead has offered no guarantees.",
+          "text": "That admission keeps the optimism a little reckless. Youth appears as a willingness to depart before having an answer, with another person close enough to share the uncertainty. The promise depends on their togetherness; the world ahead has offered no guarantees.",
+          "sha256": "7881a6de2d552a4a1ff49e32a092301d5aa7e24018ed4cd260b58bad8e4b68e8"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-esegye-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/esegye/",
+          "sha256": "92aaa914a78f514423349f65f9dbba9d1fc084f20053c35a11afdc0560097ea1"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "se-so-neon",
+      "path": "/artists/se-so-neon/",
+      "description": "SE SO NEON (새소년): what “The Wave” (파도) is about, in English. The Wave, live at 2020/NEON. Official recording, release details and sources.",
+      "artistIds": [
+        "se-so-neon"
+      ],
+      "title": "SE SO NEON — The Wave",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-se-so-neon-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: SE SO NEON — “The Wave”. A departure with no explanation.",
+          "sha256": "e59a0a95cb76d1b686e5570827834b585af664bfaabca0ccabd12d327c940668"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-se-so-neon-2.jpg",
+          "altText": "Slide 2 of 4. The Wave gives its brief parting scene a dreamlike strangeness: the departing figure is associated with the moon. There is no explanation of who this person is or what has happened between them and the speaker.",
+          "text": "The Wave gives its brief parting scene a dreamlike strangeness: the departing figure is associated with the moon. There is no explanation of who this person is or what has happened between them and the speaker.",
+          "sha256": "709b8696f3d3429febb85f929b51e62fd52a5013a5b5538519c4beed9a34fe27"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-se-so-neon-3.jpg",
+          "altText": "Slide 3 of 4. That missing context leaves space around the farewell. The lyric holds an image in view without turning it into a complete relationship story, so its emotional distance remains hard to settle. A reading of loss is possible, but the words keep the circumstances open.",
+          "text": "That missing context leaves space around the farewell. The lyric holds an image in view without turning it into a complete relationship story, so its emotional distance remains hard to settle. A reading of loss is possible, but the words keep the circumstances open.",
+          "sha256": "d62382bb3104b20a8be16a567151d744c2ecc475f0df2c065fb3209033775cbe"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-se-so-neon-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/se-so-neon/",
+          "sha256": "35fd1d58788f0238063acb5bd1173e179bd3ecbe525c9374fbb8a8267fc3c7f0"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "ydbb",
+      "path": "/artists/ydbb/",
+      "description": "YdBB (유다빈밴드): what “ONCE” is about, in English. Letting go, and hoping to be remembered. Official recording, release details and sources.",
+      "artistIds": [
+        "ydbb"
+      ],
+      "title": "YdBB — ONCE",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-ydbb-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: YdBB — “ONCE”. Hoping to be remembered kindly.",
+          "sha256": "708d471b1df078418e5cc119ccedd0c2521697bd27d84ac17e0b5b7680a8dbfe"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-ydbb-2.jpg",
+          "altText": "Slide 2 of 4. ONCE looks back at the moment affection began while speaking from the edge of a goodbye. The speaker wants a place in the other person’s memory, even as distance grows between them.",
+          "text": "ONCE looks back at the moment affection began while speaking from the edge of a goodbye. The speaker wants a place in the other person’s memory, even as distance grows between them.",
+          "sha256": "6f757315081e094aeea225860173de6de2b1b9cee67a8e7a94d578a2a992e612"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-ydbb-3.jpg",
+          "altText": "Slide 3 of 4. That wish gives the farewell its tenderness and its uncertainty: nobody can choose how they will be remembered. Regret remains, alongside a hope that distance need not erase their bond. The song makes room for an attachment that continues as two people grow apart, without promising that affection will bring them back together.",
+          "text": "That wish gives the farewell its tenderness and its uncertainty: nobody can choose how they will be remembered. Regret remains, alongside a hope that distance need not erase their bond. The song makes room for an attachment that continues as two people grow apart, without promising that affection will bring them back together.",
+          "sha256": "09dfa4bbf017b09fef445605e58de86e0daad5d67b9d4f08b197d05e974492c2"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-ydbb-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/ydbb/",
+          "sha256": "caadcd2043938ed8a6d8ad16f6be9e290ff8215cf00beb8f25112dddd5fc3a42"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "whiteusedsocks",
+      "path": "/artists/whiteusedsocks/",
+      "description": "WhiteUsedSocks (화이트유즈드삭스): what “Don’t feel sad” is about, in English. One of the band’s early songs. Official recording, release details and sources.",
+      "artistIds": [
+        "whiteusedsocks"
+      ],
+      "title": "WhiteUsedSocks — Don’t feel sad",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-whiteusedsocks-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: WhiteUsedSocks — “Don’t feel sad”. A wish made through regret.",
+          "sha256": "dabaeac40eea3618f3727818ef36420df3ae27d22e5f8c0e6b624143760ab981"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-whiteusedsocks-2.jpg",
+          "altText": "Slide 2 of 4. Memories arrive before the speaker has chosen to revisit them. The lyric’s wish for the other person to feel less sad is complicated by an admission of having been absorbed in their own feelings. Looking back brings affection and responsibility together.",
+          "text": "Memories arrive before the speaker has chosen to revisit them. The lyric’s wish for the other person to feel less sad is complicated by an admission of having been absorbed in their own feelings. Looking back brings affection and responsibility together.",
+          "sha256": "7564777fb0c497e40a2908382ebee2bcc743272ae83d909846af74aa26c62704"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-whiteusedsocks-3.jpg",
+          "altText": "Slide 3 of 4. That regret changes the force of the title. The reassurance can be heard as a hope for someone’s happiness from someone conscious of their own past selfishness. The wish is modest: to let a memory bring a smile again, even with regret still attached to it.",
+          "text": "That regret changes the force of the title. The reassurance can be heard as a hope for someone’s happiness from someone conscious of their own past selfishness. The wish is modest: to let a memory bring a smile again, even with regret still attached to it.",
+          "sha256": "2720b00cfbd873b50f9b9d630d56f64baeb6a48afa83d19f338d9099f4ca2c03"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-whiteusedsocks-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/whiteusedsocks/",
+          "sha256": "d5c71eb637ca91945b906c24b08c261c472627ea2445c016a6e54b0eec9b458c"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "motte",
+      "path": "/artists/motte/",
+      "description": "Motte (모트): what “Don’t run away” (도망가지마) is about, in English. Motte’s voice in A-TEEN. Official recording, release details and sources.",
+      "artistIds": [
+        "motte"
+      ],
+      "title": "Motte — Don’t run away",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-motte-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: Motte — “Don’t run away”. Trust after words go wrong.",
+          "sha256": "d5a9939e0f5d035383d13ab3ddb2c05e8ea24d6f6a08951eb925803d146e2531"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-motte-2.jpg",
+          "altText": "Slide 2 of 4. Two people keep trying to get closer and somehow end up further apart. The speaker recognises that their clumsy words have hurt the other person, then asks for the trust that might let them speak more openly.",
+          "text": "Two people keep trying to get closer and somehow end up further apart. The speaker recognises that their clumsy words have hurt the other person, then asks for the trust that might let them speak more openly.",
+          "sha256": "775f9c26723724a4bc7dec439af17a5971ed8052cc0bf9ca1e8fa69994fa4085"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-motte-3.jpg",
+          "altText": "Slide 3 of 4. There is worry beneath the repeated assurance of mutual belief: the speaker fears being left alone and keeps looking for an answer. Asking about the other person’s day brings the plea down to an ordinary conversation. Repair might begin with hearing what has been difficult, rather than finding a perfect declaration.",
+          "text": "There is worry beneath the repeated assurance of mutual belief: the speaker fears being left alone and keeps looking for an answer. Asking about the other person’s day brings the plea down to an ordinary conversation. Repair might begin with hearing what has been difficult, rather than finding a perfect declaration.",
+          "sha256": "babc52db5a535e0c834ebdf2811963754e34ff0a45dc46a00b5ea7e3fbda2ac3"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-motte-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/motte/",
+          "sha256": "60084d93e7ba6e354039b6e758b7af0b06fdf09b1d85f7dc71d04213333c2466"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "hanroro",
+      "path": "/artists/hanroro/even-if-you-leave/",
+      "description": "“Even if you leave” is about the things that are hard to let go of, and the habit of blaming yourself after they’re gone. HANRORO wrote both the words and music. Lyrics meaning in English, credits, background and release details.",
+      "artistIds": [
+        "hanroro"
+      ],
+      "title": "HANRORO — Even if you leave",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-hanroro-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: HANRORO — “Even if you leave”. The pull of self-blame.",
+          "sha256": "638c3955df0a3ada413421701903fe8c95bc452d74c6d52e081636852c8fda02"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-hanroro-2.jpg",
+          "altText": "Slide 2 of 4. The Korean title, 자처, carries the sense of bringing something upon oneself. Alongside the English title Even if you leave, it places separation next to responsibility. The speaker’s difficulty letting go becomes tangled with the thought that their pain is their own doing.",
+          "text": "The Korean title, 자처, carries the sense of bringing something upon oneself. Alongside the English title Even if you leave, it places separation next to responsibility. The speaker’s difficulty letting go becomes tangled with the thought that their pain is their own doing.",
+          "sha256": "ad4f90ecc42183581417572f1ebe2a58e620f29f99563481a412d7fbe42d27cb"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-hanroro-3.jpg",
+          "altText": "Slide 3 of 4. In her release note, HANRORO leaves the addressee open: it could be a person, a past choice or something that traps the self. She describes writing the song to stop feeding self-blame. That context makes the lyric’s guilt a feeling under examination, rather than a verdict that the speaker deserves to suffer.",
+          "text": "In her release note, HANRORO leaves the addressee open: it could be a person, a past choice or something that traps the self. She describes writing the song to stop feeding self-blame. That context makes the lyric’s guilt a feeling under examination, rather than a verdict that the speaker deserves to suffer.",
+          "sha256": "d84190f80e9f84a86b45db5574e0ee06a28e44ffceb92f9f5d21eca3e83d995a"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-hanroro-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/hanroro/even-if-you-leave/",
+          "sha256": "bcf7e90722159265e9d2235eb86056fcc26a29810094f6fb05b3f175337ffe7e"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "kim-sawol",
+      "path": "/artists/kim-sawol/",
+      "description": "Kim Sawol (김사월): what “Someone” (누군가에게) is about, in English. A love song with mixed feelings. Official recording, release details and sources.",
+      "artistIds": [
+        "kim-sawol"
+      ],
+      "title": "Kim Sawol — Someone",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-kim-sawol-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: Kim Sawol — “Someone”. Reassurance with doubt underneath.",
+          "sha256": "918d45de9679a1911072c0ce980289129a2aa394fc6a6fbb1a3adb536e76b02b"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-kim-sawol-2.jpg",
+          "altText": "Slide 2 of 4. Much of Someone addresses another person as precious and loved. Then the lyric turns towards the speaker’s own lonely night. The confidence of the reassurance becomes more complicated once the person offering it admits feeling unloved.",
+          "text": "Much of Someone addresses another person as precious and loved. Then the lyric turns towards the speaker’s own lonely night. The confidence of the reassurance becomes more complicated once the person offering it admits feeling unloved.",
+          "sha256": "25a6393d5f0b6c30f1cc15ebae60dfbf21b6eba3622a7067d148aad62fa3ab54"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-kim-sawol-3.jpg",
+          "altText": "Slide 3 of 4. That change of perspective leaves tenderness and doubt close together. Being able to recognise someone else’s worth does not make it easy to feel your own. The speaker can offer conviction to another person while still needing to hear something like it themselves.",
+          "text": "That change of perspective leaves tenderness and doubt close together. Being able to recognise someone else’s worth does not make it easy to feel your own. The speaker can offer conviction to another person while still needing to hear something like it themselves.",
+          "sha256": "ebf98b7a2bf10fae5123df78ac1e988598552767289ad4acbf6b1f2f3df32383"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-kim-sawol-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/kim-sawol/",
+          "sha256": "a7741fcb0d6d86965f68ccaca9b944eda68e25ac6d0873f3e283a94731037db7"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "yerin-baek",
+      "path": "/artists/yerin-baek/0310/",
+      "description": "“0310” is sung in English, with the words on screen in Baek’s own lyric video. It’s from her 2019 album Every letter I sent you. Lyrics meaning in English, credits, background and release details.",
+      "artistIds": [
+        "yerin-baek"
+      ],
+      "title": "Yerin Baek — 0310",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-yerin-baek-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: Yerin Baek — “0310”. Trying to sound less attached.",
+          "sha256": "b5211ebd3dc6bba7e7015214ab4c770d6479afc42a6e022a789d49ad1580161d"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-yerin-baek-2.jpg",
+          "altText": "Slide 2 of 4. 0310 is sung in English, and its hesitations are part of the story. The speaker tries to sound casual about someone leaving, then admits how much that possibility frightens them. What appears indifferent at first becomes a way of protecting a much stronger attachment.",
+          "text": "0310 is sung in English, and its hesitations are part of the story. The speaker tries to sound casual about someone leaving, then admits how much that possibility frightens them. What appears indifferent at first becomes a way of protecting a much stronger attachment.",
+          "sha256": "4ea23ffc41d0292f398a78f248a1edcbef6abf9334d139c9e313632592ba8cc6"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-yerin-baek-3.jpg",
+          "altText": "Slide 3 of 4. The lyric circles around things left unsaid and the wish to seem fine. Its vulnerability comes through the gap between the position the speaker wants to hold and the reassurance they keep asking for. The contradictions allow embarrassment, defensiveness and affection to remain audible in the words.",
+          "text": "The lyric circles around things left unsaid and the wish to seem fine. Its vulnerability comes through the gap between the position the speaker wants to hold and the reassurance they keep asking for. The contradictions allow embarrassment, defensiveness and affection to remain audible in the words.",
+          "sha256": "00a0a657cbe9657e5325ce8f011d81276fcbe3a56343a2c582989439d820ea0b"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-yerin-baek-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/yerin-baek/0310/",
+          "sha256": "2299117837979e74d53fd5a5d69c0f01260c619a800c27d74d038aa3dd820be3"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "gongwon",
+      "path": "/artists/gongwon/",
+      "description": "gongwon (공원): what “Flower” (곰팡이) is about, in English. A bloom that doesn’t look like a flower. Official recording, release details and sources.",
+      "artistIds": [
+        "gongwon"
+      ],
+      "title": "gongwon — Flower",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-gongwon-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: gongwon — “Flower”. Growing in a damp room.",
+          "sha256": "24088a882fab8b1aca0ec56c36b0f89501f52439e0ade1e579a4082960720fa6"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-gongwon-2.jpg",
+          "altText": "Slide 2 of 4. The official English title is Flower, while 곰팡이 means “mold.” The difference matters to a speaker who expected one kind of growth and sees another in themselves. A damp room gives that disappointment a physical setting: what grows there is shaped by its conditions.",
+          "text": "The official English title is Flower, while 곰팡이 means “mold.” The difference matters to a speaker who expected one kind of growth and sees another in themselves. A damp room gives that disappointment a physical setting: what grows there is shaped by its conditions.",
+          "sha256": "149a2357267701117006088028e32f45a03053f4deefbee1eb863225535feb37"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-gongwon-3.jpg",
+          "altText": "Slide 3 of 4. The harsh self-description is part of the speaker’s struggle with worth. Continuing to grow has not brought an easy sense of pride, yet the wish to be loved persists. The lyric holds that wish beside the feelings the speaker finds difficult to accept, leaving self-acceptance unfinished.",
+          "text": "The harsh self-description is part of the speaker’s struggle with worth. Continuing to grow has not brought an easy sense of pride, yet the wish to be loved persists. The lyric holds that wish beside the feelings the speaker finds difficult to accept, leaving self-acceptance unfinished.",
+          "sha256": "cbeb23837a2280938037e68227294a4d1e07076e77d7cb3e60231b7790d6ec8d"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-gongwon-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/gongwon/",
+          "sha256": "ddf0caa7797877d7dbe999a67a7c4ef7ce26e408ebbad51054c007300ad0f51a"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "yebit",
+      "path": "/artists/yebit/",
+      "description": "Yebit (예빛): what “Only You” (불안한 내 맘 달랠 곳은 너밖에 없어) is about, in English. Familiar streets, a changed relationship. Official recording, release details and sources.",
+      "artistIds": [
+        "yebit"
+      ],
+      "title": "Yebit — Only You",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-yebit-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: Yebit — “Only You”. When the place stays the same.",
+          "sha256": "31179e487dfe12c952631e312b7e5fb8fc575f8668772a7440174c9220cf423c"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-yebit-2.jpg",
+          "altText": "Slide 2 of 4. Seoul Forest remains familiar while the relationship has changed. Walking there alone makes the difference harder to ignore: a shared place can keep reminding someone of a closeness that no longer feels secure.",
+          "text": "Seoul Forest remains familiar while the relationship has changed. Walking there alone makes the difference harder to ignore: a shared place can keep reminding someone of a closeness that no longer feels secure.",
+          "sha256": "6e967113e88b56296ba7073e064ad6d1b0de3fccef566b7c078de722f920d65c"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-yebit-3.jpg",
+          "altText": "Slide 3 of 4. The speaker tries to look all right, with a smile that conceals hurt. The person they find painful to face is also the person they want to lean on. That makes the request for comfort unresolved; affection and distress lead back to the same person, and outward composure gives little indication of what remains inside.",
+          "text": "The speaker tries to look all right, with a smile that conceals hurt. The person they find painful to face is also the person they want to lean on. That makes the request for comfort unresolved; affection and distress lead back to the same person, and outward composure gives little indication of what remains inside.",
+          "sha256": "c9201d935cd940f85a9063fa357cf98f28cf58f3c4cfcb83d6a2289f4cdc3044"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-yebit-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/yebit/",
+          "sha256": "b1958346ef056ca4093b195eb1e71ea9fe2d72103317bd0a26a9591a868e07d7"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "youra",
+      "path": "/artists/youra/",
+      "description": "youra (유라): what “MIMI” (미미) is about, in English, plus 2 more songs. A name to call, and a wish to be found. Official recording, release details and sources.",
+      "artistIds": [
+        "youra"
+      ],
+      "title": "youra — MIMI",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-youra-1.jpg",
+          "altText": "Slide 1 of 3. indiek lyric notes: youra — “MIMI”. Calling to someone absent.",
+          "sha256": "ed2a5adad087ff2e72074de30e286468fbf7fe527442b3e8783777c48f0dcba0"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-youra-2.jpg",
+          "altText": "Slide 2 of 3. The refrain calls out to Mimi and asks why love disappears. A request for a friend to find the speaker gives the absence a second direction: someone missing also wants to be sought. The lyric leaves Mimi’s identity open.",
+          "text": "The refrain calls out to Mimi and asks why love disappears. A request for a friend to find the speaker gives the absence a second direction: someone missing also wants to be sought. The lyric leaves Mimi’s identity open.",
+          "sha256": "f35cc2cea72cb0adee5f15993c3d2adb1216c0c0e10d972fd44d529f131d1b1c"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-youra-3.jpg",
+          "altText": "Slide 3 of 3. Read the full notes and play the official recording at indiek.com/artists/youra/",
+          "sha256": "56227d4aaa615a05347ffbfd93f7ca92a3039ac2d121c7576a5ffd7f458770e9"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "sondia",
+      "path": "/artists/sondia/",
+      "description": "Sondia (손디아): what “Grown Ups” (어른) is about, in English. A tired day, distant dreams and a question left open. Official recording, release details and sources.",
+      "artistIds": [
+        "sondia"
+      ],
+      "title": "Sondia — Grown Ups",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-sondia-1.jpg",
+          "altText": "Slide 1 of 3. indiek lyric notes: Sondia — “Grown Ups”. A question at the end of a long day.",
+          "sha256": "cf0cb7f85bd5705475c44ca7b7bbd312e7aaac48f39c086260835ae15b118013"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-sondia-2.jpg",
+          "altText": "Slide 2 of 3. Among smiling people, the speaker feels like a stranger. Dreams once pursued now seem far away, and the dream of being fully themselves gives way to disappointment on waking. The final question asks whether this small world might someday smile back. It leaves that possibility open, without pretending the sadness has already passed.",
+          "text": "Among smiling people, the speaker feels like a stranger. Dreams once pursued now seem far away, and the dream of being fully themselves gives way to disappointment on waking. The final question asks whether this small world might someday smile back. It leaves that possibility open, without pretending the sadness has already passed.",
+          "sha256": "593ed8694a4171d32abdf2594899d201fe1e6d26ab0b0ae8ea82535af1584383"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-sondia-3.jpg",
+          "altText": "Slide 3 of 3. Read the full notes and play the official recording at indiek.com/artists/sondia/",
+          "sha256": "1b1501df0f57411e4326b2ea417175d93d2d1159a988bd1fbf0da6a225965cb6"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "moneto",
+      "path": "/artists/moneto/",
+      "description": "moneto (모네토): what “She” is about, in English. A wish for memories to remain, like a melody. Official recording, release details and sources.",
+      "artistIds": [
+        "moneto"
+      ],
+      "title": "moneto — She (Feat. MRCH)",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-moneto-1.jpg",
+          "altText": "Slide 1 of 3. indiek lyric notes: moneto — “She (Feat. MRCH)”. Keeping someone’s memories close.",
+          "sha256": "26afd0e0a347849f492a0eaefb84ccb076e2dc04a06ba3873f0258963ba951b4"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-moneto-2.jpg",
+          "altText": "Slide 2 of 3. The woman in the song feels alone even in a crowd. The refrain imagines sleep as a place where she can find the company she misses, then looks ahead to old age and asks that her memories remain. Comparing them to a melody gives that wish a form: something that can return, even when the person is absent. The lyric does not explain exactly why they are apart.",
+          "text": "The woman in the song feels alone even in a crowd. The refrain imagines sleep as a place where she can find the company she misses, then looks ahead to old age and asks that her memories remain. Comparing them to a melody gives that wish a form: something that can return, even when the person is absent. The lyric does not explain exactly why they are apart.",
+          "sha256": "17b823e9ce4ca9221e411470a2c9e38946e1c696499b050745776fcf86a0f61a"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-moneto-3.jpg",
+          "altText": "Slide 3 of 3. Read the full notes and play the official recording at indiek.com/artists/moneto/",
+          "sha256": "8f8fd439aa9d7ea2c7323cc8d542cd2aac5bd0c9c9bd4659817962f4de1531f4"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "mrch",
+      "path": "/artists/mrch/surrender/",
+      "description": "An alarm clock, afternoon dessert and a phone before bed become everyday opponents in “Surrender”. MRCH’s song from Oh, Life lets go of the wish to be invincible. This live clip was shared on her own channel before the EP’s release. Lyrics meaning in English, credits, background and release details.",
+      "artistIds": [
+        "mrch"
+      ],
+      "title": "MRCH — Surrender",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-mrch-1.jpg",
+          "altText": "Slide 1 of 3. indiek lyric notes: MRCH — “Surrender”. Putting down the need to win.",
+          "sha256": "866c09c608ad0069da480446d08169e6f0c8e62b6c83876212d15389aa9cc230"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-mrch-2.jpg",
+          "altText": "Slide 2 of 3. Battle language gives ordinary distractions an outsized role: an alarm calls, a screen keeps the speaker awake, and a message unsettles them. Waving a white flag means giving up the demand to defeat every one of these small pressures. The wish is modest: some peace and a little fun.",
+          "text": "Battle language gives ordinary distractions an outsized role: an alarm calls, a screen keeps the speaker awake, and a message unsettles them. Waving a white flag means giving up the demand to defeat every one of these small pressures. The wish is modest: some peace and a little fun.",
+          "sha256": "77cacbbfc44130d5f2426f9a7e3bbbf3056bdf1426d4fed81f5d3ced8e36000b"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-mrch-3.jpg",
+          "altText": "Slide 3 of 3. Read the full notes and play the official recording at indiek.com/artists/mrch/surrender/",
+          "sha256": "457fb98d2097bf159f2de689a6688fd22b3a38ce54210d31d23f6f3bff970be2"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "yoon-mirae",
+      "path": "/artists/yoon-mirae/",
+      "description": "Yoon Mirae (윤미래): what “Breath” (숨) is about, in English. An acoustic R&B song with room to breathe. Official recording, release details and sources.",
+      "artistIds": [
+        "yoon-mirae"
+      ],
+      "title": "Yoon Mirae — Breath",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-yoon-mirae-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: Yoon Mirae — “Breath”. Warmth that outlasts a goodbye.",
+          "sha256": "cff7556c046b5fae587514f963fed94f4782a49c22a52aa88d6d0c8790a48198"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-yoon-mirae-2.jpg",
+          "altText": "Slide 2 of 4. A scarf carries the absent person into an ordinary winter day. Its colour has faded, but the warmth remains useful. The object makes memory tangible: something given in the past can still offer comfort after the relationship has changed.",
+          "text": "A scarf carries the absent person into an ordinary winter day. Its colour has faded, but the warmth remains useful. The object makes memory tangible: something given in the past can still offer comfort after the relationship has changed.",
+          "sha256": "0d90a3bda0443b918c5b7b4ef2571c887e9567ff773ead501aa8ff8f4dfc6a1e"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-yoon-mirae-3.jpg",
+          "altText": "Slide 3 of 4. The speaker’s small, private smile can coexist with pain. Winter keeps bringing the other person to mind, without settling what happens next. The tenderness lies in that continued presence in daily life, where missing someone and feeling grateful for their warmth have become difficult to separate.",
+          "text": "The speaker’s small, private smile can coexist with pain. Winter keeps bringing the other person to mind, without settling what happens next. The tenderness lies in that continued presence in daily life, where missing someone and feeling grateful for their warmth have become difficult to separate.",
+          "sha256": "746b9be6c22431cdd2c35c6571d1cd56c49f18196b4a77386d57835c68b3da68"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-yoon-mirae-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/yoon-mirae/",
+          "sha256": "9b9a0f7c95b536725f09578cfa4370a5752ed8e26b81beca9dfb5d82f2966c4b"
+        }
+      ]
+    }
+  ]
+}

@@ -1630,13 +1630,14 @@ https://indiek.com/artists/sunwoojunga/?from=instagram
 
 ## G018 · 11월 SNS 전환(W6)과 Threads 대화 에이전트 v1(W8) 로컬 구현
 
-- 작업일: 2026-11-09. [성장 계획](growth-phase-1.md)의 D6·W6·W8을 로컬 저장소에 구현하고 검증했다. 자동화 서버 배포, 타이머 변경, 게시·답글, Meta 권한 요청은 하지 않았다. 서버 반영은 사용자 승인을 기다린다.
+- 작업일: 2026-11-09. [성장 계획](growth-phase-1.md)의 D6·W6·W8을 구현했다(`c1fd004`). 사용자 승인("모두 승인")에 따라 같은 날 메인 세션이 자동화 서버에 반영했다. 체크아웃 `c1fd004`, 테스트 116개 통과다. 타이머는 Threads 16:00, Instagram 금·일 17:00, 대화 점검 하루 4회이며 에이전트는 `not-started`다. 게시·답글과 Meta 권한 요청은 하지 않았다.
 - 문체(D6): [문체 지침](../promotion/voice.md)을 개정했다. 첫 문장에는 구체적 장면 하나나 글이 답하는 질문 하나를 둔다. 태그는 `promotion/artist-accounts.json`에 공식 출처와 함께 기록한 계정만 허용한다. 정확성·경험 날조 금지·가사 인용 규칙은 유지했다. 등록부는 비어 있어 아직 태그가 붙지 않는다.
 - 일정(W6):
   - Threads는 매일 16:00 KST로 옮긴다. 근거는 Threads 인사이트의 활동 집중 시간(금·일 15~18시, 토 18~21시)이다.
   - Instagram은 30일 조회 0이라 매일 글자 카드를 멈춘다. 대신 금·일 17:00에 자체 해설 캐러셀을 올린다.
-  - 로컬 빌드에서 아티스트 20명분 덱, 슬라이드 77장(1080×1350)을 만들었다. 슬라이드는 공개 가사 해설 문단을 그대로 옮기며 사진·앨범 아트는 쓰지 않는다.
-  - 캐러셀 생성 단계(`node scripts/promotion/carousel.mjs build`)는 아직 사이트 빌드·배포에 연결하지 않았다. 그 전까지 Instagram 슬롯은 쉰다.
+  - 슬라이드(1080×1350)는 공개 가사 해설 문단을 그대로 옮기며 사진·앨범 아트는 쓰지 않는다. 영어 번안만 있는 백아는 제외했다.
+  - W2 반영 뒤 슬라이드 생성을 `npm run build`에 연결했다. 20명·76장이며 `dist/`는 약 8MB 늘었다. 링크는 해설 전문이 있는 페이지다. 17명은 아티스트 페이지, 한로로·백예린·MRCH는 곡 페이지로 연결한다.
+  - 운영 사이트에 슬라이드가 공개되기 전까지 Instagram 슬롯은 쉰다. 첫 게시 예정은 11/13(금) 17:00 KST다.
   - Instagram API는 스토리 링크 스티커를 지원하지 않아 자동화하지 않는다.
 - 대화 에이전트(W8 v1):
   - indiek 게시물의 댓글·언급은 초안과 독립 검수를 통과하면 자동으로 답한다.
@@ -1651,5 +1652,5 @@ https://indiek.com/artists/sunwoojunga/?from=instagram
   - 현재 토큰(2026-10-19 기록)은 `threads_basic`·`threads_content_publish`뿐이다. 답글 읽기·쓰기(`threads_read_replies`, `threads_manage_replies`), 언급(`threads_manage_mentions`), 검색(`threads_keyword_search`)이 없어 지금 배포하면 `권한 없음`만 기록한다.
   - 언급·검색은 앱 심사(고급 접근) 전에는 테스터와 indiek 자신의 글만 돌려준다.
 - 확인 못 한 것: Threads API 문서에는 본문 `@handle`이 실제 언급으로 연결된다는 설명이 없다. 첫 태그 게시물을 앱에서 확인한다.
-- 검증: 로컬 `npm run build && npm run check` 통과(테스트 257개, 37페이지). 실제 API 호출·게시는 하지 않았다.
+- 검증: 로컬 `npm run build && npm run check` 통과. 캐러셀 연결 후 테스트 267개, 60페이지다. 실제 API 호출·게시는 하지 않았다.
 - 후속: 서버 반영 절차는 [배포 문서](../deploy/README.md#sns-자동-게시)의 새 항목과 이 세션의 반영 계획을 따른다. Reddit 초안과 연락 초안은 1월 이후 작업이다.
