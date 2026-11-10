@@ -1,0 +1,68 @@
+{
+  "description": "YouTube channels accepted as official for artists other than their own: labels, distributors, broadcasters and live series. Matched by channel URL from oEmbed. An artist channel (name containing the artist name) or the artist Topic channel needs no entry. Add a channel only after checking it on the label, broadcaster or artist site, and record that source in basis.",
+  "channels": [
+    {
+      "channel": "SEOUL MUSIC / 서울뮤직",
+      "channelURL": "https://www.youtube.com/@SEOULMUSIC",
+      "kind": "distributor",
+      "basis": "Hand-reviewed official upload in the catalogue (black-skirts)",
+      "checked": "2026-11-10"
+    },
+    {
+      "channel": "Beginagain 비긴어게인",
+      "channelURL": "https://www.youtube.com/@begin_again",
+      "kind": "broadcaster",
+      "basis": "Hand-reviewed official upload in the catalogue (car-the-garden)",
+      "checked": "2026-11-10"
+    },
+    {
+      "channel": "SUPER SOUND Bugs!",
+      "channelURL": "https://www.youtube.com/@Bugscorporation",
+      "kind": "live-series",
+      "basis": "Hand-reviewed official upload in the catalogue (choi-yu-ree)",
+      "checked": "2026-11-10"
+    },
+    {
+      "channel": "POCLANOS",
+      "channelURL": "https://www.youtube.com/@poclanos",
+      "kind": "label",
+      "basis": "Hand-reviewed official upload in the catalogue (kim-sawol)",
+      "checked": "2026-11-10"
+    },
+    {
+      "channel": "MAGIC STRAWBERRY SOUND",
+      "channelURL": "https://www.youtube.com/@magicstrawberrysound",
+      "kind": "label",
+      "basis": "Hand-reviewed official upload in the catalogue (yebit)",
+      "checked": "2026-11-10"
+    },
+    {
+      "channel": "1theK (원더케이)",
+      "channelURL": "https://www.youtube.com/@1theK",
+      "kind": "distributor",
+      "basis": "Hand-reviewed official upload in the catalogue (yoon-mirae)",
+      "checked": "2026-11-10"
+    },
+    {
+      "channel": "몽베스트",
+      "channelURL": "https://www.youtube.com/@MONTBEST",
+      "kind": "live-series",
+      "basis": "Hand-reviewed official upload in the catalogue (baek-a-amor)",
+      "checked": "2026-11-10"
+    },
+    {
+      "channel": "온스테이지ONSTAGE",
+      "channelURL": "https://www.youtube.com/@official.onstage",
+      "kind": "live-series",
+      "basis": "Hand-reviewed official upload in the catalogue (youra-flicker)",
+      "checked": "2026-11-10"
+    },
+    {
+      "channel": "STONE MUSIC",
+      "channelURL": "https://www.youtube.com/@officialstonemusic",
+      "kind": "label",
+      "basis": "Hand-reviewed official upload in the catalogue (sondia-grown-ups)",
+      "checked": "2026-11-10"
+    }
+  ]
+}

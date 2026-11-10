@@ -170,3 +170,17 @@ export function citedSources({artist, tracks}) {
   for (const {entry} of tracks) urls.push(...backgroundSourcesOf(entry).map(s => s.url), ...(entry.lyricNotes ? [entry.lyricNotes.source.url] : []));
   return [...new Set(urls.filter(Boolean))];
 }
+
+// Official-channel rule, checked against oEmbed data rather than a model's claim: the artist's own
+// channel (its name contains the artist name), the artist's YouTube Topic channel, or a label,
+// distributor, broadcaster or live series recorded in editorial/catalogue/official-channels.json.
+const UNOFFICIAL = /\b(fan|fans|lyrics?|cover|reaction|kpop|k-pop|drama|ost|playlist|archive|sub|subs|8d|nightcore)\b/i;
+export function officialBasis({channel, channelURL}, artistNames, allowlist = []) {
+  const listed = allowlist.find(c => c.channelURL === channelURL);
+  if (listed) return `${listed.kind} channel on the official-channel list (${listed.basis})`;
+  const names = artistNames.map(normalizeName).filter(n => n.length >= 2);
+  const topic = /^(.*) - Topic$/.exec(channel || '');
+  if (topic && names.includes(normalizeName(topic[1]))) return 'the artist’s YouTube Topic channel (official audio)';
+  if (!topic && !UNOFFICIAL.test(channel || '') && names.some(n => normalizeName(channel).includes(n))) return 'the artist’s own channel';
+  return null;
+}

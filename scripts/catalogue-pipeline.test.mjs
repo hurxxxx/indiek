@@ -9,7 +9,7 @@ import {createCatalogue} from './catalogue.mjs';
 import {songPageStatus} from './song-pages.mjs';
 import {mergeCandidates, scoreCandidates, searchDemand, slugify, normalizeName} from './catalogue-pipeline/candidates.mjs';
 import {parseSearchConsoleCSV} from './catalogue-pipeline/context.mjs';
-import {songSlug, assembleEntries, lintEntries, entryHash, gradeMissing, citedSources, appleIds} from './catalogue-pipeline/entries.mjs';
+import {songSlug, assembleEntries, lintEntries, entryHash, gradeMissing, citedSources, appleIds, officialBasis} from './catalogue-pipeline/entries.mjs';
 import {prepareUnit, approval} from './catalogue-pipeline/tracks.mjs';
 import {humanSample, rightsEntry} from './catalogue-pipeline/apply.mjs';
 
@@ -139,7 +139,7 @@ test('lint passes a clean draft and catches invented experience, stock praise, l
   assert.match(issues, /needs a guide tag/);
 });
 
-function fakeDeps({facts = 'approve', editorial = 'approve', playable = new Set(['BBBBBBBBBBB','CCCCCCCCCCC'])} = {}) {
+function fakeDeps({facts = 'approve', editorial = 'approve', playable = new Set(['AAAAAAAAAAA','BBBBBBBBBBB','CCCCCCCCCCC']), channels = {AAAAAAAAAAA:'KDRAMA CLIPS', BBBBBBBBBBB:'Fixture Band 픽스처밴드', CCCCCCCCCCC:'Fixture Band - Topic'}, unreadable = []} = {}) {
   const calls = [];
   const pages = {'https://label.example/band':'Fixture Band was formed in 2023.', 'https://label.example/first':'First Light credits: lyrics by Fixture Band', 'https://label.example/second':'Second Road credits list', 'https://lyrics.example/first':'첫 빛 가사 전체 empty platform'};
   const claims = Object.entries(pages).map(([url, body]) => ({claim:'c', sourceURL:url, evidence:body.slice(0, 20)}));
@@ -152,8 +152,9 @@ function fakeDeps({facts = 'approve', editorial = 'approve', playable = new Set(
     throw new Error(stage);
   };
   return {calls, deps:{root, ask, top:async () => [], images:new Map(), request:async url => ({body:pages[url]}),
+    pages:async urls => Object.fromEntries(urls.map(url => [url, pages[url] && !unreadable.includes(url) ? {ok:true, text:pages[url]} : {ok:false, reason:'HTTP 403'}])),
     release:async ({title}) => release(title, title === 'First Light' ? 1 : 2),
-    oembed:async id => ({channel:id === 'CCCCCCCCCCC' ? 'Fixture Band - Topic' : 'Label Live', channelURL:'https://www.youtube.com/@label', title:'t'}),
+    oembed:async id => ({channel:channels[id], channelURL:`https://www.youtube.com/@${id}`, title:'t'}),
     playback:async ([id]) => ({[id]:playable.has(id) ? video(id, '') : {videoId:id, state:'error', playing:false, code:150, error:'embedding disabled by the owner'}})}};
 }
 const run = async options => {
@@ -170,8 +171,10 @@ test('a unit is approved only after research, real playback, lint and both indep
   assert.deepEqual(calls, ['research','draft','facts','review']);
   assert.ok(saves >= 5, 'state is saved between steps');
   const t1 = result.approved.entries.tracks.find(t => t.key === 't1');
-  assert.equal(t1.entry.videoId, 'BBBBBBBBBBB', 'the embed-blocked first choice is replaced by the next official video');
-  assert.deepEqual(result.videos.t1.tried.map(t => t.state), ['error','playing']);
+  assert.equal(t1.entry.videoId, 'BBBBBBBBBBB', 'an upload on an unconfirmed channel is skipped for the artist’s own channel');
+  assert.deepEqual(result.videos.t1.tried.map(t => t.state), ['channel not confirmed as official','playing']);
+  assert.equal(result.videos.t1.official, 'the artist’s own channel');
+  assert.ok(Object.values(result.pages).every(p => p.ok && !('text' in p)), 'page text is never saved in state');
   assert.equal(result.approved.review.hashes[t1.entry.id], entryHash(result.approved.entries.artist, t1.entry));
   assert.equal(result.approved.review.playback[t1.entry.id].videoId, 'BBBBBBBBBBB');
 });
@@ -183,10 +186,22 @@ test('rejections are recorded, consume the version budget and send fact failures
   assert.match(facts.result.attempts[0].reason, /Debut year unsupported/);
   const editorial = await run({editorial:'reject'});
   assert.deepEqual(editorial.calls, ['research','draft','facts','review','draft','facts','review'], 'an editorial rejection redrafts without new research');
-  const blocked = await run({playable:new Set(['CCCCCCCCCCC'])});
+  const unread = await run({unreadable:['https://label.example/second']});
+  assert.ok(!unread.calls.includes('facts'), 'no review is spent on a draft citing a page the evidence check cannot read');
+  assert.match(unread.result.attempts[0].reason, /Cited page cannot be fetched for verification \(HTTP 403\): https:\/\/label.example\/second/);
+  const blocked = await run({playable:new Set(['AAAAAAAAAAA','CCCCCCCCCCC'])});
   assert.equal(blocked.result.status, 'exhausted');
   assert.ok(!blocked.calls.includes('draft'), 'no draft is written when the primary song has no playable recording');
   assert.match(blocked.result.attempts[0].reason, /Primary song failed deterministic checks/);
+});
+
+test('official channels are decided from oEmbed data: own channel, Topic or a listed label, never a look-alike', () => {
+  const names = ['Say Sue Me', '세이수미'];
+  const listed = [{channelURL:'https://www.youtube.com/@1theK', kind:'distributor', basis:'catalogue'}];
+  assert.equal(officialBasis({channel:'Say Sue Me 세이수미', channelURL:'https://www.youtube.com/@x'}, names), 'the artist’s own channel');
+  assert.equal(officialBasis({channel:'Say Sue Me - Topic', channelURL:'https://www.youtube.com/channel/UC1'}, names), 'the artist’s YouTube Topic channel (official audio)');
+  assert.match(officialBasis({channel:'1theK (원더케이)', channelURL:'https://www.youtube.com/@1theK'}, names, listed), /^distributor channel/);
+  for (const channel of ['KDRAMAHOLIC. ID', 'Say Sue Me Fans', 'say sue me lyrics', 'Other Band - Topic', '1theK (원더케이)']) assert.equal(officialBasis({channel, channelURL:'https://www.youtube.com/@fake'}, names, listed), null, channel);
 });
 
 test('approval requires both reviews, every grade and evidence for each cited page', () => {
