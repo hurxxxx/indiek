@@ -40,6 +40,14 @@ test('release links use the English Apple Music storefront and recordings match 
   assert.equal(new Set(videos).size, videos.length, 'Two songs use the same recording');
 });
 
+test('no two songs share a cover, so artist pages, guides and similar-song lists never repeat one', () => {
+  const seen = new Map();
+  for (const track of source.tracks) {
+    assert.ok(!seen.has(track.image), `${track.id} and ${seen.get(track.image)} share ${track.image}; choose a song from another release`);
+    seen.set(track.image, track.id);
+  }
+});
+
 test('lyric notes explain rather than reproduce lyrics; adaptations are explicitly requested and recorded', () => {
   const research = readdirSync(path.join(root, 'editorial/research')).map(f => readFileSync(path.join(root, 'editorial/research', f), 'utf8')).join('\n');
   for (const track of tracks.filter(t => t.lyricNotes)) {

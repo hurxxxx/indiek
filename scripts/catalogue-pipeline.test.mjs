@@ -9,7 +9,7 @@ import {createCatalogue} from './catalogue.mjs';
 import {songPageStatus} from './song-pages.mjs';
 import {mergeCandidates, scoreCandidates, searchDemand, slugify, normalizeName} from './catalogue-pipeline/candidates.mjs';
 import {parseSearchConsoleCSV} from './catalogue-pipeline/context.mjs';
-import {songSlug, assembleEntries, lintEntries, entryHash, gradeMissing, citedSources, appleIds, officialBasis, formatConfirmed} from './catalogue-pipeline/entries.mjs';
+import {songSlug, assembleEntries, lintEntries, entryHash, gradeMissing, citedSources, appleIds, officialBasis, formatConfirmed, lookupRelease} from './catalogue-pipeline/entries.mjs';
 import {prepareUnit, approval} from './catalogue-pipeline/tracks.mjs';
 import {humanSample, rightsEntry} from './catalogue-pipeline/apply.mjs';
 
@@ -35,18 +35,18 @@ const sig = (type, url, linkedArtistId = '') => ({type, url, publisher:'P', deta
 test('lens results merge by English or Korean name, skip existing artists and never double-count a page', () => {
   const catalogue = createCatalogue(source());
   const merged = mergeCandidates([
-    lens('band-scene', [cand('Silica Gel', '실리카겔', [sig('scene','https://a.example/1','se-so-neon'), sig('community','https://r.example/1')]), cand('HANRORO', '한로로', [sig('chart','https://c.example')])]),
-    lens('recognition', [cand('SILICAGEL', '실리카겔', [sig('recognition','https://kma.example/1'), sig('community','https://r.example/1'), sig('scene','https://x.example','not-an-artist')])]),
+    lens('band-scene', [cand('Glass Tide', '유리파도', [sig('scene','https://a.example/1','se-so-neon'), sig('community','https://r.example/1')]), cand('HANRORO', '한로로', [sig('chart','https://c.example')])]),
+    lens('recognition', [cand('GLASSTIDE', '유리파도', [sig('recognition','https://kma.example/1'), sig('community','https://r.example/1'), sig('scene','https://x.example','not-an-artist')])]),
   ], catalogue);
-  assert.deepEqual(merged.map(c => c.id), ['silica-gel']);
+  assert.deepEqual(merged.map(c => c.id), ['glass-tide']);
   const [c] = merged;
   assert.deepEqual(c.lenses, ['band-scene','recognition']);
-  assert.deepEqual(c.aliases, ['SILICAGEL']);
+  assert.deepEqual(c.aliases, ['GLASSTIDE']);
   assert.equal(c.signals.filter(s => s.url === 'https://r.example/1').length, 1);
   assert.equal(c.signals.find(s => s.url === 'https://a.example/1').linkedArtistId, 'se-so-neon');
   assert.equal(c.signals.find(s => s.url === 'https://x.example').linkedArtistId, undefined, 'unknown catalogue IDs are dropped');
   // An existing candidate keeps its status and ID when the lenses run again.
-  const again = mergeCandidates([lens('band-scene', [cand('Silica Gel', '실리카겔')])], catalogue, [{...c, status:'approved', batch:'b1'}]);
+  const again = mergeCandidates([lens('band-scene', [cand('Glass Tide', '유리파도')])], catalogue, [{...c, status:'approved', batch:'b1'}]);
   assert.equal(again[0].status, 'approved');
   assert.equal(again.length, 1);
 });
@@ -111,17 +111,33 @@ const assembled = (d = draft()) => {
   return {unit, entries:assembleEntries({unit, dossier:dossier(), draft:d, releases:{t1:release('First Light', 1), t2:release('Second Road', 2)}, videos:{t1:video('AAAAAAAAAAA','Label Live'), t2:video('CCCCCCCCCCC','Fixture Band - Topic','music-video')}, existingArtists:source().artists, day:'2026-11-10'})};
 };
 
+test('the release date is the date of the release that carries the song, as a Korean day', async () => {
+  const song = {wrapperType:'track', kind:'song', trackId:2, collectionId:9, trackName:'Old Town', artistName:'Say Sue Me', collectionName:'Where We Were Together', collectionViewUrl:'https://music.apple.com/us/album/where-we-were-together/9?i=2&uo=4', releaseDate:'2018-02-09T12:00:00Z', trackTimeMillis:200000, artworkUrl100:'https://is1-ssl.mzstatic.com/image/thumb/a/100x100bb.jpg'};
+  const collection = {wrapperType:'collection', collectionId:9, releaseDate:'2018-04-12T15:00:00Z'};
+  const requested = [];
+  const fetcher = async url => { requested.push(url); return {ok:true, json:async () => ({results:url.includes('id=2&') ? [song] : [collection, song]})}; };
+  const result = await lookupRelease({url:'https://music.apple.com/us/album/where-we-were-together/9?i=2', title:'Old Town', artistName:'Say Sue Me'}, fetcher);
+  assert.equal(result.releaseDate, '2018-04-13', 'the album date, not the earlier single, in Korean time');
+  assert.equal(result.trackReleaseDate, '2018-02-09');
+  assert.equal(requested.length, 2, 'a song lookup is followed by its collection');
+});
+
 test('identity, release and recording fields come from checked data, not from the draft', () => {
   const {entries} = assembled();
   const [a, b] = entries.tracks.map(t => t.entry);
   assert.equal(entries.artist.primaryTrackId, 'fixture-band-first-light');
   assert.deepEqual(entries.artist.editorial, {author:'indiek', updated:'2026-11-10'});
   assert.equal(a.slug, 'first-light');
-  assert.equal(a.release, 'First Light — Single');
+  assert.equal(a.release, 'First Light - Single', 'the release keeps the exact Apple Music name');
   assert.equal(a.source, 'https://music.apple.com/us/album/first-light-single/101');
   assert.equal(a.duration, '03:35');
   assert.equal(a.genre, 'INDIE ROCK');
   assert.deepEqual(a.featuredArtistIds, ['hanroro']);
+  assert.equal(a.sourceName, 'Fixture Band — First Light - Single on Apple Music');
+  const solo = dossier(); solo.tracks[0].featuredArtists = ['So!YoON!'];
+  const one = unitFor(); one.tracks = [{key:'t1', index:0, role:'primary', grade:'A'}];
+  const guest = assembleEntries({unit:one, dossier:solo, draft:draft(), releases:{t1:release('First Light', 1)}, videos:{t1:video('AAAAAAAAAAA','Label Live')}, existingArtists:source().artists, day:'2026-11-10'});
+  assert.equal(guest.tracks[0].entry.featuredArtistIds, undefined, 'a solo name listed among a band’s aliases does not link the band');
   assert.equal(a.koreanTitle, '첫 빛');
   assert.equal(b.videoType, 'audio', 'a Topic channel is always official audio');
   assert.equal(b.lyricNotes, undefined, 'grade B drops empty lyric notes');
@@ -146,7 +162,7 @@ test('lint passes a clean draft and catches invented experience, stock praise, l
   assert.match(issues, /needs a guide tag/);
 });
 
-function fakeDeps({facts = 'approve', editorial = 'approve', playable = new Set(['AAAAAAAAAAA','BBBBBBBBBBB','CCCCCCCCCCC']), channels = {AAAAAAAAAAA:'KDRAMA CLIPS', BBBBBBBBBBB:'Fixture Band 픽스처밴드', CCCCCCCCCCC:'Fixture Band - Topic'}, unreadable = []} = {}) {
+function fakeDeps({facts = 'approve', editorial = 'approve', playable = new Set(['AAAAAAAAAAA','BBBBBBBBBBB','CCCCCCCCCCC']), channels = {AAAAAAAAAAA:'KDRAMA CLIPS', BBBBBBBBBBB:'Fixture Band 픽스처밴드', CCCCCCCCCCC:'Fixture Band - Topic'}, unreadable = [], sameCover = false} = {}) {
   const calls = [];
   const pages = {'https://label.example/band':'Fixture Band was formed in 2023.', 'https://label.example/first':'First Light credits: lyrics by Fixture Band', 'https://label.example/second':'Second Road credits list', 'https://lyrics.example/first':'첫 빛 가사 전체 empty platform'};
   const claims = Object.entries(pages).map(([url, body]) => ({claim:'c', sourceURL:url, evidence:body.slice(0, 20)}));
@@ -160,15 +176,15 @@ function fakeDeps({facts = 'approve', editorial = 'approve', playable = new Set(
   };
   return {calls, deps:{root, ask, top:async () => [], images:new Map(), request:async url => ({body:pages[url]}),
     pages:async urls => Object.fromEntries(urls.map(url => [url, pages[url] && !unreadable.includes(url) ? {ok:true, text:pages[url]} : {ok:false, reason:'HTTP 403'}])),
-    release:async ({title}) => release(title, title === 'First Light' ? 1 : 2),
+    release:async ({title}) => ({...release(title, title === 'First Light' ? 1 : 2), ...(sameCover ? {artwork:release(title, 1).artwork} : {})}),
     oembed:async id => ({channel:channels[id], channelURL:`https://www.youtube.com/@${id}`, title:`${id} (Live)`}),
     playback:async ([id]) => ({[id]:playable.has(id) ? video(id, '') : {videoId:id, state:'error', playing:false, code:150, error:'embedding disabled by the owner'}})}};
 }
-const run = async options => {
+const run = async ({versions = 2, ...options} = {}) => {
   const {calls, deps} = fakeDeps(options);
   const state = {artistId:'fixture-band'};
   let saves = 0;
-  const result = await prepareUnit({unit:unitFor(), state, save:() => saves++, config:{...config, maxVersionsPerTrack:2}, deps, source:source(), catalogue:source(), skill:'skill', revision:'rev', searchRows:[], deadline:Date.now() + 60000});
+  const result = await prepareUnit({unit:unitFor(), state, save:() => saves++, config:{...config, maxVersionsPerTrack:versions}, deps, source:source(), catalogue:source(), skill:'skill', revision:'rev', searchRows:[], deadline:Date.now() + 60000});
   return {result, calls, saves};
 };
 
@@ -186,16 +202,20 @@ test('a unit is approved only after research, real playback, lint and both indep
   assert.equal(result.approved.review.playback[t1.entry.id].videoId, 'BBBBBBBBBBB');
 });
 
-test('rejections are recorded, consume the version budget and send fact failures back to research', async () => {
-  const facts = await run({facts:'reject'});
+test('rejections are recorded, consume the version budget and send repeated fact failures back to research', async () => {
+  const facts = await run({facts:'reject', versions:3});
   assert.equal(facts.result.status, 'exhausted');
-  assert.deepEqual(facts.calls, ['research','draft','facts','review','research','draft','facts','review']);
+  assert.deepEqual(facts.calls, ['research','draft','facts','review','draft','facts','review','research','draft','facts','review'], 'a first fact rejection redrafts; a second in a row researches again');
   assert.match(facts.result.attempts[0].reason, /Debut year unsupported/);
   const editorial = await run({editorial:'reject'});
   assert.deepEqual(editorial.calls, ['research','draft','facts','review','draft','facts','review'], 'an editorial rejection redrafts without new research');
   const unread = await run({unreadable:['https://label.example/second']});
   assert.ok(!unread.calls.includes('facts'), 'no review is spent on a draft citing a page the evidence check cannot read');
   assert.match(unread.result.attempts[0].reason, /Cited page cannot be fetched for verification \(HTTP 403\): https:\/\/label.example\/second/);
+  const shared = await run({sameCover:true});
+  assert.equal(shared.result.status, 'approved');
+  assert.deepEqual(shared.result.approved.entries.tracks.map(t => t.key), ['t1'], 'a second song from the same release is not added');
+  assert.match(shared.result.attempts[0].skipped[0], /Second Road: shares its release cover/);
   const blocked = await run({playable:new Set(['AAAAAAAAAAA','CCCCCCCCCCC'])});
   assert.equal(blocked.result.status, 'exhausted');
   assert.ok(!blocked.calls.includes('draft'), 'no draft is written when the primary song has no playable recording');
@@ -337,7 +357,7 @@ test('apply writes the reviewed entries, artwork rights, ledger and candidate st
       assert.equal(ledgerOut.tracks[id].contentHash, entryHash(data.artists.find(a => a.id === 'fixture-band'), track));
       assert.equal(ledgerOut.tracks[id].playback.state, 'playing');
     }
-    assert.equal(Object.values(ledgerOut.tracks).filter(t => t.humanSample).length, 1);
+    assert.equal(Object.values(ledgerOut.tracks).filter(t => t.batch === 'b1' && t.humanSample).length, 1);
     const rights = JSON.parse(readFileSync(path.join(dir, 'content/image-rights.json'), 'utf8')).images;
     assert.equal(rights.filter(i => i.file.startsWith('fixture-band-')).length, 2);
     assert.equal(downloads.length, 2);

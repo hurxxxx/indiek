@@ -110,7 +110,7 @@ async function run() {
       throw new Error('Usage: candidates research [lens…] | enrich [--force] | score | import-search <file.csv> [source] [period]');
     }
     if(command==='approve')return approve(args[0],args.slice(1));
-    if(command==='prepare')return void await prepareTracks({root,state,config,files,batch:args[0],only:args.slice(1)});
+    if(command==='prepare'){const rest=args.filter(a=>a!=='--retry');return void await prepareTracks({root,state,config,files,batch:rest[0],only:rest.slice(1),retry:args.includes('--retry')});}
     if(command==='apply')return void await applyApproved({root,state,config,files,batch:args[0]});
     if(command==='review'){const result=await reviewExisting({root,config,files,trackId:args[0]});console.log(JSON.stringify(result,null,2));if(!result.approved)process.exitCode=1;return;}
     if(command==='sample'){
@@ -120,7 +120,7 @@ async function run() {
       ledger.tracks[id].humanReview={status,date:day,by:'user',...(note.length?{note:note.join(' ')}:{})};
       write(files.ledger,ledger);console.log(`${id}: ${status}`);return;
     }
-    throw new Error('Commands: status, candidates …, approve <batch> <id…>, prepare <batch> [artist-id…], apply <batch>, review <track-id>, sample <track-id> approved|changes-requested [note]');
+    throw new Error('Commands: status, candidates …, approve <batch> <id…>, prepare <batch> [artist-id…] [--retry], apply <batch>, review <track-id>, sample <track-id> approved|changes-requested [note]');
   });
 }
 run().catch(error=>{console.error(error.message);process.exitCode=1;});

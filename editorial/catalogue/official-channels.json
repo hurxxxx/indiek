@@ -63,6 +63,20 @@
       "kind": "label",
       "basis": "Hand-reviewed official upload in the catalogue (sondia-grown-ups)",
       "checked": "2026-11-10"
+    },
+    {
+      "channel": "Damnably",
+      "channelURL": "https://www.youtube.com/@Damnably",
+      "kind": "label",
+      "basis": "UK label of Say Sue Me (Koreana interview, 2024); damnably.com links youtube.com/c/damnably, which resolves to this channel",
+      "checked": "2026-11-11"
+    },
+    {
+      "channel": "KEXP",
+      "channelURL": "https://www.youtube.com/@kexp",
+      "kind": "live-series",
+      "basis": "Channel of KEXP, the Seattle public radio station, for its in-studio sessions (\"Live on KEXP\"); the channel links kexp.org",
+      "checked": "2026-11-11"
     }
   ]
 }

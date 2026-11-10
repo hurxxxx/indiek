@@ -79,7 +79,9 @@ const searchTrackName = track => track.track.replace(/\s*\(feat\.[^)]*\)/i, '');
 // Search titles follow observed queries ("<artist> <song> lyrics meaning"); share cards keep their shorter title.
 function artistSearchMeta(r, tracks) {
   const korean = r.korean && r.korean !== r.artist ? ` (${r.korean})` : '';
-  const named = tracks.slice(0, 2).map(track => `“${searchTrackName(track)}”`).join(', ');
+  // Only songs with lyric notes (or an adaptation) are named before "lyrics meaning"; grade B songs have none.
+  const explained = tracks.filter(track => track.lyricNotes?.paragraphs?.length || track.lyricNotes?.translation);
+  const named = (explained.length ? explained : tracks).slice(0, 2).map(track => `“${searchTrackName(track)}”`).join(', ');
   const adaptation = tracks.some(track => track.lyricNotes?.translation && !track.lyricNotes.paragraphs?.length);
   const more = tracks.length - 1;
   return {

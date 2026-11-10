@@ -44,6 +44,8 @@ export function appleIds(url) {
   return null;
 }
 
+const koreanDate = iso => iso ? new Date(Date.parse(iso) + 9 * 3600000).toISOString().slice(0, 10) : undefined;
+
 // Confirms an English Apple Music page for this exact song through the public iTunes lookup API.
 export async function lookupRelease({url, title, artistName}, fetcher = fetch) {
   const ids = appleIds(url);
@@ -53,15 +55,19 @@ export async function lookupRelease({url, title, artistName}, fetcher = fetch) {
     if (!response.ok) throw new Error(`iTunes ${response.status}`);
     return (await response.json()).results || [];
   };
-  const songs = (await lookup(ids.song || ids.album)).filter(r => r.wrapperType === 'track' && r.kind === 'song');
+  const results = await lookup(ids.song || ids.album);
+  const songs = results.filter(r => r.wrapperType === 'track' && r.kind === 'song');
   const wanted = normalizeName(songSlug(title));
   const song = songs.find(r => String(r.trackId) === ids.song) || songs.find(r => normalizeName(songSlug(r.trackName)) === wanted);
   if (!song) return {ok:false, reason:`Apple Music (US) has no song matching “${title}” at ${url}`};
   const names = [artistName].flat().map(normalizeName);
   if (!names.some(n => normalizeName(song.artistName).includes(n))) return {ok:false, reason:`Apple Music credits ${song.artistName}, not ${[artistName].flat().join(' / ')}`};
   const collectionURL = song.collectionViewUrl.replace(/\?.*$/, '');
+  // A track's own date is when the song first appeared (often an earlier single); the entry names
+  // the release that carries it, so its date is the collection's, as a Korean calendar day.
+  const collection = results.find(r => r.wrapperType === 'collection' && r.collectionId === song.collectionId) || (await lookup(song.collectionId)).find(r => r.wrapperType === 'collection');
   return {ok:true, trackName:song.trackName, artistName:song.artistName, collectionName:song.collectionName, collectionURL:collectionURL.replace(/\/album\/[^/]+\//, `/album/${slugify(song.collectionName) || 'album'}/`),
-    releaseDate:song.releaseDate?.slice(0, 10), durationSeconds:Math.round((song.trackTimeMillis || 0) / 1000), artwork:song.artworkUrl100?.replace(/\/\d+x\d+bb\.jpg$/, '/1200x1200bb.jpg'), checkedAt:new Date().toISOString()};
+    releaseDate:koreanDate(collection?.releaseDate || song.releaseDate), trackReleaseDate:koreanDate(song.releaseDate), durationSeconds:Math.round((song.trackTimeMillis || 0) / 1000), artwork:song.artworkUrl100?.replace(/\/\d+x\d+bb\.jpg$/, '/1200x1200bb.jpg'), checkedAt:new Date().toISOString()};
 }
 
 const dayDiff = (a, b) => Math.abs(Date.parse(a) - Date.parse(b)) / 86400000;
@@ -77,18 +83,20 @@ export function assembleEntries({unit, dossier, draft, releases, videos, existin
     const date = /^\d{4}-\d{2}-\d{2}$/.test(research.releaseDate) && dayDiff(research.releaseDate, release.releaseDate) <= 1 ? research.releaseDate : release.releaseDate;
     let image = `${unit.artistId}-${slugify(album)}.jpg`;
     for (let n = 2; images.has(image) && images.get(image) !== release.artwork; n++) image = `${unit.artistId}-${slugify(album)}-${n}.jpg`;
-    const featured = (research.featuredArtists || []).map(name => existingArtists.find(a => [a.artist, a.korean, ...(a.aliases || '').split(/\s+/)].map(normalizeName).includes(normalizeName(name)))?.id).filter(id => id && id !== unit.artistId);
+    // Guests link by an artist's own English or Korean name only: aliases also hold member and solo
+    // names (So!YoON! is listed under SE SO NEON), and a solo feature is not the band's.
+    const featured = (research.featuredArtists || []).map(name => existingArtists.find(a => [a.artist, a.korean].map(normalizeName).includes(normalizeName(name)))?.id).filter(id => id && id !== unit.artistId);
     const videoType = / - Topic$/.test(video.channel) ? 'audio' : video.videoType;
     const entry = {
       id:trackId(unit.artistId, title), artistId:unit.artistId, slug:songSlug(title),
       ...(featured.length ? {featuredArtistIds:[...new Set(featured)]} : {}),
-      album, release:release.collectionName.replace(/\s+-\s+(Single|EP)$/i, ' — $1'), year:date.slice(0, 4), releaseDate:date,
+      album, release:release.collectionName, year:date.slice(0, 4), releaseDate:date,
       genre:text.genre?.trim().toUpperCase() || '', image, track:title,
       ...(hangul(research.korean) && normalizeName(research.korean) !== normalizeName(title) ? {koreanTitle:research.korean.trim()} : {}),
       duration:formatDuration(video.duration || release.durationSeconds), provider:'youtube', videoId:video.videoId, channel:video.channel,
       url:`https://www.youtube.com/watch?v=${video.videoId}`, videoType,
       note:text.note?.trim() || '', description:text.description?.trim() || '',
-      source:release.collectionURL, sourceName:`${release.artistName} — ${album} on Apple Music`, sourceLanguage:'English',
+      source:release.collectionURL, sourceName:`${release.artistName} — ${release.collectionName} on Apple Music`, sourceLanguage:'English',
       extraSources:uniqueSources(text.extraSources || []), guideTags:[...new Set(text.guideTags || [])],
       listeningNote:text.listeningNote?.trim() || '', credits:text.credits?.trim() || '',
     };
