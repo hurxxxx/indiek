@@ -1,6 +1,6 @@
 # 홍보 기록
 
-날짜 기준: Asia/Seoul. 마지막 갱신: 2026-11-09.
+날짜 기준: Asia/Seoul. 마지막 갱신: 2026-11-10.
 
 대상: [indiek.com](https://indiek.com). 한국 뮤지션을 해외에 소개하는 음악 큐레이션 사이트이며, 인디에만 한정하지 않는다. 공개 홍보에서는 팬사이트·비영리를 강조하거나 비상업 운영을 계속 약속하지 않는다. 음악·K-pop 등 직접 관련된 커뮤니티에만 공유한다. 사이드 프로젝트·창업·메이커 커뮤니티는 제외한다.
 
@@ -1654,3 +1654,18 @@ https://indiek.com/artists/sunwoojunga/?from=instagram
 - 확인 못 한 것: Threads API 문서에는 본문 `@handle`이 실제 언급으로 연결된다는 설명이 없다. 첫 태그 게시물을 앱에서 확인한다.
 - 검증: 로컬 `npm run build && npm run check` 통과. 캐러셀 연결 후 테스트 267개, 60페이지다. 실제 API 호출·게시는 하지 않았다.
 - 후속: 서버 반영 절차는 [배포 문서](../deploy/README.md#sns-자동-게시)의 새 항목과 이 세션의 반영 계획을 따른다. Reddit 초안과 연락 초안은 1월 이후 작업이다.
+
+## G019 · Threads 답글 권한 재승인과 프로필 AI 안내
+
+- 작업일: 2026-11-10 KST. 사용자 요청("직접 해봐", bio 문구 "이대로 추가해")으로 Claude in Chrome에서 진행했다. 게시·답글 전송은 하지 않았다.
+- Meta 앱(indiek publishing)의 Threads 이용 사례에 `threads_read_replies`·`threads_manage_replies`·`threads_manage_mentions`·`threads_keyword_search`를 추가했다. 네 개 모두 `테스트 준비 완료`다. 앱 심사는 제출하지 않았다.
+- 토큰:
+  - 대시보드의 사용자 토큰 생성기로 indiekdotcom 장기 토큰을 새로 받았다. 승인 팝업 허용과 토큰 복사는 사용자가 했다.
+  - 토큰은 클립보드에서 표준 입력으로 자동화 서버에 넘겼다. 저장 전에 계정·사용자 ID 일치를 확인했고 기존 인증 파일은 `credentials.json.bak-20261110`(0600)으로 백업했다. Instagram·Matomo 항목은 유지했다.
+  - `debug_token` 결과: 유효, 만료 `2027-01-09T04:03:43Z`. 권한은 `threads_basic`·`threads_content_publish`·`threads_read_replies`·`threads_manage_replies`·`threads_manage_insights`다.
+  - 생성기는 정해진 권한 묶음만 요청해 언급·검색 권한이 빠졌다. 요청하지 않은 인사이트(읽기 전용)가 포함됐다.
+- 프로필: Threads 소개란 끝에 `Replies are drafted with AI.`를 추가했다. 기존 문장은 유지했다.
+- 확인: `check`에서 Threads·Instagram 모두 정상(게시물 조회 27·25)이었다. `engage check` 결과는 자기 글 답글 가능, 언급·검색·외부 답글 불가, AI 안내 확인, 답글 한도 0/1000, 전송 없음이다.
+- 시작: 사용자 요청("지금 시작해")으로 같은 날 `engage resume go-live`를 실행해 상태가 `running`이 됐다. 첫 자동 점검은 17:30 KST이며 이후 매일 09:30·13:30·17:30·21:30 KST다. 자기 글 댓글에만 답하고 외부 답글은 권한이 없어 대기열도 비어 있다.
+- 후속:
+  - 언급·검색 권한은 리디렉션 URL을 등록한 직접 OAuth 승인으로 받아야 한다. 앱 심사 전에는 테스터와 indiek 글만 돌려주므로 심사 준비와 함께 진행한다.

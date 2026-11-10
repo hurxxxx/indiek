@@ -116,7 +116,7 @@ npm run promotion -- story-now yerin-0310
 - **중단**: API 오류·제한, 결과가 불확실한 전송, 숨겨지거나 삭제된 indiek 답글(신고·제한 신호), 한도 초과 중 하나라도 생기면 상태를 `중지`로 바꾸고 원인을 기록한다. 재개는 원인 코드를 남기는 `engage resume CAUSE`로만 하며 불확실한 전송이 남아 있으면 거부한다.
 - **시작 조건**: 처음 설치하면 `not-started` 중지 상태다. 권한이 없으면 하루 한 번 `권한 없음`만 기록하고, Threads 소개글(bio)에 `AI`가 없으면 답글을 쓰지 않는다.
 
-필요한 Threads 권한은 아래와 같다. 현재 토큰은 `threads_basic`·`threads_content_publish`만 받았다(2026-10-19).
+필요한 Threads 권한은 아래와 같다. 2026-11-10 재발급 토큰은 답글 읽기·쓰기와 `threads_manage_insights`를 받았고 언급·검색은 없다. 대시보드 토큰 생성기는 정해진 권한 묶음만 요청하므로 언급·검색은 리디렉션 URL을 등록한 직접 OAuth 승인으로 받는다. Threads 소개란에는 `Replies are drafted with AI.`를 넣었다.
 
 | 기능 | 권한 |
 | --- | --- |
