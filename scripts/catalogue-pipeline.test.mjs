@@ -297,3 +297,44 @@ test('a new grade B artist builds through every public output and the page check
     assert.throws(() => execFileSync('python3', ['scripts/check.py'], {cwd:dir, stdio:'pipe'}), /Missing lyric commentary or grade B details: fixture-band-second-road/);
   } finally { rmSync(dir, {recursive:true, force:true}); }
 });
+
+test('apply writes the reviewed entries, artwork rights, ledger and candidate status, and refuses drifted content', async () => {
+  const {applyApproved} = await import('./catalogue-pipeline/apply.mjs');
+  const dir = mkdtempSync(path.join(tmpdir(), 'indiek-apply-'));
+  try {
+    for (const folder of ['content','editorial/catalogue']) cpSync(path.join(root, folder), path.join(dir, folder), {recursive:true});
+    mkdirSync(path.join(dir, 'dist/assets'), {recursive:true});
+    const files = {candidates:path.join(dir, 'editorial/catalogue/candidates.json'), ledger:path.join(dir, 'editorial/catalogue/ledger.json')};
+    writeFileSync(files.candidates, JSON.stringify({candidates:[{id:'fixture-band', name:'Fixture Band', status:'approved', batch:'b1', approved:{date:'2026-11-10', by:'user'}, score:50, rank:1, signals:[sig('community','https://r.example')]}]}));
+    const {result} = await run();
+    const state = path.join(dir, 'state');
+    mkdirSync(path.join(state, 'batches'), {recursive:true});
+    const batch = {batch:'b1', units:{'fixture-band':{artistId:'fixture-band', status:'approved', approved:result.approved}}};
+    writeFileSync(path.join(state, 'batches/b1.json'), JSON.stringify(batch));
+    const downloads = [];
+    const deps = {playback:async ids => Object.fromEntries(ids.map(id => [id, video(id, '')])), download:async (url, file) => { downloads.push(url); writeFileSync(file, 'jpg'); }, images:() => {}};
+    // An entry edited after its review is refused before anything is written.
+    const drifted = structuredClone(batch);
+    drifted.units['fixture-band'].approved.entries.tracks[0].entry.note = 'Edited after review.';
+    writeFileSync(path.join(state, 'batches/b1.json'), JSON.stringify(drifted));
+    await assert.rejects(applyApproved({root:dir, state, config, files, batch:'b1', deps}), /fixture-band-first-light changed after review/);
+    assert.equal(readFileSync(path.join(dir, 'content/catalogue.json'), 'utf8'), readFileSync(path.join(root, 'content/catalogue.json'), 'utf8'));
+    writeFileSync(path.join(state, 'batches/b1.json'), JSON.stringify(batch));
+    const out = await applyApproved({root:dir, state, config, files, batch:'b1', deps});
+    assert.deepEqual(out.added, ['fixture-band-first-light','fixture-band-second-road']);
+    const data = JSON.parse(readFileSync(path.join(dir, 'content/catalogue.json'), 'utf8'));
+    assert.ok(data.artists.some(a => a.id === 'fixture-band' && a.primaryTrackId === 'fixture-band-first-light'));
+    const ledgerOut = JSON.parse(readFileSync(files.ledger, 'utf8'));
+    for (const id of out.added) {
+      const track = data.tracks.find(t => t.id === id);
+      assert.equal(ledgerOut.tracks[id].contentHash, entryHash(data.artists.find(a => a.id === 'fixture-band'), track));
+      assert.equal(ledgerOut.tracks[id].playback.state, 'playing');
+    }
+    assert.equal(Object.values(ledgerOut.tracks).filter(t => t.humanSample).length, 1);
+    const rights = JSON.parse(readFileSync(path.join(dir, 'content/image-rights.json'), 'utf8')).images;
+    assert.equal(rights.filter(i => i.file.startsWith('fixture-band-')).length, 2);
+    assert.equal(downloads.length, 2);
+    assert.equal(JSON.parse(readFileSync(files.candidates, 'utf8')).candidates[0].status, 'added');
+    await assert.rejects(applyApproved({root:dir, state, config, files, batch:'b1', deps}), /Nothing approved in b1/, 'applied units are not applied twice');
+  } finally { rmSync(dir, {recursive:true, force:true}); }
+});

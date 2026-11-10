@@ -42,6 +42,7 @@ export async function applyApproved({root, state, config, files, batch, deps = {
     writeFileSync(file, Buffer.from(await response.arrayBuffer()));
   });
   const added = [];
+  // Every unit is validated before anything is downloaded or written.
   for (const unit of ready) {
     const {entries, review} = unit.approved;
     const candidate = candidatesData.candidates.find(c => c.id === unit.artistId);
@@ -51,6 +52,10 @@ export async function applyApproved({root, state, config, files, batch, deps = {
       if (source.tracks.some(x => x.id === t.entry.id)) throw new Error(`Track ${t.entry.id} already exists`);
       if (review.hashes[t.entry.id] !== entryHash(entries.artist, t.entry)) throw new Error(`${t.entry.id} changed after review`);
     }
+  }
+  for (const unit of ready) {
+    const {entries, review} = unit.approved;
+    const candidate = candidatesData.candidates.find(c => c.id === unit.artistId);
     // Playback is checked again right before the entry enters the catalogue.
     const fresh = await playback(entries.tracks.map(t => t.entry.videoId), config.playback);
     const failed = entries.tracks.filter(t => !fresh[t.entry.videoId]?.playing);

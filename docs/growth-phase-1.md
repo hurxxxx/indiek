@@ -56,6 +56,8 @@
 - 후보 선정은 수요 기준으로 한다. Search Console 검색어, 스트리밍 인기곡, 해외 커뮤니티 추천, OST 참여, 밴드 씬 연결을 점수화해 200명 후보 목록을 만든다.
 - 매거진 발행기와 같은 방식으로 자동화한다: 공식 출처 조사 → 공식 영상 탐색과 실제 플레이어 재생 확인 → 초안 → 독립 검수. 사람은 표본 10~20%를 확인한다. 처리량 목표는 주 30곡.
 - [콘텐츠 변경 체크리스트](../AGENTS.md#콘텐츠-변경-시-함께-확인)의 확인 항목을 빌드·테스트 자동 검사로 옮겨, 곡 수가 늘어도 사람이 모든 위치를 손으로 보지 않게 한다.
+- 상태(2026-11-10): v1 파이프라인 `npm run catalogue`를 만들었다([README](../README.md#catalogue-expansion)). 후보는 7개 조사 관점(해외 커뮤니티·OST·밴드 씬·기존 아티스트 연결·수상·스트리밍 인기·R&B/포크)과 Deezer 팬 수·영문 Apple Music 확인·Search Console 검색어로 점수화해 `editorial/catalogue/candidates.md`에 둔다. 곡마다 공식 출처 조사 → Apple Music(US) 조회 → 공식 채널 규칙(oEmbed)과 사이트 임베드의 실제 재생 확인 → 초안 → 자동 lint → 사실·편집 독립 검수를 거치고, 반영 기록(`editorial/catalogue/ledger.json`)과 다른 내용은 `npm run check`에서 실패한다. 체크리스트의 기계 확인 항목은 `scripts/check.py`·`scripts/catalogue-checklist.test.mjs`로 옮겼다. 시험 실행에서 아티스트 1팀(2곡)에 약 6.5분(조사 2.5분, 초안·검수 각 1분 안팎, 재작성 1회)이 걸렸다. 기존 23곡의 영상은 모두 실제 임베드 재생을 통과했다(국내 접속 기준).
+- 실행 일정 제안(미적용, 승인 대기): 자동화 서버에서 매일 22:30 KST `prepare <승인 배치>`(4시간 한도, 매거진 03:00·Search Console 04:20 전에 종료), 매달 1일 후보 갱신(`candidates research --pass N` → `enrich` → `score`). 반영(`apply`)·빌드·검사·표본 확인·커밋·배포는 주 1회 사용자 승인 후 진행한다. 서버에는 헤드리스 Chrome/Chromium(`INDIEK_CHROME`)이 필요하다. 주 30곡은 아티스트 15팀(2곡씩) 기준 약 2시간의 Codex 실행 분량이다.
 
 ### W4. 검색 수요 허브 (6~20주)
 
