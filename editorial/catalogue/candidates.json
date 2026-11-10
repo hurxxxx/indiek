@@ -833,7 +833,7 @@
         }
       ],
       "officialURL": "https://www.saysueme.com/",
-      "status": "proposed",
+      "status": "added",
       "deezer": {
         "id": 8474636,
         "name": "Say Sue Me",
@@ -867,7 +867,18 @@
       "score": 45,
       "blockers": [],
       "rank": 8,
-      "notes": []
+      "notes": [],
+      "batch": "batch-1",
+      "approved": {
+        "date": "2026-11-11",
+        "by": "user"
+      },
+      "added": {
+        "date": "2026-11-11",
+        "trackIds": [
+          "say-sue-me-old-town"
+        ]
+      }
     },
     {
       "id": "tabber",
@@ -2116,7 +2127,7 @@
         }
       ],
       "officialURL": "",
-      "status": "proposed",
+      "status": "added",
       "deezer": {
         "id": 1090601,
         "name": "Silica Gel",
@@ -2150,7 +2161,19 @@
       "score": 38.9,
       "blockers": [],
       "rank": 22,
-      "notes": []
+      "notes": [],
+      "batch": "batch-1",
+      "approved": {
+        "date": "2026-11-11",
+        "by": "user"
+      },
+      "added": {
+        "date": "2026-11-11",
+        "trackIds": [
+          "silica-gel-no-pain",
+          "silica-gel-tik-tak-tok"
+        ]
+      }
     },
     {
       "id": "jooyoung",
@@ -4024,7 +4047,7 @@
         }
       ],
       "officialURL": "",
-      "status": "proposed",
+      "status": "added",
       "deezer": {
         "id": 83542562,
         "name": "Meaningful Stone",
@@ -4058,7 +4081,19 @@
       "score": 32.9,
       "blockers": [],
       "rank": 45,
-      "notes": []
+      "notes": [],
+      "batch": "batch-1",
+      "approved": {
+        "date": "2026-11-11",
+        "by": "user"
+      },
+      "added": {
+        "date": "2026-11-11",
+        "trackIds": [
+          "meaningful-stone-beep-boop-beep-boop",
+          "meaningful-stone-psychomania"
+        ]
+      }
     },
     {
       "id": "mokyo",
@@ -7274,7 +7309,7 @@
         }
       ],
       "officialURL": "https://langleeschool.bandcamp.com/album/pride",
-      "status": "proposed",
+      "status": "added",
       "deezer": {
         "id": 4562739,
         "name": "Lang Lee",
@@ -7308,7 +7343,19 @@
       "score": 28.7,
       "blockers": [],
       "rank": 86,
-      "notes": []
+      "notes": [],
+      "batch": "batch-1",
+      "approved": {
+        "date": "2026-11-11",
+        "by": "user"
+      },
+      "added": {
+        "date": "2026-11-11",
+        "trackIds": [
+          "lang-lee-there-is-a-wolf",
+          "lang-lee-the-generation-of-tribulation"
+        ]
+      }
     },
     {
       "id": "roy-kim",
@@ -10983,7 +11030,7 @@
         }
       ],
       "officialURL": "",
-      "status": "proposed",
+      "status": "added",
       "deezer": {
         "id": 53891682,
         "name": "Jeongmilla",
@@ -11017,7 +11064,19 @@
       "score": 24.5,
       "blockers": [],
       "rank": 138,
-      "notes": []
+      "notes": [],
+      "batch": "batch-1",
+      "approved": {
+        "date": "2026-11-11",
+        "by": "user"
+      },
+      "added": {
+        "date": "2026-11-11",
+        "trackIds": [
+          "jeongmilla-departing-from-seoul-station",
+          "jeongmilla-flower"
+        ]
+      }
     },
     {
       "id": "surl",

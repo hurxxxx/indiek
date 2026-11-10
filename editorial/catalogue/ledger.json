@@ -1,6 +1,1651 @@
 {
   "schemaVersion": 1,
   "description": "Catalogue entries added by the expansion pipeline (npm run catalogue). Each track records the exact reviewed content hash, cited sources, release lookup and playback check; scripts/catalogue-pipeline.test.mjs fails when the catalogue drifts from it.",
-  "artists": {},
-  "tracks": {}
+  "artists": {
+    "say-sue-me": {
+      "artistId": "say-sue-me",
+      "batch": "batch-1",
+      "addedAt": "2026-11-11",
+      "candidate": {
+        "score": 45,
+        "rank": 8,
+        "approved": {
+          "date": "2026-11-11",
+          "by": "user"
+        },
+        "signals": [
+          {
+            "type": "scene",
+            "url": "https://busanrockfestival.com/lineup/"
+          },
+          {
+            "type": "ost",
+            "url": "https://music.apple.com/us/artist/say-sue-me/924807304"
+          },
+          {
+            "type": "ost",
+            "url": "https://music.apple.com/us/song/so-tender/1579876888"
+          },
+          {
+            "type": "community",
+            "url": "https://www.reddit.com/r/indieheads/comments/dq6fok/"
+          },
+          {
+            "type": "recognition",
+            "url": "https://koreanmusicawards.com/project/세이수미-where-we-were-together-2/"
+          },
+          {
+            "type": "recognition",
+            "url": "https://koreanmusicawards.com/project/세이수미-old-town-2/"
+          }
+        ]
+      }
+    },
+    "silica-gel": {
+      "artistId": "silica-gel",
+      "batch": "batch-1",
+      "addedAt": "2026-11-11",
+      "candidate": {
+        "score": 38.9,
+        "rank": 22,
+        "approved": {
+          "date": "2026-11-11",
+          "by": "user"
+        },
+        "signals": [
+          {
+            "type": "scene",
+            "url": "https://www.etnews.com/20240220000306?m=1"
+          },
+          {
+            "type": "recognition",
+            "url": "https://music.apple.com/us/artist/silica-gel/1031084591"
+          },
+          {
+            "type": "community",
+            "url": "https://www.reddit.com/r/BeginnerKorean/comments/1lt2b5b/korean_music_recommendations_not_kpop/"
+          },
+          {
+            "type": "recognition",
+            "url": "https://koreanmusicawards.com/project/실리카겔-machine-boy-2/"
+          },
+          {
+            "type": "chart",
+            "url": "https://music.apple.com/us/artist/silica-gel/1031084591"
+          }
+        ]
+      }
+    },
+    "meaningful-stone": {
+      "artistId": "meaningful-stone",
+      "batch": "batch-1",
+      "addedAt": "2026-11-11",
+      "candidate": {
+        "score": 32.9,
+        "rank": 45,
+        "approved": {
+          "date": "2026-11-11",
+          "by": "user"
+        },
+        "signals": [
+          {
+            "type": "community",
+            "url": "https://www.reddit.com/r/kpophelp/comments/1vgqdjg/any_artist_recommendations_based_on_my_current/"
+          },
+          {
+            "type": "recognition",
+            "url": "https://koreanmusicawards.com/project/김뜻돌/"
+          },
+          {
+            "type": "recognition",
+            "url": "https://koreanmusicawards.com/project/김뜻돌-삐뽀삐뽀/"
+          }
+        ]
+      }
+    },
+    "lang-lee": {
+      "artistId": "lang-lee",
+      "batch": "batch-1",
+      "addedAt": "2026-11-11",
+      "candidate": {
+        "score": 28.7,
+        "rank": 86,
+        "approved": {
+          "date": "2026-11-11",
+          "by": "user"
+        },
+        "signals": [
+          {
+            "type": "recognition",
+            "url": "https://koreanmusicawards.com/project/이랑-늑대가-나타났다-2/"
+          },
+          {
+            "type": "recognition",
+            "url": "https://langleeschool.bandcamp.com/album/pride"
+          },
+          {
+            "type": "recognition",
+            "url": "https://music.apple.com/us/artist/lang-lee/1293067340"
+          }
+        ]
+      }
+    },
+    "jeongmilla": {
+      "artistId": "jeongmilla",
+      "batch": "batch-1",
+      "addedAt": "2026-11-11",
+      "candidate": {
+        "score": 24.5,
+        "rank": 138,
+        "approved": {
+          "date": "2026-11-11",
+          "by": "user"
+        },
+        "signals": [
+          {
+            "type": "recognition",
+            "url": "https://koreanmusicawards.com/project/정밀아-청파소나타/"
+          },
+          {
+            "type": "recognition",
+            "url": "https://wwsales.ebs.co.kr/board/bbs?boardId=31&boardTypeId=1&cmd=view&no=10&option=respond&pageNo=209&postId=30000029378&searchCondition=title&searchKeyword="
+          },
+          {
+            "type": "recognition",
+            "url": "https://music.apple.com/us/artist/jeongmilla/935566873"
+          }
+        ]
+      }
+    }
+  },
+  "tracks": {
+    "say-sue-me-old-town": {
+      "trackId": "say-sue-me-old-town",
+      "artistId": "say-sue-me",
+      "batch": "batch-1",
+      "grade": "A",
+      "role": "primary",
+      "addedAt": "2026-11-11",
+      "contentHash": "fdfe32048f9195a5ae8648d99a7428efeb192b7a205c961b21b0d8714be958f6",
+      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
+      "reviewedAt": "2026-11-10T21:59:16.450Z",
+      "sources": [
+        "https://koreana.or.kr/koreana/na/ntt/selectNttInfo.do?bbsId=1121&nttSn=127551",
+        "https://saysueme.bandcamp.com/album/where-we-were-together"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/where-we-were-together/1350445710",
+        "trackName": "Old Town",
+        "releaseDate": "2018-04-13",
+        "checkedAt": "2026-11-10T21:58:06.588Z"
+      },
+      "playback": {
+        "videoId": "sdiQHoWeDbU",
+        "state": "playing",
+        "checkedAt": "2026-11-10T21:58:12.205Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "KEXP",
+        "official": "live-series channel on the official-channel list (Channel of KEXP, the Seattle public radio station, for its in-studio sessions (\"Live on KEXP\"); the channel links kexp.org)",
+        "tried": [
+          {
+            "videoId": "sdiQHoWeDbU",
+            "channel": "KEXP",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-10T21:59:53.022Z"
+      },
+      "facts": {
+        "approved": true,
+        "reason": "The exact entry is supported by the supplied fetched originals. Credits and romanisation agree with the official album page, and the lyric commentary offers reasonable readings grounded in the lyrics. Prose agrees with the pipeline-verified recording and release fields.",
+        "checkedURLs": [
+          "https://koreana.or.kr/koreana/na/ntt/selectNttInfo.do?bbsId=1121&nttSn=127551",
+          "https://saysueme.bandcamp.com/album/where-we-were-together"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "Say Sue Me's Korean name is 세이수미, and they identify as an indie rock band from Busan.",
+            "sourceURL": "https://saysueme.bandcamp.com/album/where-we-were-together",
+            "evidence": "부산의 인디록 밴드 세이수미입니다. We are indie rock band Say Sue Me from Busan, South Korea."
+          },
+          {
+            "claim": "Sumi Choi is the band's vocalist and guitarist.",
+            "sourceURL": "https://koreana.or.kr/koreana/na/ntt/selectNttInfo.do?bbsId=1121&nttSn=127551",
+            "evidence": "vocalist and guitarist Sumi Choi"
+          },
+          {
+            "claim": "The band's rehearsal and recording space is a short walk from Gwangalli Beach.",
+            "sourceURL": "https://koreana.or.kr/koreana/na/ntt/selectNttInfo.do?bbsId=1121&nttSn=127551",
+            "evidence": "It is the band’s rehearsal and recording studio"
+          },
+          {
+            "claim": "The studio's proximity to the beach supports the introduction's description.",
+            "sourceURL": "https://koreana.or.kr/koreana/na/ntt/selectNttInfo.do?bbsId=1121&nttSn=127551",
+            "evidence": "head down to the beach, just a three-minute walk away"
+          },
+          {
+            "claim": "Sumi Choi writes lyrics in English and Korean.",
+            "sourceURL": "https://koreana.or.kr/koreana/na/ntt/selectNttInfo.do?bbsId=1121&nttSn=127551",
+            "evidence": "“I’ve always tried to incorporate more English lyrics into our songs, so I was surprised to find out that fans abroad actually seem to prefer Korean lyrics,” Choi notes."
+          },
+          {
+            "claim": "The band formed in 2012.",
+            "sourceURL": "https://koreana.or.kr/koreana/na/ntt/selectNttInfo.do?bbsId=1121&nttSn=127551",
+            "evidence": "since their formation in 2012."
+          },
+          {
+            "claim": "Their debut album appeared in 2014, and they signed with Damnably three years later, in 2017.",
+            "sourceURL": "https://koreana.or.kr/koreana/na/ntt/selectNttInfo.do?bbsId=1121&nttSn=127551",
+            "evidence": "Three years after the release of their debut album, We’ve Sobered Up (2014), the band signed with British indie label Damnably"
+          },
+          {
+            "claim": "Where We Were Together is the band's second album.",
+            "sourceURL": "https://koreana.or.kr/koreana/na/ntt/selectNttInfo.do?bbsId=1121&nttSn=127551",
+            "evidence": "Say Sue Me’s second album, Where We Were Together (2018)"
+          },
+          {
+            "claim": "Where We Were Together was released on April 13, 2018.",
+            "sourceURL": "https://saysueme.bandcamp.com/album/where-we-were-together",
+            "evidence": "released April 13, 2018"
+          },
+          {
+            "claim": "Old Town's lyricist, composer and arranger are correctly credited and romanised.",
+            "sourceURL": "https://saysueme.bandcamp.com/album/where-we-were-together",
+            "evidence": "lyrics : Sumi Choi | Music : Byungkyu Kim | Arrange : Say Sue Me"
+          },
+          {
+            "claim": "The speaker feels left behind as friends leave town.",
+            "sourceURL": "https://saysueme.bandcamp.com/album/where-we-were-together",
+            "evidence": "All the friends I used to know left this town Only I¡¯m getting old with this town"
+          },
+          {
+            "claim": "The wishes to leave and stay appear in reversing order, supporting the commentary's unresolved reading.",
+            "sourceURL": "https://saysueme.bandcamp.com/album/where-we-were-together",
+            "evidence": "I just wanna leave here But I wanna stay here All the friends I used to know left this town Only I¡¯m getting old with this town I just wanna stay here But I wanna leave here"
+          },
+          {
+            "claim": "The speaker addresses someone through updates about their familiar street and beach.",
+            "sourceURL": "https://saysueme.bandcamp.com/album/where-we-were-together",
+            "evidence": "How are you today The street where we used to hang out is fine How are you today The beach where we used to hang out is fine"
+          },
+          {
+            "claim": "The closing contrast supports reading the emptiness as missing particular companionship despite the town remaining populated.",
+            "sourceURL": "https://saysueme.bandcamp.com/album/where-we-were-together",
+            "evidence": "Being together was all that matter to me There¡¯re so many people like it used to be But I feel nothing inside"
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The writing is plain, specific and measured. The introduction establishes the song’s situation before release history, and the lyric commentary connects concrete details to a restrained reading while keeping the speaker separate from the performer. It avoids invented listening experience, generic praise and close repetition of recent entries.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      }
+    },
+    "silica-gel-no-pain": {
+      "trackId": "silica-gel-no-pain",
+      "artistId": "silica-gel",
+      "batch": "batch-1",
+      "grade": "A",
+      "role": "primary",
+      "addedAt": "2026-11-11",
+      "contentHash": "375b3d30831faed05c685216287fc4a740e6117df37c0861e56e55a86816160c",
+      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
+      "reviewedAt": "2026-11-10T21:47:38.597Z",
+      "sources": [
+        "https://poclanos.com/artist/%EC%8B%A4%EB%A6%AC%EC%B9%B4%EA%B2%94/",
+        "https://poclanos.com/album/no-pain/",
+        "https://www.genie.co.kr/detail/songInfo?xgnm=98042401"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/no-pain-single/1764118199",
+        "trackName": "NO PAIN",
+        "releaseDate": "2022-08-25",
+        "checkedAt": "2026-11-10T21:46:11.076Z"
+      },
+      "playback": {
+        "videoId": "qg40imnWXG8",
+        "state": "playing",
+        "checkedAt": "2026-11-10T21:46:17.588Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "Silica Gel 실리카겔",
+        "official": "the artist’s own channel",
+        "tried": [
+          {
+            "videoId": "qg40imnWXG8",
+            "channel": "Silica Gel 실리카겔",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-10T21:59:58.679Z"
+      },
+      "facts": {
+        "approved": true,
+        "reason": "The exact entries are supported by the supplied fetched sources and pipeline verification. The lyric commentary offers plausible readings without inventing biography or asserting authorial intent. No unresolved blocking factual issues.",
+        "checkedURLs": [
+          "https://poclanos.com/artist/%EC%8B%A4%EB%A6%AC%EC%B9%B4%EA%B2%94/",
+          "https://poclanos.com/album/no-pain/",
+          "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
+          "https://poclanos.com/album/tik-tak-tok/"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "Silica Gel is a four-piece band with the stated members, instruments and vocal roles.",
+            "sourceURL": "https://poclanos.com/artist/%EC%8B%A4%EB%A6%AC%EC%B9%B4%EA%B2%94/",
+            "evidence": "실리카겔은 김건재(드럼), 김춘추(기타/보컬), 김한주(키보드/보컬), 최웅희(베이스)로 이뤄진 4인조 밴드다."
+          },
+          {
+            "claim": "The band's self-titled first album earned Korean Music Awards Rookie of the Year recognition.",
+            "sourceURL": "https://poclanos.com/artist/%EC%8B%A4%EB%A6%AC%EC%B9%B4%EA%B2%94/",
+            "evidence": "1집 [실리카겔]로 한국대중음악상 ‘올해의 신인’을 비롯한 신인상 3관왕을 휩쓸었던"
+          },
+          {
+            "claim": "The member names use the source's English romanisations.",
+            "sourceURL": "https://poclanos.com/album/no-pain/",
+            "evidence": "김건재 Kim Geonjay 김춘추 Kim Chunchu 김한주 Kim Hanjoo 최웅희 Choi Woonghee"
+          },
+          {
+            "claim": "NO PAIN was released on August 25, 2022.",
+            "sourceURL": "https://poclanos.com/album/no-pain/",
+            "evidence": "Release 2022.08.25"
+          },
+          {
+            "claim": "The release statement connects NO PAIN's beginnings to questions about living through time and transcending time and space.",
+            "sourceURL": "https://poclanos.com/album/no-pain/",
+            "evidence": "‘시간의 흐름을 산다는 것’, ‘시공을 초월하는 것이란 무엇일까?’ 라는 의문에서 시작된"
+          },
+          {
+            "claim": "Silica Gel receives NO PAIN's lyric, composition, arrangement and production credits.",
+            "sourceURL": "https://poclanos.com/album/no-pain/",
+            "evidence": "작사/작곡/편곡/연주 written, arranged and performed by 실리카겔 Silica Gel 프로듀서 produced by 실리카겔 Silica Gel"
+          },
+          {
+            "claim": "The invitation and belonging interpretation is supported by the house, excluded people and shared singing.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
+            "evidence": "내가 만든 집에서 모두 함께 노래를 합시다. 소외됐던 사람들 모두 함께 노래를 합시다."
+          },
+          {
+            "claim": "The shared warm fire supports the commentary's image of a welcoming gathering.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
+            "evidence": "우리만의 따뜻한 불, 영원한 꿈, 영혼과 삶"
+          },
+          {
+            "claim": "The speaker's thought of leaving and request not to be hated support the commentary's uncertainty.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
+            "evidence": "난 오늘 떠날 거라 생각을 했어 날 미워하지 마"
+          },
+          {
+            "claim": "The later lyric contains love entrusted to the sun and figures gathering after night fog thickens.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
+            "evidence": "태양에 맡겨 뒀던 가족과 모든 분들의 사랑 밤안개 짙어진 뒤 훔치려고 모인 자경단"
+          },
+          {
+            "claim": "Tik Tak Tok was released on August 19, 2023.",
+            "sourceURL": "https://poclanos.com/album/tik-tak-tok/",
+            "evidence": "Release 2023.08.19"
+          },
+          {
+            "claim": "The single places T before Tik Tak Tok, which features So!YoON!.",
+            "sourceURL": "https://poclanos.com/album/tik-tak-tok/",
+            "evidence": "1. T 2. Tik Tak Tok (feat. So!YoON!) 3. Tik Tak Tok (Inst.)"
+          },
+          {
+            "claim": "The release statement asks whether Machine Boy is a living creature or another indescribable existence.",
+            "sourceURL": "https://poclanos.com/album/tik-tak-tok/",
+            "evidence": "Machine Boy는 결국 무엇일까. 생명체일까? 아니면 형용할 수 없는 또 다른 존재일까?"
+          },
+          {
+            "claim": "Silica Gel and So!YoON! share Tik Tak Tok's lyric and composition credits; Silica Gel receives arrangement and production credits.",
+            "sourceURL": "https://poclanos.com/album/tik-tak-tok/",
+            "evidence": "작사/작곡 written by 실리카겔 Silica Gel, So!YoON! 편곡/연주 arranged and performed by 실리카겔 Silica Gel 프로듀서 produced by 실리카겔 Silica Gel"
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The entries are plain, specific and measured. Concrete lyric images and documented release context give each song a distinct introduction. The lyric commentary keeps the speaker separate from the band, supports its readings with specific images and preserves uncertainty. Compared with recent entries, the prose shares some vocabulary of unresolved feelings but does not repeat their structure or become interchangeable. Factual verification is reserved for the separate review; recording verification is accepted as supplied.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          },
+          {
+            "key": "t2",
+            "grade": "B",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      },
+      "humanSample": true,
+      "humanReview": {
+        "status": "pending"
+      }
+    },
+    "silica-gel-tik-tak-tok": {
+      "trackId": "silica-gel-tik-tak-tok",
+      "artistId": "silica-gel",
+      "batch": "batch-1",
+      "grade": "B",
+      "role": "additional",
+      "addedAt": "2026-11-11",
+      "contentHash": "d8a21dc11d6291478bd9083351200d879cbb36484adda06957fc20b4c4accaca",
+      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
+      "reviewedAt": "2026-11-10T21:47:38.597Z",
+      "sources": [
+        "https://poclanos.com/artist/%EC%8B%A4%EB%A6%AC%EC%B9%B4%EA%B2%94/",
+        "https://poclanos.com/album/tik-tak-tok/"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/tik-tak-tok-single/1836310183",
+        "trackName": "Tik Tak Tok (feat. So!YoON!)",
+        "releaseDate": "2023-08-19",
+        "checkedAt": "2026-11-10T21:46:17.680Z"
+      },
+      "playback": {
+        "videoId": "DIPxnt5vnhU",
+        "state": "playing",
+        "checkedAt": "2026-11-10T21:46:23.273Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "Silica Gel 실리카겔",
+        "official": "the artist’s own channel",
+        "tried": [
+          {
+            "videoId": "p7Aw6Sy5nJ8",
+            "channel": "스페이스 공감",
+            "channelURL": "https://www.youtube.com/@theEBSspace",
+            "state": "channel not confirmed as official"
+          },
+          {
+            "videoId": "DIPxnt5vnhU",
+            "channel": "Silica Gel 실리카겔",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-10T22:00:03.727Z"
+      },
+      "facts": {
+        "approved": true,
+        "reason": "The exact entries are supported by the supplied fetched sources and pipeline verification. The lyric commentary offers plausible readings without inventing biography or asserting authorial intent. No unresolved blocking factual issues.",
+        "checkedURLs": [
+          "https://poclanos.com/artist/%EC%8B%A4%EB%A6%AC%EC%B9%B4%EA%B2%94/",
+          "https://poclanos.com/album/no-pain/",
+          "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
+          "https://poclanos.com/album/tik-tak-tok/"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "Silica Gel is a four-piece band with the stated members, instruments and vocal roles.",
+            "sourceURL": "https://poclanos.com/artist/%EC%8B%A4%EB%A6%AC%EC%B9%B4%EA%B2%94/",
+            "evidence": "실리카겔은 김건재(드럼), 김춘추(기타/보컬), 김한주(키보드/보컬), 최웅희(베이스)로 이뤄진 4인조 밴드다."
+          },
+          {
+            "claim": "The band's self-titled first album earned Korean Music Awards Rookie of the Year recognition.",
+            "sourceURL": "https://poclanos.com/artist/%EC%8B%A4%EB%A6%AC%EC%B9%B4%EA%B2%94/",
+            "evidence": "1집 [실리카겔]로 한국대중음악상 ‘올해의 신인’을 비롯한 신인상 3관왕을 휩쓸었던"
+          },
+          {
+            "claim": "The member names use the source's English romanisations.",
+            "sourceURL": "https://poclanos.com/album/no-pain/",
+            "evidence": "김건재 Kim Geonjay 김춘추 Kim Chunchu 김한주 Kim Hanjoo 최웅희 Choi Woonghee"
+          },
+          {
+            "claim": "NO PAIN was released on August 25, 2022.",
+            "sourceURL": "https://poclanos.com/album/no-pain/",
+            "evidence": "Release 2022.08.25"
+          },
+          {
+            "claim": "The release statement connects NO PAIN's beginnings to questions about living through time and transcending time and space.",
+            "sourceURL": "https://poclanos.com/album/no-pain/",
+            "evidence": "‘시간의 흐름을 산다는 것’, ‘시공을 초월하는 것이란 무엇일까?’ 라는 의문에서 시작된"
+          },
+          {
+            "claim": "Silica Gel receives NO PAIN's lyric, composition, arrangement and production credits.",
+            "sourceURL": "https://poclanos.com/album/no-pain/",
+            "evidence": "작사/작곡/편곡/연주 written, arranged and performed by 실리카겔 Silica Gel 프로듀서 produced by 실리카겔 Silica Gel"
+          },
+          {
+            "claim": "The invitation and belonging interpretation is supported by the house, excluded people and shared singing.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
+            "evidence": "내가 만든 집에서 모두 함께 노래를 합시다. 소외됐던 사람들 모두 함께 노래를 합시다."
+          },
+          {
+            "claim": "The shared warm fire supports the commentary's image of a welcoming gathering.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
+            "evidence": "우리만의 따뜻한 불, 영원한 꿈, 영혼과 삶"
+          },
+          {
+            "claim": "The speaker's thought of leaving and request not to be hated support the commentary's uncertainty.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
+            "evidence": "난 오늘 떠날 거라 생각을 했어 날 미워하지 마"
+          },
+          {
+            "claim": "The later lyric contains love entrusted to the sun and figures gathering after night fog thickens.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
+            "evidence": "태양에 맡겨 뒀던 가족과 모든 분들의 사랑 밤안개 짙어진 뒤 훔치려고 모인 자경단"
+          },
+          {
+            "claim": "Tik Tak Tok was released on August 19, 2023.",
+            "sourceURL": "https://poclanos.com/album/tik-tak-tok/",
+            "evidence": "Release 2023.08.19"
+          },
+          {
+            "claim": "The single places T before Tik Tak Tok, which features So!YoON!.",
+            "sourceURL": "https://poclanos.com/album/tik-tak-tok/",
+            "evidence": "1. T 2. Tik Tak Tok (feat. So!YoON!) 3. Tik Tak Tok (Inst.)"
+          },
+          {
+            "claim": "The release statement asks whether Machine Boy is a living creature or another indescribable existence.",
+            "sourceURL": "https://poclanos.com/album/tik-tak-tok/",
+            "evidence": "Machine Boy는 결국 무엇일까. 생명체일까? 아니면 형용할 수 없는 또 다른 존재일까?"
+          },
+          {
+            "claim": "Silica Gel and So!YoON! share Tik Tak Tok's lyric and composition credits; Silica Gel receives arrangement and production credits.",
+            "sourceURL": "https://poclanos.com/album/tik-tak-tok/",
+            "evidence": "작사/작곡 written by 실리카겔 Silica Gel, So!YoON! 편곡/연주 arranged and performed by 실리카겔 Silica Gel 프로듀서 produced by 실리카겔 Silica Gel"
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The entries are plain, specific and measured. Concrete lyric images and documented release context give each song a distinct introduction. The lyric commentary keeps the speaker separate from the band, supports its readings with specific images and preserves uncertainty. Compared with recent entries, the prose shares some vocabulary of unresolved feelings but does not repeat their structure or become interchangeable. Factual verification is reserved for the separate review; recording verification is accepted as supplied.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          },
+          {
+            "key": "t2",
+            "grade": "B",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      }
+    },
+    "meaningful-stone-beep-boop-beep-boop": {
+      "trackId": "meaningful-stone-beep-boop-beep-boop",
+      "artistId": "meaningful-stone",
+      "batch": "batch-1",
+      "grade": "A",
+      "role": "primary",
+      "addedAt": "2026-11-11",
+      "contentHash": "c921d5589f2e977d9d9a548ca55f184ace16159832dc4ab2f2d54ae848fd3db1",
+      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
+      "reviewedAt": "2026-11-10T21:36:38.738Z",
+      "sources": [
+        "https://genie.co.kr/magazine/subMain?ctid=30&mgz_seq=9832",
+        "https://music.bugs.co.kr/track/32028457",
+        "https://poclanos.com/album/꿈에서-걸려온-전화/",
+        "https://poclanos.com/album/psychomania/"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/a-call-from-my-dream/1533397185",
+        "trackName": "Beep-Boop, Beep-Boop",
+        "releaseDate": "2020-09-27",
+        "checkedAt": "2026-11-10T21:34:44.385Z"
+      },
+      "playback": {
+        "videoId": "UAHP1VgljnE",
+        "state": "playing",
+        "checkedAt": "2026-11-10T21:34:51.002Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "온스테이지ONSTAGE",
+        "official": "live-series channel on the official-channel list (Hand-reviewed official upload in the catalogue (youra-flicker))",
+        "tried": [
+          {
+            "videoId": "UAHP1VgljnE",
+            "channel": "온스테이지ONSTAGE",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-10T22:00:10.764Z"
+      },
+      "facts": {
+        "approved": true,
+        "reason": "No unresolved blocking factual issues. The supplied originals support the biography, release context, credits and lyric readings. Prose agrees with the pipeline-verified recordings. Approval covers fact review of these exact entries.",
+        "checkedURLs": [
+          "https://genie.co.kr/magazine/subMain?ctid=30&mgz_seq=9832",
+          "https://music.bugs.co.kr/track/32028457",
+          "https://poclanos.com/album/꿈에서-걸려온-전화/",
+          "https://poclanos.com/album/psychomania/",
+          "https://www.newsis.com/view/?id=NISX20210128_0001320839&pc_view=1"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "Meaningful Stone debuted in 2017 with 꿈속의 카메라.",
+            "sourceURL": "https://genie.co.kr/magazine/subMain?ctid=30&mgz_seq=9832",
+            "evidence": "2017년 첫 싱글 '꿈속의 카메라'를 발표하고 본격적인 활동을 시작한 김뜻돌"
+          },
+          {
+            "claim": "She won Rookie of the Year at the eighteenth Korean Music Awards in 2021.",
+            "sourceURL": "https://genie.co.kr/magazine/subMain?ctid=30&mgz_seq=9832",
+            "evidence": "2021 Korean Music Awards Winner [올해의 신인 WINNER]"
+          },
+          {
+            "claim": "She described recording the atmosphere connecting dreams and waking life.",
+            "sourceURL": "https://genie.co.kr/magazine/subMain?ctid=30&mgz_seq=9832",
+            "evidence": "꿈과 현실이 딱 나누어진다기보다는 그 안의 분위기에 내가 계속 머물러 있는 것 같아서 그걸 음악으로 기록해보고 싶었다."
+          },
+          {
+            "claim": "Her songwriting includes personal relationships.",
+            "sourceURL": "https://genie.co.kr/magazine/subMain?ctid=30&mgz_seq=9832",
+            "evidence": "만약 절교한 친구가 이 노래를 듣는다면 마치 동화처럼 들려주고 싶었고"
+          },
+          {
+            "claim": "A Call from My Dream is her first full-length album.",
+            "sourceURL": "https://poclanos.com/album/꿈에서-걸려온-전화/",
+            "evidence": "김뜻돌 첫 번째 정규 앨범 [꿈에서 걸려온 전화]"
+          },
+          {
+            "claim": "The album was released on September 27, 2020.",
+            "sourceURL": "https://poclanos.com/album/꿈에서-걸려온-전화/",
+            "evidence": "Release 2020.09.27"
+          },
+          {
+            "claim": "The selected album track credits Meaningful Stone for composition and lyrics, with five arrangers.",
+            "sourceURL": "https://poclanos.com/album/꿈에서-걸려온-전화/",
+            "evidence": "08. 삐뽀삐뽀 Composed, Written by 김뜻돌 Arranged by 김뜻돌, 강원우, 박문치, 강전호, 한제리"
+          },
+          {
+            "claim": "The separately listed 2018 recording has different arrangement credits.",
+            "sourceURL": "https://poclanos.com/album/꿈에서-걸려온-전화/",
+            "evidence": "11. 삐뽀삐뽀 (2018) Composed, Written, Arranged by 김뜻돌"
+          },
+          {
+            "claim": "Bugs identifies the selected album recording and its 03:23 duration.",
+            "sourceURL": "https://music.bugs.co.kr/track/32028457",
+            "evidence": "앨범 꿈에서 걸려온 전화 재생 시간 03:23"
+          },
+          {
+            "claim": "The crane accident occurs during an ordinary walk, supporting the description's mortality reading.",
+            "sourceURL": "https://music.bugs.co.kr/track/32028457",
+            "evidence": "길을 걷다 고공 크레인에 내가 깔려죽어도"
+          },
+          {
+            "claim": "The request against belated calls supports the reading of wanting attention before disappearing.",
+            "sourceURL": "https://music.bugs.co.kr/track/32028457",
+            "evidence": "이 밤 저 밤 헤매다 내가 사라지면 그제서야 찾으러 전화하지는 말아요"
+          },
+          {
+            "claim": "The lyric contrasts closed ears with noisy news.",
+            "sourceURL": "https://music.bugs.co.kr/track/32028457",
+            "evidence": "사람들은 이제 내 얘기에 귀를 닫고 시끄러운 뉴스만 진짜는 아니야"
+          },
+          {
+            "claim": "The ending pairs uncertainty about death with resistance to exchanging it for another person's sacrifice.",
+            "sourceURL": "https://music.bugs.co.kr/track/32028457",
+            "evidence": "나는 내가 언제쯤 죽을지는 몰라도 누군가의 희생과 바꾸지 않았으면 해"
+          },
+          {
+            "claim": "The repeated ending also names tears.",
+            "sourceURL": "https://music.bugs.co.kr/track/32028457",
+            "evidence": "누군가의 눈물과 바꾸지 않았으면 해"
+          },
+          {
+            "claim": "The repeated ending also names money.",
+            "sourceURL": "https://music.bugs.co.kr/track/32028457",
+            "evidence": "누군가의 돈과는 바꾸지 않았으면 해"
+          },
+          {
+            "claim": "The repeated ending also names reputation.",
+            "sourceURL": "https://music.bugs.co.kr/track/32028457",
+            "evidence": "누군가의 명예와 바꾸지 않았으면 해"
+          },
+          {
+            "claim": "Psychomania was released on October 29, 2022.",
+            "sourceURL": "https://poclanos.com/album/psychomania/",
+            "evidence": "Release 2022.10.29"
+          },
+          {
+            "claim": "Its release note stages an encounter with a fierce voice.",
+            "sourceURL": "https://poclanos.com/album/psychomania/",
+            "evidence": "그 통로를 지나면 수많은 목소리를 만날 수 있는데, 그중 제일 사납고 미친 녀석을 만났다."
+          },
+          {
+            "claim": "The conversation includes anger.",
+            "sourceURL": "https://poclanos.com/album/psychomania/",
+            "evidence": "너는 화가 나 있어."
+          },
+          {
+            "claim": "The conversation includes the need to continue living.",
+            "sourceURL": "https://poclanos.com/album/psychomania/",
+            "evidence": "하지만 나는 여전히 살아가야 하는걸."
+          },
+          {
+            "claim": "The conversation includes a request for prayer.",
+            "sourceURL": "https://poclanos.com/album/psychomania/",
+            "evidence": "나를 위해 기도 하나만 해줄래?"
+          },
+          {
+            "claim": "Meaningful Stone wrote and produced Psychomania; its four credited arrangers match the entry.",
+            "sourceURL": "https://poclanos.com/album/psychomania/",
+            "evidence": "작곡/ 작사 Written by 김뜻돌 Meaningful Stone Produced by 김뜻돌 Meaningful Stone 편곡 Arranged by 김뜻돌, 강원우, 최이재, 김나현"
+          },
+          {
+            "claim": "The release supplies the English credit names Onewoo Kang, EJae and Nahyun Kim.",
+            "sourceURL": "https://poclanos.com/album/psychomania/",
+            "evidence": "Guitar 강원우 Onewoo Kang Bass 최이재 EJae Drum 김나현 Nahyun Kim"
+          },
+          {
+            "claim": "MELTMIRROR directed the music video.",
+            "sourceURL": "https://poclanos.com/album/psychomania/",
+            "evidence": "M/V Directed by MELTMIRROR"
+          },
+          {
+            "claim": "The real-name alias 김지민 is confirmed by an original interview.",
+            "sourceURL": "https://www.newsis.com/view/?id=NISX20210128_0001320839&pc_view=1",
+            "evidence": "김뜻돌의 본명은 김지민."
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The introductions are short, specific and grounded in concrete details before release history. Lyric commentary keeps the speaker separate from the artist, explains identifiable images with measured interpretations, and avoids reproducing lyrics. Neither entry repeats recent catalogue prose or invents listening experience. Both meet their requested grades, accepting the separate fact review and authoritative recording verification.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          },
+          {
+            "key": "t2",
+            "grade": "B",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      }
+    },
+    "meaningful-stone-psychomania": {
+      "trackId": "meaningful-stone-psychomania",
+      "artistId": "meaningful-stone",
+      "batch": "batch-1",
+      "grade": "B",
+      "role": "additional",
+      "addedAt": "2026-11-11",
+      "contentHash": "9db54c5d06e4d68ae615a24874be424f4f3c0a5056df00fafc986640a8189c82",
+      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
+      "reviewedAt": "2026-11-10T21:36:38.738Z",
+      "sources": [
+        "https://genie.co.kr/magazine/subMain?ctid=30&mgz_seq=9832",
+        "https://poclanos.com/album/psychomania/"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/psychomania-single/1651597808",
+        "trackName": "Psychomania",
+        "releaseDate": "2022-10-29",
+        "checkedAt": "2026-11-10T21:34:51.139Z"
+      },
+      "playback": {
+        "videoId": "aLY7YSdekpU",
+        "state": "playing",
+        "checkedAt": "2026-11-10T21:34:56.660Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "POCLANOS",
+        "official": "label channel on the official-channel list (Hand-reviewed official upload in the catalogue (kim-sawol))",
+        "tried": [
+          {
+            "videoId": "aLY7YSdekpU",
+            "channel": "POCLANOS",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-10T22:00:15.808Z"
+      },
+      "facts": {
+        "approved": true,
+        "reason": "No unresolved blocking factual issues. The supplied originals support the biography, release context, credits and lyric readings. Prose agrees with the pipeline-verified recordings. Approval covers fact review of these exact entries.",
+        "checkedURLs": [
+          "https://genie.co.kr/magazine/subMain?ctid=30&mgz_seq=9832",
+          "https://music.bugs.co.kr/track/32028457",
+          "https://poclanos.com/album/꿈에서-걸려온-전화/",
+          "https://poclanos.com/album/psychomania/",
+          "https://www.newsis.com/view/?id=NISX20210128_0001320839&pc_view=1"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "Meaningful Stone debuted in 2017 with 꿈속의 카메라.",
+            "sourceURL": "https://genie.co.kr/magazine/subMain?ctid=30&mgz_seq=9832",
+            "evidence": "2017년 첫 싱글 '꿈속의 카메라'를 발표하고 본격적인 활동을 시작한 김뜻돌"
+          },
+          {
+            "claim": "She won Rookie of the Year at the eighteenth Korean Music Awards in 2021.",
+            "sourceURL": "https://genie.co.kr/magazine/subMain?ctid=30&mgz_seq=9832",
+            "evidence": "2021 Korean Music Awards Winner [올해의 신인 WINNER]"
+          },
+          {
+            "claim": "She described recording the atmosphere connecting dreams and waking life.",
+            "sourceURL": "https://genie.co.kr/magazine/subMain?ctid=30&mgz_seq=9832",
+            "evidence": "꿈과 현실이 딱 나누어진다기보다는 그 안의 분위기에 내가 계속 머물러 있는 것 같아서 그걸 음악으로 기록해보고 싶었다."
+          },
+          {
+            "claim": "Her songwriting includes personal relationships.",
+            "sourceURL": "https://genie.co.kr/magazine/subMain?ctid=30&mgz_seq=9832",
+            "evidence": "만약 절교한 친구가 이 노래를 듣는다면 마치 동화처럼 들려주고 싶었고"
+          },
+          {
+            "claim": "A Call from My Dream is her first full-length album.",
+            "sourceURL": "https://poclanos.com/album/꿈에서-걸려온-전화/",
+            "evidence": "김뜻돌 첫 번째 정규 앨범 [꿈에서 걸려온 전화]"
+          },
+          {
+            "claim": "The album was released on September 27, 2020.",
+            "sourceURL": "https://poclanos.com/album/꿈에서-걸려온-전화/",
+            "evidence": "Release 2020.09.27"
+          },
+          {
+            "claim": "The selected album track credits Meaningful Stone for composition and lyrics, with five arrangers.",
+            "sourceURL": "https://poclanos.com/album/꿈에서-걸려온-전화/",
+            "evidence": "08. 삐뽀삐뽀 Composed, Written by 김뜻돌 Arranged by 김뜻돌, 강원우, 박문치, 강전호, 한제리"
+          },
+          {
+            "claim": "The separately listed 2018 recording has different arrangement credits.",
+            "sourceURL": "https://poclanos.com/album/꿈에서-걸려온-전화/",
+            "evidence": "11. 삐뽀삐뽀 (2018) Composed, Written, Arranged by 김뜻돌"
+          },
+          {
+            "claim": "Bugs identifies the selected album recording and its 03:23 duration.",
+            "sourceURL": "https://music.bugs.co.kr/track/32028457",
+            "evidence": "앨범 꿈에서 걸려온 전화 재생 시간 03:23"
+          },
+          {
+            "claim": "The crane accident occurs during an ordinary walk, supporting the description's mortality reading.",
+            "sourceURL": "https://music.bugs.co.kr/track/32028457",
+            "evidence": "길을 걷다 고공 크레인에 내가 깔려죽어도"
+          },
+          {
+            "claim": "The request against belated calls supports the reading of wanting attention before disappearing.",
+            "sourceURL": "https://music.bugs.co.kr/track/32028457",
+            "evidence": "이 밤 저 밤 헤매다 내가 사라지면 그제서야 찾으러 전화하지는 말아요"
+          },
+          {
+            "claim": "The lyric contrasts closed ears with noisy news.",
+            "sourceURL": "https://music.bugs.co.kr/track/32028457",
+            "evidence": "사람들은 이제 내 얘기에 귀를 닫고 시끄러운 뉴스만 진짜는 아니야"
+          },
+          {
+            "claim": "The ending pairs uncertainty about death with resistance to exchanging it for another person's sacrifice.",
+            "sourceURL": "https://music.bugs.co.kr/track/32028457",
+            "evidence": "나는 내가 언제쯤 죽을지는 몰라도 누군가의 희생과 바꾸지 않았으면 해"
+          },
+          {
+            "claim": "The repeated ending also names tears.",
+            "sourceURL": "https://music.bugs.co.kr/track/32028457",
+            "evidence": "누군가의 눈물과 바꾸지 않았으면 해"
+          },
+          {
+            "claim": "The repeated ending also names money.",
+            "sourceURL": "https://music.bugs.co.kr/track/32028457",
+            "evidence": "누군가의 돈과는 바꾸지 않았으면 해"
+          },
+          {
+            "claim": "The repeated ending also names reputation.",
+            "sourceURL": "https://music.bugs.co.kr/track/32028457",
+            "evidence": "누군가의 명예와 바꾸지 않았으면 해"
+          },
+          {
+            "claim": "Psychomania was released on October 29, 2022.",
+            "sourceURL": "https://poclanos.com/album/psychomania/",
+            "evidence": "Release 2022.10.29"
+          },
+          {
+            "claim": "Its release note stages an encounter with a fierce voice.",
+            "sourceURL": "https://poclanos.com/album/psychomania/",
+            "evidence": "그 통로를 지나면 수많은 목소리를 만날 수 있는데, 그중 제일 사납고 미친 녀석을 만났다."
+          },
+          {
+            "claim": "The conversation includes anger.",
+            "sourceURL": "https://poclanos.com/album/psychomania/",
+            "evidence": "너는 화가 나 있어."
+          },
+          {
+            "claim": "The conversation includes the need to continue living.",
+            "sourceURL": "https://poclanos.com/album/psychomania/",
+            "evidence": "하지만 나는 여전히 살아가야 하는걸."
+          },
+          {
+            "claim": "The conversation includes a request for prayer.",
+            "sourceURL": "https://poclanos.com/album/psychomania/",
+            "evidence": "나를 위해 기도 하나만 해줄래?"
+          },
+          {
+            "claim": "Meaningful Stone wrote and produced Psychomania; its four credited arrangers match the entry.",
+            "sourceURL": "https://poclanos.com/album/psychomania/",
+            "evidence": "작곡/ 작사 Written by 김뜻돌 Meaningful Stone Produced by 김뜻돌 Meaningful Stone 편곡 Arranged by 김뜻돌, 강원우, 최이재, 김나현"
+          },
+          {
+            "claim": "The release supplies the English credit names Onewoo Kang, EJae and Nahyun Kim.",
+            "sourceURL": "https://poclanos.com/album/psychomania/",
+            "evidence": "Guitar 강원우 Onewoo Kang Bass 최이재 EJae Drum 김나현 Nahyun Kim"
+          },
+          {
+            "claim": "MELTMIRROR directed the music video.",
+            "sourceURL": "https://poclanos.com/album/psychomania/",
+            "evidence": "M/V Directed by MELTMIRROR"
+          },
+          {
+            "claim": "The real-name alias 김지민 is confirmed by an original interview.",
+            "sourceURL": "https://www.newsis.com/view/?id=NISX20210128_0001320839&pc_view=1",
+            "evidence": "김뜻돌의 본명은 김지민."
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The introductions are short, specific and grounded in concrete details before release history. Lyric commentary keeps the speaker separate from the artist, explains identifiable images with measured interpretations, and avoids reproducing lyrics. Neither entry repeats recent catalogue prose or invents listening experience. Both meet their requested grades, accepting the separate fact review and authoritative recording verification.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          },
+          {
+            "key": "t2",
+            "grade": "B",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      }
+    },
+    "lang-lee-there-is-a-wolf": {
+      "trackId": "lang-lee-there-is-a-wolf",
+      "artistId": "lang-lee",
+      "batch": "batch-1",
+      "grade": "A",
+      "role": "primary",
+      "addedAt": "2026-11-11",
+      "contentHash": "1150ce9cef03e0107af627ebcd687c48cc87a4717376d45f1226dd3baf5fd6c5",
+      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
+      "reviewedAt": "2026-11-10T21:44:07.919Z",
+      "sources": [
+        "https://langleeschool.bandcamp.com/album/there-is-a-wolf",
+        "https://music.bugs.co.kr/track/6126269"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/there-is-a-wolf/1703578645",
+        "trackName": "There is A Wolf",
+        "releaseDate": "2021-08-23",
+        "checkedAt": "2026-11-10T21:42:30.524Z"
+      },
+      "playback": {
+        "videoId": "jD8OrOnGr1w",
+        "state": "playing",
+        "checkedAt": "2026-11-10T21:42:36.144Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "이랑 Lang Lee",
+        "official": "the artist’s own channel",
+        "tried": [
+          {
+            "videoId": "jD8OrOnGr1w",
+            "channel": "이랑 Lang Lee",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-10T22:00:21.850Z"
+      },
+      "facts": {
+        "approved": true,
+        "reason": "The supplied source texts support the entries’ factual claims, credits and lyric readings. The prose distinguishes the later live performance from the album release and preserves the separate 2020 single recording. No blocking factual issues remain.",
+        "checkedURLs": [
+          "https://langleeschool.bandcamp.com/album/there-is-a-wolf",
+          "https://music.bugs.co.kr/track/6126269",
+          "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=8583",
+          "https://langleeschool.bandcamp.com/album/the-generation-of-tribulation"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "There is A Wolf is Lang Lee’s third album.",
+            "sourceURL": "https://langleeschool.bandcamp.com/album/there-is-a-wolf",
+            "evidence": "Lang Lee's third album, There is a Wolf"
+          },
+          {
+            "claim": "The album was released on August 23, 2021; Lang Lee wrote its songs and arranged and produced it with De-bong Lee.",
+            "sourceURL": "https://langleeschool.bandcamp.com/album/there-is-a-wolf",
+            "evidence": "released August 23, 2021 All Songs written by Lang Lee Arranged and produced by De-bong Lee and Lang Lee"
+          },
+          {
+            "claim": "Unnie Choir appears on the title track and is described by the album notes as celebrating sexual diversity and feminism.",
+            "sourceURL": "https://langleeschool.bandcamp.com/album/there-is-a-wolf",
+            "evidence": "Unnie Choir, a choir group known for celebrating sexual diversity and feminism, joins Lee in the title track"
+          },
+          {
+            "claim": "The title lyric connects hunger and grief with threatening labels.",
+            "sourceURL": "https://music.bugs.co.kr/track/6126269",
+            "evidence": "가난한 사람들의 동네를 울며 지나간다 마녀가 나타났다"
+          },
+          {
+            "claim": "People demand access after rich people buy the good bread and are labelled rioters.",
+            "sourceURL": "https://music.bugs.co.kr/track/6126269",
+            "evidence": "부자들이 좋은 빵을 전부 사버린 걸 알게 된 사람들이 막대기와 갈퀴를 들고 성문을 두드린다 폭도가 나타났다"
+          },
+          {
+            "claim": "Hungry people take food and attack grain stores before the wolf label appears.",
+            "sourceURL": "https://music.bugs.co.kr/track/6126269",
+            "evidence": "배고픈 사람들은 들판의 콩을 주워 다 먹어 치우고 부자들의 곡물 창고를 습격했다 늑대가 나타났다"
+          },
+          {
+            "claim": "Closed city gates provide textual support for the commentary’s reading of exclusion.",
+            "sourceURL": "https://music.bugs.co.kr/track/6126269",
+            "evidence": "도시 성문은 굳게 닫혀 걸렸고 문밖에는 사람이"
+          },
+          {
+            "claim": "The speaker refers to poor friends and asks the addressee to consider poverty as their own possible future.",
+            "sourceURL": "https://music.bugs.co.kr/track/6126269",
+            "evidence": "내 친구들은 모두 가난합니다 이 가난에 대해 생각해보세요 이건 곧 당신의 일이 될 거랍니다"
+          },
+          {
+            "claim": "The collective speakers identify themselves as food producers and insist on feeding their children.",
+            "sourceURL": "https://music.bugs.co.kr/track/6126269",
+            "evidence": "우린 쓸모없는 사람들이 아니오 너희가 먹는 빵을 만드는 사람일 뿐 포도주를 담그고 그 찌꺼기를 먹을 뿐 내 자식을 굶겨 죽일 수는 없소"
+          },
+          {
+            "claim": "The Generation of Tribulation originated at the final performance of the 2015 series on November 2.",
+            "sourceURL": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=8583",
+            "evidence": "[환란의 세대]는 '신곡의 방' 그 마지막 회에 탄생했다고 하는데요. 2015년 11월 2일 저녁."
+          },
+          {
+            "claim": "The performance series showed audiences the creation of a song.",
+            "sourceURL": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=8583",
+            "evidence": "관객들이 지켜보는 현장에서 하나의 곡이 탄생하는 과정을 보여주는 공연이었습니다."
+          },
+          {
+            "claim": "Lang Lee combined notes with a melody from a voice recording.",
+            "sourceURL": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=8583",
+            "evidence": "평소에 적어둔 메모들과, 음성녹음 파일에서 찾은 멜로디를 붙여"
+          },
+          {
+            "claim": "Guitar and vocals were recorded at the performance after the lyrics were completed.",
+            "sourceURL": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=8583",
+            "evidence": "가사가 완성된 후 현장에서 바로 기타와 보컬 녹음을 하고"
+          },
+          {
+            "claim": "The arrangement developed through band rehearsals and the subsequent participation of Unnie Choir.",
+            "sourceURL": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=8583",
+            "evidence": "밴드 멤버들과 몇 차례 회의/합주를 거치고, 뒤이어 비혼, 퀴어, 페미니즘을 노래하는 '아는언니들' 합창단이 합류하자 편곡 작업은 급물살을 타고"
+          },
+          {
+            "claim": "The single was released on June 20, 2020.",
+            "sourceURL": "https://langleeschool.bandcamp.com/album/the-generation-of-tribulation",
+            "evidence": "released June 20, 2020"
+          },
+          {
+            "claim": "The selected single features Unnie Choir and was produced by Lang Lee.",
+            "sourceURL": "https://langleeschool.bandcamp.com/album/the-generation-of-tribulation",
+            "evidence": "The Generation of Tribulation (feat. Unnie Choir) プロデュース：イ・ラン Produced by Lang Lee"
+          },
+          {
+            "claim": "The single’s arranger names and romanisation match the official credits.",
+            "sourceURL": "https://langleeschool.bandcamp.com/album/the-generation-of-tribulation",
+            "evidence": "Arranged by Lang Lee, Jeongwoo Lee, E Hyeji, Younghun Kim, and JiWook Mae"
+          },
+          {
+            "claim": "Lang Lee wrote the single’s lyrics and music.",
+            "sourceURL": "https://langleeschool.bandcamp.com/album/the-generation-of-tribulation",
+            "evidence": "作詞・作曲：イ・ラン Written by Lang Lee"
+          },
+          {
+            "claim": "The release includes a separate version produced by Manami Kakudo.",
+            "sourceURL": "https://langleeschool.bandcamp.com/album/the-generation-of-tribulation",
+            "evidence": "The Generation of Tribulation (Manami Kakudo Version) プロデュース、編曲：角銅真実 Produced and arranged by Manami Kakudo"
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The entries are plain, specific and concise, with concrete lyrical details or creation history before release information. The lyric commentary keeps interpretation measured and distinguishes the speaker from the performer. Neither entry repeats recent catalogue structures or relies on name-swappable praise. Both meet their assigned grade requirements.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          },
+          {
+            "key": "t2",
+            "grade": "B",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      }
+    },
+    "lang-lee-the-generation-of-tribulation": {
+      "trackId": "lang-lee-the-generation-of-tribulation",
+      "artistId": "lang-lee",
+      "batch": "batch-1",
+      "grade": "B",
+      "role": "additional",
+      "addedAt": "2026-11-11",
+      "contentHash": "de2501ddc42815c2ce6995ac000a8994783b24356cc6a1427b2f5d029d0e5b0c",
+      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
+      "reviewedAt": "2026-11-10T21:44:07.919Z",
+      "sources": [
+        "https://langleeschool.bandcamp.com/album/there-is-a-wolf",
+        "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=8583",
+        "https://langleeschool.bandcamp.com/album/the-generation-of-tribulation"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/the-generation-of-tribulation-single/1518542041",
+        "trackName": "The Generation of Tribulation (feat. Unnie Choir)",
+        "releaseDate": "2020-06-20",
+        "checkedAt": "2026-11-10T21:42:36.253Z"
+      },
+      "playback": {
+        "videoId": "zQr2u8qGz5o",
+        "state": "playing",
+        "checkedAt": "2026-11-10T21:42:41.788Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "이랑 Lang Lee",
+        "official": "the artist’s own channel",
+        "tried": [
+          {
+            "videoId": "zQr2u8qGz5o",
+            "channel": "이랑 Lang Lee",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-10T22:00:26.901Z"
+      },
+      "facts": {
+        "approved": true,
+        "reason": "The supplied source texts support the entries’ factual claims, credits and lyric readings. The prose distinguishes the later live performance from the album release and preserves the separate 2020 single recording. No blocking factual issues remain.",
+        "checkedURLs": [
+          "https://langleeschool.bandcamp.com/album/there-is-a-wolf",
+          "https://music.bugs.co.kr/track/6126269",
+          "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=8583",
+          "https://langleeschool.bandcamp.com/album/the-generation-of-tribulation"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "There is A Wolf is Lang Lee’s third album.",
+            "sourceURL": "https://langleeschool.bandcamp.com/album/there-is-a-wolf",
+            "evidence": "Lang Lee's third album, There is a Wolf"
+          },
+          {
+            "claim": "The album was released on August 23, 2021; Lang Lee wrote its songs and arranged and produced it with De-bong Lee.",
+            "sourceURL": "https://langleeschool.bandcamp.com/album/there-is-a-wolf",
+            "evidence": "released August 23, 2021 All Songs written by Lang Lee Arranged and produced by De-bong Lee and Lang Lee"
+          },
+          {
+            "claim": "Unnie Choir appears on the title track and is described by the album notes as celebrating sexual diversity and feminism.",
+            "sourceURL": "https://langleeschool.bandcamp.com/album/there-is-a-wolf",
+            "evidence": "Unnie Choir, a choir group known for celebrating sexual diversity and feminism, joins Lee in the title track"
+          },
+          {
+            "claim": "The title lyric connects hunger and grief with threatening labels.",
+            "sourceURL": "https://music.bugs.co.kr/track/6126269",
+            "evidence": "가난한 사람들의 동네를 울며 지나간다 마녀가 나타났다"
+          },
+          {
+            "claim": "People demand access after rich people buy the good bread and are labelled rioters.",
+            "sourceURL": "https://music.bugs.co.kr/track/6126269",
+            "evidence": "부자들이 좋은 빵을 전부 사버린 걸 알게 된 사람들이 막대기와 갈퀴를 들고 성문을 두드린다 폭도가 나타났다"
+          },
+          {
+            "claim": "Hungry people take food and attack grain stores before the wolf label appears.",
+            "sourceURL": "https://music.bugs.co.kr/track/6126269",
+            "evidence": "배고픈 사람들은 들판의 콩을 주워 다 먹어 치우고 부자들의 곡물 창고를 습격했다 늑대가 나타났다"
+          },
+          {
+            "claim": "Closed city gates provide textual support for the commentary’s reading of exclusion.",
+            "sourceURL": "https://music.bugs.co.kr/track/6126269",
+            "evidence": "도시 성문은 굳게 닫혀 걸렸고 문밖에는 사람이"
+          },
+          {
+            "claim": "The speaker refers to poor friends and asks the addressee to consider poverty as their own possible future.",
+            "sourceURL": "https://music.bugs.co.kr/track/6126269",
+            "evidence": "내 친구들은 모두 가난합니다 이 가난에 대해 생각해보세요 이건 곧 당신의 일이 될 거랍니다"
+          },
+          {
+            "claim": "The collective speakers identify themselves as food producers and insist on feeding their children.",
+            "sourceURL": "https://music.bugs.co.kr/track/6126269",
+            "evidence": "우린 쓸모없는 사람들이 아니오 너희가 먹는 빵을 만드는 사람일 뿐 포도주를 담그고 그 찌꺼기를 먹을 뿐 내 자식을 굶겨 죽일 수는 없소"
+          },
+          {
+            "claim": "The Generation of Tribulation originated at the final performance of the 2015 series on November 2.",
+            "sourceURL": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=8583",
+            "evidence": "[환란의 세대]는 '신곡의 방' 그 마지막 회에 탄생했다고 하는데요. 2015년 11월 2일 저녁."
+          },
+          {
+            "claim": "The performance series showed audiences the creation of a song.",
+            "sourceURL": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=8583",
+            "evidence": "관객들이 지켜보는 현장에서 하나의 곡이 탄생하는 과정을 보여주는 공연이었습니다."
+          },
+          {
+            "claim": "Lang Lee combined notes with a melody from a voice recording.",
+            "sourceURL": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=8583",
+            "evidence": "평소에 적어둔 메모들과, 음성녹음 파일에서 찾은 멜로디를 붙여"
+          },
+          {
+            "claim": "Guitar and vocals were recorded at the performance after the lyrics were completed.",
+            "sourceURL": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=8583",
+            "evidence": "가사가 완성된 후 현장에서 바로 기타와 보컬 녹음을 하고"
+          },
+          {
+            "claim": "The arrangement developed through band rehearsals and the subsequent participation of Unnie Choir.",
+            "sourceURL": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=8583",
+            "evidence": "밴드 멤버들과 몇 차례 회의/합주를 거치고, 뒤이어 비혼, 퀴어, 페미니즘을 노래하는 '아는언니들' 합창단이 합류하자 편곡 작업은 급물살을 타고"
+          },
+          {
+            "claim": "The single was released on June 20, 2020.",
+            "sourceURL": "https://langleeschool.bandcamp.com/album/the-generation-of-tribulation",
+            "evidence": "released June 20, 2020"
+          },
+          {
+            "claim": "The selected single features Unnie Choir and was produced by Lang Lee.",
+            "sourceURL": "https://langleeschool.bandcamp.com/album/the-generation-of-tribulation",
+            "evidence": "The Generation of Tribulation (feat. Unnie Choir) プロデュース：イ・ラン Produced by Lang Lee"
+          },
+          {
+            "claim": "The single’s arranger names and romanisation match the official credits.",
+            "sourceURL": "https://langleeschool.bandcamp.com/album/the-generation-of-tribulation",
+            "evidence": "Arranged by Lang Lee, Jeongwoo Lee, E Hyeji, Younghun Kim, and JiWook Mae"
+          },
+          {
+            "claim": "Lang Lee wrote the single’s lyrics and music.",
+            "sourceURL": "https://langleeschool.bandcamp.com/album/the-generation-of-tribulation",
+            "evidence": "作詞・作曲：イ・ラン Written by Lang Lee"
+          },
+          {
+            "claim": "The release includes a separate version produced by Manami Kakudo.",
+            "sourceURL": "https://langleeschool.bandcamp.com/album/the-generation-of-tribulation",
+            "evidence": "The Generation of Tribulation (Manami Kakudo Version) プロデュース、編曲：角銅真実 Produced and arranged by Manami Kakudo"
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The entries are plain, specific and concise, with concrete lyrical details or creation history before release information. The lyric commentary keeps interpretation measured and distinguishes the speaker from the performer. Neither entry repeats recent catalogue structures or relies on name-swappable praise. Both meet their assigned grade requirements.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          },
+          {
+            "key": "t2",
+            "grade": "B",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      }
+    },
+    "jeongmilla-departing-from-seoul-station": {
+      "trackId": "jeongmilla-departing-from-seoul-station",
+      "artistId": "jeongmilla",
+      "batch": "batch-1",
+      "grade": "A",
+      "role": "primary",
+      "addedAt": "2026-11-11",
+      "contentHash": "80f5376779b5b480ff7bfa8c4c5ff90bf417abb25eeea3ab6edfacc93b1315cb",
+      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
+      "reviewedAt": "2026-11-10T21:47:45.739Z",
+      "sources": [
+        "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+        "https://www.genie.co.kr/detail/songInfo?xgnm=91097787"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/cheongpa-sonata/1536717714",
+        "trackName": "Departing from Seoul Station",
+        "releaseDate": "2020-10-22",
+        "checkedAt": "2026-11-10T21:46:06.401Z"
+      },
+      "playback": {
+        "videoId": "dSUsBRqOBCg",
+        "state": "playing",
+        "checkedAt": "2026-11-10T21:46:13.175Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "정밀아JEONGMILLA",
+        "official": "the artist’s own channel",
+        "tried": [
+          {
+            "videoId": "wVOm5mvVEcQ",
+            "channel": "배민라이브",
+            "channelURL": "https://www.youtube.com/@baemin_live",
+            "state": "channel not confirmed as official"
+          },
+          {
+            "videoId": "dSUsBRqOBCg",
+            "channel": "정밀아JEONGMILLA",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-10T22:00:32.979Z"
+      },
+      "facts": {
+        "approved": true,
+        "reason": "The exact entries are supported by the supplied fetched texts and pipeline recording checks. Lyric interpretations remain close to the source lyrics. No unresolved blocking factual issues found.",
+        "checkedURLs": [
+          "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+          "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+          "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "JEONGMILLA is a folk singer-songwriter.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "포크 싱어송라이터 정밀아"
+          },
+          {
+            "claim": "Her writing connects her own life with attention to her surroundings.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "나를 이야기하려면 내 주변의 것들을 반드시 봐야 하는 것"
+          },
+          {
+            "claim": "Her first two studio albums appeared in 2014 and 2017, and CheongPa Sonata is her third.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "'청파소나타'는 1집 '그리움도 병'(2014), 2집 '은하수'(2017)에 이은 정밀아의 세 번째 정규앨범."
+          },
+          {
+            "claim": "She studied art at university and also makes visual art.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "정밀아는 대학에서 미술을 전공했지만"
+          },
+          {
+            "claim": "The interview reports that she continued making visual art alongside music.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "그림 작업은 지금도 병행하고 있다."
+          },
+          {
+            "claim": "She moved to Cheongpa-dong in autumn 2019, with Seoul Station visible from her window.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "2019년 가을 이사 온 청파(靑坡)동은 창문을 열면 남산과 서울역이 보이는 동네다."
+          },
+          {
+            "claim": "Neighbourhood walks helped shape the album's subjects.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "산책하며 만난 재개발의 풍경은 '오래된 동네'라는 곡의 바탕이 됐다."
+          },
+          {
+            "claim": "Her walks extended to several public squares.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "그의 산책길이 서울역 광장, 시청광장, 광화문 광장까지 자연스럽게 나아갔기 때문이다."
+          },
+          {
+            "claim": "JEONGMILLA wrote the lyrics and music and arranged Departing from Seoul Station.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "작사가 정밀아 작곡가 정밀아 편곡자 정밀아"
+          },
+          {
+            "claim": "The opening concerns a mother's worries about returning home after a singing engagement.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "어디 멀리 노래하러 갔었다더니 그래 집에는 언제 온 거니?"
+          },
+          {
+            "claim": "The speaker reassures her mother that she can now walk home.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "이제 이사하고 난 뒤로는 염려 없어요. 집에까지 금세 걸어왔어요."
+          },
+          {
+            "claim": "The station recalls an earlier arrival for a university entrance examination.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "내가 혼자 대학 시험 보러 온 날"
+          },
+          {
+            "claim": "The speaker expected to become a painter and now lives through singing.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "엄마 나는 대학 가면 그림 그려서 멋진 화가가 될 줄 알았지 허나 딴짓을 아주 열심히 하였더만은 이젠 노래하며 잘 살아갑니다."
+          },
+          {
+            "claim": "Seoul Station connects the speaker to her hometown.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "서울역에서 출발하고 두 시간 남짓이면 우리 살던 동네에 도착하잖아."
+          },
+          {
+            "claim": "The station also provides a route to a school friend's home.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "지하철 4호선 타고 서울역에서 출발하면은 한 시간이면 주희네 집이야"
+          },
+          {
+            "claim": "The reading of change without a verdict of success or failure is supported.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "그게 뭐 어떻다는 것은 아니고 그냥 그랬구나 하는 거예요."
+          },
+          {
+            "claim": "The ending looks toward a train trip to the sea before summer.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "봄 가고 아주 여름 오기 전 언제 바다에 가보려고 해 서울역에서 출발하는 기차를 타고"
+          },
+          {
+            "claim": "Bugs identifies Flower as a track on the release 꽃.",
+            "sourceURL": "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08",
+            "evidence": "앨범 꽃 재생 시간 03:33"
+          },
+          {
+            "claim": "Flower credits JEONGMILLA with vocals, composition and arrangement, and Na Tae-joo with lyrics.",
+            "sourceURL": "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08",
+            "evidence": "보컬 정밀아 작곡 정밀아 작사 나태주 편곡 정밀아"
+          },
+          {
+            "claim": "Flower's description of affection independent of beauty, achievement or possessions is supported.",
+            "sourceURL": "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08",
+            "evidence": "예뻐서가 아니다, 잘나서가 아니다, 많은 것을 가져서도 아니다."
+          },
+          {
+            "claim": "The interpretation that the addressee is valued simply for being themselves is supported.",
+            "sourceURL": "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08",
+            "evidence": "네가 너이기 때문에 소중한 것이고"
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The entries are plain, warm and specific, with concrete song details before release history. The lyric commentary supports its readings with distinct images and gestures, preserves the speaker’s uncertainty and avoids inflated emotion. Compared with recent entries, no substantial repeated phrasing or interchangeable prose stands out. Both requested grades meet their requirements, accepting the supplied recording verification and separate fact review.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          },
+          {
+            "key": "t2",
+            "grade": "B",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      }
+    },
+    "jeongmilla-flower": {
+      "trackId": "jeongmilla-flower",
+      "artistId": "jeongmilla",
+      "batch": "batch-1",
+      "grade": "B",
+      "role": "additional",
+      "addedAt": "2026-11-11",
+      "contentHash": "caee8730485317bf19c2ec86f96ee7c8a433a8f902f2c8baf53e4dd188e087e5",
+      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
+      "reviewedAt": "2026-11-10T21:47:45.739Z",
+      "sources": [
+        "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+        "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/flower-single/1592973254",
+        "trackName": "Flower",
+        "releaseDate": "2016-04-11",
+        "checkedAt": "2026-11-10T21:46:13.473Z"
+      },
+      "playback": {
+        "videoId": "Ni3cgnuOoFg",
+        "state": "playing",
+        "checkedAt": "2026-11-10T21:46:19.864Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "정밀아JEONGMILLA",
+        "official": "the artist’s own channel",
+        "tried": [
+          {
+            "videoId": "Ni3cgnuOoFg",
+            "channel": "정밀아JEONGMILLA",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-10T22:00:38.027Z"
+      },
+      "facts": {
+        "approved": true,
+        "reason": "The exact entries are supported by the supplied fetched texts and pipeline recording checks. Lyric interpretations remain close to the source lyrics. No unresolved blocking factual issues found.",
+        "checkedURLs": [
+          "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+          "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+          "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "JEONGMILLA is a folk singer-songwriter.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "포크 싱어송라이터 정밀아"
+          },
+          {
+            "claim": "Her writing connects her own life with attention to her surroundings.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "나를 이야기하려면 내 주변의 것들을 반드시 봐야 하는 것"
+          },
+          {
+            "claim": "Her first two studio albums appeared in 2014 and 2017, and CheongPa Sonata is her third.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "'청파소나타'는 1집 '그리움도 병'(2014), 2집 '은하수'(2017)에 이은 정밀아의 세 번째 정규앨범."
+          },
+          {
+            "claim": "She studied art at university and also makes visual art.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "정밀아는 대학에서 미술을 전공했지만"
+          },
+          {
+            "claim": "The interview reports that she continued making visual art alongside music.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "그림 작업은 지금도 병행하고 있다."
+          },
+          {
+            "claim": "She moved to Cheongpa-dong in autumn 2019, with Seoul Station visible from her window.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "2019년 가을 이사 온 청파(靑坡)동은 창문을 열면 남산과 서울역이 보이는 동네다."
+          },
+          {
+            "claim": "Neighbourhood walks helped shape the album's subjects.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "산책하며 만난 재개발의 풍경은 '오래된 동네'라는 곡의 바탕이 됐다."
+          },
+          {
+            "claim": "Her walks extended to several public squares.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "그의 산책길이 서울역 광장, 시청광장, 광화문 광장까지 자연스럽게 나아갔기 때문이다."
+          },
+          {
+            "claim": "JEONGMILLA wrote the lyrics and music and arranged Departing from Seoul Station.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "작사가 정밀아 작곡가 정밀아 편곡자 정밀아"
+          },
+          {
+            "claim": "The opening concerns a mother's worries about returning home after a singing engagement.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "어디 멀리 노래하러 갔었다더니 그래 집에는 언제 온 거니?"
+          },
+          {
+            "claim": "The speaker reassures her mother that she can now walk home.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "이제 이사하고 난 뒤로는 염려 없어요. 집에까지 금세 걸어왔어요."
+          },
+          {
+            "claim": "The station recalls an earlier arrival for a university entrance examination.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "내가 혼자 대학 시험 보러 온 날"
+          },
+          {
+            "claim": "The speaker expected to become a painter and now lives through singing.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "엄마 나는 대학 가면 그림 그려서 멋진 화가가 될 줄 알았지 허나 딴짓을 아주 열심히 하였더만은 이젠 노래하며 잘 살아갑니다."
+          },
+          {
+            "claim": "Seoul Station connects the speaker to her hometown.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "서울역에서 출발하고 두 시간 남짓이면 우리 살던 동네에 도착하잖아."
+          },
+          {
+            "claim": "The station also provides a route to a school friend's home.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "지하철 4호선 타고 서울역에서 출발하면은 한 시간이면 주희네 집이야"
+          },
+          {
+            "claim": "The reading of change without a verdict of success or failure is supported.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "그게 뭐 어떻다는 것은 아니고 그냥 그랬구나 하는 거예요."
+          },
+          {
+            "claim": "The ending looks toward a train trip to the sea before summer.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+            "evidence": "봄 가고 아주 여름 오기 전 언제 바다에 가보려고 해 서울역에서 출발하는 기차를 타고"
+          },
+          {
+            "claim": "Bugs identifies Flower as a track on the release 꽃.",
+            "sourceURL": "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08",
+            "evidence": "앨범 꽃 재생 시간 03:33"
+          },
+          {
+            "claim": "Flower credits JEONGMILLA with vocals, composition and arrangement, and Na Tae-joo with lyrics.",
+            "sourceURL": "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08",
+            "evidence": "보컬 정밀아 작곡 정밀아 작사 나태주 편곡 정밀아"
+          },
+          {
+            "claim": "Flower's description of affection independent of beauty, achievement or possessions is supported.",
+            "sourceURL": "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08",
+            "evidence": "예뻐서가 아니다, 잘나서가 아니다, 많은 것을 가져서도 아니다."
+          },
+          {
+            "claim": "The interpretation that the addressee is valued simply for being themselves is supported.",
+            "sourceURL": "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08",
+            "evidence": "네가 너이기 때문에 소중한 것이고"
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The entries are plain, warm and specific, with concrete song details before release history. The lyric commentary supports its readings with distinct images and gestures, preserves the speaker’s uncertainty and avoids inflated emotion. Compared with recent entries, no substantial repeated phrasing or interchangeable prose stands out. Both requested grades meet their requirements, accepting the supplied recording verification and separate fact review.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          },
+          {
+            "key": "t2",
+            "grade": "B",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      },
+      "humanSample": true,
+      "humanReview": {
+        "status": "pending"
+      }
+    }
+  }
 }

@@ -13,7 +13,7 @@ Score (0–100) = 0.35 × streaming + 0.2 × community + 0.15 × recognition + 0
 | 5 | `jannabi` | JANNABI (잔나비) | bands | band-scene, indie | 45.3 | 2918 | community 0.25, scene 0.33, recognition 1 | For Lovers Who Hesitate / A Thought on an Autumn Night | proposed |
 | 6 | `the-rose` | The Rose (더로즈) | bands | band-scene | 45.2 | 194198 | ost 0.33, scene 0.33, recognition 0.33 | Back To Me / Sorry | proposed |
 | 7 | `zion-t` | Zion.T (자이언티) | solo | rnb-soul | 45.2 | 17769 | scene 0.33, recognition 1 | Yanghwa BRDG / No Make Up | proposed |
-| 8 | `say-sue-me` | Say Sue Me (세이수미) | bands | band-scene, indie | 45 | 1432 | community 0.25, ost 0.67, scene 0.33, recognition 0.67 | So Tender / My Heart | proposed |
+| 8 | `say-sue-me` | Say Sue Me (세이수미) | bands | band-scene, indie | 45 | 1432 | community 0.25, ost 0.67, scene 0.33, recognition 0.67 | So Tender / My Heart | approved (batch-1) |
 | 9 | `tabber` | Tabber (태버) | solo | rnb-soul | 44.8 | 8129 | community 0.25, recognition 1 | Chi-Ka (feat. DEAN) / 007 (feat. Syd) | proposed |
 | 10 | `crush` | Crush (크러쉬) | solo | rnb-soul | 44.7 | 27092 | ost 0.33, scene 0.33, recognition 0.67 | Beautiful / Love You With All My Heart | proposed |
 | 11 | `dean` | DEAN (딘) | solo | rnb-soul | 44.3 | 78646 | scene 0.33, recognition 0.67 | Instagram / D (Half Moon) [feat. Gaeko] | proposed |
@@ -27,7 +27,7 @@ Score (0–100) = 0.35 × streaming + 0.2 × community + 0.15 × recognition + 0
 | 19 | `heize` | Heize (헤이즈) | solo | rnb-soul | 39.1 | 38851 | recognition 0.67 | And July (feat. DEAN & dj friz) / You, Clouds, Rain (feat. Shin Yong Jae) | proposed |
 | 20 | `lucy` | LUCY (루시) | bands | band-scene | 39.1 | 6463 | community 0.25, ost 0.67, scene 0.33 | Flowering / Run to You | proposed |
 | 21 | `davichi` | DAVICHI (다비치) | bands | ost | 38.9 | 37117 | recognition 0.67 | This Love / 8282 | proposed |
-| 22 | `silica-gel` | Silica Gel (실리카겔) | bands | band-scene, indie | 38.9 | 1739 | community 0.25, scene 0.33, recognition 0.67 | NO PAIN / Tik Tak Tok (feat. So!YoON!) | proposed |
+| 22 | `silica-gel` | Silica Gel (실리카겔) | bands | band-scene, indie | 38.9 | 1739 | community 0.25, scene 0.33, recognition 0.67 | NO PAIN / Tik Tak Tok (feat. So!YoON!) | approved (batch-1) |
 | 23 | `jooyoung` | Jooyoung (주영) | solo | rnb-soul | 38.6 | 1581 | community 0.25, scene 0.33, recognition 0.67 | Planet Girl (feat. pH-1) / Dive | proposed |
 | 24 | `leehi` | LEEHI (이하이) | solo | rnb-soul | 38.4 | 30748 | recognition 0.67 | H.S.K.T. (feat. Wonstein) | proposed |
 | 25 | `junggigo` | Junggigo (정기고) | solo | rnb-soul | 38.3 | 4769 | recognition 1 | BLIND / Some (feat. Lil Boi) | proposed |
@@ -50,7 +50,7 @@ Score (0–100) = 0.35 × streaming + 0.2 × community + 0.15 × recognition + 0
 | 42 | `dvwn` | Dvwn (다운) | solo | rnb-soul | 33.3 | 4727 | recognition 0.67 | Yeonnam-dong (feat. lIlBOI) / fairy | proposed |
 | 43 | `elaine` | Elaine (일레인) | solo | indie | 33.1 | 50368 | ost 0.33 | Sad March | proposed |
 | 44 | `sung-si-kyung` | Sung Si Kyung (성시경) | solo | ost | 33.1 | 4447 | recognition 0.67 | Every moment of you / You Are My Spring | proposed |
-| 45 | `meaningful-stone` | Meaningful Stone (김뜻돌) | solo | indie | 32.9 | 674 | community 0.25, recognition 0.67 | Beep-Boop, Beep-Boop | proposed |
+| 45 | `meaningful-stone` | Meaningful Stone (김뜻돌) | solo | indie | 32.9 | 674 | community 0.25, recognition 0.67 | Beep-Boop, Beep-Boop | approved (batch-1) |
 | 46 | `mokyo` | Mokyo (모키오) | solo | rnb-soul | 32.7 | 3891 | recognition 0.67 | Uleum | proposed |
 | 47 | `hoody` | Hoody (후디) | solo | rnb-soul | 32.4 | 3476 | recognition 0.67 | Hangang / Adios (feat. GRAY) | proposed |
 | 48 | `janet-suhh` | Janet Suhh (자넷서) | solo | ost | 32.4 | 6255 | community 0.25, ost 0.33 | Resemble | proposed |
@@ -91,7 +91,7 @@ Score (0–100) = 0.35 × streaming + 0.2 × community + 0.15 × recognition + 0
 | 83 | `we-are-the-night` | WE ARE THE NIGHT (위아더나잇) | bands | band-scene | 29 | 995 | recognition 0.67 | Tiramisu Cake / Our Young Days | proposed |
 | 84 | `offonoff` | offonoff (오프온오프) | bands | rnb-soul | 28.9 | 5860 | recognition 0.33 | Cigarette (feat. Tablo, MISO) / Photograph | proposed |
 | 85 | `daybreak` | Daybreak (데이브레이크) | bands | band-scene | 28.7 | 1660 | scene 0.33, recognition 0.33 | Flower Road / Love Actually | proposed |
-| 86 | `lang-lee` | Lang Lee (이랑) | solo | folk-acoustic | 28.7 | 142 | recognition 1 | There is A Wolf / The Generation of Tribulation | proposed |
+| 86 | `lang-lee` | Lang Lee (이랑) | solo | folk-acoustic | 28.7 | 142 | recognition 1 | There is A Wolf / The Generation of Tribulation | approved (batch-1) |
 | 87 | `roy-kim` | Roy Kim (로이킴) | solo | folk-acoustic | 28.7 | 5481 | recognition 0.33 | Only Then / The Hardest Part | proposed |
 | 88 | `gaho` | Gaho (가호) | solo | ost | 28.6 | 9772 | ost 0.33 | Start Over | proposed |
 | 89 | `kim-na-young` | Kim Na Young (김나영) | solo | ost | 28.5 | 9421 | ost 0.33 | Love Hurts A Little More | proposed |
@@ -143,7 +143,7 @@ Score (0–100) = 0.35 × streaming + 0.2 × community + 0.15 × recognition + 0
 | 135 | `w24` | W24 (더블유24) | bands | idol-band | 24.7 | 1283 | recognition 0.33 |  | proposed |
 | 136 | `kardi` | KARDI (카디) | bands | band-scene | 24.6 | 368 | scene 0.33, recognition 0.33 | Watchout | proposed |
 | 137 | `nive` | NIve (니브) | solo | rnb-soul | 24.6 | 2265 | scene 0.33 |  | proposed |
-| 138 | `jeongmilla` | JEONGMILLA (정밀아) | solo | folk-acoustic | 24.5 | 31 | recognition 1 | The Square / Departing from Seoul Station | proposed |
+| 138 | `jeongmilla` | JEONGMILLA (정밀아) | solo | folk-acoustic | 24.5 | 31 | recognition 1 | The Square / Departing from Seoul Station | approved (batch-1) |
 | 139 | `surl` | SURL (설) | bands | indie | 24.5 | 1189 | community 0.25 | Dry Flower | proposed |
 | 140 | `glen-check` | Glen Check (글렌체크) | bands | indie | 24.3 | 1110 | community 0.25 | Dazed & Confused | proposed |
 | 141 | `j-rabbit` | J Rabbit (제이레빗) | bands | folk-acoustic | 24.3 | 2062 | ost 0.33 | You Always / Happy Things | proposed |
