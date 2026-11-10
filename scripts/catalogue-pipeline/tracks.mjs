@@ -9,7 +9,7 @@ import {askJSON,verifyClaims} from '../editorial/ai.mjs';
 import {catalogueInstructions,catalogueSkillRevision,loadSearchRows} from './context.mjs';
 import {searchDemand} from './candidates.mjs';
 import {verifyPlayback,oembed} from './playback.mjs';
-import {assembleEntries,lintEntries,lookupRelease,citedSources,entryHash,officialBasis} from './entries.mjs';
+import {assembleEntries,lintEntries,lookupRelease,citedSources,entryHash,officialBasis,formatConfirmed} from './entries.mjs';
 import {fetchPages,pageSummary,pageText,dossierURLs} from './pages.mjs';
 
 const schema = (root, name) => path.join(root, `scripts/catalogue-pipeline/${name}.schema.json`);
@@ -92,6 +92,7 @@ export async function prepareUnit({unit, state: s, save, config, deps, source, c
           if (!info) { tried.push({videoId:candidate.videoId, state:'not found by oEmbed'}); continue; }
           const basis = officialBasis(info, artistNames, deps.channels || []);
           if (!basis) { tried.push({videoId:candidate.videoId, channel:info.channel, channelURL:info.channelURL, state:'channel not confirmed as official'}); continue; }
+          if (!formatConfirmed(candidate.videoType, info, deps.channels || [])) { tried.push({videoId:candidate.videoId, channel:info.channel, title:info.title, state:`${candidate.videoType} format not shown by the title`}); continue; }
           const result = (await playback([candidate.videoId], config.playback))[candidate.videoId];
           tried.push({videoId:candidate.videoId, channel:info.channel, state:result.state, ...(result.error ? {error:result.error} : {})});
           if (result.playing) { s.videos[t.key] = {...result, channel:info.channel, channelURL:info.channelURL, title:info.title, videoType:candidate.videoType, official:basis, tried}; break; }

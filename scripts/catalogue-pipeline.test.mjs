@@ -9,7 +9,7 @@ import {createCatalogue} from './catalogue.mjs';
 import {songPageStatus} from './song-pages.mjs';
 import {mergeCandidates, scoreCandidates, searchDemand, slugify, normalizeName} from './catalogue-pipeline/candidates.mjs';
 import {parseSearchConsoleCSV} from './catalogue-pipeline/context.mjs';
-import {songSlug, assembleEntries, lintEntries, entryHash, gradeMissing, citedSources, appleIds, officialBasis} from './catalogue-pipeline/entries.mjs';
+import {songSlug, assembleEntries, lintEntries, entryHash, gradeMissing, citedSources, appleIds, officialBasis, formatConfirmed} from './catalogue-pipeline/entries.mjs';
 import {prepareUnit, approval} from './catalogue-pipeline/tracks.mjs';
 import {humanSample, rightsEntry} from './catalogue-pipeline/apply.mjs';
 
@@ -154,7 +154,7 @@ function fakeDeps({facts = 'approve', editorial = 'approve', playable = new Set(
   return {calls, deps:{root, ask, top:async () => [], images:new Map(), request:async url => ({body:pages[url]}),
     pages:async urls => Object.fromEntries(urls.map(url => [url, pages[url] && !unreadable.includes(url) ? {ok:true, text:pages[url]} : {ok:false, reason:'HTTP 403'}])),
     release:async ({title}) => release(title, title === 'First Light' ? 1 : 2),
-    oembed:async id => ({channel:channels[id], channelURL:`https://www.youtube.com/@${id}`, title:'t'}),
+    oembed:async id => ({channel:channels[id], channelURL:`https://www.youtube.com/@${id}`, title:`${id} (Live)`}),
     playback:async ([id]) => ({[id]:playable.has(id) ? video(id, '') : {videoId:id, state:'error', playing:false, code:150, error:'embedding disabled by the owner'}})}};
 }
 const run = async options => {
@@ -202,6 +202,17 @@ test('official channels are decided from oEmbed data: own channel, Topic or a li
   assert.equal(officialBasis({channel:'Say Sue Me - Topic', channelURL:'https://www.youtube.com/channel/UC1'}, names), 'the artist’s YouTube Topic channel (official audio)');
   assert.match(officialBasis({channel:'1theK (원더케이)', channelURL:'https://www.youtube.com/@1theK'}, names, listed), /^distributor channel/);
   for (const channel of ['KDRAMAHOLIC. ID', 'Say Sue Me Fans', 'say sue me lyrics', 'Other Band - Topic', '1theK (원더케이)']) assert.equal(officialBasis({channel, channelURL:'https://www.youtube.com/@fake'}, names, listed), null, channel);
+});
+
+test('a declared live or lyric-video format must show in the title or come from a live-series channel', () => {
+  const listed = [{channelURL:'https://www.youtube.com/@official.onstage', kind:'live-series'}];
+  assert.ok(formatConfirmed('live', {title:'Say Sue Me - My Heart (Live at SSM’s HQ)'}));
+  assert.ok(formatConfirmed('live', {title:'카더가든 나무 | 비긴어게인 오픈마이크'}));
+  assert.ok(formatConfirmed('live', {title:'[온스테이지2.0] 유라 - 깜빡', channelURL:'https://www.youtube.com/@official.onstage'}, listed));
+  assert.equal(formatConfirmed('live', {title:'moneto - She (feat. MRCH)', channelURL:'https://www.youtube.com/@x'}, listed), false);
+  assert.ok(formatConfirmed('lyric-video', {title:'0310 (Official Lyric Video)'}));
+  assert.equal(formatConfirmed('lyric-video', {title:'0310 (Official Video)'}), false);
+  assert.ok(formatConfirmed('music-video', {title:'Anything'}));
 });
 
 test('approval requires both reviews, every grade and evidence for each cited page', () => {

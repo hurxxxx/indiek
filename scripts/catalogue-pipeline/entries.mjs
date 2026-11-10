@@ -184,3 +184,13 @@ export function officialBasis({channel, channelURL}, artistNames, allowlist = []
   if (!topic && !UNOFFICIAL.test(channel || '') && names.some(n => normalizeName(channel).includes(n))) return 'the artist’s own channel';
   return null;
 }
+
+// The declared format must be visible in the official title (or implied by a live-series or
+// broadcaster channel); otherwise the next candidate is tried rather than mislabelling a video.
+const LIVE = /live|라이브|session|세션|concert|콘서트|공연|stage|스테이지|tour|투어|busking|버스킹|open ?mic|오픈마이크|unplugged|언플러그드/i;
+export function formatConfirmed(videoType, {title, channelURL}, allowlist = []) {
+  const kind = allowlist.find(c => c.channelURL === channelURL)?.kind;
+  if (videoType === 'live') return LIVE.test(title || '') || ['live-series','broadcaster'].includes(kind);
+  if (videoType === 'lyric-video') return /lyric|가사/i.test(title || '');
+  return true;
+}
