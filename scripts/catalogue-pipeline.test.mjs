@@ -83,6 +83,19 @@ test('recognition counts only independent judgement, not storefronts, charts or 
   assert.equal(scored.components.recognition, 0.33);
 });
 
+test('critically recognised experimental artists are in scope; mainstream adjacent genres stay outside', () => {
+  const base = {aliases:[], tracks:[], deezer:{id:1, fans:10, verified:true}, apple:{url:'https://music.apple.com/us/artist/x/1'}, scopes:['other-adjacent']};
+  const award = {type:'recognition', url:'https://www.koreanmusicawards.com/2022', publisher:'Korean Music Awards', detail:'D'};
+  const ranked = scoreCandidates([
+    {...base, id:'drone', name:'Drone Act', genres:['drone', 'ambient'], signals:[award]},
+    {...base, id:'unreviewed', name:'Unreviewed Noise', genres:['noise'], signals:[]},
+    {...base, id:'ballad', name:'Ballad Singer', genres:['Ballad'], signals:[award]},
+    {...base, id:'declared', name:'Declared', genres:['pop'], scopes:['experimental'], signals:[]},
+  ], {weights:{recognition:1}});
+  const blocked = id => ranked.find(c => c.id === id).blockers.some(b => /scope/.test(b));
+  assert.deepEqual(['drone','unreviewed','ballad','declared'].map(blocked), [false, true, true, false]);
+});
+
 test('Search Console exports are parsed in English or Korean and matched by artist names', () => {
   const dir = mkdtempSync(path.join(tmpdir(), 'indiek-sc-'));
   try {

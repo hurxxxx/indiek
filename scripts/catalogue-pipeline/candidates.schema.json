@@ -15,7 +15,7 @@
           "korean": {"type": "string", "description": "Korean name in Hangul; empty only when the artist has none."},
           "category": {"type": "string", "enum": ["solo", "bands"], "description": "bands for groups, duos and bands; solo for a solo artist or solo project."},
           "genres": {"type": "array", "items": {"type": "string"}},
-          "scope": {"type": "string", "enum": ["indie", "band-scene", "idol-band", "ost", "rnb-soul", "folk-acoustic", "jazz", "other-adjacent"]},
+          "scope": {"type": "string", "enum": ["indie", "band-scene", "idol-band", "ost", "rnb-soul", "folk-acoustic", "jazz", "experimental", "other-adjacent"]},
           "signals": {
             "type": "array",
             "items": {

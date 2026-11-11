@@ -188,7 +188,7 @@
         }
       ],
       "officialURL": "https://mpmgmusic.com/lacuna",
-      "status": "proposed",
+      "status": "approved",
       "deezer": {
         "id": 1154788,
         "name": "Lacuna",
@@ -222,7 +222,12 @@
       "score": 41.2,
       "blockers": [],
       "rank": 2,
-      "notes": []
+      "notes": [],
+      "batch": "batch-2",
+      "approved": {
+        "date": "2026-11-12",
+        "by": "user"
+      }
     },
     {
       "id": "wave-to-earth",
@@ -466,7 +471,7 @@
         }
       ],
       "officialURL": "https://ohchill.bandcamp.com/",
-      "status": "proposed",
+      "status": "approved",
       "deezer": {
         "id": 150512552,
         "name": "OHCHILL",
@@ -500,7 +505,12 @@
       "score": 31.3,
       "blockers": [],
       "rank": 5,
-      "notes": []
+      "notes": [],
+      "batch": "batch-2",
+      "approved": {
+        "date": "2026-11-12",
+        "by": "user"
+      }
     },
     {
       "id": "leehi",
@@ -893,7 +903,7 @@
         }
       ],
       "officialURL": "",
-      "status": "proposed",
+      "status": "approved",
       "deezer": {
         "id": 13525003,
         "name": "Kang Asol",
@@ -927,7 +937,12 @@
       "score": 28.3,
       "blockers": [],
       "rank": 10,
-      "notes": []
+      "notes": [],
+      "batch": "batch-2",
+      "approved": {
+        "date": "2026-11-12",
+        "by": "user"
+      }
     },
     {
       "id": "silica-gel",
@@ -1266,7 +1281,7 @@
         }
       ],
       "officialURL": "",
-      "status": "proposed",
+      "status": "approved",
       "deezer": {
         "id": 271346212,
         "name": "Danpyunsun and the Moments Ensemble",
@@ -1300,7 +1315,12 @@
       "score": 27.8,
       "blockers": [],
       "rank": 14,
-      "notes": []
+      "notes": [],
+      "batch": "batch-2",
+      "approved": {
+        "date": "2026-11-12",
+        "by": "user"
+      }
     },
     {
       "id": "ourr",
@@ -3748,6 +3768,75 @@
       "notes": []
     },
     {
+      "id": "yaeji",
+      "name": "Yaeji",
+      "korean": "예지",
+      "aliases": [],
+      "category": "solo",
+      "genres": [
+        "experimental electronic",
+        "house",
+        "electronic pop"
+      ],
+      "scopes": [
+        "other-adjacent"
+      ],
+      "lenses": [
+        "critics-experimental"
+      ],
+      "signals": [
+        {
+          "type": "recognition",
+          "url": "https://pitchfork.com/reviews/albums/yaeji-with-a-hammer/",
+          "publisher": "Pitchfork",
+          "detail": "Julianne Escobedo Shepherd reviews With a Hammer and discusses its expansion beyond house music."
+        }
+      ],
+      "tracks": [
+        {
+          "title": "For Granted",
+          "korean": "",
+          "reason": "A single from the critically reviewed With a Hammer, also discussed in Apple Music’s album editorial."
+        }
+      ],
+      "officialURL": "",
+      "status": "proposed",
+      "apple": {
+        "id": 1087249836,
+        "name": "Yaeji",
+        "url": "https://music.apple.com/us/artist/yaeji/1087249836",
+        "genre": "Electronic"
+      },
+      "deezer": {
+        "id": 9911548,
+        "name": "Yaeji",
+        "fans": 28867,
+        "albums": 20,
+        "url": "https://www.deezer.com/artist/9911548",
+        "profiles": 4,
+        "verified": true,
+        "sharedReleases": 18
+      },
+      "checked": "2026-11-12",
+      "search": {
+        "queries": [],
+        "impressions": 0,
+        "clicks": 0
+      },
+      "notes": [],
+      "components": {
+        "streaming": 0.81,
+        "search": 0,
+        "community": 0,
+        "ost": 0,
+        "scene": 0,
+        "recognition": 0.33
+      },
+      "score": 17.4,
+      "blockers": [],
+      "rank": 44
+    },
+    {
       "id": "gemini",
       "name": "Gemini",
       "korean": "제미나이",
@@ -3830,7 +3919,7 @@
       },
       "score": 17.3,
       "blockers": [],
-      "rank": 44,
+      "rank": 45,
       "notes": []
     },
     {
@@ -3910,7 +3999,7 @@
       },
       "score": 17,
       "blockers": [],
-      "rank": 45,
+      "rank": 46,
       "notes": []
     },
     {
@@ -4024,7 +4113,7 @@
       },
       "score": 16.9,
       "blockers": [],
-      "rank": 46,
+      "rank": 47,
       "notes": [
         "streaming profile unconfirmed: catalogue hidden in this region, so the profile could not be compared"
       ]
@@ -4089,7 +4178,7 @@
       },
       "score": 16.9,
       "blockers": [],
-      "rank": 47,
+      "rank": 48,
       "notes": []
     },
     {
@@ -4174,7 +4263,7 @@
       },
       "score": 16.7,
       "blockers": [],
-      "rank": 48,
+      "rank": 49,
       "notes": []
     },
     {
@@ -4261,7 +4350,7 @@
       },
       "score": 16.7,
       "blockers": [],
-      "rank": 49,
+      "rank": 50,
       "notes": []
     },
     {
@@ -4340,7 +4429,7 @@
       },
       "score": 16.5,
       "blockers": [],
-      "rank": 50,
+      "rank": 51,
       "notes": []
     },
     {
@@ -4402,7 +4491,7 @@
       },
       "score": 16.5,
       "blockers": [],
-      "rank": 51,
+      "rank": 52,
       "notes": []
     },
     {
@@ -4475,8 +4564,71 @@
       },
       "score": 16.4,
       "blockers": [],
-      "rank": 52,
+      "rank": 53,
       "notes": []
+    },
+    {
+      "id": "madmans-esprit",
+      "name": "Madmans Esprit",
+      "korean": "매드맨즈 에스프리",
+      "aliases": [],
+      "category": "solo",
+      "genres": [
+        "post-black metal",
+        "alternative metal",
+        "visual kei"
+      ],
+      "scopes": [
+        "other-adjacent"
+      ],
+      "lenses": [
+        "critics-experimental"
+      ],
+      "signals": [
+        {
+          "type": "recognition",
+          "url": "https://koreanmusicawards.com/project/madmans-esprit-나는-나를-통해-우리를-보는-너를-통해-나를-본다/",
+          "publisher": "Korean Music Awards",
+          "detail": "나는 나를 통해 우리를 보는 너를 통해 나를 본다 won Best Metal & Hardcore Album in 2023."
+        }
+      ],
+      "tracks": [],
+      "officialURL": "",
+      "status": "proposed",
+      "apple": {
+        "id": 670177120,
+        "name": "Madmans Esprit",
+        "url": "https://music.apple.com/us/artist/madmans-esprit/670177120",
+        "genre": "Korean Rock"
+      },
+      "deezer": {
+        "id": 6919177,
+        "name": "Madmans Esprit",
+        "fans": 2275,
+        "albums": 18,
+        "url": "https://www.deezer.com/artist/6919177",
+        "profiles": 1,
+        "verified": true,
+        "sharedReleases": 18
+      },
+      "checked": "2026-11-12",
+      "search": {
+        "queries": [],
+        "impressions": 0,
+        "clicks": 0
+      },
+      "notes": [],
+      "components": {
+        "streaming": 0.61,
+        "search": 0,
+        "community": 0,
+        "ost": 0,
+        "scene": 0,
+        "recognition": 0.33
+      },
+      "score": 16.4,
+      "blockers": [],
+      "rank": 54
     },
     {
       "id": "trap",
@@ -4538,7 +4690,7 @@
       },
       "score": 16.4,
       "blockers": [],
-      "rank": 53
+      "rank": 55
     },
     {
       "id": "leenalchi",
@@ -4605,7 +4757,7 @@
       },
       "score": 16.3,
       "blockers": [],
-      "rank": 54,
+      "rank": 56,
       "notes": []
     },
     {
@@ -4674,7 +4826,7 @@
       },
       "score": 16.3,
       "blockers": [],
-      "rank": 55
+      "rank": 57
     },
     {
       "id": "devita",
@@ -4747,7 +4899,7 @@
       },
       "score": 16.2,
       "blockers": [],
-      "rank": 56,
+      "rank": 58,
       "notes": []
     },
     {
@@ -4808,7 +4960,7 @@
       },
       "score": 16.1,
       "blockers": [],
-      "rank": 57,
+      "rank": 59,
       "notes": []
     },
     {
@@ -4891,7 +5043,7 @@
       },
       "score": 16,
       "blockers": [],
-      "rank": 58,
+      "rank": 60,
       "notes": []
     },
     {
@@ -4920,7 +5072,7 @@
       ],
       "tracks": [],
       "officialURL": "https://8salamanda8.bandcamp.com/",
-      "status": "proposed",
+      "status": "approved",
       "apple": {
         "id": 1483149809,
         "name": "Salamanda",
@@ -4954,7 +5106,12 @@
       },
       "score": 15.9,
       "blockers": [],
-      "rank": 59
+      "rank": 61,
+      "batch": "batch-2",
+      "approved": {
+        "date": "2026-11-12",
+        "by": "user"
+      }
     },
     {
       "id": "samuel-seo",
@@ -5033,7 +5190,7 @@
       },
       "score": 15.9,
       "blockers": [],
-      "rank": 60,
+      "rank": 62,
       "notes": []
     },
     {
@@ -5096,7 +5253,7 @@
       },
       "score": 15.9,
       "blockers": [],
-      "rank": 61
+      "rank": 63
     },
     {
       "id": "cifika",
@@ -5164,7 +5321,7 @@
       },
       "score": 15.8,
       "blockers": [],
-      "rank": 62
+      "rank": 64
     },
     {
       "id": "crux",
@@ -5231,7 +5388,69 @@
       },
       "score": 15.8,
       "blockers": [],
-      "rank": 63
+      "rank": 65
+    },
+    {
+      "id": "hypnosis-therapy",
+      "name": "HYPNOSIS THERAPY",
+      "korean": "힙노시스테라피",
+      "aliases": [],
+      "category": "bands",
+      "genres": [
+        "electronic",
+        "alternative hip-hop"
+      ],
+      "scopes": [
+        "other-adjacent"
+      ],
+      "lenses": [
+        "recognition"
+      ],
+      "signals": [
+        {
+          "type": "recognition",
+          "url": "https://www.cjazit.org/support/tune-up/selection/2017",
+          "publisher": "CJ Cultural Foundation",
+          "detail": "The duo of Jflow and Jjangyou was selected for Tune Up cohort 24."
+        }
+      ],
+      "tracks": [],
+      "officialURL": "",
+      "status": "proposed",
+      "deezer": {
+        "id": 14027741,
+        "name": "Hypnosis Therapy",
+        "fans": 526,
+        "albums": 30,
+        "url": "https://www.deezer.com/artist/14027741",
+        "profiles": 1,
+        "verified": true,
+        "sharedReleases": 12
+      },
+      "apple": {
+        "id": 1651189945,
+        "name": "HYPNOSIS THERAPY",
+        "url": "https://music.apple.com/us/artist/hypnosis-therapy/1651189945",
+        "genre": "Hip-Hop/Rap"
+      },
+      "checked": "2026-11-10",
+      "search": {
+        "queries": [],
+        "impressions": 0,
+        "clicks": 0
+      },
+      "components": {
+        "streaming": 0.49,
+        "search": 0,
+        "community": 0,
+        "ost": 0,
+        "scene": 0,
+        "recognition": 0.33
+      },
+      "score": 15.8,
+      "blockers": [],
+      "rank": 66,
+      "notes": []
     },
     {
       "id": "lambc",
@@ -5311,8 +5530,77 @@
       },
       "score": 15.8,
       "blockers": [],
-      "rank": 64,
+      "rank": 67,
       "notes": []
+    },
+    {
+      "id": "park-jiha",
+      "name": "Park Jiha",
+      "korean": "박지하",
+      "aliases": [],
+      "category": "solo",
+      "genres": [
+        "ambient",
+        "minimalism",
+        "traditional crossover"
+      ],
+      "scopes": [
+        "other-adjacent"
+      ],
+      "lenses": [
+        "critics-experimental"
+      ],
+      "signals": [
+        {
+          "type": "recognition",
+          "url": "https://theartsdesk.com/new-music/album-park-jiha-all-living-things",
+          "publisher": "The Arts Desk",
+          "detail": "Mark Kidel gives All Living Things a four-star review."
+        }
+      ],
+      "tracks": [
+        {
+          "title": "Growth Ring",
+          "korean": "",
+          "reason": "A track on All Living Things, the album reviewed by Kidel; this is album-level recognition."
+        }
+      ],
+      "officialURL": "",
+      "status": "proposed",
+      "apple": {
+        "id": 1161730439,
+        "name": "Park Jiha",
+        "url": "https://music.apple.com/us/artist/park-jiha/1161730439",
+        "genre": "Classical Crossover"
+      },
+      "deezer": {
+        "id": 11139330,
+        "name": "Park Jiha",
+        "fans": 533,
+        "albums": 12,
+        "url": "https://www.deezer.com/artist/11139330",
+        "profiles": 1,
+        "verified": true,
+        "sharedReleases": 9
+      },
+      "checked": "2026-11-12",
+      "search": {
+        "queries": [],
+        "impressions": 0,
+        "clicks": 0
+      },
+      "notes": [],
+      "components": {
+        "streaming": 0.49,
+        "search": 0,
+        "community": 0,
+        "ost": 0,
+        "scene": 0,
+        "recognition": 0.33
+      },
+      "score": 15.8,
+      "blockers": [],
+      "rank": 68
     },
     {
       "id": "sultan-of-the-disco",
@@ -5380,7 +5668,7 @@
       },
       "score": 15.8,
       "blockers": [],
-      "rank": 65
+      "rank": 69
     },
     {
       "id": "hoa",
@@ -5440,7 +5728,7 @@
       },
       "score": 15.7,
       "blockers": [],
-      "rank": 66,
+      "rank": 70,
       "notes": []
     },
     {
@@ -5502,7 +5790,7 @@
       },
       "score": 15.7,
       "blockers": [],
-      "rank": 67,
+      "rank": 71,
       "notes": []
     },
     {
@@ -5570,7 +5858,7 @@
       },
       "score": 15.7,
       "blockers": [],
-      "rank": 68
+      "rank": 72
     },
     {
       "id": "87dance",
@@ -5631,7 +5919,7 @@
       },
       "score": 15.6,
       "blockers": [],
-      "rank": 69,
+      "rank": 73,
       "notes": []
     },
     {
@@ -5699,7 +5987,7 @@
       },
       "score": 15.6,
       "blockers": [],
-      "rank": 70,
+      "rank": 74,
       "notes": []
     },
     {
@@ -5761,7 +6049,7 @@
       },
       "score": 15.6,
       "blockers": [],
-      "rank": 71,
+      "rank": 75,
       "notes": []
     },
     {
@@ -5823,7 +6111,7 @@
       },
       "score": 15.6,
       "blockers": [],
-      "rank": 72
+      "rank": 76
     },
     {
       "id": "gift",
@@ -5884,7 +6172,7 @@
       },
       "score": 15.6,
       "blockers": [],
-      "rank": 73,
+      "rank": 77,
       "notes": []
     },
     {
@@ -5946,7 +6234,7 @@
       },
       "score": 15.6,
       "blockers": [],
-      "rank": 74,
+      "rank": 78,
       "notes": []
     },
     {
@@ -6010,7 +6298,7 @@
       },
       "score": 15.6,
       "blockers": [],
-      "rank": 75
+      "rank": 79
     },
     {
       "id": "black-string",
@@ -6045,7 +6333,7 @@
         }
       ],
       "officialURL": "",
-      "status": "proposed",
+      "status": "approved",
       "apple": {
         "id": 1153689866,
         "name": "Black String",
@@ -6079,7 +6367,12 @@
       },
       "score": 15.5,
       "blockers": [],
-      "rank": 76
+      "rank": 80,
+      "batch": "batch-2",
+      "approved": {
+        "date": "2026-11-12",
+        "by": "user"
+      }
     },
     {
       "id": "dtsq",
@@ -6140,7 +6433,7 @@
       },
       "score": 15.5,
       "blockers": [],
-      "rank": 77
+      "rank": 81
     },
     {
       "id": "heo-hoy-kyung",
@@ -6213,7 +6506,7 @@
       },
       "score": 15.5,
       "blockers": [],
-      "rank": 78,
+      "rank": 82,
       "notes": []
     },
     {
@@ -6283,7 +6576,7 @@
       },
       "score": 15.5,
       "blockers": [],
-      "rank": 79
+      "rank": 83
     },
     {
       "id": "hi-fi-un-corn",
@@ -6343,7 +6636,7 @@
       },
       "score": 15.4,
       "blockers": [],
-      "rank": 80,
+      "rank": 84,
       "notes": []
     },
     {
@@ -6405,7 +6698,7 @@
       },
       "score": 15.4,
       "blockers": [],
-      "rank": 81,
+      "rank": 85,
       "notes": []
     },
     {
@@ -6469,7 +6762,7 @@
       },
       "score": 15.4,
       "blockers": [],
-      "rank": 82
+      "rank": 86
     },
     {
       "id": "ra-d",
@@ -6554,7 +6847,7 @@
       },
       "score": 15.4,
       "blockers": [],
-      "rank": 83,
+      "rank": 87,
       "notes": []
     },
     {
@@ -6623,7 +6916,7 @@
       },
       "score": 15.4,
       "blockers": [],
-      "rank": 84,
+      "rank": 88,
       "notes": []
     },
     {
@@ -6692,7 +6985,7 @@
       },
       "score": 15.3,
       "blockers": [],
-      "rank": 85
+      "rank": 89
     },
     {
       "id": "bumjin",
@@ -6753,7 +7046,7 @@
       },
       "score": 15.3,
       "blockers": [],
-      "rank": 86,
+      "rank": 90,
       "notes": []
     },
     {
@@ -6815,7 +7108,7 @@
       },
       "score": 15.3,
       "blockers": [],
-      "rank": 87
+      "rank": 91
     },
     {
       "id": "hyelyn-joo",
@@ -6877,7 +7170,7 @@
       },
       "score": 15.3,
       "blockers": [],
-      "rank": 88,
+      "rank": 92,
       "notes": []
     },
     {
@@ -6939,7 +7232,7 @@
       },
       "score": 15.3,
       "blockers": [],
-      "rank": 89,
+      "rank": 93,
       "notes": []
     },
     {
@@ -7025,7 +7318,7 @@
       },
       "score": 15.3,
       "blockers": [],
-      "rank": 90,
+      "rank": 94,
       "notes": [],
       "batch": "batch-1",
       "approved": {
@@ -7039,6 +7332,75 @@
           "lang-lee-the-generation-of-tribulation"
         ]
       }
+    },
+    {
+      "id": "lucy-liyou",
+      "name": "Lucy Liyou",
+      "korean": "루시 리유",
+      "aliases": [],
+      "category": "solo",
+      "genres": [
+        "experimental",
+        "ambient",
+        "sound collage"
+      ],
+      "scopes": [
+        "other-adjacent"
+      ],
+      "lenses": [
+        "critics-experimental"
+      ],
+      "signals": [
+        {
+          "type": "recognition",
+          "url": "https://pitchfork.com/reviews/albums/lucy-liyou-welfare-practice/",
+          "publisher": "Pitchfork",
+          "detail": "Sam Goldner reviews Welfare / Practice and examines its text-to-speech and pansori connections."
+        }
+      ],
+      "tracks": [
+        {
+          "title": "You Are Every Memory",
+          "korean": "",
+          "reason": "Appears on the reviewed Welfare / Practice; this is album-level critical recognition."
+        }
+      ],
+      "officialURL": "https://linktr.ee/lucyliyou",
+      "status": "proposed",
+      "apple": {
+        "id": 1488119376,
+        "name": "Lucy Liyou",
+        "url": "https://music.apple.com/us/artist/lucy-liyou/1488119376",
+        "genre": "Ambient"
+      },
+      "deezer": {
+        "id": 87529332,
+        "name": "Lucy Liyou",
+        "fans": 150,
+        "albums": 9,
+        "url": "https://www.deezer.com/artist/87529332",
+        "profiles": 1,
+        "verified": true,
+        "sharedReleases": 8
+      },
+      "checked": "2026-11-12",
+      "search": {
+        "queries": [],
+        "impressions": 0,
+        "clicks": 0
+      },
+      "notes": [],
+      "components": {
+        "streaming": 0.39,
+        "search": 0,
+        "community": 0,
+        "ost": 0,
+        "scene": 0,
+        "recognition": 0.33
+      },
+      "score": 15.3,
+      "blockers": [],
+      "rank": 95
     },
     {
       "id": "milena",
@@ -7100,7 +7462,7 @@
       },
       "score": 15.3,
       "blockers": [],
-      "rank": 91,
+      "rank": 96,
       "notes": []
     },
     {
@@ -7168,7 +7530,7 @@
       },
       "score": 15.3,
       "blockers": [],
-      "rank": 92
+      "rank": 97
     },
     {
       "id": "yi-sung-yol",
@@ -7235,7 +7597,7 @@
       },
       "score": 15.3,
       "blockers": [],
-      "rank": 93
+      "rank": 98
     },
     {
       "id": "chudahye-chagis",
@@ -7303,7 +7665,7 @@
       },
       "score": 15.2,
       "blockers": [],
-      "rank": 94,
+      "rank": 99,
       "notes": []
     },
     {
@@ -7373,7 +7735,7 @@
       },
       "score": 15.2,
       "blockers": [],
-      "rank": 95,
+      "rank": 100,
       "notes": []
     },
     {
@@ -7442,7 +7804,7 @@
       },
       "score": 15.2,
       "blockers": [],
-      "rank": 96
+      "rank": 101
     },
     {
       "id": "jung-in",
@@ -7509,7 +7871,7 @@
       },
       "score": 15.2,
       "blockers": [],
-      "rank": 97,
+      "rank": 102,
       "notes": []
     },
     {
@@ -7578,7 +7940,7 @@
       },
       "score": 15.2,
       "blockers": [],
-      "rank": 98
+      "rank": 103
     },
     {
       "id": "omar-and-the-eastern-power",
@@ -7639,7 +8001,7 @@
       },
       "score": 15.2,
       "blockers": [],
-      "rank": 99,
+      "rank": 104,
       "notes": []
     },
     {
@@ -7702,7 +8064,7 @@
       },
       "score": 15.2,
       "blockers": [],
-      "rank": 100
+      "rank": 105
     },
     {
       "id": "damons-year",
@@ -7763,7 +8125,7 @@
       },
       "score": 15.1,
       "blockers": [],
-      "rank": 101,
+      "rank": 106,
       "notes": []
     },
     {
@@ -7831,7 +8193,7 @@
       },
       "score": 15.1,
       "blockers": [],
-      "rank": 102,
+      "rank": 107,
       "notes": []
     },
     {
@@ -7893,7 +8255,7 @@
       },
       "score": 15.1,
       "blockers": [],
-      "rank": 103,
+      "rank": 108,
       "notes": []
     },
     {
@@ -7955,7 +8317,7 @@
       },
       "score": 15.1,
       "blockers": [],
-      "rank": 104,
+      "rank": 109,
       "notes": []
     },
     {
@@ -8024,7 +8386,7 @@
       },
       "score": 15,
       "blockers": [],
-      "rank": 105
+      "rank": 110
     },
     {
       "id": "adoy",
@@ -8127,7 +8489,7 @@
       },
       "score": 15,
       "blockers": [],
-      "rank": 106,
+      "rank": 111,
       "notes": []
     },
     {
@@ -8219,7 +8581,7 @@
       },
       "score": 15,
       "blockers": [],
-      "rank": 107,
+      "rank": 112,
       "notes": []
     },
     {
@@ -8287,7 +8649,7 @@
       },
       "score": 15,
       "blockers": [],
-      "rank": 108,
+      "rank": 113,
       "notes": []
     },
     {
@@ -8362,7 +8724,7 @@
       },
       "score": 15,
       "blockers": [],
-      "rank": 109,
+      "rank": 114,
       "notes": []
     },
     {
@@ -8431,7 +8793,7 @@
       },
       "score": 15,
       "blockers": [],
-      "rank": 110
+      "rank": 115
     },
     {
       "id": "tengger",
@@ -8500,7 +8862,7 @@
       },
       "score": 15,
       "blockers": [],
-      "rank": 111
+      "rank": 116
     },
     {
       "id": "yetsuby",
@@ -8569,7 +8931,7 @@
       },
       "score": 15,
       "blockers": [],
-      "rank": 112
+      "rank": 117
     },
     {
       "id": "250",
@@ -8638,7 +9000,7 @@
       },
       "score": 14.9,
       "blockers": [],
-      "rank": 113
+      "rank": 118
     },
     {
       "id": "a-fuzz",
@@ -8706,7 +9068,7 @@
       },
       "score": 14.9,
       "blockers": [],
-      "rank": 114
+      "rank": 119
     },
     {
       "id": "budung",
@@ -8774,7 +9136,7 @@
       },
       "score": 14.9,
       "blockers": [],
-      "rank": 115
+      "rank": 120
     },
     {
       "id": "haepaary",
@@ -8843,7 +9205,7 @@
       },
       "score": 14.9,
       "blockers": [],
-      "rank": 116
+      "rank": 121
     },
     {
       "id": "monday-off-with-bluesy",
@@ -8904,7 +9266,7 @@
       },
       "score": 14.9,
       "blockers": [],
-      "rank": 117,
+      "rank": 122,
       "notes": []
     },
     {
@@ -8965,7 +9327,7 @@
       },
       "score": 14.8,
       "blockers": [],
-      "rank": 118,
+      "rank": 123,
       "notes": []
     },
     {
@@ -9027,7 +9389,7 @@
       },
       "score": 14.8,
       "blockers": [],
-      "rank": 119,
+      "rank": 124,
       "notes": []
     },
     {
@@ -9096,7 +9458,7 @@
       },
       "score": 14.8,
       "blockers": [],
-      "rank": 120
+      "rank": 125
     },
     {
       "id": "bongjeingan",
@@ -9156,7 +9518,7 @@
       },
       "score": 14.8,
       "blockers": [],
-      "rank": 121,
+      "rank": 126,
       "notes": []
     },
     {
@@ -9218,7 +9580,7 @@
       },
       "score": 14.8,
       "blockers": [],
-      "rank": 122,
+      "rank": 127,
       "notes": []
     },
     {
@@ -9280,7 +9642,7 @@
       },
       "score": 14.8,
       "blockers": [],
-      "rank": 123
+      "rank": 128
     },
     {
       "id": "mind-combined",
@@ -9349,7 +9711,7 @@
       },
       "score": 14.8,
       "blockers": [],
-      "rank": 124
+      "rank": 129
     },
     {
       "id": "miso",
@@ -9422,7 +9784,7 @@
       },
       "score": 14.8,
       "blockers": [],
-      "rank": 125,
+      "rank": 130,
       "notes": []
     },
     {
@@ -9484,7 +9846,7 @@
       },
       "score": 14.8,
       "blockers": [],
-      "rank": 126
+      "rank": 131
     },
     {
       "id": "the-rose",
@@ -9575,7 +9937,7 @@
       },
       "score": 14.8,
       "blockers": [],
-      "rank": 127,
+      "rank": 132,
       "notes": []
     },
     {
@@ -9649,7 +10011,7 @@
       },
       "score": 14.8,
       "blockers": [],
-      "rank": 128,
+      "rank": 133,
       "notes": []
     },
     {
@@ -9716,7 +10078,7 @@
       },
       "score": 14.7,
       "blockers": [],
-      "rank": 129,
+      "rank": 134,
       "notes": []
     },
     {
@@ -9779,7 +10141,7 @@
       },
       "score": 14.7,
       "blockers": [],
-      "rank": 130
+      "rank": 135
     },
     {
       "id": "lowdown-30",
@@ -9839,7 +10201,7 @@
       },
       "score": 14.7,
       "blockers": [],
-      "rank": 131,
+      "rank": 136,
       "notes": []
     },
     {
@@ -9901,7 +10263,7 @@
       },
       "score": 14.7,
       "blockers": [],
-      "rank": 132
+      "rank": 137
     },
     {
       "id": "pakk",
@@ -9964,7 +10326,7 @@
       },
       "score": 14.7,
       "blockers": [],
-      "rank": 133
+      "rank": 138
     },
     {
       "id": "the-volunteers",
@@ -10039,7 +10401,7 @@
       },
       "score": 14.7,
       "blockers": [],
-      "rank": 134,
+      "rank": 139,
       "notes": []
     },
     {
@@ -10107,7 +10469,7 @@
       },
       "score": 14.7,
       "blockers": [],
-      "rank": 135,
+      "rank": 140,
       "notes": []
     },
     {
@@ -10175,7 +10537,7 @@
       },
       "score": 14.6,
       "blockers": [],
-      "rank": 136,
+      "rank": 141,
       "notes": []
     },
     {
@@ -10249,7 +10611,7 @@
       },
       "score": 14.6,
       "blockers": [],
-      "rank": 137,
+      "rank": 142,
       "notes": []
     },
     {
@@ -10311,7 +10673,7 @@
       },
       "score": 14.6,
       "blockers": [],
-      "rank": 138,
+      "rank": 143,
       "notes": []
     },
     {
@@ -10379,7 +10741,7 @@
       },
       "score": 14.6,
       "blockers": [],
-      "rank": 139,
+      "rank": 144,
       "notes": []
     },
     {
@@ -10448,7 +10810,7 @@
       },
       "score": 14.6,
       "blockers": [],
-      "rank": 140
+      "rank": 145
     },
     {
       "id": "airy",
@@ -10516,7 +10878,7 @@
       },
       "score": 14.5,
       "blockers": [],
-      "rank": 141
+      "rank": 146
     },
     {
       "id": "damye",
@@ -10578,7 +10940,7 @@
       },
       "score": 14.5,
       "blockers": [],
-      "rank": 142
+      "rank": 147
     },
     {
       "id": "hwanho",
@@ -10639,7 +11001,7 @@
       },
       "score": 14.5,
       "blockers": [],
-      "rank": 143
+      "rank": 148
     },
     {
       "id": "mild-beats",
@@ -10706,7 +11068,7 @@
       },
       "score": 14.5,
       "blockers": [],
-      "rank": 144,
+      "rank": 149,
       "notes": []
     },
     {
@@ -10768,7 +11130,7 @@
       },
       "score": 14.5,
       "blockers": [],
-      "rank": 145
+      "rank": 150
     },
     {
       "id": "trampauline",
@@ -10842,7 +11204,7 @@
       },
       "score": 14.5,
       "blockers": [],
-      "rank": 146
+      "rank": 151
     },
     {
       "id": "arexibo",
@@ -10910,7 +11272,7 @@
       },
       "score": 14.4,
       "blockers": [],
-      "rank": 147
+      "rank": 152
     },
     {
       "id": "b-jeong",
@@ -10970,7 +11332,7 @@
       },
       "score": 14.4,
       "blockers": [],
-      "rank": 148,
+      "rank": 153,
       "notes": []
     },
     {
@@ -11031,7 +11393,7 @@
       },
       "score": 14.4,
       "blockers": [],
-      "rank": 149,
+      "rank": 154,
       "notes": []
     },
     {
@@ -11100,7 +11462,7 @@
       },
       "score": 14.4,
       "blockers": [],
-      "rank": 150
+      "rank": 155
     },
     {
       "id": "huijun-woo",
@@ -11161,7 +11523,7 @@
       },
       "score": 14.4,
       "blockers": [],
-      "rank": 151,
+      "rank": 156,
       "notes": []
     },
     {
@@ -11230,7 +11592,7 @@
       },
       "score": 14.4,
       "blockers": [],
-      "rank": 152
+      "rank": 157
     },
     {
       "id": "soumbalgwang",
@@ -11303,8 +11665,69 @@
       },
       "score": 14.4,
       "blockers": [],
-      "rank": 153,
+      "rank": 158,
       "notes": []
+    },
+    {
+      "id": "ambroxiak",
+      "name": "AMBROXIAK",
+      "korean": "암브로시악",
+      "aliases": [],
+      "category": "solo",
+      "genres": [
+        "black metal"
+      ],
+      "scopes": [
+        "other-adjacent"
+      ],
+      "lenses": [
+        "critics-experimental"
+      ],
+      "signals": [
+        {
+          "type": "recognition",
+          "url": "https://koreanmusicawards.com/project/ambroxiak-detritus-of-elysian-creation/",
+          "publisher": "Korean Music Awards",
+          "detail": "Detritus of Elysian Creation was nominated for Best Metal & Hardcore Album at the 2022 awards."
+        }
+      ],
+      "tracks": [],
+      "officialURL": "",
+      "status": "proposed",
+      "apple": {
+        "id": 1599074122,
+        "name": "AMBROXIAK",
+        "url": "https://music.apple.com/us/artist/ambroxiak/1599074122",
+        "genre": "Rock"
+      },
+      "deezer": {
+        "id": 153493892,
+        "name": "AMBROXIAK",
+        "fans": 11,
+        "albums": 1,
+        "url": "https://www.deezer.com/artist/153493892",
+        "profiles": 1,
+        "verified": true,
+        "sharedReleases": 1
+      },
+      "checked": "2026-11-12",
+      "search": {
+        "queries": [],
+        "impressions": 0,
+        "clicks": 0
+      },
+      "notes": [],
+      "components": {
+        "streaming": 0.2,
+        "search": 0,
+        "community": 0,
+        "ost": 0,
+        "scene": 0,
+        "recognition": 0.33
+      },
+      "score": 14.3,
+      "blockers": [],
+      "rank": 159
     },
     {
       "id": "asian-chairshot",
@@ -11371,7 +11794,7 @@
       },
       "score": 14.3,
       "blockers": [],
-      "rank": 154
+      "rank": 160
     },
     {
       "id": "electriceels",
@@ -11432,7 +11855,7 @@
       },
       "score": 14.3,
       "blockers": [],
-      "rank": 155
+      "rank": 161
     },
     {
       "id": "hammering",
@@ -11499,7 +11922,7 @@
       },
       "score": 14.3,
       "blockers": [],
-      "rank": 156
+      "rank": 162
     },
     {
       "id": "juliadream",
@@ -11560,7 +11983,7 @@
       },
       "score": 14.3,
       "blockers": [],
-      "rank": 157
+      "rank": 163
     },
     {
       "id": "kachisan",
@@ -11620,7 +12043,7 @@
       },
       "score": 14.3,
       "blockers": [],
-      "rank": 158,
+      "rank": 164,
       "notes": []
     },
     {
@@ -11681,7 +12104,7 @@
       },
       "score": 14.3,
       "blockers": [],
-      "rank": 159,
+      "rank": 165,
       "notes": []
     },
     {
@@ -11742,7 +12165,7 @@
       },
       "score": 14.3,
       "blockers": [],
-      "rank": 160,
+      "rank": 166,
       "notes": []
     },
     {
@@ -11811,7 +12234,7 @@
       },
       "score": 14.3,
       "blockers": [],
-      "rank": 161
+      "rank": 167
     },
     {
       "id": "spit-on-my-tomb",
@@ -11873,7 +12296,7 @@
       },
       "score": 14.3,
       "blockers": [],
-      "rank": 162
+      "rank": 168
     },
     {
       "id": "the-shepherd-bois",
@@ -11933,7 +12356,7 @@
       },
       "score": 14.3,
       "blockers": [],
-      "rank": 163,
+      "rank": 169,
       "notes": []
     },
     {
@@ -11996,7 +12419,7 @@
       },
       "score": 14.3,
       "blockers": [],
-      "rank": 164
+      "rank": 170
     },
     {
       "id": "boys-in-the-kitchen",
@@ -12063,7 +12486,7 @@
       },
       "score": 14.2,
       "blockers": [],
-      "rank": 165
+      "rank": 171
     },
     {
       "id": "cott",
@@ -12124,7 +12547,7 @@
       },
       "score": 14.2,
       "blockers": [],
-      "rank": 166,
+      "rank": 172,
       "notes": []
     },
     {
@@ -12192,7 +12615,7 @@
       },
       "score": 14.2,
       "blockers": [],
-      "rank": 167,
+      "rank": 173,
       "notes": []
     },
     {
@@ -12254,7 +12677,7 @@
       },
       "score": 14.2,
       "blockers": [],
-      "rank": 168,
+      "rank": 174,
       "notes": []
     },
     {
@@ -12315,7 +12738,7 @@
       },
       "score": 14.2,
       "blockers": [],
-      "rank": 169,
+      "rank": 175,
       "notes": []
     },
     {
@@ -12377,7 +12800,7 @@
       },
       "score": 14.2,
       "blockers": [],
-      "rank": 170,
+      "rank": 176,
       "notes": []
     },
     {
@@ -12439,7 +12862,7 @@
       },
       "score": 14.2,
       "blockers": [],
-      "rank": 171
+      "rank": 177
     },
     {
       "id": "summer-of-thoughts",
@@ -12499,7 +12922,7 @@
       },
       "score": 14.2,
       "blockers": [],
-      "rank": 172,
+      "rank": 178,
       "notes": []
     },
     {
@@ -12567,7 +12990,7 @@
       },
       "score": 14.1,
       "blockers": [],
-      "rank": 173
+      "rank": 179
     },
     {
       "id": "line-and-circle",
@@ -12634,7 +13057,7 @@
       },
       "score": 14.1,
       "blockers": [],
-      "rank": 174,
+      "rank": 180,
       "notes": []
     },
     {
@@ -12703,7 +13126,7 @@
       },
       "score": 14.1,
       "blockers": [],
-      "rank": 175
+      "rank": 181
     },
     {
       "id": "yang-chang-keun",
@@ -12771,7 +13194,7 @@
       },
       "score": 14.1,
       "blockers": [],
-      "rank": 176
+      "rank": 182
     },
     {
       "id": "crush",
@@ -12863,7 +13286,7 @@
       },
       "score": 14,
       "blockers": [],
-      "rank": 177,
+      "rank": 183,
       "notes": []
     },
     {
@@ -12924,7 +13347,7 @@
       },
       "score": 14,
       "blockers": [],
-      "rank": 178,
+      "rank": 184,
       "notes": []
     },
     {
@@ -12985,7 +13408,7 @@
       },
       "score": 14,
       "blockers": [],
-      "rank": 179,
+      "rank": 185,
       "notes": []
     },
     {
@@ -13058,7 +13481,7 @@
       },
       "score": 14,
       "blockers": [],
-      "rank": 180
+      "rank": 186
     },
     {
       "id": "meeroo-choi",
@@ -13125,7 +13548,7 @@
       },
       "score": 14,
       "blockers": [],
-      "rank": 181,
+      "rank": 187,
       "notes": []
     },
     {
@@ -13194,7 +13617,7 @@
       },
       "score": 14,
       "blockers": [],
-      "rank": 182
+      "rank": 188
     },
     {
       "id": "oysters",
@@ -13255,7 +13678,7 @@
       },
       "score": 14,
       "blockers": [],
-      "rank": 183,
+      "rank": 189,
       "notes": []
     },
     {
@@ -13317,7 +13740,7 @@
       },
       "score": 14,
       "blockers": [],
-      "rank": 184
+      "rank": 190
     },
     {
       "id": "sanmanhan",
@@ -13378,7 +13801,7 @@
       },
       "score": 14,
       "blockers": [],
-      "rank": 185,
+      "rank": 191,
       "notes": []
     },
     {
@@ -13440,7 +13863,7 @@
       },
       "score": 13.9,
       "blockers": [],
-      "rank": 186
+      "rank": 192
     },
     {
       "id": "gate-flowers",
@@ -13501,7 +13924,7 @@
       },
       "score": 13.9,
       "blockers": [],
-      "rank": 187
+      "rank": 193
     },
     {
       "id": "kwon-tree",
@@ -13575,7 +13998,7 @@
       },
       "score": 13.9,
       "blockers": [],
-      "rank": 188,
+      "rank": 194,
       "notes": []
     },
     {
@@ -13654,7 +14077,7 @@
       },
       "score": 13.9,
       "blockers": [],
-      "rank": 189,
+      "rank": 195,
       "notes": []
     },
     {
@@ -13722,7 +14145,7 @@
       },
       "score": 13.8,
       "blockers": [],
-      "rank": 190
+      "rank": 196
     },
     {
       "id": "n-flying",
@@ -13812,7 +14235,7 @@
       },
       "score": 13.8,
       "blockers": [],
-      "rank": 191,
+      "rank": 197,
       "notes": []
     },
     {
@@ -13873,7 +14296,7 @@
       },
       "score": 13.8,
       "blockers": [],
-      "rank": 192,
+      "rank": 198,
       "notes": []
     },
     {
@@ -13940,7 +14363,7 @@
       },
       "score": 13.6,
       "blockers": [],
-      "rank": 193,
+      "rank": 199,
       "notes": []
     },
     {
@@ -14002,7 +14425,7 @@
       },
       "score": 13.6,
       "blockers": [],
-      "rank": 194
+      "rank": 200
     },
     {
       "id": "haihm",
@@ -14070,7 +14493,7 @@
       },
       "score": 13.6,
       "blockers": [],
-      "rank": 195
+      "rank": 201
     },
     {
       "id": "heo-jeonghyuk",
@@ -14136,7 +14559,7 @@
       },
       "score": 13.6,
       "blockers": [],
-      "rank": 196,
+      "rank": 202,
       "notes": []
     },
     {
@@ -14197,7 +14620,7 @@
       },
       "score": 13.6,
       "blockers": [],
-      "rank": 197,
+      "rank": 203,
       "notes": []
     },
     {
@@ -14266,7 +14689,7 @@
       },
       "score": 13.6,
       "blockers": [],
-      "rank": 198
+      "rank": 204
     },
     {
       "id": "kim-feel",
@@ -14343,7 +14766,7 @@
       },
       "score": 13.4,
       "blockers": [],
-      "rank": 199,
+      "rank": 205,
       "notes": []
     },
     {
@@ -14408,7 +14831,69 @@
       },
       "score": 13.3,
       "blockers": [],
-      "rank": 200
+      "rank": 206
+    },
+    {
+      "id": "eobchae",
+      "name": "eobchae",
+      "korean": "업체",
+      "aliases": [],
+      "category": "bands",
+      "genres": [
+        "experimental electronic",
+        "sound art"
+      ],
+      "scopes": [
+        "other-adjacent"
+      ],
+      "lenses": [
+        "critics-experimental"
+      ],
+      "signals": [
+        {
+          "type": "recognition",
+          "url": "https://koreanmusicawards.com/project/업체-희망아기의-노래/",
+          "publisher": "Korean Music Awards",
+          "detail": "희망아기의 노래 was nominated for Best Electronic Song at the 2022 awards."
+        }
+      ],
+      "tracks": [],
+      "officialURL": "",
+      "status": "proposed",
+      "apple": {
+        "id": 1567174969,
+        "name": "eobchae",
+        "url": "https://music.apple.com/us/artist/eobchae/1567174969",
+        "genre": "Electronica"
+      },
+      "deezer": {
+        "id": 132721072,
+        "name": "eobchae",
+        "fans": 0,
+        "albums": 2,
+        "url": "https://www.deezer.com/artist/132721072",
+        "profiles": 1,
+        "verified": true,
+        "sharedReleases": 2
+      },
+      "checked": "2026-11-12",
+      "search": {
+        "queries": [],
+        "impressions": 0,
+        "clicks": 0
+      },
+      "notes": [],
+      "components": {
+        "streaming": 0,
+        "search": 0,
+        "community": 0,
+        "ost": 0,
+        "scene": 0,
+        "recognition": 0.33
+      },
+      "score": 13.3,
+      "blockers": [],
+      "rank": 207
     },
     {
       "id": "jay-park",
@@ -14469,7 +14954,7 @@
       },
       "score": 13.3,
       "blockers": [],
-      "rank": 201,
+      "rank": 208,
       "notes": []
     },
     {
@@ -14543,7 +15028,7 @@
       },
       "score": 13.3,
       "blockers": [],
-      "rank": 202,
+      "rank": 209,
       "notes": []
     },
     {
@@ -14612,7 +15097,7 @@
       },
       "score": 13.3,
       "blockers": [],
-      "rank": 203
+      "rank": 210
     },
     {
       "id": "silkbell",
@@ -14674,7 +15159,7 @@
       },
       "score": 13.3,
       "blockers": [],
-      "rank": 204
+      "rank": 211
     },
     {
       "id": "winter-to-spring",
@@ -14741,7 +15226,7 @@
       },
       "score": 13.3,
       "blockers": [],
-      "rank": 205
+      "rank": 212
     },
     {
       "id": "yajasu",
@@ -14801,7 +15286,7 @@
       },
       "score": 13.3,
       "blockers": [],
-      "rank": 206,
+      "rank": 213,
       "notes": []
     },
     {
@@ -14870,7 +15355,7 @@
       },
       "score": 13.3,
       "blockers": [],
-      "rank": 207
+      "rank": 214
     },
     {
       "id": "baekhyun",
@@ -14931,7 +15416,7 @@
       },
       "score": 13.2,
       "blockers": [],
-      "rank": 208,
+      "rank": 215,
       "notes": []
     },
     {
@@ -15006,7 +15491,7 @@
       },
       "score": 13.1,
       "blockers": [],
-      "rank": 209,
+      "rank": 216,
       "notes": []
     },
     {
@@ -15084,7 +15569,7 @@
       },
       "score": 12.9,
       "blockers": [],
-      "rank": 210,
+      "rank": 217,
       "notes": []
     },
     {
@@ -15182,7 +15667,7 @@
       },
       "score": 12.8,
       "blockers": [],
-      "rank": 211,
+      "rank": 218,
       "notes": []
     },
     {
@@ -15262,7 +15747,7 @@
       },
       "score": 12.7,
       "blockers": [],
-      "rank": 212,
+      "rank": 219,
       "notes": []
     },
     {
@@ -15341,7 +15826,7 @@
       },
       "score": 12.6,
       "blockers": [],
-      "rank": 213,
+      "rank": 220,
       "notes": []
     },
     {
@@ -15403,7 +15888,7 @@
       },
       "score": 11.8,
       "blockers": [],
-      "rank": 214,
+      "rank": 221,
       "notes": []
     },
     {
@@ -15482,7 +15967,7 @@
       },
       "score": 11.5,
       "blockers": [],
-      "rank": 215,
+      "rank": 222,
       "notes": []
     },
     {
@@ -15559,7 +16044,7 @@
       },
       "score": 11.5,
       "blockers": [],
-      "rank": 216,
+      "rank": 223,
       "notes": []
     },
     {
@@ -15621,7 +16106,7 @@
       },
       "score": 11.4,
       "blockers": [],
-      "rank": 217,
+      "rank": 224,
       "notes": []
     },
     {
@@ -15701,7 +16186,7 @@
       },
       "score": 11.3,
       "blockers": [],
-      "rank": 218,
+      "rank": 225,
       "notes": []
     },
     {
@@ -15774,7 +16259,7 @@
       },
       "score": 11.3,
       "blockers": [],
-      "rank": 219,
+      "rank": 226,
       "notes": []
     },
     {
@@ -15863,7 +16348,7 @@
       },
       "score": 11.3,
       "blockers": [],
-      "rank": 220,
+      "rank": 227,
       "notes": []
     },
     {
@@ -15925,7 +16410,7 @@
       },
       "score": 11.2,
       "blockers": [],
-      "rank": 221,
+      "rank": 228,
       "notes": []
     },
     {
@@ -16005,7 +16490,7 @@
       },
       "score": 11.2,
       "blockers": [],
-      "rank": 222,
+      "rank": 229,
       "notes": []
     },
     {
@@ -16092,7 +16577,7 @@
       },
       "score": 11.2,
       "blockers": [],
-      "rank": 223,
+      "rank": 230,
       "notes": []
     },
     {
@@ -16160,7 +16645,7 @@
       },
       "score": 11,
       "blockers": [],
-      "rank": 224,
+      "rank": 231,
       "notes": []
     },
     {
@@ -16233,7 +16718,7 @@
       },
       "score": 10.7,
       "blockers": [],
-      "rank": 225,
+      "rank": 232,
       "notes": []
     },
     {
@@ -16295,7 +16780,7 @@
       },
       "score": 10.7,
       "blockers": [],
-      "rank": 226,
+      "rank": 233,
       "notes": []
     },
     {
@@ -16374,7 +16859,7 @@
       },
       "score": 10.6,
       "blockers": [],
-      "rank": 227,
+      "rank": 234,
       "notes": []
     },
     {
@@ -16436,7 +16921,7 @@
       },
       "score": 10.5,
       "blockers": [],
-      "rank": 228,
+      "rank": 235,
       "notes": []
     },
     {
@@ -16515,7 +17000,7 @@
       },
       "score": 10.5,
       "blockers": [],
-      "rank": 229,
+      "rank": 236,
       "notes": []
     },
     {
@@ -16588,7 +17073,7 @@
       },
       "score": 10.3,
       "blockers": [],
-      "rank": 230,
+      "rank": 237,
       "notes": []
     },
     {
@@ -16662,7 +17147,7 @@
       },
       "score": 10.2,
       "blockers": [],
-      "rank": 231,
+      "rank": 238,
       "notes": []
     },
     {
@@ -16730,7 +17215,7 @@
       },
       "score": 10.2,
       "blockers": [],
-      "rank": 232,
+      "rank": 239,
       "notes": []
     },
     {
@@ -16804,7 +17289,7 @@
       },
       "score": 10.1,
       "blockers": [],
-      "rank": 233,
+      "rank": 240,
       "notes": []
     },
     {
@@ -16883,7 +17368,7 @@
       },
       "score": 10,
       "blockers": [],
-      "rank": 234,
+      "rank": 241,
       "notes": []
     },
     {
@@ -16951,7 +17436,7 @@
       },
       "score": 9.9,
       "blockers": [],
-      "rank": 235,
+      "rank": 242,
       "notes": []
     },
     {
@@ -17037,7 +17522,7 @@
       },
       "score": 9.9,
       "blockers": [],
-      "rank": 236,
+      "rank": 243,
       "notes": []
     },
     {
@@ -17099,7 +17584,7 @@
       },
       "score": 9.9,
       "blockers": [],
-      "rank": 237,
+      "rank": 244,
       "notes": []
     },
     {
@@ -17177,7 +17662,7 @@
       },
       "score": 9.5,
       "blockers": [],
-      "rank": 238,
+      "rank": 245,
       "notes": []
     },
     {
@@ -17251,7 +17736,7 @@
       },
       "score": 9.5,
       "blockers": [],
-      "rank": 239,
+      "rank": 246,
       "notes": []
     },
     {
@@ -17344,7 +17829,7 @@
       },
       "score": 9.1,
       "blockers": [],
-      "rank": 240,
+      "rank": 247,
       "notes": []
     },
     {
@@ -17418,7 +17903,7 @@
       },
       "score": 8.9,
       "blockers": [],
-      "rank": 241,
+      "rank": 248,
       "notes": []
     },
     {
@@ -17486,7 +17971,7 @@
       },
       "score": 8.3,
       "blockers": [],
-      "rank": 242,
+      "rank": 249,
       "notes": []
     },
     {
@@ -17571,7 +18056,7 @@
       },
       "score": 8.1,
       "blockers": [],
-      "rank": 243,
+      "rank": 250,
       "notes": []
     },
     {
@@ -17649,7 +18134,7 @@
       },
       "score": 7.9,
       "blockers": [],
-      "rank": 244,
+      "rank": 251,
       "notes": []
     },
     {
@@ -17746,7 +18231,7 @@
       },
       "score": 7.6,
       "blockers": [],
-      "rank": 245,
+      "rank": 252,
       "notes": []
     },
     {
@@ -17820,7 +18305,7 @@
       },
       "score": 7.6,
       "blockers": [],
-      "rank": 246,
+      "rank": 253,
       "notes": []
     },
     {
@@ -17899,7 +18384,7 @@
       },
       "score": 7.5,
       "blockers": [],
-      "rank": 247,
+      "rank": 254,
       "notes": []
     },
     {
@@ -17967,7 +18452,7 @@
       },
       "score": 7.2,
       "blockers": [],
-      "rank": 248,
+      "rank": 255,
       "notes": []
     },
     {
@@ -18035,7 +18520,7 @@
       },
       "score": 7,
       "blockers": [],
-      "rank": 249,
+      "rank": 256,
       "notes": []
     },
     {
@@ -18097,7 +18582,7 @@
       },
       "score": 6.9,
       "blockers": [],
-      "rank": 250,
+      "rank": 257,
       "notes": []
     },
     {
@@ -18178,7 +18663,7 @@
       },
       "score": 6.8,
       "blockers": [],
-      "rank": 251,
+      "rank": 258,
       "notes": []
     },
     {
@@ -18245,7 +18730,7 @@
       },
       "score": 6.8,
       "blockers": [],
-      "rank": 252,
+      "rank": 259,
       "notes": []
     },
     {
@@ -18312,7 +18797,7 @@
       },
       "score": 6.7,
       "blockers": [],
-      "rank": 253,
+      "rank": 260,
       "notes": []
     },
     {
@@ -18380,7 +18865,7 @@
       },
       "score": 6.7,
       "blockers": [],
-      "rank": 254,
+      "rank": 261,
       "notes": []
     },
     {
@@ -18441,7 +18926,7 @@
       },
       "score": 6.7,
       "blockers": [],
-      "rank": 255,
+      "rank": 262,
       "notes": []
     },
     {
@@ -18508,7 +18993,7 @@
       },
       "score": 6.6,
       "blockers": [],
-      "rank": 256,
+      "rank": 263,
       "notes": []
     },
     {
@@ -18576,7 +19061,7 @@
       },
       "score": 6.5,
       "blockers": [],
-      "rank": 257,
+      "rank": 264,
       "notes": []
     },
     {
@@ -18644,7 +19129,7 @@
       },
       "score": 6.5,
       "blockers": [],
-      "rank": 258,
+      "rank": 265,
       "notes": []
     },
     {
@@ -18706,7 +19191,7 @@
       },
       "score": 6.5,
       "blockers": [],
-      "rank": 259,
+      "rank": 266,
       "notes": []
     },
     {
@@ -18768,7 +19253,7 @@
       },
       "score": 6.5,
       "blockers": [],
-      "rank": 260,
+      "rank": 267,
       "notes": []
     },
     {
@@ -18835,7 +19320,7 @@
       },
       "score": 6.5,
       "blockers": [],
-      "rank": 261,
+      "rank": 268,
       "notes": []
     },
     {
@@ -18902,7 +19387,7 @@
       },
       "score": 6.4,
       "blockers": [],
-      "rank": 262,
+      "rank": 269,
       "notes": []
     },
     {
@@ -18970,7 +19455,7 @@
       },
       "score": 6.3,
       "blockers": [],
-      "rank": 263,
+      "rank": 270,
       "notes": []
     },
     {
@@ -19032,7 +19517,7 @@
       },
       "score": 6.2,
       "blockers": [],
-      "rank": 264,
+      "rank": 271,
       "notes": []
     },
     {
@@ -19100,7 +19585,7 @@
       },
       "score": 6,
       "blockers": [],
-      "rank": 265,
+      "rank": 272,
       "notes": []
     },
     {
@@ -19199,7 +19684,7 @@
       },
       "score": 6,
       "blockers": [],
-      "rank": 266,
+      "rank": 273,
       "notes": []
     },
     {
@@ -19267,7 +19752,7 @@
       },
       "score": 5.9,
       "blockers": [],
-      "rank": 267,
+      "rank": 274,
       "notes": []
     },
     {
@@ -19328,7 +19813,7 @@
       },
       "score": 5.8,
       "blockers": [],
-      "rank": 268,
+      "rank": 275,
       "notes": []
     },
     {
@@ -19389,7 +19874,7 @@
       },
       "score": 5.8,
       "blockers": [],
-      "rank": 269,
+      "rank": 276,
       "notes": []
     },
     {
@@ -19456,7 +19941,7 @@
       },
       "score": 5.7,
       "blockers": [],
-      "rank": 270,
+      "rank": 277,
       "notes": []
     },
     {
@@ -19546,7 +20031,7 @@
       },
       "score": 5.7,
       "blockers": [],
-      "rank": 271,
+      "rank": 278,
       "notes": []
     },
     {
@@ -19614,7 +20099,7 @@
       },
       "score": 5.7,
       "blockers": [],
-      "rank": 272,
+      "rank": 279,
       "notes": []
     },
     {
@@ -19686,7 +20171,7 @@
       },
       "score": 5.6,
       "blockers": [],
-      "rank": 273,
+      "rank": 280,
       "notes": []
     },
     {
@@ -19748,7 +20233,7 @@
       },
       "score": 5.6,
       "blockers": [],
-      "rank": 274,
+      "rank": 281,
       "notes": []
     },
     {
@@ -19809,7 +20294,7 @@
       },
       "score": 5.5,
       "blockers": [],
-      "rank": 275,
+      "rank": 282,
       "notes": []
     },
     {
@@ -19876,7 +20361,7 @@
       },
       "score": 5.5,
       "blockers": [],
-      "rank": 276,
+      "rank": 283,
       "notes": []
     },
     {
@@ -19944,7 +20429,7 @@
       },
       "score": 5.3,
       "blockers": [],
-      "rank": 277,
+      "rank": 284,
       "notes": []
     },
     {
@@ -20011,7 +20496,7 @@
       },
       "score": 5.3,
       "blockers": [],
-      "rank": 278,
+      "rank": 285,
       "notes": []
     },
     {
@@ -20079,7 +20564,7 @@
       },
       "score": 5.2,
       "blockers": [],
-      "rank": 279,
+      "rank": 286,
       "notes": []
     },
     {
@@ -20172,7 +20657,7 @@
       },
       "score": 5.2,
       "blockers": [],
-      "rank": 280,
+      "rank": 287,
       "notes": []
     },
     {
@@ -20239,7 +20724,7 @@
       },
       "score": 5.2,
       "blockers": [],
-      "rank": 281,
+      "rank": 288,
       "notes": []
     },
     {
@@ -20307,7 +20792,7 @@
       },
       "score": 5.1,
       "blockers": [],
-      "rank": 282,
+      "rank": 289,
       "notes": []
     },
     {
@@ -20374,7 +20859,7 @@
       },
       "score": 5.1,
       "blockers": [],
-      "rank": 283,
+      "rank": 290,
       "notes": []
     },
     {
@@ -20454,7 +20939,7 @@
       },
       "score": 5.1,
       "blockers": [],
-      "rank": 284,
+      "rank": 291,
       "notes": []
     },
     {
@@ -20521,7 +21006,7 @@
       },
       "score": 5,
       "blockers": [],
-      "rank": 285,
+      "rank": 292,
       "notes": [
         "streaming profile unconfirmed: no Apple Music discography to compare"
       ]
@@ -20584,7 +21069,7 @@
       },
       "score": 5,
       "blockers": [],
-      "rank": 286,
+      "rank": 293,
       "notes": []
     },
     {
@@ -20652,7 +21137,7 @@
       },
       "score": 4.9,
       "blockers": [],
-      "rank": 287,
+      "rank": 294,
       "notes": []
     },
     {
@@ -20720,7 +21205,7 @@
       },
       "score": 4.9,
       "blockers": [],
-      "rank": 288,
+      "rank": 295,
       "notes": []
     },
     {
@@ -20788,7 +21273,7 @@
       },
       "score": 4.9,
       "blockers": [],
-      "rank": 289,
+      "rank": 296,
       "notes": []
     },
     {
@@ -20856,7 +21341,7 @@
       },
       "score": 4.9,
       "blockers": [],
-      "rank": 290,
+      "rank": 297,
       "notes": [
         "streaming profile unconfirmed: catalogue hidden in this region, so the profile could not be compared"
       ]
@@ -20926,7 +21411,7 @@
       },
       "score": 4.9,
       "blockers": [],
-      "rank": 291,
+      "rank": 298,
       "notes": []
     },
     {
@@ -20994,7 +21479,7 @@
       },
       "score": 4.8,
       "blockers": [],
-      "rank": 292,
+      "rank": 299,
       "notes": []
     },
     {
@@ -21062,7 +21547,7 @@
       },
       "score": 4.8,
       "blockers": [],
-      "rank": 293,
+      "rank": 300,
       "notes": []
     },
     {
@@ -21135,7 +21620,7 @@
       },
       "score": 4.7,
       "blockers": [],
-      "rank": 294,
+      "rank": 301,
       "notes": []
     },
     {
@@ -21203,7 +21688,7 @@
       },
       "score": 4.7,
       "blockers": [],
-      "rank": 295,
+      "rank": 302,
       "notes": []
     },
     {
@@ -21271,7 +21756,7 @@
       },
       "score": 4.7,
       "blockers": [],
-      "rank": 296,
+      "rank": 303,
       "notes": []
     },
     {
@@ -21339,7 +21824,7 @@
       },
       "score": 4.7,
       "blockers": [],
-      "rank": 297,
+      "rank": 304,
       "notes": []
     },
     {
@@ -21406,7 +21891,7 @@
       },
       "score": 4.6,
       "blockers": [],
-      "rank": 298,
+      "rank": 305,
       "notes": []
     },
     {
@@ -21474,7 +21959,7 @@
       },
       "score": 4.6,
       "blockers": [],
-      "rank": 299,
+      "rank": 306,
       "notes": []
     },
     {
@@ -21542,7 +22027,7 @@
       },
       "score": 4.6,
       "blockers": [],
-      "rank": 300,
+      "rank": 307,
       "notes": []
     },
     {
@@ -21624,7 +22109,7 @@
       },
       "score": 4.6,
       "blockers": [],
-      "rank": 301,
+      "rank": 308,
       "notes": []
     },
     {
@@ -21692,7 +22177,7 @@
       },
       "score": 4.5,
       "blockers": [],
-      "rank": 302,
+      "rank": 309,
       "notes": []
     },
     {
@@ -21760,7 +22245,7 @@
       },
       "score": 4.5,
       "blockers": [],
-      "rank": 303,
+      "rank": 310,
       "notes": []
     },
     {
@@ -21827,7 +22312,7 @@
       },
       "score": 4.5,
       "blockers": [],
-      "rank": 304,
+      "rank": 311,
       "notes": []
     },
     {
@@ -21894,7 +22379,7 @@
       },
       "score": 4.5,
       "blockers": [],
-      "rank": 305,
+      "rank": 312,
       "notes": []
     },
     {
@@ -21962,7 +22447,7 @@
       },
       "score": 4.5,
       "blockers": [],
-      "rank": 306,
+      "rank": 313,
       "notes": []
     },
     {
@@ -22041,7 +22526,7 @@
       },
       "score": 4.5,
       "blockers": [],
-      "rank": 307,
+      "rank": 314,
       "notes": []
     },
     {
@@ -22114,7 +22599,7 @@
       },
       "score": 4.4,
       "blockers": [],
-      "rank": 308,
+      "rank": 315,
       "notes": []
     },
     {
@@ -22193,7 +22678,7 @@
       },
       "score": 4.4,
       "blockers": [],
-      "rank": 309,
+      "rank": 316,
       "notes": []
     },
     {
@@ -22273,7 +22758,7 @@
       },
       "score": 4.4,
       "blockers": [],
-      "rank": 310,
+      "rank": 317,
       "notes": []
     },
     {
@@ -22341,7 +22826,7 @@
       },
       "score": 4.4,
       "blockers": [],
-      "rank": 311,
+      "rank": 318,
       "notes": []
     },
     {
@@ -22408,7 +22893,7 @@
       },
       "score": 4.4,
       "blockers": [],
-      "rank": 312,
+      "rank": 319,
       "notes": [
         "streaming profile unconfirmed: catalogue hidden in this region, so the profile could not be compared"
       ]
@@ -22478,7 +22963,7 @@
       },
       "score": 4.4,
       "blockers": [],
-      "rank": 313,
+      "rank": 320,
       "notes": []
     },
     {
@@ -22546,7 +23031,7 @@
       },
       "score": 4.3,
       "blockers": [],
-      "rank": 314,
+      "rank": 321,
       "notes": []
     },
     {
@@ -22614,7 +23099,7 @@
       },
       "score": 4.3,
       "blockers": [],
-      "rank": 315,
+      "rank": 322,
       "notes": []
     },
     {
@@ -22698,7 +23183,7 @@
       },
       "score": 4.2,
       "blockers": [],
-      "rank": 316,
+      "rank": 323,
       "notes": []
     },
     {
@@ -22777,7 +23262,7 @@
       },
       "score": 4.1,
       "blockers": [],
-      "rank": 317,
+      "rank": 324,
       "notes": []
     },
     {
@@ -22844,7 +23329,7 @@
       },
       "score": 4.1,
       "blockers": [],
-      "rank": 318,
+      "rank": 325,
       "notes": []
     },
     {
@@ -22912,7 +23397,7 @@
       },
       "score": 4.1,
       "blockers": [],
-      "rank": 319,
+      "rank": 326,
       "notes": []
     },
     {
@@ -22979,7 +23464,7 @@
       },
       "score": 4,
       "blockers": [],
-      "rank": 320,
+      "rank": 327,
       "notes": []
     },
     {
@@ -23046,7 +23531,7 @@
       },
       "score": 3.9,
       "blockers": [],
-      "rank": 321,
+      "rank": 328,
       "notes": []
     },
     {
@@ -23114,7 +23599,7 @@
       },
       "score": 3.8,
       "blockers": [],
-      "rank": 322,
+      "rank": 329,
       "notes": []
     },
     {
@@ -23182,7 +23667,7 @@
       },
       "score": 3.8,
       "blockers": [],
-      "rank": 323,
+      "rank": 330,
       "notes": []
     },
     {
@@ -23250,7 +23735,7 @@
       },
       "score": 3.7,
       "blockers": [],
-      "rank": 324,
+      "rank": 331,
       "notes": []
     },
     {
@@ -23318,7 +23803,7 @@
       },
       "score": 3.7,
       "blockers": [],
-      "rank": 325,
+      "rank": 332,
       "notes": []
     },
     {
@@ -23399,7 +23884,7 @@
       },
       "score": 3.7,
       "blockers": [],
-      "rank": 326,
+      "rank": 333,
       "notes": []
     },
     {
@@ -23472,7 +23957,7 @@
       },
       "score": 3.6,
       "blockers": [],
-      "rank": 327,
+      "rank": 334,
       "notes": []
     },
     {
@@ -23545,7 +24030,7 @@
       },
       "score": 3.6,
       "blockers": [],
-      "rank": 328,
+      "rank": 335,
       "notes": []
     },
     {
@@ -23613,7 +24098,7 @@
       },
       "score": 3.5,
       "blockers": [],
-      "rank": 329,
+      "rank": 336,
       "notes": []
     },
     {
@@ -23699,7 +24184,7 @@
       },
       "score": 3.5,
       "blockers": [],
-      "rank": 330,
+      "rank": 337,
       "notes": []
     },
     {
@@ -23777,7 +24262,7 @@
       },
       "score": 3.5,
       "blockers": [],
-      "rank": 331,
+      "rank": 338,
       "notes": []
     },
     {
@@ -23851,7 +24336,7 @@
       },
       "score": 3.5,
       "blockers": [],
-      "rank": 332,
+      "rank": 339,
       "notes": []
     },
     {
@@ -23924,7 +24409,7 @@
       },
       "score": 3.4,
       "blockers": [],
-      "rank": 333,
+      "rank": 340,
       "notes": []
     },
     {
@@ -24002,7 +24487,7 @@
       },
       "score": 3.4,
       "blockers": [],
-      "rank": 334,
+      "rank": 341,
       "notes": []
     },
     {
@@ -24070,7 +24555,7 @@
       },
       "score": 3.3,
       "blockers": [],
-      "rank": 335,
+      "rank": 342,
       "notes": []
     },
     {
@@ -24138,7 +24623,7 @@
       },
       "score": 3.3,
       "blockers": [],
-      "rank": 336,
+      "rank": 343,
       "notes": []
     },
     {
@@ -24217,7 +24702,7 @@
       },
       "score": 3.3,
       "blockers": [],
-      "rank": 337,
+      "rank": 344,
       "notes": []
     },
     {
@@ -24291,7 +24776,7 @@
       },
       "score": 3.2,
       "blockers": [],
-      "rank": 338,
+      "rank": 345,
       "notes": []
     },
     {
@@ -24365,7 +24850,7 @@
       },
       "score": 3.2,
       "blockers": [],
-      "rank": 339,
+      "rank": 346,
       "notes": []
     },
     {
@@ -24445,7 +24930,7 @@
       },
       "score": 3.1,
       "blockers": [],
-      "rank": 340,
+      "rank": 347,
       "notes": []
     },
     {
@@ -24530,7 +25015,7 @@
       },
       "score": 3.1,
       "blockers": [],
-      "rank": 341,
+      "rank": 348,
       "notes": []
     },
     {
@@ -24609,7 +25094,7 @@
       },
       "score": 3.1,
       "blockers": [],
-      "rank": 342,
+      "rank": 349,
       "notes": []
     },
     {
@@ -24682,7 +25167,7 @@
       },
       "score": 3,
       "blockers": [],
-      "rank": 343,
+      "rank": 350,
       "notes": []
     },
     {
@@ -24761,7 +25246,7 @@
       },
       "score": 3,
       "blockers": [],
-      "rank": 344,
+      "rank": 351,
       "notes": []
     },
     {
@@ -24835,7 +25320,7 @@
       },
       "score": 3,
       "blockers": [],
-      "rank": 345,
+      "rank": 352,
       "notes": []
     },
     {
@@ -24903,7 +25388,7 @@
       },
       "score": 3,
       "blockers": [],
-      "rank": 346,
+      "rank": 353,
       "notes": [
         "streaming profile unconfirmed: catalogue hidden in this region, so the profile could not be compared"
       ]
@@ -24984,7 +25469,7 @@
       },
       "score": 3,
       "blockers": [],
-      "rank": 347,
+      "rank": 354,
       "notes": []
     },
     {
@@ -25064,7 +25549,7 @@
       },
       "score": 2.9,
       "blockers": [],
-      "rank": 348,
+      "rank": 355,
       "notes": []
     },
     {
@@ -25126,7 +25611,7 @@
       },
       "score": 2.9,
       "blockers": [],
-      "rank": 349,
+      "rank": 356,
       "notes": []
     },
     {
@@ -25194,7 +25679,7 @@
       },
       "score": 2.9,
       "blockers": [],
-      "rank": 350,
+      "rank": 357,
       "notes": []
     },
     {
@@ -25273,7 +25758,7 @@
       },
       "score": 2.9,
       "blockers": [],
-      "rank": 351,
+      "rank": 358,
       "notes": []
     },
     {
@@ -25341,7 +25826,7 @@
       },
       "score": 2.9,
       "blockers": [],
-      "rank": 352,
+      "rank": 359,
       "notes": []
     },
     {
@@ -25415,7 +25900,7 @@
       },
       "score": 2.9,
       "blockers": [],
-      "rank": 353,
+      "rank": 360,
       "notes": []
     },
     {
@@ -25483,7 +25968,7 @@
       },
       "score": 2.9,
       "blockers": [],
-      "rank": 354,
+      "rank": 361,
       "notes": []
     },
     {
@@ -25551,7 +26036,7 @@
       },
       "score": 2.7,
       "blockers": [],
-      "rank": 355,
+      "rank": 362,
       "notes": []
     },
     {
@@ -25619,7 +26104,7 @@
       },
       "score": 2.7,
       "blockers": [],
-      "rank": 356,
+      "rank": 363,
       "notes": []
     },
     {
@@ -25692,7 +26177,7 @@
       },
       "score": 2.7,
       "blockers": [],
-      "rank": 357,
+      "rank": 364,
       "notes": []
     },
     {
@@ -25765,7 +26250,7 @@
       },
       "score": 2.6,
       "blockers": [],
-      "rank": 358,
+      "rank": 365,
       "notes": []
     },
     {
@@ -25833,7 +26318,7 @@
       },
       "score": 2.4,
       "blockers": [],
-      "rank": 359,
+      "rank": 366,
       "notes": []
     },
     {
@@ -25911,7 +26396,7 @@
       },
       "score": 2.3,
       "blockers": [],
-      "rank": 360,
+      "rank": 367,
       "notes": []
     },
     {
@@ -25974,7 +26459,7 @@
       },
       "score": 2.3,
       "blockers": [],
-      "rank": 361,
+      "rank": 368,
       "notes": []
     },
     {
@@ -26047,7 +26532,7 @@
       },
       "score": 2.2,
       "blockers": [],
-      "rank": 362,
+      "rank": 369,
       "notes": []
     },
     {
@@ -26120,7 +26605,7 @@
       },
       "score": 2.1,
       "blockers": [],
-      "rank": 363,
+      "rank": 370,
       "notes": []
     },
     {
@@ -26193,7 +26678,7 @@
       },
       "score": 2.1,
       "blockers": [],
-      "rank": 364,
+      "rank": 371,
       "notes": []
     },
     {
@@ -26273,7 +26758,7 @@
       },
       "score": 1.9,
       "blockers": [],
-      "rank": 365,
+      "rank": 372,
       "notes": []
     },
     {
@@ -26346,7 +26831,7 @@
       },
       "score": 1.8,
       "blockers": [],
-      "rank": 366,
+      "rank": 373,
       "notes": []
     },
     {
@@ -26414,7 +26899,7 @@
       },
       "score": 1.6,
       "blockers": [],
-      "rank": 367,
+      "rank": 374,
       "notes": []
     },
     {
@@ -26487,7 +26972,7 @@
       },
       "score": 1.6,
       "blockers": [],
-      "rank": 368,
+      "rank": 375,
       "notes": []
     },
     {
@@ -26566,7 +27051,7 @@
       },
       "score": 1.6,
       "blockers": [],
-      "rank": 369,
+      "rank": 376,
       "notes": []
     },
     {
@@ -26640,7 +27125,7 @@
       },
       "score": 1.5,
       "blockers": [],
-      "rank": 370,
+      "rank": 377,
       "notes": []
     },
     {
@@ -26713,7 +27198,7 @@
       },
       "score": 1.4,
       "blockers": [],
-      "rank": 371,
+      "rank": 378,
       "notes": []
     },
     {
@@ -26775,7 +27260,7 @@
       },
       "score": 1.4,
       "blockers": [],
-      "rank": 372,
+      "rank": 379,
       "notes": []
     },
     {
@@ -26854,7 +27339,7 @@
       },
       "score": 1.4,
       "blockers": [],
-      "rank": 373,
+      "rank": 380,
       "notes": []
     },
     {
@@ -26930,7 +27415,7 @@
       },
       "score": 1.3,
       "blockers": [],
-      "rank": 374,
+      "rank": 381,
       "notes": []
     },
     {
@@ -26998,7 +27483,7 @@
       },
       "score": 0,
       "blockers": [],
-      "rank": 375,
+      "rank": 382,
       "notes": []
     },
     {
@@ -27066,7 +27551,7 @@
       },
       "score": 0,
       "blockers": [],
-      "rank": 376,
+      "rank": 383,
       "notes": []
     },
     {
@@ -27135,7 +27620,7 @@
       "blockers": [
         "no streaming profile shares a release with the Apple Music discography (possible name clash)"
       ],
-      "rank": 377,
+      "rank": 384,
       "notes": []
     },
     {
@@ -27205,79 +27690,8 @@
       "blockers": [
         "outside the indie-centred scope (D1); approve only deliberately"
       ],
-      "rank": 378,
+      "rank": 385,
       "notes": []
-    },
-    {
-      "id": "yaeji",
-      "name": "Yaeji",
-      "korean": "예지",
-      "aliases": [],
-      "category": "solo",
-      "genres": [
-        "experimental electronic",
-        "house",
-        "electronic pop"
-      ],
-      "scopes": [
-        "other-adjacent"
-      ],
-      "lenses": [
-        "critics-experimental"
-      ],
-      "signals": [
-        {
-          "type": "recognition",
-          "url": "https://pitchfork.com/reviews/albums/yaeji-with-a-hammer/",
-          "publisher": "Pitchfork",
-          "detail": "Julianne Escobedo Shepherd reviews With a Hammer and discusses its expansion beyond house music."
-        }
-      ],
-      "tracks": [
-        {
-          "title": "For Granted",
-          "korean": "",
-          "reason": "A single from the critically reviewed With a Hammer, also discussed in Apple Music’s album editorial."
-        }
-      ],
-      "officialURL": "",
-      "status": "proposed",
-      "apple": {
-        "id": 1087249836,
-        "name": "Yaeji",
-        "url": "https://music.apple.com/us/artist/yaeji/1087249836",
-        "genre": "Electronic"
-      },
-      "deezer": {
-        "id": 9911548,
-        "name": "Yaeji",
-        "fans": 28867,
-        "albums": 20,
-        "url": "https://www.deezer.com/artist/9911548",
-        "profiles": 4,
-        "verified": true,
-        "sharedReleases": 18
-      },
-      "checked": "2026-11-12",
-      "search": {
-        "queries": [],
-        "impressions": 0,
-        "clicks": 0
-      },
-      "notes": [],
-      "components": {
-        "streaming": 0.81,
-        "search": 0,
-        "community": 0,
-        "ost": 0,
-        "scene": 0,
-        "recognition": 0.33
-      },
-      "score": 17.4,
-      "blockers": [
-        "outside the indie-centred scope (D1); approve only deliberately"
-      ],
-      "rank": 379
     },
     {
       "id": "younha",
@@ -27358,73 +27772,8 @@
       "blockers": [
         "outside the indie-centred scope (D1); approve only deliberately"
       ],
-      "rank": 380,
+      "rank": 386,
       "notes": []
-    },
-    {
-      "id": "madmans-esprit",
-      "name": "Madmans Esprit",
-      "korean": "매드맨즈 에스프리",
-      "aliases": [],
-      "category": "solo",
-      "genres": [
-        "post-black metal",
-        "alternative metal",
-        "visual kei"
-      ],
-      "scopes": [
-        "other-adjacent"
-      ],
-      "lenses": [
-        "critics-experimental"
-      ],
-      "signals": [
-        {
-          "type": "recognition",
-          "url": "https://koreanmusicawards.com/project/madmans-esprit-나는-나를-통해-우리를-보는-너를-통해-나를-본다/",
-          "publisher": "Korean Music Awards",
-          "detail": "나는 나를 통해 우리를 보는 너를 통해 나를 본다 won Best Metal & Hardcore Album in 2023."
-        }
-      ],
-      "tracks": [],
-      "officialURL": "",
-      "status": "proposed",
-      "apple": {
-        "id": 670177120,
-        "name": "Madmans Esprit",
-        "url": "https://music.apple.com/us/artist/madmans-esprit/670177120",
-        "genre": "Korean Rock"
-      },
-      "deezer": {
-        "id": 6919177,
-        "name": "Madmans Esprit",
-        "fans": 2275,
-        "albums": 18,
-        "url": "https://www.deezer.com/artist/6919177",
-        "profiles": 1,
-        "verified": true,
-        "sharedReleases": 18
-      },
-      "checked": "2026-11-12",
-      "search": {
-        "queries": [],
-        "impressions": 0,
-        "clicks": 0
-      },
-      "notes": [],
-      "components": {
-        "streaming": 0.61,
-        "search": 0,
-        "community": 0,
-        "ost": 0,
-        "scene": 0,
-        "recognition": 0.33
-      },
-      "score": 16.4,
-      "blockers": [
-        "outside the indie-centred scope (D1); approve only deliberately"
-      ],
-      "rank": 381
     },
     {
       "id": "lee-chanhyuk",
@@ -27492,7 +27841,7 @@
       "blockers": [
         "outside the indie-centred scope (D1); approve only deliberately"
       ],
-      "rank": 382,
+      "rank": 387,
       "notes": []
     },
     {
@@ -27551,145 +27900,10 @@
       "blockers": [
         "no English Apple Music artist page found"
       ],
-      "rank": 383,
+      "rank": 388,
       "notes": [
         "streaming profile unconfirmed: no Apple Music discography to compare"
       ]
-    },
-    {
-      "id": "hypnosis-therapy",
-      "name": "HYPNOSIS THERAPY",
-      "korean": "힙노시스테라피",
-      "aliases": [],
-      "category": "bands",
-      "genres": [
-        "electronic",
-        "alternative hip-hop"
-      ],
-      "scopes": [
-        "other-adjacent"
-      ],
-      "lenses": [
-        "recognition"
-      ],
-      "signals": [
-        {
-          "type": "recognition",
-          "url": "https://www.cjazit.org/support/tune-up/selection/2017",
-          "publisher": "CJ Cultural Foundation",
-          "detail": "The duo of Jflow and Jjangyou was selected for Tune Up cohort 24."
-        }
-      ],
-      "tracks": [],
-      "officialURL": "",
-      "status": "proposed",
-      "deezer": {
-        "id": 14027741,
-        "name": "Hypnosis Therapy",
-        "fans": 526,
-        "albums": 30,
-        "url": "https://www.deezer.com/artist/14027741",
-        "profiles": 1,
-        "verified": true,
-        "sharedReleases": 12
-      },
-      "apple": {
-        "id": 1651189945,
-        "name": "HYPNOSIS THERAPY",
-        "url": "https://music.apple.com/us/artist/hypnosis-therapy/1651189945",
-        "genre": "Hip-Hop/Rap"
-      },
-      "checked": "2026-11-10",
-      "search": {
-        "queries": [],
-        "impressions": 0,
-        "clicks": 0
-      },
-      "components": {
-        "streaming": 0.49,
-        "search": 0,
-        "community": 0,
-        "ost": 0,
-        "scene": 0,
-        "recognition": 0.33
-      },
-      "score": 15.8,
-      "blockers": [
-        "outside the indie-centred scope (D1); approve only deliberately"
-      ],
-      "rank": 384,
-      "notes": []
-    },
-    {
-      "id": "park-jiha",
-      "name": "Park Jiha",
-      "korean": "박지하",
-      "aliases": [],
-      "category": "solo",
-      "genres": [
-        "ambient",
-        "minimalism",
-        "traditional crossover"
-      ],
-      "scopes": [
-        "other-adjacent"
-      ],
-      "lenses": [
-        "critics-experimental"
-      ],
-      "signals": [
-        {
-          "type": "recognition",
-          "url": "https://theartsdesk.com/new-music/album-park-jiha-all-living-things",
-          "publisher": "The Arts Desk",
-          "detail": "Mark Kidel gives All Living Things a four-star review."
-        }
-      ],
-      "tracks": [
-        {
-          "title": "Growth Ring",
-          "korean": "",
-          "reason": "A track on All Living Things, the album reviewed by Kidel; this is album-level recognition."
-        }
-      ],
-      "officialURL": "",
-      "status": "proposed",
-      "apple": {
-        "id": 1161730439,
-        "name": "Park Jiha",
-        "url": "https://music.apple.com/us/artist/park-jiha/1161730439",
-        "genre": "Classical Crossover"
-      },
-      "deezer": {
-        "id": 11139330,
-        "name": "Park Jiha",
-        "fans": 533,
-        "albums": 12,
-        "url": "https://www.deezer.com/artist/11139330",
-        "profiles": 1,
-        "verified": true,
-        "sharedReleases": 9
-      },
-      "checked": "2026-11-12",
-      "search": {
-        "queries": [],
-        "impressions": 0,
-        "clicks": 0
-      },
-      "notes": [],
-      "components": {
-        "streaming": 0.49,
-        "search": 0,
-        "community": 0,
-        "ost": 0,
-        "scene": 0,
-        "recognition": 0.33
-      },
-      "score": 15.8,
-      "blockers": [
-        "outside the indie-centred scope (D1); approve only deliberately"
-      ],
-      "rank": 385
     },
     {
       "id": "parc-jae-jung",
@@ -27758,7 +27972,7 @@
       "blockers": [
         "outside the indie-centred scope (D1); approve only deliberately"
       ],
-      "rank": 386
+      "rank": 389
     },
     {
       "id": "wooseok",
@@ -27821,79 +28035,8 @@
       "blockers": [
         "outside the indie-centred scope (D1); approve only deliberately"
       ],
-      "rank": 387,
+      "rank": 390,
       "notes": []
-    },
-    {
-      "id": "lucy-liyou",
-      "name": "Lucy Liyou",
-      "korean": "루시 리유",
-      "aliases": [],
-      "category": "solo",
-      "genres": [
-        "experimental",
-        "ambient",
-        "sound collage"
-      ],
-      "scopes": [
-        "other-adjacent"
-      ],
-      "lenses": [
-        "critics-experimental"
-      ],
-      "signals": [
-        {
-          "type": "recognition",
-          "url": "https://pitchfork.com/reviews/albums/lucy-liyou-welfare-practice/",
-          "publisher": "Pitchfork",
-          "detail": "Sam Goldner reviews Welfare / Practice and examines its text-to-speech and pansori connections."
-        }
-      ],
-      "tracks": [
-        {
-          "title": "You Are Every Memory",
-          "korean": "",
-          "reason": "Appears on the reviewed Welfare / Practice; this is album-level critical recognition."
-        }
-      ],
-      "officialURL": "https://linktr.ee/lucyliyou",
-      "status": "proposed",
-      "apple": {
-        "id": 1488119376,
-        "name": "Lucy Liyou",
-        "url": "https://music.apple.com/us/artist/lucy-liyou/1488119376",
-        "genre": "Ambient"
-      },
-      "deezer": {
-        "id": 87529332,
-        "name": "Lucy Liyou",
-        "fans": 150,
-        "albums": 9,
-        "url": "https://www.deezer.com/artist/87529332",
-        "profiles": 1,
-        "verified": true,
-        "sharedReleases": 8
-      },
-      "checked": "2026-11-12",
-      "search": {
-        "queries": [],
-        "impressions": 0,
-        "clicks": 0
-      },
-      "notes": [],
-      "components": {
-        "streaming": 0.39,
-        "search": 0,
-        "community": 0,
-        "ost": 0,
-        "scene": 0,
-        "recognition": 0.33
-      },
-      "score": 15.3,
-      "blockers": [
-        "outside the indie-centred scope (D1); approve only deliberately"
-      ],
-      "rank": 388
     },
     {
       "id": "choi-beck-ho",
@@ -27959,70 +28102,7 @@
       "blockers": [
         "no English Apple Music artist page found"
       ],
-      "rank": 389
-    },
-    {
-      "id": "ambroxiak",
-      "name": "AMBROXIAK",
-      "korean": "암브로시악",
-      "aliases": [],
-      "category": "solo",
-      "genres": [
-        "black metal"
-      ],
-      "scopes": [
-        "other-adjacent"
-      ],
-      "lenses": [
-        "critics-experimental"
-      ],
-      "signals": [
-        {
-          "type": "recognition",
-          "url": "https://koreanmusicawards.com/project/ambroxiak-detritus-of-elysian-creation/",
-          "publisher": "Korean Music Awards",
-          "detail": "Detritus of Elysian Creation was nominated for Best Metal & Hardcore Album at the 2022 awards."
-        }
-      ],
-      "tracks": [],
-      "officialURL": "",
-      "status": "proposed",
-      "apple": {
-        "id": 1599074122,
-        "name": "AMBROXIAK",
-        "url": "https://music.apple.com/us/artist/ambroxiak/1599074122",
-        "genre": "Rock"
-      },
-      "deezer": {
-        "id": 153493892,
-        "name": "AMBROXIAK",
-        "fans": 11,
-        "albums": 1,
-        "url": "https://www.deezer.com/artist/153493892",
-        "profiles": 1,
-        "verified": true,
-        "sharedReleases": 1
-      },
-      "checked": "2026-11-12",
-      "search": {
-        "queries": [],
-        "impressions": 0,
-        "clicks": 0
-      },
-      "notes": [],
-      "components": {
-        "streaming": 0.2,
-        "search": 0,
-        "community": 0,
-        "ost": 0,
-        "scene": 0,
-        "recognition": 0.33
-      },
-      "score": 14.3,
-      "blockers": [
-        "outside the indie-centred scope (D1); approve only deliberately"
-      ],
-      "rank": 390
+      "rank": 391
     },
     {
       "id": "samsan",
@@ -28085,7 +28165,7 @@
       "blockers": [
         "outside the indie-centred scope (D1); approve only deliberately"
       ],
-      "rank": 391,
+      "rank": 392,
       "notes": []
     },
     {
@@ -28150,7 +28230,7 @@
       "blockers": [
         "no streaming profile shares a release with the Apple Music discography (possible name clash)"
       ],
-      "rank": 392
+      "rank": 393
     },
     {
       "id": "computer-music-club",
@@ -28201,70 +28281,6 @@
       "blockers": [
         "no English Apple Music artist page found",
         "streaming profile not matched"
-      ],
-      "rank": 393
-    },
-    {
-      "id": "eobchae",
-      "name": "eobchae",
-      "korean": "업체",
-      "aliases": [],
-      "category": "bands",
-      "genres": [
-        "experimental electronic",
-        "sound art"
-      ],
-      "scopes": [
-        "other-adjacent"
-      ],
-      "lenses": [
-        "critics-experimental"
-      ],
-      "signals": [
-        {
-          "type": "recognition",
-          "url": "https://koreanmusicawards.com/project/업체-희망아기의-노래/",
-          "publisher": "Korean Music Awards",
-          "detail": "희망아기의 노래 was nominated for Best Electronic Song at the 2022 awards."
-        }
-      ],
-      "tracks": [],
-      "officialURL": "",
-      "status": "proposed",
-      "apple": {
-        "id": 1567174969,
-        "name": "eobchae",
-        "url": "https://music.apple.com/us/artist/eobchae/1567174969",
-        "genre": "Electronica"
-      },
-      "deezer": {
-        "id": 132721072,
-        "name": "eobchae",
-        "fans": 0,
-        "albums": 2,
-        "url": "https://www.deezer.com/artist/132721072",
-        "profiles": 1,
-        "verified": true,
-        "sharedReleases": 2
-      },
-      "checked": "2026-11-12",
-      "search": {
-        "queries": [],
-        "impressions": 0,
-        "clicks": 0
-      },
-      "notes": [],
-      "components": {
-        "streaming": 0,
-        "search": 0,
-        "community": 0,
-        "ost": 0,
-        "scene": 0,
-        "recognition": 0.33
-      },
-      "score": 13.3,
-      "blockers": [
-        "outside the indie-centred scope (D1); approve only deliberately"
       ],
       "rank": 394
     },

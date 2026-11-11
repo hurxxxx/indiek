@@ -7,19 +7,19 @@ Score (0–100) = 0.05 × streaming + 0.15 × community + 0.4 × recognition + 0
 | # | ID | Artist | Type | Scope | Score | Deezer fans | Signals | Songs to start | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | `say-sue-me` | Say Sue Me (세이수미) | bands | band-scene, indie | 44.9 | 1432 | community 0.25, ost 0.67, scene 0.33, recognition 0.67 | So Tender / My Heart | added (batch-1) |
-| 2 | `lacuna` | Lacuna (라쿠나) | bands | band-scene, indie | 41.2 | 466 | community 0.25, scene 0.33, recognition 0.67 | Dancing in the Rain | proposed |
+| 2 | `lacuna` | Lacuna (라쿠나) | bands | band-scene, indie | 41.2 | 466 | community 0.25, scene 0.33, recognition 0.67 | Dancing in the Rain | approved (batch-2) |
 | 3 | `wave-to-earth` | wave to earth (웨이브투어스) | bands | indie | 34.6 | 44024 | community 0.25, recognition 0.67 | seasons / bad | proposed |
 | 4 | `meaningful-stone` | Meaningful Stone (김뜻돌) | solo | indie | 33 | 674 | community 0.25, recognition 0.67 | Beep-Boop, Beep-Boop | added (batch-1) |
-| 5 | `ohchill` | OHCHILL (오칠) | bands | band-scene, indie | 31.3 | 9 | community 0.25, recognition 0.67 | Dead Letter | proposed |
+| 5 | `ohchill` | OHCHILL (오칠) | bands | band-scene, indie | 31.3 | 9 | community 0.25, recognition 0.67 | Dead Letter | approved (batch-2) |
 | 6 | `leehi` | LEEHI (이하이) | solo | rnb-soul | 30.7 | 30748 | recognition 0.67 | H.S.K.T. (feat. Wonstein) | proposed |
 | 7 | `jannabi` | JANNABI (잔나비) | bands | band-scene, indie | 28.6 | 2918 | community 0.25, scene 0.33, recognition 0.33 | For Lovers Who Hesitate / A Thought on an Autumn Night | proposed |
 | 8 | `redoor` | Redoor (리도어) | bands | band-scene | 28.6 | 143 | recognition 0.67 |  | proposed |
 | 9 | `jooyoung` | Jooyoung (주영) | solo | rnb-soul | 28.3 | 1581 | community 0.25, scene 0.33, recognition 0.33 | Planet Girl (feat. pH-1) / Dive | proposed |
-| 10 | `kang-asol` | Kang Asol (강아솔) | solo | folk-acoustic | 28.3 | 66 | recognition 0.67 | Island | proposed |
+| 10 | `kang-asol` | Kang Asol (강아솔) | solo | folk-acoustic | 28.3 | 66 | recognition 0.67 | Island | approved (batch-2) |
 | 11 | `silica-gel` | Silica Gel (실리카겔) | bands | band-scene, indie | 28.3 | 1739 | community 0.25, scene 0.33, recognition 0.33 | NO PAIN / Tik Tak Tok (feat. So!YoON!) | added (batch-1) |
 | 12 | `creespy` | creespy (크리스피) | bands | band-scene | 28.2 | 48 | recognition 0.67 |  | proposed |
 | 13 | `jeongmilla` | JEONGMILLA (정밀아) | solo | folk-acoustic | 28 | 31 | recognition 0.67 | The Square / Departing from Seoul Station | added (batch-1) |
-| 14 | `danpyunsun-and-the-moments-ensemble` | Danpyunsun and the Moments Ensemble (단편선 순간들) | bands | band-scene | 27.8 | 15 | recognition 0.67 | Hail to the Music | proposed |
+| 14 | `danpyunsun-and-the-moments-ensemble` | Danpyunsun and the Moments Ensemble (단편선 순간들) | bands | band-scene | 27.8 | 15 | recognition 0.67 | Hail to the Music | approved (batch-2) |
 | 15 | `ourr` | OurR (아월) | bands | band-scene, indie | 27.8 | 397 | community 0.25, scene 0.33, recognition 0.33 | haaAakkKKK!!! | proposed |
 | 16 | `hyang` | HYANG (향) | bands | band-scene | 27.4 | 6 | recognition 0.67 |  | proposed |
 | 17 | `the-bowls` | The Bowls (더 보울스) | bands | band-scene | 27.4 | 5 | recognition 0.67 |  | proposed |
@@ -49,357 +49,357 @@ Score (0–100) = 0.05 × streaming + 0.15 × community + 0.4 × recognition + 0
 | 41 | `savina-and-drones` | Savina & Drones (사비나앤드론즈) | solo | indie | 18 | 2085 | ost 0.33, recognition 0.33 | Glass Bridge / Nobody Knows | proposed |
 | 42 | `10cm` | 10CM (십센치) | solo | folk-acoustic | 17.7 | 21097 | community 0.25, ost 0.33, scene 0.33 | Spring Snow / Tell Me It's Not a Dream | proposed |
 | 43 | `leebada` | LEEBADA (이바다) | solo | rnb-soul | 17.7 | 1052 | ost 0.33, recognition 0.33 | Dreams / High (feat. PENOMECO) | proposed |
-| 44 | `gemini` | Gemini (제미나이) | solo | rnb-soul | 17.3 | 24229 | recognition 0.33 | Know me / mon amour | proposed |
-| 45 | `kwak-jin-eon` | Kwak Jin Eon (곽진언) | solo | folk-acoustic | 17 | 159 | ost 0.33, recognition 0.33 | Name | proposed |
-| 46 | `day6` | DAY6 (데이식스) | bands | idol-band | 16.9 | 239049 | community 0.25, scene 0.33 | You Were Beautiful / Time of Our Life | proposed (streaming profile unconfirmed: catalogue hidden in this region, so the profile could not be compared) |
-| 47 | `lucia` | Lucia (심규선) | solo | folk-acoustic | 16.9 | 8823 | recognition 0.33 |  | proposed |
-| 48 | `dvwn` | Dvwn (다운) | solo | rnb-soul | 16.7 | 4727 | recognition 0.33 | Yeonnam-dong (feat. lIlBOI) / fairy | proposed |
-| 49 | `junggigo` | Junggigo (정기고) | solo | rnb-soul | 16.7 | 4769 | recognition 0.33 | BLIND / Some (feat. Lil Boi) | proposed |
-| 50 | `hoody` | Hoody (후디) | solo | rnb-soul | 16.5 | 3476 | recognition 0.33 | Hangang / Adios (feat. GRAY) | proposed |
-| 51 | `rolling-quartz` | Rolling Quartz (롤링쿼츠) | bands | band-scene | 16.5 | 3210 | recognition 0.33 |  | proposed |
-| 52 | `jiselle` | JISELLE (지셀) | solo | rnb-soul | 16.4 | 2162 | recognition 0.33 | Missed call (feat. CHANCELLOR) | proposed |
-| 53 | `trap` | TRAP (트랩) | bands | band-scene | 16.4 | 2229 | recognition 0.33 |  | proposed |
-| 54 | `leenalchi` | LEENALCHI (이날치) | bands | band-scene | 16.3 | 1967 | recognition 0.33 | Tiger Is Coming | proposed |
-| 55 | `moonsun` | MOONSUN (문선) | solo | indie | 16.3 | 2066 | recognition 0.33 | TOM | proposed |
-| 56 | `devita` | DeVita (드비타) | solo | rnb-soul | 16.2 | 1542 | recognition 0.33 | Bonnie & Clyde | proposed |
-| 57 | `w24` | W24 (더블유24) | bands | idol-band | 16.1 | 1283 | recognition 0.33 |  | proposed |
-| 58 | `we-are-the-night` | WE ARE THE NIGHT (위아더나잇) | bands | band-scene | 16 | 995 | recognition 0.33 | Tiramisu Cake / Our Young Days | proposed |
-| 59 | `salamanda` | Salamanda (살라만다) | bands | indie | 15.9 | 695 | recognition 0.33 |  | proposed |
-| 60 | `samuel-seo` | Samuel Seo (서사무엘) | solo | rnb-soul | 15.9 | 734 | recognition 0.33 | B L U E / Pain Or Death | proposed |
-| 61 | `the-koxx` | The KOXX (칵스) | bands | band-scene | 15.9 | 745 | recognition 0.33 |  | proposed |
-| 62 | `cifika` | CIFIKA (씨피카) | solo | indie | 15.8 | 497 | recognition 0.33 | My Ego | proposed |
-| 63 | `crux` | CRUX (크럭스) | bands | band-scene | 15.8 | 493 | recognition 0.33 | One More Last Mistake | proposed |
-| 64 | `lambc` | LambC (램씨) | solo | rnb-soul | 15.8 | 596 | recognition 0.33 | Love like that / Lady | proposed |
-| 65 | `sultan-of-the-disco` | Sultan of the Disco (술탄 오브 더 디스코) | bands | band-scene | 15.8 | 510 | recognition 0.33 | Suspicious | proposed |
-| 66 | `hoa` | HOA (호아) | bands | band-scene | 15.7 | 390 | recognition 0.33 |  | proposed |
-| 67 | `off-the-menu` | off the menu (오프더메뉴) | bands | band-scene | 15.7 | 407 | recognition 0.33 |  | proposed |
-| 68 | `slant` | Slant (슬랜트) | bands | band-scene | 15.7 | 406 | recognition 0.33 | Enemy | proposed |
-| 69 | `87dance` | 87dance (팔칠댄스) | bands | band-scene | 15.6 | 360 | recognition 0.33 |  | proposed |
-| 70 | `brown-eyed-soul` | BROWN EYED SOUL (브라운 아이드 소울) | bands | rnb-soul | 15.6 | 333 | recognition 0.33 | Night and Day | proposed |
-| 71 | `catch-the-young` | Catch The Young (캐치더영) | bands | idol-band | 15.6 | 292 | recognition 0.33 |  | proposed |
-| 72 | `cotoba` | cotoba (코토바) | bands | indie | 15.6 | 329 | recognition 0.33 |  | proposed |
-| 73 | `gift` | GIFT (기프트) | bands | band-scene | 15.6 | 359 | recognition 0.33 |  | proposed |
-| 74 | `guckkasten` | Guckkasten (국카스텐) | bands | band-scene | 15.6 | 292 | recognition 0.33 |  | proposed |
-| 75 | `kirara` | KIRARA (키라라) | solo | indie | 15.6 | 305 | recognition 0.33 |  | proposed |
-| 76 | `black-string` | Black String (블랙스트링) | bands | jazz | 15.5 | 237 | recognition 0.33 | Mask Dance | proposed |
-| 77 | `dtsq` | DTSQ (디티에스큐) | bands | band-scene | 15.5 | 224 | recognition 0.33 |  | proposed |
-| 78 | `heo-hoy-kyung` | Heo Hoy Kyung (허회경) | solo | folk-acoustic | 15.5 | 221 | recognition 0.33 | Hug me tight | proposed |
-| 79 | `okkyung-lee` | Okkyung Lee (이옥경) | solo | jazz | 15.5 | 273 | recognition 0.33 | Another Old Story | proposed |
-| 80 | `hi-fi-un-corn` | Hi-Fi Un!corn (하이파이유니콘) | bands | idol-band | 15.4 | 183 | recognition 0.33 |  | proposed |
-| 81 | `jerd` | jerd (저드) | solo | rnb-soul | 15.4 | 177 | recognition 0.33 |  | proposed |
-| 82 | `kim-oki` | Kim Oki (김오키) | solo | jazz | 15.4 | 169 | recognition 0.33 |  | proposed |
-| 83 | `ra-d` | Ra.D (라디) | solo | rnb-soul | 15.4 | 215 | recognition 0.33 | I'm In Love - Piano RMX / Fairytale | proposed |
-| 84 | `shin-hae-gyeong` | Shin Hae Gyeong (신해경) | solo | indie | 15.4 | 178 | recognition 0.33 | Colors of You | proposed |
-| 85 | `apollo-18` | Apollo 18 (아폴로 18) | bands | band-scene | 15.3 | 140 | recognition 0.33 | Mur | proposed |
-| 86 | `bumjin` | BUMJIN (범진) | solo | folk-acoustic | 15.3 | 145 | recognition 0.33 |  | proposed |
-| 87 | `earthbound` | Earthbound (얼스바운드) | bands | band-scene | 15.3 | 161 | recognition 0.33 |  | proposed |
-| 88 | `hyelyn-joo` | Hyelyn Joo (주혜린) | solo | rnb-soul | 15.3 | 143 | recognition 0.33 |  | proposed |
-| 89 | `id-earth` | ID:Earth (아이디얼스) | solo | indie | 15.3 | 152 | recognition 0.33 |  | proposed |
-| 90 | `lang-lee` | Lang Lee (이랑) | solo | folk-acoustic | 15.3 | 142 | recognition 0.33 | There is A Wolf / The Generation of Tribulation | added (batch-1) |
-| 91 | `milena` | Milena (밀레나) | solo | rnb-soul | 15.3 | 140 | recognition 0.33 |  | proposed |
-| 92 | `parasol` | Parasol (파라솔) | bands | indie | 15.3 | 154 | recognition 0.33 | Pillow and Ceiling | proposed |
-| 93 | `yi-sung-yol` | Yi Sung Yol (이승열) | solo | indie | 15.3 | 163 | recognition 0.33 | Fly | proposed |
-| 94 | `chudahye-chagis` | Chudahye Chagis (추다혜차지스) | bands | rnb-soul | 15.2 | 112 | recognition 0.33 | Heosse! | proposed |
-| 95 | `jambinai` | Jambinai (잠비나이) | bands | band-scene | 15.2 | 2535 | community 0.25, scene 0.33 |  | proposed |
-| 96 | `jihye-lee-orchestra` | Jihye Lee Orchestra (지혜리 오케스트라) | bands | jazz | 15.2 | 130 | recognition 0.33 | Why is That | proposed |
-| 97 | `jung-in` | Jung In (정인) | solo | rnb-soul | 15.2 | 117 | recognition 0.33 | Blame | proposed |
-| 98 | `kumapark` | Kumapark (쿠마파크) | bands | jazz | 15.2 | 105 | recognition 0.33 | Donut Shop (feat. Paloalto) | proposed |
-| 99 | `omar-and-the-eastern-power` | Omar and the Eastern Power (오마르와 동방전력) | bands | band-scene | 15.2 | 111 | recognition 0.33 |  | proposed |
-| 100 | `soombee` | Soombee (숨비) | solo | folk-acoustic | 15.2 | 112 | recognition 0.33 |  | proposed |
-| 101 | `damons-year` | Damons year (데이먼스이어) | solo | indie | 15.1 | 86 | recognition 0.33 |  | proposed |
-| 102 | `jclef` | JCLEF (제이클레프) | solo | rnb-soul | 15.1 | 95 | recognition 0.33 | mama, see | proposed |
-| 103 | `jisokuryclub` | jisokuryClub (지소쿠리클럽) | bands | band-scene | 15.1 | 81 | recognition 0.33 |  | proposed |
-| 104 | `shin-in-ryu` | Shin In Ryu (신인류) | bands | band-scene | 15.1 | 78 | recognition 0.33 |  | proposed |
-| 105 | `9-and-the-numbers` | 9 and the Numbers (9와 숫자들) | bands | indie | 15 | 62 | recognition 0.33 | Tear Wind | proposed |
-| 106 | `adoy` | ADOY (아도이) | bands | band-scene, indie | 15 | 1814 | community 0.25, scene 0.33 | Wonder / Grace | proposed |
-| 107 | `cheeze` | CHEEZE (치즈) | solo | indie | 15 | 4927 | ost 0.67, scene 0.33 | Little by Little / Madeleine Love | proposed |
-| 108 | `dabda` | Dabda (다브다) | bands | indie | 15 | 62 | recognition 0.33 | Flower Tail | proposed |
-| 109 | `jinbo-the-superfreak` | JINBO the SuperFreak (진보) | solo | rnb-soul | 15 | 68 | recognition 0.33 | So to Say (feat. Crush & Hoody) | proposed |
-| 110 | `net-gala` | NET GALA (넷 갈라) | solo | indie | 15 | 67 | recognition 0.33 | Reclaim It | proposed |
-| 111 | `tengger` | TENGGER (텐거) | bands | indie | 15 | 68 | recognition 0.33 | Kyrie | proposed |
-| 112 | `yetsuby` | Yetsuby (예츠비) | solo | indie | 15 | 72 | recognition 0.33 | My Star My Planet My Earth | proposed |
-| 113 | `250` | 250 (이오공) | solo | indie | 14.9 | 51 | recognition 0.33 | Bang Bus | proposed |
-| 114 | `a-fuzz` | A-Fuzz (에이퍼즈) | bands | jazz | 14.9 | 49 | recognition 0.33 | Breeze | proposed |
-| 115 | `budung` | Budung (버둥) | solo | folk-acoustic | 14.9 | 54 | recognition 0.33 | MUSE | proposed |
-| 116 | `haepaary` | HAEPAARY (해파리) | bands | indie | 14.9 | 54 | recognition 0.33 | Go to Gpd and Then | proposed |
-| 117 | `monday-off-with-bluesy` | Monday Off With Bluesy (먼데이오프위드블루시) | bands | band-scene | 14.9 | 59 | recognition 0.33 |  | proposed |
-| 118 | `adios-audio` | Adios Audio (아디오스 오디오) | bands | band-scene | 14.8 | 45 | recognition 0.33 |  | proposed |
-| 119 | `ann-one` | Ann One (앤 원) | solo | rnb-soul | 14.8 | 37 | recognition 0.33 |  | proposed |
-| 120 | `atom-music-heart` | Atom Music Heart (아톰뮤직하트) | bands | band-scene | 14.8 | 37 | recognition 0.33 | After all | proposed |
-| 121 | `bongjeingan` | bongjeingan (봉제인간) | bands | band-scene | 14.8 | 36 | recognition 0.33 |  | proposed |
-| 122 | `broccoli-you-too` | Broccoli, you too? (브로콜리너마저) | bands | band-scene | 14.8 | 45 | recognition 0.33 |  | proposed |
-| 123 | `low-hanging-fruits` | Low Hanging Fruits (로우행잉프루츠) | bands | indie | 14.8 | 36 | recognition 0.33 |  | proposed |
-| 124 | `mind-combined` | Mind Combined (마인드 컴바인드) | bands | rnb-soul | 14.8 | 45 | recognition 0.33 | Show Me | proposed |
-| 125 | `miso` | Miso (미소) | solo | rnb-soul | 14.8 | 41 | recognition 0.33 | Take Me | proposed |
-| 126 | `moskva-surfing-club` | Moskva Surfing Club (모스크바서핑클럽) | bands | band-scene | 14.8 | 41 | recognition 0.33 |  | proposed |
-| 127 | `the-rose` | The Rose (더로즈) | bands | band-scene | 14.8 | 194198 | ost 0.33, scene 0.33 | Back To Me / Sorry | proposed |
-| 128 | `thomas-cook` | Thomas Cook (토마스 쿡) | solo | folk-acoustic | 14.8 | 37 | recognition 0.33 | 집으로 오는 길 (Road to Home) | proposed |
-| 129 | `hwang-puha` | hwang puha (황푸하) | solo | folk-acoustic | 14.7 | 34 | recognition 0.33 | Fire | proposed |
-| 130 | `leson` | LeSon (르손) | solo | rnb-soul | 14.7 | 33 | recognition 0.33 |  | proposed |
-| 131 | `lowdown-30` | Lowdown 30 (로다운30) | bands | band-scene | 14.7 | 32 | recognition 0.33 |  | proposed |
-| 132 | `my-aunt-mary` | My Aunt Mary (마이앤트메리) | bands | band-scene | 14.7 | 34 | recognition 0.33 |  | proposed |
-| 133 | `pakk` | PAKK (팎) | bands | band-scene | 14.7 | 29 | recognition 0.33 |  | proposed |
-| 134 | `the-volunteers` | The Volunteers (더 발룬티어스) | bands | band-scene, indie | 14.7 | 702 | community 0.25, scene 0.33 |  | proposed |
-| 135 | `xeuda` | Xeuda (쓰다) | solo | folk-acoustic | 14.7 | 28 | recognition 0.33 | How can I tell you love | proposed |
-| 136 | `a-train` | A.TRAIN (에이트레인) | solo | rnb-soul | 14.6 | 27 | recognition 0.33 | Something Beautiful (feat. 김뜻돌, Simun & Seo Bo-Kyung) | proposed |
-| 137 | `method` | Method (메써드) | bands | band-scene | 14.6 | 24 | recognition 0.33 | Lies On Your Lips (JUMF 2018) [Live Version] | proposed |
-| 138 | `moher` | Moher (모허) | bands | folk-acoustic | 14.6 | 22 | recognition 0.33 |  | proposed |
-| 139 | `rock-n-roll-radio` | ROCK N ROLL RADIO (로큰롤라디오) | bands | band-scene | 14.6 | 22 | recognition 0.33 | Take Me Home | proposed |
-| 140 | `yeong-die` | Yeong Die (영다이) | solo | indie | 14.6 | 27 | recognition 0.33 | Dig Up Dawn | proposed |
-| 141 | `airy` | AIRY (애리) | solo | indie | 14.5 | 18 | recognition 0.33 | Disappearing Ways | proposed |
-| 142 | `damye` | DAMYE (담예) | solo | rnb-soul | 14.5 | 20 | recognition 0.33 |  | proposed |
-| 143 | `hwanho` | Hwanho (화노) | bands | band-scene | 14.5 | 20 | recognition 0.33 |  | proposed |
-| 144 | `mild-beats` | Mild Beats (마일드 비츠) | solo | rnb-soul | 14.5 | 20 | recognition 0.33 | Blame | proposed |
-| 145 | `raw-by-peppers` | Raw By Peppers (로 바이 페퍼스) | bands | band-scene | 14.5 | 21 | recognition 0.33 |  | proposed |
-| 146 | `trampauline` | Trampauline (트램폴린) | bands | indie | 14.5 | 19 | recognition 0.33 | Boxer's Wife / Machines Are Human | proposed |
-| 147 | `arexibo` | Arexibo (아레시보) | solo | indie | 14.4 | 13 | recognition 0.33 | Gemini | proposed |
-| 148 | `b-jeong` | BØJEONG (비공정) | bands | band-scene | 14.4 | 15 | recognition 0.33 |  | proposed |
-| 149 | `far-east-asian-tigers` | Far East Asian Tigers (극동아시아타이거즈) | bands | band-scene | 14.4 | 13 | recognition 0.33 |  | proposed |
-| 150 | `gong-joong-geu-neul` | Gong Joong Geu Neul (공중그늘) | bands | indie | 14.4 | 15 | recognition 0.33 | ZZZ | proposed |
-| 151 | `huijun-woo` | huijun woo (우희준) | solo | indie | 14.4 | 15 | recognition 0.33 |  | proposed |
-| 152 | `leesuho` | Leesuho (이수호) | solo | indie | 14.4 | 15 | recognition 0.33 | Lights (feat. Kim Hanjoo) | proposed |
-| 153 | `soumbalgwang` | Soumbalgwang (소음발광) | bands | band-scene | 14.4 | 13 | recognition 0.33 | Dawn ('25 Live <Kuang!!>) | proposed |
-| 154 | `asian-chairshot` | Asian Chairshot (아시안 체어샷) | bands | band-scene | 14.3 | 10 | recognition 0.33 | Sun | proposed |
-| 155 | `electriceels` | ElectricEels (전기뱀장어) | bands | indie | 14.3 | 10 | recognition 0.33 |  | proposed |
-| 156 | `hammering` | Hammering (해머링) | bands | band-scene | 14.3 | 10 | recognition 0.33 | TRIGGER FINGER (2021 New Version) | proposed |
-| 157 | `juliadream` | JuliaDream (줄리아드림) | bands | band-scene | 14.3 | 11 | recognition 0.33 |  | proposed |
-| 158 | `kachisan` | KACHISAN (까치산) | bands | band-scene | 14.3 | 11 | recognition 0.33 |  | proposed |
-| 159 | `seoul-electric-band` | Seoul Electric Band (서울전자음악단) | bands | band-scene | 14.3 | 10 | recognition 0.33 |  | proposed |
-| 160 | `simile-land` | SIMILE LAND (심아일랜드) | bands | band-scene | 14.3 | 10 | recognition 0.33 |  | proposed |
-| 161 | `smacksoft` | SmackSoft (황보령 스맥소프트) | bands | band-scene | 14.3 | 11 | recognition 0.33 | Peaceful Folks | proposed |
-| 162 | `spit-on-my-tomb` | Spit On My Tomb (스핏온마이툼) | bands | band-scene | 14.3 | 10 | recognition 0.33 |  | proposed |
-| 163 | `the-shepherd-bois` | The Shepherd Bois (양치기소년단) | bands | band-scene | 14.3 | 10 | recognition 0.33 |  | proposed |
-| 164 | `uza-and-shane` | UZA&SHANE (우자앤쉐인) | bands | indie | 14.3 | 12 | recognition 0.33 |  | proposed |
-| 165 | `boys-in-the-kitchen` | Boys In The Kitchen (보이즈 인 더 키친) | bands | band-scene | 14.2 | 9 | recognition 0.33 | Bambi | proposed |
-| 166 | `cott` | Cott (콧) | bands | rnb-soul | 14.2 | 8 | recognition 0.33 |  | proposed |
-| 167 | `jungwoo` | JUNGWOO (정우) | solo | indie | 14.2 | 9 | recognition 0.33 | Cloud Cuckoo Land | proposed |
-| 168 | `kim-jae-hyung` | KIM JAE HYUNG (김제형) | solo | indie | 14.2 | 9 | recognition 0.33 |  | proposed |
-| 169 | `kimseungjoo` | kimseungjoo (김승주) | solo | indie | 14.2 | 9 | recognition 0.33 |  | proposed |
-| 170 | `peach-truck-hijackers` | Peach Truck Hijackers (피치트럭하이재커스) | bands | band-scene | 14.2 | 7 | recognition 0.33 |  | proposed |
-| 171 | `song-chang-sik` | Song Chang Sik (송창식) | solo | folk-acoustic | 14.2 | 9 | recognition 0.33 |  | proposed |
-| 172 | `summer-of-thoughts` | Summer of Thoughts (생각의 여름) | solo | folk-acoustic | 14.2 | 7 | recognition 0.33 |  | proposed |
-| 173 | `chasedae` | CHASEDAE (차세대) | bands | band-scene | 14.1 | 6 | recognition 0.33 | Son | proposed |
-| 174 | `line-and-circle` | Line and Circle (선과영) | bands | folk-acoustic | 14.1 | 6 | recognition 0.33 | Night and Day | proposed |
-| 175 | `sb-circle` | SB Circle (신박서클) | bands | jazz | 14.1 | 6 | recognition 0.33 | Fan in the Room | proposed |
-| 176 | `yang-chang-keun` | Yang Chang Keun (양창근) | solo | indie | 14.1 | 6 | recognition 0.33 | If You Want | proposed |
-| 177 | `crush` | Crush (크러쉬) | solo | rnb-soul | 14 | 27092 | ost 0.33, scene 0.33 | Beautiful / Love You With All My Heart | proposed |
-| 178 | `dayangsung` | DAYANGSUNG (다양성) | bands | band-scene | 14 | 4 | recognition 0.33 |  | proposed |
-| 179 | `decadent` | DECADENT (데카당) | bands | band-scene | 14 | 4 | recognition 0.33 |  | proposed |
-| 180 | `duoxini` | DUOXINI (두억시니) | bands | band-scene | 14 | 5 | recognition 0.33 | Sin of Society / Old Noise | proposed |
-| 181 | `meeroo-choi` | meeroo choi (최미루) | solo | folk-acoustic | 14 | 4 | recognition 0.33 | Dap | proposed |
-| 182 | `oyeol` | OYEOL (오열) | solo | indie | 14 | 4 | recognition 0.33 | Like that Shower | proposed |
-| 183 | `oysters` | OYSTERS (오이스터즈) | bands | band-scene | 14 | 5 | recognition 0.33 |  | proposed |
-| 184 | `ronny-chu` | Ronny Chu (로니 추) | solo | indie | 14 | 5 | recognition 0.33 |  | proposed |
-| 185 | `sanmanhan` | Sanmanhan (산만한시선) | bands | folk-acoustic | 14 | 5 | recognition 0.33 |  | proposed |
-| 186 | `coremagazine` | COREMAGAZINE (코어매거진) | bands | band-scene | 13.9 | 3 | recognition 0.33 |  | proposed |
-| 187 | `gate-flowers` | Gate Flowers (게이트 플라워즈) | bands | band-scene | 13.9 | 3 | recognition 0.33 |  | proposed |
-| 188 | `kwon-tree` | Kwon Tree (권나무) | solo | folk-acoustic | 13.9 | 3 | recognition 0.33 | Dance With You | proposed |
-| 189 | `shin-seung-eun` | Shin Seung Eun (신승은) | solo | folk-acoustic | 13.9 | 3 | recognition 0.33 | Beyond the Steam / Treadmill | proposed |
-| 190 | `melki` | MELKI (멜키) | solo | indie | 13.8 | 2 | recognition 0.33 | BODY BREAK | proposed |
-| 191 | `n-flying` | N.Flying (엔플라잉) | bands | idol-band | 13.8 | 15112 | ost 0.33, scene 0.33 | Rooftop / Star | proposed |
-| 192 | `nakwon` | NAKWON (낙원) | bands | band-scene | 13.8 | 2 | recognition 0.33 |  | proposed |
-| 193 | `chun-yongsung` | Chun Yongsung (천용성) | solo | folk-acoustic | 13.6 | 1 | recognition 0.33 | Barley Tea (feat. Kang Mal Geum) | proposed |
-| 194 | `cranfield` | Cranfield (크랜필드) | bands | indie | 13.6 | 1 | recognition 0.33 |  | proposed |
-| 195 | `haihm` | haihm (하임) | solo | indie | 13.6 | 1 | recognition 0.33 | Gravity | proposed |
-| 196 | `heo-jeonghyuk` | Heo JeongHyuk (허정혁) | solo | folk-acoustic | 13.6 | 1 | recognition 0.33 | With The Season | proposed |
-| 197 | `jeon-ho-kwon` | Jeon Ho Kwon (전호권) | solo | folk-acoustic | 13.6 | 1 | recognition 0.33 |  | proposed |
-| 198 | `nam-yoosun` | Nam Yoosun (남유선) | solo | jazz | 13.6 | 1 | recognition 0.33 | Things We Lost | proposed |
-| 199 | `kim-feel` | Kim Feel (김필) | solo | ost | 13.4 | 5946 | ost 0.33, scene 0.33 | Here We Are | proposed |
-| 200 | `doildoshi` | Doildoshi (도일도시) | solo | indie | 13.3 | 0 | recognition 0.33 |  | proposed (streaming profile unconfirmed: catalogue hidden in this region, so the profile could not be compared) |
-| 201 | `jay-park` | Jay Park (박재범) | solo | rnb-soul | 13.3 | 274109 | scene 0.33 |  | proposed |
-| 202 | `jung-seung-hwan` | Jung Seung Hwan (정승환) | solo | ost | 13.3 | 4858 | ost 0.33, scene 0.33 | If It Is You | proposed |
-| 203 | `lee-jiyeun` | LEE JIYEUN (이지연) | solo | jazz | 13.3 | 0 | recognition 0.33 | Blue Flower | proposed |
-| 204 | `silkbell` | Silkbell (비단종) | solo | rnb-soul | 13.3 | 0 | recognition 0.33 |  | proposed |
-| 205 | `winter-to-spring` | Winter To Spring (겨울에서봄) | bands | jazz | 13.3 | 0 | recognition 0.33 | A Night Of Yeonnam | proposed |
-| 206 | `yajasu` | Yajasu (야자수) | bands | band-scene | 13.3 | 0 | recognition 0.33 |  | proposed |
-| 207 | `yongseok-lee` | Yongseok Lee (이용석) | solo | jazz | 13.3 | 0 | recognition 0.33 | Newsroom | proposed |
-| 208 | `baekhyun` | BAEKHYUN (백현) | solo | rnb-soul | 13.2 | 241744 | scene 0.33 |  | proposed |
-| 209 | `so-soo-bin` | So Soo Bin (소수빈) | solo | ost | 13.1 | 2852 | ost 0.33, scene 0.33 | Last Chance | proposed |
-| 210 | `cnblue` | CNBLUE (씨엔블루) | bands | idol-band | 12.9 | 115589 | scene 0.33 | Loner / Can't Stop | proposed |
-| 211 | `dean` | DEAN (딘) | solo | rnb-soul | 12.8 | 78646 | scene 0.33 | Instagram / D (Half Moon) [feat. Gaeko] | proposed |
-| 212 | `ohhyuk` | OHHYUK (오혁) | solo | band-scene | 12.7 | 914 | ost 0.33, scene 0.33 | A Little Girl / Island (feat. OHHYUK) | proposed |
-| 213 | `xdinary-heroes` | Xdinary Heroes (엑스디너리 히어로즈) | bands | idol-band | 12.6 | 46653 | scene 0.33 | Good enough / Strawberry Cake | proposed |
-| 214 | `kyuhyun` | KYUHYUN (규현) | solo | ost | 11.8 | 6003 | scene 0.33 |  | proposed |
-| 215 | `idiotape` | IDIOTAPE (이디오테잎) | bands | band-scene | 11.5 | 3289 | scene 0.33 | Melodie / 080509 | proposed |
-| 216 | `lee-jun-hyung` | Lee Jun Hyung (이준형) | solo | indie | 11.5 | 44 | ost 0.33, scene 0.33 | To be together | proposed |
-| 217 | `nive` | NIve (니브) | solo | rnb-soul | 11.4 | 2265 | scene 0.33 |  | proposed |
-| 218 | `okdal` | Okdal (옥상달빛) | bands | folk-acoustic | 11.3 | 2153 | scene 0.33 | Cheer Up / Run | proposed |
-| 219 | `romantic-punch` | Romantic Punch (로맨틱펀치) | bands | band-scene | 11.3 | 28 | ost 0.33, scene 0.33 | The Time Is On My Side | proposed |
-| 220 | `sumin` | SUMIN (수민) | solo | rnb-soul | 11.3 | 1980 | scene 0.33 | THE GONLAN SONG / WHY, WHY, WHY | proposed |
-| 221 | `ahn-ye-eun` | Ahn Ye Eun (안예은) | solo | folk-acoustic | 11.2 | 1331 | scene 0.33 |  | proposed |
-| 222 | `daybreak` | Daybreak (데이브레이크) | bands | band-scene | 11.2 | 1660 | scene 0.33 | Flower Road / Love Actually | proposed |
-| 223 | `lee-mujin` | LEE Mujin (이무진) | solo | folk-acoustic | 11.2 | 1619 | scene 0.33 | Traffic Light / Episode | proposed |
-| 224 | `shin-yong-jae` | Shin Yong Jae (신용재) | solo | rnb-soul | 11 | 787 | scene 0.33 | You, Clouds, Rain (feat. Shin Yong Jae) | proposed |
-| 225 | `kardi` | KARDI (카디) | bands | band-scene | 10.7 | 368 | scene 0.33 | Watchout | proposed |
-| 226 | `slom` | Slom (슬롬) | solo | rnb-soul | 10.7 | 411 | scene 0.33 |  | proposed |
-| 227 | `minsu` | Minsu (민수) | solo | indie | 10.6 | 335 | scene 0.33 | Minsu Is Confused / Islet | proposed |
-| 228 | `davii` | DAVII (다비) | solo | rnb-soul | 10.5 | 271 | scene 0.33 |  | proposed |
-| 229 | `peppertones` | PEPPERTONES (페퍼톤스) | bands | band-scene | 10.5 | 240 | scene 0.33 | Good Luck to You / Ready, Get Set, Go! | proposed |
-| 230 | `touched` | TOUCHED (터치드) | bands | band-scene | 10.3 | 154 | scene 0.33 | Highlight | proposed |
-| 231 | `broken-valentine` | Broken Valentine (브로큰 발렌타인) | bands | band-scene | 10.2 | 122 | scene 0.33 | Alien | proposed |
-| 232 | `han-suji` | Han Suji (한수지) | solo | ost | 10.2 | 112 | scene 0.33 | Round and Round (feat. Han Suji) | proposed |
-| 233 | `kuonechan` | Kuonechan (구원찬) | solo | rnb-soul | 10.1 | 99 | scene 0.33 | How Did You (feat. Yerin Baek) / Barely (feat. HANRORO) | proposed |
-| 234 | `owalloil` | OWALLOIL (오월오일) | bands | band-scene | 10 | 61 | scene 0.33 | Echo / Tree | proposed |
-| 235 | `neon-bunny` | Neon Bunny (야광토끼) | solo | indie | 9.9 | 442 | community 0.5 |  | proposed |
-| 236 | `night-off` | Night Off (나이트오프) | bands | indie | 9.9 | 1149 | community 0.25, ost 0.67 | Nevertheless / Sleep | proposed |
-| 237 | `pateko` | PATEKO (파테코) | solo | rnb-soul | 9.9 | 58 | scene 0.33 |  | proposed |
-| 238 | `bosudongcooler` | Bosudongcooler (보수동쿨러) | bands | indie | 9.5 | 152 | community 0.5 | 0308 / Breath | proposed |
-| 239 | `imzoo` | imzoo (임지우) | solo | rnb-soul | 9.5 | 19 | scene 0.33 | For You | proposed |
-| 240 | `sam-kim` | SAM KIM (샘김) | solo | rnb-soul | 9.1 | 12066 | community 0.25, ost 0.33 | Love Me Like That / Make Up (feat. Crush) | proposed |
-| 241 | `janet-suhh` | Janet Suhh (자넷서) | solo | ost | 8.9 | 6255 | community 0.25, ost 0.33 | Resemble | proposed |
-| 242 | `bibi` | BIBI (비비) | solo | rnb-soul | 8.3 | 101539 | community 0.25 | Restless | proposed |
-| 243 | `ftisland` | FTISLAND (에프티아일랜드) | bands | idol-band | 8.1 | 65304 | community 0.25 | Love Sick / Take Me Now | proposed |
-| 244 | `the-vane` | THE VANE (더베인) | solo | ost | 7.9 | 524 | community 0.25, ost 0.33 | No Break / Room No. 303 | proposed |
-| 245 | `colde` | Colde (콜드) | solo | rnb-soul | 7.6 | 17577 | community 0.25 | When Dawn Comes Again (feat. BAEKHYUN) / WA-R-R | proposed |
-| 246 | `monogram` | Monogram (모노그램) | bands | indie | 7.6 | 285 | community 0.25, ost 0.33 | Lucid Dream | proposed |
-| 247 | `trpp` | TRPP (트리피) | bands | indie | 7.5 | 178 | community 0.25, ost 0.33 | BILLY / Yeah (Round and Round) | proposed |
-| 248 | `seori` | Seori (서리) | solo | rnb-soul | 7.2 | 6459 | community 0.25 | Running Through the Night | proposed |
-| 249 | `gsoul` | GSoul (지소울) | solo | rnb-soul | 7 | 3583 | community 0.25 | bad habit | proposed |
-| 250 | `eaeon` | eAeon (이이언) | solo | indie | 6.9 | 2704 | community 0.25 |  | proposed |
-| 251 | `dosii` | dosii (도시) | bands | rnb-soul | 6.8 | 2278 | community 0.25 | Lovememore. / fairy of shampoo (Remake Version) | proposed |
-| 252 | `iz` | IZ (아이즈) | bands | idol-band | 6.8 | 2349 | community 0.25 | Angel | proposed |
-| 253 | `mot` | Mot (못) | bands | indie | 6.7 | 1872 | community 0.25 | Wings | proposed |
-| 254 | `oohyo` | Oohyo (우효) | solo | indie | 6.7 | 1779 | community 0.25 | Dandelion (full version) | proposed |
-| 255 | `the-poles` | The Poles (더 폴스) | bands | indie | 6.7 | 1982 | community 0.25 |  | proposed |
-| 256 | `kiha-and-the-faces` | Kiha & The Faces (장기하와 얼굴들) | bands | band-scene | 6.6 | 1499 | community 0.25 | Cheap Coffee | proposed |
-| 257 | `asian-glow` | Asian Glow (아시안 글로우) | solo | indie | 6.5 | 1082 | community 0.25 | Center | proposed |
-| 258 | `glen-check` | Glen Check (글렌체크) | bands | indie | 6.5 | 1110 | community 0.25 | Dazed & Confused | proposed |
-| 259 | `jaurim` | Jaurim (자우림) | bands | band-scene | 6.5 | 1020 | community 0.25 |  | proposed |
-| 260 | `mid-air-thief` | Mid-Air Thief (공중도둑) | solo | indie | 6.5 | 1041 | community 0.25 |  | proposed |
-| 261 | `surl` | SURL (설) | bands | indie | 6.5 | 1189 | community 0.25 | Dry Flower | proposed |
-| 262 | `no-brain` | No Brain (노브레인) | bands | band-scene | 6.4 | 802 | community 0.25 | You Have a Crush On Me | proposed |
-| 263 | `bursters` | Bursters (버스터즈) | bands | band-scene | 6.3 | 701 | community 0.25 | Barriers | proposed |
-| 264 | `thornapple` | THORNAPPLE (쏜애플) | bands | indie | 6.2 | 477 | community 0.25 |  | proposed |
-| 265 | `aseul` | Aseul (아슬) | solo | indie | 6 | 278 | community 0.25 | Dying Practice | proposed |
-| 266 | `jukjae` | JUKJAE (적재) | solo | folk-acoustic | 6 | 979 | ost 0.67 | Fall In Love / Do You Want to Walk with Me? (Romance 101) | proposed |
-| 267 | `elaine` | Elaine (일레인) | solo | indie | 5.9 | 50368 | ost 0.33 | Sad March | proposed |
-| 268 | `cherry-filter` | Cherry Filter (체리필터) | bands | band-scene | 5.8 | 164 | community 0.25 |  | proposed |
-| 269 | `o-o-o` | O.O.O (오오오) | bands | indie | 5.8 | 201 | community 0.25 |  | proposed |
-| 270 | `kisnue` | Kisnue (키스누) | bands | indie | 5.7 | 145 | community 0.25 | Same | proposed |
-| 271 | `vanilla-acoustic` | Vanilla Acoustic (바닐라 어쿠스틱) | bands | folk-acoustic | 5.7 | 451 | ost 0.67 | The Time We Shared / Romantic Wish | proposed |
-| 272 | `yellow-monsters` | Yellow Monsters (옐로우 몬스터즈) | bands | band-scene | 5.7 | 141 | community 0.25 | Riot! | proposed |
-| 273 | `huckleberryfinn` | Huckleberryfinn (허클베리핀) | bands | band-scene | 5.6 | 99 | community 0.25 | Tempest / The Nights | proposed |
-| 274 | `vidulgi-ooyoo` | Vidulgi Ooyoo (비둘기우유) | bands | indie | 5.6 | 112 | community 0.25 |  | proposed |
-| 275 | `aleph` | ALEPH (알레프) | solo | indie | 5.5 | 84 | community 0.25 |  | proposed |
-| 276 | `rainbow-note` | Rainbow note (레인보우노트) | bands | indie | 5.5 | 95 | community 0.25 | Venus | proposed |
-| 277 | `gaho` | Gaho (가호) | solo | ost | 5.3 | 9772 | ost 0.33 | Start Over | proposed |
-| 278 | `kim-na-young` | Kim Na Young (김나영) | solo | ost | 5.3 | 9421 | ost 0.33 | Love Hurts A Little More | proposed |
-| 279 | `lee-suhyun` | LEE SUHYUN (이수현) | solo | ost | 5.2 | 8041 | ost 0.33 | Sori | proposed |
-| 280 | `standing-egg` | Standing Egg (스탠딩 에그) | bands | folk-acoustic | 5.2 | 7651 | ost 0.33 | I Know It's You / Old Song | proposed |
-| 281 | `wings-of-the-isang` | Wings of the Isang (이상의날개) | bands | indie | 5.2 | 42 | community 0.25 | Dark Sea (Live Version) | proposed |
-| 282 | `eddy-kim` | Eddy Kim (에디킴) | solo | folk-acoustic | 5.1 | 6900 | ost 0.33 | When a Long Night Comes | proposed |
-| 283 | `nell` | NELL (넬) | bands | band-scene | 5.1 | 33 | community 0.25 | The Time of Walking On Remembrance | proposed |
-| 284 | `stella-jang` | Stella Jang (스텔라장) | solo | folk-acoustic | 5.1 | 5520 | ost 0.33 | Villain / Colors | proposed |
-| 285 | `ben` | BEN (벤) | solo | ost | 5 | 4852 | ost 0.33 | If You Were Me | proposed (streaming profile unconfirmed: no Apple Music discography to compare) |
-| 286 | `loros` | Loro's (로로스) | bands | indie | 5 | 21 | community 0.25 |  | proposed |
-| 287 | `hwang-chi-yeul` | Hwang Chi Yeul (황치열) | solo | ost | 4.9 | 3334 | ost 0.33 | How Can I Forget You | proposed |
-| 288 | `kimsejeong` | KIMSEJEONG (김세정) | solo | ost | 4.9 | 3348 | ost 0.33 | Paramour | proposed |
-| 289 | `klang` | KLANG (클랑) | solo | ost | 4.9 | 3439 | ost 0.33 | U Hoo Hoo | proposed |
-| 290 | `nuest-w` | NU’EST W (뉴이스트 W) | bands | ost | 4.9 | 4001 | ost 0.33 | AND I | proposed (streaming profile unconfirmed: catalogue hidden in this region, so the profile could not be compared) |
-| 291 | `park-won` | Park Won (박원) | solo | ost | 4.9 | 4007 | ost 0.33 | Stranger | proposed |
-| 292 | `chai` | CHAI (차이) | solo | rnb-soul | 4.8 | 3141 | ost 0.33 | GIFT | proposed |
-| 293 | `suzy` | Suzy (수지) | solo | ost | 4.8 | 2980 | ost 0.33 | I Love You Boy | proposed |
-| 294 | `j-rabbit` | J Rabbit (제이레빗) | bands | folk-acoustic | 4.7 | 2062 | ost 0.33 | You Always / Happy Things | proposed |
-| 295 | `john-park` | John Park (존박) | solo | rnb-soul | 4.7 | 2507 | ost 0.33 | The Day You were Falling | proposed |
-| 296 | `rothy` | Rothy (로시) | solo | ost | 4.7 | 2426 | ost 0.33 | Something Precious | proposed |
-| 297 | `tearliner` | tearliner (티어라이너) | bands | indie | 4.7 | 2548 | ost 0.33 | Attraction (feat. 김고은) | proposed |
-| 298 | `achime` | Achime (아침) | bands | indie | 4.6 | 7 | community 0.25 | Pathetic Sight | proposed |
-| 299 | `grizzly` | Grizzly (그리즐리) | solo | rnb-soul | 4.6 | 1613 | ost 0.33 | That night | proposed |
-| 300 | `ha-hyun-sang` | Ha Hyun Sang (하현상) | solo | band-scene | 4.6 | 1596 | ost 0.33 | With You | proposed |
-| 301 | `o-when` | O.WHEN (오왠) | solo | indie, folk-acoustic | 4.6 | 1969 | ost 0.33 | How To Say / Heartbeat | proposed |
-| 302 | `baek-z-young` | Baek Z Young (백지영) | solo | ost | 4.5 | 1500 | ost 0.33 | See You Again (feat. Richard Yongjae O'Neill) | proposed |
-| 303 | `fromm` | Fromm (프롬) | solo | indie | 4.5 | 1214 | ost 0.33 | Can't You Love Me (Piano Ver.) | proposed |
-| 304 | `kim-kyung-hee` | Kim Kyung Hee (김경희) | solo | ost | 4.5 | 1438 | ost 0.33 | Midnight Sun | proposed |
-| 305 | `kimmuseum` | KIMMUSEUM (김뮤지엄) | solo | rnb-soul | 4.5 | 1251 | ost 0.33 | We're Already | proposed |
-| 306 | `love-x-stereo` | Love X Stereo (러브엑스테레오) | bands | indie | 4.5 | 1418 | ost 0.33 | Hide and Seek (Television Soundtrack Version) | proposed |
-| 307 | `o3ohn` | O3ohn (오존) | solo | folk-acoustic | 4.5 | 1198 | ost 0.33 | Milky Way Between Us / Down | proposed |
-| 308 | `1415` | 1415 (일사일오) | bands | indie | 4.4 | 1054 | ost 0.33 | Photographs / Happy | proposed |
-| 309 | `dpr-ian` | DPR IAN (디피알 이안) | solo | rnb-soul | 4.4 | 66646 | – | Don't Go Insane / So Beautiful | proposed |
-| 310 | `george` | george (죠지) | solo | rnb-soul | 4.4 | 936 | ost 0.33 | Boat / Something Between Us (Romance 101) | proposed |
-| 311 | `kim-yuna` | Kim Yuna (김윤아) | solo | band-scene | 4.4 | 991 | ost 0.33 | Days Without Tears | proposed |
-| 312 | `park-ji-woo` | Park Ji Woo (박지우) | solo | indie | 4.4 | 1167 | ost 0.33 | Whisper | proposed (streaming profile unconfirmed: catalogue hidden in this region, so the profile could not be compared) |
-| 313 | `sogumm` | sogumm (소금) | solo | rnb-soul | 4.4 | 975 | ost 0.33 |  | proposed |
-| 314 | `chan` | Chan (찬) | solo | rnb-soul | 4.3 | 863 | ost 0.33 | Walking Again | proposed |
-| 315 | `shin-seung-hun` | Shin Seung Hun (신승훈) | solo | ost | 4.3 | 809 | ost 0.33 | Like a Beautiful Flame | proposed |
-| 316 | `heize` | Heize (헤이즈) | solo | rnb-soul | 4.2 | 38851 | – | And July (feat. DEAN & dj friz) / You, Clouds, Rain (feat. Shin Yong Jae) | proposed |
-| 317 | `davichi` | DAVICHI (다비치) | bands | ost | 4.1 | 37117 | – | This Love / 8282 | proposed |
-| 318 | `junha-park` | JUNHA PARK (박준하) | solo | indie | 4.1 | 486 | ost 0.33 | Butterfly | proposed |
-| 319 | `kimyeji` | KimYeji (김예지) | solo | band-scene | 4.1 | 483 | ost 0.33 | Moon Crater | proposed |
-| 320 | `lee-seung-yoon` | LEE SEUNG YOON (이승윤) | solo | band-scene | 4 | 374 | ost 0.33 | The Giving Tree | proposed |
-| 321 | `ha-hyun-woo` | Ha Hyun Woo (하현우) | solo | band-scene | 3.9 | 297 | ost 0.33 | Diamond | proposed |
-| 322 | `se-o` | SE O (세오) | solo | ost | 3.8 | 218 | ost 0.33 | While You Were Sleeping | proposed |
-| 323 | `the-orchard` | the orchard (진동욱) | solo | indie | 3.8 | 256 | ost 0.33 | That Day | proposed |
-| 324 | `20-years-of-age` | 20 Years of Age (스무살) | solo | folk-acoustic | 3.7 | 155 | ost 0.33 | Cheese In the Trap (feat. Seoha) | proposed |
-| 325 | `punch` | Punch (펀치) | solo | ost | 3.7 | 189 | ost 0.33 | I Love You This Much | proposed |
-| 326 | `sweden-laundry` | Sweden Laundry (스웨덴세탁소) | bands | folk-acoustic | 3.7 | 195 | ost 0.33 | A Little Bit More / call it love | proposed |
-| 327 | `band-nah` | Band Nah (나상현씨밴드) | bands | band-scene | 3.6 | 146 | ost 0.33 | Spotlight / Lily of the Valley | proposed |
-| 328 | `k-will` | K.Will (케이윌) | solo | ost | 3.6 | 9234 | – | Please Don't… / Talk Love | proposed |
-| 329 | `han-seung-yun` | HAN SEUNG YUN (한승윤) | solo | band-scene | 3.5 | 117 | ost 0.33 | I Revive | proposed |
-| 330 | `junny` | JUNNY (주니) | solo | rnb-soul | 3.5 | 6889 | – | By My Side / INVITATION (feat. Gaeko) | proposed |
-| 331 | `paul-kim` | Paul Kim (폴킴) | solo | ost | 3.5 | 7704 | – | Me After You / Every Day, Every Moment | proposed |
-| 332 | `urban-zakapa` | Urban Zakapa (어반자카파) | bands | rnb-soul | 3.5 | 7224 | – | I Don't Love You / Beautiful My Love | proposed |
-| 333 | `offonoff` | offonoff (오프온오프) | bands | rnb-soul | 3.4 | 5860 | – | Cigarette (feat. Tablo, MISO) / Photograph | proposed |
-| 334 | `roy-kim` | Roy Kim (로이킴) | solo | folk-acoustic | 3.4 | 5481 | – | Only Then / The Hardest Part | proposed |
-| 335 | `brothersu` | BrotherSu (브라더수) | solo | rnb-soul | 3.3 | 69 | ost 0.33 | While You Were Sleeping | proposed |
-| 336 | `byeol-eun` | Byeol Eun (별은) | solo | ost | 3.3 | 63 | ost 0.33 | Heart Race | proposed |
-| 337 | `sung-si-kyung` | Sung Si Kyung (성시경) | solo | ost | 3.3 | 4447 | – | Every moment of you / You Are My Spring | proposed |
-| 338 | `mokyo` | Mokyo (모키오) | solo | rnb-soul | 3.2 | 3891 | – | Uleum | proposed |
-| 339 | `oceanfromtheblue` | oceanfromtheblue (오션프롬더블루) | solo | rnb-soul | 3.2 | 3467 | – | 25 - A COLORS SHOW | proposed |
-| 340 | `jimmy-brown` | Jimmy Brown (지미 브라운) | solo | rnb-soul | 3.1 | 2400 | – | your love / 2 Things | proposed |
-| 341 | `saay` | SAAY (쎄이) | solo | rnb-soul | 3.1 | 2766 | – | Summer In Love (feat. Colde) / CIRCLE (feat. Tish Hyman) | proposed |
-| 342 | `slchld` | slchld (서울차일드) | solo | rnb-soul | 3.1 | 2915 | – | she likes spring, I prefer winter / Maybe We Need a Break | proposed |
-| 343 | `92914` | 92914 (구이구일사) | bands | indie | 3 | 1979 | – | Okinawa / Moonlight | proposed |
-| 344 | `d-ear` | D.ear (디어) | solo | rnb-soul | 3 | 2327 | – | Try Again / Midnight Walk | proposed |
-| 345 | `jiwoo` | Jiwoo (지우) | solo | rnb-soul | 3 | 2091 | – | Comme des Garçons | proposed |
-| 346 | `kang-hyun-min` | Kang Hyun Min (강현민) | solo | band-scene | 3 | 27 | ost 0.33 | Such (feat. Jo Hyun Ah) | proposed (streaming profile unconfirmed: catalogue hidden in this region, so the profile could not be compared) |
-| 347 | `thama` | THAMA (따마) | solo | rnb-soul | 3 | 1898 | – | Blessed (feat. GSoul) / Do It For Love (feat. george) | proposed |
-| 348 | `babylon` | Babylon (베이빌론) | solo | rnb-soul | 2.9 | 1595 | – | Automatic / Boys And Girls (Feat. Babylon) | proposed |
-| 349 | `bumkey` | BUMKEY (범키) | solo | rnb-soul | 2.9 | 1730 | – |  | proposed |
-| 350 | `chancellor` | CHANCELLOR (챈슬러) | solo | rnb-soul | 2.9 | 1488 | – | Midnight (feat. Gaeko) | proposed |
-| 351 | `dept` | Dept (뎁트) | solo | rnb-soul | 2.9 | 1632 | – | Autumn Breeze (feat. Milky Day) / Strawberry Champagne | proposed |
-| 352 | `gonne-choi` | Gonne Choi (최고은) | solo | folk-acoustic | 2.9 | 24 | ost 0.33 | Old Tale | proposed |
-| 353 | `jeebanoff` | jeebanoff (지바노프) | solo | rnb-soul | 2.9 | 1448 | – | The girl in my memories (Digging club Seoul Version) | proposed |
-| 354 | `tete` | TETE (테테) | solo | indie | 2.9 | 24 | ost 0.33 | I Like You | proposed |
-| 355 | `hen` | HEN (헨) | solo | indie | 2.7 | 13 | ost 0.33 | Deeply | proposed |
-| 356 | `meenoi` | meenoi (미노이) | solo | rnb-soul | 2.7 | 1048 | – | Salang Salang | proposed |
-| 357 | `yb` | YB (와이비) | bands | band-scene | 2.7 | 918 | – | A Flying Butterfly / Blue Whale (2016 Version) | proposed |
-| 358 | `lyn` | Lyn (린) | solo | ost | 2.6 | 675 | – | My Destiny / Back in Time | proposed |
-| 359 | `jeon-si-ha` | JEON SI HA (전시하) | solo | ost | 2.4 | 5 | ost 0.33 | I'm Always By Your Side | proposed |
-| 360 | `jang-beom-june` | Jang Beom June (장범준) | solo | folk-acoustic | 2.3 | 354 | – | Your Shampoo Scent In the Flowers / Karaoke | proposed |
-| 361 | `woongsan` | Woongsan (웅산) | solo | jazz | 2.3 | 338 | – |  | proposed |
-| 362 | `saevom` | Saevom (새봄) | solo | folk-acoustic | 2.2 | 240 | – | Liquid Courage (feat. Lee Min Hyuk) / Only You (with Yoon Hansol) | proposed |
-| 363 | `acourve` | ACOURVE (어쿠루브) | bands | folk-acoustic | 2.1 | 194 | – | What Was That / The Night We Parted | proposed |
-| 364 | `sbgb` | SBGB (새벽공방) | bands | folk-acoustic | 2.1 | 214 | – | Believe / Praha | proposed |
-| 365 | `coffee-boy` | Coffee Boy (커피소년) | solo | folk-acoustic | 1.9 | 125 | – | I Will Be on Your Side / When Love Comes to You | proposed |
-| 366 | `yun-ddan-ddan` | Yun DDan DDan (윤딴딴) | solo | folk-acoustic | 1.8 | 95 | – | Walking in the Winter / In the End | proposed |
-| 367 | `jang-pill-soon` | Jang Pill Soon (장필순) | solo | folk-acoustic | 1.6 | 55 | – | Slipped Away | proposed |
-| 368 | `mind-u` | MIND U (마인드유) | bands | folk-acoustic | 1.6 | 60 | – | Love Me / Bored (feat. Cheeze) | proposed |
-| 369 | `minhwi-lee` | Minhwi Lee (이민휘) | solo | folk-acoustic | 1.6 | 59 | – | Borrowed Tongue / Blue Flower | proposed |
-| 370 | `siwa` | Siwa (시와) | solo | folk-acoustic | 1.5 | 48 | – | Gently, By Your Side | proposed |
-| 371 | `dori` | dori (도리) | solo | rnb-soul | 1.4 | 33 | – | 2 O' CLOCK / Heart Flutter | proposed |
-| 372 | `lazybone` | LAZYBONE (레이지본) | bands | band-scene | 1.4 | 31 | – |  | proposed |
-| 373 | `sole` | SOLE (쏠) | solo | rnb-soul | 1.4 | 32 | – | RIDE (feat. THAMA) / Same (feat. THAMA) | proposed |
-| 374 | `horim` | HORIM (호림) | solo | rnb-soul | 1.3 | 30 | – | Temp-Ton | proposed |
-| 375 | `kim-mok-in` | Kim Mok In (김목인) | solo | folk-acoustic | 0 | 0 | – | Song of This Moment | proposed |
-| 376 | `yoon-duk-won` | Yoon Duk Won (윤덕원) | solo | folk-acoustic | 0 | 0 | – | Nothing's Gonna Change For Christmas | proposed |
-| 377 | `kik` | KIK (킥) | bands | band-scene | 21.7 | 182546 | scene 0.33, recognition 0.33 |  | proposed ⚠ no streaming profile shares a release with the Apple Music discography (possible name clash) |
-| 378 | `akmu` | AKMU (악뮤) | bands | other-adjacent | 17.5 | 38893 | recognition 0.33 | Love Lee | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
-| 379 | `yaeji` | Yaeji (예지) | solo | other-adjacent | 17.4 | 28867 | recognition 0.33 | For Granted | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
-| 380 | `younha` | Younha (윤하) | solo | other-adjacent | 17.1 | 13076 | recognition 0.33 | Event Horizon / Oort Cloud | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
-| 381 | `madmans-esprit` | Madmans Esprit (매드맨즈 에스프리) | solo | other-adjacent | 16.4 | 2275 | recognition 0.33 |  | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
-| 382 | `lee-chanhyuk` | LEE CHANHYUK (이찬혁) | solo | other-adjacent | 16 | 952 | recognition 0.33 | Endangered Love | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
-| 383 | `cant-be-blue` | can’t be blue (캔트비블루) | bands | band-scene | 15.8 | 476 | recognition 0.33 |  | proposed ⚠ no English Apple Music artist page found (streaming profile unconfirmed: no Apple Music discography to compare) |
-| 384 | `hypnosis-therapy` | HYPNOSIS THERAPY (힙노시스테라피) | bands | other-adjacent | 15.8 | 526 | recognition 0.33 |  | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
-| 385 | `park-jiha` | Park Jiha (박지하) | solo | other-adjacent | 15.8 | 533 | recognition 0.33 | Growth Ring | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
-| 386 | `parc-jae-jung` | Parc Jae Jung (박재정) | solo | other-adjacent | 15.5 | 233 | recognition 0.33 | Let's Say Goodbye | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
-| 387 | `wooseok` | WOOSEOK (우석) | solo | other-adjacent | 15.5 | 279 | recognition 0.33 |  | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
-| 388 | `lucy-liyou` | Lucy Liyou (루시 리유) | solo | other-adjacent | 15.3 | 150 | recognition 0.33 | You Are Every Memory | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
-| 389 | `choi-beck-ho` | Choi Beck Ho (최백호) | solo | folk-acoustic | 15.1 | 85 | recognition 0.33 | About Romance | proposed ⚠ no English Apple Music artist page found (streaming profile unconfirmed: no Apple Music discography to compare) |
-| 390 | `ambroxiak` | AMBROXIAK (암브로시악) | solo | other-adjacent | 14.3 | 11 | recognition 0.33 |  | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
-| 391 | `samsan` | SamSan (삼산) | solo | other-adjacent | 14.2 | 8 | recognition 0.33 |  | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
-| 392 | `bela` | bela (벨라) | solo | indie | 13.3 | 218 | recognition 0.33 |  | proposed ⚠ no streaming profile shares a release with the Apple Music discography (possible name clash) |
-| 393 | `computer-music-club` | Computer Music Club (컴퓨터 뮤직 클럽) | bands | indie | 13.3 | – | recognition 0.33 |  | proposed ⚠ no English Apple Music artist page found; streaming profile not matched |
-| 394 | `eobchae` | eobchae (업체) | bands | other-adjacent | 13.3 | 0 | recognition 0.33 |  | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
+| 44 | `yaeji` | Yaeji (예지) | solo | other-adjacent | 17.4 | 28867 | recognition 0.33 | For Granted | proposed |
+| 45 | `gemini` | Gemini (제미나이) | solo | rnb-soul | 17.3 | 24229 | recognition 0.33 | Know me / mon amour | proposed |
+| 46 | `kwak-jin-eon` | Kwak Jin Eon (곽진언) | solo | folk-acoustic | 17 | 159 | ost 0.33, recognition 0.33 | Name | proposed |
+| 47 | `day6` | DAY6 (데이식스) | bands | idol-band | 16.9 | 239049 | community 0.25, scene 0.33 | You Were Beautiful / Time of Our Life | proposed (streaming profile unconfirmed: catalogue hidden in this region, so the profile could not be compared) |
+| 48 | `lucia` | Lucia (심규선) | solo | folk-acoustic | 16.9 | 8823 | recognition 0.33 |  | proposed |
+| 49 | `dvwn` | Dvwn (다운) | solo | rnb-soul | 16.7 | 4727 | recognition 0.33 | Yeonnam-dong (feat. lIlBOI) / fairy | proposed |
+| 50 | `junggigo` | Junggigo (정기고) | solo | rnb-soul | 16.7 | 4769 | recognition 0.33 | BLIND / Some (feat. Lil Boi) | proposed |
+| 51 | `hoody` | Hoody (후디) | solo | rnb-soul | 16.5 | 3476 | recognition 0.33 | Hangang / Adios (feat. GRAY) | proposed |
+| 52 | `rolling-quartz` | Rolling Quartz (롤링쿼츠) | bands | band-scene | 16.5 | 3210 | recognition 0.33 |  | proposed |
+| 53 | `jiselle` | JISELLE (지셀) | solo | rnb-soul | 16.4 | 2162 | recognition 0.33 | Missed call (feat. CHANCELLOR) | proposed |
+| 54 | `madmans-esprit` | Madmans Esprit (매드맨즈 에스프리) | solo | other-adjacent | 16.4 | 2275 | recognition 0.33 |  | proposed |
+| 55 | `trap` | TRAP (트랩) | bands | band-scene | 16.4 | 2229 | recognition 0.33 |  | proposed |
+| 56 | `leenalchi` | LEENALCHI (이날치) | bands | band-scene | 16.3 | 1967 | recognition 0.33 | Tiger Is Coming | proposed |
+| 57 | `moonsun` | MOONSUN (문선) | solo | indie | 16.3 | 2066 | recognition 0.33 | TOM | proposed |
+| 58 | `devita` | DeVita (드비타) | solo | rnb-soul | 16.2 | 1542 | recognition 0.33 | Bonnie & Clyde | proposed |
+| 59 | `w24` | W24 (더블유24) | bands | idol-band | 16.1 | 1283 | recognition 0.33 |  | proposed |
+| 60 | `we-are-the-night` | WE ARE THE NIGHT (위아더나잇) | bands | band-scene | 16 | 995 | recognition 0.33 | Tiramisu Cake / Our Young Days | proposed |
+| 61 | `salamanda` | Salamanda (살라만다) | bands | indie | 15.9 | 695 | recognition 0.33 |  | approved (batch-2) |
+| 62 | `samuel-seo` | Samuel Seo (서사무엘) | solo | rnb-soul | 15.9 | 734 | recognition 0.33 | B L U E / Pain Or Death | proposed |
+| 63 | `the-koxx` | The KOXX (칵스) | bands | band-scene | 15.9 | 745 | recognition 0.33 |  | proposed |
+| 64 | `cifika` | CIFIKA (씨피카) | solo | indie | 15.8 | 497 | recognition 0.33 | My Ego | proposed |
+| 65 | `crux` | CRUX (크럭스) | bands | band-scene | 15.8 | 493 | recognition 0.33 | One More Last Mistake | proposed |
+| 66 | `hypnosis-therapy` | HYPNOSIS THERAPY (힙노시스테라피) | bands | other-adjacent | 15.8 | 526 | recognition 0.33 |  | proposed |
+| 67 | `lambc` | LambC (램씨) | solo | rnb-soul | 15.8 | 596 | recognition 0.33 | Love like that / Lady | proposed |
+| 68 | `park-jiha` | Park Jiha (박지하) | solo | other-adjacent | 15.8 | 533 | recognition 0.33 | Growth Ring | proposed |
+| 69 | `sultan-of-the-disco` | Sultan of the Disco (술탄 오브 더 디스코) | bands | band-scene | 15.8 | 510 | recognition 0.33 | Suspicious | proposed |
+| 70 | `hoa` | HOA (호아) | bands | band-scene | 15.7 | 390 | recognition 0.33 |  | proposed |
+| 71 | `off-the-menu` | off the menu (오프더메뉴) | bands | band-scene | 15.7 | 407 | recognition 0.33 |  | proposed |
+| 72 | `slant` | Slant (슬랜트) | bands | band-scene | 15.7 | 406 | recognition 0.33 | Enemy | proposed |
+| 73 | `87dance` | 87dance (팔칠댄스) | bands | band-scene | 15.6 | 360 | recognition 0.33 |  | proposed |
+| 74 | `brown-eyed-soul` | BROWN EYED SOUL (브라운 아이드 소울) | bands | rnb-soul | 15.6 | 333 | recognition 0.33 | Night and Day | proposed |
+| 75 | `catch-the-young` | Catch The Young (캐치더영) | bands | idol-band | 15.6 | 292 | recognition 0.33 |  | proposed |
+| 76 | `cotoba` | cotoba (코토바) | bands | indie | 15.6 | 329 | recognition 0.33 |  | proposed |
+| 77 | `gift` | GIFT (기프트) | bands | band-scene | 15.6 | 359 | recognition 0.33 |  | proposed |
+| 78 | `guckkasten` | Guckkasten (국카스텐) | bands | band-scene | 15.6 | 292 | recognition 0.33 |  | proposed |
+| 79 | `kirara` | KIRARA (키라라) | solo | indie | 15.6 | 305 | recognition 0.33 |  | proposed |
+| 80 | `black-string` | Black String (블랙스트링) | bands | jazz | 15.5 | 237 | recognition 0.33 | Mask Dance | approved (batch-2) |
+| 81 | `dtsq` | DTSQ (디티에스큐) | bands | band-scene | 15.5 | 224 | recognition 0.33 |  | proposed |
+| 82 | `heo-hoy-kyung` | Heo Hoy Kyung (허회경) | solo | folk-acoustic | 15.5 | 221 | recognition 0.33 | Hug me tight | proposed |
+| 83 | `okkyung-lee` | Okkyung Lee (이옥경) | solo | jazz | 15.5 | 273 | recognition 0.33 | Another Old Story | proposed |
+| 84 | `hi-fi-un-corn` | Hi-Fi Un!corn (하이파이유니콘) | bands | idol-band | 15.4 | 183 | recognition 0.33 |  | proposed |
+| 85 | `jerd` | jerd (저드) | solo | rnb-soul | 15.4 | 177 | recognition 0.33 |  | proposed |
+| 86 | `kim-oki` | Kim Oki (김오키) | solo | jazz | 15.4 | 169 | recognition 0.33 |  | proposed |
+| 87 | `ra-d` | Ra.D (라디) | solo | rnb-soul | 15.4 | 215 | recognition 0.33 | I'm In Love - Piano RMX / Fairytale | proposed |
+| 88 | `shin-hae-gyeong` | Shin Hae Gyeong (신해경) | solo | indie | 15.4 | 178 | recognition 0.33 | Colors of You | proposed |
+| 89 | `apollo-18` | Apollo 18 (아폴로 18) | bands | band-scene | 15.3 | 140 | recognition 0.33 | Mur | proposed |
+| 90 | `bumjin` | BUMJIN (범진) | solo | folk-acoustic | 15.3 | 145 | recognition 0.33 |  | proposed |
+| 91 | `earthbound` | Earthbound (얼스바운드) | bands | band-scene | 15.3 | 161 | recognition 0.33 |  | proposed |
+| 92 | `hyelyn-joo` | Hyelyn Joo (주혜린) | solo | rnb-soul | 15.3 | 143 | recognition 0.33 |  | proposed |
+| 93 | `id-earth` | ID:Earth (아이디얼스) | solo | indie | 15.3 | 152 | recognition 0.33 |  | proposed |
+| 94 | `lang-lee` | Lang Lee (이랑) | solo | folk-acoustic | 15.3 | 142 | recognition 0.33 | There is A Wolf / The Generation of Tribulation | added (batch-1) |
+| 95 | `lucy-liyou` | Lucy Liyou (루시 리유) | solo | other-adjacent | 15.3 | 150 | recognition 0.33 | You Are Every Memory | proposed |
+| 96 | `milena` | Milena (밀레나) | solo | rnb-soul | 15.3 | 140 | recognition 0.33 |  | proposed |
+| 97 | `parasol` | Parasol (파라솔) | bands | indie | 15.3 | 154 | recognition 0.33 | Pillow and Ceiling | proposed |
+| 98 | `yi-sung-yol` | Yi Sung Yol (이승열) | solo | indie | 15.3 | 163 | recognition 0.33 | Fly | proposed |
+| 99 | `chudahye-chagis` | Chudahye Chagis (추다혜차지스) | bands | rnb-soul | 15.2 | 112 | recognition 0.33 | Heosse! | proposed |
+| 100 | `jambinai` | Jambinai (잠비나이) | bands | band-scene | 15.2 | 2535 | community 0.25, scene 0.33 |  | proposed |
+| 101 | `jihye-lee-orchestra` | Jihye Lee Orchestra (지혜리 오케스트라) | bands | jazz | 15.2 | 130 | recognition 0.33 | Why is That | proposed |
+| 102 | `jung-in` | Jung In (정인) | solo | rnb-soul | 15.2 | 117 | recognition 0.33 | Blame | proposed |
+| 103 | `kumapark` | Kumapark (쿠마파크) | bands | jazz | 15.2 | 105 | recognition 0.33 | Donut Shop (feat. Paloalto) | proposed |
+| 104 | `omar-and-the-eastern-power` | Omar and the Eastern Power (오마르와 동방전력) | bands | band-scene | 15.2 | 111 | recognition 0.33 |  | proposed |
+| 105 | `soombee` | Soombee (숨비) | solo | folk-acoustic | 15.2 | 112 | recognition 0.33 |  | proposed |
+| 106 | `damons-year` | Damons year (데이먼스이어) | solo | indie | 15.1 | 86 | recognition 0.33 |  | proposed |
+| 107 | `jclef` | JCLEF (제이클레프) | solo | rnb-soul | 15.1 | 95 | recognition 0.33 | mama, see | proposed |
+| 108 | `jisokuryclub` | jisokuryClub (지소쿠리클럽) | bands | band-scene | 15.1 | 81 | recognition 0.33 |  | proposed |
+| 109 | `shin-in-ryu` | Shin In Ryu (신인류) | bands | band-scene | 15.1 | 78 | recognition 0.33 |  | proposed |
+| 110 | `9-and-the-numbers` | 9 and the Numbers (9와 숫자들) | bands | indie | 15 | 62 | recognition 0.33 | Tear Wind | proposed |
+| 111 | `adoy` | ADOY (아도이) | bands | band-scene, indie | 15 | 1814 | community 0.25, scene 0.33 | Wonder / Grace | proposed |
+| 112 | `cheeze` | CHEEZE (치즈) | solo | indie | 15 | 4927 | ost 0.67, scene 0.33 | Little by Little / Madeleine Love | proposed |
+| 113 | `dabda` | Dabda (다브다) | bands | indie | 15 | 62 | recognition 0.33 | Flower Tail | proposed |
+| 114 | `jinbo-the-superfreak` | JINBO the SuperFreak (진보) | solo | rnb-soul | 15 | 68 | recognition 0.33 | So to Say (feat. Crush & Hoody) | proposed |
+| 115 | `net-gala` | NET GALA (넷 갈라) | solo | indie | 15 | 67 | recognition 0.33 | Reclaim It | proposed |
+| 116 | `tengger` | TENGGER (텐거) | bands | indie | 15 | 68 | recognition 0.33 | Kyrie | proposed |
+| 117 | `yetsuby` | Yetsuby (예츠비) | solo | indie | 15 | 72 | recognition 0.33 | My Star My Planet My Earth | proposed |
+| 118 | `250` | 250 (이오공) | solo | indie | 14.9 | 51 | recognition 0.33 | Bang Bus | proposed |
+| 119 | `a-fuzz` | A-Fuzz (에이퍼즈) | bands | jazz | 14.9 | 49 | recognition 0.33 | Breeze | proposed |
+| 120 | `budung` | Budung (버둥) | solo | folk-acoustic | 14.9 | 54 | recognition 0.33 | MUSE | proposed |
+| 121 | `haepaary` | HAEPAARY (해파리) | bands | indie | 14.9 | 54 | recognition 0.33 | Go to Gpd and Then | proposed |
+| 122 | `monday-off-with-bluesy` | Monday Off With Bluesy (먼데이오프위드블루시) | bands | band-scene | 14.9 | 59 | recognition 0.33 |  | proposed |
+| 123 | `adios-audio` | Adios Audio (아디오스 오디오) | bands | band-scene | 14.8 | 45 | recognition 0.33 |  | proposed |
+| 124 | `ann-one` | Ann One (앤 원) | solo | rnb-soul | 14.8 | 37 | recognition 0.33 |  | proposed |
+| 125 | `atom-music-heart` | Atom Music Heart (아톰뮤직하트) | bands | band-scene | 14.8 | 37 | recognition 0.33 | After all | proposed |
+| 126 | `bongjeingan` | bongjeingan (봉제인간) | bands | band-scene | 14.8 | 36 | recognition 0.33 |  | proposed |
+| 127 | `broccoli-you-too` | Broccoli, you too? (브로콜리너마저) | bands | band-scene | 14.8 | 45 | recognition 0.33 |  | proposed |
+| 128 | `low-hanging-fruits` | Low Hanging Fruits (로우행잉프루츠) | bands | indie | 14.8 | 36 | recognition 0.33 |  | proposed |
+| 129 | `mind-combined` | Mind Combined (마인드 컴바인드) | bands | rnb-soul | 14.8 | 45 | recognition 0.33 | Show Me | proposed |
+| 130 | `miso` | Miso (미소) | solo | rnb-soul | 14.8 | 41 | recognition 0.33 | Take Me | proposed |
+| 131 | `moskva-surfing-club` | Moskva Surfing Club (모스크바서핑클럽) | bands | band-scene | 14.8 | 41 | recognition 0.33 |  | proposed |
+| 132 | `the-rose` | The Rose (더로즈) | bands | band-scene | 14.8 | 194198 | ost 0.33, scene 0.33 | Back To Me / Sorry | proposed |
+| 133 | `thomas-cook` | Thomas Cook (토마스 쿡) | solo | folk-acoustic | 14.8 | 37 | recognition 0.33 | 집으로 오는 길 (Road to Home) | proposed |
+| 134 | `hwang-puha` | hwang puha (황푸하) | solo | folk-acoustic | 14.7 | 34 | recognition 0.33 | Fire | proposed |
+| 135 | `leson` | LeSon (르손) | solo | rnb-soul | 14.7 | 33 | recognition 0.33 |  | proposed |
+| 136 | `lowdown-30` | Lowdown 30 (로다운30) | bands | band-scene | 14.7 | 32 | recognition 0.33 |  | proposed |
+| 137 | `my-aunt-mary` | My Aunt Mary (마이앤트메리) | bands | band-scene | 14.7 | 34 | recognition 0.33 |  | proposed |
+| 138 | `pakk` | PAKK (팎) | bands | band-scene | 14.7 | 29 | recognition 0.33 |  | proposed |
+| 139 | `the-volunteers` | The Volunteers (더 발룬티어스) | bands | band-scene, indie | 14.7 | 702 | community 0.25, scene 0.33 |  | proposed |
+| 140 | `xeuda` | Xeuda (쓰다) | solo | folk-acoustic | 14.7 | 28 | recognition 0.33 | How can I tell you love | proposed |
+| 141 | `a-train` | A.TRAIN (에이트레인) | solo | rnb-soul | 14.6 | 27 | recognition 0.33 | Something Beautiful (feat. 김뜻돌, Simun & Seo Bo-Kyung) | proposed |
+| 142 | `method` | Method (메써드) | bands | band-scene | 14.6 | 24 | recognition 0.33 | Lies On Your Lips (JUMF 2018) [Live Version] | proposed |
+| 143 | `moher` | Moher (모허) | bands | folk-acoustic | 14.6 | 22 | recognition 0.33 |  | proposed |
+| 144 | `rock-n-roll-radio` | ROCK N ROLL RADIO (로큰롤라디오) | bands | band-scene | 14.6 | 22 | recognition 0.33 | Take Me Home | proposed |
+| 145 | `yeong-die` | Yeong Die (영다이) | solo | indie | 14.6 | 27 | recognition 0.33 | Dig Up Dawn | proposed |
+| 146 | `airy` | AIRY (애리) | solo | indie | 14.5 | 18 | recognition 0.33 | Disappearing Ways | proposed |
+| 147 | `damye` | DAMYE (담예) | solo | rnb-soul | 14.5 | 20 | recognition 0.33 |  | proposed |
+| 148 | `hwanho` | Hwanho (화노) | bands | band-scene | 14.5 | 20 | recognition 0.33 |  | proposed |
+| 149 | `mild-beats` | Mild Beats (마일드 비츠) | solo | rnb-soul | 14.5 | 20 | recognition 0.33 | Blame | proposed |
+| 150 | `raw-by-peppers` | Raw By Peppers (로 바이 페퍼스) | bands | band-scene | 14.5 | 21 | recognition 0.33 |  | proposed |
+| 151 | `trampauline` | Trampauline (트램폴린) | bands | indie | 14.5 | 19 | recognition 0.33 | Boxer's Wife / Machines Are Human | proposed |
+| 152 | `arexibo` | Arexibo (아레시보) | solo | indie | 14.4 | 13 | recognition 0.33 | Gemini | proposed |
+| 153 | `b-jeong` | BØJEONG (비공정) | bands | band-scene | 14.4 | 15 | recognition 0.33 |  | proposed |
+| 154 | `far-east-asian-tigers` | Far East Asian Tigers (극동아시아타이거즈) | bands | band-scene | 14.4 | 13 | recognition 0.33 |  | proposed |
+| 155 | `gong-joong-geu-neul` | Gong Joong Geu Neul (공중그늘) | bands | indie | 14.4 | 15 | recognition 0.33 | ZZZ | proposed |
+| 156 | `huijun-woo` | huijun woo (우희준) | solo | indie | 14.4 | 15 | recognition 0.33 |  | proposed |
+| 157 | `leesuho` | Leesuho (이수호) | solo | indie | 14.4 | 15 | recognition 0.33 | Lights (feat. Kim Hanjoo) | proposed |
+| 158 | `soumbalgwang` | Soumbalgwang (소음발광) | bands | band-scene | 14.4 | 13 | recognition 0.33 | Dawn ('25 Live <Kuang!!>) | proposed |
+| 159 | `ambroxiak` | AMBROXIAK (암브로시악) | solo | other-adjacent | 14.3 | 11 | recognition 0.33 |  | proposed |
+| 160 | `asian-chairshot` | Asian Chairshot (아시안 체어샷) | bands | band-scene | 14.3 | 10 | recognition 0.33 | Sun | proposed |
+| 161 | `electriceels` | ElectricEels (전기뱀장어) | bands | indie | 14.3 | 10 | recognition 0.33 |  | proposed |
+| 162 | `hammering` | Hammering (해머링) | bands | band-scene | 14.3 | 10 | recognition 0.33 | TRIGGER FINGER (2021 New Version) | proposed |
+| 163 | `juliadream` | JuliaDream (줄리아드림) | bands | band-scene | 14.3 | 11 | recognition 0.33 |  | proposed |
+| 164 | `kachisan` | KACHISAN (까치산) | bands | band-scene | 14.3 | 11 | recognition 0.33 |  | proposed |
+| 165 | `seoul-electric-band` | Seoul Electric Band (서울전자음악단) | bands | band-scene | 14.3 | 10 | recognition 0.33 |  | proposed |
+| 166 | `simile-land` | SIMILE LAND (심아일랜드) | bands | band-scene | 14.3 | 10 | recognition 0.33 |  | proposed |
+| 167 | `smacksoft` | SmackSoft (황보령 스맥소프트) | bands | band-scene | 14.3 | 11 | recognition 0.33 | Peaceful Folks | proposed |
+| 168 | `spit-on-my-tomb` | Spit On My Tomb (스핏온마이툼) | bands | band-scene | 14.3 | 10 | recognition 0.33 |  | proposed |
+| 169 | `the-shepherd-bois` | The Shepherd Bois (양치기소년단) | bands | band-scene | 14.3 | 10 | recognition 0.33 |  | proposed |
+| 170 | `uza-and-shane` | UZA&SHANE (우자앤쉐인) | bands | indie | 14.3 | 12 | recognition 0.33 |  | proposed |
+| 171 | `boys-in-the-kitchen` | Boys In The Kitchen (보이즈 인 더 키친) | bands | band-scene | 14.2 | 9 | recognition 0.33 | Bambi | proposed |
+| 172 | `cott` | Cott (콧) | bands | rnb-soul | 14.2 | 8 | recognition 0.33 |  | proposed |
+| 173 | `jungwoo` | JUNGWOO (정우) | solo | indie | 14.2 | 9 | recognition 0.33 | Cloud Cuckoo Land | proposed |
+| 174 | `kim-jae-hyung` | KIM JAE HYUNG (김제형) | solo | indie | 14.2 | 9 | recognition 0.33 |  | proposed |
+| 175 | `kimseungjoo` | kimseungjoo (김승주) | solo | indie | 14.2 | 9 | recognition 0.33 |  | proposed |
+| 176 | `peach-truck-hijackers` | Peach Truck Hijackers (피치트럭하이재커스) | bands | band-scene | 14.2 | 7 | recognition 0.33 |  | proposed |
+| 177 | `song-chang-sik` | Song Chang Sik (송창식) | solo | folk-acoustic | 14.2 | 9 | recognition 0.33 |  | proposed |
+| 178 | `summer-of-thoughts` | Summer of Thoughts (생각의 여름) | solo | folk-acoustic | 14.2 | 7 | recognition 0.33 |  | proposed |
+| 179 | `chasedae` | CHASEDAE (차세대) | bands | band-scene | 14.1 | 6 | recognition 0.33 | Son | proposed |
+| 180 | `line-and-circle` | Line and Circle (선과영) | bands | folk-acoustic | 14.1 | 6 | recognition 0.33 | Night and Day | proposed |
+| 181 | `sb-circle` | SB Circle (신박서클) | bands | jazz | 14.1 | 6 | recognition 0.33 | Fan in the Room | proposed |
+| 182 | `yang-chang-keun` | Yang Chang Keun (양창근) | solo | indie | 14.1 | 6 | recognition 0.33 | If You Want | proposed |
+| 183 | `crush` | Crush (크러쉬) | solo | rnb-soul | 14 | 27092 | ost 0.33, scene 0.33 | Beautiful / Love You With All My Heart | proposed |
+| 184 | `dayangsung` | DAYANGSUNG (다양성) | bands | band-scene | 14 | 4 | recognition 0.33 |  | proposed |
+| 185 | `decadent` | DECADENT (데카당) | bands | band-scene | 14 | 4 | recognition 0.33 |  | proposed |
+| 186 | `duoxini` | DUOXINI (두억시니) | bands | band-scene | 14 | 5 | recognition 0.33 | Sin of Society / Old Noise | proposed |
+| 187 | `meeroo-choi` | meeroo choi (최미루) | solo | folk-acoustic | 14 | 4 | recognition 0.33 | Dap | proposed |
+| 188 | `oyeol` | OYEOL (오열) | solo | indie | 14 | 4 | recognition 0.33 | Like that Shower | proposed |
+| 189 | `oysters` | OYSTERS (오이스터즈) | bands | band-scene | 14 | 5 | recognition 0.33 |  | proposed |
+| 190 | `ronny-chu` | Ronny Chu (로니 추) | solo | indie | 14 | 5 | recognition 0.33 |  | proposed |
+| 191 | `sanmanhan` | Sanmanhan (산만한시선) | bands | folk-acoustic | 14 | 5 | recognition 0.33 |  | proposed |
+| 192 | `coremagazine` | COREMAGAZINE (코어매거진) | bands | band-scene | 13.9 | 3 | recognition 0.33 |  | proposed |
+| 193 | `gate-flowers` | Gate Flowers (게이트 플라워즈) | bands | band-scene | 13.9 | 3 | recognition 0.33 |  | proposed |
+| 194 | `kwon-tree` | Kwon Tree (권나무) | solo | folk-acoustic | 13.9 | 3 | recognition 0.33 | Dance With You | proposed |
+| 195 | `shin-seung-eun` | Shin Seung Eun (신승은) | solo | folk-acoustic | 13.9 | 3 | recognition 0.33 | Beyond the Steam / Treadmill | proposed |
+| 196 | `melki` | MELKI (멜키) | solo | indie | 13.8 | 2 | recognition 0.33 | BODY BREAK | proposed |
+| 197 | `n-flying` | N.Flying (엔플라잉) | bands | idol-band | 13.8 | 15112 | ost 0.33, scene 0.33 | Rooftop / Star | proposed |
+| 198 | `nakwon` | NAKWON (낙원) | bands | band-scene | 13.8 | 2 | recognition 0.33 |  | proposed |
+| 199 | `chun-yongsung` | Chun Yongsung (천용성) | solo | folk-acoustic | 13.6 | 1 | recognition 0.33 | Barley Tea (feat. Kang Mal Geum) | proposed |
+| 200 | `cranfield` | Cranfield (크랜필드) | bands | indie | 13.6 | 1 | recognition 0.33 |  | proposed |
+| 201 | `haihm` | haihm (하임) | solo | indie | 13.6 | 1 | recognition 0.33 | Gravity | proposed |
+| 202 | `heo-jeonghyuk` | Heo JeongHyuk (허정혁) | solo | folk-acoustic | 13.6 | 1 | recognition 0.33 | With The Season | proposed |
+| 203 | `jeon-ho-kwon` | Jeon Ho Kwon (전호권) | solo | folk-acoustic | 13.6 | 1 | recognition 0.33 |  | proposed |
+| 204 | `nam-yoosun` | Nam Yoosun (남유선) | solo | jazz | 13.6 | 1 | recognition 0.33 | Things We Lost | proposed |
+| 205 | `kim-feel` | Kim Feel (김필) | solo | ost | 13.4 | 5946 | ost 0.33, scene 0.33 | Here We Are | proposed |
+| 206 | `doildoshi` | Doildoshi (도일도시) | solo | indie | 13.3 | 0 | recognition 0.33 |  | proposed (streaming profile unconfirmed: catalogue hidden in this region, so the profile could not be compared) |
+| 207 | `eobchae` | eobchae (업체) | bands | other-adjacent | 13.3 | 0 | recognition 0.33 |  | proposed |
+| 208 | `jay-park` | Jay Park (박재범) | solo | rnb-soul | 13.3 | 274109 | scene 0.33 |  | proposed |
+| 209 | `jung-seung-hwan` | Jung Seung Hwan (정승환) | solo | ost | 13.3 | 4858 | ost 0.33, scene 0.33 | If It Is You | proposed |
+| 210 | `lee-jiyeun` | LEE JIYEUN (이지연) | solo | jazz | 13.3 | 0 | recognition 0.33 | Blue Flower | proposed |
+| 211 | `silkbell` | Silkbell (비단종) | solo | rnb-soul | 13.3 | 0 | recognition 0.33 |  | proposed |
+| 212 | `winter-to-spring` | Winter To Spring (겨울에서봄) | bands | jazz | 13.3 | 0 | recognition 0.33 | A Night Of Yeonnam | proposed |
+| 213 | `yajasu` | Yajasu (야자수) | bands | band-scene | 13.3 | 0 | recognition 0.33 |  | proposed |
+| 214 | `yongseok-lee` | Yongseok Lee (이용석) | solo | jazz | 13.3 | 0 | recognition 0.33 | Newsroom | proposed |
+| 215 | `baekhyun` | BAEKHYUN (백현) | solo | rnb-soul | 13.2 | 241744 | scene 0.33 |  | proposed |
+| 216 | `so-soo-bin` | So Soo Bin (소수빈) | solo | ost | 13.1 | 2852 | ost 0.33, scene 0.33 | Last Chance | proposed |
+| 217 | `cnblue` | CNBLUE (씨엔블루) | bands | idol-band | 12.9 | 115589 | scene 0.33 | Loner / Can't Stop | proposed |
+| 218 | `dean` | DEAN (딘) | solo | rnb-soul | 12.8 | 78646 | scene 0.33 | Instagram / D (Half Moon) [feat. Gaeko] | proposed |
+| 219 | `ohhyuk` | OHHYUK (오혁) | solo | band-scene | 12.7 | 914 | ost 0.33, scene 0.33 | A Little Girl / Island (feat. OHHYUK) | proposed |
+| 220 | `xdinary-heroes` | Xdinary Heroes (엑스디너리 히어로즈) | bands | idol-band | 12.6 | 46653 | scene 0.33 | Good enough / Strawberry Cake | proposed |
+| 221 | `kyuhyun` | KYUHYUN (규현) | solo | ost | 11.8 | 6003 | scene 0.33 |  | proposed |
+| 222 | `idiotape` | IDIOTAPE (이디오테잎) | bands | band-scene | 11.5 | 3289 | scene 0.33 | Melodie / 080509 | proposed |
+| 223 | `lee-jun-hyung` | Lee Jun Hyung (이준형) | solo | indie | 11.5 | 44 | ost 0.33, scene 0.33 | To be together | proposed |
+| 224 | `nive` | NIve (니브) | solo | rnb-soul | 11.4 | 2265 | scene 0.33 |  | proposed |
+| 225 | `okdal` | Okdal (옥상달빛) | bands | folk-acoustic | 11.3 | 2153 | scene 0.33 | Cheer Up / Run | proposed |
+| 226 | `romantic-punch` | Romantic Punch (로맨틱펀치) | bands | band-scene | 11.3 | 28 | ost 0.33, scene 0.33 | The Time Is On My Side | proposed |
+| 227 | `sumin` | SUMIN (수민) | solo | rnb-soul | 11.3 | 1980 | scene 0.33 | THE GONLAN SONG / WHY, WHY, WHY | proposed |
+| 228 | `ahn-ye-eun` | Ahn Ye Eun (안예은) | solo | folk-acoustic | 11.2 | 1331 | scene 0.33 |  | proposed |
+| 229 | `daybreak` | Daybreak (데이브레이크) | bands | band-scene | 11.2 | 1660 | scene 0.33 | Flower Road / Love Actually | proposed |
+| 230 | `lee-mujin` | LEE Mujin (이무진) | solo | folk-acoustic | 11.2 | 1619 | scene 0.33 | Traffic Light / Episode | proposed |
+| 231 | `shin-yong-jae` | Shin Yong Jae (신용재) | solo | rnb-soul | 11 | 787 | scene 0.33 | You, Clouds, Rain (feat. Shin Yong Jae) | proposed |
+| 232 | `kardi` | KARDI (카디) | bands | band-scene | 10.7 | 368 | scene 0.33 | Watchout | proposed |
+| 233 | `slom` | Slom (슬롬) | solo | rnb-soul | 10.7 | 411 | scene 0.33 |  | proposed |
+| 234 | `minsu` | Minsu (민수) | solo | indie | 10.6 | 335 | scene 0.33 | Minsu Is Confused / Islet | proposed |
+| 235 | `davii` | DAVII (다비) | solo | rnb-soul | 10.5 | 271 | scene 0.33 |  | proposed |
+| 236 | `peppertones` | PEPPERTONES (페퍼톤스) | bands | band-scene | 10.5 | 240 | scene 0.33 | Good Luck to You / Ready, Get Set, Go! | proposed |
+| 237 | `touched` | TOUCHED (터치드) | bands | band-scene | 10.3 | 154 | scene 0.33 | Highlight | proposed |
+| 238 | `broken-valentine` | Broken Valentine (브로큰 발렌타인) | bands | band-scene | 10.2 | 122 | scene 0.33 | Alien | proposed |
+| 239 | `han-suji` | Han Suji (한수지) | solo | ost | 10.2 | 112 | scene 0.33 | Round and Round (feat. Han Suji) | proposed |
+| 240 | `kuonechan` | Kuonechan (구원찬) | solo | rnb-soul | 10.1 | 99 | scene 0.33 | How Did You (feat. Yerin Baek) / Barely (feat. HANRORO) | proposed |
+| 241 | `owalloil` | OWALLOIL (오월오일) | bands | band-scene | 10 | 61 | scene 0.33 | Echo / Tree | proposed |
+| 242 | `neon-bunny` | Neon Bunny (야광토끼) | solo | indie | 9.9 | 442 | community 0.5 |  | proposed |
+| 243 | `night-off` | Night Off (나이트오프) | bands | indie | 9.9 | 1149 | community 0.25, ost 0.67 | Nevertheless / Sleep | proposed |
+| 244 | `pateko` | PATEKO (파테코) | solo | rnb-soul | 9.9 | 58 | scene 0.33 |  | proposed |
+| 245 | `bosudongcooler` | Bosudongcooler (보수동쿨러) | bands | indie | 9.5 | 152 | community 0.5 | 0308 / Breath | proposed |
+| 246 | `imzoo` | imzoo (임지우) | solo | rnb-soul | 9.5 | 19 | scene 0.33 | For You | proposed |
+| 247 | `sam-kim` | SAM KIM (샘김) | solo | rnb-soul | 9.1 | 12066 | community 0.25, ost 0.33 | Love Me Like That / Make Up (feat. Crush) | proposed |
+| 248 | `janet-suhh` | Janet Suhh (자넷서) | solo | ost | 8.9 | 6255 | community 0.25, ost 0.33 | Resemble | proposed |
+| 249 | `bibi` | BIBI (비비) | solo | rnb-soul | 8.3 | 101539 | community 0.25 | Restless | proposed |
+| 250 | `ftisland` | FTISLAND (에프티아일랜드) | bands | idol-band | 8.1 | 65304 | community 0.25 | Love Sick / Take Me Now | proposed |
+| 251 | `the-vane` | THE VANE (더베인) | solo | ost | 7.9 | 524 | community 0.25, ost 0.33 | No Break / Room No. 303 | proposed |
+| 252 | `colde` | Colde (콜드) | solo | rnb-soul | 7.6 | 17577 | community 0.25 | When Dawn Comes Again (feat. BAEKHYUN) / WA-R-R | proposed |
+| 253 | `monogram` | Monogram (모노그램) | bands | indie | 7.6 | 285 | community 0.25, ost 0.33 | Lucid Dream | proposed |
+| 254 | `trpp` | TRPP (트리피) | bands | indie | 7.5 | 178 | community 0.25, ost 0.33 | BILLY / Yeah (Round and Round) | proposed |
+| 255 | `seori` | Seori (서리) | solo | rnb-soul | 7.2 | 6459 | community 0.25 | Running Through the Night | proposed |
+| 256 | `gsoul` | GSoul (지소울) | solo | rnb-soul | 7 | 3583 | community 0.25 | bad habit | proposed |
+| 257 | `eaeon` | eAeon (이이언) | solo | indie | 6.9 | 2704 | community 0.25 |  | proposed |
+| 258 | `dosii` | dosii (도시) | bands | rnb-soul | 6.8 | 2278 | community 0.25 | Lovememore. / fairy of shampoo (Remake Version) | proposed |
+| 259 | `iz` | IZ (아이즈) | bands | idol-band | 6.8 | 2349 | community 0.25 | Angel | proposed |
+| 260 | `mot` | Mot (못) | bands | indie | 6.7 | 1872 | community 0.25 | Wings | proposed |
+| 261 | `oohyo` | Oohyo (우효) | solo | indie | 6.7 | 1779 | community 0.25 | Dandelion (full version) | proposed |
+| 262 | `the-poles` | The Poles (더 폴스) | bands | indie | 6.7 | 1982 | community 0.25 |  | proposed |
+| 263 | `kiha-and-the-faces` | Kiha & The Faces (장기하와 얼굴들) | bands | band-scene | 6.6 | 1499 | community 0.25 | Cheap Coffee | proposed |
+| 264 | `asian-glow` | Asian Glow (아시안 글로우) | solo | indie | 6.5 | 1082 | community 0.25 | Center | proposed |
+| 265 | `glen-check` | Glen Check (글렌체크) | bands | indie | 6.5 | 1110 | community 0.25 | Dazed & Confused | proposed |
+| 266 | `jaurim` | Jaurim (자우림) | bands | band-scene | 6.5 | 1020 | community 0.25 |  | proposed |
+| 267 | `mid-air-thief` | Mid-Air Thief (공중도둑) | solo | indie | 6.5 | 1041 | community 0.25 |  | proposed |
+| 268 | `surl` | SURL (설) | bands | indie | 6.5 | 1189 | community 0.25 | Dry Flower | proposed |
+| 269 | `no-brain` | No Brain (노브레인) | bands | band-scene | 6.4 | 802 | community 0.25 | You Have a Crush On Me | proposed |
+| 270 | `bursters` | Bursters (버스터즈) | bands | band-scene | 6.3 | 701 | community 0.25 | Barriers | proposed |
+| 271 | `thornapple` | THORNAPPLE (쏜애플) | bands | indie | 6.2 | 477 | community 0.25 |  | proposed |
+| 272 | `aseul` | Aseul (아슬) | solo | indie | 6 | 278 | community 0.25 | Dying Practice | proposed |
+| 273 | `jukjae` | JUKJAE (적재) | solo | folk-acoustic | 6 | 979 | ost 0.67 | Fall In Love / Do You Want to Walk with Me? (Romance 101) | proposed |
+| 274 | `elaine` | Elaine (일레인) | solo | indie | 5.9 | 50368 | ost 0.33 | Sad March | proposed |
+| 275 | `cherry-filter` | Cherry Filter (체리필터) | bands | band-scene | 5.8 | 164 | community 0.25 |  | proposed |
+| 276 | `o-o-o` | O.O.O (오오오) | bands | indie | 5.8 | 201 | community 0.25 |  | proposed |
+| 277 | `kisnue` | Kisnue (키스누) | bands | indie | 5.7 | 145 | community 0.25 | Same | proposed |
+| 278 | `vanilla-acoustic` | Vanilla Acoustic (바닐라 어쿠스틱) | bands | folk-acoustic | 5.7 | 451 | ost 0.67 | The Time We Shared / Romantic Wish | proposed |
+| 279 | `yellow-monsters` | Yellow Monsters (옐로우 몬스터즈) | bands | band-scene | 5.7 | 141 | community 0.25 | Riot! | proposed |
+| 280 | `huckleberryfinn` | Huckleberryfinn (허클베리핀) | bands | band-scene | 5.6 | 99 | community 0.25 | Tempest / The Nights | proposed |
+| 281 | `vidulgi-ooyoo` | Vidulgi Ooyoo (비둘기우유) | bands | indie | 5.6 | 112 | community 0.25 |  | proposed |
+| 282 | `aleph` | ALEPH (알레프) | solo | indie | 5.5 | 84 | community 0.25 |  | proposed |
+| 283 | `rainbow-note` | Rainbow note (레인보우노트) | bands | indie | 5.5 | 95 | community 0.25 | Venus | proposed |
+| 284 | `gaho` | Gaho (가호) | solo | ost | 5.3 | 9772 | ost 0.33 | Start Over | proposed |
+| 285 | `kim-na-young` | Kim Na Young (김나영) | solo | ost | 5.3 | 9421 | ost 0.33 | Love Hurts A Little More | proposed |
+| 286 | `lee-suhyun` | LEE SUHYUN (이수현) | solo | ost | 5.2 | 8041 | ost 0.33 | Sori | proposed |
+| 287 | `standing-egg` | Standing Egg (스탠딩 에그) | bands | folk-acoustic | 5.2 | 7651 | ost 0.33 | I Know It's You / Old Song | proposed |
+| 288 | `wings-of-the-isang` | Wings of the Isang (이상의날개) | bands | indie | 5.2 | 42 | community 0.25 | Dark Sea (Live Version) | proposed |
+| 289 | `eddy-kim` | Eddy Kim (에디킴) | solo | folk-acoustic | 5.1 | 6900 | ost 0.33 | When a Long Night Comes | proposed |
+| 290 | `nell` | NELL (넬) | bands | band-scene | 5.1 | 33 | community 0.25 | The Time of Walking On Remembrance | proposed |
+| 291 | `stella-jang` | Stella Jang (스텔라장) | solo | folk-acoustic | 5.1 | 5520 | ost 0.33 | Villain / Colors | proposed |
+| 292 | `ben` | BEN (벤) | solo | ost | 5 | 4852 | ost 0.33 | If You Were Me | proposed (streaming profile unconfirmed: no Apple Music discography to compare) |
+| 293 | `loros` | Loro's (로로스) | bands | indie | 5 | 21 | community 0.25 |  | proposed |
+| 294 | `hwang-chi-yeul` | Hwang Chi Yeul (황치열) | solo | ost | 4.9 | 3334 | ost 0.33 | How Can I Forget You | proposed |
+| 295 | `kimsejeong` | KIMSEJEONG (김세정) | solo | ost | 4.9 | 3348 | ost 0.33 | Paramour | proposed |
+| 296 | `klang` | KLANG (클랑) | solo | ost | 4.9 | 3439 | ost 0.33 | U Hoo Hoo | proposed |
+| 297 | `nuest-w` | NU’EST W (뉴이스트 W) | bands | ost | 4.9 | 4001 | ost 0.33 | AND I | proposed (streaming profile unconfirmed: catalogue hidden in this region, so the profile could not be compared) |
+| 298 | `park-won` | Park Won (박원) | solo | ost | 4.9 | 4007 | ost 0.33 | Stranger | proposed |
+| 299 | `chai` | CHAI (차이) | solo | rnb-soul | 4.8 | 3141 | ost 0.33 | GIFT | proposed |
+| 300 | `suzy` | Suzy (수지) | solo | ost | 4.8 | 2980 | ost 0.33 | I Love You Boy | proposed |
+| 301 | `j-rabbit` | J Rabbit (제이레빗) | bands | folk-acoustic | 4.7 | 2062 | ost 0.33 | You Always / Happy Things | proposed |
+| 302 | `john-park` | John Park (존박) | solo | rnb-soul | 4.7 | 2507 | ost 0.33 | The Day You were Falling | proposed |
+| 303 | `rothy` | Rothy (로시) | solo | ost | 4.7 | 2426 | ost 0.33 | Something Precious | proposed |
+| 304 | `tearliner` | tearliner (티어라이너) | bands | indie | 4.7 | 2548 | ost 0.33 | Attraction (feat. 김고은) | proposed |
+| 305 | `achime` | Achime (아침) | bands | indie | 4.6 | 7 | community 0.25 | Pathetic Sight | proposed |
+| 306 | `grizzly` | Grizzly (그리즐리) | solo | rnb-soul | 4.6 | 1613 | ost 0.33 | That night | proposed |
+| 307 | `ha-hyun-sang` | Ha Hyun Sang (하현상) | solo | band-scene | 4.6 | 1596 | ost 0.33 | With You | proposed |
+| 308 | `o-when` | O.WHEN (오왠) | solo | indie, folk-acoustic | 4.6 | 1969 | ost 0.33 | How To Say / Heartbeat | proposed |
+| 309 | `baek-z-young` | Baek Z Young (백지영) | solo | ost | 4.5 | 1500 | ost 0.33 | See You Again (feat. Richard Yongjae O'Neill) | proposed |
+| 310 | `fromm` | Fromm (프롬) | solo | indie | 4.5 | 1214 | ost 0.33 | Can't You Love Me (Piano Ver.) | proposed |
+| 311 | `kim-kyung-hee` | Kim Kyung Hee (김경희) | solo | ost | 4.5 | 1438 | ost 0.33 | Midnight Sun | proposed |
+| 312 | `kimmuseum` | KIMMUSEUM (김뮤지엄) | solo | rnb-soul | 4.5 | 1251 | ost 0.33 | We're Already | proposed |
+| 313 | `love-x-stereo` | Love X Stereo (러브엑스테레오) | bands | indie | 4.5 | 1418 | ost 0.33 | Hide and Seek (Television Soundtrack Version) | proposed |
+| 314 | `o3ohn` | O3ohn (오존) | solo | folk-acoustic | 4.5 | 1198 | ost 0.33 | Milky Way Between Us / Down | proposed |
+| 315 | `1415` | 1415 (일사일오) | bands | indie | 4.4 | 1054 | ost 0.33 | Photographs / Happy | proposed |
+| 316 | `dpr-ian` | DPR IAN (디피알 이안) | solo | rnb-soul | 4.4 | 66646 | – | Don't Go Insane / So Beautiful | proposed |
+| 317 | `george` | george (죠지) | solo | rnb-soul | 4.4 | 936 | ost 0.33 | Boat / Something Between Us (Romance 101) | proposed |
+| 318 | `kim-yuna` | Kim Yuna (김윤아) | solo | band-scene | 4.4 | 991 | ost 0.33 | Days Without Tears | proposed |
+| 319 | `park-ji-woo` | Park Ji Woo (박지우) | solo | indie | 4.4 | 1167 | ost 0.33 | Whisper | proposed (streaming profile unconfirmed: catalogue hidden in this region, so the profile could not be compared) |
+| 320 | `sogumm` | sogumm (소금) | solo | rnb-soul | 4.4 | 975 | ost 0.33 |  | proposed |
+| 321 | `chan` | Chan (찬) | solo | rnb-soul | 4.3 | 863 | ost 0.33 | Walking Again | proposed |
+| 322 | `shin-seung-hun` | Shin Seung Hun (신승훈) | solo | ost | 4.3 | 809 | ost 0.33 | Like a Beautiful Flame | proposed |
+| 323 | `heize` | Heize (헤이즈) | solo | rnb-soul | 4.2 | 38851 | – | And July (feat. DEAN & dj friz) / You, Clouds, Rain (feat. Shin Yong Jae) | proposed |
+| 324 | `davichi` | DAVICHI (다비치) | bands | ost | 4.1 | 37117 | – | This Love / 8282 | proposed |
+| 325 | `junha-park` | JUNHA PARK (박준하) | solo | indie | 4.1 | 486 | ost 0.33 | Butterfly | proposed |
+| 326 | `kimyeji` | KimYeji (김예지) | solo | band-scene | 4.1 | 483 | ost 0.33 | Moon Crater | proposed |
+| 327 | `lee-seung-yoon` | LEE SEUNG YOON (이승윤) | solo | band-scene | 4 | 374 | ost 0.33 | The Giving Tree | proposed |
+| 328 | `ha-hyun-woo` | Ha Hyun Woo (하현우) | solo | band-scene | 3.9 | 297 | ost 0.33 | Diamond | proposed |
+| 329 | `se-o` | SE O (세오) | solo | ost | 3.8 | 218 | ost 0.33 | While You Were Sleeping | proposed |
+| 330 | `the-orchard` | the orchard (진동욱) | solo | indie | 3.8 | 256 | ost 0.33 | That Day | proposed |
+| 331 | `20-years-of-age` | 20 Years of Age (스무살) | solo | folk-acoustic | 3.7 | 155 | ost 0.33 | Cheese In the Trap (feat. Seoha) | proposed |
+| 332 | `punch` | Punch (펀치) | solo | ost | 3.7 | 189 | ost 0.33 | I Love You This Much | proposed |
+| 333 | `sweden-laundry` | Sweden Laundry (스웨덴세탁소) | bands | folk-acoustic | 3.7 | 195 | ost 0.33 | A Little Bit More / call it love | proposed |
+| 334 | `band-nah` | Band Nah (나상현씨밴드) | bands | band-scene | 3.6 | 146 | ost 0.33 | Spotlight / Lily of the Valley | proposed |
+| 335 | `k-will` | K.Will (케이윌) | solo | ost | 3.6 | 9234 | – | Please Don't… / Talk Love | proposed |
+| 336 | `han-seung-yun` | HAN SEUNG YUN (한승윤) | solo | band-scene | 3.5 | 117 | ost 0.33 | I Revive | proposed |
+| 337 | `junny` | JUNNY (주니) | solo | rnb-soul | 3.5 | 6889 | – | By My Side / INVITATION (feat. Gaeko) | proposed |
+| 338 | `paul-kim` | Paul Kim (폴킴) | solo | ost | 3.5 | 7704 | – | Me After You / Every Day, Every Moment | proposed |
+| 339 | `urban-zakapa` | Urban Zakapa (어반자카파) | bands | rnb-soul | 3.5 | 7224 | – | I Don't Love You / Beautiful My Love | proposed |
+| 340 | `offonoff` | offonoff (오프온오프) | bands | rnb-soul | 3.4 | 5860 | – | Cigarette (feat. Tablo, MISO) / Photograph | proposed |
+| 341 | `roy-kim` | Roy Kim (로이킴) | solo | folk-acoustic | 3.4 | 5481 | – | Only Then / The Hardest Part | proposed |
+| 342 | `brothersu` | BrotherSu (브라더수) | solo | rnb-soul | 3.3 | 69 | ost 0.33 | While You Were Sleeping | proposed |
+| 343 | `byeol-eun` | Byeol Eun (별은) | solo | ost | 3.3 | 63 | ost 0.33 | Heart Race | proposed |
+| 344 | `sung-si-kyung` | Sung Si Kyung (성시경) | solo | ost | 3.3 | 4447 | – | Every moment of you / You Are My Spring | proposed |
+| 345 | `mokyo` | Mokyo (모키오) | solo | rnb-soul | 3.2 | 3891 | – | Uleum | proposed |
+| 346 | `oceanfromtheblue` | oceanfromtheblue (오션프롬더블루) | solo | rnb-soul | 3.2 | 3467 | – | 25 - A COLORS SHOW | proposed |
+| 347 | `jimmy-brown` | Jimmy Brown (지미 브라운) | solo | rnb-soul | 3.1 | 2400 | – | your love / 2 Things | proposed |
+| 348 | `saay` | SAAY (쎄이) | solo | rnb-soul | 3.1 | 2766 | – | Summer In Love (feat. Colde) / CIRCLE (feat. Tish Hyman) | proposed |
+| 349 | `slchld` | slchld (서울차일드) | solo | rnb-soul | 3.1 | 2915 | – | she likes spring, I prefer winter / Maybe We Need a Break | proposed |
+| 350 | `92914` | 92914 (구이구일사) | bands | indie | 3 | 1979 | – | Okinawa / Moonlight | proposed |
+| 351 | `d-ear` | D.ear (디어) | solo | rnb-soul | 3 | 2327 | – | Try Again / Midnight Walk | proposed |
+| 352 | `jiwoo` | Jiwoo (지우) | solo | rnb-soul | 3 | 2091 | – | Comme des Garçons | proposed |
+| 353 | `kang-hyun-min` | Kang Hyun Min (강현민) | solo | band-scene | 3 | 27 | ost 0.33 | Such (feat. Jo Hyun Ah) | proposed (streaming profile unconfirmed: catalogue hidden in this region, so the profile could not be compared) |
+| 354 | `thama` | THAMA (따마) | solo | rnb-soul | 3 | 1898 | – | Blessed (feat. GSoul) / Do It For Love (feat. george) | proposed |
+| 355 | `babylon` | Babylon (베이빌론) | solo | rnb-soul | 2.9 | 1595 | – | Automatic / Boys And Girls (Feat. Babylon) | proposed |
+| 356 | `bumkey` | BUMKEY (범키) | solo | rnb-soul | 2.9 | 1730 | – |  | proposed |
+| 357 | `chancellor` | CHANCELLOR (챈슬러) | solo | rnb-soul | 2.9 | 1488 | – | Midnight (feat. Gaeko) | proposed |
+| 358 | `dept` | Dept (뎁트) | solo | rnb-soul | 2.9 | 1632 | – | Autumn Breeze (feat. Milky Day) / Strawberry Champagne | proposed |
+| 359 | `gonne-choi` | Gonne Choi (최고은) | solo | folk-acoustic | 2.9 | 24 | ost 0.33 | Old Tale | proposed |
+| 360 | `jeebanoff` | jeebanoff (지바노프) | solo | rnb-soul | 2.9 | 1448 | – | The girl in my memories (Digging club Seoul Version) | proposed |
+| 361 | `tete` | TETE (테테) | solo | indie | 2.9 | 24 | ost 0.33 | I Like You | proposed |
+| 362 | `hen` | HEN (헨) | solo | indie | 2.7 | 13 | ost 0.33 | Deeply | proposed |
+| 363 | `meenoi` | meenoi (미노이) | solo | rnb-soul | 2.7 | 1048 | – | Salang Salang | proposed |
+| 364 | `yb` | YB (와이비) | bands | band-scene | 2.7 | 918 | – | A Flying Butterfly / Blue Whale (2016 Version) | proposed |
+| 365 | `lyn` | Lyn (린) | solo | ost | 2.6 | 675 | – | My Destiny / Back in Time | proposed |
+| 366 | `jeon-si-ha` | JEON SI HA (전시하) | solo | ost | 2.4 | 5 | ost 0.33 | I'm Always By Your Side | proposed |
+| 367 | `jang-beom-june` | Jang Beom June (장범준) | solo | folk-acoustic | 2.3 | 354 | – | Your Shampoo Scent In the Flowers / Karaoke | proposed |
+| 368 | `woongsan` | Woongsan (웅산) | solo | jazz | 2.3 | 338 | – |  | proposed |
+| 369 | `saevom` | Saevom (새봄) | solo | folk-acoustic | 2.2 | 240 | – | Liquid Courage (feat. Lee Min Hyuk) / Only You (with Yoon Hansol) | proposed |
+| 370 | `acourve` | ACOURVE (어쿠루브) | bands | folk-acoustic | 2.1 | 194 | – | What Was That / The Night We Parted | proposed |
+| 371 | `sbgb` | SBGB (새벽공방) | bands | folk-acoustic | 2.1 | 214 | – | Believe / Praha | proposed |
+| 372 | `coffee-boy` | Coffee Boy (커피소년) | solo | folk-acoustic | 1.9 | 125 | – | I Will Be on Your Side / When Love Comes to You | proposed |
+| 373 | `yun-ddan-ddan` | Yun DDan DDan (윤딴딴) | solo | folk-acoustic | 1.8 | 95 | – | Walking in the Winter / In the End | proposed |
+| 374 | `jang-pill-soon` | Jang Pill Soon (장필순) | solo | folk-acoustic | 1.6 | 55 | – | Slipped Away | proposed |
+| 375 | `mind-u` | MIND U (마인드유) | bands | folk-acoustic | 1.6 | 60 | – | Love Me / Bored (feat. Cheeze) | proposed |
+| 376 | `minhwi-lee` | Minhwi Lee (이민휘) | solo | folk-acoustic | 1.6 | 59 | – | Borrowed Tongue / Blue Flower | proposed |
+| 377 | `siwa` | Siwa (시와) | solo | folk-acoustic | 1.5 | 48 | – | Gently, By Your Side | proposed |
+| 378 | `dori` | dori (도리) | solo | rnb-soul | 1.4 | 33 | – | 2 O' CLOCK / Heart Flutter | proposed |
+| 379 | `lazybone` | LAZYBONE (레이지본) | bands | band-scene | 1.4 | 31 | – |  | proposed |
+| 380 | `sole` | SOLE (쏠) | solo | rnb-soul | 1.4 | 32 | – | RIDE (feat. THAMA) / Same (feat. THAMA) | proposed |
+| 381 | `horim` | HORIM (호림) | solo | rnb-soul | 1.3 | 30 | – | Temp-Ton | proposed |
+| 382 | `kim-mok-in` | Kim Mok In (김목인) | solo | folk-acoustic | 0 | 0 | – | Song of This Moment | proposed |
+| 383 | `yoon-duk-won` | Yoon Duk Won (윤덕원) | solo | folk-acoustic | 0 | 0 | – | Nothing's Gonna Change For Christmas | proposed |
+| 384 | `kik` | KIK (킥) | bands | band-scene | 21.7 | 182546 | scene 0.33, recognition 0.33 |  | proposed ⚠ no streaming profile shares a release with the Apple Music discography (possible name clash) |
+| 385 | `akmu` | AKMU (악뮤) | bands | other-adjacent | 17.5 | 38893 | recognition 0.33 | Love Lee | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
+| 386 | `younha` | Younha (윤하) | solo | other-adjacent | 17.1 | 13076 | recognition 0.33 | Event Horizon / Oort Cloud | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
+| 387 | `lee-chanhyuk` | LEE CHANHYUK (이찬혁) | solo | other-adjacent | 16 | 952 | recognition 0.33 | Endangered Love | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
+| 388 | `cant-be-blue` | can’t be blue (캔트비블루) | bands | band-scene | 15.8 | 476 | recognition 0.33 |  | proposed ⚠ no English Apple Music artist page found (streaming profile unconfirmed: no Apple Music discography to compare) |
+| 389 | `parc-jae-jung` | Parc Jae Jung (박재정) | solo | other-adjacent | 15.5 | 233 | recognition 0.33 | Let's Say Goodbye | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
+| 390 | `wooseok` | WOOSEOK (우석) | solo | other-adjacent | 15.5 | 279 | recognition 0.33 |  | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
+| 391 | `choi-beck-ho` | Choi Beck Ho (최백호) | solo | folk-acoustic | 15.1 | 85 | recognition 0.33 | About Romance | proposed ⚠ no English Apple Music artist page found (streaming profile unconfirmed: no Apple Music discography to compare) |
+| 392 | `samsan` | SamSan (삼산) | solo | other-adjacent | 14.2 | 8 | recognition 0.33 |  | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
+| 393 | `bela` | bela (벨라) | solo | indie | 13.3 | 218 | recognition 0.33 |  | proposed ⚠ no streaming profile shares a release with the Apple Music discography (possible name clash) |
+| 394 | `computer-music-club` | Computer Music Club (컴퓨터 뮤직 클럽) | bands | indie | 13.3 | – | recognition 0.33 |  | proposed ⚠ no English Apple Music artist page found; streaming profile not matched |
 | 395 | `g-dragon` | G-DRAGON (지드래곤) | solo | other-adjacent | 13.3 | 336092 | scene 0.33 |  | proposed ⚠ outside the indie-centred scope (D1); approve only deliberately |
 | 396 | `joyul` | Joyul (조율) | solo | indie | 13.3 | 1 | recognition 0.33 | Chant / Marginalia | proposed ⚠ no streaming profile shares a release with the Apple Music discography (possible name clash) |
 | 397 | `jun-bum-sun-and-the-yangbans` | Jun Bum Sun & the Yangbans (전범선과 양반들) | bands | band-scene | 13.3 | – | recognition 0.33 |  | proposed ⚠ streaming profile not matched |
