@@ -251,7 +251,7 @@ systemctl --user list-timers indiek-search-console.timer --no-pager
 
 ## 참여 API
 
-상태(2026-11-09): **운영 설치 완료.** 사용자 승인 후 웹 서버에 `30f85f3`을 반영했다. 연말 투표는 `draft`다. 투표 화면(`/polls/<id>/`)·요청 화면(`/request/`)과 개인정보 안내 `#participation`은 2026-11-10 구현했으나 아직 배포하지 않았다. 배포하면 요청 화면은 바로 공개되고, 투표 화면은 `status`를 `published`로 바꾼 배포부터 공개된다.
+상태(2026-11-09): **운영 설치 완료.** 사용자 승인 후 웹 서버에 `30f85f3`을 반영했다. 연말 투표는 `draft`다. 투표 화면(`/polls/<id>/`)·요청 화면(`/request/`)과 개인정보 안내 `#participation`은 2026-11-10 구현해 2026-11-12 배포했다(`ac69ab8`). 요청 화면은 공개 중이고, 투표 화면은 `status`를 `published`로 바꾼 배포부터 공개된다.
 
 - 설치 전 서버 확인(읽기 전용):
   - 자동화 서버의 발행기 PATH와 웹 서버 수신기(root 키)의 PATH 모두 `no-cargo`다.
@@ -417,7 +417,7 @@ systemctl disable --now indiek-api.service indiek-api-backup.timer
 
 ### 개인정보 안내
 
-2026-11-10 [개인정보 안내](https://indiek.com/privacy-and-terms/#participation)의 원문(`scripts/build.mjs`, `LAST UPDATED / 10 NOVEMBER 2026`)에 반영했다(미배포). 영어 문구는 그 원문만 관리한다. 초안과 실제 동작을 대조해 다음을 고쳤다: 투표 토큰 해시는 실제 종료가 아니라 예정 종료(`closesAt`) 30일 뒤 삭제, 브라우저에 투표 여부 표시도 함께 저장, Nginx 빈도 제한은 솔트 없이 공유 메모리에 잠시 보관, 검토 전 요청은 검토 때까지 보관, 투표·요청은 Matomo로 보내지 않음. 수집 항목이나 보관 기간을 바꾸면 이 표와 원문을 함께 고친다.
+2026-11-10 [개인정보 안내](https://indiek.com/privacy-and-terms/#participation)의 원문(`scripts/build.mjs`, `LAST UPDATED / 10 NOVEMBER 2026`)에 반영했고 2026-11-12 배포했다. 영어 문구는 그 원문만 관리한다. 초안과 실제 동작을 대조해 다음을 고쳤다: 투표 토큰 해시는 실제 종료가 아니라 예정 종료(`closesAt`) 30일 뒤 삭제, 브라우저에 투표 여부 표시도 함께 저장, Nginx 빈도 제한은 솔트 없이 공유 메모리에 잠시 보관, 검토 전 요청은 검토 때까지 보관, 투표·요청은 Matomo로 보내지 않음. 수집 항목이나 보관 기간을 바꾸면 이 표와 원문을 함께 고친다.
 
 | 항목 | 저장 방식 | 보관 |
 | --- | --- | --- |
@@ -431,7 +431,17 @@ systemctl disable --now indiek-api.service indiek-api-backup.timer
 
 ## 확인과 복구
 
-- Latest deployment: 2026-11-10 `68fc649` - Instagram commentary carousels built with the site (76 slides for 20 artists, about 8.1 MB). Production passed 267 tests and 60 pages, and the carousel list and slides are live over HTTPS. The automation checkout was fast-forwarded through `scripts/editorial/sync.mjs`, which restored and regenerated the automatic section of `docs/promotion.md` because the commit also changed that file. It then passed 117 promotion tests and confirmed all 20 decks match the live pages without sending anything. Rollback baseline: `a02ea43`.
+- Latest deployment: 2026-11-12 `ac69ab8`
+  - Site: catalogue batch 1 (Say Sue Me, Silica Gel, Meaningful Stone, Lang Lee, JEONGMILLA; nine songs, five indexed), published 2026-11-12, and the reader request page `/request/` with request links on artist and song pages and the privacy notice's `#participation`. The year-end poll stays `draft` (its page is 404). No Nginx or API change.
+  - Production passed 299 tests and 75 pages with a clean checkout. The first run of the release commit `2185f12` failed one participation test, because the web server's Node 18 has no global `crypto`; the test now passes Node's `webcrypto` (`ac69ab8`). The article receiver runs the same check, so it would otherwise have refused Friday's article.
+  - Verified over HTTPS:
+    - the new pages return 200, and grade-B song pages are `noindex`;
+    - the sitemap has 51 URLs, and the public manifest equals the build;
+    - `/api/health` reports 26 artists and 32 tracks;
+    - on the live site, Old Town plays in the shared player and keeps playing on the way to `/request/?track=…`, where the form opens with the song preselected. No request was sent.
+  - The automation checkout was fast-forwarded with `scripts/editorial/sync.mjs`. It passed 104 promotion tests, and all 25 carousel decks match the live pages; nothing was sent.
+  - Rollback baseline: `68fc649`.
+- Previous deployment: 2026-11-10 `68fc649` - Instagram commentary carousels built with the site (76 slides for 20 artists, about 8.1 MB). Production passed 267 tests and 60 pages, and the carousel list and slides are live over HTTPS. The automation checkout was fast-forwarded through `scripts/editorial/sync.mjs`, which restored and regenerated the automatic section of `docs/promotion.md` because the commit also changed that file. It then passed 117 promotion tests and confirmed all 20 decks match the live pages without sending anything. Rollback baseline: `a02ea43`.
 - Previous deployment: 2026-11-09 `30f85f3`
   - Site (`5c59acf`): song pages under each artist (3 indexed, 20 `noindex`; sitemap 40 URLs) and the reworked starter-guide intro.
   - API (`30f85f3`): the participation API (`indiek-api`, backup timer, Nginx `/api/` proxy), installed as described in [참여 API](#참여-api).
