@@ -186,10 +186,12 @@ const UNOFFICIAL = /\b(fan|fans|lyrics?|cover|reaction|kpop|k-pop|drama|ost|play
 export function officialBasis({channel, channelURL}, artistNames, allowlist = []) {
   const listed = allowlist.find(c => c.channelURL === channelURL);
   if (listed) return `${listed.kind} channel on the official-channel list (${listed.basis})`;
-  const names = artistNames.map(normalizeName).filter(n => n.length >= 2);
+  // "&" and "and" are the same name ("Danpyunsun & The Moments Ensemble").
+  const key = value => normalizeName(String(value || '').replace(/&/g, ' and '));
+  const names = artistNames.map(key).filter(n => n.length >= 2);
   const topic = /^(.*) - Topic$/.exec(channel || '');
-  if (topic && names.includes(normalizeName(topic[1]))) return 'the artist’s YouTube Topic channel (official audio)';
-  if (!topic && !UNOFFICIAL.test(channel || '') && names.some(n => normalizeName(channel).includes(n))) return 'the artist’s own channel';
+  if (topic && names.includes(key(topic[1]))) return 'the artist’s YouTube Topic channel (official audio)';
+  if (!topic && !UNOFFICIAL.test(channel || '') && names.some(n => key(channel).includes(n))) return 'the artist’s own channel';
   return null;
 }
 

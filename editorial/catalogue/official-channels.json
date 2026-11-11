@@ -84,6 +84,20 @@
       "kind": "broadcaster",
       "basis": "Channel of EBS Space Gonggam, the EBS live-music programme; the channel links ebs.co.kr/space/main and oEmbed names it 스페이스 공감 at @theEBSspace",
       "checked": "2026-11-12"
+    },
+    {
+      "channel": "미러볼 뮤직 - Mirrorball Music",
+      "channelURL": "https://www.youtube.com/@mirrorballmusickorea",
+      "kind": "label",
+      "basis": "Label of Danpyunsun and the Moments Ensemble: Apple Music (US) lists ℗ 2024 미러볼 뮤직 on Hail to the Music and ℗ 2026 on Lovers; the channel links mirrorballmusic.co.kr",
+      "checked": "2026-11-12"
+    },
+    {
+      "channel": "Human Pitch",
+      "channelURL": "https://www.youtube.com/@humanpitch2269",
+      "kind": "label",
+      "basis": "Label of Salamanda’s ashbalkum (Apple Music US: ℗ 2022 Human Pitch); the channel links humanpitch.fm and humanpitch.bandcamp.com, which lists the Salamanda releases",
+      "checked": "2026-11-12"
     }
   ]
 }

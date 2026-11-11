@@ -253,6 +253,8 @@ test('official channels are decided from oEmbed data: own channel, Topic or a li
   assert.equal(officialBasis({channel:'Say Sue Me - Topic', channelURL:'https://www.youtube.com/channel/UC1'}, names), 'the artist’s YouTube Topic channel (official audio)');
   assert.match(officialBasis({channel:'1theK (원더케이)', channelURL:'https://www.youtube.com/@1theK'}, names, listed), /^distributor channel/);
   for (const channel of ['KDRAMAHOLIC. ID', 'Say Sue Me Fans', 'say sue me lyrics', 'Other Band - Topic', '1theK (원더케이)']) assert.equal(officialBasis({channel, channelURL:'https://www.youtube.com/@fake'}, names, listed), null, channel);
+  // "&" in a channel name matches "and" in the artist name.
+  assert.equal(officialBasis({channel:'Danpyunsun & The Moments Ensemble', channelURL:'https://www.youtube.com/@x'}, ['Danpyunsun and the Moments Ensemble']), 'the artist’s own channel');
 });
 
 test('a declared live or lyric-video format must show in the title or come from a live-series channel', () => {
