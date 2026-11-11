@@ -76,6 +76,8 @@ function overlays() {
   </section>`;
 }
 const searchTrackName = track => track.track.replace(/\s*\(feat\.[^)]*\)/i, '');
+// Korean titles can carry the featuring credit too; inside a parenthesis it would nest brackets.
+const searchKoreanTitle = track => track.koreanTitle?.replace(/\s*\(feat\.[^)]*\)/i, '');
 // Search titles follow observed queries ("<artist> <song> lyrics meaning"); share cards keep their shorter title.
 function artistSearchMeta(r, tracks) {
   const korean = r.korean && r.korean !== r.artist ? ` (${r.korean})` : '';
@@ -86,7 +88,7 @@ function artistSearchMeta(r, tracks) {
   const more = tracks.length - 1;
   return {
     title:`${r.artist}${korean} — ${named} ${adaptation ? 'in English' : 'lyrics meaning'} | indiek`,
-    description:`${r.artist}${korean}: ${adaptation ? 'an English adaptation of' : 'what'} “${searchTrackName(r)}”${r.koreanTitle ? ` (${r.koreanTitle})` : ''}${adaptation ? '' : ' is about, in English'}${more ? `, plus ${more} more ${more === 1 ? 'song' : 'songs'}` : ''}. ${r.note} Official recording, release details and sources.`,
+    description:`${r.artist}${korean}: ${adaptation ? 'an English adaptation of' : 'what'} “${searchTrackName(r)}”${r.koreanTitle ? ` (${searchKoreanTitle(r)})` : ''}${adaptation ? '' : ' is about, in English'}${more ? `, plus ${more} more ${more === 1 ? 'song' : 'songs'}` : ''}. ${r.note} Official recording, release details and sources.`,
   };
 }
 function artistStructuredData(r, tracks) {
@@ -261,12 +263,17 @@ function songMain(r) {
   <section class="page-sources" aria-labelledby="sources-title"><h2 id="sources-title">Sources & further reading</h2><ul>${songSources(r,artist).map(source=>`<li>${sourceLink(source.url,source.label,source.language)}</li>`).join('')}</ul><p>These are independent listening notes, not an interview or an official artist statement. For a correction, email <a href="mailto:${site.email}">${site.email}</a>.</p><p><a href="/about/#image-credits">Image credits</a></p></section><a class="underlink back-to-shelf" href="${artistPath(r)}">All about ${e(r.artist)} <span aria-hidden="true">↗</span></a></main>`;
 }
 function songMeta(r) {
-  const korean = r.koreanTitle ? ` (${r.koreanTitle})` : '';
+  const korean = r.koreanTitle ? ` (${searchKoreanTitle(r)})` : '';
   const adaptation = r.lyricNotes?.translation && !r.lyricNotes.paragraphs.length;
-  const parts = [adaptation ? 'An English adaptation' : 'Lyrics meaning in English', r.credits && 'credits', r.listeningNote && 'background', 'release details'].filter(Boolean);
+  // Grade B songs have no lyric notes yet, so their titles promise only what the page holds.
+  const explained = r.lyricNotes?.paragraphs?.length;
+  const lead = adaptation ? 'English adaptation' : explained ? 'lyrics meaning' : '';
+  const covers = lead ? `${lead}${r.listeningNote ? ' & background' : ''}` : [r.listeningNote && 'background', r.credits && 'credits'].filter(Boolean).join(' & ') || 'release details';
+  const parts = [adaptation ? 'An English adaptation' : explained && 'Lyrics meaning in English', r.credits && 'credits', r.listeningNote && 'background', 'release details'].filter(Boolean);
+  parts[0] = parts[0][0].toUpperCase() + parts[0].slice(1);
   return {
-    title:`${r.artist} — ${searchTrackName(r)}${korean}: ${adaptation ? 'English adaptation' : 'lyrics meaning'}${r.listeningNote ? ' & background' : ''} | indiek`,
-    description:`${r.description} ${parts.slice(0,-1).join(', ')} and ${parts.at(-1)}.`,
+    title:`${r.artist} — ${searchTrackName(r)}${korean}: ${covers} | indiek`,
+    description:`${r.description} ${parts.length > 1 ? `${parts.slice(0,-1).join(', ')} and ${parts.at(-1)}` : parts[0]}.`,
   };
 }
 function collaborations(r) {

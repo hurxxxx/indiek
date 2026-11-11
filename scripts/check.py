@@ -189,6 +189,9 @@ for record in tracks:
     title=re.search(r'<title>(.*?)</title>', text, re.S)
     title=unescape(title.group(1)) if title else ''
     if record['artist'] not in title or re.sub(r'\s*\(feat\.[^)]*\)','',record['track'],flags=re.I) not in title: errors.append(f'{label}: search title must name the artist and song')
+    # A title promises lyric notes only when the page has them (grade B songs do not), and never nests brackets.
+    if 'lyrics meaning' in title.lower() and not record.get('lyricNotes',{}).get('paragraphs'): errors.append(f'{label}: title promises lyrics meaning without lyric notes')
+    if re.search(r'\([^()]*\(', title): errors.append(f'{label}: title has nested brackets')
     similar=[by_id.get(id) for id in song.similar]
     if song.similar!=status['similar'] or len(similar)!=3 or any(not t or t['artistId']==record['artistId'] or reading_path(t) not in song.refs for t in similar): errors.append(f'{label}: needs three linked similar songs by other artists')
     ld=re.search(r'<script type="application/ld\+json">(.*?)</script>', text, re.S)
