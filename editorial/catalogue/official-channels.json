@@ -77,6 +77,13 @@
       "kind": "live-series",
       "basis": "Channel of KEXP, the Seattle public radio station, for its in-studio sessions (\"Live on KEXP\"); the channel links kexp.org",
       "checked": "2026-11-11"
+    },
+    {
+      "channel": "스페이스 공감",
+      "channelURL": "https://www.youtube.com/@theEBSspace",
+      "kind": "broadcaster",
+      "basis": "Channel of EBS Space Gonggam, the EBS live-music programme; the channel links ebs.co.kr/space/main and oEmbed names it 스페이스 공감 at @theEBSspace",
+      "checked": "2026-11-12"
     }
   ]
 }

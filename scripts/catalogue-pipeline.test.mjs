@@ -7,7 +7,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createCatalogue} from './catalogue.mjs';
 import {songPageStatus} from './song-pages.mjs';
-import {mergeCandidates, scoreCandidates, searchDemand, slugify, normalizeName} from './catalogue-pipeline/candidates.mjs';
+import {mergeCandidates, scoreCandidates, searchDemand, slugify, normalizeName, independentRecognition} from './catalogue-pipeline/candidates.mjs';
 import {parseSearchConsoleCSV} from './catalogue-pipeline/context.mjs';
 import {songSlug, assembleEntries, lintEntries, entryHash, gradeMissing, citedSources, appleIds, officialBasis, formatConfirmed, lookupRelease} from './catalogue-pipeline/entries.mjs';
 import {prepareUnit, approval} from './catalogue-pipeline/tracks.mjs';
@@ -70,6 +70,17 @@ test('scores are explainable components; candidates with blockers sort last', ()
   assert.ok(ranked.find(c => c.id === 'c').components.streaming > 0, 'a profile hidden in this region still counts, with a note');
   assert.match(ranked.find(c => c.id === 'c').notes[0], /unconfirmed/);
   assert.ok(ranked[0].score > ranked[1].score && ranked[0].score <= 100);
+});
+
+test('recognition counts only independent judgement, not storefronts, charts or the artist itself', () => {
+  const c = {id:'x', name:'Lang Lee', korean:'이랑', aliases:[], scopes:['folk-acoustic'], tracks:[], deezer:{id:1, fans:10, verified:true}, apple:{url:'https://music.apple.com/us/artist/x/1'}};
+  const signal = (url, publisher, type = 'recognition') => ({type, url, publisher, detail:'D'});
+  const independent = [signal('https://www.koreanmusicawards.com/winners/2022', 'Korean Music Awards'), signal('https://www.ebs.co.kr/space/main', 'EBS Space Gonggam'), signal('https://daily.bandcamp.com/x', 'Bandcamp Daily')];
+  const excluded = [signal('https://music.apple.com/us/artist/x/1', 'Apple Music'), signal('https://kworb.net/x', 'Kworb'), signal('https://langleeschool.bandcamp.com/album/y', 'Lang Lee / Bandcamp'), signal('https://www.youtube.com/watch?v=abc', 'EBS'), signal('https://news.example/x', 'Lang Lee'), signal('https://chart.example/x', 'Chart', 'chart')];
+  for (const s of independent) assert.ok(independentRecognition(c, s), s.url);
+  for (const s of excluded) assert.ok(!independentRecognition(c, s), s.url);
+  const [scored] = scoreCandidates([{...c, signals:[...excluded, independent[0]]}], {weights:{recognition:1}});
+  assert.equal(scored.components.recognition, 0.33);
 });
 
 test('Search Console exports are parsed in English or Korean and matched by artist names', () => {

@@ -3,11 +3,11 @@
   "perLens": 45,
   "lensConcurrency": 4,
   "weights": {
-    "streaming": 0.35,
-    "community": 0.2,
-    "recognition": 0.15,
-    "ost": 0.1,
-    "scene": 0.1,
+    "streaming": 0.05,
+    "community": 0.15,
+    "recognition": 0.4,
+    "ost": 0.05,
+    "scene": 0.25,
     "search": 0.1
   },
   "researchTimeoutSeconds": 1200,

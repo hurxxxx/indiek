@@ -9,6 +9,8 @@ export const LENSES = {
   'band-scene': 'Korean rock and indie bands that anchor today\'s band scene, including idol-label bands (for example DAY6, N.Flying, The Rose, LUCY, Xdinary Heroes, QWER) and festival regulars of Pentaport, Busan International Rock Festival, Grand Mint Festival, Beautiful Mint Life and Zandari Festa. Link a lineup, label or band page.',
   'catalogue-links': 'Artists directly connected to artists already on indiek: collaborators, featured artists, label-mates, shared producers, members or former members, and artists named as influences in interviews. Put the existing indiek artist ID in linkedArtistId and link the page that shows the connection.',
   'recognition': 'Korean Music Awards nominees and winners (modern rock, pop, folk, R&B and soul, rookie of the year) from 2019 to 2026, EBS Space Gonggam Hello Rookie, CJ Azit Tune Up and similar juried programmes. Link the official nomination or result page.',
+  'critics-experimental': 'Korean artists whose music critics single out, especially experimental, avant-garde, noise, electronic, ambient, post-rock, shoegaze, jazz-crossover, folk-experimental and genre-blending indie acts, at any level of popularity. Sources: Korean Music Awards nominations and wins in every genre category (including electronic, jazz and crossover, metal and hardcore, and album of the year), Korean critics\' year-end lists and reviews (for example IZM, Weiv, Music Y, 100beat), and international critical coverage (for example Bandcamp Daily, The Quietus, Pitchfork, The Wire, Resident Advisor). Each signal is a recognition signal for a nomination, review or critics\' list page that names the artist; storefront, chart and the artist\'s own pages do not count.',
+  'space-gonggam': 'Korean artists who performed on EBS Space Gonggam (EBS 스페이스 공감), the programme that has staged a wide range of music regardless of popularity, including its Hello Rookie selections; prefer recent years but include any period. Each signal is a recognition signal linking the episode or performer page on ebs.co.kr (or an EBS press release) that names the artist; a YouTube upload alone does not count.',
   'streaming-popularity': 'Korean indie, band, singer-songwriter and R&B artists with sustained streaming popularity: Melon, Genie or Bugs indie charts, year-end lists, and widely played songs on Spotify or Apple Music. Link the chart or platform page that shows it.',
   'rnb-folk-singers': 'Korean R&B, soul, jazz-leaning and folk singer-songwriters with an independent or small-label career, including well-known voices outside idol groups. Link a label, platform or press page that establishes the artist.',
 };
@@ -69,6 +71,20 @@ export function searchDemand(candidate, rows = []) {
 }
 
 const count = (c, ...types) => new Set(c.signals.filter(s => types.includes(s.type)).map(s => s.url)).size;
+
+// Recognition means someone else judged the music: awards, juried programmes, festivals, critics and
+// press. Storefront and chart pages measure popularity (already in streaming), and an artist's own
+// page or Bandcamp is self-description, so neither counts.
+const STOREFRONTS = /(^|\.)(music\.apple\.com|itunes\.apple\.com|spotify\.com|melon\.com|genie\.co\.kr|bugs\.co\.kr|vibe\.naver\.com|music-flo\.com|youtube\.com|youtu\.be|soundcloud\.com|kworb\.net|chartmasters\.org|soundcharts\.com)$/;
+export function independentRecognition(candidate, signal) {
+  if (signal.type !== 'recognition') return false;
+  let host = '';
+  try { host = new URL(signal.url).hostname.replace(/^www\./, ''); } catch { return false; }
+  if (STOREFRONTS.test(host) || (host.endsWith('.bandcamp.com') && host !== 'daily.bandcamp.com')) return false;
+  const names = [candidate.name, candidate.korean, ...(candidate.aliases || [])].map(normalizeName).filter(n => n.length >= 2);
+  const publisher = normalizeName(signal.publisher);
+  return !names.some(name => publisher.includes(name));
+}
 const logScale = (value, max) => value > 0 && max > 0 ? Math.log10(value + 1) / Math.log10(max + 1) : 0;
 
 // Weighted demand score (0–100). Components are stored so the ranking can be explained and audited.
@@ -84,7 +100,7 @@ export function scoreCandidates(candidates, {weights, searchRows = []}) {
       community:Math.min(count(c, 'community'), 4) / 4,
       ost:Math.min(count(c, 'ost'), 3) / 3,
       scene:Math.min(new Set(c.signals.filter(s => s.type === 'scene').map(s => s.linkedArtistId || s.url)).size, 3) / 3,
-      recognition:Math.min(count(c, 'recognition', 'chart'), 3) / 3,
+      recognition:Math.min(new Set(c.signals.filter(s => independentRecognition(c, s)).map(s => s.url)).size, 3) / 3,
     };
     const score = Math.round(1000 * Object.entries(weights).reduce((sum, [key, weight]) => sum + weight * (components[key] || 0), 0)) / 10;
     const blockers = [];
@@ -142,5 +158,5 @@ export async function lookupDeezer(candidate, {releases = null, fetcher = fetch}
 const cell = value => String(value ?? '').replace(/\|/g, '\\|').replace(/\n/g, ' ');
 export function renderCandidates(list, {checked, weights, signalsNote}) {
   const rows = list.map((c, i) => `| ${i + 1} | \`${c.id}\` | ${cell(c.name)}${c.korean ? ` (${cell(c.korean)})` : ''} | ${c.category} | ${c.scopes.join(', ')} | ${c.score} | ${c.deezer?.fans ?? '–'} | ${['community','ost','scene','recognition'].map(k => c.components[k] ? `${k} ${c.components[k]}` : '').filter(Boolean).join(', ') || '–'} | ${cell(c.tracks.slice(0, 2).map(t => t.title).join(' / '))} | ${c.status}${c.batch ? ` (${c.batch})` : ''}${c.blockers.length ? ` ⚠ ${cell(c.blockers.join('; '))}` : ''}${c.notes?.length ? ` (${cell(c.notes.join('; '))})` : ''} |`);
-  return `# Catalogue expansion candidates\n\nGenerated by \`npm run catalogue -- candidates score\` on ${checked}. Do not edit by hand; approve with \`npm run catalogue -- approve <batch-id> <candidate-id>…\`.\n\nScore (0–100) = ${Object.entries(weights).map(([k, w]) => `${w} × ${k}`).join(' + ')}. Streaming is log-scaled Deezer fans; community, OST and recognition count distinct opened pages (capped at 4, 3 and 3); scene counts links to existing indiek artists (capped at 3); search is log-scaled Search Console impressions. ${signalsNote} Candidates with a blocker are listed after the others.\n\n| # | ID | Artist | Type | Scope | Score | Deezer fans | Signals | Songs to start | Status |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n${rows.join('\n')}\n`;
+  return `# Catalogue expansion candidates\n\nGenerated by \`npm run catalogue -- candidates score\` on ${checked}. Do not edit by hand; approve with \`npm run catalogue -- approve <batch-id> <candidate-id>…\`.\n\nScore (0–100) = ${Object.entries(weights).map(([k, w]) => `${w} × ${k}`).join(' + ')}. The weights favour critical recognition and scene links over popularity, to find artists whose music is well regarded rather than widely streamed. Streaming is log-scaled Deezer fans; community and OST count distinct opened pages (capped at 4 and 3); recognition counts independent pages only (awards, juried programmes, festivals, critics and press; not storefronts, charts or the artist's own pages; capped at 3); scene counts links to existing indiek artists (capped at 3); search is log-scaled Search Console impressions. ${signalsNote} Candidates with a blocker are listed after the others.\n\n| # | ID | Artist | Type | Scope | Score | Deezer fans | Signals | Songs to start | Status |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n${rows.join('\n')}\n`;
 }
