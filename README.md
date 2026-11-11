@@ -14,6 +14,7 @@ An independent music magazine introducing Korean musicians to listeners around t
 - Official YouTube videos and live performances, with Apple Music release links.
 - One shared YouTube player: a centered listening window on desktop and a bottom dock on mobile, moving beside the page in short landscape views. Mobile playback starts without a popup; use YouTube’s fullscreen control for a larger view. Internal navigation, including Back and Forward, keeps playback running. Selecting another song uses the same player; closing it, reloading or leaving ends playback.
 - Listening guides, artist and song search, and tracks saved in your browser with direct playback from Saved. Saved and search use independently scrolling lists with fixed controls. Saved remembers your place, highlights the current track and closes when a song is selected. Play all starts at the beginning of the first saved track and enables Auto-next. Previous/Next and Auto-next stay within reach. Auto-next follows the displayed order and stops after the last song. If the browser blocks playback, press play in the video.
+- Listener polls (choose songs, results after voting closes) and a reader request form for songs or artists to cover, through the optional participation API. If it is unavailable, those controls hide and the pages still play and save.
 - Responsive pages with keyboard navigation and reduced-motion support.
 
 Built with HTML, CSS and JavaScript. Pages are generated as static files and need no application server or database. An optional Rust service in `api/` accepts listener-poll votes and reader requests; pages, playback and Saved never depend on it. “Agree & play” combines YouTube consent, connection and the first playback request. Later selections use “Play” during the same page session; if the browser blocks playback, use the video’s play button. Reloading resets this choice. Optional Matomo statistics use first-party cookies after explicit consent to measure visits, returning browsers and listening interactions. A compact cookie banner covers both cookies and statistics, with Cookie settings in the footer to change the choice; local previews are excluded.
@@ -38,6 +39,7 @@ Open [localhost:4173](http://127.0.0.1:4173). After editing files, run `npm run 
 | `npm run build:preview` | Rebuild the local preview in `dist/` without restarting the server |
 | `npm run build` | Generate the publication build in `dist/`; omit unpublished home updates |
 | `npm run check` | Check catalogue behavior, pages, links and assets; also runs the API tests when `cargo` is installed |
+| `npm run serve` | Serve `dist/` with the production Content-Security-Policy and proxy `/api/` to a local participation API |
 | `npm run images` | Generate responsive images; requires Pillow with WebP support |
 | `npm run catalogue -- status` | Inspect catalogue expansion candidates, batches and the review ledger |
 | `npm run promotion -- status` | Inspect the optional social publisher without posting |
@@ -152,9 +154,24 @@ cargo run --manifest-path api/Cargo.toml -- --help   # backup, cleanup and reque
 
 Errors are `{"error": "<code>"}` with a matching status (`400`, `404`, `409`, `415`, `422`, `429` with `Retry-After`, `503`). Posts from other origins are refused.
 
-Track and artist IDs come from the built `dist/catalogue.js`; the service rereads it (and the poll file) within 30 seconds of a change and keeps the previous version if the new one is invalid. Polls live in `content/polls.json` (`schemaVersion: 1`): `id`, `status` (`draft` stays hidden, `published`, or `closed` to stop early), `opensAt` and `closesAt` (RFC 3339 with offset), `choiceKind` (`track` or `artist`), optional `choiceIds` (otherwise every public track or artist), `maxChoices` (1–10) and `resultsVisibility` (`after-close` by default, or `live`). Every choice must exist in the built catalogue. `title` and other display fields are ignored by the API. `listeners-picks-2026` has its approved settings (10 December 12:00 to 1 January 00:00 KST, up to three songs, results after closing) and stays `draft` until the voting page ships.
+Track and artist IDs come from the built `dist/catalogue.js`; the service rereads it (and the poll file) within 30 seconds of a change and keeps the previous version if the new one is invalid. Polls live in `content/polls.json` (`schemaVersion: 1`): `id`, `status` (`draft` stays hidden, `published`, or `closed` to stop early), `opensAt` and `closesAt` (RFC 3339 with offset), `choiceKind` (`track` or `artist`), optional `choiceIds` (otherwise every public track or artist), `maxChoices` (1–10) and `resultsVisibility` (`after-close` by default, or `live`). Every choice must exist in the built catalogue. `title` and other display fields are ignored by the API. `listeners-picks-2026` has its approved settings (10 December 12:00 to 1 January 00:00 KST, up to three songs, results after closing) and stays `draft` until publication is approved; set `status` to `published` to publish its page with the same deployment.
 
-A voting page creates a random token of at least 128 bits (`crypto.getRandomValues`, base64url, 22–64 characters) and keeps it in local storage; the API uses no cookies or accounts. Requests accept catalogue IDs and up to 140 characters of plain text, refusing links, email addresses and phone numbers; there is no contact field. Stored data, retention and the privacy-notice draft are in the [deployment guide](deploy/README.md#참여-api).
+The browser side is `site/participation.mjs`, started by `app.js` on each page load and internal navigation:
+
+- **Poll pages** `/polls/<id>/` are built from `content/polls.json` for every poll that is not `draft`; `title`, `description` and `intro` are page copy. `npm run build:preview` also renders drafts (`noindex`, marked as a preview) for review; `npm run build` removes them, and `npm run check` fails if a draft page is left in `dist/`. The page lists every choice A–Z with the shared-player button, Save and a link to the song. Checkboxes and the send button appear only after `GET …/results` says the poll is open; results appear once the API returns them. The browser creates a random token of at least 128 bits (`crypto.getRandomValues`, base64url) when it first votes and keeps it, with a voted flag, under `indiek-polls-v1` in local storage; the API uses no cookies or accounts. A repeated token gets `409 already_voted`, shown as “already voted”.
+- **Requests** use `/request/`; artist and song pages link to it with `?artist=<id>` or `?track=<id>` to preselect the choice. The form appears after `GET /api/health` answers, accepts a catalogue ID and/or up to 140 characters of plain text, and checks the API’s text rules first (links, email addresses and phone numbers are refused; there is no contact field). Nothing about a request is stored in the browser.
+- Any timeout (6 s for reads, 10 s for writes), network error or non-2xx response hides the controls or keeps the user’s input with a short “try again” message. Votes and requests are not sent to Matomo. The privacy notice’s `#participation` section must match what the API stores; retention details are in the [deployment guide](deploy/README.md#참여-api).
+
+To try the flows locally, build a preview, run the API with a test copy of the poll file (for example `"status": "published"` and an `opensAt` in the past) and serve the site through the proxy:
+
+```sh
+npm run build:preview
+INDIEK_API_POLLS=/tmp/polls-test.json INDIEK_API_DB=/tmp/indiek-api-test.sqlite3 \
+  INDIEK_API_ALLOWED_ORIGINS=http://127.0.0.1:4173 cargo run --manifest-path api/Cargo.toml
+npm run serve        # http://127.0.0.1:4173, /api/ → 127.0.0.1:8787 (JSON 503 when the API is stopped)
+```
+
+The API rereads the poll file within 30 seconds, so editing the test copy switches between upcoming, open and closed. Stop the API to see the fallback. Run `npm run build` before committing.
 
 All SQL is in `api/src/db.rs` and `api/migrations/`, written as standard SQL (`ON CONFLICT` upserts, `$n` placeholders) so a later PostgreSQL move stays contained. Settings are `INDIEK_API_BIND`, `INDIEK_API_DB`, `INDIEK_API_SITE_DIR`, `INDIEK_API_POLLS`, `INDIEK_API_ALLOWED_ORIGINS` and `INDIEK_API_RESULTS_CACHE_SECONDS`; local defaults use this checkout and `api/data/` (ignored by Git). `npm run check` runs `cargo test` when `cargo` is on PATH; set `INDIEK_SKIP_API_TESTS=1` to skip it.
 

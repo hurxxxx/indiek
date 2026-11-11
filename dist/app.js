@@ -4,6 +4,7 @@ import {initAnalytics} from './analytics.mjs';
 import {initNavigation, createPageScroll} from './navigation.mjs';
 import {createPlayer} from './player.mjs';
 import {initArtistDirectory} from './directory.mjs';
+import {initPoll, initRequestForm} from './participation.mjs';
 import {mobilePlayerQuery, initMobileViewport} from './mobile.mjs';
 import {escapeHTML as e, artistId, artistPath, trackPath, getArtistRecords, coverHTML, readSaved, searchCatalogue, formatPosition, youtubeConsentHTML, getListeningGuides, guidePath, navigationSection, getPlaybackRecords, songPath} from './shared.mjs';
 
@@ -325,7 +326,7 @@ window.addEventListener('storage',event=>{
 });
 window.addEventListener('pagehide',()=>{player.close();setCompactPlayer(false);});
 syncSaved();
-const analytics=initAnalytics({...catalogue.site.analytics,trackIds:playbackRecords.map(r=>r.id),contentPaths:['/','/stories/','/artists/','/notes/first-listens/',...(catalogue.stories||[]).map(s=>s.path),...all.map(artistPath),...all.map(songPath),...getListeningGuides(catalogue).map(guidePath)]}, catalogue.site.url);
+const analytics=initAnalytics({...catalogue.site.analytics,trackIds:playbackRecords.map(r=>r.id),contentPaths:['/','/stories/','/artists/','/notes/first-listens/','/request/',...(catalogue.polls||[]).map(poll=>poll.path),...(catalogue.stories||[]).map(s=>s.path),...all.map(artistPath),...all.map(songPath),...getListeningGuides(catalogue).map(guidePath)]}, catalogue.site.url);
 
 async function sharePage(button) {
   const url=document.querySelector('link[rel="canonical"]').href;
@@ -457,17 +458,24 @@ function syncNavigation() {
   });
 }
 const directoryState = {query:'', category:'all'};
+// Poll and request widgets talk to the optional /api/ after the page renders; navigation never waits.
+function initParticipation() {
+  const cleanups=[initPoll(),initRequestForm()];
+  return ()=>cleanups.forEach(cleanup=>cleanup?.());
+}
 let cleanupDirectory=initArtistDirectory(catalogue,directoryState);
 let cleanupCarousel=initArtistCarousel();
+let cleanupParticipation=initParticipation();
 syncNavigation();
 initNavigation({
   scroll:pageScroll, closeDialog,
-  beforeSwap:()=>{if(player.current)setCompactPlayer(true);cleanupCarousel?.();cleanupDirectory?.();},
+  beforeSwap:()=>{if(player.current)setCompactPlayer(true);cleanupCarousel?.();cleanupDirectory?.();cleanupParticipation();},
   afterSwap:()=>{
     document.querySelectorAll('[data-js-only]').forEach(el=>el.hidden=false);
     syncSaved();syncPlayer();analytics?.refreshControls();
     cleanupCarousel=initArtistCarousel();
     cleanupDirectory=initArtistDirectory(catalogue,directoryState);
+    cleanupParticipation=initParticipation();
     syncNavigation();
   },
   onNavigate:referrer=>analytics?.trackPageView(referrer),

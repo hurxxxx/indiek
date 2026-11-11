@@ -28,6 +28,8 @@ def reading_path(track): return song_path(track) if song_ready(track) else track
 site = catalogue['site']
 errors = []
 today = datetime.now(timezone(timedelta(hours=9))).date().isoformat()
+polls = json.loads((root/'content/polls.json').read_text())['polls']
+public_polls = [poll for poll in polls if poll['status']!='draft']
 stories = sorted([s for file in (root/'content/stories').glob('*.json') for s in [json.loads(file.read_text())] if s['status']=='published' and s['published']<=today], key=lambda s: (-int(s['published'].replace('-','')),s['id']))
 
 class Page(HTMLParser):
@@ -36,6 +38,7 @@ class Page(HTMLParser):
         self.guide_cards=[]; self.guide_tracks=[]; self.guide_more=[]; self.guide_id=None
         self.room_tracks=[]; self.room_count=None; self.directory_artists=[]; self.images=[]; self.nav=[]
         self.home_sections=[]; self.hero_artists=[]; self.song_id=None; self.similar=[]; self.loads=[]; self.saves=[]
+        self.poll_id=None; self.poll_choices=[]; self.request_page=False; self.request_form=False
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
         if 'data-home-section' in a: self.home_sections.append(a['data-home-section'])
@@ -49,6 +52,10 @@ class Page(HTMLParser):
         if 'data-guide-more' in a: self.guide_more.append(a['data-guide-more'])
         if 'data-guide-page' in a: self.guide_id=a['data-guide-page']
         if 'data-song-page' in a: self.song_id=a['data-song-page']
+        if 'data-poll' in a: self.poll_id=a['data-poll']
+        if 'data-poll-choice' in a: self.poll_choices.append(a['data-poll-choice'])
+        if 'data-request-page' in a: self.request_page=True
+        if 'data-request-form' in a: self.request_form=True
         if 'data-similar-song' in a: self.similar.append(a['data-similar-song'])
         if 'data-load-player' in a: self.loads.append(a['data-load-player'])
         if 'data-save' in a: self.saves.append(a['data-save'])
@@ -266,7 +273,27 @@ for file in ['index.html','notes/first-listens/index.html']:
     selected=guide_ids if file!='index.html' else list(dict.fromkeys(home_sections['guides']['guideOrder']+guide_ids)) if 'guides' in home_sections else []
     if not index or index.guide_cards!=[(id,guide_counts.get(id)) for id in selected]: errors.append('Guide cards disagree with guide pages: '+file)
     elif any(f'/notes/{id}/' not in index.refs for id in selected): errors.append('Guide card link missing: '+file)
-expected_count=len(artists)+len(tracks)+6+len(guide_ids)+len(stories)
+# Listener polls and reader requests: pages from content/polls.json (drafts only in local previews) and /request/.
+for poll in polls:
+    poll_file=(dist/'polls'/poll['id']/'index.html').resolve()
+    if poll['status']=='draft':
+        if poll_file in pages: errors.append(f"dist/polls/{poll['id']}/ is a draft preview; run npm run build before checking or deploying")
+        continue
+    page=pages.get(poll_file)
+    if not page: errors.append('Missing poll page: '+poll['id']); continue
+    expected=poll.get('choiceIds') or [t['id'] for t in tracks]
+    if page.poll_id!=poll['id'] or sorted(page.poll_choices)!=sorted(expected): errors.append(f"Poll page {poll['id']}: choices must match the poll")
+    for id in expected:
+        if id not in page.loads or (id!=catalogue['editorPick']['id'])!=(id in page.saves) or reading_path(by_id[id]) not in page.refs: errors.append(f"Poll page {poll['id']}: {id} needs the shared-player button, Saved eligibility and its page link")
+    if '/privacy-and-terms/#participation' not in page.refs: errors.append(f"Poll page {poll['id']}: missing privacy link")
+request=pages.get((dist/'request/index.html').resolve())
+if not request or not request.request_page or not request.request_form or '/privacy-and-terms/#participation' not in request.refs: errors.append('Missing request page, form or privacy link')
+privacy=pages.get((dist/'privacy-and-terms/index.html').resolve())
+if not privacy or 'participation' not in privacy.ids: errors.append('Privacy notice must describe listener polls and requests (#participation)')
+for t in tracks:
+    if f"/request/?artist={t['artistId']}" not in pages[(dist/artist_path(t).lstrip('/')/'index.html').resolve()].refs: errors.append('Missing request link: '+artist_path(t))
+    if f"/request/?track={t['id']}" not in pages[(dist/song_path(t).lstrip('/')/'index.html').resolve()].refs: errors.append('Missing request link: '+song_path(t))
+expected_count=len(artists)+len(tracks)+7+len(guide_ids)+len(stories)+len(public_polls)
 if len(pages)!=expected_count: errors.append(f'Expected {expected_count} pages, found {len(pages)}')
 if site['url']+'/sitemap.xml' not in (dist/'robots.txt').read_text(): errors.append('Missing robots sitemap')
 # The social publisher reads its artist list from this manifest, so every artist page must be in it.
@@ -274,11 +301,11 @@ promotion=json.loads((dist/'promotion-catalogue.json').read_text())
 promoted={i['path'] for i in promotion['items'] if i['kind']=='artist'}
 for record in artists:
     if artist_path(record) not in promoted: errors.append('Promotion catalogue misses artist '+record['artistId'])
-for source,target in [(f'site/{name}',f'dist/{name}') for name in ['app.js','analytics.mjs','navigation.mjs','directory.mjs','mobile.mjs','player.mjs','styles.css','shared.mjs','stories.mjs']]:
+for source,target in [(f'site/{name}',f'dist/{name}') for name in ['app.js','analytics.mjs','navigation.mjs','directory.mjs','mobile.mjs','player.mjs','participation.mjs','styles.css','shared.mjs','stories.mjs']]:
     if (root/source).read_bytes()!=(root/target).read_bytes(): errors.append('Stale build: '+target)
 runtime=json.loads((dist/'catalogue.js').read_text().removeprefix('export default ').strip().removesuffix(';'))
 story_index=[{**{k:s[k] for k in ['id','slug','title','description','category','published','artistIds','keywords']},'path':f"/stories/{s['slug']}/"} for s in stories]
-if runtime!={**catalogue,'listeningGuides':[g for g in catalogue['listeningGuides'] if g.get('status')!='draft'],'media':media,'stories':story_index}: errors.append('Stale catalogue; run npm run build')
+if runtime!={**catalogue,'listeningGuides':[g for g in catalogue['listeningGuides'] if g.get('status')!='draft'],'media':media,'stories':story_index,'polls':[{'id':poll['id'],'path':f"/polls/{poll['id']}/"} for poll in public_polls]}: errors.append('Stale catalogue; run npm run build')
 if json.loads((root/'.openai/hosting.json').read_text())['static']['directory']!='dist': errors.append('Unexpected static directory')
 if errors: raise SystemExit('\n'.join(errors))
 print(f'PASS: {len(pages)} static pages, local links and anchors, responsive assets, metadata, sitemap, deferred players and shared build data.')
