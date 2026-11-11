@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync, writeFileSync, cpSync, mkdirSync, mkdtempSync, rmSync, existsSync} from 'node:fs';
 import {execFileSync, spawnSync} from 'node:child_process';
+import {webcrypto} from 'node:crypto';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -13,7 +14,8 @@ const authoredPolls = () => JSON.parse(readFileSync(path.join(root, 'content/pol
 const tracks = [{id:'a'}, {id:'b'}, {id:'c'}, {id:'d'}];
 
 test('voting tokens are random base64url strings the API accepts', () => {
-  const tokens = new Set(Array.from({length:50}, () => createToken()));
+  // The production web server runs Node 18, where the browser's global crypto is not defined.
+  const tokens = new Set(Array.from({length:50}, () => createToken(webcrypto)));
   assert.equal(tokens.size, 50);
   for (const token of tokens) {
     assert.ok(validToken(token), token);
