@@ -1,0 +1,320 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artist",
+    "tracks",
+    "uncertainties"
+  ],
+  "properties": {
+    "artist": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "korean",
+        "aliases",
+        "category",
+        "profileSources",
+        "facts"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Official English or romanised name as on Apple Music (US)."
+        },
+        "korean": {
+          "type": "string",
+          "description": "Korean name in Hangul."
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Other spellings and Korean or English names a reader might search for."
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "solo",
+            "bands"
+          ]
+        },
+        "profileSources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "url",
+              "label",
+              "language"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "description": "Original page URL (https)."
+              },
+              "label": {
+                "type": "string",
+                "description": "Short label naming publisher and content, e.g. \"POCLANOS — release notes and credits\"."
+              },
+              "language": {
+                "type": "string",
+                "description": "Language of the page, e.g. Korean or English."
+              }
+            }
+          },
+          "description": "Official or reputable profile pages: label/agency page, Korean Music Awards, Bugs/Genie/Melon artist page, interviews."
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "claim",
+              "sourceURL",
+              "evidence"
+            ],
+            "properties": {
+              "claim": {
+                "type": "string"
+              },
+              "sourceURL": {
+                "type": "string"
+              },
+              "evidence": {
+                "type": "string",
+                "description": "One short contiguous verbatim excerpt from the original page (at least eight characters), no added quotation marks or ellipsis."
+              }
+            }
+          },
+          "description": "Career facts for the introduction and biography, each with verbatim evidence."
+        }
+      }
+    },
+    "tracks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "title",
+          "korean",
+          "appleMusicURL",
+          "releaseTitle",
+          "releaseDate",
+          "credits",
+          "creditsSource",
+          "lyricSource",
+          "backgroundSources",
+          "facts",
+          "lyricObservations",
+          "youtube",
+          "featuredArtists",
+          "uncertainties"
+        ],
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": [
+              "primary",
+              "additional"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "Official English title as shown on Apple Music (US)."
+          },
+          "korean": {
+            "type": "string",
+            "description": "Korean title in Hangul, or empty if the song has only an English title."
+          },
+          "appleMusicURL": {
+            "type": "string",
+            "description": "English Apple Music (https://music.apple.com/us/…) song or album URL for this exact recording."
+          },
+          "releaseTitle": {
+            "type": "string"
+          },
+          "releaseDate": {
+            "type": "string",
+            "description": "YYYY-MM-DD from an official release page."
+          },
+          "credits": {
+            "type": "string",
+            "description": "Credits exactly as listed by the source: lyrics, music, arrangement, production. Empty if not found."
+          },
+          "creditsSource": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "url",
+              "label",
+              "language"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "description": "Original page URL (https)."
+              },
+              "label": {
+                "type": "string",
+                "description": "Short label naming publisher and content, e.g. \"POCLANOS — release notes and credits\"."
+              },
+              "language": {
+                "type": "string",
+                "description": "Language of the page, e.g. Korean or English."
+              }
+            }
+          },
+          "lyricSource": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "url",
+              "label",
+              "language"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "description": "Page that shows the full Korean lyrics (Bugs, Genie, Melon or label), for the writer to read. Empty if none."
+              },
+              "label": {
+                "type": "string"
+              },
+              "language": {
+                "type": "string"
+              }
+            }
+          },
+          "backgroundSources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "url",
+                "label",
+                "language"
+              ],
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "description": "Original page URL (https)."
+                },
+                "label": {
+                  "type": "string",
+                  "description": "Short label naming publisher and content, e.g. \"POCLANOS — release notes and credits\"."
+                },
+                "language": {
+                  "type": "string",
+                  "description": "Language of the page, e.g. Korean or English."
+                }
+              }
+            }
+          },
+          "facts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "claim",
+                "sourceURL",
+                "evidence"
+              ],
+              "properties": {
+                "claim": {
+                  "type": "string"
+                },
+                "sourceURL": {
+                  "type": "string"
+                },
+                "evidence": {
+                  "type": "string",
+                  "description": "One short contiguous verbatim excerpt from the original page (at least eight characters), no added quotation marks or ellipsis."
+                }
+              }
+            },
+            "description": "Facts about the song: release context, artist statements, drama or project, credits. Verbatim evidence."
+          },
+          "lyricObservations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Paraphrased observations about what the lyrics describe (images, addressee, changes), no lyric lines longer than a short phrase."
+          },
+          "youtube": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "videoId",
+                "title",
+                "channel",
+                "channelURL",
+                "videoType",
+                "official"
+              ],
+              "properties": {
+                "videoId": {
+                  "type": "string",
+                  "description": "11-character YouTube ID."
+                },
+                "title": {
+                  "type": "string"
+                },
+                "channel": {
+                  "type": "string",
+                  "description": "Channel name exactly as shown."
+                },
+                "channelURL": {
+                  "type": "string"
+                },
+                "videoType": {
+                  "type": "string",
+                  "enum": [
+                    "live",
+                    "music-video",
+                    "lyric-video",
+                    "audio"
+                  ]
+                },
+                "official": {
+                  "type": "string",
+                  "description": "Why this channel is official: artist, label, distributor, broadcaster or YouTube Topic."
+                }
+              }
+            },
+            "description": "Official recordings in order of preference: official live performance first when one exists, then music video, lyric video, Topic audio. Up to five."
+          },
+          "featuredArtists": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "uncertainties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "uncertainties": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

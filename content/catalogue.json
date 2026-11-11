@@ -451,6 +451,91 @@
         "updated": "2026-11-09",
         "published": "2026-11-09"
       }
+    },
+    {
+      "id": "say-sue-me",
+      "primaryTrackId": "say-sue-me-old-town",
+      "artist": "Say Sue Me",
+      "korean": "세이수미",
+      "aliases": "세이수미 세이수미(Say Sue Me) SaySueMe Say Sue Me",
+      "category": "bands",
+      "artistIntro": "Say Sue Me are an indie rock band from Busan, where their rehearsal and recording space sits a short walk from Gwangalli Beach. Vocalist and guitarist Sumi Choi writes lyrics in both English and Korean.",
+      "artistSource": "https://koreana.or.kr/koreana/na/ntt/selectNttInfo.do?bbsId=1121&nttSn=127551",
+      "artistSourceName": "Koreana — Capturing the Joy Within, interview by Lim Hee-yun",
+      "artistSourceLanguage": "English",
+      "biography": "The band formed in 2012 and released their debut album, We've Sobered Up, in 2014. They signed with British label Damnably in 2017.",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-11-11"
+      }
+    },
+    {
+      "id": "silica-gel",
+      "primaryTrackId": "silica-gel-no-pain",
+      "artist": "Silica Gel",
+      "korean": "실리카겔",
+      "aliases": "Silica Gel SILICA GEL 실리카겔",
+      "category": "bands",
+      "artistIntro": "Silica Gel is a four-piece band with two vocalists: guitarist Kim Chunchu and keyboardist Kim Hanjoo, joined by drummer Kim Geonjay and bassist Choi Woonghee.",
+      "artistSource": "https://poclanos.com/artist/%EC%8B%A4%EB%A6%AC%EC%B9%B4%EA%B2%94/",
+      "artistSourceName": "POCLANOS — artist profile",
+      "artistSourceLanguage": "Korean",
+      "biography": "Their self-titled first album earned them Rookie of the Year at the Korean Music Awards.",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-11-11"
+      }
+    },
+    {
+      "id": "meaningful-stone",
+      "primaryTrackId": "meaningful-stone-beep-boop-beep-boop",
+      "artist": "Meaningful Stone",
+      "korean": "김뜻돌",
+      "aliases": "김뜻돌 Meaningful Stone Kim Tteutdol Kim Ji-min 김지민",
+      "category": "solo",
+      "artistIntro": "Meaningful Stone (김뜻돌) writes songs from remembered dreams and personal relationships. In a Genie interview, she described wanting to record the atmosphere that lingered between dreams and waking life.",
+      "artistSource": "https://genie.co.kr/magazine/subMain?ctid=30&mgz_seq=9832",
+      "artistSourceName": "Genie — Meaningful Stone interview and debut history",
+      "artistSourceLanguage": "Korean",
+      "biography": "She debuted in 2017 with the single 꿈속의 카메라 and released her first full-length album, A Call from My Dream, in 2020. She won Rookie of the Year at the 2021 Korean Music Awards.",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-11-11"
+      }
+    },
+    {
+      "id": "lang-lee",
+      "primaryTrackId": "lang-lee-there-is-a-wolf",
+      "artist": "Lang Lee",
+      "korean": "이랑",
+      "aliases": "Lang Lee Lee Lang 이랑 イ・ラン",
+      "category": "solo",
+      "artistIntro": "Lang Lee writes songs about poverty, loss and the lives of people around her. Her collaborations with Unnie Choir bring a collective voice to songs about exclusion and separation.",
+      "artistSource": "https://langleeschool.bandcamp.com/album/there-is-a-wolf",
+      "artistSourceName": "Lang Lee / Sweet Dreams Press — album notes and credits",
+      "artistSourceLanguage": "English",
+      "biography": "She released her third album, There is A Wolf, on August 23, 2021. She wrote all ten songs and arranged and produced the album with De-bong Lee.",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-11-11"
+      }
+    },
+    {
+      "id": "jeongmilla",
+      "primaryTrackId": "jeongmilla-departing-from-seoul-station",
+      "artist": "JEONGMILLA",
+      "korean": "정밀아",
+      "aliases": "정밀아 JEONGMILLA Jeongmilla Jeong Milla",
+      "category": "solo",
+      "artistIntro": "JEONGMILLA is a folk singer-songwriter who writes about her life by paying attention to the places around her. On CheongPa Sonata, that means the streets, neighbours and public squares within walking distance of home.",
+      "artistSource": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+      "artistSourceName": "Yonhap — Kim Hyo-jung’s interview with JEONGMILLA, January 7, 2021",
+      "artistSourceLanguage": "Korean",
+      "biography": "She released her first two studio albums in 2014 and 2017, followed by her third, CheongPa Sonata, in 2020. She studied art at university and continues to make visual art alongside music.",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-11-11"
+      }
     }
   ],
   "tracks": [
@@ -1618,6 +1703,440 @@
       },
       "provider": "youtube",
       "url": "https://www.youtube.com/watch?v=fxAGHl7bEp0"
+    },
+    {
+      "id": "say-sue-me-old-town",
+      "artistId": "say-sue-me",
+      "slug": "old-town",
+      "album": "Where We Were Together",
+      "release": "Where We Were Together",
+      "year": "2018",
+      "releaseDate": "2018-04-13",
+      "genre": "INDIE ROCK",
+      "image": "say-sue-me-where-we-were-together.jpg",
+      "track": "Old Town",
+      "duration": "04:10",
+      "provider": "youtube",
+      "videoId": "sdiQHoWeDbU",
+      "channel": "KEXP",
+      "url": "https://www.youtube.com/watch?v=sdiQHoWeDbU",
+      "videoType": "live",
+      "note": "Friends leave; the wish to stay keeps changing.",
+      "description": "In “Old Town”, friends have moved away while the speaker remains. Wanting to leave and wanting to stay keep trading places.",
+      "source": "https://music.apple.com/us/album/where-we-were-together/1350445710",
+      "sourceName": "Say Sue Me — Where We Were Together on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://saysueme.bandcamp.com/album/where-we-were-together",
+          "label": "Say Sue Me — official album release notes and credits",
+          "language": "English and Korean"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands"
+      ],
+      "listeningNote": "“Old Town” appears on Say Sue Me's second album, Where We Were Together, released on April 13, 2018. Sumi Choi wrote the lyrics and Byungkyu Kim composed the music.",
+      "credits": "Lyrics by Sumi Choi; music by Byungkyu Kim; arranged by Say Sue Me.",
+      "lyricNotes": {
+        "heading": "The places remain, the friends have gone",
+        "themes": [
+          "Friends moving away",
+          "Staying or leaving",
+          "Familiar places"
+        ],
+        "paragraphs": [
+          "The speaker feels left behind as friends leave town. Each wish to go meets a wish to stay, and the order keeps reversing. Neither choice becomes a settled answer: leaving might change their situation, but attachment to the town remains.",
+          "Later, the speaker addresses someone absent, reporting that their familiar street and beach are still there. These ordinary updates make the separation clearer: the places remain available, but spending time there together is no longer possible in the same way. The town still has crowds, yet the speaker feels empty. What is missing is particular company, rather than people in general."
+        ],
+        "source": {
+          "url": "https://saysueme.bandcamp.com/album/where-we-were-together",
+          "label": "Say Sue Me — official Old Town lyrics",
+          "language": "English"
+        }
+      }
+    },
+    {
+      "id": "silica-gel-no-pain",
+      "artistId": "silica-gel",
+      "slug": "no-pain",
+      "album": "NO PAIN",
+      "release": "NO PAIN - Single",
+      "year": "2022",
+      "releaseDate": "2022-08-25",
+      "genre": "INDIE ROCK",
+      "image": "silica-gel-no-pain.jpg",
+      "track": "NO PAIN",
+      "duration": "03:49",
+      "provider": "youtube",
+      "videoId": "qg40imnWXG8",
+      "channel": "Silica Gel 실리카겔",
+      "url": "https://www.youtube.com/watch?v=qg40imnWXG8",
+      "videoType": "live",
+      "note": "A place to sing together, with leaving still on the mind.",
+      "description": "“NO PAIN” invites people who have felt excluded into a house where everyone can sing together. The speaker also considers leaving and asks not to be hated, keeping that welcome unsettled.",
+      "source": "https://music.apple.com/us/album/no-pain-single/1764118199",
+      "sourceName": "Silica Gel — NO PAIN - Single on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://poclanos.com/album/no-pain/",
+          "label": "POCLANOS — NO PAIN release statement and credits",
+          "language": "Korean and English"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands"
+      ],
+      "listeningNote": "The release statement on POCLANOS says “NO PAIN” began with questions about living through time and what it means to transcend time and space. The single was released on August 25, 2022.",
+      "credits": "Lyrics by Silica Gel; music by Silica Gel; arranged by Silica Gel; produced by Silica Gel.",
+      "lyricNotes": {
+        "heading": "An invitation with room for uncertainty",
+        "themes": [
+          "Belonging",
+          "Leaving"
+        ],
+        "paragraphs": [
+          "The house the speaker has made offers a concrete place for people who have been excluded. Singing together is the invitation: belonging begins with something they can share. The warmth of a communal fire extends that welcome, giving the gathering a small, tangible centre.",
+          "Yet the speaker also thinks of leaving and asks not to be hated. Wanting others close does not settle whether the speaker will stay. Later, love entrusted to the sun and figures gathering in thick night fog make the scene harder to place. Those images leave the gathering’s purpose uncertain, without undoing the opening wish for company."
+        ],
+        "source": {
+          "url": "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
+          "label": "Genie — NO PAIN lyrics and credits",
+          "language": "Korean"
+        }
+      }
+    },
+    {
+      "id": "silica-gel-tik-tak-tok",
+      "artistId": "silica-gel",
+      "slug": "tik-tak-tok",
+      "album": "Tik Tak Tok",
+      "release": "Tik Tak Tok - Single",
+      "year": "2023",
+      "releaseDate": "2023-08-19",
+      "genre": "INDIE ROCK",
+      "image": "silica-gel-tik-tak-tok.jpg",
+      "track": "Tik Tak Tok (feat. So!YoON!)",
+      "duration": "07:30",
+      "provider": "youtube",
+      "videoId": "DIPxnt5vnhU",
+      "channel": "Silica Gel 실리카겔",
+      "url": "https://www.youtube.com/watch?v=DIPxnt5vnhU",
+      "videoType": "music-video",
+      "note": "So!YoON! joins a song framed by the Machine Boy mystery.",
+      "description": "Silica Gel and So!YoON! share the lyric and music credits on “Tik Tak Tok”. Its release statement asks whether Machine Boy is a living creature or another kind of existence that cannot be described.",
+      "source": "https://music.apple.com/us/album/tik-tak-tok-single/1836310183",
+      "sourceName": "Silica Gel — Tik Tak Tok - Single on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://poclanos.com/album/tik-tak-tok/",
+          "label": "POCLANOS — Tik Tak Tok release statement, track list and credits",
+          "language": "Korean and English"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands"
+      ],
+      "listeningNote": "Released on August 19, 2023, Tik Tak Tok - Single places “T” before the featured song. The selected music video includes both tracks, so its running time is longer than the individual Apple Music recording.",
+      "credits": "Lyrics by Silica Gel and So!YoON!; music by Silica Gel and So!YoON!; arranged by Silica Gel; produced by Silica Gel."
+    },
+    {
+      "id": "meaningful-stone-beep-boop-beep-boop",
+      "artistId": "meaningful-stone",
+      "slug": "beep-boop-beep-boop",
+      "album": "A Call from My Dream",
+      "release": "A Call from My Dream",
+      "year": "2020",
+      "releaseDate": "2020-09-27",
+      "genre": "INDIE ROCK",
+      "image": "meaningful-stone-a-call-from-my-dream.jpg",
+      "track": "Beep-Boop, Beep-Boop",
+      "koreanTitle": "삐뽀삐뽀",
+      "duration": "03:23",
+      "provider": "youtube",
+      "videoId": "UAHP1VgljnE",
+      "channel": "온스테이지ONSTAGE",
+      "url": "https://www.youtube.com/watch?v=UAHP1VgljnE",
+      "videoType": "live",
+      "note": "On being heard before it is too late.",
+      "description": "A falling construction crane makes the possibility of sudden death concrete in “Beep-Boop, Beep-Boop”. The speaker asks why attention should arrive only after someone disappears.",
+      "source": "https://music.apple.com/us/album/a-call-from-my-dream/1533397185",
+      "sourceName": "Meaningful Stone — A Call from My Dream on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/track/32028457",
+          "label": "Bugs — Beep-Boop, Beep-Boop lyrics and credits",
+          "language": "Korean"
+        },
+        {
+          "url": "https://poclanos.com/album/꿈에서-걸려온-전화/",
+          "label": "POCLANOS — A Call from My Dream release notes and track credits",
+          "language": "Korean and English"
+        },
+        {
+          "url": "https://poclanos.com/album/psychomania/",
+          "label": "POCLANOS — Onewoo Kang’s English credit",
+          "language": "Korean and English"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands"
+      ],
+      "listeningNote": "The song appears on A Call from My Dream, released on September 27, 2020. POCLANOS lists this recording and “삐뽀삐뽀 (2018)” separately, with different arrangement credits. The video here is an ONSTAGE live performance.",
+      "credits": "Lyrics by Meaningful Stone; music by Meaningful Stone; arranged by Meaningful Stone, Onewoo Kang, Park Mun-chi (박문치), Kang Jeon-ho (강전호) and Han Je-ri (한제리).",
+      "lyricNotes": {
+        "heading": "Being heard before disappearing",
+        "themes": [
+          "Mortality",
+          "Being heard",
+          "Human worth"
+        ],
+        "paragraphs": [
+          "The imagined crane accident places danger on an ordinary walk. Alongside it, the request against belated phone calls suggests a hurt that already exists: the speaker wants attention while they are still here. People shutting their ears while news grows louder makes public noise feel distant from the person asking to be heard.",
+          "The ending changes the focus from when death might happen to what it should mean for others. Its repeated wishes resist having a death exchanged for another person’s sacrifice, grief, money or reputation. The circumstances remain open, but the repetition gives the speaker a clear boundary within that uncertainty."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/32028457",
+          "label": "Bugs — Beep-Boop, Beep-Boop Korean lyrics",
+          "language": "Korean"
+        }
+      }
+    },
+    {
+      "id": "meaningful-stone-psychomania",
+      "artistId": "meaningful-stone",
+      "slug": "psychomania",
+      "album": "Psychomania",
+      "release": "Psychomania — Single",
+      "year": "2022",
+      "releaseDate": "2022-10-29",
+      "genre": "ALTERNATIVE ROCK",
+      "image": "meaningful-stone-psychomania.jpg",
+      "track": "Psychomania",
+      "duration": "04:00",
+      "provider": "youtube",
+      "videoId": "aLY7YSdekpU",
+      "channel": "POCLANOS",
+      "url": "https://www.youtube.com/watch?v=aLY7YSdekpU",
+      "videoType": "music-video",
+      "note": "A conversation with a fierce voice within.",
+      "description": "The release note for “Psychomania” stages an encounter with a fierce inner voice. Their conversation moves through anger, the need to keep living and an unsettling request for a prayer.",
+      "source": "https://music.apple.com/us/album/psychomania-single/1651597808",
+      "sourceName": "Meaningful Stone — Psychomania on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://poclanos.com/album/psychomania/",
+          "label": "POCLANOS — Psychomania release notes and credits",
+          "language": "Korean and English"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands"
+      ],
+      "listeningNote": "“Psychomania - Single” was released on October 29, 2022. Meaningful Stone wrote and produced the song, and the official credits name MELTMIRROR as the music video’s director.",
+      "credits": "Lyrics by Meaningful Stone; music by Meaningful Stone; arranged by Meaningful Stone, Onewoo Kang, EJae and Nahyun Kim; produced by Meaningful Stone."
+    },
+    {
+      "id": "lang-lee-there-is-a-wolf",
+      "artistId": "lang-lee",
+      "slug": "there-is-a-wolf",
+      "album": "There is A Wolf",
+      "release": "There is A Wolf",
+      "year": "2021",
+      "releaseDate": "2021-08-23",
+      "genre": "FOLK",
+      "image": "lang-lee-there-is-a-wolf.jpg",
+      "track": "There is A Wolf",
+      "koreanTitle": "늑대가 나타났다",
+      "duration": "05:39",
+      "provider": "youtube",
+      "videoId": "jD8OrOnGr1w",
+      "channel": "이랑 Lang Lee",
+      "url": "https://www.youtube.com/watch?v=jD8OrOnGr1w",
+      "videoType": "live",
+      "note": "Hungry people outside the gates, labelled as threats.",
+      "description": "People seeking food are called witches, rioters and wolves in “There is A Wolf” (늑대가 나타났다). The lyric gives those accused a reply: they are the workers who make the food others enjoy.",
+      "source": "https://music.apple.com/us/album/there-is-a-wolf/1703578645",
+      "sourceName": "Lang Lee — There is A Wolf on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://langleeschool.bandcamp.com/album/there-is-a-wolf",
+          "label": "Lang Lee / Sweet Dreams Press — album notes and official credits",
+          "language": "English"
+        },
+        {
+          "url": "https://music.bugs.co.kr/track/6126269",
+          "label": "Bugs — There is A Wolf lyrics and track credits",
+          "language": "Korean"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands",
+        "distinct-voices"
+      ],
+      "listeningNote": "The title track of Lang Lee’s third album features Unnie Choir, which the official album notes describe as a group celebrating sexual diversity and feminism. The album was released on August 23, 2021; the featured video is a later live performance.",
+      "credits": "Lyrics by Lang Lee; music by Lang Lee; arranged and produced by De-bong Lee and Lang Lee.",
+      "lyricNotes": {
+        "heading": "Who gets called a wolf",
+        "themes": [
+          "Poverty",
+          "Exclusion",
+          "Labour"
+        ],
+        "paragraphs": [
+          "The closed city gates separate hungry people from the food kept within. As people grieve, demand bread or take grain, threatening labels follow them. The wolf of the title can be read as a name imposed on people whose hunger is treated as a danger, while the conditions behind their actions go unanswered.",
+          "Later, the people being described speak for themselves. They identify themselves as the makers of bread and wine, insisting on their work and their need to feed their children. The speaker’s reference to poor friends also brings the story closer to everyday life. Poverty becomes something the addressee is asked to consider as a possible part of their own future."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/6126269",
+          "label": "Bugs — There is A Wolf Korean lyrics",
+          "language": "Korean"
+        }
+      }
+    },
+    {
+      "id": "lang-lee-the-generation-of-tribulation",
+      "artistId": "lang-lee",
+      "slug": "the-generation-of-tribulation",
+      "album": "The Generation of Tribulation",
+      "release": "The Generation of Tribulation — Single",
+      "year": "2020",
+      "releaseDate": "2020-06-20",
+      "genre": "FOLK",
+      "image": "lang-lee-the-generation-of-tribulation.jpg",
+      "track": "The Generation of Tribulation (feat. Unnie Choir)",
+      "koreanTitle": "환란의 세대 (feat. 아는언니들)",
+      "duration": "05:17",
+      "provider": "youtube",
+      "videoId": "zQr2u8qGz5o",
+      "channel": "이랑 Lang Lee",
+      "url": "https://www.youtube.com/watch?v=zQr2u8qGz5o",
+      "videoType": "music-video",
+      "note": "A song made before an audience, revisited with a choir.",
+      "description": "“The Generation of Tribulation (feat. Unnie Choir)” began at the final performance of Lang Lee’s 2015 series 신곡의 방, where audiences watched songs being made. For its 2020 single release, she developed the arrangement with her band and Unnie Choir.",
+      "source": "https://music.apple.com/us/album/the-generation-of-tribulation-single/1518542041",
+      "sourceName": "Lang Lee — The Generation of Tribulation on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=8583",
+          "label": "Genie — The Generation of Tribulation creation and collaboration history",
+          "language": "Korean"
+        },
+        {
+          "url": "https://langleeschool.bandcamp.com/album/the-generation-of-tribulation",
+          "label": "Lang Lee / Sweet Dreams Press — single release and official credits",
+          "language": "English and Japanese"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands",
+        "distinct-voices"
+      ],
+      "listeningNote": "Genie’s creation feature traces the song to November 2, 2015: Lang Lee combined notes and a melody from a voice recording, then recorded guitar and vocals at the performance. The Generation of Tribulation - Single arrived on June 20, 2020, with the Unnie Choir recording and a separate version produced by Manami Kakudo.",
+      "credits": "Lyrics by Lang Lee; music by Lang Lee; arranged by Lang Lee, Jeongwoo Lee, E Hyeji, Younghun Kim and JiWook Mae; produced by Lang Lee."
+    },
+    {
+      "id": "jeongmilla-departing-from-seoul-station",
+      "artistId": "jeongmilla",
+      "slug": "departing-from-seoul-station",
+      "album": "CheongPa Sonata",
+      "release": "CheongPa Sonata",
+      "year": "2020",
+      "releaseDate": "2020-10-22",
+      "genre": "FOLK",
+      "image": "jeongmilla-cheongpa-sonata.jpg",
+      "track": "Departing from Seoul Station",
+      "koreanTitle": "서울역에서 출발",
+      "duration": "05:49",
+      "provider": "youtube",
+      "videoId": "dSUsBRqOBCg",
+      "channel": "정밀아JEONGMILLA",
+      "url": "https://www.youtube.com/watch?v=dSUsBRqOBCg",
+      "videoType": "music-video",
+      "note": "A call to Mum, a changing life and a station close to home.",
+      "description": "A conversation with her mother turns Seoul Station into a way of looking back at the speaker’s life: arriving for a university entrance exam, expecting to become a painter and finding a living in music. JEONGMILLA wrote the words and music.",
+      "source": "https://music.apple.com/us/album/cheongpa-sonata/1536717714",
+      "sourceName": "JEONGMILLA — CheongPa Sonata on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+          "label": "Genie — Departing from Seoul Station lyrics and credits",
+          "language": "Korean"
+        },
+        {
+          "url": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+          "label": "Yonhap — JEONGMILLA on CheongPa Sonata and her neighbourhood",
+          "language": "Korean"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands",
+        "distinct-voices"
+      ],
+      "listeningNote": "JEONGMILLA told Yonhap that she moved to Cheongpa-dong in autumn 2019, where she could see Seoul Station from her window. Walks through the surrounding neighbourhoods helped shape CheongPa Sonata, her third studio album.",
+      "credits": "Lyrics by JEONGMILLA; music by JEONGMILLA; arranged by JEONGMILLA.",
+      "lyricNotes": {
+        "heading": "The station stays as life changes",
+        "themes": [
+          "Family",
+          "Changing plans",
+          "Everyday places"
+        ],
+        "paragraphs": [
+          "The song begins with a mother’s practical worries about a late journey home after a performance. The speaker answers with a small reassurance: since moving, she can walk home from the station. That ordinary detail gives the conversation its closeness; there is no grand announcement, just news that might ease a parent’s concern.",
+          "Seoul Station then connects the present to an earlier arrival for a university entrance exam. The speaker once expected to become a painter and now makes a living singing. She acknowledges how often life has changed since she was twenty without deciding whether those changes amount to success or failure.",
+          "The station also offers routes to her hometown and a school friend’s house. It belongs to her relationships as much as her memories. The closing wish to take a train to the sea before summer keeps the future modest and open: another possible departure from a familiar place."
+        ],
+        "source": {
+          "url": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
+          "label": "Genie — Departing from Seoul Station Korean lyrics",
+          "language": "Korean"
+        }
+      }
+    },
+    {
+      "id": "jeongmilla-flower",
+      "artistId": "jeongmilla",
+      "slug": "flower",
+      "album": "Flower",
+      "release": "Flower - Single",
+      "year": "2016",
+      "releaseDate": "2016-04-11",
+      "genre": "FOLK",
+      "image": "jeongmilla-flower.jpg",
+      "track": "Flower",
+      "koreanTitle": "꽃",
+      "duration": "03:45",
+      "provider": "youtube",
+      "videoId": "Ni3cgnuOoFg",
+      "channel": "정밀아JEONGMILLA",
+      "url": "https://www.youtube.com/watch?v=Ni3cgnuOoFg",
+      "videoType": "live",
+      "note": "Affection without a list of reasons.",
+      "description": "“Flower” addresses someone whose worth needs no proof through beauty, achievement or possessions. Na Tae-joo wrote the words, and JEONGMILLA composed and arranged the song.",
+      "source": "https://music.apple.com/us/album/flower-single/1592973254",
+      "sourceName": "JEONGMILLA — Flower - Single on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08",
+          "label": "Bugs — Flower single lyrics and credits",
+          "language": "Korean"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands",
+        "distinct-voices"
+      ],
+      "listeningNote": "Bugs lists this recording on the single 꽃 and credits JEONGMILLA as its vocalist, composer and arranger, with lyrics by Na Tae-joo. The linked performance is a live video from her own channel.",
+      "credits": "Lyrics by Na Tae-joo; music by JEONGMILLA; arranged by JEONGMILLA."
     }
   ],
   "featuredArtists": [

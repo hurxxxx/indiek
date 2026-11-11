@@ -11,6 +11,8 @@ Write something worth spending time with. The reader should leave knowing someth
 
 Read the relevant entries in [the reference library](references/benchmarks.json) and [the editing criteria](references/editing.md). For social adaptations also read the project's `promotion/voice.md`. A reference is evidence of a writing technique, not a template or permission to borrow text.
 
+For artist and song entries in the catalogue, follow [the catalogue entry rules](references/catalogue.md).
+
 For lyric work, default to [lyric commentary](references/editing.md#lyric-commentary): explain the words' meaning and emotional movement gently, with concrete textual support and without exaggeration. Use the [translation criteria](references/editing.md#lyric-translation) only when translation is explicitly requested.
 
 Prefer identifiable writers' original reporting, interviews and criticism. Check the byline and reporting context, not an AI detector. Separate observed positive reader responses from craft-only references; unavailable metrics remain unknown. Read the actual article and relevant replies. Neither a famous publisher nor a large vote count proves the prose caused engagement. Do not reproduce whole articles in the library.

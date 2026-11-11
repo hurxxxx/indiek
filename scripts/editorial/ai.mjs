@@ -6,12 +6,13 @@ import {publicRequest,plain} from '../promotion/news.mjs';
 import {approval} from './workflow.mjs';
 import {skillRevision} from './content.mjs';
 
-export async function askJSON(root,stage,prompt,{timeout=420000,images=[]}={}) {
+// `schema` lets other runners (the catalogue pipeline) reuse this call with their own output schemas.
+export async function askJSON(root,stage,prompt,{timeout=420000,images=[],schema=path.join(root,`scripts/editorial/${stage}.schema.json`)}={}) {
   const dir=mkdtempSync(path.join(tmpdir(),'indiek-editorial-')),output=path.join(dir,'result.json');
   const args=['exec','--ignore-user-config','--ephemeral','--sandbox','read-only','--skip-git-repo-check','--color','never','-c','web_search="live"'];
   for(const feature of ['shell_tool','apps','plugins','multi_agent','browser_use','computer_use'])args.push('--disable',feature);
   for(const image of images)args.push('--image',image);
-  args.push('--output-schema',path.join(root,`scripts/editorial/${stage}.schema.json`),'-o',output,'-');
+  args.push('--output-schema',schema,'-o',output,'-');
   try{
     await new Promise((resolve,reject)=>{
       const child=spawn('codex',args,{cwd:dir,env:{PATH:process.env.PATH,HOME:process.env.HOME,USER:process.env.USER,LANG:'C.UTF-8'},stdio:['pipe','ignore','ignore']});

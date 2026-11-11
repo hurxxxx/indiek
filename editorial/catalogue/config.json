@@ -1,0 +1,25 @@
+{
+  "candidateTarget": 200,
+  "perLens": 45,
+  "lensConcurrency": 4,
+  "weights": {
+    "streaming": 0.35,
+    "community": 0.2,
+    "recognition": 0.15,
+    "ost": 0.1,
+    "scene": 0.1,
+    "search": 0.1
+  },
+  "researchTimeoutSeconds": 1200,
+  "callTimeoutSeconds": 900,
+  "trackConcurrency": 3,
+  "maxVersionsPerTrack": 3,
+  "maxTracksPerRun": 10,
+  "deadlineSeconds": 14400,
+  "tracksPerNewArtist": 2,
+  "humanSampleRate": 0.15,
+  "playback": {
+    "timeoutSeconds": 45,
+    "minimumSeconds": 3
+  }
+}

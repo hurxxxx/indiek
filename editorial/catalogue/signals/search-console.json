@@ -1,0 +1,12 @@
+{
+  "source": "Search Console UI (https://indiek.com/ property), top queries recorded in docs/promotion.md G016; other queries were not exported",
+  "checked": "2026-11-06",
+  "period": "28 days, data 2026-10-17 to 2026-11-06",
+  "rows": [
+    {"query": "korean indie music", "clicks": 0, "impressions": 43},
+    {"query": "indiek", "clicks": 1, "impressions": 19},
+    {"query": "the black skirts", "clicks": 0, "impressions": 10},
+    {"query": "youra mimi", "clicks": 0, "impressions": 5},
+    {"query": "even if you leave hanroro lyrics english", "clicks": 0, "impressions": 3}
+  ]
+}

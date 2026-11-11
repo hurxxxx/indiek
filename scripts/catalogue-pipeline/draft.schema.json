@@ -1,0 +1,204 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artist",
+    "tracks"
+  ],
+  "properties": {
+    "artist": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artistIntro",
+        "biography",
+        "artistSource",
+        "artistSourceName",
+        "artistSourceLanguage",
+        "aliases",
+        "category"
+      ],
+      "properties": {
+        "artistIntro": {
+          "type": "string"
+        },
+        "biography": {
+          "type": "string"
+        },
+        "artistSource": {
+          "type": "string",
+          "description": "The single best profile source URL for the introduction."
+        },
+        "artistSourceName": {
+          "type": "string"
+        },
+        "artistSourceLanguage": {
+          "type": "string"
+        },
+        "aliases": {
+          "type": "string",
+          "description": "Space-separated search aliases (other spellings, Korean and English names)."
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "solo",
+            "bands"
+          ]
+        }
+      }
+    },
+    "tracks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "genre",
+          "note",
+          "description",
+          "listeningNote",
+          "credits",
+          "extraSources",
+          "guideTags",
+          "lyricNotes"
+        ],
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "The track key given in the brief."
+          },
+          "genre": {
+            "type": "string",
+            "description": "Upper-case genre label like the existing catalogue, e.g. INDIE ROCK or R&B / SOUL."
+          },
+          "note": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "listeningNote": {
+            "type": "string"
+          },
+          "credits": {
+            "type": "string"
+          },
+          "extraSources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "url",
+                "label",
+                "language"
+              ],
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "description": "Original page URL (https)."
+                },
+                "label": {
+                  "type": "string",
+                  "description": "Short label naming publisher and content, e.g. \"POCLANOS — release notes and credits\"."
+                },
+                "language": {
+                  "type": "string",
+                  "description": "Language of the page, e.g. Korean or English."
+                }
+              }
+            },
+            "description": "Sources for listeningNote and credits."
+          },
+          "guideTags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "guitars-and-bands",
+                "distinct-voices"
+              ]
+            }
+          },
+          "lyricNotes": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "heading",
+              "themes",
+              "paragraphs",
+              "source",
+              "backgroundSources"
+            ],
+            "properties": {
+              "heading": {
+                "type": "string",
+                "description": "Empty for grade B."
+              },
+              "themes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "paragraphs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "source": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "url",
+                  "label",
+                  "language"
+                ],
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "language": {
+                    "type": "string"
+                  }
+                }
+              },
+              "backgroundSources": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "url",
+                    "label",
+                    "language"
+                  ],
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "description": "Original page URL (https)."
+                    },
+                    "label": {
+                      "type": "string",
+                      "description": "Short label naming publisher and content, e.g. \"POCLANOS — release notes and credits\"."
+                    },
+                    "language": {
+                      "type": "string",
+                      "description": "Language of the page, e.g. Korean or English."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["lens", "candidates", "uncertainties"],
+  "properties": {
+    "lens": {"type": "string"},
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "korean", "category", "genres", "scope", "signals", "tracks", "officialURL"],
+        "properties": {
+          "name": {"type": "string", "description": "Official English or romanised artist name as used on Apple Music, Spotify or the official YouTube channel."},
+          "korean": {"type": "string", "description": "Korean name in Hangul; empty only when the artist has none."},
+          "category": {"type": "string", "enum": ["solo", "bands"], "description": "bands for groups, duos and bands; solo for a solo artist or solo project."},
+          "genres": {"type": "array", "items": {"type": "string"}},
+          "scope": {"type": "string", "enum": ["indie", "band-scene", "idol-band", "ost", "rnb-soul", "folk-acoustic", "jazz", "other-adjacent"]},
+          "signals": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["type", "url", "publisher", "detail", "linkedArtistId"],
+              "properties": {
+                "type": {"type": "string", "enum": ["community", "ost", "scene", "recognition", "chart"]},
+                "url": {"type": "string", "description": "An original page you opened that shows this signal."},
+                "publisher": {"type": "string"},
+                "detail": {"type": "string", "description": "What the page shows, in one short factual sentence."},
+                "linkedArtistId": {"type": "string", "description": "For scene links: the existing indiek artist ID this connects to; otherwise empty."}
+              }
+            }
+          },
+          "tracks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["title", "korean", "reason"],
+              "properties": {
+                "title": {"type": "string", "description": "Official English title as on Apple Music (US)."},
+                "korean": {"type": "string"},
+                "reason": {"type": "string", "description": "Checkable reason this song represents demand (chart, OST, community request, live staple)."}
+              }
+            }
+          },
+          "officialURL": {"type": "string", "description": "Official label, agency or artist page, or empty."}
+        }
+      }
+    },
+    "uncertainties": {"type": "array", "items": {"type": "string"}}
+  }
+}

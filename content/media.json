@@ -263,6 +263,54 @@
       }
     ]
   },
+  "jeongmilla-cheongpa-sonata.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/jeongmilla-cheongpa-sonata-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 7654
+      },
+      {
+        "src": "/assets/optimized/jeongmilla-cheongpa-sonata-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 19480
+      },
+      {
+        "src": "/assets/optimized/jeongmilla-cheongpa-sonata-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 36130
+      }
+    ]
+  },
+  "jeongmilla-flower.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/jeongmilla-flower-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 27942
+      },
+      {
+        "src": "/assets/optimized/jeongmilla-flower-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 97452
+      },
+      {
+        "src": "/assets/optimized/jeongmilla-flower-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 169184
+      }
+    ]
+  },
   "kim-sawol-romance.jpg": {
     "width": 1200,
     "height": 1200,
@@ -284,6 +332,102 @@
         "width": 1000,
         "height": 1000,
         "bytes": 149306
+      }
+    ]
+  },
+  "lang-lee-the-generation-of-tribulation.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/lang-lee-the-generation-of-tribulation-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 3598
+      },
+      {
+        "src": "/assets/optimized/lang-lee-the-generation-of-tribulation-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 8868
+      },
+      {
+        "src": "/assets/optimized/lang-lee-the-generation-of-tribulation-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 17666
+      }
+    ]
+  },
+  "lang-lee-there-is-a-wolf.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/lang-lee-there-is-a-wolf-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 33898
+      },
+      {
+        "src": "/assets/optimized/lang-lee-there-is-a-wolf-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 97316
+      },
+      {
+        "src": "/assets/optimized/lang-lee-there-is-a-wolf-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 168226
+      }
+    ]
+  },
+  "meaningful-stone-a-call-from-my-dream.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/meaningful-stone-a-call-from-my-dream-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 13650
+      },
+      {
+        "src": "/assets/optimized/meaningful-stone-a-call-from-my-dream-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 85654
+      },
+      {
+        "src": "/assets/optimized/meaningful-stone-a-call-from-my-dream-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 263124
+      }
+    ]
+  },
+  "meaningful-stone-psychomania.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/meaningful-stone-psychomania-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 10296
+      },
+      {
+        "src": "/assets/optimized/meaningful-stone-psychomania-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 29666
+      },
+      {
+        "src": "/assets/optimized/meaningful-stone-psychomania-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 85404
       }
     ]
   },
@@ -383,6 +527,30 @@
       }
     ]
   },
+  "say-sue-me-where-we-were-together.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/say-sue-me-where-we-were-together-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 27956
+      },
+      {
+        "src": "/assets/optimized/say-sue-me-where-we-were-together-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 96816
+      },
+      {
+        "src": "/assets/optimized/say-sue-me-where-we-were-together-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 219024
+      }
+    ]
+  },
   "se-so-neon.jpg": {
     "width": 1000,
     "height": 1000,
@@ -404,6 +572,54 @@
         "width": 1000,
         "height": 1000,
         "bytes": 72190
+      }
+    ]
+  },
+  "silica-gel-no-pain.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/silica-gel-no-pain-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 14044
+      },
+      {
+        "src": "/assets/optimized/silica-gel-no-pain-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 35036
+      },
+      {
+        "src": "/assets/optimized/silica-gel-no-pain-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 63108
+      }
+    ]
+  },
+  "silica-gel-tik-tak-tok.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/silica-gel-tik-tak-tok-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 35690
+      },
+      {
+        "src": "/assets/optimized/silica-gel-tik-tak-tok-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 113512
+      },
+      {
+        "src": "/assets/optimized/silica-gel-tik-tak-tok-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 261704
       }
     ]
   },

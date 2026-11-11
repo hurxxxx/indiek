@@ -10,6 +10,7 @@ import {createCatalogue} from './catalogue.mjs';
 import {getArtistRecords, getArtistDirectory, getFeaturedArtists, getListeningGuides, getPlaybackRecords, readSaved, searchCatalogue, artistId, artistPath, trackPath} from '../site/shared.mjs';
 import {editorialEntries, relatedRecords} from '../site/editorial.mjs';
 import {artistsForResearch} from './promotion/news.mjs';
+import {gradeMissing} from './catalogue-pipeline/entries.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const source = () => JSON.parse(readFileSync(path.join(root, 'content/catalogue.json'), 'utf8'));
@@ -30,10 +31,13 @@ test('existing saved IDs remain tracks, with the editor pick and full session ex
   assert.equal(trackPath(catalogue.records.find(track => track.id === 'gongwon')), '/artists/gongwon/#listen');
 });
 
-test('every introduced song has sourced commentary or an explicitly requested adaptation', () => {
+// Grade B songs from the expansion pipeline carry credits, Apple Music, sourced background and a
+// short introduction without lyric notes; every other song keeps its commentary or adaptation.
+test('every introduced song has sourced commentary, an explicitly requested adaptation or complete grade B details', () => {
   const data = source();
+  for (const track of data.tracks.filter(track => !track.lyricNotes)) assert.deepEqual(gradeMissing(track, 'B'), [], `Missing lyric notes or grade B details: ${track.id}`);
+  data.tracks = data.tracks.filter(track => track.lyricNotes);
   for (const track of data.tracks) {
-    assert.ok(track.lyricNotes, `Missing lyric notes: ${track.id}`);
     assert.ok(track.lyricNotes.paragraphs.length || track.lyricNotes.translation?.stanzas.length, track.id);
     assert.ok(track.lyricNotes.source.url.startsWith('https://'), track.id);
   }
@@ -47,10 +51,14 @@ test('every introduced song has sourced commentary or an explicitly requested ad
 test('the lyric review covers the exact current notes and every introduced track', () => {
   const data = source();
   const review = JSON.parse(readFileSync(path.join(root,'editorial/research/catalogue-lyric-notes.json'),'utf8'));
-  const payload = data.tracks.map(t=>({trackId:t.id,lyricNotes:t.lyricNotes}));
+  // The hand review covers the songs it lists; pipeline songs are held to their own reviewed hash in the ledger.
+  const ledger = JSON.parse(readFileSync(path.join(root,'editorial/catalogue/ledger.json'),'utf8')).tracks;
+  const reviewed = new Set(review.tracks.map(t=>t.trackId));
+  const payload = data.tracks.filter(t=>reviewed.has(t.id)).map(t=>({trackId:t.id,lyricNotes:t.lyricNotes}));
   const hash = createHash('sha256').update(JSON.stringify(payload)).digest('hex');
   assert.equal(review.revision.hash,hash,'Lyric notes changed: renew factual and editorial review.');
-  assert.deepEqual(review.tracks.map(t=>t.trackId).sort(),data.tracks.map(t=>t.id).sort());
+  assert.deepEqual(payload.map(t=>t.trackId).sort(),[...reviewed].sort(),'A hand-reviewed song is missing from the catalogue.');
+  for (const track of data.tracks.filter(t=>!reviewed.has(t.id))) assert.ok(ledger[track.id], `Unreviewed song outside the hand review and the pipeline ledger: ${track.id}`);
   for (const kind of ['facts','editorial']) {
     const pass = review.reviews.find(pass=>pass.kind===kind);
     assert.equal(pass?.approved,true,kind);

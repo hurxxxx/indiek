@@ -141,9 +141,19 @@ for record in tracks:
         text=target.read_text()
         if record['videoId'] not in text: errors.append('Missing direct video link: '+record['id'])
         if record.get('externalOnly') and f'data-load-player="{record["id"]}"' in text: errors.append('External-only performance has an embed: '+record['id'])
+        # Release and introduction sources stay visible on the artist page for every song.
+        for url in [record['source'], record['artistSource']]:
+            if url not in pages[target].refs: errors.append(f"Artist page misses source {url}: {record['id']}")
+        # A featured artist's own page plays the shared song, and the song's artist page links back to the guest.
+        for guest in record.get('featuredArtistIds',[]):
+            guest_page=pages.get((dist/'artists'/guest/'index.html').resolve())
+            if not guest_page or record['id'] not in guest_page.loads: errors.append(f"Featured artist page {guest} misses the shared song {record['id']}")
+            if f'/artists/{guest}/' not in pages[target].refs: errors.append(f"{record['id']}: missing link to featured artist {guest}")
         notes=record.get('lyricNotes')
         song_file=(dist/song_path(record).lstrip('/')/'index.html').resolve()
-        if not notes: errors.append('Missing lyric commentary: '+record['id'])
+        # Grade B songs (expansion pipeline) may omit lyric notes only when everything else a song page needs is present.
+        if not notes:
+            if [m for m in song_pages[record['id']]['missing'] if m!='lyric-notes']: errors.append('Missing lyric commentary or grade B details: '+record['id'])
         elif song_file not in pages: errors.append('Missing song page: '+record['id'])
         else:
             if lyrics_anchor(record) not in pages[target].ids: errors.append('Missing lyric anchor: '+record['id'])
@@ -179,6 +189,9 @@ for record in tracks:
     title=re.search(r'<title>(.*?)</title>', text, re.S)
     title=unescape(title.group(1)) if title else ''
     if record['artist'] not in title or re.sub(r'\s*\(feat\.[^)]*\)','',record['track'],flags=re.I) not in title: errors.append(f'{label}: search title must name the artist and song')
+    # A title promises lyric notes only when the page has them (grade B songs do not), and never nests brackets.
+    if 'lyrics meaning' in title.lower() and not record.get('lyricNotes',{}).get('paragraphs'): errors.append(f'{label}: title promises lyrics meaning without lyric notes')
+    if re.search(r'\([^()]*\(', title): errors.append(f'{label}: title has nested brackets')
     similar=[by_id.get(id) for id in song.similar]
     if song.similar!=status['similar'] or len(similar)!=3 or any(not t or t['artistId']==record['artistId'] or reading_path(t) not in song.refs for t in similar): errors.append(f'{label}: needs three linked similar songs by other artists')
     ld=re.search(r'<script type="application/ld\+json">(.*?)</script>', text, re.S)
@@ -256,6 +269,11 @@ for file in ['index.html','notes/first-listens/index.html']:
 expected_count=len(artists)+len(tracks)+6+len(guide_ids)+len(stories)
 if len(pages)!=expected_count: errors.append(f'Expected {expected_count} pages, found {len(pages)}')
 if site['url']+'/sitemap.xml' not in (dist/'robots.txt').read_text(): errors.append('Missing robots sitemap')
+# The social publisher reads its artist list from this manifest, so every artist page must be in it.
+promotion=json.loads((dist/'promotion-catalogue.json').read_text())
+promoted={i['path'] for i in promotion['items'] if i['kind']=='artist'}
+for record in artists:
+    if artist_path(record) not in promoted: errors.append('Promotion catalogue misses artist '+record['artistId'])
 for source,target in [(f'site/{name}',f'dist/{name}') for name in ['app.js','analytics.mjs','navigation.mjs','directory.mjs','mobile.mjs','player.mjs','styles.css','shared.mjs','stories.mjs']]:
     if (root/source).read_bytes()!=(root/target).read_bytes(): errors.append('Stale build: '+target)
 runtime=json.loads((dist/'catalogue.js').read_text().removeprefix('export default ').strip().removesuffix(';'))
