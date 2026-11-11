@@ -37,6 +37,9 @@ test('introductory listening notes cannot silently link to a removed or missing 
 test('published entries include only genuinely dated publications',()=>{
   const entries=[{path:'/artists/a/',title:'A & B',description:'<music>',published:'2026-10-19'},{path:'/draft/',title:'Draft'},{path:'/future/',published:'2099-01-01'}];
   assert.deepEqual(publishedEntries(entries,new Date('2026-10-20')),[entries[0]]);
+  // A Korean publication day starts at 00:00 KST, not at UTC midnight (09:00 KST).
+  assert.deepEqual(publishedEntries(entries,new Date('2026-10-19T07:00:00+09:00')),[entries[0]]);
+  assert.deepEqual(publishedEntries(entries,new Date('2026-10-18T23:59:00+09:00')),[]);
 });
 test('home previews can announce ready additions without inventing publication dates',()=>{
   const entries=[{id:'a',path:'/artists/a/',type:'Artist',title:'A',description:'New artist.'}];

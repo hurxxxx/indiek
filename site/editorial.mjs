@@ -8,7 +8,8 @@ export function editorialEntries(catalogue, guides) {
   ];
 }
 export function publishedEntries(entries, now = new Date()) {
-  return entries.filter(entry => entry.published && /^\d{4}-\d{2}-\d{2}$/.test(entry.published) && Date.parse(entry.published) <= now.getTime())
+  // Publication days are Korean days, as for stories and home updates; a bare date would mean UTC midnight (09:00 KST).
+  return entries.filter(entry => entry.published && /^\d{4}-\d{2}-\d{2}$/.test(entry.published) && Date.parse(entry.published + 'T00:00:00+09:00') <= now.getTime())
     .sort((a,b) => b.published.localeCompare(a.published) || a.path.localeCompare(b.path));
 }
 const updateLabels = {artist:'New artist',song:'New song',lyrics:'Lyric notes',live:'Live session',story:'New story',guide:'New guide',update:'Updated'};
