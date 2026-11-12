@@ -155,6 +155,8 @@ for (const [label, edit, error] of [
   ['missing background citation', data => data.tracks[0].lyricNotes.backgroundSources=[{}], /Invalid lyricNotes/],
   ['empty adaptation', data => data.tracks[0].lyricNotes.translation={label:'English adaptation',stanzas:[]}, /Invalid lyricNotes/],
   ['blank adaptation stanza', data => data.tracks[0].lyricNotes.translation={label:'English adaptation',stanzas:[' ']}, /Invalid lyricNotes/],
+  ['instrumental flag that is not true', data => data.tracks[0].instrumental=false, /Invalid instrumental track/],
+  ['lyric adaptation on an instrumental piece', data => Object.assign(data.tracks[0],{instrumental:true}).lyricNotes.translation={label:'English adaptation',stanzas:['x']}, /Invalid instrumental track/],
 ]) {
   test(`catalogue validation rejects ${label}`, () => {
     const data = source(); edit(data);
@@ -172,6 +174,8 @@ test('an isolated build renders multiple songs, unique anchors and artist counts
     const data = withSecondSong();
     data.artists.find(artist=>artist.id==='gongwon').primaryTrackId = 'gongwon-test-track';
     data.tracks.find(track=>track.id==='gongwon').featuredArtistIds = ['yebit'];
+    // An instrumental piece keeps its notes and anchors but is never labelled as lyrics.
+    data.tracks.find(track=>track.id==='mrch-surrender').instrumental = true;
     writeFileSync(path.join(dir,'content/catalogue.json'),JSON.stringify(data));
     execFileSync('python3',['scripts/prepare-images.py'],{cwd:dir,stdio:'pipe'});
     execFileSync(process.execPath,['scripts/build.mjs'],{cwd:dir,stdio:'pipe'});
@@ -206,6 +210,11 @@ test('an isolated build renders multiple songs, unique anchors and artist counts
     assert.ok(home.includes(`Browse all ${data.artists.length} artists`));
     assert.ok(home.includes(`data-room-count="${data.tracks.length}"`));
     assert.match(home,/href="\/artists\/gongwon\/#track-gongwon"/);
+    const instrumental = readFileSync(path.join(dir,'dist/artists/mrch/surrender/index.html'),'utf8');
+    assert.match(instrumental,/<title>MRCH — Surrender[^<]*: music notes &amp; background \| indiek<\/title>/);
+    assert.match(instrumental,/INSIDE THE MUSIC/);
+    assert.ok(!/INSIDE THE LYRICS|Lyrics meaning/i.test(instrumental));
+    assert.match(readFileSync(path.join(dir,'dist/artists/mrch/index.html'),'utf8'),/music notes, credits &amp; background/);
     const promotion = JSON.parse(readFileSync(path.join(dir,'dist/promotion-catalogue.json'),'utf8'));
     assert.equal(promotion.items.filter(item=>item.kind==='artist'&&item.id==='gongwon').length,1);
     for (const item of promotion.items) assert.equal(new Set(item.artistIds).size,item.artistIds.length);

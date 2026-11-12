@@ -7,7 +7,8 @@ const isAppleMusic = url => { try { return new URL(url).hostname === 'music.appl
 export const backgroundSources = track => [...(track.extraSources || []), ...(track.lyricNotes?.backgroundSources || [])];
 
 // A song page is indexed only when it adds verified information beyond the artist page:
-// credits, an Apple Music release link, sourced background and lyric notes. Missing fields are
+// credits, an Apple Music release link, sourced background and lyric notes (music notes for an
+// instrumental piece). Missing fields are
 // never filled with placeholders; the page stays noindex and out of the sitemap until they exist.
 export function songPageStatus(track) {
   const missing = [];

@@ -104,6 +104,7 @@
           "role",
           "title",
           "korean",
+          "instrumental",
           "appleMusicURL",
           "releaseTitle",
           "releaseDate",
@@ -132,6 +133,10 @@
           "korean": {
             "type": "string",
             "description": "Korean title in Hangul, or empty if the song has only an English title."
+          },
+          "instrumental": {
+            "type": "boolean",
+            "description": "True when the recording has no sung or spoken words (an instrumental piece). Its lyricSource and lyricObservations then describe the music instead of lyrics."
           },
           "appleMusicURL": {
             "type": "string",
@@ -182,7 +187,7 @@
             "properties": {
               "url": {
                 "type": "string",
-                "description": "Page that shows the full Korean lyrics (Bugs, Genie, Melon or label), for the writer to read. Empty if none."
+                "description": "Page that shows the full Korean lyrics (Bugs, Genie, Melon or label), for the writer to read. For an instrumental piece: a page that describes the music itself (label or artist release notes, or a critical review). Empty if none."
               },
               "label": {
                 "type": "string"
@@ -248,7 +253,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Paraphrased observations about what the lyrics describe (images, addressee, changes), no lyric lines longer than a short phrase."
+            "description": "Paraphrased observations about what the lyrics describe (images, addressee, changes), no lyric lines longer than a short phrase. For an instrumental piece: what the music source page says about the instrumentation, structure and development."
           },
           "youtube": {
             "type": "array",

@@ -85,6 +85,10 @@ function overlays() {
 const searchTrackName = track => track.track.replace(/\s*\(feat\.[^)]*\)/i, '');
 // Korean titles can carry the featuring credit too; inside a parenthesis it would nest brackets.
 const searchKoreanTitle = track => track.koreanTitle?.replace(/\s*\(feat\.[^)]*\)/i, '');
+// Instrumental pieces carry music notes in the same lyricNotes structure and anchors; only the words change.
+const notesWords = r => r?.instrumental
+  ? {eyebrow:'INSIDE THE MUSIC', section:'Inside the music', read:'Read the music notes', title:'music notes', meta:'Music notes in English', themes:'Musical themes'}
+  : {eyebrow:'INSIDE THE LYRICS', section:'Inside the lyrics', read:'Read the lyric notes', title:'lyrics meaning', meta:'Lyrics meaning in English', themes:'Lyrical themes'};
 // Search titles follow observed queries ("<artist> <song> lyrics meaning"); share cards keep their shorter title.
 function artistSearchMeta(r, tracks) {
   const korean = r.korean && r.korean !== r.artist ? ` (${r.korean})` : '';
@@ -94,7 +98,7 @@ function artistSearchMeta(r, tracks) {
   const adaptation = tracks.some(track => track.lyricNotes?.translation && !track.lyricNotes.paragraphs?.length);
   const more = tracks.length - 1;
   return {
-    title:`${r.artist}${korean} — ${named} ${adaptation ? 'in English' : 'lyrics meaning'} | indiek`,
+    title:`${r.artist}${korean} — ${named} ${adaptation ? 'in English' : notesWords((explained.length ? explained : tracks)[0]).title} | indiek`,
     description:`${r.artist}${korean}: ${adaptation ? 'an English adaptation of' : 'what'} “${searchTrackName(r)}”${r.koreanTitle ? ` (${searchKoreanTitle(r)})` : ''}${adaptation ? '' : ' is about, in English'}${more ? `, plus ${more} more ${more === 1 ? 'song' : 'songs'}` : ''}. ${r.note} Official recording, release details and sources.`,
   };
 }
@@ -179,7 +183,7 @@ function guideContents(guide) {
   return `<nav class="guide-contents" aria-labelledby="guide-contents-title"><p class="eyebrow" id="guide-contents-title">IN THIS GUIDE</p><ol>${items.join('')}</ol></nav>`;
 }
 function lyricNotesLink(r) {
-  const label = r.lyricNotes?.translation ? 'English adaptation' : 'Inside the lyrics';
+  const label = r.lyricNotes?.translation ? 'English adaptation' : notesWords(r).section;
   return r.lyricNotes ? `<a class="underlink" href="${lyricsPath(r)}" aria-label="${label}: ${e(r.track)} by ${e(r.artist)}">${label} ↗</a>` : '';
 }
 
@@ -199,8 +203,8 @@ function lyricNotes(r, {id = lyricsAnchor(r), level = 3} = {}) {
   const notes = r.lyricNotes;
   if (!notes) return '';
   return `<section class="lyric-notes" id="${id}" aria-labelledby="${id}-title">
-    <p class="eyebrow">INSIDE THE LYRICS</p><h${level} id="${id}-title">${e(notes.heading)}</h${level}>
-    <ul class="lyric-themes" aria-label="Lyrical themes">${notes.themes.map(theme=>`<li>${e(theme)}</li>`).join('')}</ul>
+    <p class="eyebrow">${notesWords(r).eyebrow}</p><h${level} id="${id}-title">${e(notes.heading)}</h${level}>
+    <ul class="lyric-themes" aria-label="${notesWords(r).themes}">${notes.themes.map(theme=>`<li>${e(theme)}</li>`).join('')}</ul>
     ${notes.paragraphs.map(text=>`<p>${e(text)}</p>`).join('')}
     ${notes.translation?`<div class="lyric-translation" lang="en"><p class="eyebrow">${e(notes.translation.label)}</p>${notes.translation.stanzas.map(stanza=>`<p class="lyric-stanza">${e(stanza).replaceAll('\n','<br>')}</p>`).join('')}</div>`:''}
     ${notes.excerpt?`<figure class="lyric-excerpt"><blockquote lang="ko">${e(notes.excerpt.korean)}</blockquote><figcaption><span lang="en">${e(notes.excerpt.english)}</span><small>Brief excerpt · English translation by indiek</small></figcaption></figure><p>${e(notes.excerpt.note)}</p>`:''}
@@ -224,14 +228,14 @@ const featuredLines = r => (r.featuredArtistIds || []).map(id=>{const guest=find
 function lyricPreview(r) {
   const notes = r.lyricNotes, id = lyricsAnchor(r);
   const adaptation = notes.translation && !notes.paragraphs.length;
-  return `<section class="lyric-notes lyric-preview" id="${id}" aria-labelledby="${id}-title"><p class="eyebrow">INSIDE THE LYRICS</p><h3 id="${id}-title">${e(notes.heading)}</h3><ul class="lyric-themes" aria-label="Lyrical themes">${notes.themes.map(theme=>`<li>${e(theme)}</li>`).join('')}</ul><p><a class="underlink" href="${lyricsPath(r)}">${adaptation?'Read the English adaptation':'Read the lyric notes'} <span aria-hidden="true">↗</span></a></p></section>`;
+  return `<section class="lyric-notes lyric-preview" id="${id}" aria-labelledby="${id}-title"><p class="eyebrow">${notesWords(r).eyebrow}</p><h3 id="${id}-title">${e(notes.heading)}</h3><ul class="lyric-themes" aria-label="${notesWords(r).themes}">${notes.themes.map(theme=>`<li>${e(theme)}</li>`).join('')}</ul><p><a class="underlink" href="${lyricsPath(r)}">${adaptation?'Read the English adaptation':notesWords(r).read} <span aria-hidden="true">↗</span></a></p></section>`;
 }
 function trackSection(r, showCover = true) {
   const titleId = trackAnchor(r) === 'listen' ? 'track-title' : `track-title-${r.id}`;
   const song = songPageStatus(r);
   const summary = `<div class="track-summary">${showCover ? coverHTML(media,r,{sizes:'(max-width: 760px) 45vw, 300px',className:'detail-cover'}) : ''}<p class="eyebrow">${e(r.genre)} / ${r.year}</p><h2 id="${titleId}">${e(r.track)}${r.koreanTitle?`<span class="track-korean" lang="ko">${e(r.koreanTitle)}</span>`:''}</h2><p class="record-format mono">${videoLabel(r)}</p>${r.releaseYear?`<p class="embed-caption">${releaseLine(r)}</p>`:''}${r!==pick?saveButton(r,true):''}${releaseLink(r)}</div>`;
   const reading = song.ready
-    ? `<p class="track-description">${e(r.description)}</p>${r.credits?`<p class="pick-credits">${e(r.credits)}</p>`:''}${featuredLines(r)}${player(r)}${lyricPreview(r)}<a class="room-button song-page-button" href="${song.path}">${e(r.track)}: lyrics meaning, credits &amp; background <span aria-hidden="true">↗</span></a>`
+    ? `<p class="track-description">${e(r.description)}</p>${r.credits?`<p class="pick-credits">${e(r.credits)}</p>`:''}${featuredLines(r)}${player(r)}${lyricPreview(r)}<a class="room-button song-page-button" href="${song.path}">${e(r.track)}: ${notesWords(r).title}, credits &amp; background <span aria-hidden="true">↗</span></a>`
     : `<p class="track-description">${e(r.description)}</p>${r.listeningNote?`<section class="listening-note"><h3>A little background</h3><p>${e(r.listeningNote)}</p></section>`:''}${r.credits?`<p class="pick-credits">${e(r.credits)}</p>`:''}${featuredLines(r)}${player(r)}${lyricNotes(r)}${song.path?`<p class="song-page-link"><a class="underlink" href="${song.path}">Song page: ${e(r.track)} <span aria-hidden="true">↗</span></a></p>`:''}`;
   return `<section class="track-page${song.ready?' track-hub':''}" id="${trackAnchor(r)}" aria-labelledby="${titleId}">${summary}<div class="track-reading">${reading}</div></section>`;
 }
@@ -253,7 +257,7 @@ function songMain(r) {
     ['Release',releaseLine(r)],
     ['This recording',e(r.performance || `${videoLabel(r)} · ${r.channel}`)],
   ].filter(Boolean);
-  const sections = [['listen','Listen'],['credits','Credits & release'],r.listeningNote&&['background','Background'],r.lyricNotes&&['lyrics',r.lyricNotes.translation&&!r.lyricNotes.paragraphs.length?'English adaptation':'Inside the lyrics'],['similar','Similar songs'],['about-artist',`About ${r.artist}`]].filter(Boolean);
+  const sections = [['listen','Listen'],['credits','Credits & release'],r.listeningNote&&['background','Background'],r.lyricNotes&&['lyrics',r.lyricNotes.translation&&!r.lyricNotes.paragraphs.length?'English adaptation':notesWords(r).section],['similar','Similar songs'],['about-artist',`About ${r.artist}`]].filter(Boolean);
   const similar = similarSongs(r, catalogue, {guides});
   return `<main id="main" class="wrap artist-page song-page" data-song-page="${r.id}"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><a href="/artists/">Artists</a><span aria-hidden="true">/</span><a href="${artistPath(r)}">${e(r.artist)}</a></nav>
   <header class="artist-heading song-heading"><p class="eyebrow">SONG / ${e(r.artist)} / <span lang="ko">${e(r.korean)}</span></p><h1>${e(r.track)}${r.koreanTitle?`<span class="song-korean" lang="ko">${e(r.koreanTitle)}</span>`:''}</h1><p class="artist-lead">${e(r.description)}</p>${shareControl()}<nav class="artist-sections" aria-label="On this song page">${sections.map(([id,label])=>`<a href="#${id}">${e(label)} ↓</a>`).join('')}</nav></header>
@@ -275,9 +279,9 @@ function songMeta(r) {
   const adaptation = r.lyricNotes?.translation && !r.lyricNotes.paragraphs.length;
   // Grade B songs have no lyric notes yet, so their titles promise only what the page holds.
   const explained = r.lyricNotes?.paragraphs?.length;
-  const lead = adaptation ? 'English adaptation' : explained ? 'lyrics meaning' : '';
+  const lead = adaptation ? 'English adaptation' : explained ? notesWords(r).title : '';
   const covers = lead ? `${lead}${r.listeningNote ? ' & background' : ''}` : [r.listeningNote && 'background', r.credits && 'credits'].filter(Boolean).join(' & ') || 'release details';
-  const parts = [adaptation ? 'An English adaptation' : explained && 'Lyrics meaning in English', r.credits && 'credits', r.listeningNote && 'background', 'release details'].filter(Boolean);
+  const parts = [adaptation ? 'An English adaptation' : explained && notesWords(r).meta, r.credits && 'credits', r.listeningNote && 'background', 'release details'].filter(Boolean);
   parts[0] = parts[0][0].toUpperCase() + parts[0].slice(1);
   return {
     title:`${r.artist} — ${searchTrackName(r)}${korean}: ${covers} | indiek`,
@@ -384,7 +388,7 @@ for(const r of artists) {
   const sourceList=[{url:r.source,label:r.sourceName,language:r.sourceLanguage},{url:r.artistSource,label:r.artistSourceName,language:r.artistSourceLanguage},...(r.extraSources||[]),...artistTracks.slice(1).flatMap(track=>[{url:track.source,label:track.sourceName,language:track.sourceLanguage},...(track.extraSources||[])])];
   const sources=sourceList.filter((source,i)=>sourceList.findIndex(other=>other.url===source.url)===i);
   const main=`<main id="main" class="wrap artist-page"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">indiek</a><span aria-hidden="true">/</span><a href="/artists/">Artists</a></nav>
-  <header class="artist-heading"><p class="eyebrow">MEET THE ARTIST / <span lang="ko">${e(r.korean)}</span></p><h1>${e(r.artist)}</h1><p class="artist-lead">${e(r.artistIntro)}</p>${byline(r.editorial)}${shareControl()}${r.lyricNotes?`<nav class="artist-sections" aria-label="On this artist page"><a href="#listen">Listen ↓</a><a href="#lyrics">${r.lyricNotes.translation?'English adaptation':'Inside the lyrics'} ↓</a>${(r.performances||[]).map(video=>`<a href="#${video.id}">Full live session ↓</a>`).join('')}</nav>`:''}${artistTracks.some(songPath)?`<nav class="artist-song-pages" aria-label="Song pages for ${e(r.artist)}"><span class="mono">SONG PAGES</span>${artistTracks.filter(songPath).map(track=>`<a href="${songPath(track)}">${e(track.track)} <span aria-hidden="true">↗</span></a>`).join('')}</nav>`:''}</header>
+  <header class="artist-heading"><p class="eyebrow">MEET THE ARTIST / <span lang="ko">${e(r.korean)}</span></p><h1>${e(r.artist)}</h1><p class="artist-lead">${e(r.artistIntro)}</p>${byline(r.editorial)}${shareControl()}${r.lyricNotes?`<nav class="artist-sections" aria-label="On this artist page"><a href="#listen">Listen ↓</a><a href="#lyrics">${r.lyricNotes.translation?'English adaptation':notesWords(r).section} ↓</a>${(r.performances||[]).map(video=>`<a href="#${video.id}">Full live session ↓</a>`).join('')}</nav>`:''}${artistTracks.some(songPath)?`<nav class="artist-song-pages" aria-label="Song pages for ${e(r.artist)}"><span class="mono">SONG PAGES</span>${artistTracks.filter(songPath).map(track=>`<a href="${songPath(track)}">${e(track.track)} <span aria-hidden="true">↗</span></a>`).join('')}</nav>`:''}</header>
   ${feature?`<figure class="artist-portrait">${imageHTML(media,feature.image,feature.alt,{priority:true,sizes:'(max-width: 760px) 92vw, 960px',style:`object-position:${feature.position}`})}<figcaption>${e(rights.images.find(image=>image.file===feature.image)?.caption || 'Artist photograph.')} ${photoCredit(feature.image) || '<a href="/about/#image-credits">Image credits</a>'}</figcaption></figure>`:''}
   ${r.biography?`<div class="artist-extra"><p>${e(r.biography)}</p></div>`:''}
   ${artistTracks.map((track,i)=>trackSection(track,artistTracks.findIndex(other=>other.image===track.image)===i)).join('\n  ')}

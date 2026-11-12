@@ -57,7 +57,7 @@ function spotlightList(section, context) {
     const session = record.performances?.[0];
     const story = context.stories.find(story => story.artistIds?.includes(id));
     const links = [];
-    if (lyrics) links.push({href:lyricsPath(lyrics),label:'Inside the lyrics'});
+    if (lyrics) links.push({href:lyricsPath(lyrics),label:lyrics.instrumental ? 'Inside the music' : 'Inside the lyrics'});
     if (session) links.push({href:`${artistPath(record)}#${session.id}`,label:'Full live session'});
     if (story) links.push({href:storyPath(story),label:'Read the story'});
     if (context.tracks.some(track => track.featuredArtistIds?.includes(id))) links.push({href:`${artistPath(record)}#collaborations`,label:'Featured with other artists'});

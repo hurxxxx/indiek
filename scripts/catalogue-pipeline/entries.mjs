@@ -19,7 +19,8 @@ export const entryHash = (artist, track) => digest({artist:reviewedArtist(artist
 
 export const isAppleMusic = url => { try { const u = new URL(url); return u.hostname === 'music.apple.com' && u.pathname.startsWith('/us/'); } catch { return false; } };
 export const backgroundSourcesOf = track => [...(track.extraSources || []), ...(track.lyricNotes?.backgroundSources || [])];
-// Grade A: complete song page with lyric notes. Grade B: everything except lyric notes.
+// Grade A: complete song page with lyric notes (music notes for an instrumental piece). Grade B:
+// everything except those notes.
 export function gradeMissing(track, grade) {
   const missing = [];
   if (!track.credits?.trim()) missing.push('credits');
@@ -27,7 +28,7 @@ export function gradeMissing(track, grade) {
   if (!track.listeningNote?.trim() || !backgroundSourcesOf(track).length) missing.push('sourced background');
   if (!track.description?.trim() || !track.note?.trim()) missing.push('short introduction');
   if (!/^[\w-]{11}$/.test(track.videoId || '')) missing.push('official recording');
-  if (grade === 'A' && !track.lyricNotes?.paragraphs?.length) missing.push('lyric notes');
+  if (grade === 'A' && !track.lyricNotes?.paragraphs?.length) missing.push(track.instrumental ? 'music notes' : 'lyric notes');
   if (grade === 'B' && track.lyricNotes) missing.push('grade B must not carry unreviewed lyric notes');
   return missing;
 }
@@ -95,6 +96,7 @@ export function assembleEntries({unit, dossier, draft, releases, videos, existin
       ...(hangul(research.korean) && normalizeName(research.korean) !== normalizeName(title) ? {koreanTitle:research.korean.trim()} : {}),
       duration:formatDuration(video.duration || release.durationSeconds), provider:'youtube', videoId:video.videoId, channel:video.channel,
       url:`https://www.youtube.com/watch?v=${video.videoId}`, videoType,
+      ...(research.instrumental === true ? {instrumental:true} : {}),
       note:text.note?.trim() || '', description:text.description?.trim() || '',
       source:release.collectionURL, sourceName:`${release.artistName} — ${release.collectionName} on Apple Music`, sourceLanguage:'English',
       extraSources:uniqueSources(text.extraSources || []), guideTags:[...new Set(text.guideTags || [])],
@@ -151,7 +153,7 @@ export function lintEntries({artist, tracks}, {source, unit}) {
     texts.push(...PROSE.map(k => [`${key}.${k}`, entry[k]]));
     if (entry.lyricNotes) {
       const notes = entry.lyricNotes;
-      if (!https(notes.source?.url)) issues.push(`${key}: lyric notes need the lyric source page`);
+      if (!https(notes.source?.url)) issues.push(`${key}: ${entry.instrumental ? 'music notes need the page that describes the music' : 'lyric notes need the lyric source page'}`);
       if (notes.paragraphs.length > 4) issues.push(`${key}: lyric notes run to ${notes.paragraphs.length} paragraphs; two or three are enough`);
       notes.paragraphs.forEach((p, i) => texts.push([`${key}.lyricNotes.paragraphs[${i}]`, p]));
       for (const p of notes.paragraphs) {

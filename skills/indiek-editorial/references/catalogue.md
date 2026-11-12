@@ -15,6 +15,7 @@ Write as a music lover passing on a song they like: plain, specific and warm. Th
 - `listeningNote` ("A little background"): sourced context such as the release, an artist statement or a drama the song was written for. Attribute statements. Its sources go in `extraSources` (or `lyricNotes.backgroundSources`).
 - `credits`: from an official credit source (label release page, Melon, Genie, Bugs or the album booklet), in the form "Lyrics by …; music by …; arranged by …." Romanise names as the artist does in English, with Hangul in parentheses when no official romanisation exists. If credits cannot be confirmed, leave them out and report the gap.
 - `lyricNotes` (grade A only): `heading`, one to three `themes`, two or three English `paragraphs`, the lyric `source` page and attributed `backgroundSources`. Follow the lyric commentary criteria. No full lyrics or full translations; quote at most a short phrase when it helps understanding, and do not use `excerpt` unless a brief quotation is essential.
+- `instrumental: true` marks a piece with no sung or spoken words. Its `lyricNotes` are music notes, shown as "Inside the music": explain the instrumentation, structure and development that a release note or critical review describes, attribute descriptions of sound to that source (the notes' `source`), and never mention lyrics or invent how it sounds.
 
 Use the official English title and release name as shown on Apple Music (US storefront) and the Korean title in Hangul. Explain a difference between the English and Korean titles only when it affects understanding.
 
@@ -28,9 +29,9 @@ Use the official English title and release name as shown on Apple Music (US stor
 ## Grades
 
 - **B:** credits, sourced background, the verified official recording, a short introduction and the English Apple Music link.
-- **A:** everything in B plus lyric commentary.
+- **A:** everything in B plus lyric commentary (music notes for an instrumental piece).
 
-Song pages are indexed only when credits, Apple Music, sourced background and lyric notes are all present. Never fill a gap with placeholder text so that a page qualifies.
+Song pages are indexed only when credits, Apple Music, sourced background and lyric notes (music notes for an instrumental piece) are all present. Never fill a gap with placeholder text so that a page qualifies.
 
 ## Sources
 
