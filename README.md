@@ -38,7 +38,7 @@ Open [localhost:4173](http://127.0.0.1:4173). After editing files, run `npm run 
 | `npm run dev` | Build and serve the local preview, including ready home updates |
 | `npm run build:preview` | Rebuild the local preview in `dist/` without restarting the server |
 | `npm run build` | Generate the publication build in `dist/`; omit unpublished home updates |
-| `npm run check` | Check catalogue behavior, pages, links and assets; also runs the API tests when `cargo` is installed |
+| `npm run check` | Check catalogue behavior, pages, links and assets; also runs the API tests when `cargo` is installed. The test files must finish within 180 s: past that, `scripts/time-limit.mjs` stops all their processes and the check fails |
 | `npm run serve` | Serve `dist/` with the production Content-Security-Policy and proxy `/api/` to a local participation API |
 | `npm run images` | Generate responsive images; requires Pillow with WebP support |
 | `npm run catalogue -- status` | Inspect catalogue expansion candidates, batches and the review ledger |
