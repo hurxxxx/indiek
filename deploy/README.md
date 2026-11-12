@@ -431,7 +431,17 @@ systemctl disable --now indiek-api.service indiek-api-backup.timer
 
 ## 확인과 복구
 
-- Latest deployment: 2026-11-12 `ac69ab8`
+- Latest deployment: 2026-11-12 `f36e862`
+  - Site: catalogue batch 2 (Lacuna, OHCHILL, Kang Asol, Danpyunsun and the Moments Ensemble, Black String; eight songs), published 2026-11-12. Black String's "Mask Dance" is the first instrumental song page, with music notes instead of lyric notes. No Nginx or API change.
+  - Production passed 305 tests and 88 pages with a clean checkout.
+  - Verified over HTTPS:
+    - the new artist and song pages return 200, grade-B song pages are `noindex`, and "Mask Dance" is titled "music notes & background";
+    - the sitemap has 61 URLs, and the sitemap, home page, `catalogue.js` and both promotion manifests equal the build;
+    - `/api/health` reports 31 artists and 40 tracks;
+    - on the live site, "Mask Dance" plays in the shared player (one iframe), and the player was then closed.
+  - The automation checkout was fast-forwarded with `scripts/editorial/sync.mjs`. It passed 104 promotion tests, and all 30 carousel decks match the live pages; nothing was sent.
+  - Rollback baseline: `dd7379c`.
+- Previous deployment: 2026-11-12 `ac69ab8`
   - Site: catalogue batch 1 (Say Sue Me, Silica Gel, Meaningful Stone, Lang Lee, JEONGMILLA; nine songs, five indexed), published 2026-11-12, and the reader request page `/request/` with request links on artist and song pages and the privacy notice's `#participation`. The year-end poll stays `draft` (its page is 404). No Nginx or API change.
   - Production passed 299 tests and 75 pages with a clean checkout. The first run of the release commit `2185f12` failed one participation test, because the web server's Node 18 has no global `crypto`; the test now passes Node's `webcrypto` (`ac69ab8`). The article receiver runs the same check, so it would otherwise have refused Friday's article.
   - Verified over HTTPS:
