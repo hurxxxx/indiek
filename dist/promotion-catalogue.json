@@ -385,6 +385,66 @@
       "altText": "indiek listening notes: JEONGMILLA — Departing from Seoul Station. Typographic card."
     },
     {
+      "id": "lacuna",
+      "kind": "artist",
+      "title": "Lacuna — Dancing in the Rain",
+      "path": "/artists/lacuna/",
+      "description": "“Dancing in the Rain” asks for a hand to hold as the ground collapses. Its Korean title, 춤을 춰요, is an invitation to dance, placing an ordinary gesture of companionship amid destruction.",
+      "artistIds": [
+        "lacuna"
+      ],
+      "image": "/assets/social/artists-lacuna.jpg",
+      "altText": "indiek listening notes: Lacuna — Dancing in the Rain. Typographic card."
+    },
+    {
+      "id": "ohchill",
+      "kind": "artist",
+      "title": "OHCHILL — Something's Wrong",
+      "path": "/artists/ohchill/",
+      "description": "In “Something’s Wrong”, running between buildings brings the speaker back to the same place. OHCHILL’s album notes describe people struggling to get through everyday city life, caught between feeling lost and trying to live normally.",
+      "artistIds": [
+        "ohchill"
+      ],
+      "image": "/assets/social/artists-ohchill.jpg",
+      "altText": "indiek listening notes: OHCHILL — Something's Wrong. Typographic card."
+    },
+    {
+      "id": "kang-asol",
+      "kind": "artist",
+      "title": "Kang Asol — Island",
+      "path": "/artists/kang-asol/",
+      "description": "In “Island” (섬), an island exposed to wind and waves becomes a place for feelings the speaker cannot soothe. The song asks whether living with oneself must keep hurting, leaving the question open.",
+      "artistIds": [
+        "kang-asol"
+      ],
+      "image": "/assets/social/artists-kang-asol.jpg",
+      "altText": "indiek listening notes: Kang Asol — Island. Typographic card."
+    },
+    {
+      "id": "danpyunsun-and-the-moments-ensemble",
+      "kind": "artist",
+      "title": "Danpyunsun and the Moments Ensemble — You, Me and Namyangju",
+      "path": "/artists/danpyunsun-and-the-moments-ensemble/",
+      "description": "“You, Me and Namyangju” places an uncertain encounter in the snow beside a fox’s account of its present life. The speaker watches someone move away, while the ending leaves room for both contentment and thoughts of someone absent.",
+      "artistIds": [
+        "danpyunsun-and-the-moments-ensemble"
+      ],
+      "image": "/assets/social/artists-danpyunsun-and-the-moments-ensemble.jpg",
+      "altText": "indiek listening notes: Danpyunsun and the Moments Ensemble — You, Me and Namyangju. Typographic card."
+    },
+    {
+      "id": "black-string",
+      "kind": "artist",
+      "title": "Black String — Mask Dance",
+      "path": "/artists/black-string/",
+      "description": "“Mask Dance” takes its inspiration from Cheoyongmu, a Korean dance performed wearing Cheoyong’s mask to drive away spirits. Genie’s release notes describe the composition as a musical expression of the story’s strange and mysterious imagery.",
+      "artistIds": [
+        "black-string"
+      ],
+      "image": "/assets/social/artists-black-string.jpg",
+      "altText": "indiek listening notes: Black String — Mask Dance. Typographic card."
+    },
+    {
       "id": "yoon-mirae",
       "kind": "artist",
       "title": "Yoon Mirae — Breath",
@@ -428,6 +488,11 @@
         "meaningful-stone",
         "lang-lee",
         "jeongmilla",
+        "lacuna",
+        "ohchill",
+        "kang-asol",
+        "danpyunsun-and-the-moments-ensemble",
+        "black-string",
         "yoon-mirae"
       ],
       "image": "/assets/social/notes-korean-indie-where-to-start.jpg",
@@ -455,7 +520,11 @@
         "silica-gel",
         "meaningful-stone",
         "lang-lee",
-        "jeongmilla"
+        "jeongmilla",
+        "lacuna",
+        "ohchill",
+        "danpyunsun-and-the-moments-ensemble",
+        "black-string"
       ],
       "image": "/assets/social/notes-on-stage.jpg",
       "altText": "indiek listening guide: On stage. Typographic card."
@@ -480,7 +549,12 @@
         "silica-gel",
         "meaningful-stone",
         "lang-lee",
-        "jeongmilla"
+        "jeongmilla",
+        "lacuna",
+        "ohchill",
+        "kang-asol",
+        "danpyunsun-and-the-moments-ensemble",
+        "black-string"
       ],
       "image": "/assets/social/notes-guitars-and-bands.jpg",
       "altText": "indiek listening guide: Guitars & bands. Typographic card."
@@ -510,7 +584,8 @@
         "moneto",
         "mrch",
         "lang-lee",
-        "jeongmilla"
+        "jeongmilla",
+        "kang-asol"
       ],
       "image": "/assets/social/notes-distinct-voices.jpg",
       "altText": "indiek listening guide: Distinct voices. Typographic card."

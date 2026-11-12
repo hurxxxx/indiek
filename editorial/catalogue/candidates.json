@@ -188,7 +188,7 @@
         }
       ],
       "officialURL": "https://mpmgmusic.com/lacuna",
-      "status": "approved",
+      "status": "added",
       "deezer": {
         "id": 1154788,
         "name": "Lacuna",
@@ -227,6 +227,13 @@
       "approved": {
         "date": "2026-11-12",
         "by": "user"
+      },
+      "added": {
+        "date": "2026-11-12",
+        "trackIds": [
+          "lacuna-dancing-in-the-rain",
+          "lacuna-far-away"
+        ]
       }
     },
     {
@@ -471,7 +478,7 @@
         }
       ],
       "officialURL": "https://ohchill.bandcamp.com/",
-      "status": "approved",
+      "status": "added",
       "deezer": {
         "id": 150512552,
         "name": "OHCHILL",
@@ -510,6 +517,12 @@
       "approved": {
         "date": "2026-11-12",
         "by": "user"
+      },
+      "added": {
+        "date": "2026-11-12",
+        "trackIds": [
+          "ohchill-somethings-wrong"
+        ]
       }
     },
     {
@@ -903,7 +916,7 @@
         }
       ],
       "officialURL": "",
-      "status": "approved",
+      "status": "added",
       "deezer": {
         "id": 13525003,
         "name": "Kang Asol",
@@ -942,6 +955,13 @@
       "approved": {
         "date": "2026-11-12",
         "by": "user"
+      },
+      "added": {
+        "date": "2026-11-12",
+        "trackIds": [
+          "kang-asol-island",
+          "kang-asol-anyone-but-me"
+        ]
       }
     },
     {
@@ -1281,7 +1301,7 @@
         }
       ],
       "officialURL": "",
-      "status": "approved",
+      "status": "added",
       "deezer": {
         "id": 271346212,
         "name": "Danpyunsun and the Moments Ensemble",
@@ -1320,6 +1340,13 @@
       "approved": {
         "date": "2026-11-12",
         "by": "user"
+      },
+      "added": {
+        "date": "2026-11-12",
+        "trackIds": [
+          "danpyunsun-and-the-moments-ensemble-you-me-and-namyangju",
+          "danpyunsun-and-the-moments-ensemble-hail-to-the-music"
+        ]
       }
     },
     {
@@ -6333,7 +6360,7 @@
         }
       ],
       "officialURL": "",
-      "status": "approved",
+      "status": "added",
       "apple": {
         "id": 1153689866,
         "name": "Black String",
@@ -6372,6 +6399,12 @@
       "approved": {
         "date": "2026-11-12",
         "by": "user"
+      },
+      "added": {
+        "date": "2026-11-12",
+        "trackIds": [
+          "black-string-mask-dance"
+        ]
       }
     },
     {

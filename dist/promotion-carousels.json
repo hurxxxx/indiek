@@ -895,6 +895,203 @@
     },
     {
       "pageKind": "artist",
+      "pageId": "lacuna",
+      "path": "/artists/lacuna/dancing-in-the-rain/",
+      "description": "“Dancing in the Rain” asks for a hand to hold as the ground collapses. Its Korean title, 춤을 춰요, is an invitation to dance, placing an ordinary gesture of companionship amid destruction. Lyrics meaning in English, credits, background and release details.",
+      "artistIds": [
+        "lacuna"
+      ],
+      "title": "Lacuna — Dancing in the Rain",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-lacuna-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: Lacuna — “Dancing in the Rain”. Holding on as the ground gives way.",
+          "sha256": "4628b8b4ed936dfce5eafd51b41b7a9b5bcead9fa6b83c209fd5889b41c2e516"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-lacuna-2.jpg",
+          "altText": "Slide 2 of 4. The speaker finds people difficult to trust but remains willing to love. That willingness first appears in an awkward, ordinary scene: drunken dancing and belongings falling from pockets. The request to take a hand makes closeness possible within that clumsiness.",
+          "text": "The speaker finds people difficult to trust but remains willing to love. That willingness first appears in an awkward, ordinary scene: drunken dancing and belongings falling from pockets. The request to take a hand makes closeness possible within that clumsiness.",
+          "sha256": "09318e3c27a44e2096759c084cba2cc2c00451671f79328b42e0f7a6fb984afb"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-lacuna-3.jpg",
+          "altText": "Slide 3 of 4. As the images turn to collapsing ground, cuts and blood, the invitation to dance persists. The speaker’s assurances of being all right sit beside a request for companionship in the present; the danger remains. The closing embrace and movement into a dream can be read as a shared retreat from destruction, though the lyric leaves the pair’s fate unresolved.",
+          "text": "As the images turn to collapsing ground, cuts and blood, the invitation to dance persists. The speaker’s assurances of being all right sit beside a request for companionship in the present; the danger remains. The closing embrace and movement into a dream can be read as a shared retreat from destruction, though the lyric leaves the pair’s fate unresolved.",
+          "sha256": "7ee89b045e5c403540c1d80863f268cd15e114551bcaf7ddd429965def65f43f"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-lacuna-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/lacuna/dancing-in-the-rain/",
+          "sha256": "908ea3c0ad593c8cda2643e23f25c1156869e514ac751157ad574561b27cb4c1"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "ohchill",
+      "path": "/artists/ohchill/somethings-wrong/",
+      "description": "In “Something’s Wrong”, running between buildings brings the speaker back to the same place. OHCHILL’s album notes describe people struggling to get through everyday city life, caught between feeling lost and trying to live normally. Lyrics meaning in English, credits, background and release details.",
+      "artistIds": [
+        "ohchill"
+      ],
+      "title": "OHCHILL — Something's Wrong",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-ohchill-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: OHCHILL — “Something's Wrong”. Moving without getting anywhere.",
+          "sha256": "f2e7bd80f4057be12174510506d57707195782971cb0026a7552963fcea796af"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-ohchill-2.jpg",
+          "altText": "Slide 2 of 4. The brightly lit city sits beside an empty room where the speaker is alone. Outside, running through enclosing buildings ends back at the starting point. These images make the frustration concrete: neither staying inside nor moving through the city offers much relief.",
+          "text": "The brightly lit city sits beside an empty room where the speaker is alone. Outside, running through enclosing buildings ends back at the starting point. These images make the frustration concrete: neither staying inside nor moving through the city offers much relief.",
+          "sha256": "ec1aa1b30ac4bcf7248ad471ecf9aba40eed475a5c7841c1e53a616fa0661576"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-ohchill-3.jpg",
+          "altText": "Slide 3 of 4. English labels keep changing the speaker’s role, from runner to fighter to lover, without settling into a secure identity. Against those shifts, the refrain repeatedly objects to a world that allows no difference. By the end, the accusation also includes the world’s dishonesty, but there is no clear escape or resolution. The lyric leaves the speaker’s anger and difficulty speaking side by side.",
+          "text": "English labels keep changing the speaker’s role, from runner to fighter to lover, without settling into a secure identity. Against those shifts, the refrain repeatedly objects to a world that allows no difference. By the end, the accusation also includes the world’s dishonesty, but there is no clear escape or resolution. The lyric leaves the speaker’s anger and difficulty speaking side by side.",
+          "sha256": "6103d3cd026740aef07bdd36d11732945a51621098d40dcc06de4335369c68c4"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-ohchill-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/ohchill/somethings-wrong/",
+          "sha256": "d0513a0e0655601badd836a7c3a4f301e5efb879f01ee59d48b870f11bd55276"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "kang-asol",
+      "path": "/artists/kang-asol/island/",
+      "description": "In “Island” (섬), an island exposed to wind and waves becomes a place for feelings the speaker cannot soothe. The song asks whether living with oneself must keep hurting, leaving the question open. Lyrics meaning in English, credits, background and release details.",
+      "artistIds": [
+        "kang-asol"
+      ],
+      "title": "Kang Asol — Island",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-kang-asol-1.jpg",
+          "altText": "Slide 1 of 5. indiek lyric notes: Kang Asol — “Island”. An island without shelter.",
+          "sha256": "95a17b05d30c170a150ba06c43b85689482d82ae9874d0bf7e3255e4c0345d2e"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-kang-asol-2.jpg",
+          "altText": "Slide 2 of 5. The island offers no refuge: others cannot find or reach it, yet the speaker has nowhere to hide from the cold wind. Waves have swept them there. These details make being alone feel exposed and involuntary, rather than a peaceful retreat.",
+          "text": "The island offers no refuge: others cannot find or reach it, yet the speaker has nowhere to hide from the cold wind. Waves have swept them there. These details make being alone feel exposed and involuntary, rather than a peaceful retreat.",
+          "sha256": "d76b769e681a52e2a15df4fb2db14c7b800cc22169a8b62e0f64aa57ce8af022"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-kang-asol-3.jpg",
+          "altText": "Slide 3 of 5. The lyric then turns from the landscape toward the parts of a person that remain difficult to care for. Looking inward only deepens the speaker’s loneliness, and everything seems to accuse them of being at fault. That sense of blame becomes another part of their loneliness.",
+          "text": "The lyric then turns from the landscape toward the parts of a person that remain difficult to care for. Looking inward only deepens the speaker’s loneliness, and everything seems to accuse them of being at fault. That sense of blame becomes another part of their loneliness.",
+          "sha256": "2ce3228ec41c0132f952e2ef125cf0515974aaa86bba4a119c06a3091c9bd705"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-kang-asol-4.jpg",
+          "altText": "Slide 4 of 5. The repeated question is whether they must go on living with a self that feels like an affliction. It receives no answer. In her Genie interview, Kang Asol describes wanting to ask whether others shared this feeling. The question reaches outward even while the island remains unreachable.",
+          "text": "The repeated question is whether they must go on living with a self that feels like an affliction. It receives no answer. In her Genie interview, Kang Asol describes wanting to ask whether others shared this feeling. The question reaches outward even while the island remains unreachable.",
+          "sha256": "c2237452e18c6640f4626e199fbd6d7a71df5e1639fc3ee4af261a6bb365d284"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-kang-asol-5.jpg",
+          "altText": "Slide 5 of 5. Read the full notes and play the official recording at indiek.com/artists/kang-asol/island/",
+          "sha256": "8d8588ab6318217905171e85b5ecfd7a2a7c1439e068fd4e49ce613b4e1e7da0"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "danpyunsun-and-the-moments-ensemble",
+      "path": "/artists/danpyunsun-and-the-moments-ensemble/you-me-and-namyangju/",
+      "description": "“You, Me and Namyangju” places an uncertain encounter in the snow beside a fox’s account of its present life. The speaker watches someone move away, while the ending leaves room for both contentment and thoughts of someone absent. Lyrics meaning in English, credits, background and release details.",
+      "artistIds": [
+        "danpyunsun-and-the-moments-ensemble"
+      ],
+      "title": "Danpyunsun and the Moments Ensemble — You, Me and Namyangju",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-danpyunsun-and-the-moments-ensemble-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: Danpyunsun and the Moments Ensemble — “You, Me and Namyangju”. A present life with room for memory.",
+          "sha256": "185961200baee6db31f747d4b874fbbba2d27500e85906940f7782bc9039fd31"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-danpyunsun-and-the-moments-ensemble-2.jpg",
+          "altText": "Slide 2 of 4. Snow and visible breath give the encounter physical details, yet the speaker questions whether their being together is real. Repeated attention to the other person’s appearance and footsteps keeps returning to the same movement: someone is getting farther away. The lyric offers no settled explanation of what happened between them.",
+          "text": "Snow and visible breath give the encounter physical details, yet the speaker questions whether their being together is real. Repeated attention to the other person’s appearance and footsteps keeps returning to the same movement: someone is getting farther away. The lyric offers no settled explanation of what happened between them.",
+          "sha256": "680b9bc2d7301ca25e715990bda372318eadbc9c4000872042b98a06fb05f65c"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-danpyunsun-and-the-moments-ensemble-3.jpg",
+          "altText": "Slide 3 of 4. The spoken ending shifts to a figure who says they have become a fox. Cold weather and searching the snow for insects make this new life concrete, even within its strange premise. The figure expresses satisfaction with the present, then repeatedly admits to thinking of the other person sometimes. Remembering them does not cancel that satisfaction; both feelings remain.",
+          "text": "The spoken ending shifts to a figure who says they have become a fox. Cold weather and searching the snow for insects make this new life concrete, even within its strange premise. The figure expresses satisfaction with the present, then repeatedly admits to thinking of the other person sometimes. Remembering them does not cancel that satisfaction; both feelings remain.",
+          "sha256": "7aa1c3cd5bfcd7ab7a5a601c68e747fe5b9a1416ea1af638ce0575c3ac78d034"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-danpyunsun-and-the-moments-ensemble-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/danpyunsun-and-the-moments-ensemble/you-me-and-namyangju/",
+          "sha256": "92af6dd4e3dafacf00f0f613bccadbba1e50d5b98a0fbcf4d7c6c0dea405945b"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
+      "pageId": "black-string",
+      "path": "/artists/black-string/mask-dance/",
+      "description": "“Mask Dance” takes its inspiration from Cheoyongmu, a Korean dance performed wearing Cheoyong’s mask to drive away spirits. Genie’s release notes describe the composition as a musical expression of the story’s strange and mysterious imagery. Music notes in English, credits, background and release details.",
+      "artistIds": [
+        "black-string"
+      ],
+      "title": "Black String — Mask Dance",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-black-string-1.jpg",
+          "altText": "Slide 1 of 4. indiek music notes: Black String — “Mask Dance”. A masked dance, amplified.",
+          "sha256": "3bf21cdfe27b684109ffef6dd953340fee81d2bbacf59561ba2d0571fd6bc18a"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-black-string-2.jpg",
+          "altText": "Slide 2 of 4. Genie’s release notes connect “Mask Dance” to Cheoyongmu and its spirit-expelling purpose. They describe combining amplifiers and effects with Korean traditional instruments to give the story’s strange and mysterious imagery an intense musical setting.",
+          "text": "Genie’s release notes connect “Mask Dance” to Cheoyongmu and its spirit-expelling purpose. They describe combining amplifiers and effects with Korean traditional instruments to give the story’s strange and mysterious imagery an intense musical setting.",
+          "sha256": "09a4f3aa62d487c87c68bc6057104ee01eba119568bc92ed6cf66e2ff66725dc"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-black-string-3.jpg",
+          "altText": "Slide 3 of 4. ACT’s notes describe the title track as an experiment with powerful, almost rock-like sounds. Heo’s explanation there focuses on how the music develops through interaction: the musicians create contrasts and respond to one another’s accents and pitches, while staying close to traditional Korean forms and scales.",
+          "text": "ACT’s notes describe the title track as an experiment with powerful, almost rock-like sounds. Heo’s explanation there focuses on how the music develops through interaction: the musicians create contrasts and respond to one another’s accents and pitches, while staying close to traditional Korean forms and scales.",
+          "sha256": "35a980e139ef03db0d09640f6421840e219fd1e6954a7989fcf03fc950e0d6c1"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-black-string-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/black-string/mask-dance/",
+          "sha256": "80b383bccae7d76dd2290ed11834855b1c4e94ce7ff962072f7ff2df2eafd2ad"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
       "pageId": "yoon-mirae",
       "path": "/artists/yoon-mirae/",
       "description": "Yoon Mirae (윤미래): what “Breath” (숨) is about, in English. An acoustic R&B song with room to breathe. Official recording, release details and sources.",

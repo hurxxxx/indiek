@@ -13,7 +13,7 @@ const freshCatalogue = () => JSON.parse(JSON.stringify(catalogue));
 test('listening guides cover every artist with the intended opening tracks and counts',()=>{
   const guides = getListeningGuides(catalogue);
   assert.deepEqual(guides.filter(g=>g.selection!=='curated').map(g=>[g.id,g.records.length,g.records[0].id]),[
-    ['on-stage',17,'sunwoojunga'],['guitars-and-bands',18,'black-skirts'],['distinct-voices',23,'yoon-mirae'],
+    ['on-stage',22,'sunwoojunga'],['guitars-and-bands',25,'black-skirts'],['distinct-voices',25,'yoon-mirae'],
   ]);
   assert.deepEqual([...new Set(guides.flatMap(g=>g.records.map(r=>r.id)))].sort(),[...records,editorPick].map(r=>r.id).sort());
   for (const guide of guides) assert.equal(new Set(guide.records.map(r=>r.id)).size,guide.records.length);
@@ -39,7 +39,7 @@ test('edited tags change membership without changing the artist catalogue order'
   edited.records.find(r=>r.id==='hanroro').guideTags=['distinct-voices'];
   edited.records.push({id:'new-guitar',guideTags:['guitars-and-bands','guitars-and-bands']});
   const ids=getListeningGuides(edited).find(g=>g.id==='guitars-and-bands').records.map(r=>r.id);
-  assert.deepEqual(ids,['black-skirts','esegye','se-so-neon','ydbb','whiteusedsocks','gongwon','moneto-she','mrch-surrender','say-sue-me-old-town','silica-gel-no-pain','silica-gel-tik-tak-tok','meaningful-stone-beep-boop-beep-boop','meaningful-stone-psychomania','lang-lee-there-is-a-wolf','lang-lee-the-generation-of-tribulation','jeongmilla-departing-from-seoul-station','jeongmilla-flower','new-guitar']);
+  assert.deepEqual(ids,['black-skirts','esegye','se-so-neon','ydbb','whiteusedsocks','gongwon','moneto-she','mrch-surrender','say-sue-me-old-town','silica-gel-no-pain','silica-gel-tik-tak-tok','meaningful-stone-beep-boop-beep-boop','meaningful-stone-psychomania','lang-lee-there-is-a-wolf','lang-lee-the-generation-of-tribulation','jeongmilla-departing-from-seoul-station','jeongmilla-flower','lacuna-dancing-in-the-rain','lacuna-far-away','ohchill-somethings-wrong','kang-asol-island','danpyunsun-and-the-moments-ensemble-you-me-and-namyangju','danpyunsun-and-the-moments-ensemble-hail-to-the-music','black-string-mask-dance','new-guitar']);
 });
 test('unclassified artists and unknown tags cannot silently disappear from guides',()=>{
   const missing=freshCatalogue();

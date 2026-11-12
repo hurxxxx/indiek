@@ -156,6 +156,133 @@
           }
         ]
       }
+    },
+    "lacuna": {
+      "artistId": "lacuna",
+      "batch": "batch-2",
+      "addedAt": "2026-11-12",
+      "candidate": {
+        "score": 41.2,
+        "rank": 2,
+        "approved": {
+          "date": "2026-11-12",
+          "by": "user"
+        },
+        "signals": [
+          {
+            "type": "recognition",
+            "url": "https://mpmgmusic.com/lacuna"
+          },
+          {
+            "type": "scene",
+            "url": "https://www.mpmgmusic.com/artists"
+          },
+          {
+            "type": "community",
+            "url": "https://www.reddit.com/r/BeginnerKorean/comments/1lt2b5b/korean_music_recommendations_not_kpop/"
+          },
+          {
+            "type": "recognition",
+            "url": "https://www.cjazit.org/support/tune-up/selection/1891?p=2"
+          }
+        ]
+      }
+    },
+    "ohchill": {
+      "artistId": "ohchill",
+      "batch": "batch-2",
+      "addedAt": "2026-11-12",
+      "candidate": {
+        "score": 31.3,
+        "rank": 5,
+        "approved": {
+          "date": "2026-11-12",
+          "by": "user"
+        },
+        "signals": [
+          {
+            "type": "recognition",
+            "url": "https://festiee.com/festivals/busan-rock-25"
+          },
+          {
+            "type": "community",
+            "url": "https://www.reddit.com/r/korea/comments/1c8yxib/looking_for_some_new_korean_music_that_isnt_kpop/"
+          },
+          {
+            "type": "recognition",
+            "url": "https://global.ebs.co.kr/board/bbs?boardId=31&boardTypeId=1&cmd=view&no=4&option=respond&pageNo=78&postId=10002286647&searchCondition=title&searchKeyword="
+          }
+        ]
+      }
+    },
+    "kang-asol": {
+      "artistId": "kang-asol",
+      "batch": "batch-2",
+      "addedAt": "2026-11-12",
+      "candidate": {
+        "score": 28.3,
+        "rank": 10,
+        "approved": {
+          "date": "2026-11-12",
+          "by": "user"
+        },
+        "signals": [
+          {
+            "type": "recognition",
+            "url": "https://koreanmusicawards.com/project/강아솔-누구도-미워하지-않는/"
+          },
+          {
+            "type": "recognition",
+            "url": "https://koreanmusicawards.com/project/강아솔-섬/"
+          }
+        ]
+      }
+    },
+    "danpyunsun-and-the-moments-ensemble": {
+      "artistId": "danpyunsun-and-the-moments-ensemble",
+      "batch": "batch-2",
+      "addedAt": "2026-11-12",
+      "candidate": {
+        "score": 27.8,
+        "rank": 14,
+        "approved": {
+          "date": "2026-11-12",
+          "by": "user"
+        },
+        "signals": [
+          {
+            "type": "recognition",
+            "url": "https://festiee.com/festivals/pentaport-25"
+          },
+          {
+            "type": "recognition",
+            "url": "https://music.apple.com/us/artist/danpyunsun-and-the-moments-ensemble/1754273932"
+          },
+          {
+            "type": "recognition",
+            "url": "https://koreanmusicawards.com/project/천사-인터뷰-음악만세/"
+          }
+        ]
+      }
+    },
+    "black-string": {
+      "artistId": "black-string",
+      "batch": "batch-2",
+      "addedAt": "2026-11-12",
+      "candidate": {
+        "score": 15.5,
+        "rank": 80,
+        "approved": {
+          "date": "2026-11-12",
+          "by": "user"
+        },
+        "signals": [
+          {
+            "type": "recognition",
+            "url": "https://koreanmusicawards.com/project/블랙스트링-mask-dance-2/"
+          }
+        ]
+      }
     }
   },
   "tracks": {
@@ -1637,6 +1764,1191 @@
           {
             "key": "t2",
             "grade": "B",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      },
+      "humanSample": true,
+      "humanReview": {
+        "status": "pending"
+      }
+    },
+    "lacuna-dancing-in-the-rain": {
+      "trackId": "lacuna-dancing-in-the-rain",
+      "artistId": "lacuna",
+      "batch": "batch-2",
+      "grade": "A",
+      "role": "primary",
+      "addedAt": "2026-11-12",
+      "contentHash": "d7bc30b6873bb23900d294c56a9fa68b46cc92ea81a5d73d43431b38bfaa91e8",
+      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
+      "reviewedAt": "2026-11-11T23:14:37.518Z",
+      "sources": [
+        "https://mpmgmusic.com/lacuna",
+        "https://www.cjazit.org/support/tune-up/entry/45/23134?p=10",
+        "https://music.bugs.co.kr/album/20360950",
+        "https://music.bugs.co.kr/track/32070938"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/hello-wonderland-ep/1540530166",
+        "trackName": "Dancing in the Rain",
+        "releaseDate": "2020-11-19",
+        "checkedAt": "2026-11-11T23:11:09.846Z"
+      },
+      "playback": {
+        "videoId": "1aTKI5bFgbY",
+        "state": "playing",
+        "checkedAt": "2026-11-11T23:11:19.734Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "Lacuna / 라쿠나",
+        "official": "the artist’s own channel",
+        "tried": [
+          {
+            "videoId": "1aTKI5bFgbY",
+            "channel": "Lacuna / 라쿠나",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-12T01:04:31.301Z"
+      },
+      "facts": {
+        "approved": true,
+        "reason": "The exact entries are supported by the supplied fetched originals and pipeline verification. Credits and romanisations match the release notes. Lyric interpretations remain appropriately qualified, and video durations correctly describe the linked live performances.",
+        "checkedURLs": [
+          "https://mpmgmusic.com/lacuna",
+          "https://www.cjazit.org/support/tune-up/entry/45/23134?p=10",
+          "https://music.bugs.co.kr/album/20360950",
+          "https://music.bugs.co.kr/track/32070938",
+          "https://music.bugs.co.kr/album/20492113"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "Lacuna use imagined, fairy-tale storytelling about lonely people and outsiders.",
+            "sourceURL": "https://mpmgmusic.com/lacuna",
+            "evidence": "소외되거나 외로운, 주류에 속하지 않은 사람들의 서사를 위해, 상상력과 이미지를 요하는 동화적 화법을 사용한다."
+          },
+          {
+            "claim": "The band's name comes from the memory-erasing company in Eternal Sunshine of the Spotless Mind.",
+            "sourceURL": "https://mpmgmusic.com/lacuna",
+            "evidence": "영화 ‘이터널 선샤인’의 기억을 지워주는 회사 ‘라쿠나’에서 모티브를 얻어 밴드 이름을 결정했다."
+          },
+          {
+            "claim": "The band began releasing music in December 2018 with Incompleteness Dream.",
+            "sourceURL": "https://mpmgmusic.com/lacuna",
+            "evidence": "the release of the EP [Incompleteness Dream] in December 2018"
+          },
+          {
+            "claim": "Lacuna participated in bright #8 and Grand Mint Festival in 2019.",
+            "sourceURL": "https://mpmgmusic.com/lacuna",
+            "evidence": "in 2019 by taking part in the Mint Paper’s [bright #8] compilation album and Grand Mint Festival 2019."
+          },
+          {
+            "claim": "CJ attributes Dancing in the Rain to vocalist 장경민 imagining a collapsing world and people dancing together.",
+            "sourceURL": "https://www.cjazit.org/support/tune-up/entry/45/23134?p=10",
+            "evidence": "보컬 장경민이 어느 날 문득 세상이 무너지는 상상을 하며 쓴 곡으로, 자연스럽게 이 세상이 갑자기 없어지는 날 다 같이 춤을 추는 모습을 곡에 표현해냈습니다."
+          },
+          {
+            "claim": "Hello, Wonderland was released on November 19, 2020.",
+            "sourceURL": "https://music.bugs.co.kr/album/20360950",
+            "evidence": "발매일 2020.11.19"
+          },
+          {
+            "claim": "Dancing in the Rain has lyrics and music by 장경민 and arrangement by 장경민, 정민혁 and 김호.",
+            "sourceURL": "https://music.bugs.co.kr/album/20360950",
+            "evidence": "Composed by 장경민 / Written by 장경민 / Arranged by 장경민, 정민혁, 김호"
+          },
+          {
+            "claim": "Lacuna produced Hello, Wonderland.",
+            "sourceURL": "https://music.bugs.co.kr/album/20360950",
+            "evidence": "Produced by Lacuna"
+          },
+          {
+            "claim": "The credits support the romanisations Jang Kyungmin, Jung Minhyuk and Kim Ho.",
+            "sourceURL": "https://music.bugs.co.kr/album/20360950",
+            "evidence": "장경민 JANG KYUNGMIN ; Vocal / Guitar 정민혁 JUNG MINHYUK ; Guitar 김호 KIM HO"
+          },
+          {
+            "claim": "The lyric contrasts difficulty trusting people with generosity toward love.",
+            "sourceURL": "https://music.bugs.co.kr/track/32070938",
+            "evidence": "사람은 믿기 어렵지만 난 사랑엔 너무 관대해"
+          },
+          {
+            "claim": "The lyric includes drunken, awkward dancing and belongings falling from pockets.",
+            "sourceURL": "https://music.bugs.co.kr/track/32070938",
+            "evidence": "그대와 잔뜩 취해서 춤을 실룩샐룩 추다 주머니에 있는 걸 다 떨어뜨려도"
+          },
+          {
+            "claim": "The speaker asks for a hand and invites the addressee to dance.",
+            "sourceURL": "https://music.bugs.co.kr/track/32070938",
+            "evidence": "어서 내 손을 잡아 줘요 나와 같이 춤을 춰요"
+          },
+          {
+            "claim": "The request for present companionship sits beside collapsing ground and reassurance.",
+            "sourceURL": "https://music.bugs.co.kr/track/32070938",
+            "evidence": "지금은 나와 있어 줄래 땅이 무너지고 있지만 괜찮을 거예요"
+          },
+          {
+            "claim": "The lyric retains bodily danger alongside assurances of being all right.",
+            "sourceURL": "https://music.bugs.co.kr/track/32070938",
+            "evidence": "살갗이 여기저기에 베여나가도 난 지금은 괜찮으니까"
+          },
+          {
+            "claim": "The final section supports the qualified reading of an embrace and retreat into a dream.",
+            "sourceURL": "https://music.bugs.co.kr/track/32070938",
+            "evidence": "그대를 품에 꽉 안고선 저 아래로 떨어져요 두 눈을 질끈 감아서 꿈속으로 들어가요"
+          },
+          {
+            "claim": "Blood and continued movement remain in the final section.",
+            "sourceURL": "https://music.bugs.co.kr/track/32070938",
+            "evidence": "피를 뒤집어쓴대도 우린 멈추지 말아요"
+          },
+          {
+            "claim": "Far Away was the first song the members made together.",
+            "sourceURL": "https://music.bugs.co.kr/album/20492113",
+            "evidence": "멤버들과 만나고 처음으로 같이 만들었던 곡 [Far Away]"
+          },
+          {
+            "claim": "The release notes connect Far Away with running despite being unable to reach a destination.",
+            "sourceURL": "https://music.bugs.co.kr/album/20492113",
+            "evidence": "때로는 멀리 내달려도 어디에도 닿을 수 없음을 알고 있지만, 그렇기 때문에 달려갈 수 있다."
+          },
+          {
+            "claim": "The band refined Far Away for recording with a wish to continue playing together.",
+            "sourceURL": "https://music.bugs.co.kr/album/20492113",
+            "evidence": "리듬 위로 나란히 질주하는 기타를 연주하던 우리의 모습이 영원히 멈추지 않고 멀리 달려가길 바라는 마음으로 곡을 다듬어 녹음했다."
+          },
+          {
+            "claim": "I Love You was released on September 14, 2022.",
+            "sourceURL": "https://music.bugs.co.kr/album/20492113",
+            "evidence": "발매일 2022.09.14"
+          },
+          {
+            "claim": "Far Away has music by 장경민 and 정민혁, lyrics by 장경민 and arrangement by Lacuna.",
+            "sourceURL": "https://music.bugs.co.kr/album/20492113",
+            "evidence": "Composed by 장경민, 정민혁 Written by 장경민 Arranged by Lacuna"
+          },
+          {
+            "claim": "Lacuna produced I Love You.",
+            "sourceURL": "https://music.bugs.co.kr/album/20492113",
+            "evidence": "CREDITS Produced by Lacuna"
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The introductions are short, specific and accessible, with song details preceding release history. The lyric commentary stays close to concrete images, distinguishes the speaker from the performer and preserves uncertainty without inflating the emotion. Neither entry repeats the recent examples’ structure or relies on name-swappable praise. Recording verification and factual checks are accepted as supplied.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          },
+          {
+            "key": "t2",
+            "grade": "B",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      }
+    },
+    "lacuna-far-away": {
+      "trackId": "lacuna-far-away",
+      "artistId": "lacuna",
+      "batch": "batch-2",
+      "grade": "B",
+      "role": "additional",
+      "addedAt": "2026-11-12",
+      "contentHash": "74bcd24f203a683df13c30030d593f71344bfea9ffd6b7f7437540886479fae8",
+      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
+      "reviewedAt": "2026-11-11T23:14:37.518Z",
+      "sources": [
+        "https://mpmgmusic.com/lacuna",
+        "https://music.bugs.co.kr/album/20492113"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/i-love-you-single/1644081473",
+        "trackName": "Far Away",
+        "releaseDate": "2022-09-14",
+        "checkedAt": "2026-11-11T23:11:20.335Z"
+      },
+      "playback": {
+        "videoId": "Rc2KX21Kcwk",
+        "state": "playing",
+        "checkedAt": "2026-11-11T23:12:10.961Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "Lacuna / 라쿠나",
+        "official": "the artist’s own channel",
+        "tried": [
+          {
+            "videoId": "Rc2KX21Kcwk",
+            "channel": "Lacuna / 라쿠나",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-12T01:04:36.355Z"
+      },
+      "facts": {
+        "approved": true,
+        "reason": "The exact entries are supported by the supplied fetched originals and pipeline verification. Credits and romanisations match the release notes. Lyric interpretations remain appropriately qualified, and video durations correctly describe the linked live performances.",
+        "checkedURLs": [
+          "https://mpmgmusic.com/lacuna",
+          "https://www.cjazit.org/support/tune-up/entry/45/23134?p=10",
+          "https://music.bugs.co.kr/album/20360950",
+          "https://music.bugs.co.kr/track/32070938",
+          "https://music.bugs.co.kr/album/20492113"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "Lacuna use imagined, fairy-tale storytelling about lonely people and outsiders.",
+            "sourceURL": "https://mpmgmusic.com/lacuna",
+            "evidence": "소외되거나 외로운, 주류에 속하지 않은 사람들의 서사를 위해, 상상력과 이미지를 요하는 동화적 화법을 사용한다."
+          },
+          {
+            "claim": "The band's name comes from the memory-erasing company in Eternal Sunshine of the Spotless Mind.",
+            "sourceURL": "https://mpmgmusic.com/lacuna",
+            "evidence": "영화 ‘이터널 선샤인’의 기억을 지워주는 회사 ‘라쿠나’에서 모티브를 얻어 밴드 이름을 결정했다."
+          },
+          {
+            "claim": "The band began releasing music in December 2018 with Incompleteness Dream.",
+            "sourceURL": "https://mpmgmusic.com/lacuna",
+            "evidence": "the release of the EP [Incompleteness Dream] in December 2018"
+          },
+          {
+            "claim": "Lacuna participated in bright #8 and Grand Mint Festival in 2019.",
+            "sourceURL": "https://mpmgmusic.com/lacuna",
+            "evidence": "in 2019 by taking part in the Mint Paper’s [bright #8] compilation album and Grand Mint Festival 2019."
+          },
+          {
+            "claim": "CJ attributes Dancing in the Rain to vocalist 장경민 imagining a collapsing world and people dancing together.",
+            "sourceURL": "https://www.cjazit.org/support/tune-up/entry/45/23134?p=10",
+            "evidence": "보컬 장경민이 어느 날 문득 세상이 무너지는 상상을 하며 쓴 곡으로, 자연스럽게 이 세상이 갑자기 없어지는 날 다 같이 춤을 추는 모습을 곡에 표현해냈습니다."
+          },
+          {
+            "claim": "Hello, Wonderland was released on November 19, 2020.",
+            "sourceURL": "https://music.bugs.co.kr/album/20360950",
+            "evidence": "발매일 2020.11.19"
+          },
+          {
+            "claim": "Dancing in the Rain has lyrics and music by 장경민 and arrangement by 장경민, 정민혁 and 김호.",
+            "sourceURL": "https://music.bugs.co.kr/album/20360950",
+            "evidence": "Composed by 장경민 / Written by 장경민 / Arranged by 장경민, 정민혁, 김호"
+          },
+          {
+            "claim": "Lacuna produced Hello, Wonderland.",
+            "sourceURL": "https://music.bugs.co.kr/album/20360950",
+            "evidence": "Produced by Lacuna"
+          },
+          {
+            "claim": "The credits support the romanisations Jang Kyungmin, Jung Minhyuk and Kim Ho.",
+            "sourceURL": "https://music.bugs.co.kr/album/20360950",
+            "evidence": "장경민 JANG KYUNGMIN ; Vocal / Guitar 정민혁 JUNG MINHYUK ; Guitar 김호 KIM HO"
+          },
+          {
+            "claim": "The lyric contrasts difficulty trusting people with generosity toward love.",
+            "sourceURL": "https://music.bugs.co.kr/track/32070938",
+            "evidence": "사람은 믿기 어렵지만 난 사랑엔 너무 관대해"
+          },
+          {
+            "claim": "The lyric includes drunken, awkward dancing and belongings falling from pockets.",
+            "sourceURL": "https://music.bugs.co.kr/track/32070938",
+            "evidence": "그대와 잔뜩 취해서 춤을 실룩샐룩 추다 주머니에 있는 걸 다 떨어뜨려도"
+          },
+          {
+            "claim": "The speaker asks for a hand and invites the addressee to dance.",
+            "sourceURL": "https://music.bugs.co.kr/track/32070938",
+            "evidence": "어서 내 손을 잡아 줘요 나와 같이 춤을 춰요"
+          },
+          {
+            "claim": "The request for present companionship sits beside collapsing ground and reassurance.",
+            "sourceURL": "https://music.bugs.co.kr/track/32070938",
+            "evidence": "지금은 나와 있어 줄래 땅이 무너지고 있지만 괜찮을 거예요"
+          },
+          {
+            "claim": "The lyric retains bodily danger alongside assurances of being all right.",
+            "sourceURL": "https://music.bugs.co.kr/track/32070938",
+            "evidence": "살갗이 여기저기에 베여나가도 난 지금은 괜찮으니까"
+          },
+          {
+            "claim": "The final section supports the qualified reading of an embrace and retreat into a dream.",
+            "sourceURL": "https://music.bugs.co.kr/track/32070938",
+            "evidence": "그대를 품에 꽉 안고선 저 아래로 떨어져요 두 눈을 질끈 감아서 꿈속으로 들어가요"
+          },
+          {
+            "claim": "Blood and continued movement remain in the final section.",
+            "sourceURL": "https://music.bugs.co.kr/track/32070938",
+            "evidence": "피를 뒤집어쓴대도 우린 멈추지 말아요"
+          },
+          {
+            "claim": "Far Away was the first song the members made together.",
+            "sourceURL": "https://music.bugs.co.kr/album/20492113",
+            "evidence": "멤버들과 만나고 처음으로 같이 만들었던 곡 [Far Away]"
+          },
+          {
+            "claim": "The release notes connect Far Away with running despite being unable to reach a destination.",
+            "sourceURL": "https://music.bugs.co.kr/album/20492113",
+            "evidence": "때로는 멀리 내달려도 어디에도 닿을 수 없음을 알고 있지만, 그렇기 때문에 달려갈 수 있다."
+          },
+          {
+            "claim": "The band refined Far Away for recording with a wish to continue playing together.",
+            "sourceURL": "https://music.bugs.co.kr/album/20492113",
+            "evidence": "리듬 위로 나란히 질주하는 기타를 연주하던 우리의 모습이 영원히 멈추지 않고 멀리 달려가길 바라는 마음으로 곡을 다듬어 녹음했다."
+          },
+          {
+            "claim": "I Love You was released on September 14, 2022.",
+            "sourceURL": "https://music.bugs.co.kr/album/20492113",
+            "evidence": "발매일 2022.09.14"
+          },
+          {
+            "claim": "Far Away has music by 장경민 and 정민혁, lyrics by 장경민 and arrangement by Lacuna.",
+            "sourceURL": "https://music.bugs.co.kr/album/20492113",
+            "evidence": "Composed by 장경민, 정민혁 Written by 장경민 Arranged by Lacuna"
+          },
+          {
+            "claim": "Lacuna produced I Love You.",
+            "sourceURL": "https://music.bugs.co.kr/album/20492113",
+            "evidence": "CREDITS Produced by Lacuna"
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The introductions are short, specific and accessible, with song details preceding release history. The lyric commentary stays close to concrete images, distinguishes the speaker from the performer and preserves uncertainty without inflating the emotion. Neither entry repeats the recent examples’ structure or relies on name-swappable praise. Recording verification and factual checks are accepted as supplied.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          },
+          {
+            "key": "t2",
+            "grade": "B",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      }
+    },
+    "ohchill-somethings-wrong": {
+      "trackId": "ohchill-somethings-wrong",
+      "artistId": "ohchill",
+      "batch": "batch-2",
+      "grade": "A",
+      "role": "primary",
+      "addedAt": "2026-11-12",
+      "contentHash": "70dfd179c262848a3873ed904643263be30518809df89b61dc4a4690f6c0a94f",
+      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
+      "reviewedAt": "2026-11-11T23:12:56.631Z",
+      "sources": [
+        "https://ohchill.bandcamp.com/",
+        "https://ohchill.bandcamp.com/album/the-burning-city",
+        "https://www.dailian.co.kr/news/view/1298617/밴드-오칠-두려움-동력-D인디그라운드-2023",
+        "https://music.bugs.co.kr/track/33025098"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/the-burning-city/1715793427",
+        "trackName": "Something's Wrong",
+        "releaseDate": "2023-11-20",
+        "checkedAt": "2026-11-11T23:11:36.714Z"
+      },
+      "playback": {
+        "videoId": "pd00eM36Pa8",
+        "state": "playing",
+        "checkedAt": "2026-11-11T23:11:44.158Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "OHCHILL 오칠",
+        "official": "the artist’s own channel",
+        "tried": [
+          {
+            "videoId": "pd00eM36Pa8",
+            "channel": "OHCHILL 오칠",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-12T01:04:42.239Z"
+      },
+      "facts": {
+        "approved": true,
+        "reason": "The exact entry is supported by the supplied fetched source texts and pipeline verification. Names, credits, release history and interview attribution agree with the sources. The lyric commentary offers reasonable readings grounded in the verified lyrics. No blocking issues remain.",
+        "checkedURLs": [
+          "https://ohchill.bandcamp.com/",
+          "https://ohchill.bandcamp.com/album/the-burning-city",
+          "https://www.dailian.co.kr/news/view/1298617/밴드-오칠-두려움-동력-D인디그라운드-2023",
+          "https://music.bugs.co.kr/track/33025098"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "OHCHILL is a Seoul rock duo comprising Junhong Yun on guitar and vocals and Seol Kim on drums and vocals, also known as Jun and Snow.",
+            "sourceURL": "https://ohchill.bandcamp.com/",
+            "evidence": "OHCHILL is a two-piece rock band from Seoul, South Korea featuring Guitar/Vox Jun (Junhong Yun)and Drums/Vox Snow (Seol Kim)"
+          },
+          {
+            "claim": "The band's Korean name is 오칠.",
+            "sourceURL": "https://ohchill.bandcamp.com/",
+            "evidence": "about OHCHILL 오칠 South Korea"
+          },
+          {
+            "claim": "Oh, Two Animals was the 2019 debut album, followed by the second album The Burning City.",
+            "sourceURL": "https://ohchill.bandcamp.com/album/the-burning-city",
+            "evidence": "has released their second full-length album, 'The Burning City,' four years after their debut album, 'Oh, Two Animals,' in 2019."
+          },
+          {
+            "claim": "The Burning City was released on November 20, 2023.",
+            "sourceURL": "https://ohchill.bandcamp.com/album/the-burning-city",
+            "evidence": "released November 20, 2023"
+          },
+          {
+            "claim": "The credits identify Junhong Yun as composer and Seol Kim as lyricist, with the entry using their official romanisations.",
+            "sourceURL": "https://ohchill.bandcamp.com/album/the-burning-city",
+            "evidence": "All Music by 윤준홍 Junhong Yun All Lyrics by 김설 Seol Kim"
+          },
+          {
+            "claim": "OHCHILL produced the album and shares arrangement credit with HAWAGON.",
+            "sourceURL": "https://ohchill.bandcamp.com/album/the-burning-city",
+            "evidence": "Produced by OHCHILL Arranged by OHCHILL, HAWAGON (손민곤,오은하)"
+          },
+          {
+            "claim": "The individual track credits confirm the lyricist, composer and arrangers.",
+            "sourceURL": "https://music.bugs.co.kr/track/33025098",
+            "evidence": "작곡 윤준홍 작사 김설 편곡 오칠 (OHCHILL) , HAWAGON(하와곤)"
+          },
+          {
+            "claim": "The album notes describe Something's Wrong as concerning people struggling with everyday city life and the pursuit of normal lives.",
+            "sourceURL": "https://ohchill.bandcamp.com/album/the-burning-city",
+            "evidence": "tells the story of people living day by day in a bustling city, depicting the struggles of depressed and lost individuals and young people compelled to contemplate death in their pursuit of normal lives."
+          },
+          {
+            "claim": "Snow said the song was begun relatively early and revised until last.",
+            "sourceURL": "https://www.dailian.co.kr/news/view/1298617/밴드-오칠-두려움-동력-D인디그라운드-2023",
+            "evidence": "수록곡 중에 비교적 초반에 만들기 시작한 곡임에도 불구하고 가장 마지막까지 수정한 곡이기도 해요."
+          },
+          {
+            "claim": "Snow said that after considering many melodies, they selected the first one.",
+            "sourceURL": "https://www.dailian.co.kr/news/view/1298617/밴드-오칠-두려움-동력-D인디그라운드-2023",
+            "evidence": "너무 다양한 멜로디들이 나와서 단 하나의 멜로디를 고르기가 까다로웠거든요. 결국에는 가장 처음에 만들었던 멜로디를 선택하게 되었습니다."
+          },
+          {
+            "claim": "The commentary's contrast between the lit city and solitary empty room is grounded in the lyrics.",
+            "sourceURL": "https://music.bugs.co.kr/track/33025098",
+            "evidence": "불 켜진 도시 위에 나는 a liar 텅 빈 방에 혼자 a wire"
+          },
+          {
+            "claim": "Running among buildings and returning to the starting point supports the description and heading.",
+            "sourceURL": "https://music.bugs.co.kr/track/33025098",
+            "evidence": "답답한 빌딩 숲을 달려 a runner 참지 못한 화를 the fire 돌고 돌아 제자리야 난"
+          },
+          {
+            "claim": "The changing English role labels and difficulty speaking support the commentary's reading of unsettled identity.",
+            "sourceURL": "https://music.bugs.co.kr/track/33025098",
+            "evidence": "더딘 춤을 추는 a loser 어리석게 반은 a fighter 말 한마디 뱉지 못해 난 차가운 꿈속을 헤집어 a diver 모른 척 지나쳐 a lover"
+          },
+          {
+            "claim": "The refrain supports the interpretation of pressure to conform.",
+            "sourceURL": "https://music.bugs.co.kr/track/33025098",
+            "evidence": "조금의 조금도 다르면 안돼"
+          },
+          {
+            "claim": "The final refrain adds an accusation that the world lies and ends without an explicit resolution.",
+            "sourceURL": "https://music.bugs.co.kr/track/33025098",
+            "evidence": "이 미친 세상은 오늘도 거짓말을 해 이 미친 세상은 oh my God 이 미친 세상은 모든 게 oh my God 조금의 조금도 다르면 안돼"
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The introduction is short and specific; the song description leads with a concrete lyric image. The background adds a distinctive songwriting account, and the lyric commentary stays measured, separates speaker from performer and avoids invented listening claims. Compared with recent entries, the prose offers distinct details without repeating their structure. All grade A components are present; factual verification belongs to the separate review.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      },
+      "humanSample": true,
+      "humanReview": {
+        "status": "pending"
+      }
+    },
+    "kang-asol-island": {
+      "trackId": "kang-asol-island",
+      "artistId": "kang-asol",
+      "batch": "batch-2",
+      "grade": "A",
+      "role": "primary",
+      "addedAt": "2026-11-12",
+      "contentHash": "5d6a42a8032b36ed7b72145157dabc28e41a98eaa6d45cdd2ee05856c4463ef6",
+      "skillRevision": "14f9ba6bf06f79a25012969b0e734b5dbc841a74d46243008a5fe6977cd022d4",
+      "reviewedAt": "2026-11-12T01:17:48.854Z",
+      "sources": [
+        "https://www.genie.co.kr/detail/albumInfo?axnm=81031362",
+        "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=4581",
+        "https://music.bugs.co.kr/track/5113799"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/the-day-of-love/1708495663",
+        "trackName": "Island",
+        "releaseDate": "2018-02-08",
+        "checkedAt": "2026-11-11T23:27:11.698Z"
+      },
+      "playback": {
+        "videoId": "NCr-wpBa_Wk",
+        "state": "playing",
+        "checkedAt": "2026-11-12T01:17:04.331Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "온스테이지ONSTAGE",
+        "official": "live-series channel on the official-channel list (Hand-reviewed official upload in the catalogue (youra-flicker))",
+        "tried": [
+          {
+            "videoId": "bNsiD32LTlQ",
+            "channel": "온스테이지ONSTAGE",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-12T01:05:34.195Z",
+        "playing": true,
+        "duration": 284
+      },
+      "facts": {
+        "approved": true,
+        "reason": "No blocking factual issues found in the exact entry. The supplied sources support the biography, release date, credits and attributed interview statements. The lyric commentary stays close to the verified imagery and questions without inventing biography or overstating resolution. Recording and Apple Music verification are accepted from the pipeline.",
+        "checkedURLs": [
+          "https://www.genie.co.kr/detail/albumInfo?axnm=81031362",
+          "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=4581",
+          "https://music.bugs.co.kr/track/5113799"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "Kang Asol recorded her first album in Jeju in 2012 and subsequently worked on her second in Seoul.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=81031362",
+            "evidence": "2012년 제주에서 원테이크로 녹음한 1집 [당신이 놓고 왔던 짧은 기억], 이듬해 서울로 올라와 작업한 2집 [정직한 마음]"
+          },
+          {
+            "claim": "The album was released on February 8, 2018.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=81031362",
+            "evidence": "워너뮤직 일렉트릭뮤즈 2018.02.08"
+          },
+          {
+            "claim": "The Day of Love is her third full-length album.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=81031362",
+            "evidence": "4년만의 정규 3집 [사랑의 시절]"
+          },
+          {
+            "claim": "The artist introduction's emphasis on continuing to love is supported by her stated album intention.",
+            "sourceURL": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=4581",
+            "evidence": "그럼에도 불구하고 계속 사랑하고 사랑을 믿자고 말하고 싶었어요."
+          },
+          {
+            "claim": "Kang Asol wrote the lyrics and music; Kang Asol and Hong Gap arranged Island.",
+            "sourceURL": "https://music.bugs.co.kr/track/5113799",
+            "evidence": "보컬 강아솔 작곡 강아솔 작사 강아솔 편곡 강아솔 , 홍갑"
+          },
+          {
+            "claim": "Kim Min-gyu is credited as producer.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=81031362",
+            "evidence": "프로듀서 : 김민규"
+          },
+          {
+            "claim": "The lyric depicts an island others cannot find and exposure to cold wind without shelter.",
+            "sourceURL": "https://music.bugs.co.kr/track/5113799",
+            "evidence": "아무도 찾지 못하는 섬 차가운 바람 매섭게 불어와도 그 어디에도 피할 곳 없네"
+          },
+          {
+            "claim": "The interpretation of isolation as involuntary is supported by the speaker having been swept there by waves.",
+            "sourceURL": "https://music.bugs.co.kr/track/5113799",
+            "evidence": "아무도 닿지 못하는 섬 사나운 파도에 휩쓸려 온 이 곳엔 누구도 모르는 내가 있네"
+          },
+          {
+            "claim": "The lyric connects difficulty caring for oneself, inward-looking loneliness, self-blame and an unresolved question about living with oneself.",
+            "sourceURL": "https://music.bugs.co.kr/track/5113799",
+            "evidence": "돌보지 못하는 저마다의 마음이 있는 걸까 들여다 볼수록 더욱 외로워져만 가는 모든 게 다 내 탓이라 말하는 것만 같아 이런 나를 나는 앓고 살아 가야 될까"
+          },
+          {
+            "claim": "Kang Asol said she wanted to ask whether others shared her feelings and hoped that expressing the question would both receive and offer comfort.",
+            "sourceURL": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=4581",
+            "evidence": "‘섬’이라는 노래를 통해 \"내게 이런 마음이 있어요, 여러분도 그러세요?\"라고 묻고 싶었어요. 이런 마음을 묻고 내뱉음으로써 위로를 받고 싶었고 또 위로가 되고 싶었어요."
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The introduction is brief, and the song’s island imagery gives the entry a concrete focus. Commentary explains exposure, self-blame and the unanswered question in measured language, keeping the speaker distinct from Kang Asol. No invented listening experience, sound description or reader-facing review notes appear. All grade A components are present; factual verification remains with the separate review.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      }
+    },
+    "kang-asol-anyone-but-me": {
+      "trackId": "kang-asol-anyone-but-me",
+      "artistId": "kang-asol",
+      "batch": "batch-2",
+      "grade": "B",
+      "role": "additional",
+      "addedAt": "2026-11-12",
+      "contentHash": "8dc5859892ddc0f7e318b49f9f65c9b906900414c9452c855f1875f5bc6728fa",
+      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
+      "reviewedAt": "2026-11-11T23:29:04.128Z",
+      "sources": [
+        "https://www.genie.co.kr/detail/albumInfo?axnm=81031362",
+        "https://poclanos.com/album/아무도-없는-곳에서-모두가-있는-곳으로/"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/from-where-no-one-is-to-where-everyone-is/1719029214",
+        "trackName": "Anyone But Me",
+        "releaseDate": "2023-12-01",
+        "checkedAt": "2026-11-11T23:27:17.421Z"
+      },
+      "playback": {
+        "videoId": "APoADxHgwBo",
+        "state": "playing",
+        "checkedAt": "2026-11-11T23:27:24.930Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "Kang Asol - Topic",
+        "official": "the artist’s YouTube Topic channel (official audio)",
+        "tried": [
+          {
+            "videoId": "APoADxHgwBo",
+            "channel": "Kang Asol - Topic",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-12T01:05:39.249Z"
+      },
+      "facts": {
+        "approved": true,
+        "reason": "The exact entries are supported by the supplied original-page texts and verified recording/release metadata. Lyric interpretations preserve the song’s uncertainty and distinguish the speaker from the songwriter. No unresolved blocking factual issues found.",
+        "checkedURLs": [
+          "https://www.genie.co.kr/detail/albumInfo?axnm=81031362",
+          "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=4581",
+          "https://music.bugs.co.kr/track/5113799",
+          "https://poclanos.com/album/아무도-없는-곳에서-모두가-있는-곳으로/"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "Kang Asol recorded her first album in Jeju in 2012 and subsequently worked on her second in Seoul.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=81031362",
+            "evidence": "2012년 제주에서 원테이크로 녹음한 1집 [당신이 놓고 왔던 짧은 기억], 이듬해 서울로 올라와 작업한 2집 [정직한 마음]"
+          },
+          {
+            "claim": "The Day of Love is her third studio album.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=81031362",
+            "evidence": "정규 3집 [사랑의 시절]"
+          },
+          {
+            "claim": "Kang Asol wrote the album’s lyrics and music.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=81031362",
+            "evidence": "작사, 작곡 : 강아솔"
+          },
+          {
+            "claim": "Kang Asol and Hong Gap arranged Island.",
+            "sourceURL": "https://music.bugs.co.kr/track/5113799",
+            "evidence": "편곡 강아솔 , 홍갑"
+          },
+          {
+            "claim": "Kim Min-gyu produced The Day of Love.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=81031362",
+            "evidence": "프로듀서 : 김민규"
+          },
+          {
+            "claim": "Island’s exposed landscape supports the interpretation of isolation without shelter.",
+            "sourceURL": "https://music.bugs.co.kr/track/5113799",
+            "evidence": "그 어디에도 피할 곳 없네"
+          },
+          {
+            "claim": "The lyric explicitly presents self-blame as something the speaker perceives.",
+            "sourceURL": "https://music.bugs.co.kr/track/5113799",
+            "evidence": "모든 게 다 내 탓이라 말하는 것만 같아"
+          },
+          {
+            "claim": "Kang Asol says she wanted Island to ask whether others shared her feelings.",
+            "sourceURL": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=4581",
+            "evidence": "‘섬’이라는 노래를 통해 \"내게 이런 마음이 있어요, 여러분도 그러세요?\"라고 묻고 싶었어요."
+          },
+          {
+            "claim": "She describes asking that question as seeking and offering comfort.",
+            "sourceURL": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=4581",
+            "evidence": "이런 마음을 묻고 내뱉음으로써 위로를 받고 싶었고 또 위로가 되고 싶었어요."
+          },
+          {
+            "claim": "The 2023 album was released on December 1.",
+            "sourceURL": "https://poclanos.com/album/아무도-없는-곳에서-모두가-있는-곳으로/",
+            "evidence": "Release 2023.12.01"
+          },
+          {
+            "claim": "Anyone But Me’s release note connects the song with placing herself last in love.",
+            "sourceURL": "https://poclanos.com/album/아무도-없는-곳에서-모두가-있는-곳으로/",
+            "evidence": "내가 하는 사랑에서 내가 가장 나중의 사람이 된다는 것."
+          },
+          {
+            "claim": "The album’s account moves from solitude toward returning to people she misses.",
+            "sourceURL": "https://poclanos.com/album/아무도-없는-곳에서-모두가-있는-곳으로/",
+            "evidence": "결국 보고 싶은 ‘모두가 있는 곳으로’ 돌아오는 이야기를 담았습니다."
+          },
+          {
+            "claim": "Kang Asol wrote Anyone But Me; Lee Jeong-hun and Jeon Jin-hee arranged it, with string arrangement by Kwon Young-chan.",
+            "sourceURL": "https://poclanos.com/album/아무도-없는-곳에서-모두가-있는-곳으로/",
+            "evidence": "Composed and Written by 강아솔 Arranged by 이정훈, 전진희 String Arranged by 권영찬"
+          },
+          {
+            "claim": "Jeon Jin-hee produced the 2023 album.",
+            "sourceURL": "https://poclanos.com/album/아무도-없는-곳에서-모두가-있는-곳으로/",
+            "evidence": "Produced by 전진희"
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The entries are plain, specific and measured. Concrete lyrical images and attributed songwriting context give each song a distinct introduction. The lyric commentary keeps the speaker separate from Kang Asol, supports its interpretations with details and preserves the unresolved question. No invented listening experience, unsupported sound description or problematic repetition appears. Both entries meet their requested grade requirements; factual verification remains with the separate review.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          },
+          {
+            "key": "t2",
+            "grade": "B",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      }
+    },
+    "danpyunsun-and-the-moments-ensemble-you-me-and-namyangju": {
+      "trackId": "danpyunsun-and-the-moments-ensemble-you-me-and-namyangju",
+      "artistId": "danpyunsun-and-the-moments-ensemble",
+      "batch": "batch-2",
+      "grade": "A",
+      "role": "primary",
+      "addedAt": "2026-11-12",
+      "contentHash": "fe4e9107aecd1e86cec1fbf64121e9d44a231db94f8b778ab185944317c3bb5b",
+      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
+      "reviewedAt": "2026-11-11T23:31:14.109Z",
+      "sources": [
+        "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+        "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
+        "https://music.bugs.co.kr/track/33680746?wl_ref=list_tr_08_ab"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/you-me-and-namyangju-single/1838847160",
+        "trackName": "You, Me and Namyangju",
+        "releaseDate": "2025-09-24",
+        "checkedAt": "2026-11-11T23:26:57.802Z"
+      },
+      "playback": {
+        "videoId": "vIjhdWqW3lk",
+        "state": "playing",
+        "checkedAt": "2026-11-11T23:27:57.115Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "미러볼 뮤직 - Mirrorball Music",
+        "official": "label channel on the official-channel list (Label of Danpyunsun and the Moments Ensemble: Apple Music (US) lists ℗ 2024 미러볼 뮤직 on Hail to the Music and ℗ 2026 on Lovers; the channel links mirrorballmusic.co.kr)",
+        "tried": [
+          {
+            "videoId": "PqO5R0iKS_I",
+            "channel": "미러볼 뮤직 - Mirrorball Music",
+            "state": "stalled"
+          },
+          {
+            "videoId": "vIjhdWqW3lk",
+            "channel": "미러볼 뮤직 - Mirrorball Music",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-12T01:05:46.126Z"
+      },
+      "facts": {
+        "approved": true,
+        "reason": "The exact entries are supported by the four supplied source texts and pipeline recording verification. The lyric readings stay close to the text. The additional entry distinguishes the live recording from the studio release and explicitly preserves the conflicting arranger listings.",
+        "checkedURLs": [
+          "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+          "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
+          "https://music.bugs.co.kr/track/33680746?wl_ref=list_tr_08_ab",
+          "https://music.bugs.co.kr/track/33289697?wl_ref=list_tr_08_ar"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "Danpyunsun is a musician and music producer.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+            "evidence": "단편선은 음악가이자 음악 프로듀서다."
+          },
+          {
+            "claim": "The ensemble announced its beginning in January 2024.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+            "evidence": "2024년 1월, 그 시작을 알렸다."
+          },
+          {
+            "claim": "The stated 2024 lineup and instrumental roles match the album introduction.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+            "evidence": "2024년 현재, 피아니스트 이보람, 베이시스트 송현우, 드러머 박재준, 기타리스트 박장미가 함께 하고 있다."
+          },
+          {
+            "claim": "The artist introduction accurately paraphrases Danpyunsun's account of mutual attention and response.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+            "evidence": "서로가 서로를 바라보고, 느끼고, 반응하는 시간을 담고자 했다."
+          },
+          {
+            "claim": "The additional song's description correctly attributes an invitation to endure the world together to the album notes.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+            "evidence": "이 세계를 함께 견뎌내고 있는 사람들에게. 같이 가자고 말하고 싶다."
+          },
+          {
+            "claim": "Genie's album credits support Danpyunsun's writing credits and the five named arrangers for track 09.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+            "evidence": "작곡·작사 단편선(except 01, 10) 편곡 단편선 이보람 송현우 박재준 박장미(except 05) 신예훈(05, 10)"
+          },
+          {
+            "claim": "Bugs additionally lists Shin Yehun as an arranger for the studio recording, as the entry discloses.",
+            "sourceURL": "https://music.bugs.co.kr/track/33289697?wl_ref=list_tr_08_ar",
+            "evidence": "편곡 단편선 , 이보람 , 송현우 , 박재준 , 박장미 , 신예훈"
+          },
+          {
+            "claim": "The primary single's release date is September 24, 2025.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
+            "evidence": "미러볼뮤직 오소리웍스 2025.09.24"
+          },
+          {
+            "claim": "The primary song was first written in 2022 and revised in 2023.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
+            "evidence": "2022년에 처음 쓴 곡이다. 2023년에 한 차례 다듬었다."
+          },
+          {
+            "claim": "The song was completed in 2025.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
+            "evidence": "곡을 완성한 것은 2025년의 일이다."
+          },
+          {
+            "claim": "Danpyunsun described the song's mood as lighter than the other material on Hail to the Music.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
+            "evidence": "이 곡이 가진 무드가 다른 곡에 비해 가볍게 느껴졌다."
+          },
+          {
+            "claim": "Images from 1980s and 1990s Hong Kong films recurred while he revisited the song.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
+            "evidence": "80, 90년대 홍콩영화들의 이미지가 자꾸만 머릿 속을 맴돌았다."
+          },
+          {
+            "claim": "He did not specify precisely how those images influenced the song.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
+            "evidence": "그것들이 곡에 어떤 영향을 끼쳤는지 구체적으로 말하기는 어렵다."
+          },
+          {
+            "claim": "The primary song's production, writing and arrangement credits match Genie.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
+            "evidence": "음악 프로듀싱·제작 총괄 단편선 @오소리웍스 작곡·작사 단편선 편곡 단편선 이보람 송현우 박재준 박장미"
+          },
+          {
+            "claim": "Snow, breath and a question about shared reality support the reading of an uncertain encounter.",
+            "sourceURL": "https://music.bugs.co.kr/track/33680746?wl_ref=list_tr_08_ab",
+            "evidence": "눈이 오면 네가 있으니까 입김을 후후 불어 우린 사실일까"
+          },
+          {
+            "claim": "Repeated descriptions of appearance, footsteps and increasing distance support the departure reading.",
+            "sourceURL": "https://music.bugs.co.kr/track/33680746?wl_ref=list_tr_08_ab",
+            "evidence": "미안한 너의 모습 일정한 속도로 멀어지는 미안한 너의 모습 미안한 너의 발걸음과"
+          },
+          {
+            "claim": "The ending introduces a figure who says they became a fox and describes cold weather.",
+            "sourceURL": "https://music.bugs.co.kr/track/33680746?wl_ref=list_tr_08_ab",
+            "evidence": "(나는 여우가 되었어) (재미있는 소리로 울어) (여기는 추워)"
+          },
+          {
+            "claim": "Searching snow for insects makes the fox's present life concrete.",
+            "sourceURL": "https://music.bugs.co.kr/track/33680746?wl_ref=list_tr_08_ab",
+            "evidence": "눈 속을 뒤지면 곤충은 생각보다 먹을 만하다?"
+          },
+          {
+            "claim": "Expressed satisfaction followed by recurring thoughts of the addressee supports the coexistence of contentment and memory.",
+            "sourceURL": "https://music.bugs.co.kr/track/33680746?wl_ref=list_tr_08_ab",
+            "evidence": "(지금이 좋아) (만족스러워) (나는 내가 좋다) (그래도 가끔은 네 생각을 해)"
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The entries are plain, specific and measured. Song details precede release history, and the lyric commentary supports its reading with concrete images while keeping the speaker separate from the performer. No invented listening experience, borrowed phrasing or repetitive opening is apparent. Both entries meet their stated grade requirements; factual verification remains with the separate review.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          },
+          {
+            "key": "t2",
+            "grade": "B",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      }
+    },
+    "danpyunsun-and-the-moments-ensemble-hail-to-the-music": {
+      "trackId": "danpyunsun-and-the-moments-ensemble-hail-to-the-music",
+      "artistId": "danpyunsun-and-the-moments-ensemble",
+      "batch": "batch-2",
+      "grade": "B",
+      "role": "additional",
+      "addedAt": "2026-11-12",
+      "contentHash": "e7beb7ec58857ad5c5d2f8db951876e6d0f055a0d3e167032e566a961e3bb9bf",
+      "skillRevision": "14f9ba6bf06f79a25012969b0e734b5dbc841a74d46243008a5fe6977cd022d4",
+      "reviewedAt": "2026-11-12T01:22:53.733Z",
+      "sources": [
+        "https://www.genie.co.kr/detail/albumInfo?axnm=85568923"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/hail-to-the-music/1766256265",
+        "trackName": "Hail to the Music",
+        "releaseDate": "2024-09-10",
+        "checkedAt": "2026-11-11T23:27:57.751Z"
+      },
+      "playback": {
+        "videoId": "SlkQ_GMRqRw",
+        "state": "playing",
+        "checkedAt": "2026-11-12T01:22:10.551Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "Danpyunsun & The Moments Ensemble",
+        "official": "the artist’s own channel",
+        "tried": [
+          {
+            "videoId": "DLka-4wLAms",
+            "channel": "Danpyunsun & The Moments Ensemble",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-12T01:05:53.186Z",
+        "playing": true,
+        "duration": 447
+      },
+      "facts": {
+        "approved": true,
+        "reason": "The supplied Genie text supports the artist introduction, 2024 lineup, album context, release date and track credits. The prose agrees with the pipeline’s recording and Apple Music verification. No unresolved blocking factual issues found.",
+        "checkedURLs": [
+          "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+          "https://music.apple.com/us/album/hail-to-the-music/1766256265",
+          "https://www.youtube.com/watch?v=SlkQ_GMRqRw"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "Danpyunsun is a musician and music producer.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+            "evidence": "단편선은 음악가이자 음악 프로듀서다."
+          },
+          {
+            "claim": "The ensemble announced its beginning in January 2024.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+            "evidence": "2024년 1월, 그 시작을 알렸다."
+          },
+          {
+            "claim": "The 2024 lineup included pianist Lee Boram, bassist Song Hyunwoo, drummer Park Jaejun and guitarist Park Jangmi.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+            "evidence": "2024년 현재, 피아니스트 이보람, 베이시스트 송현우, 드러머 박재준, 기타리스트 박장미가 함께 하고 있다."
+          },
+          {
+            "claim": "The album notes describe capturing people watching, feeling and responding to one another.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+            "evidence": "서로가 서로를 바라보고, 느끼고, 반응하는 시간을 담고자 했다."
+          },
+          {
+            "claim": "The description and short note accurately paraphrase the album’s invitation to endure the world together.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+            "evidence": "이 세계를 함께 견뎌내고 있는 사람들에게. 같이 가자고 말하고 싶다."
+          },
+          {
+            "claim": "The album was released on September 10, 2024.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+            "evidence": "미러볼뮤직 오소리웍스 2024.09.10"
+          },
+          {
+            "claim": "음악만세 is track 9 on the album of the same name.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+            "evidence": "9 곡 제목 정보 페이지 TITLE 음악만세 단편선 순간들"
+          },
+          {
+            "claim": "Danpyunsun wrote the lyrics and music for track 9.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+            "evidence": "작곡·작사 단편선(except 01, 10)"
+          },
+          {
+            "claim": "Track 9’s arrangement is credited to Danpyunsun, Lee Boram, Song Hyunwoo, Park Jaejun and Park Jangmi.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+            "evidence": "편곡 단편선 이보람 송현우 박재준 박장미(except 05)"
+          },
+          {
+            "claim": "Danpyunsun is credited with music production.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+            "evidence": "음악 프로듀싱·제작 총괄 단편선 @오소리웍스"
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The writing is plain, concise and grounded in attributed album context. The invitation to endure the world together supplies a specific point of interest before release details. No invented listening experience, sound description or reader-facing review notes appear. All grade B requirements are present; lyric commentary is not required.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "B",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      },
+      "humanSample": true,
+      "humanReview": {
+        "status": "pending"
+      }
+    },
+    "black-string-mask-dance": {
+      "trackId": "black-string-mask-dance",
+      "artistId": "black-string",
+      "batch": "batch-2",
+      "grade": "A",
+      "role": "primary",
+      "addedAt": "2026-11-12",
+      "contentHash": "4fc7c693b24c5f8bb529faf2108285bd0c65c84178225c0702cd463277f9ac70",
+      "skillRevision": "14f9ba6bf06f79a25012969b0e734b5dbc841a74d46243008a5fe6977cd022d4",
+      "reviewedAt": "2026-11-12T01:20:41.040Z",
+      "sources": [
+        "https://www.actmusic.com/mask-dance/ACT-9036-2",
+        "https://music.bugs.co.kr/track/30418178",
+        "https://www.genie.co.kr/detail/albumInfo?axnm=80882587",
+        "https://www.womex.com/virtual/piranha_arts_1/various_artists/womeximizer_16"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/mask-dance/1153689793",
+        "trackName": "Mask Dance",
+        "releaseDate": "2016-10-14",
+        "checkedAt": "2026-11-12T01:08:49.320Z"
+      },
+      "playback": {
+        "videoId": "kawOPq0jgOA",
+        "state": "playing",
+        "checkedAt": "2026-11-12T01:19:43.520Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "온스테이지ONSTAGE",
+        "official": "live-series channel on the official-channel list (Hand-reviewed official upload in the catalogue (youra-flicker))",
+        "tried": [
+          {
+            "videoId": "kawOPq0jgOA",
+            "channel": "온스테이지ONSTAGE",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-12T01:19:20.347Z",
+        "playing": true,
+        "duration": 377
+      },
+      "facts": {
+        "approved": true,
+        "reason": "The supplied source texts support the entry’s factual claims, credits and attributed music descriptions. Official romanisations agree with ACT’s personnel list. The prose distinguishes the live recording from the album composition. No unresolved blocking issues found.",
+        "checkedURLs": [
+          "https://music.bugs.co.kr/track/30418178",
+          "https://www.actmusic.com/mask-dance/ACT-9036-2",
+          "https://www.genie.co.kr/detail/albumInfo?axnm=80882587",
+          "https://www.womex.com/virtual/piranha_arts_1/various_artists/womeximizer_16"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "The artist’s Korean name is 블랙스트링.",
+            "sourceURL": "https://music.bugs.co.kr/track/30418178",
+            "evidence": "아티스트 Black String(블랙스트링)"
+          },
+          {
+            "claim": "Yoon Jeong Heo leads Black String and plays geomungo.",
+            "sourceURL": "https://www.actmusic.com/mask-dance/ACT-9036-2",
+            "evidence": "Yoon Jeong Heo, die Bandleaderin, Initiatorin und leidenschaftliche treibende Kraft hinter Black String, ist eine Spezialistin für Geomungo."
+          },
+          {
+            "claim": "The group combines Korean traditional instruments with electric guitar and improvisation.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=80882587",
+            "evidence": "이후 거문고와 전통 타악, 일렉트릭 기타 등이 어우러진 동서양 음악의 자연스러운 결합을 시도함으로써 음악적 지평을 넓혀 왔다."
+          },
+          {
+            "claim": "Black String grew out of a 2011 project with British jazz musicians.",
+            "sourceURL": "https://www.actmusic.com/mask-dance/ACT-9036-2",
+            "evidence": "2011 bekam sie die Gelegenheit, ihre Kunst einer breiteren Öffentlichkeit zu demonstrieren: Sie wurde gebeten, die Besetzung für ein Projekt mit britischen Jazzmusikern wie Tim Garland und Gwilym Simcock mitzugestalten."
+          },
+          {
+            "claim": "Min Wang Hwang joined the original trio afterward, forming the quartet.",
+            "sourceURL": "https://www.actmusic.com/mask-dance/ACT-9036-2",
+            "evidence": "Das Trio war glücklich, als man Min Wang Hwang fand. Er singt und spielt die Janggu, eine traditionelle, wie eine Sanduhr geformte Trommel. In dieser festen Besetzung arbeitet das Quartett nun weltweit."
+          },
+          {
+            "claim": "ACT’s personnel list supports the instrumental roles and official English spellings used in the entry.",
+            "sourceURL": "https://www.actmusic.com/mask-dance/ACT-9036-2",
+            "evidence": "Yoon Jeong Heo geomungo Jean Oh guitar, electronics Aram Lee daegeum, yanggeum, danso Min Wang Hwang voice, janggu, percussion"
+          },
+          {
+            "claim": "Mask Dance was released on October 14, 2016.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=80882587",
+            "evidence": "미러볼재즈월드 Hub Music 2016.10.14"
+          },
+          {
+            "claim": "ACT released the album in 2016.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=80882587",
+            "evidence": "이례적으로 6월 계약과 동시에 올해 10월 14일 유럽 발매가 결정됐다."
+          },
+          {
+            "claim": "The composition takes inspiration from Cheoyongmu, involving Cheoyong’s mask and the expulsion of spirits.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=80882587",
+            "evidence": "Mask Dance는 블랙스트링의 앨범 제목이자, 수록곡 제목으로, 처용(處容) 가면을 쓰고 잡귀를 쫓는다는 내용의 처용무(處容舞)에서 아이디어를 얻었다."
+          },
+          {
+            "claim": "Genie describes mysterious imagery expressed musically, with amplifiers and effects combined with traditional instruments.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=80882587",
+            "evidence": "처용의 이야기가 가진 기괴하면서 이국적이고 신비로운 이미지를 음악을 통해 역동적으로 표현했다. 사운드적으로도 앰프와 이펙터들을 국악기와 결합하여 강렬한 분위기를 연출했다."
+          },
+          {
+            "claim": "Bugs credits Heo, Oh and Lee with composition and arrangement.",
+            "sourceURL": "https://music.bugs.co.kr/track/30418178",
+            "evidence": "작곡 허윤정 , 오정수 , 이아람 편곡 허윤정 , 오정수 , 이아람"
+          },
+          {
+            "claim": "Yoon Jeong Heo produced the album.",
+            "sourceURL": "https://www.actmusic.com/mask-dance/ACT-9036-2",
+            "evidence": "Produced by Yoon Jeong Heo"
+          },
+          {
+            "claim": "ACT describes the title track as experimenting with powerful, almost rock-like sounds.",
+            "sourceURL": "https://www.actmusic.com/mask-dance/ACT-9036-2",
+            "evidence": "Bei „Mask Dance“ experimentieren Black String mit kraftvollen, fast rockigen und bedrohlich anmutenden Sounds"
+          },
+          {
+            "claim": "Heo describes interaction through contrasts, accents and pitches while remaining close to Korean forms and scales.",
+            "sourceURL": "https://www.actmusic.com/mask-dance/ACT-9036-2",
+            "evidence": "Wir spielen zusammen, schaffen Kontraste, teilen und folgen Betonungen oder Tonhöhen, und unter all dem spielt sich etwas ab, das traditionellen koreanischen Formen und Skalen sehr nahe kommt."
+          },
+          {
+            "claim": "WOMEX classifies Mask Dance as instrumental.",
+            "sourceURL": "https://www.womex.com/virtual/piranha_arts_1/various_artists/womeximizer_16",
+            "evidence": "45. Black String – Mask Dance New sounds for the ancient instruments of Korea. Instrumental Album: Mask Dance"
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The writing is plain, specific and grounded in attributed sources. Cheoyongmu gives the song a concrete introduction, and the instrumental notes explain documented musical choices without claiming firsthand listening. All grade A requirements are present; the official recording and playback verification are accepted as supplied.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
             "meets": true,
             "missing": []
           }

@@ -71,6 +71,30 @@
       }
     ]
   },
+  "black-string-mask-dance.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/black-string-mask-dance-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 9086
+      },
+      {
+        "src": "/assets/optimized/black-string-mask-dance-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 31274
+      },
+      {
+        "src": "/assets/optimized/black-string-mask-dance-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 66360
+      }
+    ]
+  },
   "bol4.jpg": {
     "width": 1000,
     "height": 1000,
@@ -164,6 +188,54 @@
         "width": 1000,
         "height": 1000,
         "bytes": 272800
+      }
+    ]
+  },
+  "danpyunsun-and-the-moments-ensemble-hail-to-the-music.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/danpyunsun-and-the-moments-ensemble-hail-to-the-music-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 21480
+      },
+      {
+        "src": "/assets/optimized/danpyunsun-and-the-moments-ensemble-hail-to-the-music-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 52758
+      },
+      {
+        "src": "/assets/optimized/danpyunsun-and-the-moments-ensemble-hail-to-the-music-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 89306
+      }
+    ]
+  },
+  "danpyunsun-and-the-moments-ensemble-you-me-and-namyangju.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/danpyunsun-and-the-moments-ensemble-you-me-and-namyangju-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 36344
+      },
+      {
+        "src": "/assets/optimized/danpyunsun-and-the-moments-ensemble-you-me-and-namyangju-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 144102
+      },
+      {
+        "src": "/assets/optimized/danpyunsun-and-the-moments-ensemble-you-me-and-namyangju-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 327890
       }
     ]
   },
@@ -311,6 +383,54 @@
       }
     ]
   },
+  "kang-asol-from-where-no-one-is-to-where-everyone-is.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/kang-asol-from-where-no-one-is-to-where-everyone-is-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 16038
+      },
+      {
+        "src": "/assets/optimized/kang-asol-from-where-no-one-is-to-where-everyone-is-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 61068
+      },
+      {
+        "src": "/assets/optimized/kang-asol-from-where-no-one-is-to-where-everyone-is-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 160738
+      }
+    ]
+  },
+  "kang-asol-the-day-of-love.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/kang-asol-the-day-of-love-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 37752
+      },
+      {
+        "src": "/assets/optimized/kang-asol-the-day-of-love-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 131722
+      },
+      {
+        "src": "/assets/optimized/kang-asol-the-day-of-love-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 251484
+      }
+    ]
+  },
   "kim-sawol-romance.jpg": {
     "width": 1200,
     "height": 1200,
@@ -332,6 +452,54 @@
         "width": 1000,
         "height": 1000,
         "bytes": 149306
+      }
+    ]
+  },
+  "lacuna-hello-wonderland.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/lacuna-hello-wonderland-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 41656
+      },
+      {
+        "src": "/assets/optimized/lacuna-hello-wonderland-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 106398
+      },
+      {
+        "src": "/assets/optimized/lacuna-hello-wonderland-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 171352
+      }
+    ]
+  },
+  "lacuna-i-love-you.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/lacuna-i-love-you-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 20638
+      },
+      {
+        "src": "/assets/optimized/lacuna-i-love-you-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 72610
+      },
+      {
+        "src": "/assets/optimized/lacuna-i-love-you-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 179416
       }
     ]
   },
@@ -524,6 +692,30 @@
         "width": 1000,
         "height": 1000,
         "bytes": 193862
+      }
+    ]
+  },
+  "ohchill-the-burning-city.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/ohchill-the-burning-city-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 13376
+      },
+      {
+        "src": "/assets/optimized/ohchill-the-burning-city-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 47436
+      },
+      {
+        "src": "/assets/optimized/ohchill-the-burning-city-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 112192
       }
     ]
   },

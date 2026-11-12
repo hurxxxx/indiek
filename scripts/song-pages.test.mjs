@@ -38,7 +38,7 @@ test('a song page is indexed only with credits, Apple Music, sourced background 
     assert.deepEqual(status.missing, [field]);
   }
   assert.deepEqual(songPageStatus(find('youra-mimi')).missing, ['apple-music', 'background']);
-  assert.deepEqual(tracks.filter(track => songPageStatus(track).ready).map(track => track.id).sort(), ['hanroro', 'jeongmilla-departing-from-seoul-station', 'lang-lee-there-is-a-wolf', 'meaningful-stone-beep-boop-beep-boop', 'mrch-surrender', 'say-sue-me-old-town', 'silica-gel-no-pain', 'yerin-baek']);
+  assert.deepEqual(tracks.filter(track => songPageStatus(track).ready).map(track => track.id).sort(), ['black-string-mask-dance', 'danpyunsun-and-the-moments-ensemble-you-me-and-namyangju', 'hanroro', 'jeongmilla-departing-from-seoul-station', 'kang-asol-island', 'lacuna-dancing-in-the-rain', 'lang-lee-there-is-a-wolf', 'meaningful-stone-beep-boop-beep-boop', 'mrch-surrender', 'ohchill-somethings-wrong', 'say-sue-me-old-town', 'silica-gel-no-pain', 'yerin-baek']);
 });
 
 test('reading and lyric links prefer a complete song page and otherwise keep the artist anchor', () => {

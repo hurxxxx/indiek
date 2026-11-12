@@ -410,6 +410,94 @@
       "status": "unconfirmed",
       "checked": "2026-11-11",
       "notes": "Release artwork used to identify the selected recording. No reuse licence established; source credit does not establish permission."
+    },
+    {
+      "file": "lacuna-hello-wonderland.jpg",
+      "label": "Lacuna — Hello, Wonderland - EP artwork",
+      "source": "https://music.apple.com/us/album/hello-wonderland-ep/1540530166",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/53/da/c5/53dac54a-4a40-4322-0849-6a7f448e9b46/Lacuna_3rdEP_HelloWonderland_3000.jpg/1200x1200bb.jpg",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed",
+      "checked": "2026-11-12",
+      "notes": "Release artwork used to identify the selected recording. No reuse licence established; source credit does not establish permission."
+    },
+    {
+      "file": "lacuna-i-love-you.jpg",
+      "label": "Lacuna — I Love You - Single artwork",
+      "source": "https://music.apple.com/us/album/i-love-you-single/1644081473",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/16/b0/5c/16b05c17-e18a-4d8a-2988-f46493da143c/191953210728.jpg/1200x1200bb.jpg",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed",
+      "checked": "2026-11-12",
+      "notes": "Release artwork used to identify the selected recording. No reuse licence established; source credit does not establish permission."
+    },
+    {
+      "file": "ohchill-the-burning-city.jpg",
+      "label": "OHCHILL — The Burning City artwork",
+      "source": "https://music.apple.com/us/album/the-burning-city/1715793427",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/db/1f/e1/db1fe1c8-8674-3c6e-ddbc-9cb3cad28eb7/8809960975128.jpg/1200x1200bb.jpg",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed",
+      "checked": "2026-11-12",
+      "notes": "Release artwork used to identify the selected recording. No reuse licence established; source credit does not establish permission."
+    },
+    {
+      "file": "kang-asol-the-day-of-love.jpg",
+      "label": "Kang Asol — The Day of Love artwork",
+      "source": "https://music.apple.com/us/album/the-day-of-love/1708495663",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/1f/d5/4c/1fd54c8b-002e-be5c-840f-0d2ea47f41ce/8809380637033.jpg/1200x1200bb.jpg",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed",
+      "checked": "2026-11-12",
+      "notes": "Release artwork used to identify the selected recording. No reuse licence established; source credit does not establish permission."
+    },
+    {
+      "file": "kang-asol-from-where-no-one-is-to-where-everyone-is.jpg",
+      "label": "Kang Asol — From Where No One Is, To Where Everyone Is artwork",
+      "source": "https://music.apple.com/us/album/from-where-no-one-is-to-where-everyone-is/1719029214",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/8a/7e/71/8a7e7116-6aa1-e054-9a50-102a1f57ae1b/8809964655224.jpg/1200x1200bb.jpg",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed",
+      "checked": "2026-11-12",
+      "notes": "Release artwork used to identify the selected recording. No reuse licence established; source credit does not establish permission."
+    },
+    {
+      "file": "danpyunsun-and-the-moments-ensemble-you-me-and-namyangju.jpg",
+      "label": "Danpyunsun and the Moments Ensemble — You, Me and Namyangju - Single artwork",
+      "source": "https://music.apple.com/us/album/you-me-and-namyangju-single/1838847160",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/25/2e/ea/252eea08-49ad-22f2-6d95-4bea4695402e/8800334247582.jpg/1200x1200bb.jpg",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed",
+      "checked": "2026-11-12",
+      "notes": "Release artwork used to identify the selected recording. No reuse licence established; source credit does not establish permission."
+    },
+    {
+      "file": "danpyunsun-and-the-moments-ensemble-hail-to-the-music.jpg",
+      "label": "Danpyunsun and the Moments Ensemble — Hail to the Music artwork",
+      "source": "https://music.apple.com/us/album/hail-to-the-music/1766256265",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/95/a6/71/95a6713a-2705-e548-7605-f9c7a43c9c99/8800280831774.jpg/1200x1200bb.jpg",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed",
+      "checked": "2026-11-12",
+      "notes": "Release artwork used to identify the selected recording. No reuse licence established; source credit does not establish permission."
+    },
+    {
+      "file": "black-string-mask-dance.jpg",
+      "label": "Black String — Mask Dance artwork",
+      "source": "https://music.apple.com/us/album/mask-dance/1153689793",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ae/b0/4b/aeb04bdf-3d92-7803-2592-b16bb8b0f7a5/cover.jpg/1200x1200bb.jpg",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed",
+      "checked": "2026-11-12",
+      "notes": "Release artwork used to identify the selected recording. No reuse licence established; source credit does not establish permission."
     }
   ]
 }

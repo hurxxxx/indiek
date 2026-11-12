@@ -153,6 +153,8 @@ export function lintEntries({artist, tracks}, {source, unit}) {
     texts.push(...PROSE.map(k => [`${key}.${k}`, entry[k]]));
     if (entry.lyricNotes) {
       const notes = entry.lyricNotes;
+      // The section label already says "Inside the lyrics" or "Inside the music"; the heading names this song's idea.
+      if (/^inside the (lyrics|music)$/i.test(notes.heading.trim())) issues.push(`${key}: the notes heading repeats the section label; give a heading about this song`);
       if (!https(notes.source?.url)) issues.push(`${key}: ${entry.instrumental ? 'music notes need the page that describes the music' : 'lyric notes need the lyric source page'}`);
       if (notes.paragraphs.length > 4) issues.push(`${key}: lyric notes run to ${notes.paragraphs.length} paragraphs; two or three are enough`);
       notes.paragraphs.forEach((p, i) => texts.push([`${key}.lyricNotes.paragraphs[${i}]`, p]));

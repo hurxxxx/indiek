@@ -541,6 +541,91 @@
         "updated": "2026-11-12",
         "published": "2026-11-12"
       }
+    },
+    {
+      "id": "lacuna",
+      "primaryTrackId": "lacuna-dancing-in-the-rain",
+      "artist": "Lacuna",
+      "korean": "라쿠나",
+      "aliases": "Lacuna 라쿠나 LACUNA Lacuna(라쿠나)",
+      "category": "bands",
+      "artistIntro": "Lacuna use imagined worlds and fairy-tale storytelling to write about lonely people and outsiders. Their name comes from the memory-erasing company in Eternal Sunshine of the Spotless Mind.",
+      "artistSource": "https://mpmgmusic.com/lacuna",
+      "artistSourceName": "MPMG MUSIC — official artist profile and discography",
+      "artistSourceLanguage": "Korean and English",
+      "biography": "The band began releasing music in December 2018 with the EP Incompleteness Dream. In 2019, they contributed to Mint Paper’s bright #8 compilation and performed at Grand Mint Festival.",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-11-12"
+      }
+    },
+    {
+      "id": "ohchill",
+      "primaryTrackId": "ohchill-somethings-wrong",
+      "artist": "OHCHILL",
+      "korean": "오칠",
+      "aliases": "오칠 OHCHILL OhChill Oh Chill 57",
+      "category": "bands",
+      "artistIntro": "OHCHILL (오칠) is a Seoul rock duo pairing Junhong Yun’s guitar with Seol Kim’s drums, with both members contributing vocals.",
+      "artistSource": "https://ohchill.bandcamp.com/",
+      "artistSourceName": "OHCHILL — official artist profile",
+      "artistSourceLanguage": "English",
+      "biography": "Also known as Jun and Snow, the pair released their debut album, Oh, Two Animals, in 2019 and their second, The Burning City, in 2023.",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-11-12"
+      }
+    },
+    {
+      "id": "kang-asol",
+      "primaryTrackId": "kang-asol-island",
+      "artist": "Kang Asol",
+      "korean": "강아솔",
+      "aliases": "강아솔 Kang Asol Kang A Sol Kang A-sol",
+      "category": "solo",
+      "artistIntro": "Kang Asol is a singer-songwriter whose songs explore loneliness, self-doubt and the wish to keep loving. She writes about feelings that reassurance does not always reach.",
+      "artistSource": "https://www.genie.co.kr/detail/albumInfo?axnm=81031362",
+      "artistSourceName": "Genie — Kang Asol biography and The Day of Love release notes",
+      "artistSourceLanguage": "Korean",
+      "biography": "She recorded her first album in Jeju in 2012, then worked on her second in Seoul. Her third album, The Day of Love, followed in February 2018.",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-11-12"
+      }
+    },
+    {
+      "id": "danpyunsun-and-the-moments-ensemble",
+      "primaryTrackId": "danpyunsun-and-the-moments-ensemble-you-me-and-namyangju",
+      "artist": "Danpyunsun and the Moments Ensemble",
+      "korean": "단편선 순간들",
+      "aliases": "단편선 순간들 Danpyunsun and the Moments Ensemble Danpyunsun & The Moments Ensemble",
+      "category": "bands",
+      "artistIntro": "Danpyunsun and the Moments Ensemble brings songwriter and producer Danpyunsun together with players on piano, bass, drums and guitar. In his notes for Hail to the Music, he describes making music around the ways people watch, feel and respond to one another.",
+      "artistSource": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+      "artistSourceName": "Genie — official album notes and band introduction",
+      "artistSourceLanguage": "Korean",
+      "biography": "The ensemble announced its beginning in January 2024. Its lineup that year included pianist Lee Boram, bassist Song Hyunwoo, drummer Park Jaejun and guitarist Park Jangmi alongside Danpyunsun.",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-11-12"
+      }
+    },
+    {
+      "id": "black-string",
+      "primaryTrackId": "black-string-mask-dance",
+      "artist": "Black String",
+      "korean": "블랙스트링",
+      "aliases": "Black String 블랙스트링 블랙 스트링",
+      "category": "bands",
+      "artistIntro": "Black String brings Korean traditional instruments, electric guitar and electronics together through improvisation. Geomungo player Yoon Jeong Heo leads the quartet.",
+      "artistSource": "https://www.actmusic.com/mask-dance/ACT-9036-2",
+      "artistSourceName": "ACT Music — Mask Dance personnel and group history",
+      "artistSourceLanguage": "German",
+      "biography": "The group grew out of a 2011 project with British jazz musicians, with percussionist Min Wang Hwang joining Heo, guitarist Jean Oh and multi-instrumentalist Aram Lee afterward. ACT released their album Mask Dance in 2016.",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-11-12"
+      }
     }
   ],
   "tracks": [
@@ -2142,6 +2227,429 @@
       ],
       "listeningNote": "Bugs lists this recording on the single 꽃 and credits JEONGMILLA as its vocalist, composer and arranger, with lyrics by Na Tae-joo. The linked performance is a live video from her own channel.",
       "credits": "Lyrics by Na Tae-joo; music by JEONGMILLA; arranged by JEONGMILLA."
+    },
+    {
+      "id": "lacuna-dancing-in-the-rain",
+      "artistId": "lacuna",
+      "slug": "dancing-in-the-rain",
+      "album": "Hello, Wonderland",
+      "release": "Hello, Wonderland - EP",
+      "year": "2020",
+      "releaseDate": "2020-11-19",
+      "genre": "INDIE ROCK",
+      "image": "lacuna-hello-wonderland.jpg",
+      "track": "Dancing in the Rain",
+      "koreanTitle": "춤을 춰요",
+      "duration": "05:09",
+      "provider": "youtube",
+      "videoId": "1aTKI5bFgbY",
+      "channel": "Lacuna / 라쿠나",
+      "url": "https://www.youtube.com/watch?v=1aTKI5bFgbY",
+      "videoType": "live",
+      "note": "An invitation to dance as the world falls apart.",
+      "description": "“Dancing in the Rain” asks for a hand to hold as the ground collapses. Its Korean title, 춤을 춰요, is an invitation to dance, placing an ordinary gesture of companionship amid destruction.",
+      "source": "https://music.apple.com/us/album/hello-wonderland-ep/1540530166",
+      "sourceName": "Lacuna — Hello, Wonderland - EP on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://www.cjazit.org/support/tune-up/entry/45/23134?p=10",
+          "label": "CJ Cultural Foundation — Dancing in the Rain song origin",
+          "language": "Korean"
+        },
+        {
+          "url": "https://music.bugs.co.kr/album/20360950",
+          "label": "Bugs — Hello, Wonderland release notes and credits",
+          "language": "Korean and English"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands"
+      ],
+      "listeningNote": "CJ Cultural Foundation’s introduction says vocalist Jang Kyungmin wrote the song while imagining the world collapsing and people dancing together as it disappeared. It appeared on Hello, Wonderland - EP, released on November 19, 2020.",
+      "credits": "Lyrics by Jang Kyungmin; music by Jang Kyungmin; arranged by Jang Kyungmin, Jung Minhyuk and Kim Ho; produced by Lacuna.",
+      "lyricNotes": {
+        "heading": "Holding on as the ground gives way",
+        "themes": [
+          "Companionship",
+          "Trust",
+          "Destruction"
+        ],
+        "paragraphs": [
+          "The speaker finds people difficult to trust but remains willing to love. That willingness first appears in an awkward, ordinary scene: drunken dancing and belongings falling from pockets. The request to take a hand makes closeness possible within that clumsiness.",
+          "As the images turn to collapsing ground, cuts and blood, the invitation to dance persists. The speaker’s assurances of being all right sit beside a request for companionship in the present; the danger remains. The closing embrace and movement into a dream can be read as a shared retreat from destruction, though the lyric leaves the pair’s fate unresolved."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/32070938",
+          "label": "Bugs — Dancing in the Rain lyrics and credits",
+          "language": "Korean"
+        },
+        "backgroundSources": [
+          {
+            "url": "https://www.cjazit.org/support/tune-up/entry/45/23134?p=10",
+            "label": "CJ Cultural Foundation — songwriter’s imagined collapsing world",
+            "language": "Korean"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lacuna-far-away",
+      "artistId": "lacuna",
+      "slug": "far-away",
+      "album": "I Love You",
+      "release": "I Love You - Single",
+      "year": "2022",
+      "releaseDate": "2022-09-14",
+      "genre": "INDIE ROCK",
+      "image": "lacuna-i-love-you.jpg",
+      "track": "Far Away",
+      "duration": "08:17",
+      "provider": "youtube",
+      "videoId": "Rc2KX21Kcwk",
+      "channel": "Lacuna / 라쿠나",
+      "url": "https://www.youtube.com/watch?v=Rc2KX21Kcwk",
+      "videoType": "live",
+      "note": "The first song the members made together.",
+      "description": "According to the release notes, “Far Away” was the first song Lacuna’s members made together. The band later refined it for recording.",
+      "source": "https://music.apple.com/us/album/i-love-you-single/1644081473",
+      "sourceName": "Lacuna — I Love You - Single on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/album/20492113",
+          "label": "Bugs — Far Away release notes and credits",
+          "language": "Korean and English"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands"
+      ],
+      "listeningNote": "The release notes connect “Far Away” with continuing to run despite knowing that a destination may remain out of reach. They describe revisiting the song with the wish that the members could keep playing together. The single was released on September 14, 2022.",
+      "credits": "Lyrics by Jang Kyungmin; music by Jang Kyungmin and Jung Minhyuk; arranged by Lacuna; produced by Lacuna."
+    },
+    {
+      "id": "ohchill-somethings-wrong",
+      "artistId": "ohchill",
+      "slug": "somethings-wrong",
+      "album": "The Burning City",
+      "release": "The Burning City",
+      "year": "2023",
+      "releaseDate": "2023-11-20",
+      "genre": "ALTERNATIVE ROCK",
+      "image": "ohchill-the-burning-city.jpg",
+      "track": "Something's Wrong",
+      "duration": "03:39",
+      "provider": "youtube",
+      "videoId": "pd00eM36Pa8",
+      "channel": "OHCHILL 오칠",
+      "url": "https://www.youtube.com/watch?v=pd00eM36Pa8",
+      "videoType": "live",
+      "note": "Running through a city that leaves no room for difference.",
+      "description": "In “Something’s Wrong”, running between buildings brings the speaker back to the same place. OHCHILL’s album notes describe people struggling to get through everyday city life, caught between feeling lost and trying to live normally.",
+      "source": "https://music.apple.com/us/album/the-burning-city/1715793427",
+      "sourceName": "OHCHILL — The Burning City on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://ohchill.bandcamp.com/album/the-burning-city",
+          "label": "OHCHILL — album background, release date and official credits",
+          "language": "English and Korean"
+        },
+        {
+          "url": "https://www.dailian.co.kr/news/view/1298617/밴드-오칠-두려움-동력-D인디그라운드-2023",
+          "label": "Dailian — Park Jung-sun interviews OHCHILL about The Burning City",
+          "language": "Korean"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands"
+      ],
+      "listeningNote": "Snow told Dailian that this was among the first songs begun for The Burning City and the last to finish revising. After considering many chorus melodies, the band returned to the first one they had written. The album was released on November 20, 2023.",
+      "credits": "Lyrics by Seol Kim; music by Junhong Yun; arranged by OHCHILL and HAWAGON; produced by OHCHILL.",
+      "lyricNotes": {
+        "heading": "Moving without getting anywhere",
+        "themes": [
+          "City isolation",
+          "Pressure to conform",
+          "Frustration"
+        ],
+        "paragraphs": [
+          "The brightly lit city sits beside an empty room where the speaker is alone. Outside, running through enclosing buildings ends back at the starting point. These images make the frustration concrete: neither staying inside nor moving through the city offers much relief.",
+          "English labels keep changing the speaker’s role, from runner to fighter to lover, without settling into a secure identity. Against those shifts, the refrain repeatedly objects to a world that allows no difference. By the end, the accusation also includes the world’s dishonesty, but there is no clear escape or resolution. The lyric leaves the speaker’s anger and difficulty speaking side by side."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/33025098",
+          "label": "Bugs — Something’s Wrong lyrics and track credits",
+          "language": "Korean and English"
+        }
+      }
+    },
+    {
+      "id": "kang-asol-island",
+      "artistId": "kang-asol",
+      "slug": "island",
+      "album": "The Day of Love",
+      "release": "The Day of Love",
+      "year": "2018",
+      "releaseDate": "2018-02-08",
+      "genre": "FOLK",
+      "image": "kang-asol-the-day-of-love.jpg",
+      "track": "Island",
+      "koreanTitle": "섬",
+      "duration": "04:44",
+      "provider": "youtube",
+      "videoId": "NCr-wpBa_Wk",
+      "channel": "Kang Asol - Topic",
+      "url": "https://www.youtube.com/watch?v=NCr-wpBa_Wk",
+      "videoType": "audio",
+      "note": "An unreachable island, and a self difficult to care for.",
+      "description": "In “Island” (섬), an island exposed to wind and waves becomes a place for feelings the speaker cannot soothe. The song asks whether living with oneself must keep hurting, leaving the question open.",
+      "source": "https://music.apple.com/us/album/the-day-of-love/1708495663",
+      "sourceName": "Kang Asol — The Day of Love on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://www.genie.co.kr/detail/albumInfo?axnm=81031362",
+          "label": "Genie — album release notes and official credits",
+          "language": "Korean"
+        },
+        {
+          "url": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=4581",
+          "label": "Genie — Kang Asol on writing Island",
+          "language": "Korean"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands",
+        "distinct-voices"
+      ],
+      "listeningNote": "In Genie's release interview, Kang Asol says she wanted to ask whether others also knew the self-dislike she describes. Asking the question was itself an attempt to receive and offer comfort. The song appears on her 2018 album The Day of Love.",
+      "credits": "Lyrics by Kang Asol; music by Kang Asol; arranged by Kang Asol and Hong Gap (홍갑); produced by Kim Min-gyu (김민규).",
+      "lyricNotes": {
+        "heading": "An island without shelter",
+        "themes": [
+          "Isolation",
+          "Self-blame",
+          "Caring for oneself"
+        ],
+        "paragraphs": [
+          "The island offers no refuge: others cannot find or reach it, yet the speaker has nowhere to hide from the cold wind. Waves have swept them there. These details make being alone feel exposed and involuntary, rather than a peaceful retreat.",
+          "The lyric then turns from the landscape toward the parts of a person that remain difficult to care for. Looking inward only deepens the speaker’s loneliness, and everything seems to accuse them of being at fault. That sense of blame becomes another part of their loneliness.",
+          "The repeated question is whether they must go on living with a self that feels like an affliction. It receives no answer. In her Genie interview, Kang Asol describes wanting to ask whether others shared this feeling. The question reaches outward even while the island remains unreachable."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/5113799",
+          "label": "Bugs — Island lyrics and credits",
+          "language": "Korean"
+        },
+        "backgroundSources": [
+          {
+            "url": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=4581",
+            "label": "Genie — Island track note and songwriter interview",
+            "language": "Korean"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kang-asol-anyone-but-me",
+      "artistId": "kang-asol",
+      "slug": "anyone-but-me",
+      "album": "From Where No One Is, To Where Everyone Is",
+      "release": "From Where No One Is, To Where Everyone Is",
+      "year": "2023",
+      "releaseDate": "2023-12-01",
+      "genre": "FOLK",
+      "image": "kang-asol-from-where-no-one-is-to-where-everyone-is.jpg",
+      "track": "Anyone But Me",
+      "koreanTitle": "누구도 미워하지 않는",
+      "duration": "03:51",
+      "provider": "youtube",
+      "videoId": "APoADxHgwBo",
+      "channel": "Kang Asol - Topic",
+      "url": "https://www.youtube.com/watch?v=APoADxHgwBo",
+      "videoType": "audio",
+      "note": "On loving others while leaving yourself last.",
+      "description": "“Anyone But Me” (누구도 미워하지 않는) began with Kang Asol’s recognition that trying to love everyone had meant neglecting herself. In her release note, she describes the emptiness of finding herself last in her own love.",
+      "source": "https://music.apple.com/us/album/from-where-no-one-is-to-where-everyone-is/1719029214",
+      "sourceName": "Kang Asol — From Where No One Is, To Where Everyone Is on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://poclanos.com/album/아무도-없는-곳에서-모두가-있는-곳으로/",
+          "label": "POCLANOS — songwriter’s release notes and official credits",
+          "language": "Korean"
+        }
+      ],
+      "guideTags": [
+        "distinct-voices"
+      ],
+      "listeningNote": "The song appears on From Where No One Is, To Where Everyone Is, released on December 1, 2023. In the notes published by POCLANOS, Kang Asol describes the album as a retreat into solitude followed by a return toward the people she misses.",
+      "credits": "Lyrics by Kang Asol; music by Kang Asol; arranged by Lee Jeong-hun (이정훈) and Jeon Jin-hee (전진희); strings arranged by Kwon Young-chan (권영찬); produced by Jeon Jin-hee (전진희)."
+    },
+    {
+      "id": "danpyunsun-and-the-moments-ensemble-you-me-and-namyangju",
+      "artistId": "danpyunsun-and-the-moments-ensemble",
+      "slug": "you-me-and-namyangju",
+      "album": "You, Me and Namyangju",
+      "release": "You, Me and Namyangju - Single",
+      "year": "2025",
+      "releaseDate": "2025-09-24",
+      "genre": "INDIE ROCK",
+      "image": "danpyunsun-and-the-moments-ensemble-you-me-and-namyangju.jpg",
+      "track": "You, Me and Namyangju",
+      "koreanTitle": "당신과 나 남양주에서",
+      "duration": "03:27",
+      "provider": "youtube",
+      "videoId": "vIjhdWqW3lk",
+      "channel": "미러볼 뮤직 - Mirrorball Music",
+      "url": "https://www.youtube.com/watch?v=vIjhdWqW3lk",
+      "videoType": "audio",
+      "note": "Snow, a departing figure and a fox with lingering memories.",
+      "description": "“You, Me and Namyangju” places an uncertain encounter in the snow beside a fox’s account of its present life. The speaker watches someone move away, while the ending leaves room for both contentment and thoughts of someone absent.",
+      "source": "https://music.apple.com/us/album/you-me-and-namyangju-single/1838847160",
+      "sourceName": "Danpyunsun and the Moments Ensemble — You, Me and Namyangju - Single on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
+          "label": "Genie — songwriter’s release notes and official credits",
+          "language": "Korean"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands"
+      ],
+      "listeningNote": "Danpyunsun’s release notes date the first draft to 2022, a revision to 2023 and completion to 2025. He says the song felt too light for Hail to the Music; when returning to it, he kept thinking of images from 1980s and 1990s Hong Kong films, without identifying exactly how they shaped the song.",
+      "credits": "Lyrics by Danpyunsun; music by Danpyunsun; arranged by Danpyunsun, Lee Boram (이보람), Song Hyunwoo (송현우), Park Jaejun (박재준) and Park Jangmi (박장미); produced by Danpyunsun.",
+      "lyricNotes": {
+        "heading": "A present life with room for memory",
+        "themes": [
+          "Uncertain closeness",
+          "Separation",
+          "Contentment and memory"
+        ],
+        "paragraphs": [
+          "Snow and visible breath give the encounter physical details, yet the speaker questions whether their being together is real. Repeated attention to the other person’s appearance and footsteps keeps returning to the same movement: someone is getting farther away. The lyric offers no settled explanation of what happened between them.",
+          "The spoken ending shifts to a figure who says they have become a fox. Cold weather and searching the snow for insects make this new life concrete, even within its strange premise. The figure expresses satisfaction with the present, then repeatedly admits to thinking of the other person sometimes. Remembering them does not cancel that satisfaction; both feelings remain."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/33680746?wl_ref=list_tr_08_ab",
+          "label": "Bugs — You, Me and Namyangju lyrics and credits",
+          "language": "Korean"
+        }
+      }
+    },
+    {
+      "id": "danpyunsun-and-the-moments-ensemble-hail-to-the-music",
+      "artistId": "danpyunsun-and-the-moments-ensemble",
+      "slug": "hail-to-the-music",
+      "album": "Hail to the Music",
+      "release": "Hail to the Music",
+      "year": "2024",
+      "releaseDate": "2024-09-10",
+      "genre": "INDIE ROCK",
+      "image": "danpyunsun-and-the-moments-ensemble-hail-to-the-music.jpg",
+      "track": "Hail to the Music",
+      "koreanTitle": "음악만세",
+      "duration": "07:27",
+      "provider": "youtube",
+      "videoId": "SlkQ_GMRqRw",
+      "channel": "Danpyunsun & The Moments Ensemble",
+      "url": "https://www.youtube.com/watch?v=SlkQ_GMRqRw",
+      "videoType": "live",
+      "note": "An album’s invitation to keep going together.",
+      "description": "In his notes for Hail to the Music, Danpyunsun describes the album’s guiding wish as inviting people enduring the world together to come along. This song shares the album’s title.",
+      "source": "https://music.apple.com/us/album/hail-to-the-music/1766256265",
+      "sourceName": "Danpyunsun and the Moments Ensemble — Hail to the Music on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
+          "label": "Genie — official album introduction and credits",
+          "language": "Korean"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands"
+      ],
+      "listeningNote": "The song was released on September 10, 2024, on the album of the same name. The linked video is a live performance by the ensemble, separate from the studio recording.",
+      "credits": "Lyrics by Danpyunsun; music by Danpyunsun; arranged by Danpyunsun, Lee Boram (이보람), Song Hyunwoo (송현우), Park Jaejun (박재준) and Park Jangmi (박장미); produced by Danpyunsun."
+    },
+    {
+      "id": "black-string-mask-dance",
+      "artistId": "black-string",
+      "slug": "mask-dance",
+      "album": "Mask Dance",
+      "release": "Mask Dance",
+      "year": "2016",
+      "releaseDate": "2016-10-14",
+      "genre": "JAZZ / CROSSOVER",
+      "image": "black-string-mask-dance.jpg",
+      "track": "Mask Dance",
+      "duration": "06:17",
+      "provider": "youtube",
+      "videoId": "kawOPq0jgOA",
+      "channel": "온스테이지ONSTAGE",
+      "url": "https://www.youtube.com/watch?v=kawOPq0jgOA",
+      "videoType": "live",
+      "instrumental": true,
+      "note": "A masked dance becomes a starting point for improvisation.",
+      "description": "“Mask Dance” takes its inspiration from Cheoyongmu, a Korean dance performed wearing Cheoyong’s mask to drive away spirits. Genie’s release notes describe the composition as a musical expression of the story’s strange and mysterious imagery.",
+      "source": "https://music.apple.com/us/album/mask-dance/1153689793",
+      "sourceName": "Black String — Mask Dance on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/track/30418178",
+          "label": "Bugs — Mask Dance composition and arrangement credits",
+          "language": "Korean"
+        },
+        {
+          "url": "https://www.actmusic.com/mask-dance/ACT-9036-2",
+          "label": "ACT Music — album personnel, history and production credits",
+          "language": "German"
+        },
+        {
+          "url": "https://www.genie.co.kr/detail/albumInfo?axnm=80882587",
+          "label": "Genie — Mask Dance concept and release information",
+          "language": "Korean"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands"
+      ],
+      "listeningNote": "The title piece appears on Black String’s 2016 album Mask Dance. ACT’s album personnel list includes geomungo, guitar and electronics, Korean wind and string instruments, and percussion. The linked ONSTAGE performance is a separate live rendition of the album composition.",
+      "credits": "Music by Yoon Jeong Heo, Jean Oh and Aram Lee; arranged by Yoon Jeong Heo, Jean Oh and Aram Lee. Album produced by Yoon Jeong Heo.",
+      "lyricNotes": {
+        "heading": "A masked dance, amplified",
+        "themes": [
+          "Cheoyongmu",
+          "Improvisation"
+        ],
+        "paragraphs": [
+          "Genie’s release notes connect “Mask Dance” to Cheoyongmu and its spirit-expelling purpose. They describe combining amplifiers and effects with Korean traditional instruments to give the story’s strange and mysterious imagery an intense musical setting.",
+          "ACT’s notes describe the title track as an experiment with powerful, almost rock-like sounds. Heo’s explanation there focuses on how the music develops through interaction: the musicians create contrasts and respond to one another’s accents and pitches, while staying close to traditional Korean forms and scales."
+        ],
+        "source": {
+          "url": "https://www.actmusic.com/mask-dance/ACT-9036-2",
+          "label": "ACT Music — Mask Dance sound and Heo’s account of improvisation",
+          "language": "German"
+        },
+        "backgroundSources": [
+          {
+            "url": "https://www.genie.co.kr/detail/albumInfo?axnm=80882587",
+            "label": "Genie — Cheoyongmu inspiration and amplified instruments",
+            "language": "Korean"
+          },
+          {
+            "url": "https://www.womex.com/virtual/piranha_arts_1/various_artists/womeximizer_16",
+            "label": "WOMEX / Piranha Arts — Mask Dance instrumental classification",
+            "language": "English"
+          }
+        ]
+      }
     }
   ],
   "featuredArtists": [

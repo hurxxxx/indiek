@@ -10,7 +10,7 @@ import {songPageStatus} from './song-pages.mjs';
 import {mergeCandidates, scoreCandidates, searchDemand, slugify, normalizeName, independentRecognition} from './catalogue-pipeline/candidates.mjs';
 import {parseSearchConsoleCSV} from './catalogue-pipeline/context.mjs';
 import {songSlug, assembleEntries, lintEntries, entryHash, gradeMissing, citedSources, appleIds, officialBasis, formatConfirmed, lookupRelease} from './catalogue-pipeline/entries.mjs';
-import {prepareUnit, approval} from './catalogue-pipeline/tracks.mjs';
+import {prepareUnit, approval, lengthFits} from './catalogue-pipeline/tracks.mjs';
 import {humanSample, rightsEntry} from './catalogue-pipeline/apply.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -390,4 +390,18 @@ test('apply writes the reviewed entries, artwork rights, ledger and candidate st
     assert.equal(JSON.parse(readFileSync(files.candidates, 'utf8')).candidates[0].status, 'added');
     await assert.rejects(applyApproved({root:dir, state, config, files, batch:'b1', deps}), /Nothing approved in b1/, 'applied units are not applied twice');
   } finally { rmSync(dir, {recursive:true, force:true}); }
+});
+
+test('a video far longer than the song is refused as a multi-song set', () => {
+  assert.ok(lengthFits(309, 260), 'a longer live version');
+  assert.ok(lengthFits(450, 290), 'a music video with a short intro track');
+  assert.ok(!lengthFits(1187, 284), 'a five-song one-take concert');
+  assert.ok(!lengthFits(962, 325), 'a fifteen-minute festival set');
+  assert.ok(lengthFits(undefined, 284) && lengthFits(300, 0), 'unknown lengths do not block');
+});
+
+test('a notes heading that only repeats the section label is refused', () => {
+  const entry = {id:'x-y', note:'n', description:'d', listeningNote:'b', credits:'c', guideTags:['guitars-and-bands'], videoType:'live', source:'https://music.apple.com/us/album/x/1', lyricNotes:{heading:'Inside the music', themes:['t'], paragraphs:['p'], source:{url:'https://label.example/x', label:'L', language:'English'}}};
+  const issues = lintEntries({artist:null, tracks:[{key:'t1', grade:'A', role:'primary', entry}]}, {source:{artists:[], tracks:[]}, unit:{existing:true}});
+  assert.ok(issues.some(issue => /repeats the section label/.test(issue)), issues.join('; '));
 });
