@@ -431,7 +431,12 @@ systemctl disable --now indiek-api.service indiek-api-backup.timer
 
 ## 확인과 복구
 
-- Latest deployment: 2026-11-12 `f36e862`
+- Latest deployment: 2026-11-12 `a8fe5d8`
+  - Site: corrections from the human-sample check of five songs (NO PAIN, Flower, Something's Wrong, Hail to the Music, Mask Dance) and the Danpyunsun and the Moments Ensemble artist intro; six songs re-reviewed. No video, Nginx or API change.
+  - Production passed 305 tests and 88 pages with a clean checkout. Over HTTPS the sitemap, home page, `catalogue.js`, both promotion manifests, the changed artist and song pages and a changed carousel slide equal the build; `/api/health` reports 31 artists and 40 tracks.
+  - The automation checkout was fast-forwarded with `scripts/editorial/sync.mjs`. It passed 104 promotion tests, and all 30 carousel decks match the live pages; nothing was sent.
+  - Rollback baseline: `8d6d967`.
+- Previous deployment: 2026-11-12 `f36e862`
   - Site: catalogue batch 2 (Lacuna, OHCHILL, Kang Asol, Danpyunsun and the Moments Ensemble, Black String; eight songs), published 2026-11-12. Black String's "Mask Dance" is the first instrumental song page, with music notes instead of lyric notes. No Nginx or API change.
   - Production passed 305 tests and 88 pages with a clean checkout.
   - Verified over HTTPS:
