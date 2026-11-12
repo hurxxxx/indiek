@@ -103,13 +103,13 @@ test('artist spotlights use existing content and only published related stories,
   ];
   const spots=section(resolveHome(data,{...context,stories}),'discover').spotlights;
   assert.deepEqual(spots.map(s=>s.record.artistId),['gongwon','yerin-baek']);
-  assert.deepEqual(spots[0].links.map(l=>l.href),['/artists/gongwon/#lyrics','/artists/gongwon/#gongwon-live-0']);
-  // 0310 has a complete song page, so its lyric link reads there instead of the artist-page pointer.
+  // Both songs have complete song pages, so their lyric links read there instead of the artist-page pointer.
+  assert.deepEqual(spots[0].links.map(l=>l.href),['/artists/gongwon/flower/#lyrics','/artists/gongwon/#gongwon-live-0']);
   assert.deepEqual(spots[1].links.map(l=>l.href),['/artists/yerin-baek/0310/#lyrics','/stories/yerin/','/artists/yerin-baek/#more-listens-title']);
   const multi=structuredClone(catalogue),gongwon=multi.records.find(t=>t.id==='gongwon');
   gongwon.primaryTrackId='new-song';
   multi.records.push({...gongwon,id:'new-song',lyricNotes:undefined});
-  assert.equal(section(resolveHome(data,{...context,catalogue:multi}),'discover').spotlights[0].links[0].href,'/artists/gongwon/#lyrics-gongwon');
+  assert.equal(section(resolveHome(data,{...context,catalogue:multi}),'discover').spotlights[0].links[0].href,'/artists/gongwon/flower/#lyrics');
   section(data,'discover').spotlightArtistIds=['motte'];
   const withoutNotes=structuredClone(catalogue);
   delete withoutNotes.records.find(t=>t.id==='motte').lyricNotes;

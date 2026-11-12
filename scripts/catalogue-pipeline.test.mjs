@@ -10,7 +10,7 @@ import {songPageStatus} from './song-pages.mjs';
 import {mergeCandidates, scoreCandidates, searchDemand, slugify, normalizeName, independentRecognition} from './catalogue-pipeline/candidates.mjs';
 import {parseSearchConsoleCSV} from './catalogue-pipeline/context.mjs';
 import {songSlug, assembleEntries, lintEntries, entryHash, gradeMissing, citedSources, appleIds, officialBasis, formatConfirmed, lookupRelease} from './catalogue-pipeline/entries.mjs';
-import {prepareUnit, approval, lengthFits} from './catalogue-pipeline/tracks.mjs';
+import {prepareUnit, approval, lengthFits, reviewExisting} from './catalogue-pipeline/tracks.mjs';
 import {humanSample, rightsEntry} from './catalogue-pipeline/apply.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -404,4 +404,40 @@ test('a notes heading that only repeats the section label is refused', () => {
   const entry = {id:'x-y', note:'n', description:'d', listeningNote:'b', credits:'c', guideTags:['guitars-and-bands'], videoType:'live', source:'https://music.apple.com/us/album/x/1', lyricNotes:{heading:'Inside the music', themes:['t'], paragraphs:['p'], source:{url:'https://label.example/x', label:'L', language:'English'}}};
   const issues = lintEntries({artist:null, tracks:[{key:'t1', grade:'A', role:'primary', entry}]}, {source:{artists:[], tracks:[]}, unit:{existing:true}});
   assert.ok(issues.some(issue => /repeats the section label/.test(issue)), issues.join('; '));
+});
+
+test('a song re-reviewed on its own also gets the pages its artist fields were approved with', async () => {
+  // An additional song carries its reviewed artist entry, whose evidence was cited by the artist's other songs.
+  const catalogue = source();
+  const artistOf = id => catalogue.tracks.find(t => t.id === id)?.artistId;
+  const own = id => citedSources({artist:catalogue.artists.find(a => a.id === artistOf(id)), tracks:[{entry:catalogue.tracks.find(t => t.id === id)}]});
+  const siblingsOf = id => Object.entries(ledger.tracks).filter(([other]) => other !== id && artistOf(other) === artistOf(id)).flatMap(([, r]) => [...r.sources, ...(r.facts?.supportedClaims || []).map(c => c.sourceURL)]).filter(url => url && !own(id).includes(url));
+  const trackId = Object.keys(ledger.tracks).find(id => ledger.artists[artistOf(id)] && ledger.tracks[id].role === 'additional' && siblingsOf(id).length);
+  assert.ok(trackId, 'the ledger has an additional song whose artist was approved with another song');
+  const dir = mkdtempSync(path.join(tmpdir(), 'indiek-review-'));
+  try {
+    mkdirSync(path.join(dir, 'content'));
+    copyFileSync(path.join(root, 'content/catalogue.json'), path.join(dir, 'content/catalogue.json'));
+    cpSync(path.join(root, 'skills'), path.join(dir, 'skills'), {recursive:true});
+    const files = {ledger:path.join(dir, 'ledger.json')};
+    copyFileSync(path.join(root, 'editorial/catalogue/ledger.json'), files.ledger);
+    const siblings = siblingsOf(trackId), [sibling] = siblings;
+    const run = async unreadable => {
+      const prompts = [];
+      const deps = {
+        playback:async ([id]) => ({[id]:{videoId:id, playing:true, state:'playing', advancedSeconds:5, checkedAt:'2026-11-12T00:00:00Z'}}),
+        pages:async urls => Object.fromEntries(urls.map(url => [url, unreadable.includes(url) ? {ok:false, reason:'HTTP 403'} : {ok:true, text:`page ${url}`}])),
+        ask:async (stage, prompt) => { prompts.push([stage, prompt]); return stage === 'facts' ? {approved:false, reason:'stub', issues:['stub'], checkedURLs:[], supportedClaims:[]} : {approved:false, reason:'stub', issues:['stub'], invented:[], gradeChecks:[]}; },
+      };
+      const result = await reviewExisting({root:dir, config:{}, files, trackId, deps});
+      return {result, facts:prompts.find(([stage]) => stage === 'facts')?.[1] || ''};
+    };
+    const all = await run([]);
+    assert.equal(all.result.approved, false);
+    for (const url of siblings) assert.ok(all.facts.includes(`page ${url}`), `the fact review sees the text of ${url}`);
+    const partial = await run([sibling]);
+    assert.ok(!partial.facts.includes(`page ${sibling}`), 'an unreadable sibling page is left out without failing the review');
+    await assert.rejects(run([own(trackId)[0]]), /Cited pages cannot be fetched/, 'the song’s own sources must still be readable');
+    assert.deepEqual(JSON.parse(readFileSync(files.ledger, 'utf8')).tracks[trackId], ledger.tracks[trackId], 'a rejected review leaves the ledger unchanged');
+  } finally { rmSync(dir, {recursive:true, force:true}); }
 });

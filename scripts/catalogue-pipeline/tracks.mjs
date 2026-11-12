@@ -228,12 +228,23 @@ export async function reviewExisting({root, config, files, trackId, deps = {}}) 
   const played = (await (deps.playback || verifyPlayback)([entry.videoId], config.playback))[entry.videoId];
   if (!played.playing) throw new Error(`${trackId}: recording no longer plays (${played.error || played.state})`);
   const exact = {artist:entries.artist, tracks:[{key:'t1', grade:record.grade, entry}]};
-  const pages = await (deps.pages || (list => fetchPages(list, deps.request)))(citedSources(entries));
-  const unreadable = citedSources(entries).filter(url => !pages[url]?.ok);
+  // The artist fields were approved with all of the artist's songs, so a song reviewed on its own
+  // also gets the pages its sibling songs cited or their fact review relied on (an artist claim can
+  // rest on an interview no song cites). Only its own sources must be readable.
+  const own = citedSources(entries);
+  const siblings = entries.artist ? Object.entries(ledger.tracks).filter(([id]) => id !== trackId && source.tracks.find(t => t.id === id)?.artistId === artist.id)
+    .flatMap(([, r]) => [...(r.sources || []), ...(r.facts?.supportedClaims || []).map(c => c.sourceURL)]).filter(Boolean) : [];
+  const evidence = [...new Set([...own, ...siblings])];
+  const fetched = await (deps.pages || (list => fetchPages(list, deps.request)))(evidence);
+  const unreadable = own.filter(url => !fetched[url]?.ok);
   if (unreadable.length) throw new Error(`Cited pages cannot be fetched for verification: ${unreadable.join(', ')}`);
+  const pages = Object.fromEntries(Object.entries(fetched).filter(([url, page]) => own.includes(url) || page.ok));
   const recordings = [{key:'t1', recording:{channel:entry.channel, official:record.playback.official, playback:`advanced ${played.advancedSeconds}s in the site's embedded player at ${played.checkedAt}`}, appleMusic:entry.source}];
-  let facts = await ask('facts', prompts.facts({skill, entries:exact, dossier:{note:'Re-review of an edited entry.'}, recordings, pages:pageText(pages)}), path.join(root, 'scripts/editorial/facts.schema.json'));
-  facts = await verifyClaims(facts, {sources:citedSources(entries).map(url => ({url}))}, deps.request);
+  const dossier = {note:'Re-review of an edited entry.', ...(siblings.length ? {artistEvidence:'The artist fields were approved earlier with the artist’s other songs; pages those songs cited are included as evidence for the artist fields only.'} : {})};
+  let facts = await ask('facts', prompts.facts({skill, entries:exact, dossier, recordings, pages:pageText(pages)}), path.join(root, 'scripts/editorial/facts.schema.json'));
+  // Every own source needs literal evidence; a sibling page is checked only when the review relied on it.
+  const relied = new Set((facts.supportedClaims || []).map(c => c.sourceURL));
+  facts = await verifyClaims(facts, {sources:[...new Set([...own, ...Object.keys(pages).filter(url => relied.has(url))])].map(url => ({url}))}, deps.request);
   const editorial = await ask('review', prompts.review({skill, entries:exact, recent:[], recordings}), schema(root, 'review'));
   const approved = approval({facts, editorial, entries, revision:catalogueSkillRevision(root), playback:{[trackId]:{...record.playback, ...played}}});
   if (!approved) return {approved:false, issues:[...facts.issues, ...editorial.issues, ...editorial.invented]};

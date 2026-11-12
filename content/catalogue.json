@@ -26,7 +26,7 @@
       "artistSourceLanguage": "Japanese",
       "editorial": {
         "author": "indiek",
-        "updated": "2026-10-21"
+        "updated": "2026-11-12"
       }
     },
     {
@@ -43,7 +43,7 @@
       "biography": "She was named Musician of the Year at the 2014 Korean Music Awards.",
       "editorial": {
         "author": "indiek",
-        "updated": "2026-10-21"
+        "updated": "2026-11-12"
       }
     },
     {
@@ -60,7 +60,7 @@
       "biography": "Before releasing music as Car, the garden, he was known as Mayson the Soul.",
       "editorial": {
         "author": "indiek",
-        "updated": "2026-10-21"
+        "updated": "2026-11-12"
       }
     },
     {
@@ -77,7 +77,7 @@
       "biography": "She won the grand prize at the 29th Yoo Jae-ha Music Contest and made her official debut with the EP Shape in 2020.",
       "editorial": {
         "author": "indiek",
-        "updated": "2026-10-21"
+        "updated": "2026-11-12"
       }
     },
     {
@@ -93,7 +93,7 @@
       "artistSourceLanguage": "Japanese",
       "editorial": {
         "author": "indiek",
-        "updated": "2026-10-21"
+        "updated": "2026-11-12"
       }
     },
     {
@@ -110,7 +110,7 @@
       "biography": "The band began releasing music in 2020. “RomanceYouthLove” appeared on their debut double single that June.",
       "editorial": {
         "author": "indiek",
-        "updated": "2026-10-21"
+        "updated": "2026-11-12"
       }
     },
     {
@@ -127,7 +127,7 @@
       "biography": "At the 2018 Korean Music Awards, SE SO NEON won Rookie of the Year and “The Wave” won Best Rock Song.",
       "editorial": {
         "author": "indiek",
-        "updated": "2026-10-21"
+        "updated": "2026-11-12"
       }
     },
     {
@@ -143,7 +143,7 @@
       "artistSourceLanguage": "Korean",
       "editorial": {
         "author": "indiek",
-        "updated": "2026-10-21"
+        "updated": "2026-11-12"
       }
     },
     {
@@ -160,7 +160,7 @@
       "biography": "The band began releasing music in 2017. “Don’t feel sad” is one of their early singles.",
       "editorial": {
         "author": "indiek",
-        "updated": "2026-10-21"
+        "updated": "2026-11-12"
       }
     },
     {
@@ -177,7 +177,7 @@
       "biography": "She debuted as a singer-songwriter with “Tickin’” in 2017.",
       "editorial": {
         "author": "indiek",
-        "updated": "2026-10-21"
+        "updated": "2026-11-12"
       }
     },
     {
@@ -211,7 +211,7 @@
       "biography": "She began releasing music with Kim Haewon in 2014 and made her solo debut with Suzanne in 2015.",
       "editorial": {
         "author": "indiek",
-        "updated": "2026-10-21"
+        "updated": "2026-11-12"
       }
     },
     {
@@ -265,7 +265,7 @@
       "artistSourceLanguage": "Korean",
       "editorial": {
         "author": "indiek",
-        "updated": "2026-10-21",
+        "updated": "2026-11-12",
         "published": "2026-10-21"
       },
       "performances": [
@@ -323,7 +323,7 @@
       "artistSourceLanguage": "English",
       "editorial": {
         "author": "indiek",
-        "updated": "2026-10-21",
+        "updated": "2026-11-12",
         "published": "2026-10-21"
       }
     },
@@ -361,7 +361,7 @@
       "artistSourceLanguage": "Korean",
       "editorial": {
         "author": "indiek",
-        "updated": "2026-10-21"
+        "updated": "2026-11-12"
       }
     },
     {
@@ -378,7 +378,7 @@
       "editorial": {
         "author": "indiek",
         "published": "2026-10-22",
-        "updated": "2026-10-22"
+        "updated": "2026-11-12"
       }
     },
     {
@@ -395,7 +395,7 @@
       "artistSourceLanguage": "Korean",
       "editorial": {
         "author": "indiek",
-        "updated": "2026-10-27",
+        "updated": "2026-11-12",
         "published": "2026-10-27"
       }
     },
@@ -412,7 +412,7 @@
       "artistSourceLanguage": "Korean",
       "editorial": {
         "author": "indiek",
-        "updated": "2026-11-09",
+        "updated": "2026-11-12",
         "published": "2026-11-09"
       }
     },
@@ -677,7 +677,16 @@
           "label": "Lyrics and credits on Bugs",
           "language": "Korean"
         }
-      }
+      },
+      "credits": "Lyrics, music and arrangement by The Black Skirts.",
+      "listeningNote": "The album notes say TEAM BABY was the first of three albums planned from 30 songs made in the years since his previous album. They quote Jo Hyu-il describing it as songs about love and about missing someone even while you are looking at them, made for people in love and for whoever is on their side.",
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/album/20100228",
+          "label": "Bugs — TEAM BABY album notes",
+          "language": "Korean"
+        }
+      ]
     },
     {
       "id": "sunwoojunga",
@@ -720,7 +729,16 @@
           "label": "Lyrics and credits on Bugs",
           "language": "Korean"
         }
-      }
+      },
+      "credits": "Lyrics by sunwoojunga and Kwak Eun-jeong (곽은정); music by sunwoojunga; arranged by sunwoojunga and Kwon Young-chan (권영찬).",
+      "listeningNote": "In her note for Serenade, sunwoojunga explains the title: she had long felt most of her songs suit night better than day, and the album’s songs, different as they are, all grew from love. The album notes describe the studio recording of “Run with Me” as a large-scale ballad led by piano and joined by a full string section.",
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/album/20293864",
+          "label": "Bugs — Serenade: sunwoojunga’s note and album notes",
+          "language": "Korean"
+        }
+      ]
     },
     {
       "id": "car-the-garden",
@@ -763,7 +781,21 @@
           "label": "Lyrics and credits on Bugs",
           "language": "Korean"
         }
-      }
+      },
+      "credits": "Lyrics by Car, the garden and youra; music by Car, the garden and 623; arranged by 623 and Car, the garden.",
+      "listeningNote": "The single carries a one-line dedication, “for the people I love”. Earlier that spring, youra’s EP B side came out with “Flicker”, which he arranged and sang on; its notes say he offered to join after hearing her demo in her studio.",
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/album/20246648",
+          "label": "Bugs — Tree: dedication and credits",
+          "language": "Korean"
+        },
+        {
+          "url": "https://music.bugs.co.kr/album/20234500",
+          "label": "Bugs — youra’s B side: how “Flicker” came about",
+          "language": "Korean"
+        }
+      ]
     },
     {
       "id": "choi-yu-ree",
@@ -813,7 +845,9 @@
           "label": "Lyrics and credits on Bugs",
           "language": "Korean"
         }
-      }
+      },
+      "credits": "Lyrics and music by Choi Yu Ree; arranged by Choi Yu Ree and Moon Ji-hyuk (문지혁).",
+      "listeningNote": "Stroll pairs “Forest” with “Sea”. The release note for “Forest” starts from an image of being a short tree among people who all seemed tall."
     },
     {
       "id": "bol4",
@@ -856,7 +890,16 @@
           "label": "Lyrics and credits on Bugs",
           "language": "Korean"
         }
-      }
+      },
+      "credits": "Lyrics by Ahn Ji-young; music by Ahn Ji-young and VMX; arranged by VMX.",
+      "listeningNote": "“Eternal love” was one of two title songs on Merry Go Round. The EP’s note sums the song up as one wish: to protect someone by becoming a better person, without needing to say the word love. The notes describe the EP recording as British rock, with a heavy snare, roughly played acoustic guitar, and distorted and tremolo guitars setting a lonely mood.",
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/album/4094057",
+          "label": "Bugs — Merry Go Round song notes and credits",
+          "language": "Korean"
+        }
+      ]
     },
     {
       "id": "esegye",
@@ -899,7 +942,16 @@
           "label": "Lyrics and credits on Bugs",
           "language": "Korean"
         }
-      }
+      },
+      "credits": "Lyrics and music by Kim Jeong-ho (김정호); arranged by Heon, Kim Jeong-ho, Moon Seong-hyeok (문성혁) and Lee Myeong-geon (이명건).",
+      "listeningNote": "In the single’s notes, ESEGYE say the song holds the three things that mattered most to them at 21, and the hope that it would be all right not to find answers about them.",
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/album/20331192",
+          "label": "Bugs — Cry For Me / RomanceYouthLove notes and credits",
+          "language": "Korean"
+        }
+      ]
     },
     {
       "id": "se-so-neon",
@@ -950,7 +1002,8 @@
           "label": "Lyrics and credits on Bugs",
           "language": "Korean"
         }
-      }
+      },
+      "credits": "Lyrics and music by So!YoON!; arranged by Moon Jae-wan (문재완), Kim Hanjoo, So!YoON! and Kang To (강토)."
     },
     {
       "id": "ydbb",
@@ -1000,7 +1053,8 @@
           "label": "Lyrics and credits on Bugs",
           "language": "Korean"
         }
-      }
+      },
+      "credits": "Lyrics by Yu Dabin; music by Yu Dabin and Lee Jun-hyeong (이준형); arranged by Yu Dabin, Yu Myeong-jong (유명종), Lee Sang-un (이상운), Lee Jun-hyeong (이준형) and Jo Young-yun (조영윤)."
     },
     {
       "id": "whiteusedsocks",
@@ -1049,7 +1103,8 @@
           "label": "Lyrics and credits on Bugs",
           "language": "Korean"
         }
-      }
+      },
+      "credits": "Lyrics and music by Jung Jaeheon (정재헌); arranged by WhiteUsedSocks."
     },
     {
       "id": "motte",
@@ -1091,7 +1146,16 @@
           "label": "Lyrics and credits on Genie",
           "language": "Korean"
         }
-      }
+      },
+      "credits": "Lyrics and music by Motte; arranged by Jo Jin-seong (조진성).",
+      "listeningNote": "The soundtrack notes say “Don’t run away” gives voice to the clumsy feelings of A-TEEN’s characters: eighteen-year-old friends who hurt each other with childish words while still liking each other very much.",
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/album/20194472",
+          "label": "Bugs — A-TEEN Part.4 soundtrack notes and credits",
+          "language": "Korean"
+        }
+      ]
     },
     {
       "id": "hanroro",
@@ -1175,7 +1239,7 @@
       "source": "https://music.apple.com/us/album/romance/1436255543",
       "sourceName": "Kim Sawol — Romance on Apple Music",
       "sourceLanguage": "English",
-      "listeningNote": "In the album notes, love is a way of getting to know yourself, even when you know it may end. That mix of closeness and loneliness runs through Romance.",
+      "listeningNote": "In her note on Romance, Kim Sawol describes running toward something that won’t last and loving anyway, and coming to know yourself better through love.",
       "guideTags": [
         "distinct-voices"
       ],
@@ -1194,7 +1258,15 @@
           "label": "Lyrics and credits on Bugs",
           "language": "Korean"
         }
-      }
+      },
+      "credits": "Lyrics and music by Kim Sawol; arranged by Kim Sawol and Kim Haewon.",
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/album/20194242",
+          "label": "Bugs — Romance: Kim Sawol’s note, album notes and credits",
+          "language": "Korean"
+        }
+      ]
     },
     {
       "id": "yerin-baek",
@@ -1296,6 +1368,11 @@
           "url": "https://www.youtube.com/watch?v=DFFuWt1Ea6o",
           "label": "gongwon — 0 full live session and chapter list",
           "language": "Korean"
+        },
+        {
+          "url": "https://music.bugs.co.kr/album/4141340",
+          "label": "Bugs — the EP 0: release notes and credits",
+          "language": "Korean"
         }
       ],
       "lyricNotes": {
@@ -1313,7 +1390,8 @@
           "label": "Lyrics and credits on Bugs",
           "language": "Korean"
         }
-      }
+      },
+      "listeningNote": "The notes for the EP 0 open with a question: why must someone this full be zero? The note for “Flower” describes someone who believed they were a flower, then found that what they had clung to was not a tree but darkness."
     },
     {
       "id": "yebit",
@@ -1352,6 +1430,11 @@
           "url": "https://www.youtube.com/watch?v=Lceij_QGihY",
           "label": "MAGIC STRAWBERRY SOUND — official live clip and performance details",
           "language": "Korean"
+        },
+        {
+          "url": "https://music.bugs.co.kr/album/4096359",
+          "label": "Bugs — Only You release notes and Yebit’s comment",
+          "language": "Korean"
         }
       ],
       "lyricNotes": {
@@ -1369,7 +1452,8 @@
           "label": "Lyrics and credits on Genie",
           "language": "Korean"
         }
-      }
+      },
+      "listeningNote": "“Only You” was the third release in a series by the brand Bargobargo on moments of love and parting, after releases with Jung In and 2AM’s Jeong Jinwoon. In the release notes, Yebit describes the song as lonely and composed, with a heaviness that settles in."
     },
     {
       "id": "yoon-mirae",
@@ -1388,7 +1472,7 @@
       "channel": "1theK",
       "videoType": "music-video",
       "url": "https://www.youtube.com/watch?v=knmrNkQMybA",
-      "description": "In “Breath”, guitar leaves plenty of space around Yoon Mirae’s voice. The song is about the ordinary things that remind you of someone after a breakup.",
+      "description": "In “Breath”, guitar leaves plenty of space around Yoon Mirae’s voice. The song is about the ordinary things that keep bringing back someone who is no longer there.",
       "note": "An acoustic R&B song with room to breathe.",
       "credits": "Composed by Yoon Mirae & Tiger JK. Lyrics by Tiger JK.",
       "source": "https://music.apple.com/us/album/breath-single/1862425862",
@@ -1406,7 +1490,7 @@
         },
         {
           "url": "https://music.bugs.co.kr/album/4136526",
-          "label": "Bugs — Breath release credits",
+          "label": "Bugs — Breath release notes and credits",
           "language": "Korean"
         }
       ],
@@ -1430,7 +1514,8 @@
           "label": "Lyrics and credits on Bugs",
           "language": "Korean"
         }
-      }
+      },
+      "listeningNote": "The single’s notes call “Breath” a winter acoustic R&B song with no drums. They describe a winter spent with someone that stays in daily life like breath, and say the song never declares a breakup."
     },
     {
       "id": "baek-a-amor",
@@ -1469,6 +1554,11 @@
           "url": "https://www.youtube.com/watch?v=-deMEvvmMeA",
           "label": "MONTBEST — Baek A, Amor: official live video",
           "language": "Korean"
+        },
+        {
+          "url": "https://music.bugs.co.kr/album/20198077",
+          "label": "Bugs — Amor single notes",
+          "language": "Korean"
         }
       ],
       "lyricNotes": {
@@ -1500,7 +1590,8 @@
             "Mmh-mmh-mmh-mmh-mmh-mmh-mmh-mmh"
           ]
         }
-      }
+      },
+      "listeningNote": "The single’s note calls “Amor” (첫사랑, “first love”) a story of first love at eighteen. Its ending was settled from the start, the note says, like a book you can’t bring yourself to read past the first page because the word “you” is too lovely to leave."
     },
     {
       "id": "youra-flicker",
@@ -1519,8 +1610,8 @@
       "performance": "Official live performance · ONSTAGE 2.0",
       "note": "Closeness, with a question still unanswered.",
       "description": "Written and composed by youra, “Flicker” appeared on her first EP, B side. Car, the garden arranged and featured on the original recording after hearing her demo. This version is an ONSTAGE live performance.",
-      "source": "https://music.bugs.co.kr/album/20234500",
-      "sourceName": "Bugs — B side: release notes and credits",
+      "source": "https://music.apple.com/us/album/b-side-ep/1673887826",
+      "sourceName": "youra — B side on Apple Music",
       "credits": "Lyrics and music by youra; original recording arranged by Car, the garden.",
       "lyricNotes": {
         "heading": "Closeness and hesitation",
@@ -1541,9 +1632,17 @@
       "provider": "youtube",
       "url": "https://www.youtube.com/watch?v=kmLmsXqL6BI",
       "genre": "R&B / SOUL",
-      "sourceLanguage": "Korean",
+      "sourceLanguage": "English",
       "guideTags": [
         "distinct-voices"
+      ],
+      "listeningNote": "B side’s notes say youra made “Flicker” before she was known as an artist. It was one of the EP’s two title songs, and the notes describe it as little more than a guitar riff and a simple melody.",
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/album/20234500",
+          "label": "Bugs — B side release notes and credits",
+          "language": "Korean"
+        }
       ]
     },
     {
@@ -1563,8 +1662,8 @@
       "performance": "Official live performance · ONSTAGE × D Museum",
       "note": "A name to call, and a wish to be found.",
       "description": "“MIMI” calls to someone who has disappeared. youra wrote the lyrics and composed the song with Cosmic Boy for GAUSSIAN. The recording here is the ONSTAGE × D Museum live performance.",
-      "source": "https://music.bugs.co.kr/album/20375620",
-      "sourceName": "Bugs — GAUSSIAN: release notes and credits",
+      "source": "https://music.apple.com/us/album/gaussian-ep/1754267581",
+      "sourceName": "youra — GAUSSIAN on Apple Music",
       "credits": "Lyrics by youra; music by youra and Cosmic Boy; original recording arranged by Cosmic Boy, with guitar by Kim Chunchu.",
       "lyricNotes": {
         "heading": "Calling to someone absent",
@@ -1585,9 +1684,17 @@
       "provider": "youtube",
       "url": "https://www.youtube.com/watch?v=5e78ltMjHN8",
       "genre": "R&B / SOUL",
-      "sourceLanguage": "Korean",
+      "sourceLanguage": "English",
       "guideTags": [
         "distinct-voices"
+      ],
+      "listeningNote": "“MIMI” opens GAUSSIAN, released in February 2021. In her note for the EP, youra writes that she cut about 30 cm of hair at the start of that year. She calls the record her long-haired self, made of stubborn habits in her music that she wanted to cut like her hair, though she says she is still thinking that over.",
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/album/20375620",
+          "label": "Bugs — GAUSSIAN: youra’s note and credits",
+          "language": "Korean"
+        }
       ]
     },
     {
@@ -1607,13 +1714,18 @@
       "performance": "Official audio · youra",
       "note": "A sandcastle, a garden and another few steps.",
       "description": "“Motif” places a sinking sandcastle beside a garden where eternity was promised. It opens youra’s first full-length album and was composed with Mandong bassist Song Namhyun. This is the artist’s official audio.",
-      "source": "https://music.bugs.co.kr/album/20576196",
-      "sourceName": "Bugs — 꽤 많은 수의 촉수 돌기: release notes and credits",
+      "source": "https://music.apple.com/us/album/1/1695683074",
+      "sourceName": "youra — (1) on Apple Music",
       "credits": "Lyrics by youra; music by youra and Song Namhyun; arranged by Song Namhyun. Best R&B & Soul Song, Korean Music Awards 2024.",
       "extraSources": [
         {
           "url": "https://koreanmusicawards.com/project/유라youra-구운듯한-얼굴이-너의-모티프/",
           "label": "Korean Music Awards — 2024 category winner",
+          "language": "Korean"
+        },
+        {
+          "url": "https://music.bugs.co.kr/album/20576196",
+          "label": "Bugs — youra’s note on her first full-length album",
           "language": "Korean"
         }
       ],
@@ -1636,10 +1748,11 @@
       "provider": "youtube",
       "url": "https://www.youtube.com/watch?v=bTA4Kvo2Rew",
       "genre": "R&B / SOUL",
-      "sourceLanguage": "Korean",
+      "sourceLanguage": "English",
       "guideTags": [
         "distinct-voices"
-      ]
+      ],
+      "listeningNote": "youra’s first full-length album came out in July 2023. Her note for it begins with a dream about her grandmother. A few days later, she writes, she held a taxi’s overhead handle the way her grandmother used to, and smiled the whole way. She describes the album as music made from scenes like these around her."
     },
     {
       "id": "sondia-grown-ups",
@@ -1683,7 +1796,15 @@
         }
       },
       "provider": "youtube",
-      "url": "https://www.youtube.com/watch?v=5a-tqIQc8RM"
+      "url": "https://www.youtube.com/watch?v=5a-tqIQc8RM",
+      "listeningNote": "The soundtrack release notes say “Grown Ups” played in key emotional scenes of My Mister’s first two episodes, and that viewers asked who was singing and asked for the song to be released. They describe a British rock song built on two images: a hurt child who grew up too early, and an adult quietly carrying the weight of a hard life.",
+      "extraSources": [
+        {
+          "url": "https://music.bugs.co.kr/album/20156782",
+          "label": "Bugs — My Mister OST Part 2 notes and credits",
+          "language": "Korean"
+        }
+      ]
     },
     {
       "id": "moneto-she",
@@ -1934,8 +2055,24 @@
       "guideTags": [
         "guitars-and-bands"
       ],
-      "listeningNote": "Released on August 19, 2023, Tik Tak Tok - Single places “T” before the featured song. The selected music video includes both tracks, so its running time is longer than the individual Apple Music recording.",
-      "credits": "Lyrics by Silica Gel and So!YoON!; music by Silica Gel and So!YoON!; arranged by Silica Gel; produced by Silica Gel."
+      "listeningNote": "Released on August 19, 2023, Tik Tak Tok - Single places “T” before the featured song.",
+      "credits": "Lyrics by Silica Gel and So!YoON!; music by Silica Gel and So!YoON!; arranged by Silica Gel; produced by Silica Gel.",
+      "lyricNotes": {
+        "heading": "A countdown in machine language",
+        "themes": [
+          "Time",
+          "Machine and human"
+        ],
+        "paragraphs": [
+          "Much of the lyric borrows a machine’s vocabulary, words like input, output and compression, and applies it to things that are plainly human: hormones, dreams, even a last will. The release statement asks whether Machine Boy is a living creature or something else, and the language keeps that question open rather than answering it.",
+          "The ticking of the title runs toward an excited D-1, but the refrain sets that countdown beside sad thoughts and a blunt admission of gloom. Something is about to arrive, and the song leaves it unclear whether it is being looked forward to or dreaded."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/6213141",
+          "label": "Bugs — Tik Tak Tok (feat. So!YoON!) lyrics and credits",
+          "language": "Korean and English"
+        }
+      }
     },
     {
       "id": "meaningful-stone-beep-boop-beep-boop",
@@ -2033,7 +2170,23 @@
         "guitars-and-bands"
       ],
       "listeningNote": "“Psychomania - Single” was released on October 29, 2022. Meaningful Stone wrote and produced the song, and the official credits name MELTMIRROR as the music video’s director.",
-      "credits": "Lyrics by Meaningful Stone; music by Meaningful Stone; arranged by Meaningful Stone, Onewoo Kang, EJae and Nahyun Kim; produced by Meaningful Stone."
+      "credits": "Lyrics by Meaningful Stone; music by Meaningful Stone; arranged by Meaningful Stone, Onewoo Kang, EJae and Nahyun Kim; produced by Meaningful Stone.",
+      "lyricNotes": {
+        "heading": "Asking someone to mend old wings",
+        "themes": [
+          "Inner voice",
+          "Loneliness"
+        ],
+        "paragraphs": [
+          "Lost wings frame the song. It begins with a shared search for them, and the refrain asks for someone to fix the speaker’s old wings, a request that keeps returning through the confrontational verses.",
+          "The verses are boastful and confrontational, but near the end the speaker gives their anger a simple cause: being made lonely. That admission changes how the refrain sounds. The swagger starts to look like protection, and the request for repaired wings, introduced each time with “I don’t say”, reads as a need that is hard to state outright."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/32684985",
+          "label": "Bugs — Psychomania lyrics and credits",
+          "language": "English"
+        }
+      }
     },
     {
       "id": "lang-lee-there-is-a-wolf",
@@ -2134,7 +2287,23 @@
         "distinct-voices"
       ],
       "listeningNote": "Genie’s creation feature traces the song to November 2, 2015: Lang Lee combined notes and a melody from a voice recording, then recorded guitar and vocals at the performance. The Generation of Tribulation - Single arrived on June 20, 2020, with the Unnie Choir recording and a separate version produced by Manami Kakudo.",
-      "credits": "Lyrics by Lang Lee; music by Lang Lee; arranged by Lang Lee, Jeongwoo Lee, E Hyeji, Younghun Kim and JiWook Mae; produced by Lang Lee."
+      "credits": "Lyrics by Lang Lee; music by Lang Lee; arranged by Lang Lee, Jeongwoo Lee, E Hyeji, Younghun Kim and JiWook Mae; produced by Lang Lee.",
+      "lyricNotes": {
+        "heading": "A farewell that turns into a proposal",
+        "themes": [
+          "Parting",
+          "Despair"
+        ],
+        "paragraphs": [
+          "The song opens with friends parting at Incheon and Narita airports. They had promised each other not to cry, and cried anyway. That broken promise, with no plan to meet again, makes the parting feel final.",
+          "From there the lyric turns: rather than keep facing separations, it proposes that they all die at once, before their time comes. The song ends by calling the idea good and neat, and that calm makes the proposal harder to take lightly. With the title naming a generation of tribulation, the wish can be read as a response to shared exhaustion rather than one person’s plan, and the song does not resolve it."
+        ],
+        "source": {
+          "url": "https://langleeschool.bandcamp.com/album/the-generation-of-tribulation",
+          "label": "Lang Lee / Sweet Dreams Press — lyrics and credits",
+          "language": "Korean, with Japanese translation"
+        }
+      }
     },
     {
       "id": "jeongmilla-departing-from-seoul-station",
@@ -2231,7 +2400,23 @@
         "distinct-voices"
       ],
       "listeningNote": "Bugs lists this recording on the single 꽃 and credits JEONGMILLA as its vocalist, composer and arranger, with lyrics by Na Tae-joo. The linked performance is a live video from her own channel.",
-      "credits": "Lyrics by Na Tae-joo; music by JEONGMILLA; arranged by JEONGMILLA."
+      "credits": "Lyrics by Na Tae-joo; music by JEONGMILLA; arranged by JEONGMILLA.",
+      "lyricNotes": {
+        "heading": "Reasons set aside",
+        "themes": [
+          "Affection",
+          "Presence"
+        ],
+        "paragraphs": [
+          "Na Tae-joo’s words clear away the usual reasons for loving someone, such as looks or achievement, until only one is left: that the person is themselves.",
+          "The affection is not only sweet. The same lines admit that the speaker worries for this person, and describe love lodged in the chest like a nail, something that stays and hurts a little. The ending turns to the flower itself and asks it to stay as it is for a long time."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/30215743",
+          "label": "Bugs — Flower lyrics and credits",
+          "language": "Korean"
+        }
+      }
     },
     {
       "id": "lacuna-dancing-in-the-rain",
@@ -2331,7 +2516,23 @@
         "guitars-and-bands"
       ],
       "listeningNote": "The release notes connect “Far Away” with continuing to run despite knowing that a destination may remain out of reach. They describe revisiting the song with the wish that the members could keep playing together. The single was released on September 14, 2022.",
-      "credits": "Lyrics by Jang Kyungmin; music by Jang Kyungmin and Jung Minhyuk; arranged by Lacuna; produced by Lacuna."
+      "credits": "Lyrics by Jang Kyungmin; music by Jang Kyungmin and Jung Minhyuk; arranged by Lacuna; produced by Lacuna.",
+      "lyricNotes": {
+        "heading": "Getting ready for nothing in particular",
+        "themes": [
+          "Restlessness",
+          "Leaving"
+        ],
+        "paragraphs": [
+          "The chorus turns on a small contradiction: nothing will really happen tomorrow, yet right now they feel they must prepare for something. Set in a rainy, black-and-white view with the other person in tears, that urge reads as restlessness rather than a plan.",
+          "The English line about going far away gives the feeling a direction but no destination. The lyric never says what they are preparing for or where they would go."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/32642473",
+          "label": "Bugs — Far Away lyrics and credits",
+          "language": "Korean"
+        }
+      }
     },
     {
       "id": "ohchill-somethings-wrong",
@@ -2491,7 +2692,23 @@
         "distinct-voices"
       ],
       "listeningNote": "The song appears on From Where No One Is, To Where Everyone Is, released on December 1, 2023. In the notes published by POCLANOS, Kang Asol describes the album as a retreat into solitude followed by a return toward the people she misses.",
-      "credits": "Lyrics by Kang Asol; music by Kang Asol; arranged by Lee Jeong-hun (이정훈) and Jeon Jin-hee (전진희); strings arranged by Kwon Young-chan (권영찬); produced by Jeon Jin-hee (전진희)."
+      "credits": "Lyrics by Kang Asol; music by Kang Asol; arranged by Lee Jeong-hun (이정훈) and Jeon Jin-hee (전진희); strings arranged by Kwon Young-chan (권영찬); produced by Jeon Jin-hee (전진희).",
+      "lyricNotes": {
+        "heading": "Love that never reaches the one giving it",
+        "themes": [
+          "Self-neglect",
+          "Love"
+        ],
+        "paragraphs": [
+          "The song’s central confusion is between love and self-blame. The speaker grew up looking for their own fault first and believed that was love, and the effort to hate no one ended in hating themselves.",
+          "The chorus names what follows from that habit: the love the speaker gives never comes back to reach them. The song states the pattern clearly but offers no way out of it, ending where it began."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/33036430",
+          "label": "Bugs — Anyone But Me lyrics and credits",
+          "language": "Korean"
+        }
+      }
     },
     {
       "id": "danpyunsun-and-the-moments-ensemble-you-me-and-namyangju",

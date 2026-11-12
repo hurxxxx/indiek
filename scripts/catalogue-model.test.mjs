@@ -174,6 +174,8 @@ test('an isolated build renders multiple songs, unique anchors and artist counts
     const data = withSecondSong();
     data.artists.find(artist=>artist.id==='gongwon').primaryTrackId = 'gongwon-test-track';
     data.tracks.find(track=>track.id==='gongwon').featuredArtistIds = ['yebit'];
+    // The added song has no background yet, so its page must stay out of search.
+    delete data.tracks.find(track=>track.id==='gongwon-test-track').listeningNote;
     // An instrumental piece keeps its notes and anchors but is never labelled as lyrics.
     data.tracks.find(track=>track.id==='mrch-surrender').instrumental = true;
     writeFileSync(path.join(dir,'content/catalogue.json'),JSON.stringify(data));
@@ -190,7 +192,7 @@ test('an isolated build renders multiple songs, unique anchors and artist counts
     assert.match(page,/Meet featured artist <a href="\/artists\/yebit\/">Yebit<\/a>/);
     const guestPage = readFileSync(path.join(dir,'dist/artists/yebit/index.html'),'utf8');
     assert.match(guestPage,/id="collaborations"/);
-    assert.match(guestPage,/href="\/artists\/gongwon\/#track-gongwon"/);
+    assert.match(guestPage,/href="\/artists\/gongwon\/flower\/"/, 'a complete song page is the reading link for the collaboration');
     assert.match(guestPage,/data-load-player="gongwon"/);
     assert.match(guestPage,/data-save="gongwon"/);
     assert.equal((guestPage.match(/id="persistent-player"/g)||[]).length,1);

@@ -37,16 +37,20 @@ test('a song page is indexed only with credits, Apple Music, sourced background 
     assert.equal(status.ready, false, field);
     assert.deepEqual(status.missing, [field]);
   }
-  assert.deepEqual(songPageStatus(find('youra-mimi')).missing, ['apple-music', 'background']);
-  assert.deepEqual(tracks.filter(track => songPageStatus(track).ready).map(track => track.id).sort(), ['black-string-mask-dance', 'danpyunsun-and-the-moments-ensemble-you-me-and-namyangju', 'hanroro', 'jeongmilla-departing-from-seoul-station', 'kang-asol-island', 'lacuna-dancing-in-the-rain', 'lang-lee-there-is-a-wolf', 'meaningful-stone-beep-boop-beep-boop', 'mrch-surrender', 'ohchill-somethings-wrong', 'say-sue-me-old-town', 'silica-gel-no-pain', 'yerin-baek']);
+  // The songs still waiting for a verified background or a published lyric source stay out of search.
+  assert.deepEqual(songPageStatus(find('whiteusedsocks')).missing, ['background']);
+  assert.deepEqual(songPageStatus(find('danpyunsun-and-the-moments-ensemble-hail-to-the-music')).missing, ['lyric-notes']);
+  assert.deepEqual(tracks.filter(track => !songPageStatus(track).ready).map(track => track.id).sort(), ['danpyunsun-and-the-moments-ensemble-hail-to-the-music', 'moneto-she', 'whiteusedsocks']);
 });
 
 test('reading and lyric links prefer a complete song page and otherwise keep the artist anchor', () => {
   assert.equal(readingPath(find('hanroro')), '/artists/hanroro/even-if-you-leave/');
   assert.equal(lyricsPath(find('hanroro')), '/artists/hanroro/even-if-you-leave/#lyrics');
-  assert.equal(readingPath(find('youra-motif')), '/artists/youra/#track-youra-motif');
-  assert.equal(lyricsPath(find('youra-motif')), '/artists/youra/#lyrics-youra-motif');
-  assert.equal(lyricsPath(find('youra-mimi')), '/artists/youra/#lyrics');
+  const additional = find('danpyunsun-and-the-moments-ensemble-hail-to-the-music');
+  assert.equal(readingPath(additional), '/artists/danpyunsun-and-the-moments-ensemble/#track-danpyunsun-and-the-moments-ensemble-hail-to-the-music');
+  assert.equal(lyricsPath(additional), '/artists/danpyunsun-and-the-moments-ensemble/#lyrics-danpyunsun-and-the-moments-ensemble-hail-to-the-music');
+  assert.equal(readingPath(find('whiteusedsocks')), '/artists/whiteusedsocks/#listen');
+  assert.equal(lyricsPath(find('whiteusedsocks')), '/artists/whiteusedsocks/#lyrics');
 });
 
 test('every song gets three similar songs by other artists, each with a checkable reason', () => {

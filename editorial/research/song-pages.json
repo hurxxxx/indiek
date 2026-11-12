@@ -1,5 +1,5 @@
 {
-  "checked": "2026-11-09",
+  "checked": "2026-11-12",
   "status": "approved-local",
   "scope": "W2 song pages (/artists/<artist-id>/<slug>/) for all 23 catalogue tracks, and the credit added to make an existing song page complete.",
   "decisions": {
@@ -25,8 +25,9 @@
     }
   ],
   "openItems": [
-    "20 song pages remain noindex until credits, a sourced background note or an Apple Music release link are verified. Missing fields per song: `node scripts/song-pages.mjs`.",
-    "youra's three songs link release details to Bugs; Apple Music URLs for B side and other releases are recorded in youra.json but are not yet checked for each song."
+    "Don't feel sad (WhiteUsedSocks) and She (moneto) stay noindex: no release note, interview or label page with background could be found. Credits are complete.",
+    "Hail to the Music (Danpyunsun and the Moments) stays grade B and noindex: Genie and Bugs publish no lyrics for it, so there is no lyric source for commentary.",
+    "Run `node scripts/song-pages.mjs` for the current status of every song."
   ],
   "guideRevision": {
     "guideId": "korean-indie-where-to-start",
@@ -51,6 +52,246 @@
         "reviewer": "Separate review pass (subagent), read-only",
         "approved": true,
         "notes": "First draft rejected: listening-order instruction in the intro and a paragraph that repeated the track notes. Final text approved: keyword used once, specifics tied to each song, scope kept open."
+      }
+    ]
+  },
+  "fill2026_11_12": {
+    "scope": "Credits and sourced background for the original catalogue songs, and US Apple Music links for youra's three songs, so their song pages meet the index rule. Lyric notes for six grade B pipeline songs are reviewed in editorial/catalogue/ledger.json.",
+    "method": "Credits from each song's Bugs or Genie track credits (작사/작곡/편곡), checked against the release's own credit list where Bugs shows one. Background paraphrases the release notes on the Bugs album page (앨범 소개), attributed in the text; a release note's narrator is not presented as the artist's own life. Page text, including lyrics, was read for checking only and not stored.",
+    "romanisation": "Names without an official English spelling use indiek's romanisation with Hangul in parentheses: 곽은정, 권영찬, 문지혁, 김정호, 문성혁, 이명건, 문재완, 강토, 이준형, 유명종, 이상운, 조영윤, 정재헌, 조진성. Replace one if an official spelling is found. VMX is the English credit name Bugs shows for BOL4's co-writer and arranger; Jung In and Jeong Jinwoon follow Apple Music's release titles.",
+    "entries": [
+      {
+        "trackId": "black-skirts",
+        "credits": {
+          "text": "Lyrics, music and arrangement by The Black Skirts.",
+          "source": "https://music.bugs.co.kr/track/30670808"
+        },
+        "background": {
+          "text": "The album notes say TEAM BABY was the first of three albums planned from 30 songs made in the years since his previous album. They quote Jo Hyu-il describing it as songs about love and about missing someone even while you are looking at them, made for people in love and for whoever is on their side.",
+          "sources": [
+            "https://music.bugs.co.kr/album/20100228"
+          ]
+        }
+      },
+      {
+        "trackId": "sunwoojunga",
+        "credits": {
+          "text": "Lyrics by sunwoojunga and Kwak Eun-jeong (곽은정); music by sunwoojunga; arranged by sunwoojunga and Kwon Young-chan (권영찬).",
+          "source": "https://music.bugs.co.kr/track/31780695"
+        },
+        "background": {
+          "text": "In her note for Serenade, sunwoojunga explains the title: she had long felt most of her songs suit night better than day, and the album’s songs, different as they are, all grew from love. The album notes describe the studio recording of “Run with Me” as a large-scale ballad led by piano and joined by a full string section.",
+          "sources": [
+            "https://music.bugs.co.kr/album/20293864"
+          ]
+        }
+      },
+      {
+        "trackId": "car-the-garden",
+        "credits": {
+          "text": "Lyrics by Car, the garden and youra; music by Car, the garden and 623; arranged by 623 and Car, the garden.",
+          "source": "https://music.bugs.co.kr/track/31551643"
+        },
+        "background": {
+          "text": "The single carries a one-line dedication, “for the people I love”. Earlier that spring, youra’s EP B side came out with “Flicker”, which he arranged and sang on; its notes say he offered to join after hearing her demo in her studio.",
+          "sources": [
+            "https://music.bugs.co.kr/album/20246648",
+            "https://music.bugs.co.kr/album/20234500"
+          ]
+        }
+      },
+      {
+        "trackId": "choi-yu-ree",
+        "credits": {
+          "text": "Lyrics and music by Choi Yu Ree; arranged by Choi Yu Ree and Moon Ji-hyuk (문지혁).",
+          "source": "https://music.bugs.co.kr/track/6173357"
+        },
+        "background": {
+          "text": "Stroll pairs “Forest” with “Sea”. The release note for “Forest” starts from an image of being a short tree among people who all seemed tall.",
+          "sources": [
+            "https://music.bugs.co.kr/album/4079006"
+          ]
+        }
+      },
+      {
+        "trackId": "bol4",
+        "credits": {
+          "text": "Lyrics by Ahn Ji-young; music by Ahn Ji-young and VMX; arranged by VMX.",
+          "source": "https://music.bugs.co.kr/track/6225562"
+        },
+        "background": {
+          "text": "“Eternal love” was one of two title songs on Merry Go Round. The EP’s note sums the song up as one wish: to protect someone by becoming a better person, without needing to say the word love. The notes describe the EP recording as British rock, with a heavy snare, roughly played acoustic guitar, and distorted and tremolo guitars setting a lonely mood.",
+          "sources": [
+            "https://music.bugs.co.kr/album/4094057"
+          ]
+        }
+      },
+      {
+        "trackId": "esegye",
+        "credits": {
+          "text": "Lyrics and music by Kim Jeong-ho (김정호); arranged by Heon, Kim Jeong-ho, Moon Seong-hyeok (문성혁) and Lee Myeong-geon (이명건).",
+          "source": "https://music.bugs.co.kr/track/31940787"
+        },
+        "background": {
+          "text": "In the single’s notes, ESEGYE say the song holds the three things that mattered most to them at 21, and the hope that it would be all right not to find answers about them.",
+          "sources": [
+            "https://music.bugs.co.kr/album/20331192"
+          ]
+        }
+      },
+      {
+        "trackId": "se-so-neon",
+        "credits": {
+          "text": "Lyrics and music by So!YoON!; arranged by Moon Jae-wan (문재완), Kim Hanjoo, So!YoON! and Kang To (강토).",
+          "source": "https://music.bugs.co.kr/track/30793411"
+        }
+      },
+      {
+        "trackId": "ydbb",
+        "credits": {
+          "text": "Lyrics by Yu Dabin; music by Yu Dabin and Lee Jun-hyeong (이준형); arranged by Yu Dabin, Yu Myeong-jong (유명종), Lee Sang-un (이상운), Lee Jun-hyeong (이준형) and Jo Young-yun (조영윤).",
+          "source": "https://music.bugs.co.kr/track/33005102"
+        }
+      },
+      {
+        "trackId": "whiteusedsocks",
+        "credits": {
+          "text": "Lyrics and music by Jung Jaeheon (정재헌); arranged by WhiteUsedSocks.",
+          "source": "https://music.bugs.co.kr/track/30686865"
+        }
+      },
+      {
+        "trackId": "motte",
+        "credits": {
+          "text": "Lyrics and music by Motte; arranged by Jo Jin-seong (조진성).",
+          "source": "https://www.genie.co.kr/detail/songInfo?xgnm=88246534"
+        },
+        "background": {
+          "text": "The soundtrack notes say “Don’t run away” gives voice to the clumsy feelings of A-TEEN’s characters: eighteen-year-old friends who hurt each other with childish words while still liking each other very much.",
+          "sources": [
+            "https://music.bugs.co.kr/album/20194472"
+          ]
+        }
+      },
+      {
+        "trackId": "kim-sawol",
+        "credits": {
+          "text": "Lyrics and music by Kim Sawol; arranged by Kim Sawol and Kim Haewon.",
+          "source": "https://music.bugs.co.kr/track/31233996"
+        },
+        "background": {
+          "text": "In her note on Romance, Kim Sawol describes running toward something that won’t last and loving anyway, and coming to know yourself better through love.",
+          "sources": [
+            "https://music.bugs.co.kr/album/20194242"
+          ]
+        }
+      },
+      {
+        "trackId": "gongwon",
+        "background": {
+          "text": "The notes for the EP 0 open with a question: why must someone this full be zero? The note for “Flower” describes someone who believed they were a flower, then found that what they had clung to was not a tree but darkness.",
+          "sources": [
+            "https://music.bugs.co.kr/album/4141340"
+          ]
+        }
+      },
+      {
+        "trackId": "yebit",
+        "background": {
+          "text": "“Only You” was the third release in a series by the brand Bargobargo on moments of love and parting, after releases with Jung In and 2AM’s Jeong Jinwoon. In the release notes, Yebit describes the song as lonely and composed, with a heaviness that settles in.",
+          "sources": [
+            "https://music.bugs.co.kr/album/4096359"
+          ]
+        }
+      },
+      {
+        "trackId": "baek-a-amor",
+        "background": {
+          "text": "The single’s note calls “Amor” (첫사랑, “first love”) a story of first love at eighteen. Its ending was settled from the start, the note says, like a book you can’t bring yourself to read past the first page because the word “you” is too lovely to leave.",
+          "sources": [
+            "https://music.bugs.co.kr/album/20198077"
+          ]
+        }
+      },
+      {
+        "trackId": "youra-flicker",
+        "background": {
+          "text": "B side’s notes say youra made “Flicker” before she was known as an artist. It was one of the EP’s two title songs, and the notes describe it as little more than a guitar riff and a simple melody.",
+          "sources": [
+            "https://music.bugs.co.kr/album/20234500"
+          ]
+        },
+        "appleMusic": {
+          "url": "https://music.apple.com/us/album/b-side-ep/1673887826",
+          "check": "iTunes lookup (US) matched the song on 2026-11-12; replaces the Bugs release link."
+        }
+      },
+      {
+        "trackId": "youra-mimi",
+        "background": {
+          "text": "“MIMI” opens GAUSSIAN, released in February 2021. In her note for the EP, youra writes that she cut about 30 cm of hair at the start of that year. She calls the record her long-haired self, made of stubborn habits in her music that she wanted to cut like her hair, though she says she is still thinking that over.",
+          "sources": [
+            "https://music.bugs.co.kr/album/20375620"
+          ]
+        },
+        "appleMusic": {
+          "url": "https://music.apple.com/us/album/gaussian-ep/1754267581",
+          "check": "iTunes lookup (US) matched the song on 2026-11-12; replaces the Bugs release link."
+        }
+      },
+      {
+        "trackId": "youra-motif",
+        "background": {
+          "text": "youra’s first full-length album came out in July 2023. Her note for it begins with a dream about her grandmother. A few days later, she writes, she held a taxi’s overhead handle the way her grandmother used to, and smiled the whole way. She describes the album as music made from scenes like these around her.",
+          "sources": [
+            "https://music.bugs.co.kr/album/20576196"
+          ]
+        },
+        "appleMusic": {
+          "url": "https://music.apple.com/us/album/1/1695683074",
+          "check": "iTunes lookup (US) matched the song on 2026-11-12; replaces the Bugs release link."
+        }
+      },
+      {
+        "trackId": "sondia-grown-ups",
+        "background": {
+          "text": "The soundtrack release notes say “Grown Ups” played in key emotional scenes of My Mister’s first two episodes, and that viewers asked who was singing and asked for the song to be released. They describe a British rock song built on two images: a hurt child who grew up too early, and an adult quietly carrying the weight of a hard life.",
+          "sources": [
+            "https://music.bugs.co.kr/album/20156782"
+          ]
+        }
+      },
+      {
+        "trackId": "yoon-mirae",
+        "background": {
+          "text": "The single’s notes call “Breath” a winter acoustic R&B song with no drums. They describe a winter spent with someone that stays in daily life like breath, and say the song never declares a breakup.",
+          "sources": [
+            "https://music.bugs.co.kr/album/4136526"
+          ]
+        }
+      }
+    ],
+    "reviews": [
+      {
+        "kind": "facts",
+        "checked": "2026-11-12",
+        "reviewer": "Separate review pass (subagent), read-only; every cited page fetched independently",
+        "approved": true,
+        "notes": "11 of 19 approved as drafted. Fixed as reported: sunwoojunga's note says night rather than evening and refers to the album's songs; Tree no longer dates Car, the garden's work on Flicker; ESEGYE's note describes the song, not the title; Sondia's viewers asked for a release; Jung In and Jeong Jinwoon spelled as on Apple Music; Hangul added for 정재헌. No credit had a missing, extra or misassigned person."
+      },
+      {
+        "kind": "editorial",
+        "checked": "2026-11-12",
+        "reviewer": "Separate review pass (subagent), read-only",
+        "approved": true,
+        "notes": "9 of 19 approved as drafted. Fixed as reported: repetition of the description or credits removed (Tree, Forest, Someone, Motif, Breath), clearer subjects (gongwon, MIMI, Motif), Yebit's listening instruction removed, BOL4's recording attributed to the EP, Hangul dropped from official names (So!YoON!, VMX). Breath's description no longer says 'after a breakup', which its release notes do not support."
+      }
+    ],
+    "creditNotes": [
+      {
+        "trackId": "lang-lee-the-generation-of-tribulation",
+        "note": "The label's Bandcamp release page (Lang Lee / Sweet Dreams Press, also the lyric source) lists the arrangers as Lang Lee, Jeongwoo Lee (이정우), E Hyeji, Younghun Kim and JiWook Mae, with Jeongwoo Lee on electric guitar. Bugs track 31942792 lists 이대봉 in that place. The credits follow the label page; whether these are the same person is unconfirmed.",
+        "checked": "2026-11-12"
       }
     ]
   }
