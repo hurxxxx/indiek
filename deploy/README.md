@@ -431,31 +431,15 @@ systemctl disable --now indiek-api.service indiek-api-backup.timer
 
 ## 확인과 복구
 
-- Latest deployment: 2026-11-12 `a8fe5d8`
-  - Site: corrections from the human-sample check of five songs (NO PAIN, Flower, Something's Wrong, Hail to the Music, Mask Dance) and the Danpyunsun and the Moments Ensemble artist intro; six songs re-reviewed. No video, Nginx or API change.
-  - Production passed 305 tests and 88 pages with a clean checkout. Over HTTPS the sitemap, home page, `catalogue.js`, both promotion manifests, the changed artist and song pages and a changed carousel slide equal the build; `/api/health` reports 31 artists and 40 tracks.
+- Latest deployment: 2026-11-12 `e64f123`
+  - Site: 37 of 40 song pages are complete and indexed. Credits and sourced backgrounds were added for 19 songs, youra's three songs now link to English Apple Music, and six catalogue-pipeline songs moved to grade A with lyric notes after re-review. Hail to the Music, She (Feat. MRCH) and Don’t feel sad stay `noindex` until a published source exists. Reading and lyric links and the carousels now point to the complete song pages. A single-song re-review (`npm run catalogue -- review`) now also reads the pages the artist's other songs were approved with. No video, Nginx or API change.
+  - Production passed 306 tests and 88 pages with a clean checkout. The first run stalled in `scripts/stories.test.mjs`: one process ran at full CPU for 6 h 41 min with no output, and the SSH session dropped. After it was stopped, the file passed alone, under `node --test` and in a full rerun (48 s). The cause was not found. The article receiver runs the same check, so a stall like this would hold an article deploy.
+  - Over HTTPS, the 83 changed build files equal the live paths, the sitemap has 85 URLs, and `/api/health` reports 31 artists and 40 tracks.
   - The automation checkout was fast-forwarded with `scripts/editorial/sync.mjs`. It passed 104 promotion tests, and all 30 carousel decks match the live pages; nothing was sent.
-  - Rollback baseline: `8d6d967`.
-- Previous deployment: 2026-11-12 `f36e862`
-  - Site: catalogue batch 2 (Lacuna, OHCHILL, Kang Asol, Danpyunsun and the Moments Ensemble, Black String; eight songs), published 2026-11-12. Black String's "Mask Dance" is the first instrumental song page, with music notes instead of lyric notes. No Nginx or API change.
-  - Production passed 305 tests and 88 pages with a clean checkout.
-  - Verified over HTTPS:
-    - the new artist and song pages return 200, grade-B song pages are `noindex`, and "Mask Dance" is titled "music notes & background";
-    - the sitemap has 61 URLs, and the sitemap, home page, `catalogue.js` and both promotion manifests equal the build;
-    - `/api/health` reports 31 artists and 40 tracks;
-    - on the live site, "Mask Dance" plays in the shared player (one iframe), and the player was then closed.
-  - The automation checkout was fast-forwarded with `scripts/editorial/sync.mjs`. It passed 104 promotion tests, and all 30 carousel decks match the live pages; nothing was sent.
-  - Rollback baseline: `dd7379c`.
-- Previous deployment: 2026-11-12 `ac69ab8`
-  - Site: catalogue batch 1 (Say Sue Me, Silica Gel, Meaningful Stone, Lang Lee, JEONGMILLA; nine songs, five indexed), published 2026-11-12, and the reader request page `/request/` with request links on artist and song pages and the privacy notice's `#participation`. The year-end poll stays `draft` (its page is 404). No Nginx or API change.
-  - Production passed 299 tests and 75 pages with a clean checkout. The first run of the release commit `2185f12` failed one participation test, because the web server's Node 18 has no global `crypto`; the test now passes Node's `webcrypto` (`ac69ab8`). The article receiver runs the same check, so it would otherwise have refused Friday's article.
-  - Verified over HTTPS:
-    - the new pages return 200, and grade-B song pages are `noindex`;
-    - the sitemap has 51 URLs, and the public manifest equals the build;
-    - `/api/health` reports 26 artists and 32 tracks;
-    - on the live site, Old Town plays in the shared player and keeps playing on the way to `/request/?track=…`, where the form opens with the song preselected. No request was sent.
-  - The automation checkout was fast-forwarded with `scripts/editorial/sync.mjs`. It passed 104 promotion tests, and all 25 carousel decks match the live pages; nothing was sent.
-  - Rollback baseline: `68fc649`.
+  - Rollback baseline: `d915d50`.
+- Previous deployment: 2026-11-12 `a8fe5d8` - corrections from the human-sample check of five songs and one artist intro. Production passed 305 tests and 88 pages; HTTPS and the 30 carousel decks matched. Rollback baseline: `8d6d967`.
+- Previous deployment: 2026-11-12 `f36e862` - catalogue batch 2 (five artists, eight songs; "Mask Dance" is the first instrumental song page). Production passed 305 tests and 88 pages; HTTPS, the shared player and the 30 carousel decks were checked. Rollback baseline: `dd7379c`.
+- Previous deployment: 2026-11-12 `ac69ab8` - catalogue batch 1 (five artists, nine songs) and the reader request page `/request/`; the year-end poll stays `draft`. The first run failed one participation test because the web server's Node 18 has no global `crypto`; the test now uses Node's `webcrypto`. Rollback baseline: `68fc649`.
 - Previous deployment: 2026-11-10 `68fc649` - Instagram commentary carousels built with the site (76 slides for 20 artists, about 8.1 MB). Production passed 267 tests and 60 pages, and the carousel list and slides are live over HTTPS. The automation checkout was fast-forwarded through `scripts/editorial/sync.mjs`, which restored and regenerated the automatic section of `docs/promotion.md` because the commit also changed that file. It then passed 117 promotion tests and confirmed all 20 decks match the live pages without sending anything. Rollback baseline: `a02ea43`.
 - Previous deployment: 2026-11-09 `30f85f3`
   - Site (`5c59acf`): song pages under each artist (3 indexed, 20 `noindex`; sitemap 40 URLs) and the reworked starter-guide intro.
