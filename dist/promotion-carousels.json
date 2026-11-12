@@ -738,7 +738,7 @@
       "pageKind": "artist",
       "pageId": "silica-gel",
       "path": "/artists/silica-gel/no-pain/",
-      "description": "“NO PAIN” invites people who have felt excluded into a house where everyone can sing together. The speaker also considers leaving and asks not to be hated, keeping that welcome unsettled. Lyrics meaning in English, credits, background and release details.",
+      "description": "“NO PAIN” invites people who have felt excluded into a house where everyone can sing together. The speaker also admits to having thought of leaving and asks not to be hated, keeping that welcome unsettled. Lyrics meaning in English, credits, background and release details.",
       "artistIds": [
         "silica-gel"
       ],
@@ -760,9 +760,9 @@
         {
           "kind": "text",
           "image": "/assets/social/carousel/artists-silica-gel-3.jpg",
-          "altText": "Slide 3 of 4. Yet the speaker also thinks of leaving and asks not to be hated. Wanting others close does not settle whether the speaker will stay. Later, love entrusted to the sun and figures gathering in thick night fog make the scene harder to place. Those images leave the gathering’s purpose uncertain, without undoing the opening wish for company.",
-          "text": "Yet the speaker also thinks of leaving and asks not to be hated. Wanting others close does not settle whether the speaker will stay. Later, love entrusted to the sun and figures gathering in thick night fog make the scene harder to place. Those images leave the gathering’s purpose uncertain, without undoing the opening wish for company.",
-          "sha256": "77d7380aad7243cd4f31a7aa00f64ded508554cbdf527065c59f1ffbf6ba72ee"
+          "altText": "Slide 3 of 4. Yet the speaker also says they had thought of leaving that day, and asks not to be hated. Wanting others close does not settle whether the speaker will stay. Later lines set the love of family and others, left in the sun’s keeping, beside vigilantes who gather once the night fog thickens, intending to steal. That threat stands next to the opening welcome, and the lyric does not say how it ends.",
+          "text": "Yet the speaker also says they had thought of leaving that day, and asks not to be hated. Wanting others close does not settle whether the speaker will stay. Later lines set the love of family and others, left in the sun’s keeping, beside vigilantes who gather once the night fog thickens, intending to steal. That threat stands next to the opening welcome, and the lyric does not say how it ends.",
+          "sha256": "43336ea5447157b41ec907d77f5843e82f3f043c90559d417d49f58bda09ec4a"
         },
         {
           "kind": "end",
@@ -935,7 +935,7 @@
       "pageKind": "artist",
       "pageId": "ohchill",
       "path": "/artists/ohchill/somethings-wrong/",
-      "description": "In “Something’s Wrong”, running between buildings brings the speaker back to the same place. OHCHILL’s album notes describe people struggling to get through everyday city life, caught between feeling lost and trying to live normally. Lyrics meaning in English, credits, background and release details.",
+      "description": "In “Something’s Wrong”, running between buildings brings the speaker back to the same place. OHCHILL’s album notes say it follows people living day by day in a busy city, including depressed and lost people and young people driven to think about death while pursuing a normal life. Lyrics meaning in English, credits, background and release details.",
       "artistIds": [
         "ohchill"
       ],
@@ -957,9 +957,9 @@
         {
           "kind": "text",
           "image": "/assets/social/carousel/artists-ohchill-3.jpg",
-          "altText": "Slide 3 of 4. English labels keep changing the speaker’s role, from runner to fighter to lover, without settling into a secure identity. Against those shifts, the refrain repeatedly objects to a world that allows no difference. By the end, the accusation also includes the world’s dishonesty, but there is no clear escape or resolution. The lyric leaves the speaker’s anger and difficulty speaking side by side.",
-          "text": "English labels keep changing the speaker’s role, from runner to fighter to lover, without settling into a secure identity. Against those shifts, the refrain repeatedly objects to a world that allows no difference. By the end, the accusation also includes the world’s dishonesty, but there is no clear escape or resolution. The lyric leaves the speaker’s anger and difficulty speaking side by side.",
-          "sha256": "6103d3cd026740aef07bdd36d11732945a51621098d40dcc06de4335369c68c4"
+          "altText": "Slide 3 of 4. A string of English words keeps recasting the speaker: liar, runner, loser and, foolishly, only half a fighter. None settles into a secure identity. Against those shifts, the refrain repeatedly objects to a world that allows no difference. By the end, the accusation also includes the world’s dishonesty, but there is no clear escape or resolution. The lyric leaves the speaker’s anger and difficulty speaking side by side.",
+          "text": "A string of English words keeps recasting the speaker: liar, runner, loser and, foolishly, only half a fighter. None settles into a secure identity. Against those shifts, the refrain repeatedly objects to a world that allows no difference. By the end, the accusation also includes the world’s dishonesty, but there is no clear escape or resolution. The lyric leaves the speaker’s anger and difficulty speaking side by side.",
+          "sha256": "4aeee78a69a48bbedda48e1a2e7c614c06c45d273481291303aeba2fc4fb5532"
         },
         {
           "kind": "end",
@@ -1056,7 +1056,7 @@
       "pageKind": "artist",
       "pageId": "black-string",
       "path": "/artists/black-string/mask-dance/",
-      "description": "“Mask Dance” takes its inspiration from Cheoyongmu, a Korean dance performed wearing Cheoyong’s mask to drive away spirits. Genie’s release notes describe the composition as a musical expression of the story’s strange and mysterious imagery. Music notes in English, credits, background and release details.",
+      "description": "“Mask Dance” takes its inspiration from Cheoyongmu, a Korean dance performed wearing Cheoyong’s mask to drive away evil spirits. Genie’s release notes describe the composition as a musical expression of the story’s strange and mysterious imagery. Music notes in English, credits, background and release details.",
       "artistIds": [
         "black-string"
       ],
@@ -1071,16 +1071,16 @@
         {
           "kind": "text",
           "image": "/assets/social/carousel/artists-black-string-2.jpg",
-          "altText": "Slide 2 of 4. Genie’s release notes connect “Mask Dance” to Cheoyongmu and its spirit-expelling purpose. They describe combining amplifiers and effects with Korean traditional instruments to give the story’s strange and mysterious imagery an intense musical setting.",
-          "text": "Genie’s release notes connect “Mask Dance” to Cheoyongmu and its spirit-expelling purpose. They describe combining amplifiers and effects with Korean traditional instruments to give the story’s strange and mysterious imagery an intense musical setting.",
-          "sha256": "09a4f3aa62d487c87c68bc6057104ee01eba119568bc92ed6cf66e2ff66725dc"
+          "altText": "Slide 2 of 4. Genie’s release notes connect “Mask Dance” to Cheoyongmu and its purpose of driving away evil spirits. They also say the band combined amplifiers and effects with Korean traditional instruments to create an intense atmosphere.",
+          "text": "Genie’s release notes connect “Mask Dance” to Cheoyongmu and its purpose of driving away evil spirits. They also say the band combined amplifiers and effects with Korean traditional instruments to create an intense atmosphere.",
+          "sha256": "b80509f91f827731e302d3afad8e639832405c0d6c3871056a2b91c4d2fc6d04"
         },
         {
           "kind": "text",
           "image": "/assets/social/carousel/artists-black-string-3.jpg",
-          "altText": "Slide 3 of 4. ACT’s notes describe the title track as an experiment with powerful, almost rock-like sounds. Heo’s explanation there focuses on how the music develops through interaction: the musicians create contrasts and respond to one another’s accents and pitches, while staying close to traditional Korean forms and scales.",
-          "text": "ACT’s notes describe the title track as an experiment with powerful, almost rock-like sounds. Heo’s explanation there focuses on how the music develops through interaction: the musicians create contrasts and respond to one another’s accents and pitches, while staying close to traditional Korean forms and scales.",
-          "sha256": "35a980e139ef03db0d09640f6421840e219fd1e6954a7989fcf03fc950e0d6c1"
+          "altText": "Slide 3 of 4. ACT’s notes describe the title track as an experiment with powerful, almost rock-like sounds, and place the band within Korean music’s long tradition of improvisation. Heo says “Mask Dance” goes furthest in that direction: the musicians create contrasts and follow one another’s accents and pitches, and beneath that interplay something emerges very close to traditional Korean forms and scales.",
+          "text": "ACT’s notes describe the title track as an experiment with powerful, almost rock-like sounds, and place the band within Korean music’s long tradition of improvisation. Heo says “Mask Dance” goes furthest in that direction: the musicians create contrasts and follow one another’s accents and pitches, and beneath that interplay something emerges very close to traditional Korean forms and scales.",
+          "sha256": "cf38bd7067eb212de174592ba276750a03375c3bd979b0b8e93a571337e34016"
         },
         {
           "kind": "end",

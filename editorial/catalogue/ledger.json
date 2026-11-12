@@ -423,9 +423,9 @@
       "grade": "A",
       "role": "primary",
       "addedAt": "2026-11-11",
-      "contentHash": "375b3d30831faed05c685216287fc4a740e6117df37c0861e56e55a86816160c",
-      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
-      "reviewedAt": "2026-11-10T21:47:38.597Z",
+      "contentHash": "e3b18928d89a0916bba4ff3445830774c8ac75cae68e5157a2c30b8126810b99",
+      "skillRevision": "14f9ba6bf06f79a25012969b0e734b5dbc841a74d46243008a5fe6977cd022d4",
+      "reviewedAt": "2026-11-12T03:09:28.656Z",
       "sources": [
         "https://poclanos.com/artist/%EC%8B%A4%EB%A6%AC%EC%B9%B4%EA%B2%94/",
         "https://poclanos.com/album/no-pain/",
@@ -440,7 +440,7 @@
       "playback": {
         "videoId": "qg40imnWXG8",
         "state": "playing",
-        "checkedAt": "2026-11-10T21:46:17.588Z",
+        "checkedAt": "2026-11-12T03:08:23.316Z",
         "advancedSeconds": 3.5,
         "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
         "channel": "Silica Gel 실리카겔",
@@ -452,30 +452,31 @@
             "state": "playing"
           }
         ],
-        "recheckedAt": "2026-11-10T21:59:58.679Z"
+        "recheckedAt": "2026-11-10T21:59:58.679Z",
+        "playing": true,
+        "duration": 229
       },
       "facts": {
         "approved": true,
-        "reason": "The exact entries are supported by the supplied fetched sources and pipeline verification. The lyric commentary offers plausible readings without inventing biography or asserting authorial intent. No unresolved blocking factual issues.",
+        "reason": "The supplied source texts support the factual claims and the measured lyric interpretations. Recording and Apple Music verification are accepted from the pipeline.",
         "checkedURLs": [
           "https://poclanos.com/artist/%EC%8B%A4%EB%A6%AC%EC%B9%B4%EA%B2%94/",
           "https://poclanos.com/album/no-pain/",
-          "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
-          "https://poclanos.com/album/tik-tak-tok/"
+          "https://www.genie.co.kr/detail/songInfo?xgnm=98042401"
         ],
         "supportedClaims": [
           {
-            "claim": "Silica Gel is a four-piece band with the stated members, instruments and vocal roles.",
+            "claim": "Silica Gel is a four-piece band with the stated members, instruments and two vocalists.",
             "sourceURL": "https://poclanos.com/artist/%EC%8B%A4%EB%A6%AC%EC%B9%B4%EA%B2%94/",
             "evidence": "실리카겔은 김건재(드럼), 김춘추(기타/보컬), 김한주(키보드/보컬), 최웅희(베이스)로 이뤄진 4인조 밴드다."
           },
           {
-            "claim": "The band's self-titled first album earned Korean Music Awards Rookie of the Year recognition.",
+            "claim": "The band's self-titled first album earned Rookie of the Year at the Korean Music Awards.",
             "sourceURL": "https://poclanos.com/artist/%EC%8B%A4%EB%A6%AC%EC%B9%B4%EA%B2%94/",
-            "evidence": "1집 [실리카겔]로 한국대중음악상 ‘올해의 신인’을 비롯한 신인상 3관왕을 휩쓸었던"
+            "evidence": "1집 [실리카겔]로 한국대중음악상 ‘올해의 신인’을 비롯한 신인상 3관왕을"
           },
           {
-            "claim": "The member names use the source's English romanisations.",
+            "claim": "The member romanisations agree with the official release credits.",
             "sourceURL": "https://poclanos.com/album/no-pain/",
             "evidence": "김건재 Kim Geonjay 김춘추 Kim Chunchu 김한주 Kim Hanjoo 최웅희 Choi Woonghee"
           },
@@ -485,70 +486,49 @@
             "evidence": "Release 2022.08.25"
           },
           {
-            "claim": "The release statement connects NO PAIN's beginnings to questions about living through time and transcending time and space.",
+            "claim": "Silica Gel receives lyrics, composition and arrangement credits.",
+            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
+            "evidence": "작사가 실리카겔 작곡가 실리카겔 편곡자 실리카겔"
+          },
+          {
+            "claim": "Silica Gel produced the single.",
+            "sourceURL": "https://poclanos.com/album/no-pain/",
+            "evidence": "프로듀서 produced by 실리카겔 Silica Gel"
+          },
+          {
+            "claim": "The release statement describes questions about living through time and transcending time and space.",
             "sourceURL": "https://poclanos.com/album/no-pain/",
             "evidence": "‘시간의 흐름을 산다는 것’, ‘시공을 초월하는 것이란 무엇일까?’ 라는 의문에서 시작된"
           },
           {
-            "claim": "Silica Gel receives NO PAIN's lyric, composition, arrangement and production credits.",
-            "sourceURL": "https://poclanos.com/album/no-pain/",
-            "evidence": "작사/작곡/편곡/연주 written, arranged and performed by 실리카겔 Silica Gel 프로듀서 produced by 실리카겔 Silica Gel"
-          },
-          {
-            "claim": "The invitation and belonging interpretation is supported by the house, excluded people and shared singing.",
+            "claim": "The description and commentary reasonably read the house and shared singing as an invitation to excluded people.",
             "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
             "evidence": "내가 만든 집에서 모두 함께 노래를 합시다. 소외됐던 사람들 모두 함께 노래를 합시다."
           },
           {
-            "claim": "The shared warm fire supports the commentary's image of a welcoming gathering.",
+            "claim": "The communal-fire interpretation has concrete textual support.",
             "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
-            "evidence": "우리만의 따뜻한 불, 영원한 꿈, 영혼과 삶"
+            "evidence": "우리만의 따뜻한 불"
           },
           {
-            "claim": "The speaker's thought of leaving and request not to be hated support the commentary's uncertainty.",
+            "claim": "The speaker's thought of leaving and request not to be hated support the commentary's uncertainty about staying.",
             "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
             "evidence": "난 오늘 떠날 거라 생각을 했어 날 미워하지 마"
           },
           {
-            "claim": "The later lyric contains love entrusted to the sun and figures gathering after night fog thickens.",
+            "claim": "The later imagery places family and others' love in the sun's keeping beside vigilantes gathering to steal after night fog thickens.",
             "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=98042401",
             "evidence": "태양에 맡겨 뒀던 가족과 모든 분들의 사랑 밤안개 짙어진 뒤 훔치려고 모인 자경단"
-          },
-          {
-            "claim": "Tik Tak Tok was released on August 19, 2023.",
-            "sourceURL": "https://poclanos.com/album/tik-tak-tok/",
-            "evidence": "Release 2023.08.19"
-          },
-          {
-            "claim": "The single places T before Tik Tak Tok, which features So!YoON!.",
-            "sourceURL": "https://poclanos.com/album/tik-tak-tok/",
-            "evidence": "1. T 2. Tik Tak Tok (feat. So!YoON!) 3. Tik Tak Tok (Inst.)"
-          },
-          {
-            "claim": "The release statement asks whether Machine Boy is a living creature or another indescribable existence.",
-            "sourceURL": "https://poclanos.com/album/tik-tak-tok/",
-            "evidence": "Machine Boy는 결국 무엇일까. 생명체일까? 아니면 형용할 수 없는 또 다른 존재일까?"
-          },
-          {
-            "claim": "Silica Gel and So!YoON! share Tik Tak Tok's lyric and composition credits; Silica Gel receives arrangement and production credits.",
-            "sourceURL": "https://poclanos.com/album/tik-tak-tok/",
-            "evidence": "작사/작곡 written by 실리카겔 Silica Gel, So!YoON! 편곡/연주 arranged and performed by 실리카겔 Silica Gel 프로듀서 produced by 실리카겔 Silica Gel"
           }
         ]
       },
       "editorial": {
         "approved": true,
-        "reason": "The entries are plain, specific and measured. Concrete lyric images and documented release context give each song a distinct introduction. The lyric commentary keeps the speaker separate from the band, supports its readings with specific images and preserves uncertainty. Compared with recent entries, the prose shares some vocabulary of unresolved feelings but does not repeat their structure or become interchangeable. Factual verification is reserved for the separate review; recording verification is accepted as supplied.",
+        "reason": "The writing is plain, specific and measured. Concrete lyric details support the interpretation, the speaker remains distinct from the band, and release context follows the song’s central invitation. No invented listening experience, generic praise or reader-facing review notes appear. Grade A requirements are met, accepting the supplied recording verification and separate fact review.",
         "gradeChecks": [
           {
             "key": "t1",
             "grade": "A",
-            "meets": true,
-            "missing": []
-          },
-          {
-            "key": "t2",
-            "grade": "B",
             "meets": true,
             "missing": []
           }
@@ -556,7 +536,10 @@
       },
       "humanSample": true,
       "humanReview": {
-        "status": "pending"
+        "status": "approved",
+        "date": "2026-11-12",
+        "by": "user",
+        "note": "Checked by Claude at the user's request against the cited sources and live playback. Lyric notes had read the night-fog line as an uncertain gathering, but the lyric names vigilantes gathering to steal; the leaving line is past tense. Fixed and re-reviewed before approval."
       }
     },
     "silica-gel-tik-tak-tok": {
@@ -1605,9 +1588,9 @@
       "grade": "B",
       "role": "additional",
       "addedAt": "2026-11-11",
-      "contentHash": "caee8730485317bf19c2ec86f96ee7c8a433a8f902f2c8baf53e4dd188e087e5",
-      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
-      "reviewedAt": "2026-11-10T21:47:45.739Z",
+      "contentHash": "88e7e6417d72121227e28fc86a22fa28e743dbc70daa05d4734cc36c99f831ee",
+      "skillRevision": "14f9ba6bf06f79a25012969b0e734b5dbc841a74d46243008a5fe6977cd022d4",
+      "reviewedAt": "2026-11-12T03:10:18.092Z",
       "sources": [
         "https://www.yna.co.kr/amp/view/AKR20210107018100005",
         "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08"
@@ -1621,7 +1604,7 @@
       "playback": {
         "videoId": "Ni3cgnuOoFg",
         "state": "playing",
-        "checkedAt": "2026-11-10T21:46:19.864Z",
+        "checkedAt": "2026-11-12T03:09:37.226Z",
         "advancedSeconds": 3.5,
         "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
         "channel": "정밀아JEONGMILLA",
@@ -1633,14 +1616,15 @@
             "state": "playing"
           }
         ],
-        "recheckedAt": "2026-11-10T22:00:38.027Z"
+        "recheckedAt": "2026-11-10T22:00:38.027Z",
+        "playing": true,
+        "duration": 225
       },
       "facts": {
         "approved": true,
-        "reason": "The exact entries are supported by the supplied fetched texts and pipeline recording checks. Lyric interpretations remain close to the source lyrics. No unresolved blocking factual issues found.",
+        "reason": "The supplied sources support the artist background, song interpretation and credits. The prose agrees with the pipeline’s recording verification. No blocking factual issues found.",
         "checkedURLs": [
           "https://www.yna.co.kr/amp/view/AKR20210107018100005",
-          "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
           "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08"
         ],
         "supportedClaims": [
@@ -1650,119 +1634,58 @@
             "evidence": "포크 싱어송라이터 정밀아"
           },
           {
-            "claim": "Her writing connects her own life with attention to her surroundings.",
+            "claim": "Her writing connects her own life with the places around her.",
             "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
             "evidence": "나를 이야기하려면 내 주변의 것들을 반드시 봐야 하는 것"
           },
           {
-            "claim": "Her first two studio albums appeared in 2014 and 2017, and CheongPa Sonata is her third.",
+            "claim": "Her first two studio albums appeared in 2014 and 2017, followed by her third album.",
             "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
-            "evidence": "'청파소나타'는 1집 '그리움도 병'(2014), 2집 '은하수'(2017)에 이은 정밀아의 세 번째 정규앨범."
+            "evidence": "1집 '그리움도 병'(2014), 2집 '은하수'(2017)에 이은 정밀아의 세 번째 정규앨범"
           },
           {
-            "claim": "She studied art at university and also makes visual art.",
+            "claim": "CheongPa Sonata was released in October 2020.",
+            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
+            "evidence": "지난해 10월 발표된 '청파소나타'"
+          },
+          {
+            "claim": "She studied art at university.",
             "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
             "evidence": "정밀아는 대학에서 미술을 전공했지만"
           },
           {
-            "claim": "The interview reports that she continued making visual art alongside music.",
+            "claim": "The interview reports that she also maintained a visual-art practice.",
             "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
             "evidence": "그림 작업은 지금도 병행하고 있다."
           },
           {
-            "claim": "She moved to Cheongpa-dong in autumn 2019, with Seoul Station visible from her window.",
-            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
-            "evidence": "2019년 가을 이사 온 청파(靑坡)동은 창문을 열면 남산과 서울역이 보이는 동네다."
-          },
-          {
-            "claim": "Neighbourhood walks helped shape the album's subjects.",
-            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
-            "evidence": "산책하며 만난 재개발의 풍경은 '오래된 동네'라는 곡의 바탕이 됐다."
-          },
-          {
-            "claim": "Her walks extended to several public squares.",
-            "sourceURL": "https://www.yna.co.kr/amp/view/AKR20210107018100005",
-            "evidence": "그의 산책길이 서울역 광장, 시청광장, 광화문 광장까지 자연스럽게 나아갔기 때문이다."
-          },
-          {
-            "claim": "JEONGMILLA wrote the lyrics and music and arranged Departing from Seoul Station.",
-            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
-            "evidence": "작사가 정밀아 작곡가 정밀아 편곡자 정밀아"
-          },
-          {
-            "claim": "The opening concerns a mother's worries about returning home after a singing engagement.",
-            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
-            "evidence": "어디 멀리 노래하러 갔었다더니 그래 집에는 언제 온 거니?"
-          },
-          {
-            "claim": "The speaker reassures her mother that she can now walk home.",
-            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
-            "evidence": "이제 이사하고 난 뒤로는 염려 없어요. 집에까지 금세 걸어왔어요."
-          },
-          {
-            "claim": "The station recalls an earlier arrival for a university entrance examination.",
-            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
-            "evidence": "내가 혼자 대학 시험 보러 온 날"
-          },
-          {
-            "claim": "The speaker expected to become a painter and now lives through singing.",
-            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
-            "evidence": "엄마 나는 대학 가면 그림 그려서 멋진 화가가 될 줄 알았지 허나 딴짓을 아주 열심히 하였더만은 이젠 노래하며 잘 살아갑니다."
-          },
-          {
-            "claim": "Seoul Station connects the speaker to her hometown.",
-            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
-            "evidence": "서울역에서 출발하고 두 시간 남짓이면 우리 살던 동네에 도착하잖아."
-          },
-          {
-            "claim": "The station also provides a route to a school friend's home.",
-            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
-            "evidence": "지하철 4호선 타고 서울역에서 출발하면은 한 시간이면 주희네 집이야"
-          },
-          {
-            "claim": "The reading of change without a verdict of success or failure is supported.",
-            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
-            "evidence": "그게 뭐 어떻다는 것은 아니고 그냥 그랬구나 하는 거예요."
-          },
-          {
-            "claim": "The ending looks toward a train trip to the sea before summer.",
-            "sourceURL": "https://www.genie.co.kr/detail/songInfo?xgnm=91097787",
-            "evidence": "봄 가고 아주 여름 오기 전 언제 바다에 가보려고 해 서울역에서 출발하는 기차를 타고"
-          },
-          {
-            "claim": "Bugs identifies Flower as a track on the release 꽃.",
-            "sourceURL": "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08",
-            "evidence": "앨범 꽃 재생 시간 03:33"
-          },
-          {
-            "claim": "Flower credits JEONGMILLA with vocals, composition and arrangement, and Na Tae-joo with lyrics.",
-            "sourceURL": "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08",
-            "evidence": "보컬 정밀아 작곡 정밀아 작사 나태주 편곡 정밀아"
-          },
-          {
-            "claim": "Flower's description of affection independent of beauty, achievement or possessions is supported.",
+            "claim": "Flower presents affection grounded in the addressee’s identity rather than appearance, distinction or possessions.",
             "sourceURL": "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08",
             "evidence": "예뻐서가 아니다, 잘나서가 아니다, 많은 것을 가져서도 아니다."
           },
           {
-            "claim": "The interpretation that the addressee is valued simply for being themselves is supported.",
+            "claim": "The lyric connects missing and loving someone with their simply being themselves.",
             "sourceURL": "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08",
-            "evidence": "네가 너이기 때문에 소중한 것이고"
+            "evidence": "다만 너이기 때문에, 네가 너이기 때문에 보고 싶은 것이고, 사랑스런 것이고"
+          },
+          {
+            "claim": "Bugs credits JEONGMILLA with vocals, composition and arrangement, and Na Tae-joo with lyrics.",
+            "sourceURL": "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08",
+            "evidence": "보컬 정밀아 작곡 정밀아 작사 나태주 편곡 정밀아"
+          },
+          {
+            "claim": "Bugs lists the song on the release 꽃.",
+            "sourceURL": "https://music.bugs.co.kr/track/30215743?wl_ref=list_tr_08",
+            "evidence": "앨범 꽃 재생 시간 03:33"
           }
         ]
       },
       "editorial": {
         "approved": true,
-        "reason": "The entries are plain, warm and specific, with concrete song details before release history. The lyric commentary supports its readings with distinct images and gestures, preserves the speaker’s uncertainty and avoids inflated emotion. Compared with recent entries, no substantial repeated phrasing or interchangeable prose stands out. Both requested grades meet their requirements, accepting the supplied recording verification and separate fact review.",
+        "reason": "The writing is plain, specific and measured. The song introduction explains a distinctive lyrical idea before release context, without inventing listening impressions or conflating the speaker with the performer. Grade B requirements are met; lyric commentary is not required. No recent entries were supplied for comparison.",
         "gradeChecks": [
           {
             "key": "t1",
-            "grade": "A",
-            "meets": true,
-            "missing": []
-          },
-          {
-            "key": "t2",
             "grade": "B",
             "meets": true,
             "missing": []
@@ -1771,7 +1694,10 @@
       },
       "humanSample": true,
       "humanReview": {
-        "status": "pending"
+        "status": "approved",
+        "date": "2026-11-12",
+        "by": "user",
+        "note": "Checked by Claude at the user's request against the cited sources and live playback. Credits, release date and live video confirmed. The description rendered 잘나서 as achievement; reworded to looks, standing out or having much, then re-reviewed."
       }
     },
     "lacuna-dancing-in-the-rain": {
@@ -2141,9 +2067,9 @@
       "grade": "A",
       "role": "primary",
       "addedAt": "2026-11-12",
-      "contentHash": "70dfd179c262848a3873ed904643263be30518809df89b61dc4a4690f6c0a94f",
-      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
-      "reviewedAt": "2026-11-11T23:12:56.631Z",
+      "contentHash": "85ff6ce3914dc0996e0dbddf17aa3f72625be07ed02cc98ff9358b3c1f6d5954",
+      "skillRevision": "14f9ba6bf06f79a25012969b0e734b5dbc841a74d46243008a5fe6977cd022d4",
+      "reviewedAt": "2026-11-12T03:12:23.546Z",
       "sources": [
         "https://ohchill.bandcamp.com/",
         "https://ohchill.bandcamp.com/album/the-burning-city",
@@ -2159,7 +2085,7 @@
       "playback": {
         "videoId": "pd00eM36Pa8",
         "state": "playing",
-        "checkedAt": "2026-11-11T23:11:44.158Z",
+        "checkedAt": "2026-11-12T03:11:29.479Z",
         "advancedSeconds": 3.5,
         "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
         "channel": "OHCHILL 오칠",
@@ -2171,11 +2097,13 @@
             "state": "playing"
           }
         ],
-        "recheckedAt": "2026-11-12T01:04:42.239Z"
+        "recheckedAt": "2026-11-12T01:04:42.239Z",
+        "playing": true,
+        "duration": 219
       },
       "facts": {
         "approved": true,
-        "reason": "The exact entry is supported by the supplied fetched source texts and pipeline verification. Names, credits, release history and interview attribution agree with the sources. The lyric commentary offers reasonable readings grounded in the verified lyrics. No blocking issues remain.",
+        "reason": "The supplied source texts support the artist facts, release history, credits, attributed interview account and lyric commentary. The interpretations remain close to the lyrics. Recording and Apple Music verification are accepted from the pipeline.",
         "checkedURLs": [
           "https://ohchill.bandcamp.com/",
           "https://ohchill.bandcamp.com/album/the-burning-city",
@@ -2184,17 +2112,17 @@
         ],
         "supportedClaims": [
           {
-            "claim": "OHCHILL is a Seoul rock duo comprising Junhong Yun on guitar and vocals and Seol Kim on drums and vocals, also known as Jun and Snow.",
+            "claim": "OHCHILL is a Seoul rock duo comprising guitarist and vocalist Junhong Yun (Jun) and drummer and vocalist Seol Kim (Snow).",
             "sourceURL": "https://ohchill.bandcamp.com/",
             "evidence": "OHCHILL is a two-piece rock band from Seoul, South Korea featuring Guitar/Vox Jun (Junhong Yun)and Drums/Vox Snow (Seol Kim)"
           },
           {
-            "claim": "The band's Korean name is 오칠.",
-            "sourceURL": "https://ohchill.bandcamp.com/",
-            "evidence": "about OHCHILL 오칠 South Korea"
+            "claim": "The band's Korean name is 오칠, and both 57 and OHCHILL identify the band.",
+            "sourceURL": "https://www.dailian.co.kr/news/view/1298617/밴드-오칠-두려움-동력-D인디그라운드-2023",
+            "evidence": "아직도 숫자 57로 표기해주시는 분들이 있는데, 57도 OHCHILL도 저희입니다."
           },
           {
-            "claim": "Oh, Two Animals was the 2019 debut album, followed by the second album The Burning City.",
+            "claim": "Oh, Two Animals was the 2019 debut album; The Burning City is the second full-length album.",
             "sourceURL": "https://ohchill.bandcamp.com/album/the-burning-city",
             "evidence": "has released their second full-length album, 'The Burning City,' four years after their debut album, 'Oh, Two Animals,' in 2019."
           },
@@ -2204,57 +2132,37 @@
             "evidence": "released November 20, 2023"
           },
           {
-            "claim": "The credits identify Junhong Yun as composer and Seol Kim as lyricist, with the entry using their official romanisations.",
+            "claim": "The credits and English romanisations support lyrics by Seol Kim, music by Junhong Yun, production by OHCHILL and arrangement by OHCHILL and HAWAGON.",
             "sourceURL": "https://ohchill.bandcamp.com/album/the-burning-city",
-            "evidence": "All Music by 윤준홍 Junhong Yun All Lyrics by 김설 Seol Kim"
+            "evidence": "All Music by 윤준홍 Junhong Yun All Lyrics by 김설 Seol Kim Produced by OHCHILL Arranged by OHCHILL, HAWAGON"
           },
           {
-            "claim": "OHCHILL produced the album and shares arrangement credit with HAWAGON.",
+            "claim": "The album notes describe the song's subjects as city dwellers, including depressed and lost people and young people contemplating death while pursuing normal lives.",
             "sourceURL": "https://ohchill.bandcamp.com/album/the-burning-city",
-            "evidence": "Produced by OHCHILL Arranged by OHCHILL, HAWAGON (손민곤,오은하)"
+            "evidence": "depicting the struggles of depressed and lost individuals and young people compelled to contemplate death in their pursuit of normal lives."
           },
           {
-            "claim": "The individual track credits confirm the lyricist, composer and arrangers.",
-            "sourceURL": "https://music.bugs.co.kr/track/33025098",
-            "evidence": "작곡 윤준홍 작사 김설 편곡 오칠 (OHCHILL) , HAWAGON(하와곤)"
-          },
-          {
-            "claim": "The album notes describe Something's Wrong as concerning people struggling with everyday city life and the pursuit of normal lives.",
-            "sourceURL": "https://ohchill.bandcamp.com/album/the-burning-city",
-            "evidence": "tells the story of people living day by day in a bustling city, depicting the struggles of depressed and lost individuals and young people compelled to contemplate death in their pursuit of normal lives."
-          },
-          {
-            "claim": "Snow said the song was begun relatively early and revised until last.",
+            "claim": "Seol said the song was started relatively early but revised until last.",
             "sourceURL": "https://www.dailian.co.kr/news/view/1298617/밴드-오칠-두려움-동력-D인디그라운드-2023",
             "evidence": "수록곡 중에 비교적 초반에 만들기 시작한 곡임에도 불구하고 가장 마지막까지 수정한 곡이기도 해요."
           },
           {
-            "claim": "Snow said that after considering many melodies, they selected the first one.",
+            "claim": "Seol said choosing among chorus melodies was difficult and the band ultimately selected the first melody.",
             "sourceURL": "https://www.dailian.co.kr/news/view/1298617/밴드-오칠-두려움-동력-D인디그라운드-2023",
             "evidence": "너무 다양한 멜로디들이 나와서 단 하나의 멜로디를 고르기가 까다로웠거든요. 결국에는 가장 처음에 만들었던 멜로디를 선택하게 되었습니다."
           },
           {
-            "claim": "The commentary's contrast between the lit city and solitary empty room is grounded in the lyrics.",
+            "claim": "The commentary's city, solitary room, running, anger and return to the starting point are grounded in the lyrics.",
             "sourceURL": "https://music.bugs.co.kr/track/33025098",
-            "evidence": "불 켜진 도시 위에 나는 a liar 텅 빈 방에 혼자 a wire"
+            "evidence": "불 켜진 도시 위에 나는 a liar 텅 빈 방에 혼자 a wire 빙글 빙글 어지러워 난 답답한 빌딩 숲을 달려 a runner 참지 못한 화를 the fire 돌고 돌아 제자리야 난"
           },
           {
-            "claim": "Running among buildings and returning to the starting point supports the description and heading.",
+            "claim": "The shifting labels, half-fighter image and difficulty speaking support the second paragraph's reading.",
             "sourceURL": "https://music.bugs.co.kr/track/33025098",
-            "evidence": "답답한 빌딩 숲을 달려 a runner 참지 못한 화를 the fire 돌고 돌아 제자리야 난"
+            "evidence": "더딘 춤을 추는 a loser 어리석게 반은 a fighter 말 한마디 뱉지 못해 난"
           },
           {
-            "claim": "The changing English role labels and difficulty speaking support the commentary's reading of unsettled identity.",
-            "sourceURL": "https://music.bugs.co.kr/track/33025098",
-            "evidence": "더딘 춤을 추는 a loser 어리석게 반은 a fighter 말 한마디 뱉지 못해 난 차가운 꿈속을 헤집어 a diver 모른 척 지나쳐 a lover"
-          },
-          {
-            "claim": "The refrain supports the interpretation of pressure to conform.",
-            "sourceURL": "https://music.bugs.co.kr/track/33025098",
-            "evidence": "조금의 조금도 다르면 안돼"
-          },
-          {
-            "claim": "The final refrain adds an accusation that the world lies and ends without an explicit resolution.",
+            "claim": "The refrain supports the reading of pressure against difference, and its final return adds an accusation of dishonesty.",
             "sourceURL": "https://music.bugs.co.kr/track/33025098",
             "evidence": "이 미친 세상은 오늘도 거짓말을 해 이 미친 세상은 oh my God 이 미친 세상은 모든 게 oh my God 조금의 조금도 다르면 안돼"
           }
@@ -2262,7 +2170,7 @@
       },
       "editorial": {
         "approved": true,
-        "reason": "The introduction is short and specific; the song description leads with a concrete lyric image. The background adds a distinctive songwriting account, and the lyric commentary stays measured, separates speaker from performer and avoids invented listening claims. Compared with recent entries, the prose offers distinct details without repeating their structure. All grade A components are present; factual verification belongs to the separate review.",
+        "reason": "The writing is specific, accessible and measured. Concrete city images lead the song introduction; release history stays in the background. The lyric commentary explains distinct textual details, keeps the speaker separate from the performers and avoids invented listening impressions. No editorial issues found; factual verification remains with the separate review.",
         "gradeChecks": [
           {
             "key": "t1",
@@ -2274,7 +2182,10 @@
       },
       "humanSample": true,
       "humanReview": {
-        "status": "pending"
+        "status": "approved",
+        "date": "2026-11-12",
+        "by": "user",
+        "note": "Checked by Claude at the user's request against the cited sources and live playback. Dailian says the song was started relatively early, not among the first; the album-note summary was softened and the lyric labels were selective. Fixed and re-reviewed before approval."
       }
     },
     "kang-asol-island": {
@@ -2536,9 +2447,9 @@
       "grade": "A",
       "role": "primary",
       "addedAt": "2026-11-12",
-      "contentHash": "fe4e9107aecd1e86cec1fbf64121e9d44a231db94f8b778ab185944317c3bb5b",
-      "skillRevision": "627f4d977491a5b6f8fb52c88697032f9ab79a264de7c01ab6a185f5558552fa",
-      "reviewedAt": "2026-11-11T23:31:14.109Z",
+      "contentHash": "c994cb16bf38f9bfbfa1e0e806402b614fddc4d4888d7727ddce7a2cc938c6a9",
+      "skillRevision": "14f9ba6bf06f79a25012969b0e734b5dbc841a74d46243008a5fe6977cd022d4",
+      "reviewedAt": "2026-11-12T03:15:12.379Z",
       "sources": [
         "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
         "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
@@ -2553,7 +2464,7 @@
       "playback": {
         "videoId": "vIjhdWqW3lk",
         "state": "playing",
-        "checkedAt": "2026-11-11T23:27:57.115Z",
+        "checkedAt": "2026-11-12T03:14:28.061Z",
         "advancedSeconds": 3.5,
         "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
         "channel": "미러볼 뮤직 - Mirrorball Music",
@@ -2570,23 +2481,19 @@
             "state": "playing"
           }
         ],
-        "recheckedAt": "2026-11-12T01:05:46.126Z"
+        "recheckedAt": "2026-11-12T01:05:46.126Z",
+        "playing": true,
+        "duration": 207
       },
       "facts": {
         "approved": true,
-        "reason": "The exact entries are supported by the four supplied source texts and pipeline recording verification. The lyric readings stay close to the text. The additional entry distinguishes the live recording from the studio release and explicitly preserves the conflicting arranger listings.",
+        "reason": "The supplied source texts support the artist introduction, dated lineup, songwriting history and credits. The lyric commentary stays close to the text and preserves its uncertainty. Recording and Apple Music fields are accepted as pipeline-verified.",
         "checkedURLs": [
           "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
           "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
-          "https://music.bugs.co.kr/track/33680746?wl_ref=list_tr_08_ab",
-          "https://music.bugs.co.kr/track/33289697?wl_ref=list_tr_08_ar"
+          "https://music.bugs.co.kr/track/33680746?wl_ref=list_tr_08_ab"
         ],
         "supportedClaims": [
-          {
-            "claim": "Danpyunsun is a musician and music producer.",
-            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
-            "evidence": "단편선은 음악가이자 음악 프로듀서다."
-          },
           {
             "claim": "The ensemble announced its beginning in January 2024.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
@@ -2598,82 +2505,57 @@
             "evidence": "2024년 현재, 피아니스트 이보람, 베이시스트 송현우, 드러머 박재준, 기타리스트 박장미가 함께 하고 있다."
           },
           {
-            "claim": "The artist introduction accurately paraphrases Danpyunsun's account of mutual attention and response.",
+            "claim": "The album notes describe capturing people watching, feeling and responding to one another.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
             "evidence": "서로가 서로를 바라보고, 느끼고, 반응하는 시간을 담고자 했다."
           },
           {
-            "claim": "The additional song's description correctly attributes an invitation to endure the world together to the album notes.",
-            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
-            "evidence": "이 세계를 함께 견뎌내고 있는 사람들에게. 같이 가자고 말하고 싶다."
-          },
-          {
-            "claim": "Genie's album credits support Danpyunsun's writing credits and the five named arrangers for track 09.",
-            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
-            "evidence": "작곡·작사 단편선(except 01, 10) 편곡 단편선 이보람 송현우 박재준 박장미(except 05) 신예훈(05, 10)"
-          },
-          {
-            "claim": "Bugs additionally lists Shin Yehun as an arranger for the studio recording, as the entry discloses.",
-            "sourceURL": "https://music.bugs.co.kr/track/33289697?wl_ref=list_tr_08_ar",
-            "evidence": "편곡 단편선 , 이보람 , 송현우 , 박재준 , 박장미 , 신예훈"
-          },
-          {
-            "claim": "The primary single's release date is September 24, 2025.",
-            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
-            "evidence": "미러볼뮤직 오소리웍스 2025.09.24"
-          },
-          {
-            "claim": "The primary song was first written in 2022 and revised in 2023.",
+            "claim": "Danpyunsun dates the song's initial writing to 2022 and a revision to 2023.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
             "evidence": "2022년에 처음 쓴 곡이다. 2023년에 한 차례 다듬었다."
           },
           {
-            "claim": "The song was completed in 2025.",
+            "claim": "Danpyunsun says he completed the song in 2025.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
             "evidence": "곡을 완성한 것은 2025년의 일이다."
           },
           {
-            "claim": "Danpyunsun described the song's mood as lighter than the other material on Hail to the Music.",
+            "claim": "The song was excluded from Hail to the Music because its mood felt comparatively light.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
             "evidence": "이 곡이 가진 무드가 다른 곡에 비해 가볍게 느껴졌다."
           },
           {
-            "claim": "Images from 1980s and 1990s Hong Kong films recurred while he revisited the song.",
+            "claim": "Danpyunsun recalls images from 1980s and 1990s Hong Kong films while revisiting the song.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
             "evidence": "80, 90년대 홍콩영화들의 이미지가 자꾸만 머릿 속을 맴돌았다."
           },
           {
-            "claim": "He did not specify precisely how those images influenced the song.",
-            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
-            "evidence": "그것들이 곡에 어떤 영향을 끼쳤는지 구체적으로 말하기는 어렵다."
-          },
-          {
-            "claim": "The primary song's production, writing and arrangement credits match Genie.",
+            "claim": "The credited songwriter, arrangers and producer match the official release credits.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=86736839",
             "evidence": "음악 프로듀싱·제작 총괄 단편선 @오소리웍스 작곡·작사 단편선 편곡 단편선 이보람 송현우 박재준 박장미"
           },
           {
-            "claim": "Snow, breath and a question about shared reality support the reading of an uncertain encounter.",
+            "claim": "The opening supports the commentary's snow, visible breath and uncertain togetherness.",
             "sourceURL": "https://music.bugs.co.kr/track/33680746?wl_ref=list_tr_08_ab",
             "evidence": "눈이 오면 네가 있으니까 입김을 후후 불어 우린 사실일까"
           },
           {
-            "claim": "Repeated descriptions of appearance, footsteps and increasing distance support the departure reading.",
+            "claim": "Repeated descriptions of the other person's appearance and footsteps support the reading of increasing distance.",
             "sourceURL": "https://music.bugs.co.kr/track/33680746?wl_ref=list_tr_08_ab",
-            "evidence": "미안한 너의 모습 일정한 속도로 멀어지는 미안한 너의 모습 미안한 너의 발걸음과"
+            "evidence": "미안한 너의 모습 미안한 너의 발걸음과 미안한 너의 모습 일정한 속도로 멀어지는"
           },
           {
-            "claim": "The ending introduces a figure who says they became a fox and describes cold weather.",
+            "claim": "The ending introduces a figure who says they have become a fox.",
             "sourceURL": "https://music.bugs.co.kr/track/33680746?wl_ref=list_tr_08_ab",
-            "evidence": "(나는 여우가 되었어) (재미있는 소리로 울어) (여기는 추워)"
+            "evidence": "나는 여우가 되었어"
           },
           {
-            "claim": "Searching snow for insects makes the fox's present life concrete.",
+            "claim": "Cold and searching the snow for insects provide concrete details of the fox's present life.",
             "sourceURL": "https://music.bugs.co.kr/track/33680746?wl_ref=list_tr_08_ab",
-            "evidence": "눈 속을 뒤지면 곤충은 생각보다 먹을 만하다?"
+            "evidence": "(여기는 추워) (나는 지금에 집중해) (눈 속을 뒤지면 곤충은 생각보다 먹을 만하다?)"
           },
           {
-            "claim": "Expressed satisfaction followed by recurring thoughts of the addressee supports the coexistence of contentment and memory.",
+            "claim": "The ending supports the interpretation that present satisfaction coexists with memories of the other person.",
             "sourceURL": "https://music.bugs.co.kr/track/33680746?wl_ref=list_tr_08_ab",
             "evidence": "(지금이 좋아) (만족스러워) (나는 내가 좋다) (그래도 가끔은 네 생각을 해)"
           }
@@ -2681,17 +2563,11 @@
       },
       "editorial": {
         "approved": true,
-        "reason": "The entries are plain, specific and measured. Song details precede release history, and the lyric commentary supports its reading with concrete images while keeping the speaker separate from the performer. No invented listening experience, borrowed phrasing or repetitive opening is apparent. Both entries meet their stated grade requirements; factual verification remains with the separate review.",
+        "reason": "The writing is plain, specific and measured. Concrete lyric details lead the song introduction and support the commentary, which preserves uncertainty and distinguishes the speaker from the performer. No invented listening experience, sound description or reader-facing review notes appear. Grade A requirements are present; factual verification remains with the separate review.",
         "gradeChecks": [
           {
             "key": "t1",
             "grade": "A",
-            "meets": true,
-            "missing": []
-          },
-          {
-            "key": "t2",
-            "grade": "B",
             "meets": true,
             "missing": []
           }
@@ -2705,9 +2581,9 @@
       "grade": "B",
       "role": "additional",
       "addedAt": "2026-11-12",
-      "contentHash": "e7beb7ec58857ad5c5d2f8db951876e6d0f055a0d3e167032e566a961e3bb9bf",
+      "contentHash": "80505cfa9cc561fb1ddb870a3aaa04cf63dcdaf19549370cafbfb29aa6820c86",
       "skillRevision": "14f9ba6bf06f79a25012969b0e734b5dbc841a74d46243008a5fe6977cd022d4",
-      "reviewedAt": "2026-11-12T01:22:53.733Z",
+      "reviewedAt": "2026-11-12T03:13:10.676Z",
       "sources": [
         "https://www.genie.co.kr/detail/albumInfo?axnm=85568923"
       ],
@@ -2720,7 +2596,7 @@
       "playback": {
         "videoId": "SlkQ_GMRqRw",
         "state": "playing",
-        "checkedAt": "2026-11-12T01:22:10.551Z",
+        "checkedAt": "2026-11-12T03:12:30.116Z",
         "advancedSeconds": 3.5,
         "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
         "channel": "Danpyunsun & The Moments Ensemble",
@@ -2738,11 +2614,9 @@
       },
       "facts": {
         "approved": true,
-        "reason": "The supplied Genie text supports the artist introduction, 2024 lineup, album context, release date and track credits. The prose agrees with the pipeline’s recording and Apple Music verification. No unresolved blocking factual issues found.",
+        "reason": "The supplied Genie text supports the artist introduction, 2024 lineup, release date, attributed album context and track credits. The prose agrees with the pipeline-verified recording and Apple Music fields. No blocking factual issues remain.",
         "checkedURLs": [
-          "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
-          "https://music.apple.com/us/album/hail-to-the-music/1766256265",
-          "https://www.youtube.com/watch?v=SlkQ_GMRqRw"
+          "https://www.genie.co.kr/detail/albumInfo?axnm=85568923"
         ],
         "supportedClaims": [
           {
@@ -2756,42 +2630,42 @@
             "evidence": "2024년 1월, 그 시작을 알렸다."
           },
           {
-            "claim": "The 2024 lineup included pianist Lee Boram, bassist Song Hyunwoo, drummer Park Jaejun and guitarist Park Jangmi.",
+            "claim": "The 2024 lineup included Lee Boram on piano, Song Hyunwoo on bass, Park Jaejun on drums and Park Jangmi on guitar.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
             "evidence": "2024년 현재, 피아니스트 이보람, 베이시스트 송현우, 드러머 박재준, 기타리스트 박장미가 함께 하고 있다."
           },
           {
-            "claim": "The album notes describe capturing people watching, feeling and responding to one another.",
+            "claim": "The album notes describe wanting to capture people watching, feeling and responding to one another.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
             "evidence": "서로가 서로를 바라보고, 느끼고, 반응하는 시간을 담고자 했다."
           },
           {
-            "claim": "The description and short note accurately paraphrase the album’s invitation to endure the world together.",
+            "claim": "The album introduction closes with an invitation to people enduring the world together.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
             "evidence": "이 세계를 함께 견뎌내고 있는 사람들에게. 같이 가자고 말하고 싶다."
           },
           {
             "claim": "The album was released on September 10, 2024.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
-            "evidence": "미러볼뮤직 오소리웍스 2024.09.10"
+            "evidence": "2024.09.10 앨범듣기"
           },
           {
-            "claim": "음악만세 is track 9 on the album of the same name.",
+            "claim": "음악만세 is track nine on the album of the same name.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
             "evidence": "9 곡 제목 정보 페이지 TITLE 음악만세 단편선 순간들"
           },
           {
-            "claim": "Danpyunsun wrote the lyrics and music for track 9.",
+            "claim": "Danpyunsun wrote the lyrics and music for track nine.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
             "evidence": "작곡·작사 단편선(except 01, 10)"
           },
           {
-            "claim": "Track 9’s arrangement is credited to Danpyunsun, Lee Boram, Song Hyunwoo, Park Jaejun and Park Jangmi.",
+            "claim": "Track nine's arrangement is credited to Danpyunsun, Lee Boram, Song Hyunwoo, Park Jaejun and Park Jangmi.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
             "evidence": "편곡 단편선 이보람 송현우 박재준 박장미(except 05)"
           },
           {
-            "claim": "Danpyunsun is credited with music production.",
+            "claim": "Danpyunsun oversaw the album's music production.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=85568923",
             "evidence": "음악 프로듀싱·제작 총괄 단편선 @오소리웍스"
           }
@@ -2799,7 +2673,7 @@
       },
       "editorial": {
         "approved": true,
-        "reason": "The writing is plain, concise and grounded in attributed album context. The invitation to endure the world together supplies a specific point of interest before release details. No invented listening experience, sound description or reader-facing review notes appear. All grade B requirements are present; lyric commentary is not required.",
+        "reason": "The entry is plain, specific and measured. It leads with documented album context, distinguishes that context from the song itself, and avoids invented listening impressions. All grade B requirements are present.",
         "gradeChecks": [
           {
             "key": "t1",
@@ -2811,7 +2685,10 @@
       },
       "humanSample": true,
       "humanReview": {
-        "status": "pending"
+        "status": "approved",
+        "date": "2026-11-12",
+        "by": "user",
+        "note": "Checked by Claude at the user's request against the cited sources and live playback. Track 9 credits (five arrangers), release date and single-song live video confirmed. Genie's first-person album notes are unsigned, so they are no longer attributed to Danpyunsun here or in the artist intro. Re-reviewed before approval."
       }
     },
     "black-string-mask-dance": {
@@ -2821,9 +2698,9 @@
       "grade": "A",
       "role": "primary",
       "addedAt": "2026-11-12",
-      "contentHash": "4fc7c693b24c5f8bb529faf2108285bd0c65c84178225c0702cd463277f9ac70",
+      "contentHash": "a3c3f53072c6addb3fcb8c29f53f9badd6f9409494a0fbc25a8d52f6639f15f9",
       "skillRevision": "14f9ba6bf06f79a25012969b0e734b5dbc841a74d46243008a5fe6977cd022d4",
-      "reviewedAt": "2026-11-12T01:20:41.040Z",
+      "reviewedAt": "2026-11-12T03:11:15.443Z",
       "sources": [
         "https://www.actmusic.com/mask-dance/ACT-9036-2",
         "https://music.bugs.co.kr/track/30418178",
@@ -2839,7 +2716,7 @@
       "playback": {
         "videoId": "kawOPq0jgOA",
         "state": "playing",
-        "checkedAt": "2026-11-12T01:19:43.520Z",
+        "checkedAt": "2026-11-12T03:10:23.669Z",
         "advancedSeconds": 3.5,
         "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
         "channel": "온스테이지ONSTAGE",
@@ -2857,7 +2734,7 @@
       },
       "facts": {
         "approved": true,
-        "reason": "The supplied source texts support the entry’s factual claims, credits and attributed music descriptions. Official romanisations agree with ACT’s personnel list. The prose distinguishes the live recording from the album composition. No unresolved blocking issues found.",
+        "reason": "No unresolved blocking factual issues found. Credits, group history, release date and attributed music descriptions agree with the supplied originals. Recording and Apple Music verification are accepted from the pipeline.",
         "checkedURLs": [
           "https://music.bugs.co.kr/track/30418178",
           "https://www.actmusic.com/mask-dance/ACT-9036-2",
@@ -2866,32 +2743,22 @@
         ],
         "supportedClaims": [
           {
-            "claim": "The artist’s Korean name is 블랙스트링.",
-            "sourceURL": "https://music.bugs.co.kr/track/30418178",
-            "evidence": "아티스트 Black String(블랙스트링)"
-          },
-          {
             "claim": "Yoon Jeong Heo leads Black String and plays geomungo.",
             "sourceURL": "https://www.actmusic.com/mask-dance/ACT-9036-2",
             "evidence": "Yoon Jeong Heo, die Bandleaderin, Initiatorin und leidenschaftliche treibende Kraft hinter Black String, ist eine Spezialistin für Geomungo."
           },
           {
-            "claim": "The group combines Korean traditional instruments with electric guitar and improvisation.",
-            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=80882587",
-            "evidence": "이후 거문고와 전통 타악, 일렉트릭 기타 등이 어우러진 동서양 음악의 자연스러운 결합을 시도함으로써 음악적 지평을 넓혀 왔다."
-          },
-          {
-            "claim": "Black String grew out of a 2011 project with British jazz musicians.",
+            "claim": "The group originated in a 2011 project with British jazz musicians.",
             "sourceURL": "https://www.actmusic.com/mask-dance/ACT-9036-2",
             "evidence": "2011 bekam sie die Gelegenheit, ihre Kunst einer breiteren Öffentlichkeit zu demonstrieren: Sie wurde gebeten, die Besetzung für ein Projekt mit britischen Jazzmusikern wie Tim Garland und Gwilym Simcock mitzugestalten."
           },
           {
-            "claim": "Min Wang Hwang joined the original trio afterward, forming the quartet.",
+            "claim": "Min Wang Hwang subsequently joined the trio, establishing the quartet.",
             "sourceURL": "https://www.actmusic.com/mask-dance/ACT-9036-2",
-            "evidence": "Das Trio war glücklich, als man Min Wang Hwang fand. Er singt und spielt die Janggu, eine traditionelle, wie eine Sanduhr geformte Trommel. In dieser festen Besetzung arbeitet das Quartett nun weltweit."
+            "evidence": "Das Trio war glücklich, als man Min Wang Hwang fand."
           },
           {
-            "claim": "ACT’s personnel list supports the instrumental roles and official English spellings used in the entry.",
+            "claim": "The album personnel include geomungo, guitar, electronics, Korean wind and string instruments, voice and percussion.",
             "sourceURL": "https://www.actmusic.com/mask-dance/ACT-9036-2",
             "evidence": "Yoon Jeong Heo geomungo Jean Oh guitar, electronics Aram Lee daegeum, yanggeum, danso Min Wang Hwang voice, janggu, percussion"
           },
@@ -2901,24 +2768,24 @@
             "evidence": "미러볼재즈월드 Hub Music 2016.10.14"
           },
           {
-            "claim": "ACT released the album in 2016.",
+            "claim": "The composition draws on Cheoyongmu, performed wearing Cheoyong’s mask to drive away evil spirits.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=80882587",
-            "evidence": "이례적으로 6월 계약과 동시에 올해 10월 14일 유럽 발매가 결정됐다."
+            "evidence": "처용(處容) 가면을 쓰고 잡귀를 쫓는다는 내용의 처용무(處容舞)에서 아이디어를 얻었다."
           },
           {
-            "claim": "The composition takes inspiration from Cheoyongmu, involving Cheoyong’s mask and the expulsion of spirits.",
-            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=80882587",
-            "evidence": "Mask Dance는 블랙스트링의 앨범 제목이자, 수록곡 제목으로, 처용(處容) 가면을 쓰고 잡귀를 쫓는다는 내용의 처용무(處容舞)에서 아이디어를 얻었다."
-          },
-          {
-            "claim": "Genie describes mysterious imagery expressed musically, with amplifiers and effects combined with traditional instruments.",
+            "claim": "Genie describes mysterious imagery and the combination of amplification, effects and Korean instruments.",
             "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=80882587",
             "evidence": "처용의 이야기가 가진 기괴하면서 이국적이고 신비로운 이미지를 음악을 통해 역동적으로 표현했다. 사운드적으로도 앰프와 이펙터들을 국악기와 결합하여 강렬한 분위기를 연출했다."
           },
           {
-            "claim": "Bugs credits Heo, Oh and Lee with composition and arrangement.",
+            "claim": "Composition and arrangement are credited to Heo, Oh and Lee.",
             "sourceURL": "https://music.bugs.co.kr/track/30418178",
             "evidence": "작곡 허윤정 , 오정수 , 이아람 편곡 허윤정 , 오정수 , 이아람"
+          },
+          {
+            "claim": "Genie explicitly identifies guitarist Oh Jeong-su as Jean Oh.",
+            "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=80882587",
+            "evidence": "기타리스트 오정수(Jean Oh)"
           },
           {
             "claim": "Yoon Jeong Heo produced the album.",
@@ -2926,12 +2793,12 @@
             "evidence": "Produced by Yoon Jeong Heo"
           },
           {
-            "claim": "ACT describes the title track as experimenting with powerful, almost rock-like sounds.",
+            "claim": "ACT describes the title track’s powerful, almost rock-like sound.",
             "sourceURL": "https://www.actmusic.com/mask-dance/ACT-9036-2",
             "evidence": "Bei „Mask Dance“ experimentieren Black String mit kraftvollen, fast rockigen und bedrohlich anmutenden Sounds"
           },
           {
-            "claim": "Heo describes interaction through contrasts, accents and pitches while remaining close to Korean forms and scales.",
+            "claim": "Heo describes contrasting and following accents or pitches, with traditional Korean forms and scales emerging beneath the interplay.",
             "sourceURL": "https://www.actmusic.com/mask-dance/ACT-9036-2",
             "evidence": "Wir spielen zusammen, schaffen Kontraste, teilen und folgen Betonungen oder Tonhöhen, und unter all dem spielt sich etwas ab, das traditionellen koreanischen Formen und Skalen sehr nahe kommt."
           },
@@ -2944,7 +2811,7 @@
       },
       "editorial": {
         "approved": true,
-        "reason": "The writing is plain, specific and grounded in attributed sources. Cheoyongmu gives the song a concrete introduction, and the instrumental notes explain documented musical choices without claiming firsthand listening. All grade A requirements are present; the official recording and playback verification are accepted as supplied.",
+        "reason": "The entry leads with a specific cultural connection, keeps the introduction short, and attributes descriptions of the music to named sources. The instrumental notes explain improvisation and musical interplay without claiming firsthand listening. No editorial issues found; factual verification remains with the separate review.",
         "gradeChecks": [
           {
             "key": "t1",
@@ -2956,7 +2823,10 @@
       },
       "humanSample": true,
       "humanReview": {
-        "status": "pending"
+        "status": "approved",
+        "date": "2026-11-12",
+        "by": "user",
+        "note": "Checked by Claude at the user's request against the cited sources and live playback. Producer, credits, release date and WOMEX instrumental listing confirmed. Added voice to the personnel list, wrote evil spirits, and separated Genie's and Heo's points. Re-reviewed before approval."
       }
     }
   }
