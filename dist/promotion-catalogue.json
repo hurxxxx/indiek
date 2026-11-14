@@ -3,6 +3,20 @@
   "origin": "https://indiek.com",
   "items": [
     {
+      "id": "choi-yuree-forest",
+      "kind": "story",
+      "title": "Why Choi Yu Ree turns to nature in “Forest”",
+      "path": "/stories/choi-yuree-forest/",
+      "description": "Choi explains how natural imagery lets her approach painful relationships indirectly, giving feelings of inadequacy the shape of a smaller tree.",
+      "artistIds": [
+        "choi-yu-ree"
+      ],
+      "image": "/assets/social/stories-choi-yuree-forest.jpg",
+      "altText": "Why Choi Yu Ree turns to nature in “Forest” — indiek. Original typographic article card.",
+      "revision": "c0a59d22e677da7d2ed00066c4bfd76245dbc8fbbe91970f568791dfb816f90c",
+      "published": "2026-11-15"
+    },
+    {
       "id": "black-skirts-everything",
       "kind": "story",
       "title": "“EVERYTHING”: The Black Skirts’ album ending and Japanese introduction",

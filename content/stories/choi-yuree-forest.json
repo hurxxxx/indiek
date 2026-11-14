@@ -1,0 +1,162 @@
+{
+  "id": "choi-yuree-forest",
+  "slug": "choi-yuree-forest",
+  "status": "published",
+  "category": "Song stories",
+  "title": "Why Choi Yu Ree turns to nature in “Forest”",
+  "description": "Choi explains how natural imagery lets her approach painful relationships indirectly, giving feelings of inadequacy the shape of a smaller tree.",
+  "authorId": "indiek",
+  "published": "2026-11-15",
+  "updated": "2026-11-15",
+  "artistIds": [
+    "choi-yu-ree"
+  ],
+  "keywords": [
+    "Choi Yu Ree",
+    "최유리",
+    "Forest",
+    "숲",
+    "songwriting",
+    "유영"
+  ],
+  "sources": [
+    {
+      "id": "donga-daum-interview",
+      "url": "https://v.daum.net/v/20240920030416504?s=print_news",
+      "label": "Sa Ji-won — interview with Choi Yu Ree, “내가 어쩔 수 없는 것들, 자연 빌려 曲 만들고 노래해요”",
+      "publisher": "Dong-A Ilbo, syndicated on Daum",
+      "published": "2024-09-20 03:04; updated 2024-11-14 01:53, as displayed by Daum",
+      "checked": "2026-11-14",
+      "language": "ko"
+    },
+    {
+      "id": "genie-release-credits",
+      "url": "https://www.genie.co.kr/detail/albumInfo?axnm=82923028",
+      "label": "유영 — official release metadata, song notes and credits; no individual prose byline",
+      "publisher": "Genie Music; release identifies SHOFAR Entertainment and distributor NHN Bugs",
+      "published": "Release date: 2022-08-24; webpage publication date unspecified",
+      "checked": "2026-11-14",
+      "language": "ko"
+    },
+    {
+      "id": "sunwoojunga-kraze",
+      "url": "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi",
+      "label": "Angelica Vianello — Sunwoojunga interview; craft reference",
+      "publisher": "The Kraze",
+      "published": "2024-03-09",
+      "checked": "2026-11-14",
+      "language": "en"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "The release note for Choi Yu Ree’s “Forest” begins with a difference in height: a small tree stands among people imagined as taller trees, their lives seemingly going well. That comparison gives feeling inadequate a visible shape. [Release notes on Genie](https://www.genie.co.kr/detail/albumInfo?axnm=82923028).",
+      "sources": [
+        "genie-release-credits"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "In Sa Ji-won’s September 2024 interview for Dong-A Ilbo, Choi connected the song to feelings of inadequacy around others during university. Asked about writing “Forest”, she explained that she borrows from nature to address things beyond her control, including human relationships. Speaking directly about relationships hurts, she said, so she approaches them indirectly. Her explanation gives a specific purpose to the trees: they let her speak about a difficult experience through an image. [Sa Ji-won’s interview, syndicated on Daum](https://v.daum.net/v/20240920030416504?s=print_news).",
+      "sources": [
+        "donga-daum-interview"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "“Forest” (숲) appeared on 유영, released on August 24, 2022. Choi wrote the lyrics and composed the song, sharing the arrangement credit with Moon Ji-hyuk (문지혁). [Release record and credits](https://www.genie.co.kr/detail/albumInfo?axnm=82923028).",
+      "sources": [
+        "genie-release-credits"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The release note also expresses a wish to grow and live among the other trees. The people who make the small tree feel inadequate are the very people it wants to join. Belonging remains a desire here: the image holds both the painful comparison and the wish for company. [Release notes on Genie](https://www.genie.co.kr/detail/albumInfo?axnm=82923028).",
+      "sources": [
+        "genie-release-credits"
+      ]
+    }
+  ],
+  "review": {
+    "contentHash": "c0a59d22e677da7d2ed00066c4bfd76245dbc8fbbe91970f568791dfb816f90c",
+    "skillRevision": "39ef06ca3ee2f839687f36b275dcf01060829886993c52200d8607416b0b634d",
+    "checkedAt": "2026-11-14T18:38:02.971Z",
+    "facts": {
+      "approved": true,
+      "reason": "No unresolved blocking factual errors found. Applied the supplied editorial skill, performed live search and opened all three listed originals. The title, deck, four paragraphs, credits and source metadata are supported. Personal context remains attributed; the closing interpretation reasonably preserves belonging as a wish. November 15 is scheduled draft metadata. This is factual approval of the supplied text only, without hash certification or publication authorization. No audio or video was heard.",
+      "issues": [],
+      "checkedURLs": [
+        "https://v.daum.net/v/20240920030416504?s=print_news",
+        "https://www.genie.co.kr/detail/albumInfo?axnm=82923028",
+        "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi"
+      ],
+      "supportedClaims": [
+        {
+          "claim": "The interview attributes the song’s context to feelings of inadequacy around others during university.",
+          "sourceURL": "https://v.daum.net/v/20240920030416504?s=print_news",
+          "evidence": "대학생 시절 주변 사람들로부터 느꼈던 ‘자격지심’"
+        },
+        {
+          "claim": "Choi describes relationships as among the things beyond her control that she addresses through nature.",
+          "sourceURL": "https://v.daum.net/v/20240920030416504?s=print_news",
+          "evidence": "인간관계처럼 내가 어쩔 수 없는 것들"
+        },
+        {
+          "claim": "Choi explains that addressing relationships directly hurts, so she speaks indirectly.",
+          "sourceURL": "https://v.daum.net/v/20240920030416504?s=print_news",
+          "evidence": "인간관계를 직접 얘기하면 아프니까 돌려 말하는 것"
+        },
+        {
+          "claim": "The release record dates 유영 to August 24, 2022.",
+          "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=82923028",
+          "evidence": "2022.08.24"
+        },
+        {
+          "claim": "The Forest note presents its speaker as a small tree.",
+          "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=82923028",
+          "evidence": "나는 고작 키 작은 나무에 불과했다."
+        },
+        {
+          "claim": "The release note expresses a wish to live among others, supporting the closing interpretation of desired belonging.",
+          "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=82923028",
+          "evidence": "그 속에서 어울려 살아가고 싶다."
+        },
+        {
+          "claim": "Choi receives lyrics and composition credits, and shares arrangement credit with 문지혁.",
+          "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=82923028",
+          "evidence": "작사 : 최유리 / 작곡 : 최유리 / 편곡 : 최유리, 문지혁"
+        },
+        {
+          "claim": "The craft reference credits Angelica Vianello.",
+          "sourceURL": "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi",
+          "evidence": "Angelica Vianello"
+        },
+        {
+          "claim": "The craft reference’s displayed publication date matches the source metadata.",
+          "sourceURL": "https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi",
+          "evidence": "March 9, 2024"
+        }
+      ]
+    },
+    "editorial": {
+      "approved": true,
+      "reason": "The exact draft answers its title’s question with a useful, modest explanation of how indirect expression and the desire to belong coexist in the tree image. Freshly opened sources support that reading. Comparison with the craft reference and all five supplied recent stories found no substantive imitation, padding or invented experience. This is editorial approval of the supplied text only; no content hash was computed or skill revision independently certified. No audio or video was heard.",
+      "issues": [],
+      "contribution": "Connects Choi’s stated reason for using nature with the release note’s particular relationship: the surrounding trees represent both uncomfortable comparison and desired company. This is explanatory synthesis, not newly discovered reporting. The ending appropriately preserves belonging as a wish.",
+      "referenceIds": [
+        "sunwoojunga-kraze"
+      ],
+      "comparisons": [
+        "Reader question: Why does Choi use nature in Forest? Paragraph two supplies her attributed answer; the opening and ending explain its application. The title and description accurately promise this limited account.",
+        "The opened [Sa Ji-won interview](https://v.daum.net/v/20240920030416504?s=print_news) supports the university context, inadequacy and indirect treatment of painful relationships. It already connects the small tree with wanting to form a forest, so the draft should not be presented as discovering that connection. Its added value is the clear explanation of comparison and belonging within the same image. It omits the reporter’s interview scene, physical portrait, career progression and promotional framing.",
+        "The opened [Genie release record](https://www.genie.co.kr/detail/albumInfo?axnm=82923028) supports the opening image, wish to live among others, date and credits. The tree metaphor is explicitly attributed source material, not an appropriated critical invention. The draft selectively summarizes the note without reconstructing its full sequence or its intervening tears-and-sea image. It correctly avoids assigning the unsigned prose to Choi.",
+        "The opened [Angelica Vianello interview](https://thekrazemag.com/latest-updates/2024/3/9/interview-sunwoojunga-on-her-love-for-hugs-and-bjrk-the-need-for-black-coffee-and-how-music-can-be-like-kimchi) supplies the relevant technique of letting an artist explain a specific creative choice. The draft borrows neither its catalogue-map opening, metaphors, interview encounters nor career sequence. Its distinction between attributed account and editorial explanation is useful here. This remains a craft-only reference.",
+        "Compared with the supplied HANRORO story, both use growth imagery, interview context, release credits and a closing synthesis. That resemblance merits attention, but the imagery belongs to the respective sources and the arguments differ: HANRORO connects a dedication with a later concert; Forest examines comparison and desired belonging within one image. The openings and conclusions are not interchangeable.",
+        "Compared with the supplied EVERYTHING, Korean shoegaze, youra and sunwoojunga stories, this draft uses neither release-history continuity, a network of collaborators, a studio anecdote nor a reconstructed departure. Its final sentence shares the site's recurring habit of holding two feelings together, but the preceding small-tree relationship gives that formulation specific evidence.",
+        "All four paragraphs earn their place. The short credits paragraph establishes authorship and release context. The closing explanation of wanting to join the people involved in the comparison is more specific than generic reassurance. No unsupported sonic description, firsthand interview access or personal emotional reaction appears.",
+        "Source ledger: approximately 130–170 words derive from Genie, including relevant title/deck framing; approximately 110–150 derive from the interview, including shared synthesis. Each remains below the retrieved 200-word allowance. The craft reference contributes no article facts. There are no substantive direct quotations, reproduced lyrics or translated verses. Two factual sources are proportionate to this short explanatory story."
+      ]
+    }
+  }
+}
