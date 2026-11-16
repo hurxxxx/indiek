@@ -239,7 +239,7 @@ scp service-account.json <automation-server>:.config/indiek-search-console/servi
 node deploy/install-search-console.mjs
 chmod 600 ~/.config/indiek-search-console/service-account.json
 node scripts/search-console/run.mjs check    # 읽기 전용: 권한과 사이트맵 상태
-node scripts/search-console/run.mjs daily    # 바뀐 사이트맵 재제출과 전체 URL 검사
+node scripts/search-console/run.mjs daily    # IndexNow, 바뀐 사이트맵 재제출과 전체 URL 검사
 node scripts/search-console/run.mjs status
 cat promotion/state/search-console/latest.md
 systemctl --user list-timers indiek-search-console.timer --no-pager
@@ -247,7 +247,16 @@ systemctl --user list-timers indiek-search-console.timer --no-pager
 
 최초 연결(2026-11-09): 서비스 계정을 `전체` 권한 사용자로 추가하고 `check`에서 `siteFullUser`를 확인했다. systemd로 실행한 첫 `daily`는 사이트맵을 다시 제출하고 37개 URL을 약 4분 30초에 검사했다(색인 34/37). URL당 약 7초가 걸리므로 페이지가 120개를 넘으면 서비스의 `TimeoutStartSec`(15분)을 늘린다.
 
-키가 없으면 `daily`는 `연결 안 됨`만 기록하고 Google에 아무것도 보내지 않는다. 인증·권한·할당량 오류는 실패 종료 코드로 남으며 `journalctl --user -u indiek-search-console.service -n 50 --no-pager`로 확인한다. 중단은 `systemctl --user disable --now indiek-search-console.timer`다.
+서비스 계정 키가 없으면 `daily`는 Google 쪽에 `연결 안 됨`만 기록하고 Google에 아무것도 보내지 않는다(아래 IndexNow는 그대로 실행한다). 인증·권한·할당량 오류는 실패 종료 코드로 남으며 `journalctl --user -u indiek-search-console.service -n 50 --no-pager`로 확인한다. 중단은 `systemctl --user disable --now indiek-search-console.timer`다.
+
+### Bing · IndexNow
+
+Bing과 다른 참여 검색엔진에는 [IndexNow](https://www.indexnow.org/documentation)로 바뀐 페이지를 알린다. 계정이나 비밀 키가 필요 없으며, 같은 `daily` 실행이 Google 연결과 별개로 처리한다.
+
+- 키는 `content/catalogue.json`의 `site.indexNowKey`(공개 값)다. 빌드가 `dist/<key>.txt`에 키만 적고, `npm run check`가 그 내용과 다른 루트 `.txt`가 남지 않았는지 확인한다. 키를 바꾸면 이전 키 파일을 지운다.
+- 첫 실행은 사이트맵의 URL별 `<lastmod>`를 기준으로 기록만 한다. IndexNow는 설정 뒤의 변경을 알리는 용도라([FAQ](https://www.indexnow.org/faq)) 이전 페이지는 사이트맵에 맡긴다. 이후 실행은 마지막으로 접수된 기록과 비교해 추가·수정일 변경·삭제된 URL만 `https://api.indexnow.org/indexnow`로 한 번에 보낸다. 이 주소로 보낸 URL은 참여 검색엔진끼리 공유된다. 보내기 전에 운영 사이트의 키 파일이 키를 돌려주는지 확인한다.
+- HTTP 200·202는 접수로 본다. 그 밖의 응답, 네트워크 오류, 키 파일 불일치는 실패 종료 코드로 남기고 이전 기록을 유지해 다음 실행에서 같은 URL을 다시 보낸다. 결과는 `latest.json`의 `indexNow`와 `latest.md`의 IndexNow 줄에 남는다.
+- Bing Webmaster Tools에는 사용자가 직접 로그인해 `Import from Google Search Console`로 `https://indiek.com/`을 등록한다. 소유권 확인과 사이트맵이 함께 넘어오므로 Bing용 확인 태그는 두지 않는다.
 
 ## 참여 API
 

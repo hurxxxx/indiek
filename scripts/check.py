@@ -298,6 +298,10 @@ for t in tracks:
 expected_count=len(artists)+len(tracks)+7+len(guide_ids)+len(stories)+len(public_polls)
 if len(pages)!=expected_count: errors.append(f'Expected {expected_count} pages, found {len(pages)}')
 if site['url']+'/sitemap.xml' not in (dist/'robots.txt').read_text(): errors.append('Missing robots sitemap')
+# IndexNow ownership file: exactly the key at the root. Any other root .txt is a leftover key and must be removed.
+index_now_key=site.get('indexNowKey')
+if index_now_key and (not (dist/f'{index_now_key}.txt').is_file() or (dist/f'{index_now_key}.txt').read_text(encoding='utf-8')!=index_now_key): errors.append('IndexNow key file must hold exactly site.indexNowKey')
+for stray in sorted(p.name for p in dist.glob('*.txt') if p.name not in {'robots.txt', f'{index_now_key}.txt'}): errors.append('Unexpected root text file (old IndexNow key?): '+stray)
 # The social publisher reads its artist list from this manifest, so every artist page must be in it.
 promotion=json.loads((dist/'promotion-catalogue.json').read_text())
 promoted={i['path'] for i in promotion['items'] if i['kind']=='artist'}

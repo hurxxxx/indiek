@@ -10,6 +10,7 @@ import {lastmodTracker, sitemapXML} from './sitemap.mjs';
 import {songPageStatus, readingPath, lyricsPath, lyricsAnchor, similarSongs, songStructuredData, backgroundSources} from './song-pages.mjs';
 import {resolveHome,renderHome} from './home.mjs';
 import {validatePolls,pollPath} from './polls.mjs';
+import {validIndexNowKey} from './search-console/core.mjs';
 import {kstLabel,countWord,requestTextLimit} from '../site/participation.mjs';
 import {shareImagePath, editorialEntries, relatedRecords} from '../site/editorial.mjs';
 import {escapeHTML as e, artistId, artistPath, trackPath, trackAnchor, getArtistRecords, imageHTML, coverHTML, videoLabel, externalLink as out, saveButton, getFeaturedArtists, getListeningGuides, guidePath, formatPosition, youtubeConsentHTML, getArtistDirectory, navigationSection, getPlaybackRecords, songPath} from '../site/shared.mjs';
@@ -458,6 +459,11 @@ copyFileSync(path.join(root,'site/player.mjs'),path.join(root,'dist/player.mjs')
 copyFileSync(path.join(root,'site/participation.mjs'),path.join(root,'dist/participation.mjs'));
 copyFileSync(path.join(root,'site/styles.css'),path.join(root,'dist/styles.css'));
 writeFileSync(path.join(root,'dist/robots.txt'),`User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
+// IndexNow ownership: the root file <key>.txt holds exactly the key (scripts/search-console/run.mjs submits with it).
+if(site.indexNowKey!==undefined){
+  if(!validIndexNowKey(site.indexNowKey))throw new Error('site.indexNowKey must be 8–128 letters, digits or dashes');
+  writeFileSync(path.join(root,'dist',`${site.indexNowKey}.txt`),site.indexNowKey);
+}
 writeFileSync(path.join(root,'dist/sitemap.xml'),sitemapXML(pages.filter(entry=>entry.index)));
 writeFileSync(path.join(root,'dist/promotion-catalogue.json'),JSON.stringify({version:1,origin:site.url,items:promotionItems},null,2)+'\n');
 const images = spawnSync('python3',[path.join(root,'scripts/social-images.py')],{input:JSON.stringify(socialImages),encoding:'utf8'});
