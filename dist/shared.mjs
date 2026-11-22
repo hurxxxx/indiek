@@ -18,12 +18,12 @@ export const guidePath = guide => `/notes/${guide.id}/`;
 export const formatPosition = number => String(number).padStart(2, '0');
 export const navigationSection = pathname => pathname.startsWith('/stories/') ? 'stories' : pathname.startsWith('/artists/') ? 'artists' : pathname.startsWith('/notes/') ? 'guides' : pathname === '/' ? 'home' : null;
 
-// Extra performances use the shared player but are not catalogue songs or Saved entries.
+// Performances and recordings featured in stories also use the shared player.
 export function getPlaybackRecords(catalogue) {
   const songs = getCatalogueTracks(catalogue);
   const playback = [...songs, ...getArtistRecords(catalogue).flatMap(record => (record.performances || []).map(video => ({
     ...video, artistId:artistId(record), artist:record.artist,
-  })))];
+  }))), ...(catalogue.storyRecordings || [])];
   if (new Set(playback.map(record => record.id)).size !== playback.length) throw new Error('Duplicate playback ID');
   return playback;
 }

@@ -275,7 +275,8 @@ function syncPlayButtons() {
     const text=returning?'Return to player':youtubeAllowed?'Play':'Agree & play';
     const library=button.classList.contains('library-play');
     button.textContent=library&&youtubeAllowed?(returning?'↗':'▷'):text;
-    button.setAttribute('aria-label',`${text}: ${record.track} by ${record.artist}`);
+    const version=record.storyPath&&record.videoType==='live'?' (live)':'';
+    button.setAttribute('aria-label',`${text}: ${record.track}${version} by ${record.artist}`);
     button.title=text;
     if(library){
       button.classList.toggle('needs-consent',!youtubeAllowed);

@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {publicStories,storyIndex,searchStories} from '../site/stories.mjs';
-import {navigationSection} from '../site/shared.mjs';
-import {validateStory,storyDigest,skillRevision} from './editorial/content.mjs';
+import {getPlaybackRecords,navigationSection} from '../site/shared.mjs';
+import {validateStory,storyDigest,skillRevision,storyListeningRecords} from './editorial/content.mjs';
 import {due,prepareIssue,approval} from './editorial/workflow.mjs';
 import {assertChanges,verifyPublished,publishIssue} from './editorial/publisher.mjs';
 import {mkdtempSync,mkdirSync,writeFileSync,readFileSync,rmSync} from 'node:fs';
@@ -38,6 +38,22 @@ test('rendered articles escape text, attribute sources and keep one shared-playe
   const html=storyViews({stories:[s],authors,media:{},tracks:[t],pick:t}).article(s);
   assert.ok(html.includes('A &lt;song&gt;'));assert.ok(!html.includes('<iframe'));assert.equal((html.match(/data-load-player=/g)||[]).length,1);
   assert.ok(html.includes('AI-assisted'));assert.ok(html.includes('id="source-a"'));
+});
+test('story listening reuses catalogue tracks and only registers extra recordings for the shared player',()=>{
+  const s=story();
+  s.artistIds=['artist'];
+  const song={id:'song',artistId:'artist',artist:'Artist',track:'A song',videoId:'abcdefghijk',videoType:'audio'};
+  const clip={id:'story-live',artistId:'artist',track:'A song',videoId:'ABCDEFGHIJK',videoType:'live',channel:'Artist'};
+  s.listening=[{trackId:song.id},clip];
+  validateStory(s,{authors,tracks:[song]});
+  const recording=storyListeningRecords(s,[song])[1];
+  assert.equal(recording.storyPath,'/stories/a-song/#story-listening');
+  assert.deepEqual(getPlaybackRecords({records:[song],editorPick:{id:'pick'},storyRecordings:[recording]}).map(item=>item.id),['song','pick','story-live']);
+  const html=storyViews({stories:[s],authors,media:{},tracks:[song]}).article(s);
+  assert.match(html,/data-load-player="story-live"/);
+  assert.match(html,/youtube\.com\/watch\?v=ABCDEFGHIJK/);
+  assert.match(html,/data-save="song"/);
+  assert.doesNotMatch(html,/data-save="story-live"|<iframe/);
 });
 test('daily and rolling-week limits include manually released stories and allow next-day deferral',()=>{
   assert.equal(due({},[],config,now),true);

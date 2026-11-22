@@ -1,7 +1,7 @@
 import {readFileSync, writeFileSync, mkdirSync, copyFileSync,rmSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
-import {loadStories,validateStory} from './editorial/content.mjs';
+import {loadStories,storyListeningRecords,validateStory} from './editorial/content.mjs';
 import {publicStories,storyIndex,storyPath} from '../site/stories.mjs';
 import {storyViews,storyPromotion} from './story-pages.mjs';
 import {spawnSync} from 'node:child_process';
@@ -33,9 +33,14 @@ const authors=JSON.parse(read('content/authors.json'));
 const stories=publicStories(loadStories(root));
 for(const s of stories) {
   validateStory(s,{authors,tracks:all,approved:true});
-  if(s.cover&&(!media[s.cover.file]||!rights.images.some(x=>x.file===s.cover.file)))throw new Error(`Uncredited story cover: ${s.id}`);
+  const pictures = [s.cover, ...s.blocks.filter(block => block.type === 'image')].filter(Boolean);
+  for (const picture of pictures) {
+    if (!media[picture.file] || !rights.images.some(image => image.file === picture.file)) throw new Error(`Uncredited story image: ${s.id}/${picture.file}`);
+  }
 }
 if(new Set(stories.map(s=>s.slug)).size!==stories.length||new Set(stories.map(s=>s.id)).size!==stories.length)throw new Error('Duplicate story identity');
+const storyRecordings = stories.flatMap(story => storyListeningRecords(story,all).filter(recording => recording.storyPath));
+getPlaybackRecords({...catalogue,storyRecordings});
 const storyView=storyViews({stories,authors,media,tracks:all,pick});
 const homeConfig=resolveHome(JSON.parse(read('content/home.json')),{catalogue,stories,media,rights});
 const polls=validatePolls(JSON.parse(read('content/polls.json')),all);
@@ -447,7 +452,7 @@ page('/privacy-and-terms/','Privacy & terms | indiek','How indiek uses browser s
 <section><h2>Messages and corrections.</h2><p>If you email <a href="mailto:${site.email}">${site.email}</a>, your address and message are used to respond and handle your request. Messages may be retained as needed to resolve the request and keep a record of the correction or correspondence. You can ask about or request deletion of that correspondence using the same address; any limits on deletion will be explained in the reply.</p></section>
 <section><h2>Using this journal.</h2><p>These are independent listening notes, not official artist statements. Music, videos, artist photographs and release artwork remain the property of their respective rights holders. Links and credits do not grant a licence to copy or redistribute that material.</p><p>indiek does not host downloadable music or provide a licence to download it. Use the official players and services according to their terms. For corrections, credit changes or content removal requests, contact <a href="mailto:${site.email}">${site.email}</a>.</p><p>This notice will be updated if the site’s features or data practices change.</p></section>`));
 
-writeFileSync(path.join(root,'dist/catalogue.js'),`export default ${JSON.stringify({...catalogue,listeningGuides:catalogue.listeningGuides.filter(g=>g.status!=='draft'),stories:storyIndex(stories),media,polls:pagePolls.map(poll=>({id:poll.id,path:pollPath(poll)}))})};\n`);
+writeFileSync(path.join(root,'dist/catalogue.js'),`export default ${JSON.stringify({...catalogue,listeningGuides:catalogue.listeningGuides.filter(g=>g.status!=='draft'),stories:storyIndex(stories),storyRecordings,media,polls:pagePolls.map(poll=>({id:poll.id,path:pollPath(poll)}))})};\n`);
 copyFileSync(path.join(root,'site/stories.mjs'),path.join(root,'dist/stories.mjs'));
 copyFileSync(path.join(root,'site/shared.mjs'),path.join(root,'dist/shared.mjs'));
 copyFileSync(path.join(root,'site/app.js'),path.join(root,'dist/app.js'));

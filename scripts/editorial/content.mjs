@@ -1,6 +1,7 @@
 import {createHash} from 'node:crypto';
 import {readFileSync,readdirSync,existsSync} from 'node:fs';
 import path from 'node:path';
+import {storyPath} from '../../site/stories.mjs';
 
 export const digest = value => createHash('sha256').update(typeof value === 'string' ? value : JSON.stringify(value)).digest('hex');
 export function storyDigest(story) {
@@ -16,6 +17,28 @@ export function loadStories(root) {
 }
 const id = value => typeof value === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
 const date = value => /^\d{4}-\d{2}-\d{2}$/.test(value) && new Date(value).toISOString().slice(0,10) === value;
+export function storyListeningRecords(story,tracks) {
+  if (story.listening === undefined) return [];
+  if (!Array.isArray(story.listening) || !story.listening.length) throw new Error('Invalid story listening list');
+  const recordings = story.listening.map(item => {
+    if (!item || typeof item !== 'object') throw new Error('Invalid story recording');
+    if (item.trackId) {
+      const track = tracks.find(track => track.id === item.trackId && !track.externalOnly);
+      if (!track || !story.artistIds.includes(track.artistId)) throw new Error('Unverified story listening track');
+      return track;
+    }
+    const {id: recordingId, artistId, track, videoId, channel, videoType} = item;
+    const artist = tracks.find(record => record.artistId === artistId);
+    if (!id(recordingId) || !artist || !story.artistIds.includes(artistId) || typeof track !== 'string' || !track.trim()
+      || typeof channel !== 'string' || !channel.trim() || typeof videoId !== 'string' || !/^[\w-]{11}$/.test(videoId)
+      || !['audio','live','music-video','lyric-video'].includes(videoType)) throw new Error('Invalid story recording');
+    return {id:recordingId, artistId, artist:artist.artist, track, videoId, channel, videoType,
+      storyPath:`${storyPath(story)}#story-listening`};
+  });
+  if (new Set(recordings.map(record => record.id)).size !== recordings.length) throw new Error('Duplicate story listening track');
+  return recordings;
+}
+
 export function validateStory(s,{authors,tracks,approved=false}={}) {
   if(!s||!id(s.id)||s.slug!==s.id||!['draft','published'].includes(s.status))throw new Error('Invalid story identity or state');
   if(!['Song stories','Listening paths','Scenes & people'].includes(s.category))throw new Error('Unknown story category');
@@ -28,11 +51,14 @@ export function validateStory(s,{authors,tracks,approved=false}={}) {
     if(!id(source.id)||!source.label?.trim()||!source.publisher?.trim()||!date(source.checked))throw new Error('Incomplete source attribution');
     const u=new URL(source.url);if(u.protocol!=='https:'||u.username||u.password)throw new Error('Invalid source URL');
   }
+  storyListeningRecords(s,tracks);
   if(!Array.isArray(s.blocks)||!s.blocks.length)throw new Error('Empty article');
   for(const b of s.blocks) {
-    if(!['paragraph','heading','listen'].includes(b.type))throw new Error('Unsupported article block');
+    if(!['paragraph','heading','listen','image'].includes(b.type))throw new Error('Unsupported article block');
     if(b.type==='listen') {
       if(!tracks.some(t=>t.id===b.trackId&&!t.externalOnly))throw new Error('Unverified story track');
+    }else if(b.type==='image'){
+      if (!/^[a-z0-9][a-z0-9.-]*\.(jpg|png|webp)$/.test(b.file) || !b.alt?.trim() || !b.caption?.trim()) throw new Error('Incomplete story image');
     }else if(typeof b.text!=='string'||!b.text.trim())throw new Error('Empty text block');
     if(!Array.isArray(b.sources)||b.sources.some(ref=>!s.sources.some(x=>x.id===ref)))throw new Error('Unknown block source');
   }

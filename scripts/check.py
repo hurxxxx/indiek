@@ -311,7 +311,13 @@ for source,target in [(f'site/{name}',f'dist/{name}') for name in ['app.js','ana
     if (root/source).read_bytes()!=(root/target).read_bytes(): errors.append('Stale build: '+target)
 runtime=json.loads((dist/'catalogue.js').read_text().removeprefix('export default ').strip().removesuffix(';'))
 story_index=[{**{k:s[k] for k in ['id','slug','title','description','category','published','artistIds','keywords']},'path':f"/stories/{s['slug']}/"} for s in stories]
-if runtime!={**catalogue,'listeningGuides':[g for g in catalogue['listeningGuides'] if g.get('status')!='draft'],'media':media,'stories':story_index,'polls':[{'id':poll['id'],'path':f"/polls/{poll['id']}/"} for poll in public_polls]}: errors.append('Stale catalogue; run npm run build')
+artist_names={artist['artistId']:artist['artist'] for artist in artists}
+story_recordings=[
+    {**{key:item[key] for key in ['id','artistId','track','videoId','channel','videoType']},
+     'artist':artist_names[item['artistId']], 'storyPath':f"/stories/{story['slug']}/#story-listening"}
+    for story in stories for item in story.get('listening', []) if 'trackId' not in item
+]
+if runtime!={**catalogue,'listeningGuides':[g for g in catalogue['listeningGuides'] if g.get('status')!='draft'],'media':media,'stories':story_index,'storyRecordings':story_recordings,'polls':[{'id':poll['id'],'path':f"/polls/{poll['id']}/"} for poll in public_polls]}: errors.append('Stale catalogue; run npm run build')
 if json.loads((root/'.openai/hosting.json').read_text())['static']['directory']!='dist': errors.append('Unexpected static directory')
 if errors: raise SystemExit('\n'.join(errors))
 print(f'PASS: {len(pages)} static pages, local links and anchors, responsive assets, metadata, sitemap, deferred players and shared build data.')

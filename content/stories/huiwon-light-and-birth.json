@@ -91,6 +91,60 @@
       "published": "Entry date unstated",
       "checked": "2026-11-23",
       "language": "Korean and Japanese"
+    },
+    {
+      "id": "2008-lyrics",
+      "url": "https://music.bugs.co.kr/track/33535213",
+      "label": "“2008” — lyrics and credits",
+      "publisher": "Bugs",
+      "published": "Page publication date unstated",
+      "checked": "2026-11-23",
+      "language": "Korean"
+    },
+    {
+      "id": "soultrap-lyrics",
+      "url": "https://music.bugs.co.kr/track/33535214",
+      "label": "소울트랩.exe (“soultrap.exe”) — lyrics and credits",
+      "publisher": "Bugs",
+      "published": "Page publication date unstated",
+      "checked": "2026-11-23",
+      "language": "Korean"
+    },
+    {
+      "id": "live-2008",
+      "url": "https://www.youtube.com/watch?v=jqkoKexwVzc",
+      "label": "“2008” — live clip on Huiwon’s channel",
+      "publisher": "Huiwon on YouTube",
+      "published": "2025-08-19",
+      "checked": "2026-11-23",
+      "language": "Korean"
+    },
+    {
+      "id": "live-light",
+      "url": "https://www.youtube.com/watch?v=6BoIvJ-7nwE",
+      "label": "섬광 (“light”) — live clip on Huiwon’s channel",
+      "publisher": "Huiwon on YouTube",
+      "published": "2025-09-29",
+      "checked": "2026-11-23",
+      "language": "Korean"
+    },
+    {
+      "id": "ep-artwork",
+      "url": "https://music.apple.com/us/album/ep/1814078888",
+      "label": "反骨商會 — official release artwork",
+      "publisher": "Apple Music",
+      "published": "Release date 2025-05-20",
+      "checked": "2026-11-23",
+      "language": "English"
+    },
+    {
+      "id": "birth-artwork",
+      "url": "https://music.apple.com/us/album/birth-single/6785444995",
+      "label": "Birth… — official release artwork",
+      "publisher": "Apple Music",
+      "published": "Release date 2026-07-08",
+      "checked": "2026-11-23",
+      "language": "English"
     }
   ],
   "blocks": [
@@ -132,18 +186,46 @@
       ]
     },
     {
-      "type": "listen",
-      "trackId": "huiwon-light",
+      "type": "heading",
+      "text": "Four songs, different rooms",
       "sources": []
     },
     {
-      "type": "heading",
-      "text": "Who arranges the songs",
-      "sources": []
+      "type": "image",
+      "file": "huiwon-.jpg",
+      "alt": "Official cover of Huiwon’s 反骨商會 EP",
+      "caption": "反骨商會 · Official EP artwork via Apple Music.",
+      "sources": [
+        "ep-artwork"
+      ]
     },
     {
       "type": "paragraph",
-      "text": "Huiwon wrote the lyrics and music for all four songs on 反骨商會. The arrangement credits shift. Huiwon arranged “soultrap.exe,” then Heo Se-gwa (허세과) is credited with arranging “Found and Lost” as well as playing guitar and bass and programming MIDI.",
+      "text": "POCLANOS introduces 反骨商會 as band-based music with the defiance of being eighteen. Even the release note’s image of bones growing backwards gives that defiance a physical shape. Across the four songs, Huiwon wrote the lyrics and music, while the recordings draw on different arrangements and players. The lyrics shift just as sharply, moving from fond details of an ordinary day to a speaker who wants out of their own skin.",
+      "sources": [
+        "ep-credits",
+        "2008-lyrics",
+        "soultrap-lyrics"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The opener, “2008,” keeps circling back to somewhere familiar. The lyric remembers a strange sky and a smile against slightly dirty wallpaper. It also imagines lifting a telephone receiver to bring back a voice. What makes the song’s nostalgia specific is how ordinary those details are.",
+      "sources": [
+        "2008-lyrics"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "On “soultrap.exe,” the person looking out has trouble seeing clearly. Their gaze is compared to a low-resolution camera, and their body becomes somewhere they want to get out of. Even the title ends in a file extension. Where “2008” pieces together a place the speaker keeps returning to, “soultrap.exe” gives the speaker a close-up they would rather escape.",
+      "sources": [
+        "2008-lyrics",
+        "soultrap-lyrics"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "On “2008,” Lee Seo-hyeong played bass and Yeo Jin-woo played drums. On “soultrap.exe,” Huiwon is credited with both, along with keys and MIDI. Heo Se-gwa (허세과) arranged “Found and Lost” and is credited with guitar, bass and MIDI programming. Huiwon wrote all three songs, with different players shaping each recording.",
       "sources": [
         "ep-credits"
       ]
@@ -159,8 +241,31 @@
     },
     {
       "type": "heading",
+      "text": "“2008” and “light” live",
+      "sources": []
+    },
+    {
+      "type": "paragraph",
+      "text": "Huiwon posted live clips of “2008” and “light,” the first and last songs on the EP, on the artist’s own YouTube channel. Both performances are in the listening list above.",
+      "sources": [
+        "ep-credits",
+        "live-2008",
+        "live-light"
+      ]
+    },
+    {
+      "type": "heading",
       "text": "What “Birth…” is ready for",
       "sources": []
+    },
+    {
+      "type": "image",
+      "file": "huiwon-birth.jpg",
+      "alt": "Official cover of Huiwon’s Birth… single",
+      "caption": "Birth… · Official single artwork via Apple Music.",
+      "sources": [
+        "birth-artwork"
+      ]
     },
     {
       "type": "paragraph",
@@ -174,24 +279,75 @@
     },
     {
       "type": "paragraph",
-      "text": "The refrain of “Birth…” asks for speed and for regret to wait. There’s a difference between getting past regret and asking for a little more time before dealing with it. The song makes room for the second possibility. Its speaker can imagine moving before they’re ready to look back.",
+      "text": "The insect in the release note stays close to the ground. In the lyric, the speaker wants embers to spread. The two images sit at different scales, a first movement and a wish for it to carry farther. The ellipsis in both the Korean and English titles suits a song still occupied with getting underway.",
       "sources": [
+        "birth-credits",
         "birth-lyrics"
       ]
     },
     {
-      "type": "listen",
-      "trackId": "huiwon-birth",
-      "sources": []
+      "type": "paragraph",
+      "text": "The refrain of “Birth…” asks for speed and for regret to wait. There’s a difference between getting past regret and asking for a little more time before dealing with it. The song makes room for the second possibility. Its speaker can imagine moving before they’re ready to look back.",
+      "sources": [
+        "birth-lyrics"
+      ]
+    }
+  ],
+  "listening": [
+    {
+      "id": "huiwon-story-2008",
+      "artistId": "huiwon",
+      "track": "2008",
+      "videoId": "__4dSRY6V2E",
+      "channel": "Huiwon - Topic",
+      "videoType": "audio"
+    },
+    {
+      "id": "huiwon-story-soultrap",
+      "artistId": "huiwon",
+      "track": "soultrap.exe",
+      "videoId": "Q4LC4Xopj54",
+      "channel": "Huiwon - Topic",
+      "videoType": "audio"
+    },
+    {
+      "id": "huiwon-story-found-and-lost",
+      "artistId": "huiwon",
+      "track": "Found and Lost",
+      "videoId": "Moe9ndv6lKo",
+      "channel": "POCLANOS",
+      "videoType": "audio"
+    },
+    {
+      "trackId": "huiwon-light"
+    },
+    {
+      "trackId": "huiwon-birth"
+    },
+    {
+      "id": "huiwon-story-2008-live",
+      "artistId": "huiwon",
+      "track": "2008",
+      "videoId": "jqkoKexwVzc",
+      "channel": "천희원",
+      "videoType": "live"
+    },
+    {
+      "id": "huiwon-story-light-live",
+      "artistId": "huiwon",
+      "track": "light",
+      "videoId": "6BoIvJ-7nwE",
+      "channel": "천희원",
+      "videoType": "live"
     }
   ],
   "review": {
-    "contentHash": "4c4fdc7f5798660b5b073a040940157f9f93de1f157dc0debfbe3b6ae016562b",
+    "contentHash": "737218eb3a64a0a52db9118f17b32f8b7ea63a8687549425cc268fd4ae223bed",
     "skillRevision": "39ef06ca3ee2f839687f36b275dcf01060829886993c52200d8607416b0b634d",
-    "checkedAt": "2026-11-22T23:06:16.649Z",
+    "checkedAt": "2026-11-22T23:20:01.349Z",
     "facts": {
       "approved": true,
-      "reason": "The exact 2026-11-23 revision of huiwon-light-and-birth resolves both earlier objections. The “Found and Lost” paragraph now describes wanting to reach a place and continuing despite the risk of burning. The title gloss for 태동 cites the full dictionary entry, which confirms both senses. POCLANOS confirms the release dates, track order and personnel. The contrast between the flash and the spreading embers is an editorial reading grounded in the lyrics. The comparison of arrangers and the identification of Lee Seo-hyeong as a returning bassist follow directly from the credits. The sole description of how the music sounds stays attributed to Chris P. The piece uses a technique from Joshua Minsoo Kim’s Fishmans review by making musical contributions concrete, and develops its own argument through lyric images and track-level credits. I reopened both POCLANOS pages, Korean Indie and the dictionary, and used the supplied original HTML excerpts for Bugs. Playback and cover inspection are recorded from the publisher’s checks. No publication action was taken.",
+      "reason": "The exact expanded manuscript supplied in this request passes factual and source review. I reopened both POCLANOS pages, Korean Indie, the Korean Basic Dictionary and the Apple Music single listing. I used the supplied original-page excerpts for Bugs and the Apple Music EP listing, which was unavailable in the review browser. The live upload dates, channel ownership, embed playback and artwork provenance rely on the checks documented in the packet. The flash and ember comparison, the heartbeat reversal and the reading of the ellipsis are editorial interpretations grounded in the lyrics and titles. The shared bassist and changes in personnel follow directly from the track credits. The studio sound description stays attributed to Chris P, and the live section makes no arrangement claims. This decision applies to the expanded text supplied here. The dossier's version 4 hash identifies the earlier revision.",
       "issues": [],
       "checkedURLs": [
         "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
@@ -201,94 +357,125 @@
         "https://music.bugs.co.kr/track/33535215",
         "https://www.koreanindie.com/2025/07/17/heewon-cheon-%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C-%E5%8F%8D%E9%AA%A8%E5%95%86%E6%9C%83/",
         "https://krdict.korean.go.kr/jpn/dicSearch/SearchView?ParaNationCode=7&ParaWordNo=80013&captchaNumber=&commentTitle=&comment_user_name=&divSearch=defViewGlobal&myViewWord=85008&nation=jpn&nationCode=7&viewTypes=on&wordComment=",
+        "https://music.bugs.co.kr/track/33535213",
+        "https://music.bugs.co.kr/track/33535214",
+        "https://www.youtube.com/watch?v=jqkoKexwVzc",
+        "https://www.youtube.com/watch?v=6BoIvJ-7nwE",
+        "https://music.apple.com/us/album/ep/1814078888",
+        "https://music.apple.com/us/album/birth-single/6785444995",
         "https://pitchfork.com/reviews/albums/fishmans-long-season/"
       ],
       "supportedClaims": [
         {
-          "claim": "The EP was released on May 20, 2025.",
+          "claim": "POCLANOS dates the EP to May 20, 2025.",
           "sourceURL": "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
           "evidence": "Release 2025-05-20"
         },
         {
-          "claim": "Huiwon composed and wrote the lyrics for all four EP tracks.",
+          "claim": "Huiwon is credited with composing and writing the lyrics for all four EP tracks.",
           "sourceURL": "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
           "evidence": "All Composed, Lyrics by 천희원"
         },
         {
-          "claim": "Huiwon and Jo Yu-ik share the guitar credit on the closing track.",
+          "claim": "Lee Seo-hyeong played bass and Yeo Jin-woo played drums on 2008.",
           "sourceURL": "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
-          "evidence": "Guitar by 천희원, 조유익"
+          "evidence": "Bass by 이서형 Drum by 여진우"
         },
         {
-          "claim": "A white flower blooms near the end of the lyric.",
+          "claim": "A white flower blooms in the lyric of light.",
           "sourceURL": "https://music.bugs.co.kr/track/33535216",
           "evidence": "하얀 꽃이 피어 나고"
         },
         {
-          "claim": "The lyric includes a request to stop the heartbeat.",
+          "claim": "The speaker in light asks for the heartbeat to stop.",
           "sourceURL": "https://music.bugs.co.kr/track/33535216",
           "evidence": "심장소리를 멈춰줘"
         },
         {
-          "claim": "The single was released on July 8, 2026.",
-          "sourceURL": "https://poclanos.com/album/%ED%83%9C%EB%8F%99/",
-          "evidence": "Release 2026-07-08"
-        },
-        {
-          "claim": "The single’s release note invokes an insect crawling along the ground.",
+          "claim": "The POCLANOS release note for Birth… invokes an insect crawling along the ground.",
           "sourceURL": "https://poclanos.com/album/%ED%83%9C%EB%8F%99/",
           "evidence": "바닥을 기는 저 벌레처럼"
         },
         {
-          "claim": "Huiwon composed, wrote the lyrics for and arranged the single.",
+          "claim": "Huiwon composed, wrote the lyrics for and arranged Birth…",
           "sourceURL": "https://poclanos.com/album/%ED%83%9C%EB%8F%99/",
           "evidence": "Compose, Lyrics, Arrange 천희원"
         },
         {
-          "claim": "The speaker asks for the embers to spread.",
+          "claim": "Lee Seo-hyeong is credited on bass for Birth…, establishing the shared bassist when read with the 2008 credits.",
+          "sourceURL": "https://poclanos.com/album/%ED%83%9C%EB%8F%99/",
+          "evidence": "Bass 이서형"
+        },
+        {
+          "claim": "The speaker in Birth… asks for the embers to spread.",
           "sourceURL": "https://music.bugs.co.kr/track/33989697",
           "evidence": "불씨를 퍼뜨려줘"
         },
         {
-          "claim": "The speaker asks to put off regret longer.",
+          "claim": "The speaker in Birth… asks to delay regret.",
           "sourceURL": "https://music.bugs.co.kr/track/33989697",
           "evidence": "후회는 더 미뤄줘"
         },
         {
-          "claim": "The speaker in “Found and Lost” wants to reach a place.",
-          "sourceURL": "https://music.bugs.co.kr/track/33535215",
-          "evidence": "그곳에 닿고 싶어"
-        },
-        {
-          "claim": "The speaker says they cannot stop even if they burn.",
+          "claim": "The speaker in Found and Lost says they cannot stop even if they burn.",
           "sourceURL": "https://music.bugs.co.kr/track/33535215",
           "evidence": "불타 버린다 해도 멈출 수가 없어"
         },
         {
-          "claim": "Chris P hears the closer begin with sparse guitar accompaniment before expanding into indie rock.",
+          "claim": "Chris P describes light as beginning with a lightly accompanied vocal and expanding into indie rock.",
           "sourceURL": "https://www.koreanindie.com/2025/07/17/heewon-cheon-%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C-%E5%8F%8D%E9%AA%A8%E5%95%86%E6%9C%83/",
           "evidence": "It starts with lighter vocals supported by a minimal electric guitar before expanding into a full indie rock song."
         },
         {
-          "claim": "The dictionary gives 태동 a figurative sense of something beginning to emerge.",
+          "claim": "The Korean Basic Dictionary gives 태동 a figurative sense of something beginning to emerge.",
           "sourceURL": "https://krdict.korean.go.kr/jpn/dicSearch/SearchView?ParaNationCode=7&ParaWordNo=80013&captchaNumber=&commentTitle=&comment_user_name=&divSearch=defViewGlobal&myViewWord=85008&nation=jpn&nationCode=7&viewTypes=on&wordComment=",
           "evidence": "어떤 일이 생기려는 기운"
+        },
+        {
+          "claim": "The lyric of 2008 connects lifting a telephone receiver with recovering a forgotten voice.",
+          "sourceURL": "https://music.bugs.co.kr/track/33535213",
+          "evidence": "잊고있던 목소리 수화기를 들어 다시 꺼내"
+        },
+        {
+          "claim": "The lyric of soultrap.exe uses a low-resolution camera simile.",
+          "sourceURL": "https://music.bugs.co.kr/track/33535214",
+          "evidence": "해상도가 낮은 카메라 같아"
+        },
+        {
+          "claim": "The first YouTube listing identifies the clip as a live performance of 2008.",
+          "sourceURL": "https://www.youtube.com/watch?v=jqkoKexwVzc",
+          "evidence": "[Live Clip] 천희원 - 2008"
+        },
+        {
+          "claim": "The second YouTube listing identifies the clip as a live performance of light.",
+          "sourceURL": "https://www.youtube.com/watch?v=6BoIvJ-7nwE",
+          "evidence": "[Live clip] 천희원-섬광(light)"
+        },
+        {
+          "claim": "The Apple Music EP record credits 反骨商會 to Huiwon.",
+          "sourceURL": "https://music.apple.com/us/album/ep/1814078888",
+          "evidence": "反骨商會 - EP - Album by Huiwon"
+        },
+        {
+          "claim": "The Apple Music single record dates the one-song release to July 8, 2026.",
+          "sourceURL": "https://music.apple.com/us/album/birth-single/6785444995",
+          "evidence": "July 8, 2026 1 song"
         }
       ]
     },
     "editorial": {
       "approved": true,
-      "reason": "The exact supplied revision is approved on factual and editorial grounds. It resolves all four earlier issues. The description attributes the insect to the release note, the heading describes arrangement credits, the reading of “Found and Lost” preserves the speaker’s wish to reach a place, and the waking passage is conditional and cites the dictionary for the title’s two senses. The two [POCLANOS release pages](https://poclanos.com/album/반골상회/) ([single](https://poclanos.com/album/태동/)) confirm the dates, track order, recording roles and insect image. The signed [Korean Indie review](https://www.koreanindie.com/2025/07/17/heewon-cheon-%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C-%E5%8F%8D%E9%AA%A8%E5%95%86%E6%9C%83/) supports the attributed account of how “light” opens up. The supplied verified originals support the readings of [“light”](https://music.bugs.co.kr/track/33535216), [“Found and Lost”](https://music.bugs.co.kr/track/33535215) and [“Birth…”](https://music.bugs.co.kr/track/33989697), and the supplied [dictionary evidence](https://krdict.korean.go.kr/jpn/dicSearch/SearchView?ParaNationCode=7&ParaWordNo=80013&divSearch=defViewGlobal&viewTypes=on) supports the title gloss. The review relies on the supplied playback and cover inspection. Approval applies to the exact manuscript and skill text supplied in this request. A separate content hash was unavailable.",
+      "reason": "Approved on editorial review for the exact expanded manuscript supplied here. The title earns its flash-to-spark promise, and the ending gives the request to delay regret room to stand. Both optional edits are resolved. The “2008” paragraph grounds its nostalgia in concrete details, and the “Birth…” paragraph clearly distinguishes the release note’s insect from the lyric’s embers. The live section gives readers a short route to the EP’s bookends without making claims about how the performances sound. I reopened both POCLANOS pages for the release context and credits, and Korean Indie for Chris P’s attributed description. I used the supplied Bugs originals, artwork provenance and playback checks as review evidence. The dossier’s hash identifies the prior revision. This approval applies to the exact expanded text in the request. [EP release and credits](https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/), [single release and credits](https://poclanos.com/album/%ED%83%9C%EB%8F%99/), [Korean Indie review](https://www.koreanindie.com/2025/07/17/heewon-cheon-%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C-%E5%8F%8D%E9%AA%A8%E5%95%86%E6%9C%83/)",
       "issues": [],
-      "contribution": "The title and opening frame a specific change across the songs. In “light,” a flash lends urgency to a plea for something to stay. “Found and Lost” supplies the middle step, where burning is a risk the speaker accepts to keep going. In “Birth…,” the speaker asks for embers to spread and for regret to wait. The credit paragraphs show how Huiwon’s consistent songwriting role coexists with changing arrangement and performance roles, including Lee Seo-hyeong’s return on bass. The short “soultrap.exe” example earns its place by making the change of arranger concrete. The ending returns to the lyric and draws a measured distinction between moving forward and being ready to look back.",
+      "contribution": "The feature traces three distinct uses of light and fire. The flash in “light” sharpens the wish for something to stay, burning is a risk the speaker accepts in “Found and Lost,” and spreading embers is something the speaker asks for in “Birth…”. The recording credits give readers a second way into the releases by showing how Huiwon’s consistent songwriting role intersects with changing assignments for arrangement and performance. [“light”](https://music.bugs.co.kr/track/33535216), [“Found and Lost”](https://music.bugs.co.kr/track/33535215), [“Birth…”](https://music.bugs.co.kr/track/33989697)",
       "referenceIds": [
         "fishmans-long-season"
       ],
       "comparisons": [
-        "Joshua Minsoo Kim’s “Long Season” connects Sato’s creative decisions with the contributions of players and engineers. The Huiwon piece uses that attention to individual roles at the level the evidence supports, alongside a lyric comparison. The benchmark’s career chronology, production scenes, imagery and closing portrait are absent. [Pitchfork](https://pitchfork.com/reviews/albums/fishmans-long-season/)",
-        "The YdBB excerpts use credits and a session report to explain how band members give each other feedback. Huiwon’s credits establish who took specific roles on each track, and the feature keeps its account at that level.",
-        "The “Forest” excerpts also open on a small natural image. Here the flower sets up a question about how long something can stay, and the ending follows the later speaker’s request to put off regret. The openings share a technique and develop it in different directions.",
-        "The youra excerpts follow collaboration through a studio encounter and an artist’s account of her own work. The Huiwon piece develops its argument through a sequence of lyric readings and documented credits. The supplied excerpts show no distinctive borrowed wording or repeated opening-to-ending structure."
+        "Joshua Minsoo Kim’s Long Season connects documented creative choices and individual contributions to specific listening observations. The Huiwon feature applies that attention to who did what through track credits and builds its argument through close reading across releases. I found no borrowed imagery, phrasing or narrative sequence. [Pitchfork](https://pitchfork.com/reviews/albums/fishmans-long-season/)",
+        "The supplied YdBB excerpts use credits and session reporting to explain how band members exchange feedback across named roles. Huiwon’s credits establish who arranged and played on each recording and support a comparison across tracks.",
+        "The supplied Choi Yu Ree excerpts unpack the two feelings held by a tree image in a single release note. The Huiwon piece starts with a flower in a lyric, then brings in the insect from a separate release note and follows the changing role of fire through three songs.",
+        "The supplied youra excerpts connect a documented studio encounter to a recurring practice of developing songs with collaborators. Huiwon opens on a lyric image and closes on the speaker’s wish to move before looking back. The supplied recent excerpts show no repeated opening, ending or distinctive phrasing."
       ]
     }
   }

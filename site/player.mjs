@@ -40,7 +40,7 @@ export function createPlayer(root, {onChange = () => {}, onPlay = () => {}, doc 
   }
   function updateLabel() {
     label.textContent = `${current.track} · ${current.artist}`;
-    label.href = trackPath(current);
+    label.href = current.storyPath || trackPath(current);
     frame.title = `${current.track} by ${current.artist} — ${current.channel}`;
   }
   function release() {

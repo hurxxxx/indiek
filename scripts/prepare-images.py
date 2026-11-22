@@ -18,9 +18,10 @@ home_features = [f for section in home['sections'] if section['type']=='discover
 portraits |= {f['image'] for f in home_features if f.get('kind')=='portrait'}
 story_covers = set()
 for file in (ROOT / 'content/stories').glob('*.json'):
-    cover = json.loads(file.read_text()).get('cover')
-    if cover:
-        story_covers.add(cover['file'])
+    story = json.loads(file.read_text())
+    if story.get('cover'):
+        story_covers.add(story['cover']['file'])
+    story_covers.update(block['file'] for block in story.get('blocks', []) if block['type'] == 'image')
 images = portraits | {r['image'] for r in catalogue['tracks']} | {f['image'] for f in home_features} | story_covers
 manifest = {}
 for name in sorted(images):

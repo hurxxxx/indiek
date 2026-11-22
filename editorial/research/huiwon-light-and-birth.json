@@ -3,10 +3,10 @@
   "question": "What changes between the last song on Huiwon’s 2025 EP and the 2026 single?",
   "answer": "The EP closer’s flash suggests a reading of its repeated plea for something to stay. The single asks for embers to spread. The recording credits show how Huiwon and the other players contribute across the two releases.",
   "outline": [
-    "Open on the flower and introduce the insect.",
-    "Read the requests in light beside the review and recording credits.",
-    "Compare arrangement credits and connect Found and Lost to Birth….",
-    "Close on the single’s lyric and a returning collaborator."
+    "Move from the closing image in light to the new single.",
+    "Walk through the opening three EP tracks and compare the arrangement credits.",
+    "Put the two live clips beside the recorded bookends.",
+    "Hear the single’s plea for movement and delayed regret."
   ],
   "references": [
     {
@@ -27,7 +27,11 @@
     "birth-lyrics": "Bugs supplies the lyrics. The article reads painful waking, spreading embers and delaying regret without quoting a stanza or asserting Huiwon’s intentions.",
     "found-and-lost": "Bugs supplies the lyric and Heo Se-gwa’s arrangement credit. The recurring image of fire is an editorial connection across releases, with no claim that they form a planned sequence.",
     "korean-indie-review": "Chris P’s signed 2025 review supplies the attributed observation about the arrangement of light. The feature avoids copying the review’s four-track sequence or comparative rating.",
-    "dictionary": "The National Institute of Korean Language entry distinguishes fetal movement from the early emergence of something new."
+    "dictionary": "The National Institute of Korean Language entry distinguishes fetal movement from the early emergence of something new.",
+    "2008-lyrics": "Bugs provides a Korean lyric text with the familiar road, the sky, wallpaper, smile, and recovered voice. The article reads those details as memories.",
+    "soultrap-lyrics": "Bugs provides the low-resolution camera simile and the speaker’s recurring wish to escape the body.",
+    "live-2008": "The artist’s own channel uploads a clip explicitly identified as a live performance of 2008. oEmbed and Chrome playback verified.",
+    "live-light": "The artist’s own channel uploads a clip explicitly identified as a live performance of light. oEmbed and Chrome playback verified."
   },
   "uncertainties": [
     "No claims about Huiwon’s biography or the writing sequence inferred from track titles.",
@@ -43,17 +47,20 @@
     "directHTTPS": "All three cited Bugs lyric pages returned HTTP 200 through the direct project client, with the original Korean text checked for wording and order.",
     "dictionary": "https://krdict.korean.go.kr/jpn/dicSearch/SearchView?ParaNationCode=7&ParaWordNo=80013&captchaNumber=&commentTitle=&comment_user_name=&divSearch=defViewGlobal&myViewWord=85008&nation=jpn&nationCode=7&viewTypes=on&wordComment=",
     "officialEnglishTitles": "US Apple Music release 1814078888 (track list also confirmed with the corresponding iTunes US lookup) and 6785444995.",
-    "playback": "Both official uploads advanced 3.5 seconds in a genuine youtube-nocookie embed on November 23 KST."
+    "playback": "All studio and live recordings were checked with site-equivalent YouTube embeds on November 23 KST. The bassist-channel upload without permission for embedding was excluded in favor of the artist-channel upload."
   },
   "revision": {
-    "version": 4,
-    "contentHash": "4c4fdc7f5798660b5b073a040940157f9f93de1f157dc0debfbe3b6ae016562b",
-    "checkedAt": "2026-11-22T23:06:16.649Z",
+    "version": 5,
+    "contentHash": "737218eb3a64a0a52db9118f17b32f8b7ea63a8687549425cc268fd4ae223bed",
+    "checkedAt": "2026-11-22T23:20:01.349Z",
     "changes": [
-      "Separated Chris P’s description of the arrangement from track-level performance credits.",
-      "Treated the flash as a reading of the recurring plea and described changes in recording credits without assigning decisions.",
-      "Kept the earlier song’s destination open, clarified the later song’s conditional phrasing, and cited the dictionary for its title."
+      "Expanded the lyrics and arrangement comparison to cover the EP in full.",
+      "Added credited EP and single covers, five original recordings and two artist-channel live performances."
     ],
-    "approval": "Separate factual and editorial reviews approved the exact revision. The article JSON holds both decisions and the claim-level evidence."
+    "approval": "Separate factual and editorial reviews approved the exact expanded feature."
+  },
+  "releaseArtwork": {
+    "反骨商會": "huiwon-.jpg, original release cover from the US Apple Music EP listing",
+    "Birth…": "huiwon-birth.jpg, official single cover from the US Apple Music listing"
   }
 }
