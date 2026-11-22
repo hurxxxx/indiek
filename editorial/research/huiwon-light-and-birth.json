@@ -1,12 +1,12 @@
 {
   "checked": "2026-11-23",
-  "question": "What changes between the last song on Huiwon’s 2025 EP and the 2026 single?",
-  "answer": "The EP closer’s flash suggests a reading of its repeated plea for something to stay. The single asks for embers to spread. The recording credits show how Huiwon and the other players contribute across the two releases.",
+  "question": "What makes the little details in Huiwon’s songs feel worth holding on to?",
+  "answer": "The everyday details in 2008, one heartbeat in light, and the small start invoked by Birth… give the feelings a human scale. The same singer-songwriter also arranges three songs and plays different parts across the EP. Following that credit through the songs shows Huiwon’s range and brings the other players into view.",
   "outline": [
-    "Move from the closing image in light to the new single.",
-    "Walk through the opening three EP tracks and compare the arrangement credits.",
-    "Put the two live clips beside the recorded bookends.",
-    "Hear the single’s plea for movement and delayed regret."
+    "Open on the wallpaper and voice of 2008.",
+    "Read the first three tracks of the EP and work credits into the comparison.",
+    "Return to the heartbeat and flower in light, with the attributed arrangement and the live clips.",
+    "Close with the request to put off regret in Birth…."
   ],
   "references": [
     {
@@ -44,23 +44,25 @@
     "prompt": "Create a square editorial magazine cover illustration for an indie music feature on Huiwon’s songs light and Birth…. A single small white wildflower with a wiry stem pushing through a crack in grainy charcoal asphalt. A diagonal strip of pale lime-green light grazes the ground, and a barely visible tiny crawling insect is near the lower edge. Tight still-life crop, moody near-black slate, restrained fluorescent yellow-green, chalk white, rich tactile coarse risograph or screenprint grain, stark graphic contrast and large areas of quiet shadow. Sophisticated independent music magazine art, flat ink texture over strong photographic composition. Keep the flower and gesture readable at thumbnail size. Edge-to-edge square artwork. No typography, no lettering, no album cover recreation, no people, no logos."
   },
   "sourceChecks": {
-    "directHTTPS": "All three cited Bugs lyric pages returned HTTP 200 through the direct project client, with the original Korean text checked for wording and order.",
+    "directHTTPS": "All five cited Bugs lyric pages returned HTTP 200 through the direct project client, with the original Korean text checked for wording and order.",
     "dictionary": "https://krdict.korean.go.kr/jpn/dicSearch/SearchView?ParaNationCode=7&ParaWordNo=80013&captchaNumber=&commentTitle=&comment_user_name=&divSearch=defViewGlobal&myViewWord=85008&nation=jpn&nationCode=7&viewTypes=on&wordComment=",
     "officialEnglishTitles": "US Apple Music release 1814078888 (track list also confirmed with the corresponding iTunes US lookup) and 6785444995.",
     "playback": "All studio and live recordings were checked with site-equivalent YouTube embeds on November 23 KST. The bassist-channel upload without permission for embedding was excluded in favor of the artist-channel upload."
   },
   "revision": {
-    "version": 5,
-    "contentHash": "737218eb3a64a0a52db9118f17b32f8b7ea63a8687549425cc268fd4ae223bed",
-    "checkedAt": "2026-11-22T23:20:01.349Z",
+    "version": 6,
+    "contentHash": "51fc257d9fb13bb7e0895a38bc437b2202a2d1677c769e2e2f34b0ad2c3f4490",
+    "checkedAt": "2026-11-22T23:53:51.649Z",
     "changes": [
-      "Expanded the lyrics and arrangement comparison to cover the EP in full.",
-      "Added credited EP and single covers, five original recordings and two artist-channel live performances."
+      "Reframed the story around the small details in Huiwon’s lyrics, beginning with the wallpaper in “2008”.",
+      "Put Huiwon’s work as a singer-songwriter, arranger and multi-instrumentalist in the opening and included the publisher’s personal impression.",
+      "Wove credits into the album sequence and closed on the request to put off regret in “Birth…”."
     ],
-    "approval": "Separate factual and editorial reviews approved the exact expanded feature."
+    "approval": "Separate factual and editorial reviews approved the exact revised feature."
   },
   "releaseArtwork": {
     "反骨商會": "huiwon-.jpg, original release cover from the US Apple Music EP listing",
     "Birth…": "huiwon-birth.jpg, official single cover from the US Apple Music listing"
-  }
+  },
+  "publisherNote": "The publisher supplied the personal impression about encountering a naturally musical songwriter after a long time and requested its inclusion. The article renders the sentiment in English and attributes it as the publisher’s personal opinion."
 }
