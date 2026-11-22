@@ -1,0 +1,59 @@
+{
+  "checked": "2026-11-23",
+  "question": "What changes between the last song on Huiwon’s 2025 EP and the 2026 single?",
+  "answer": "The EP closer’s flash suggests a reading of its repeated plea for something to stay. The single asks for embers to spread. The recording credits show how Huiwon and the other players contribute across the two releases.",
+  "outline": [
+    "Open on the flower and introduce the insect.",
+    "Read the requests in light beside the review and recording credits.",
+    "Compare arrangement credits and connect Found and Lost to Birth….",
+    "Close on the single’s lyric and a returning collaborator."
+  ],
+  "references": [
+    {
+      "id": "fishmans-long-season",
+      "url": "https://pitchfork.com/reviews/albums/fishmans-long-season/",
+      "author": "Joshua Minsoo Kim",
+      "publisher": "Pitchfork",
+      "published": "2024-05-12",
+      "checked": "2026-11-23",
+      "reception": "craft-only",
+      "technique": "Identify how the songwriter and the players contributed separately. The Huiwon piece uses credit sheets and a lyric comparison without adopting the review’s narrative structure or metaphors."
+    }
+  ],
+  "sources": {
+    "ep-credits": "POCLANOS release copy is unsigned. It establishes dates, track order, and the distribution of writing, arranging and performance. The release copy’s reference to being eighteen is thematic context, with no inference about the artist’s age at release.",
+    "light-lyrics": "Bugs supplies the Korean lyric, including the repeated disappearance, heartbeat and flower images. The account of their relationship is an editorial reading.",
+    "birth-credits": "POCLANOS release copy identifies the crawling insect as its central image and names the musicians. English artist and title also agree with the official POCLANOS audio and English Apple Music listing.",
+    "birth-lyrics": "Bugs supplies the lyrics. The article reads painful waking, spreading embers and delaying regret without quoting a stanza or asserting Huiwon’s intentions.",
+    "found-and-lost": "Bugs supplies the lyric and Heo Se-gwa’s arrangement credit. The recurring image of fire is an editorial connection across releases, with no claim that they form a planned sequence.",
+    "korean-indie-review": "Chris P’s signed 2025 review supplies the attributed observation about the arrangement of light. The feature avoids copying the review’s four-track sequence or comparative rating.",
+    "dictionary": "The National Institute of Korean Language entry distinguishes fetal movement from the early emergence of something new."
+  },
+  "uncertainties": [
+    "No claims about Huiwon’s biography or the writing sequence inferred from track titles.",
+    "No claim that the recurring images represent an intended narrative across releases.",
+    "The lyric leaves the addressee of the repeated disappearance plea implicit. The text presents the flash as a reading suggested by the Korean title."
+  ],
+  "cover": {
+    "method": "Built-in ImageGen. Square editorial illustration generated for this feature.",
+    "asset": "dist/assets/huiwon-feature.jpg",
+    "prompt": "Create a square editorial magazine cover illustration for an indie music feature on Huiwon’s songs light and Birth…. A single small white wildflower with a wiry stem pushing through a crack in grainy charcoal asphalt. A diagonal strip of pale lime-green light grazes the ground, and a barely visible tiny crawling insect is near the lower edge. Tight still-life crop, moody near-black slate, restrained fluorescent yellow-green, chalk white, rich tactile coarse risograph or screenprint grain, stark graphic contrast and large areas of quiet shadow. Sophisticated independent music magazine art, flat ink texture over strong photographic composition. Keep the flower and gesture readable at thumbnail size. Edge-to-edge square artwork. No typography, no lettering, no album cover recreation, no people, no logos."
+  },
+  "sourceChecks": {
+    "directHTTPS": "All three cited Bugs lyric pages returned HTTP 200 through the direct project client, with the original Korean text checked for wording and order.",
+    "dictionary": "https://krdict.korean.go.kr/jpn/dicSearch/SearchView?ParaNationCode=7&ParaWordNo=80013&captchaNumber=&commentTitle=&comment_user_name=&divSearch=defViewGlobal&myViewWord=85008&nation=jpn&nationCode=7&viewTypes=on&wordComment=",
+    "officialEnglishTitles": "US Apple Music release 1814078888 (track list also confirmed with the corresponding iTunes US lookup) and 6785444995.",
+    "playback": "Both official uploads advanced 3.5 seconds in a genuine youtube-nocookie embed on November 23 KST."
+  },
+  "revision": {
+    "version": 4,
+    "contentHash": "4c4fdc7f5798660b5b073a040940157f9f93de1f157dc0debfbe3b6ae016562b",
+    "checkedAt": "2026-11-22T23:06:16.649Z",
+    "changes": [
+      "Separated Chris P’s description of the arrangement from track-level performance credits.",
+      "Treated the flash as a reading of the recurring plea and described changes in recording credits without assigning decisions.",
+      "Kept the earlier song’s destination open, clarified the later song’s conditional phrasing, and cited the dictionary for its title."
+    ],
+    "approval": "Separate factual and editorial reviews approved the exact revision. The article JSON holds both decisions and the claim-level evidence."
+  }
+}

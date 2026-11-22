@@ -3,6 +3,20 @@
   "origin": "https://indiek.com",
   "items": [
     {
+      "id": "huiwon-light-and-birth",
+      "kind": "story",
+      "title": "Huiwon, from a flash to a spark",
+      "path": "/stories/huiwon-light-and-birth/",
+      "description": "There’s a white flower in “light” and a crawling insect in the release note for “Birth…”. Two records trace what changes in Huiwon’s writing and who plays the parts.",
+      "artistIds": [
+        "huiwon"
+      ],
+      "image": "/assets/social/stories-huiwon-light-and-birth.jpg",
+      "altText": "Huiwon, from a flash to a spark — indiek. Original typographic article card.",
+      "revision": "4c4fdc7f5798660b5b073a040940157f9f93de1f157dc0debfbe3b6ae016562b",
+      "published": "2026-11-23"
+    },
+    {
       "id": "ydbb-band-writing",
       "kind": "story",
       "title": "How YdBB’s members shape a song together",
@@ -473,6 +487,18 @@
       "altText": "indiek listening notes: Black String — Mask Dance. Typographic card."
     },
     {
+      "id": "huiwon",
+      "kind": "artist",
+      "title": "Huiwon — light",
+      "path": "/artists/huiwon/",
+      "description": "In “light”, the speaker asks a flash to illuminate their darkness and stay with them. Requests for care turn into requests for destruction, before returning to the wish to be held.",
+      "artistIds": [
+        "huiwon"
+      ],
+      "image": "/assets/social/artists-huiwon.jpg",
+      "altText": "indiek listening notes: Huiwon — light. Typographic card."
+    },
+    {
       "id": "yoon-mirae",
       "kind": "artist",
       "title": "Yoon Mirae — Breath",
@@ -521,6 +547,7 @@
         "kang-asol",
         "danpyunsun-and-the-moments-ensemble",
         "black-string",
+        "huiwon",
         "yoon-mirae"
       ],
       "image": "/assets/social/notes-korean-indie-where-to-start.jpg",
@@ -582,7 +609,8 @@
         "ohchill",
         "kang-asol",
         "danpyunsun-and-the-moments-ensemble",
-        "black-string"
+        "black-string",
+        "huiwon"
       ],
       "image": "/assets/social/notes-guitars-and-bands.jpg",
       "altText": "indiek listening guide: Guitars & bands. Typographic card."

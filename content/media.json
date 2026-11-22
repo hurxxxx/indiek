@@ -335,6 +335,78 @@
       }
     ]
   },
+  "huiwon-.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/huiwon--320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 18710
+      },
+      {
+        "src": "/assets/optimized/huiwon--640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 54780
+      },
+      {
+        "src": "/assets/optimized/huiwon--1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 114108
+      }
+    ]
+  },
+  "huiwon-birth.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/optimized/huiwon-birth-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 23426
+      },
+      {
+        "src": "/assets/optimized/huiwon-birth-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 73552
+      },
+      {
+        "src": "/assets/optimized/huiwon-birth-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 150536
+      }
+    ]
+  },
+  "huiwon-feature.jpg": {
+    "width": 1100,
+    "height": 1100,
+    "variants": [
+      {
+        "src": "/assets/optimized/huiwon-feature-320.webp",
+        "width": 320,
+        "height": 320,
+        "bytes": 25718
+      },
+      {
+        "src": "/assets/optimized/huiwon-feature-640.webp",
+        "width": 640,
+        "height": 640,
+        "bytes": 124926
+      },
+      {
+        "src": "/assets/optimized/huiwon-feature-1000.webp",
+        "width": 1000,
+        "height": 1000,
+        "bytes": 319610
+      }
+    ]
+  },
   "jeongmilla-cheongpa-sonata.jpg": {
     "width": 1200,
     "height": 1200,

@@ -40,7 +40,7 @@ test('a song page is indexed only with credits, Apple Music, sourced background 
   // The songs still waiting for a verified background or a published lyric source stay out of search.
   assert.deepEqual(songPageStatus(find('whiteusedsocks')).missing, ['background']);
   assert.deepEqual(songPageStatus(find('danpyunsun-and-the-moments-ensemble-hail-to-the-music')).missing, ['lyric-notes']);
-  assert.deepEqual(tracks.filter(track => !songPageStatus(track).ready).map(track => track.id).sort(), ['danpyunsun-and-the-moments-ensemble-hail-to-the-music', 'moneto-she', 'whiteusedsocks']);
+  assert.deepEqual(tracks.filter(track => !songPageStatus(track).ready).map(track => track.id).sort(), ['danpyunsun-and-the-moments-ensemble-hail-to-the-music', 'huiwon-birth', 'moneto-she', 'whiteusedsocks']);
 });
 
 test('reading and lyric links prefer a complete song page and otherwise keep the artist anchor', () => {

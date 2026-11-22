@@ -283,6 +283,29 @@
           }
         ]
       }
+    },
+    "huiwon": {
+      "artistId": "huiwon",
+      "batch": "batch-3",
+      "addedAt": "2026-11-16",
+      "candidate": {
+        "score": 13.6,
+        "rank": 204,
+        "approved": {
+          "date": "2026-11-16",
+          "by": "user"
+        },
+        "signals": [
+          {
+            "type": "recognition",
+            "url": "https://www.koreanindie.com/2025/07/17/heewon-cheon-%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C-%E5%8F%8D%E9%AA%A8%E5%95%86%E6%9C%83/"
+          },
+          {
+            "type": "recognition",
+            "url": "https://www.melon.com/musicstory/inform.htm?mstorySeq=16241"
+          }
+        ]
+      }
     }
   },
   "tracks": {
@@ -2690,6 +2713,297 @@
         "date": "2026-11-12",
         "by": "user",
         "note": "Checked by Claude at the user's request against the cited sources and live playback. Producer, credits, release date and WOMEX instrumental listing confirmed. Added voice to the personnel list, wrote evil spirits, and separated Genie's and Heo's points. Re-reviewed before approval."
+      }
+    },
+    "huiwon-light": {
+      "trackId": "huiwon-light",
+      "artistId": "huiwon",
+      "batch": "batch-3",
+      "grade": "A",
+      "role": "primary",
+      "addedAt": "2026-11-16",
+      "contentHash": "a3549b58f5798be9d2c054191bd2cf32f7b6fd4eb9d3370352781ea6fc91b232",
+      "skillRevision": "14f9ba6bf06f79a25012969b0e734b5dbc841a74d46243008a5fe6977cd022d4",
+      "reviewedAt": "2026-11-16T04:37:16.221Z",
+      "sources": [
+        "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
+        "https://music.bugs.co.kr/track/33535216"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/ep/1814078888",
+        "trackName": "light",
+        "releaseDate": "2025-05-20",
+        "checkedAt": "2026-11-16T04:33:16.027Z"
+      },
+      "playback": {
+        "videoId": "qpPGZmvqPD8",
+        "state": "playing",
+        "checkedAt": "2026-11-16T04:34:07.876Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "Huiwon - Topic",
+        "official": "the artist’s YouTube Topic channel (official audio)",
+        "tried": [
+          {
+            "videoId": "qpPGZmvqPD8",
+            "channel": "Huiwon - Topic",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-16T04:37:34.262Z"
+      },
+      "facts": {
+        "approved": true,
+        "reason": "The exact entries are supported by the supplied fetched sources and pipeline verification. The lyric commentary stays close to the text and presents its emotional reading as interpretation.",
+        "checkedURLs": [
+          "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
+          "https://music.bugs.co.kr/track/33535216",
+          "https://poclanos.com/album/%ED%83%9C%EB%8F%99/",
+          "https://music.bugs.co.kr/track/33989697"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "Huiwon wrote the music and lyrics for all four EP tracks.",
+            "sourceURL": "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
+            "evidence": "All Composed, Lyrics by 천희원"
+          },
+          {
+            "claim": "Huiwon contributes arrangement, MIDI programming, bass and guitar on light.",
+            "sourceURL": "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
+            "evidence": "4.섬광 Arranged by 천희원 Midi programming, Bass by 천희원 Guitar by 천희원, 조유익"
+          },
+          {
+            "claim": "The EP was released on May 20, 2025.",
+            "sourceURL": "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
+            "evidence": "Release 2025-05-20"
+          },
+          {
+            "claim": "light closes the four-track EP.",
+            "sourceURL": "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
+            "evidence": "1. 2008 2. 소울트랩.exe 3. 파운드 앤 로스트 4. 섬광"
+          },
+          {
+            "claim": "POCLANOS describes a band-based record framed around youthful defiance at eighteen.",
+            "sourceURL": "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
+            "evidence": "뼈가 거꾸로 솟아버린 열여덟의 치기와 음악 밴드사운드를 기반으로 다양한 무드를 담아내었다."
+          },
+          {
+            "claim": "The speaker asks the flash to illuminate darkness, open their eyes and remain.",
+            "sourceURL": "https://music.bugs.co.kr/track/33535216",
+            "evidence": "섬광 내 어둠을 밝혀줘 섬광 내 눈을 뜨게 해줘 섬광 사라지지마"
+          },
+          {
+            "claim": "Requests for love and care turn toward destruction.",
+            "sourceURL": "https://music.bugs.co.kr/track/33535216",
+            "evidence": "섬광 사랑을 가르쳐줘 섬광 그냥 불에 태워줘"
+          },
+          {
+            "claim": "The lyric changes from asking to be held and heard to asking to be broken and silenced.",
+            "sourceURL": "https://music.bugs.co.kr/track/33535216",
+            "evidence": "제발 부서진 나를 부숴줘 어떤 것도 어떤 것도 어떤 것도 볼 수 없는 내 심장소리를 멈춰줘"
+          },
+          {
+            "claim": "Cold breath and a white flower accompany wishes for disappearance and sunset.",
+            "sourceURL": "https://music.bugs.co.kr/track/33535216",
+            "evidence": "애써 차가운 숨을 내쉬면 하얀 꽃이 피어 나고 사라지길 바래 해가 지길 바래"
+          },
+          {
+            "claim": "The final appeals return to being held, flowering, being heard and receiving a smile.",
+            "sourceURL": "https://music.bugs.co.kr/track/33535216",
+            "evidence": "부서진 날 붙잡아줘 이 꽃을 피우게 해줘 심장소리를 들어줘 내게 미소를 지어줘"
+          },
+          {
+            "claim": "Birth… was released on July 8, 2026.",
+            "sourceURL": "https://poclanos.com/album/%ED%83%9C%EB%8F%99/",
+            "evidence": "Release 2026-07-08"
+          },
+          {
+            "claim": "Huiwon wrote and arranged Birth….",
+            "sourceURL": "https://poclanos.com/album/%ED%83%9C%EB%8F%99/",
+            "evidence": "Compose, Lyrics, Arrange 천희원"
+          },
+          {
+            "claim": "The Birth… release note connects beginning again with a crawling insect.",
+            "sourceURL": "https://poclanos.com/album/%ED%83%9C%EB%8F%99/",
+            "evidence": "다시 한번 더 태동 할 수 있도록 바닥을 기는 저 벌레처럼…"
+          },
+          {
+            "claim": "The Birth… speaker asks for sparks to spread and regret to wait.",
+            "sourceURL": "https://music.bugs.co.kr/track/33989697",
+            "evidence": "불씨를 퍼뜨려줘 후회는 더 미뤄줘"
+          },
+          {
+            "claim": "Birth… connects these requests with continued movement.",
+            "sourceURL": "https://music.bugs.co.kr/track/33989697",
+            "evidence": "멈추지 말아줘 지금 여기 이곳을 내달리는거야"
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The entries are plain, specific and measured. Song details precede release history, and the short artist introduction identifies Huiwon’s roles without becoming a career list. The lyric commentary explains concrete images and changing requests while keeping the speaker separate from the performer and leaving the contradictions unresolved. No invented listening experience, unsupported sound description, or substantial repetition of the supplied recent entries appears. Factual verification remains with the separate fact review.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          },
+          {
+            "key": "t2",
+            "grade": "B",
+            "meets": true,
+            "missing": []
+          }
+        ]
+      },
+      "humanSample": true,
+      "humanReview": {
+        "status": "pending"
+      }
+    },
+    "huiwon-birth": {
+      "trackId": "huiwon-birth",
+      "artistId": "huiwon",
+      "batch": "batch-3",
+      "grade": "B",
+      "role": "additional",
+      "addedAt": "2026-11-16",
+      "contentHash": "9533c4c2f75fdabd3036504de728536826e5c864ef9f2c7dbebe507528a4bf67",
+      "skillRevision": "14f9ba6bf06f79a25012969b0e734b5dbc841a74d46243008a5fe6977cd022d4",
+      "reviewedAt": "2026-11-16T04:37:16.221Z",
+      "sources": [
+        "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
+        "https://poclanos.com/album/%ED%83%9C%EB%8F%99/",
+        "https://music.bugs.co.kr/track/33989697"
+      ],
+      "release": {
+        "appleMusic": "https://music.apple.com/us/album/birth-single/6785444995",
+        "trackName": "Birth…",
+        "releaseDate": "2026-07-08",
+        "checkedAt": "2026-11-16T04:34:08.456Z"
+      },
+      "playback": {
+        "videoId": "hIrarQHXTDg",
+        "state": "playing",
+        "checkedAt": "2026-11-16T04:34:15.092Z",
+        "advancedSeconds": 3.5,
+        "method": "headless Chrome, youtube-nocookie embed with the site player parameters, muted autoplay",
+        "channel": "POCLANOS",
+        "official": "label channel on the official-channel list (Hand-reviewed official upload in the catalogue (kim-sawol))",
+        "tried": [
+          {
+            "videoId": "hIrarQHXTDg",
+            "channel": "POCLANOS",
+            "state": "playing"
+          }
+        ],
+        "recheckedAt": "2026-11-16T04:37:39.301Z"
+      },
+      "facts": {
+        "approved": true,
+        "reason": "The exact entries are supported by the supplied fetched sources and pipeline verification. The lyric commentary stays close to the text and presents its emotional reading as interpretation.",
+        "checkedURLs": [
+          "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
+          "https://music.bugs.co.kr/track/33535216",
+          "https://poclanos.com/album/%ED%83%9C%EB%8F%99/",
+          "https://music.bugs.co.kr/track/33989697"
+        ],
+        "supportedClaims": [
+          {
+            "claim": "Huiwon wrote the music and lyrics for all four EP tracks.",
+            "sourceURL": "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
+            "evidence": "All Composed, Lyrics by 천희원"
+          },
+          {
+            "claim": "Huiwon contributes arrangement, MIDI programming, bass and guitar on light.",
+            "sourceURL": "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
+            "evidence": "4.섬광 Arranged by 천희원 Midi programming, Bass by 천희원 Guitar by 천희원, 조유익"
+          },
+          {
+            "claim": "The EP was released on May 20, 2025.",
+            "sourceURL": "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
+            "evidence": "Release 2025-05-20"
+          },
+          {
+            "claim": "light closes the four-track EP.",
+            "sourceURL": "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
+            "evidence": "1. 2008 2. 소울트랩.exe 3. 파운드 앤 로스트 4. 섬광"
+          },
+          {
+            "claim": "POCLANOS describes a band-based record framed around youthful defiance at eighteen.",
+            "sourceURL": "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
+            "evidence": "뼈가 거꾸로 솟아버린 열여덟의 치기와 음악 밴드사운드를 기반으로 다양한 무드를 담아내었다."
+          },
+          {
+            "claim": "The speaker asks the flash to illuminate darkness, open their eyes and remain.",
+            "sourceURL": "https://music.bugs.co.kr/track/33535216",
+            "evidence": "섬광 내 어둠을 밝혀줘 섬광 내 눈을 뜨게 해줘 섬광 사라지지마"
+          },
+          {
+            "claim": "Requests for love and care turn toward destruction.",
+            "sourceURL": "https://music.bugs.co.kr/track/33535216",
+            "evidence": "섬광 사랑을 가르쳐줘 섬광 그냥 불에 태워줘"
+          },
+          {
+            "claim": "The lyric changes from asking to be held and heard to asking to be broken and silenced.",
+            "sourceURL": "https://music.bugs.co.kr/track/33535216",
+            "evidence": "제발 부서진 나를 부숴줘 어떤 것도 어떤 것도 어떤 것도 볼 수 없는 내 심장소리를 멈춰줘"
+          },
+          {
+            "claim": "Cold breath and a white flower accompany wishes for disappearance and sunset.",
+            "sourceURL": "https://music.bugs.co.kr/track/33535216",
+            "evidence": "애써 차가운 숨을 내쉬면 하얀 꽃이 피어 나고 사라지길 바래 해가 지길 바래"
+          },
+          {
+            "claim": "The final appeals return to being held, flowering, being heard and receiving a smile.",
+            "sourceURL": "https://music.bugs.co.kr/track/33535216",
+            "evidence": "부서진 날 붙잡아줘 이 꽃을 피우게 해줘 심장소리를 들어줘 내게 미소를 지어줘"
+          },
+          {
+            "claim": "Birth… was released on July 8, 2026.",
+            "sourceURL": "https://poclanos.com/album/%ED%83%9C%EB%8F%99/",
+            "evidence": "Release 2026-07-08"
+          },
+          {
+            "claim": "Huiwon wrote and arranged Birth….",
+            "sourceURL": "https://poclanos.com/album/%ED%83%9C%EB%8F%99/",
+            "evidence": "Compose, Lyrics, Arrange 천희원"
+          },
+          {
+            "claim": "The Birth… release note connects beginning again with a crawling insect.",
+            "sourceURL": "https://poclanos.com/album/%ED%83%9C%EB%8F%99/",
+            "evidence": "다시 한번 더 태동 할 수 있도록 바닥을 기는 저 벌레처럼…"
+          },
+          {
+            "claim": "The Birth… speaker asks for sparks to spread and regret to wait.",
+            "sourceURL": "https://music.bugs.co.kr/track/33989697",
+            "evidence": "불씨를 퍼뜨려줘 후회는 더 미뤄줘"
+          },
+          {
+            "claim": "Birth… connects these requests with continued movement.",
+            "sourceURL": "https://music.bugs.co.kr/track/33989697",
+            "evidence": "멈추지 말아줘 지금 여기 이곳을 내달리는거야"
+          }
+        ]
+      },
+      "editorial": {
+        "approved": true,
+        "reason": "The entries are plain, specific and measured. Song details precede release history, and the short artist introduction identifies Huiwon’s roles without becoming a career list. The lyric commentary explains concrete images and changing requests while keeping the speaker separate from the performer and leaving the contradictions unresolved. No invented listening experience, unsupported sound description, or substantial repetition of the supplied recent entries appears. Factual verification remains with the separate fact review.",
+        "gradeChecks": [
+          {
+            "key": "t1",
+            "grade": "A",
+            "meets": true,
+            "missing": []
+          },
+          {
+            "key": "t2",
+            "grade": "B",
+            "meets": true,
+            "missing": []
+          }
+        ]
       }
     }
   }

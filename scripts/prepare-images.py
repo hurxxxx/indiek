@@ -16,7 +16,12 @@ portraits = {f['image'] for f in catalogue['featuredArtists'] if f.get('image')}
 home = json.loads((ROOT / 'content/home.json').read_text())
 home_features = [f for section in home['sections'] if section['type']=='discover' for f in section['features'] if f.get('image')]
 portraits |= {f['image'] for f in home_features if f.get('kind')=='portrait'}
-images = portraits | {r['image'] for r in catalogue['tracks']} | {f['image'] for f in home_features}
+story_covers = set()
+for file in (ROOT / 'content/stories').glob('*.json'):
+    cover = json.loads(file.read_text()).get('cover')
+    if cover:
+        story_covers.add(cover['file'])
+images = portraits | {r['image'] for r in catalogue['tracks']} | {f['image'] for f in home_features} | story_covers
 manifest = {}
 for name in sorted(images):
     with Image.open(ASSETS / name) as original:

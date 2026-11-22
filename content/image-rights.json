@@ -498,6 +498,37 @@
       "status": "unconfirmed",
       "checked": "2026-11-12",
       "notes": "Release artwork used to identify the selected recording. No reuse licence established; source credit does not establish permission."
+    },
+    {
+      "file": "huiwon-.jpg",
+      "label": "Huiwon — 反骨商會 - EP artwork",
+      "source": "https://music.apple.com/us/album/ep/1814078888",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/50/ab/83/50ab8374-68fa-2b8c-02cf-c5ef935884ab/8800283957471.jpg/1200x1200bb.jpg",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed",
+      "checked": "2026-11-16",
+      "notes": "Release artwork used to identify the selected recording. No reuse licence established; source credit does not establish permission."
+    },
+    {
+      "file": "huiwon-birth.jpg",
+      "label": "Huiwon — Birth… - Single artwork",
+      "source": "https://music.apple.com/us/album/birth-single/6785444995",
+      "original": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/2e/ff/b1/2effb143-dbda-cb50-7564-e5e008baa11c/8800370423025.jpg/1200x1200bb.jpg",
+      "credit": "Apple Music release artwork",
+      "language": "English",
+      "status": "unconfirmed",
+      "checked": "2026-11-16",
+      "notes": "Release artwork used to identify the selected recording. No reuse licence established; source credit does not establish permission."
+    },
+    {
+      "file": "huiwon-feature.jpg",
+      "label": "Huiwon feature illustration",
+      "source": "https://indiek.com/stories/huiwon-light-and-birth/",
+      "credit": "indiek · AI-assisted editorial illustration",
+      "language": "English",
+      "status": "original",
+      "checked": "2026-11-23"
     }
   ]
 }

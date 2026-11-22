@@ -1092,6 +1092,44 @@
     },
     {
       "pageKind": "artist",
+      "pageId": "huiwon",
+      "path": "/artists/huiwon/light/",
+      "description": "In “light”, the speaker asks a flash to illuminate their darkness and stay with them. Requests for care turn into requests for destruction, before returning to the wish to be held. Lyrics meaning in English, credits, background and release details.",
+      "artistIds": [
+        "huiwon"
+      ],
+      "title": "Huiwon — light",
+      "slides": [
+        {
+          "kind": "cover",
+          "image": "/assets/social/carousel/artists-huiwon-1.jpg",
+          "altText": "Slide 1 of 4. indiek lyric notes: Huiwon — “light”. Asking the light to stay.",
+          "sha256": "606d15abf5fbb08f5366340a0ddf0b9bb73580681bd6ef20067259b23bb11a0f"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-huiwon-2.jpg",
+          "altText": "Slide 2 of 4. The speaker addresses a flash of light as something that could open their eyes and teach them love. A flash is brief, yet they repeatedly ask it not to disappear. That tension makes the appeal feel precarious: they want something fleeting to remain.",
+          "text": "The speaker addresses a flash of light as something that could open their eyes and teach them love. A flash is brief, yet they repeatedly ask it not to disappear. That tension makes the appeal feel precarious: they want something fleeting to remain.",
+          "sha256": "8e4aa52dfdd9ed5005fdacde1f15fac79ee2d8c0a668dcd0e87cf9ac8649b59d"
+        },
+        {
+          "kind": "text",
+          "image": "/assets/social/carousel/artists-huiwon-3.jpg",
+          "altText": "Slide 3 of 4. The requests change sharply. Being held becomes being broken; having a heartbeat heard becomes having it stopped. Later, cold breath brings forth the image of a white flower, alongside wishes for disappearance and sunset. The final appeals return to being held, letting the flower bloom and receiving a smile. These small gestures of care remain beside the earlier destructive wishes, without resolving them.",
+          "text": "The requests change sharply. Being held becomes being broken; having a heartbeat heard becomes having it stopped. Later, cold breath brings forth the image of a white flower, alongside wishes for disappearance and sunset. The final appeals return to being held, letting the flower bloom and receiving a smile. These small gestures of care remain beside the earlier destructive wishes, without resolving them.",
+          "sha256": "f88a863991bd053a9a458ebe09ec8e10006677b195817d4f13ad19dc57d801fe"
+        },
+        {
+          "kind": "end",
+          "image": "/assets/social/carousel/artists-huiwon-4.jpg",
+          "altText": "Slide 4 of 4. Read the full notes and play the official recording at indiek.com/artists/huiwon/light/",
+          "sha256": "9cbfd0743d09af6d43ba45d914781b47b8680736e6b4bea147c2a8e300e8febe"
+        }
+      ]
+    },
+    {
+      "pageKind": "artist",
       "pageId": "yoon-mirae",
       "path": "/artists/yoon-mirae/breath/",
       "description": "In “Breath”, guitar leaves plenty of space around Yoon Mirae’s voice. The song is about the ordinary things that keep bringing back someone who is no longer there. Lyrics meaning in English, credits, background and release details.",

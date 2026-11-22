@@ -157,7 +157,7 @@
       "id": "magazine",
       "type": "story",
       "enabled": true,
-      "storyId": "youra-private-worlds",
+      "storyId": null,
       "copy": {
         "eyebrow": "FROM THE MAGAZINE",
         "link": "Read the story",

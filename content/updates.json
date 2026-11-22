@@ -71,5 +71,15 @@
     "title": "Inside the lyrics, across the listening room",
     "description": "English notes on the meaning and mood of every song introduced here, with links from the listening guide.",
     "published": "2026-10-21"
+  },
+  {
+    "id": "huiwon-light-and-birth",
+    "status": "published",
+    "kind": "story",
+    "path": "/stories/huiwon-light-and-birth/",
+    "title": "Huiwon, from a flash to a spark",
+    "description": "A feature on Huiwon’s first EP and “Birth…”, with lyric commentary and two official recordings.",
+    "published": "2026-11-23",
+    "includeWithFeature": true
   }
 ]

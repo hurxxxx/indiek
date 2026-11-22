@@ -632,6 +632,24 @@
         "updated": "2026-11-12",
         "published": "2026-11-12"
       }
+    },
+    {
+      "id": "huiwon",
+      "primaryTrackId": "huiwon-light",
+      "artist": "Huiwon",
+      "korean": "천희원",
+      "aliases": "천희원 Huiwon HUIWON Heewon Cheon",
+      "category": "solo",
+      "artistIntro": "Huiwon (천희원) writes and arranges songs built around a band. On 反骨商會, the solo artist also contributes guitar, bass and MIDI programming.",
+      "artistSource": "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
+      "artistSourceName": "POCLANOS — 反骨商會 release notes and credits",
+      "artistSourceLanguage": "Korean",
+      "biography": "Huiwon wrote the lyrics and music for all four tracks on 反骨商會, released in May 2025. The single Birth… followed in July 2026.",
+      "editorial": {
+        "author": "indiek",
+        "updated": "2026-11-23",
+        "published": "2026-11-23"
+      }
     }
   ],
   "tracks": [
@@ -2873,6 +2891,99 @@
           }
         ]
       }
+    },
+    {
+      "id": "huiwon-light",
+      "artistId": "huiwon",
+      "slug": "light",
+      "album": "反骨商會",
+      "release": "反骨商會 - EP",
+      "year": "2025",
+      "releaseDate": "2025-05-20",
+      "genre": "ALTERNATIVE ROCK",
+      "image": "huiwon-.jpg",
+      "track": "light",
+      "koreanTitle": "섬광",
+      "duration": "04:46",
+      "provider": "youtube",
+      "videoId": "qpPGZmvqPD8",
+      "channel": "Huiwon - Topic",
+      "url": "https://www.youtube.com/watch?v=qpPGZmvqPD8",
+      "videoType": "audio",
+      "note": "Asking a flash of light to stay.",
+      "description": "In “light”, the speaker asks a flash to illuminate their darkness and stay with them. Requests for care turn into requests for destruction, before returning to the wish to be held.",
+      "source": "https://music.apple.com/us/album/ep/1814078888",
+      "sourceName": "Huiwon — 反骨商會 - EP on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://poclanos.com/album/%EB%B0%98%EA%B3%A8%EC%83%81%ED%9A%8C/",
+          "label": "POCLANOS — EP release notes and track credits",
+          "language": "Korean"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands"
+      ],
+      "listeningNote": "“light” closes Huiwon’s four-track EP 反骨商會, released on May 20, 2025. POCLANOS’s release note describes a band-based record shaped by youthful defiance at eighteen.",
+      "credits": "Lyrics by Huiwon; music by Huiwon; arranged by Huiwon.",
+      "lyricNotes": {
+        "heading": "Asking the light to stay",
+        "themes": [
+          "Longing",
+          "Conflicting wishes"
+        ],
+        "paragraphs": [
+          "The speaker addresses a flash of light as something that could open their eyes and teach them love. A flash is brief, yet they repeatedly ask it not to disappear. That tension makes the appeal feel precarious: they want something fleeting to remain.",
+          "The requests change sharply. Being held becomes being broken; having a heartbeat heard becomes having it stopped. Later, cold breath brings forth the image of a white flower, alongside wishes for disappearance and sunset. The final appeals return to being held, letting the flower bloom and receiving a smile. These small gestures of care remain beside the earlier destructive wishes, without resolving them."
+        ],
+        "source": {
+          "url": "https://music.bugs.co.kr/track/33535216",
+          "label": "Bugs — light lyrics and credits",
+          "language": "Korean"
+        }
+      }
+    },
+    {
+      "id": "huiwon-birth",
+      "artistId": "huiwon",
+      "slug": "birth",
+      "album": "Birth…",
+      "release": "Birth… - Single",
+      "year": "2026",
+      "releaseDate": "2026-07-08",
+      "genre": "INDIE ROCK",
+      "image": "huiwon-birth.jpg",
+      "track": "Birth…",
+      "koreanTitle": "태동…",
+      "duration": "03:17",
+      "provider": "youtube",
+      "videoId": "hIrarQHXTDg",
+      "channel": "POCLANOS",
+      "url": "https://www.youtube.com/watch?v=hIrarQHXTDg",
+      "videoType": "audio",
+      "note": "A wish to stir into life and keep moving.",
+      "description": "“Birth…” takes an insect crawling along the ground as an image of beginning again. Its speaker asks for sparks to spread and for regret to wait while they keep moving.",
+      "source": "https://music.apple.com/us/album/birth-single/6785444995",
+      "sourceName": "Huiwon — Birth… - Single on Apple Music",
+      "sourceLanguage": "English",
+      "extraSources": [
+        {
+          "url": "https://poclanos.com/album/%ED%83%9C%EB%8F%99/",
+          "label": "POCLANOS — Birth… release notes and credits",
+          "language": "Korean"
+        },
+        {
+          "url": "https://music.bugs.co.kr/track/33989697",
+          "label": "Bugs — Birth… lyrics and credits",
+          "language": "Korean"
+        }
+      ],
+      "guideTags": [
+        "guitars-and-bands"
+      ],
+      "listeningNote": "Released on July 8, 2026, “Birth…” was written and arranged by Huiwon. The POCLANOS release note pairs the wish to stir into life again with the image of a crawling insect.",
+      "credits": "Lyrics by Huiwon; music by Huiwon; arranged by Huiwon."
     }
   ],
   "featuredArtists": [
