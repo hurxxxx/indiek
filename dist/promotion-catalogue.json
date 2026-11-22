@@ -3,6 +3,20 @@
   "origin": "https://indiek.com",
   "items": [
     {
+      "id": "ydbb-band-writing",
+      "kind": "story",
+      "title": "How YdBB’s members shape a song together",
+      "path": "/stories/ydbb-band-writing/",
+      "description": "“LETTER” and “Voyage” reveal the work behind a shared arrangement credit, from fitting a guitar solo to a melody to directing and editing vocals.",
+      "artistIds": [
+        "ydbb"
+      ],
+      "image": "/assets/social/stories-ydbb-band-writing.jpg",
+      "altText": "How YdBB’s members shape a song together — indiek. Original typographic article card.",
+      "revision": "015ab102720846dbedabd5d499a4ba8b426d069394f37aa426e2337ff70bf21a",
+      "published": "2026-11-23"
+    },
+    {
       "id": "choi-yuree-forest",
       "kind": "story",
       "title": "Why Choi Yu Ree turns to nature in “Forest”",

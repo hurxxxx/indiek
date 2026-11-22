@@ -1,0 +1,268 @@
+{
+  "id": "ydbb-band-writing",
+  "slug": "ydbb-band-writing",
+  "status": "published",
+  "category": "Scenes & people",
+  "title": "How YdBB’s members shape a song together",
+  "description": "“LETTER” and “Voyage” reveal the work behind a shared arrangement credit, from fitting a guitar solo to a melody to directing and editing vocals.",
+  "authorId": "indiek",
+  "published": "2026-11-23",
+  "updated": "2026-11-23",
+  "artistIds": [
+    "ydbb"
+  ],
+  "keywords": [
+    "YdBB",
+    "유다빈밴드",
+    "LETTER",
+    "Voyage",
+    "항해",
+    "arrangement",
+    "songwriting",
+    "YdBB 1.25"
+  ],
+  "sources": [
+    {
+      "id": "izm-ydbb",
+      "url": "https://www.izm.co.kr/posts?id=33059",
+      "label": "유다빈밴드 인터뷰 — 정기엽; named interview team and separately credited transcription",
+      "publisher": "IZM",
+      "published": "2024-12-17",
+      "checked": "2026-11-22",
+      "language": "ko"
+    },
+    {
+      "id": "biscuit-first-album",
+      "url": "https://www.biscuitsound.net/index.php?document_srl=54372&mid=music",
+      "label": "유다빈밴드 1집 — distributor’s release announcement and track-level credits",
+      "publisher": "Biscuit Sound",
+      "published": "2021-10-29",
+      "checked": "2026-11-22",
+      "language": "ko"
+    },
+    {
+      "id": "genie-voyage-credits",
+      "url": "https://www.genie.co.kr/detail/albumInfo?axnm=83966841",
+      "label": "항해 — release metadata and supplied production credits",
+      "publisher": "Genie Music; credits identify MPMG MUSIC",
+      "published": "Page publication date unstated; release date 2023-06-25",
+      "checked": "2026-11-22",
+      "language": "ko/en"
+    },
+    {
+      "id": "genie-voyage-session",
+      "url": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=13299",
+      "label": "유다빈밴드 디지털 싱글 ‘항해’ 녹음, 믹싱 비하인드 — unsigned promotional session report",
+      "publisher": "Genie Music",
+      "published": "2023-06-27; dated by the linked magazine entry on the album page",
+      "checked": "2026-11-22",
+      "language": "ko"
+    },
+    {
+      "id": "dope-compilation",
+      "url": "https://www.doperecord.com/product/예약판매-유다빈밴드-ydbb-ydbb-125-180g-black-vinyl/7639/category/1/display/2/?icid=MAIN.product_listmain_1",
+      "label": "YdBB 1.25 — retailer preorder listing; expanded product URL successfully opened",
+      "publisher": "Dope Records",
+      "published": "Listing publication date unstated; scheduled release 2026-11-26",
+      "checked": "2026-11-22",
+      "language": "ko"
+    },
+    {
+      "id": "fishmans-long-season",
+      "url": "https://pitchfork.com/reviews/albums/fishmans-long-season/",
+      "label": "Long Season — Joshua Minsoo Kim; signed retrospective with contributor biography",
+      "publisher": "Pitchfork",
+      "published": "2024-05-12",
+      "checked": "2026-11-22",
+      "language": "en"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "YdBB’s singles compilation YdBB 1.25 gathers songs released between their first and second albums, including “Voyage” (항해). Retailer Dope Records schedules the vinyl release for November 26, 2026. It offers an occasion to revisit how the five members divide the work of making a song. [Compilation listing](https://www.doperecord.com/product/예약판매-유다빈밴드-ydbb-ydbb-125-180g-black-vinyl/7639/category/1/display/2/?icid=MAIN.product_listmain_1).",
+      "sources": [
+        "dope-compilation"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "On their 2021 debut album, “LETTER” credits vocalist Yu Dabin with lyrics and composition, and YdBB with arrangement. Guitarist Lee Junhyung supplied one concrete explanation of that collective credit in IZM’s December 2024 interview: he shaped the guitar solo to suit the vocal melody. His account gives the instrumental passage a specific reference point—the tune being sung. [Album credits from Biscuit Sound](https://www.biscuitsound.net/index.php?document_srl=54372&mid=music); [IZM interview](https://www.izm.co.kr/posts?id=33059).",
+      "sources": [
+        "biscuit-first-album",
+        "izm-ydbb"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The writing responsibilities widened. Dabin told IZM that the first album began with her songwriting and the members helping arrange; other members subsequently began participating in lyrics and composition. “Voyage”, released on June 25, 2023, names all five under lyrics, composition and arrangement: Dabin, Junhyung, bassist Cho Youngyun, keyboardist You Myeongjong and drummer Lee Sangwoon. Those credits establish shared responsibility without specifying who first proposed each passage. [IZM interview](https://www.izm.co.kr/posts?id=33059); [“Voyage” release and credits](https://www.genie.co.kr/detail/albumInfo?axnm=83966841).",
+      "sources": [
+        "izm-ydbb",
+        "genie-voyage-credits"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Youngyun’s explanation to IZM makes one decision clear: he deliberately left gaps in the “Voyage” bass line to give guitar and keyboards room. Sangwoon described the song as an example of his drumming growing in intensity, with almost no post-editing. These are different kinds of choices within the same recording: how much space a part occupies, and how a performance develops and is retained. [IZM interview](https://www.izm.co.kr/posts?id=33059).",
+      "sources": [
+        "izm-ydbb"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The detailed credits also show work beyond the members’ principal instruments. Myeongjong receives piano and synthesizer, MIDI programming and vocal-directing credits. Youngyun is credited with bass, electric guitar alongside Junhyung, and vocal editing. For this recording, the keyboardist’s responsibilities reached into guiding the singing, while the bassist also worked on the recorded vocals. [“Voyage” production credits](https://www.genie.co.kr/detail/albumInfo?axnm=83966841).",
+      "sources": [
+        "genie-voyage-credits"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Genie’s promotional report from the “Voyage” recording and mixing sessions describes members exchanging detailed feedback even on parts other than their own. Read alongside the credits, that account suggests a division of tasks with room for discussion across them. A member could have a named responsibility—bass, programming, vocal direction—while still helping another member decide what their part needed. [Genie’s session report](https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=13299); [recording credits](https://www.genie.co.kr/detail/albumInfo?axnm=83966841).",
+      "sources": [
+        "genie-voyage-session",
+        "genie-voyage-credits"
+      ]
+    }
+  ],
+  "review": {
+    "contentHash": "015ab102720846dbedabd5d499a4ba8b426d069394f37aa426e2337ff70bf21a",
+    "skillRevision": "39ef06ca3ee2f839687f36b275dcf01060829886993c52200d8607416b0b634d",
+    "checkedAt": "2026-11-22T18:11:23.881Z",
+    "facts": {
+      "approved": true,
+      "reason": "No unresolved blocking factual errors found in the exact title, deck, six paragraphs or source metadata. Applied the supplied skill, performed live search and opened all six listed originals. Credits, dates and translated accounts are supported. Interview observations remain attributed, and the closing synthesis is appropriately qualified. November 23 is scheduled draft metadata. This is factual approval only, without content-hash or skill-revision certification. No audio or video was heard.",
+      "issues": [],
+      "checkedURLs": [
+        "https://www.izm.co.kr/posts?id=33059",
+        "https://www.biscuitsound.net/index.php?document_srl=54372&mid=music",
+        "https://www.genie.co.kr/detail/albumInfo?axnm=83966841",
+        "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=13299",
+        "https://www.doperecord.com/product/예약판매-유다빈밴드-ydbb-ydbb-125-180g-black-vinyl/7639/category/1/display/2/?icid=MAIN.product_listmain_1",
+        "https://pitchfork.com/reviews/albums/fishmans-long-season/"
+      ],
+      "supportedClaims": [
+        {
+          "claim": "IZM dates its interview to December 17, 2024.",
+          "sourceURL": "https://www.izm.co.kr/posts?id=33059",
+          "evidence": "2024.12.17"
+        },
+        {
+          "claim": "Dabin says other members began participating in lyrics and composition.",
+          "sourceURL": "https://www.izm.co.kr/posts?id=33059",
+          "evidence": "멤버들 또한 작사, 작곡에 참여하는"
+        },
+        {
+          "claim": "Junhyung describes fitting LETTER’s guitar solo to the vocal melody.",
+          "sourceURL": "https://www.izm.co.kr/posts?id=33059",
+          "evidence": "기타 솔로를 노래 멜로디와 어울리게"
+        },
+        {
+          "claim": "Sangwoon describes his performance developing in intensity.",
+          "sourceURL": "https://www.izm.co.kr/posts?id=33059",
+          "evidence": "연주가 진행될수록 고조되는 방식이다."
+        },
+        {
+          "claim": "Sangwoon says the Voyage performance involved almost no post-editing.",
+          "sourceURL": "https://www.izm.co.kr/posts?id=33059",
+          "evidence": "후편집을 거의 가미하지 않은"
+        },
+        {
+          "claim": "Youngyun describes deliberately making a sparse bass line for Voyage.",
+          "sourceURL": "https://www.izm.co.kr/posts?id=33059",
+          "evidence": "일부러 듬성듬성한 베이스라인을 짰다."
+        },
+        {
+          "claim": "Biscuit Sound’s first-album announcement is dated October 29, 2021.",
+          "sourceURL": "https://www.biscuitsound.net/index.php?document_srl=54372&mid=music",
+          "evidence": "Oct 29. 2021"
+        },
+        {
+          "claim": "LETTER credits Dabin for lyrics and composition and YdBB for arrangement.",
+          "sourceURL": "https://www.biscuitsound.net/index.php?document_srl=54372&mid=music",
+          "evidence": "작사/작곡 유다빈\n편곡 유다빈밴드"
+        },
+        {
+          "claim": "The Voyage release record gives June 25, 2023.",
+          "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=83966841",
+          "evidence": "2023.06.25"
+        },
+        {
+          "claim": "The album page dates its linked recording-and-mixing feature to June 27, 2023.",
+          "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=83966841",
+          "evidence": "2023.06.27"
+        },
+        {
+          "claim": "Myeongjong receives piano and synthesizer credits.",
+          "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=83966841",
+          "evidence": "Piano&Synth 유명종 You Myeongjong"
+        },
+        {
+          "claim": "Myeongjong receives MIDI programming credit.",
+          "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=83966841",
+          "evidence": "MIDI Programming 유명종 You Myeongjong"
+        },
+        {
+          "claim": "Myeongjong receives vocal-directing credit.",
+          "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=83966841",
+          "evidence": "Vocal Directing 유명종 You Myeongjong"
+        },
+        {
+          "claim": "Youngyun receives vocal-editing credit.",
+          "sourceURL": "https://www.genie.co.kr/detail/albumInfo?axnm=83966841",
+          "evidence": "Vocal Edited by 조영윤 Cho Youngyun"
+        },
+        {
+          "claim": "Genie’s promotional account describes detailed discussion beyond members’ own parts.",
+          "sourceURL": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=13299",
+          "evidence": "본인 파트가 아님에도 불구하고 이들은 아주 작은 부분까지 세세하게 의견을 나눕니다."
+        },
+        {
+          "claim": "The retailer describes YdBB 1.25 as collecting singles released between the first and second studio albums.",
+          "sourceURL": "https://www.doperecord.com/product/예약판매-유다빈밴드-ydbb-ydbb-125-180g-black-vinyl/7639/category/1/display/2/?icid=MAIN.product_listmain_1",
+          "evidence": "정규 1집과 2집 사이에 발매된 싱글들을 모은 앨범"
+        },
+        {
+          "claim": "The retailer schedules release for November 26, 2026.",
+          "sourceURL": "https://www.doperecord.com/product/예약판매-유다빈밴드-ydbb-ydbb-125-180g-black-vinyl/7639/category/1/display/2/?icid=MAIN.product_listmain_1",
+          "evidence": "발매일 : 2026년 11월 26일"
+        },
+        {
+          "claim": "The compilation tracklist includes Voyage.",
+          "sourceURL": "https://www.doperecord.com/product/예약판매-유다빈밴드-ydbb-ydbb-125-180g-black-vinyl/7639/category/1/display/2/?icid=MAIN.product_listmain_1",
+          "evidence": "B2 항해\nB3 Get Lucky!"
+        },
+        {
+          "claim": "The craft reference credits Joshua Minsoo Kim.",
+          "sourceURL": "https://pitchfork.com/reviews/albums/fishmans-long-season/",
+          "evidence": "Joshua Minsoo Kim"
+        },
+        {
+          "claim": "The craft reference’s review date matches the supplied metadata.",
+          "sourceURL": "https://pitchfork.com/reviews/albums/fishmans-long-season/",
+          "evidence": "Reviewed May 12, 2024"
+        }
+      ]
+    },
+    "editorial": {
+      "approved": true,
+      "reason": "The exact draft makes a useful connection between arrangement decisions, production credits and feedback across instrumental roles. Freshly opened originals and comparison with all five supplied recent stories reveal no substantive imitation or unresolved editorial defect. Approval covers this supplied text only; no content hash or local skill revision was independently certified. No audio or video was heard.",
+      "issues": [],
+      "contribution": "Explains what collective responsibility can involve: fitting an instrumental passage to a vocal melody, making space for other players, retaining a performance, and undertaking vocal-production duties beyond a member’s principal instrument. Connecting those accounts with the session report shows how named responsibilities can coexist with shared discussion. This is explanatory synthesis, not new reporting or a complete recording chronology.",
+      "referenceIds": [
+        "fishmans-long-season"
+      ],
+      "comparisons": [
+        "Reader question: What work do YdBB’s members contribute when shaping a song together? The title and deck accurately promise the selected decisions and responsibilities delivered. The draft distinguishes songwriting, arrangement and recording duties without claiming that credits establish who originated every passage.",
+        "The opened [Joshua Minsoo Kim retrospective](https://pitchfork.com/reviews/albums/fishmans-long-season/) connects creative decisions with musical explanation. That technique is useful here. The draft borrows neither its imagery, biography-to-listening progression, timestamps nor concluding artistic outlook. It appropriately substitutes attributed accounts and credits for firsthand listening analysis. The reference remains craft-only; article reception is unverified.",
+        "Against the opened [IZM interview](https://www.izm.co.kr/posts?id=33059), the draft selectively paraphrases relevant answers without reproducing the interviewer’s opening imagery or career narrative. It reorganizes the material around two recordings and corroborating credits. ‘Sangwoon described’ keeps the performance observation attributed, and the December 2024 date prevents the interview from appearing newly conducted.",
+        "The opened [Biscuit Sound credits](https://www.biscuitsound.net/index.php?document_srl=54372&mid=music) and [Voyage credits](https://www.genie.co.kr/detail/albumInfo?axnm=83966841) support the comparison between individual songwriting and collective credits. Paragraph five’s explanation of the keyboardist’s and bassist’s vocal-production duties partly restates the credits, but usefully translates technical labels for unfamiliar readers.",
+        "The ending draws a bounded inference from the opened [Genie session report](https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=13299). ‘That account suggests’ preserves its status as interpretation of promotional reporting. The final sentence illustrates shared discussion without inventing a particular exchange, disagreement or studio scene.",
+        "The [Dope Records listing](https://www.doperecord.com/product/예약판매-유다빈밴드-ydbb-ydbb-125-180g-black-vinyl/7639/category/1/display/2/?icid=MAIN.product_listmain_1) supports the brief compilation hook and attributed schedule. The opening supplies an occasion rather than claiming the older recordings or interview are new. It does not expand into unrelated release promotion.",
+        "Compared with the supplied Korean shoegaze story, both use credits and explain their limits, and both open with a timely catalogue occasion. The substantive questions differ: that article distinguishes collaboration across a network; this one connects individual decisions with duties inside one band. The new instrumental and vocal-production evidence prevents the shared method from becoming a duplicate article.",
+        "Compared with Forest, EVERYTHING, HANRORO and youra, this draft repeats neither their image-led interpretation, release-position argument, concert return nor studio anecdote and listening route. Its ending concerns working responsibilities rather than the recurring emotional coexistence conclusions. No distinctive borrowed phrasing or paragraph sequence was found.",
+        "Each paragraph supplies context, evidence or explanation. ‘The writing responsibilities widened’ and the closing synthesis are transferable sentences in isolation, but their surrounding credits and decisions make the paragraphs specific. No invented experience, generic praise or emotional instructions appear.",
+        "Source ledger, including relevant title/deck framing and synthesis: approximately 160–190 words derive from IZM, 150–190 from the Voyage credits, fewer than 90 from the session report, fewer than 60 from the retailer and fewer than 40 from Biscuit Sound. These remain within their respective 200-word allowances. Shared material is not treated as additional budget. There are no substantive direct quotations, reproduced lyrics or translated verses; the reference comparison remains below Pitchfork’s 100-word allowance."
+      ]
+    }
+  }
+}
